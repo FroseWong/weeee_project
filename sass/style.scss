@@ -1,3 +1,7 @@
+@use "sass:math";
+@import "page/page.scss";
+@import "component/component.scss";
+
 .nb_htoc {
   margin-top: 215px;
 }
