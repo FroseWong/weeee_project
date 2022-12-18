@@ -1,19 +1,128 @@
 @use "sass:math";
-@import "page/page.scss";
-@import "component/component.scss";
+@import "./base/base.scss";
+@import "./page/page.scss";
+@import "./component/component.scss";
+@import "./mixin/mixin.scss";
 
-.nb_htoc {
+.htob {
+  // header下方和banner不要有空隙時 給banner
+  margin-top: 165px;
+}
+
+.nb {
+  // 沒有麵包屑時 給內容
   margin-top: 215px;
 }
 
-.hb_htob {
-  margin-bottom: 30px;
-}
-
-.hb_btoc {
+.hb {
+  // 有麵包屑時 給麵包屑
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
 .ftoc {
+  //footer to 內容 給footer
   margin-top: 80px;
 }
+
+.ttoc {
+  //card to title & title to card 給title
+  margin-top: 70px;
+  margin-bottom: 35px;
+}
+
+.ctoc {
+  // card to card 給上方的card
+  margin-bottom: 100px;
+}
+
+.wrapper {
+  // 每個頁面的最外層
+  line-height: 1.6;
+  font-size: $default_fz;
+  // color: black;
+}
+
+.container {
+  // 需要包在1200px裡面的內容
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.prize {
+  // product的價格顯示
+  font-size: $pc_prize;
+  font-weight: bold;
+}
+
+.gray {
+  // card下方的灰色文字顯示
+  font-size: $pc_gray;
+  color: $gray;
+}
+
+h1 {
+  font-size: $pc_h1;
+}
+
+h2 {
+  font-size: $pc_h2;
+}
+
+h3 {
+  font-size: $pc_h3;
+}
+
+h4 {
+  font-size: $pc_h4;
+}
+
+h5 {
+  font-size: $pc_h5;
+}
+
+h6 {
+  font-size: $pc_h6;
+}
+
+@include pc {
+  // 1200以內
+}
+
+@include m {
+  // 768以內
+  .prize {
+    font-size: $rwd_prize;
+    font-weight: bold;
+  }
+
+  .gray {
+    font-size: $rwd_gray;
+    color: $gray;
+  }
+
+  h1 {
+    font-size: $rwd_h1;
+    // color: $blue;
+  }
+
+  h2 {
+    font-size: $rwd_h2;
+  }
+
+  h3 {
+    font-size: $rwd_h3;
+  }
+
+  h4 {
+    font-size: $rwd_h4;
+  }
+
+  h5 {
+    font-size: $rwd_h5;
+  }
+
+  h6 {
+    font-size: $rwd_h6;
+  }
+} ;

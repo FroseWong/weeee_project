@@ -1,0 +1,18 @@
+@mixin pc {
+  @media all and (max-width: $pc_breakpoint) {
+    // 筆電版
+    @content;
+  }
+}
+
+@mixin m {
+  @media all and (max-width: $m_breakpoint) {
+    //手機板
+    @content;
+  }
+}
+
+@mixin t_color {
+  @for $i from 1 through 6 {
+  }
+} ;

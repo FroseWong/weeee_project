@@ -1,0 +1,17 @@
+$color: (
+  "buy_primary": #4484ce,
+  "jo_primary": #f9cf00,
+  "orange": #fe9f4d,
+  "gray": #747774,
+  "l_gray": #d9d9d9,
+  "white": #ffffff,
+  "black": #000000,
+);
+
+$blue: map-get($color, "buy_primary");
+$yellow: map-get($color, "jo_primary");
+$orange: map-get($color, "orange");
+$gray: map-get($color, "gray");
+$l_gray: map-get($color, "l_gray");
+$white: map-get($color, "white");
+$black: map-get($color, "black");
