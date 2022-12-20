@@ -182,6 +182,191 @@ table {
 .index .jo-card__bottom__message .member-pic.m3 {
   background-image: url("../../img/jo/jo_memberpic3.jpg");
 }
+.jo_index header {
+  height: 165px;
+  width: 1280px;
+  background-color: #747774;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+.jo_index .topbanner {
+  background-image: url("../../img/jo_index-topbanner1.jpg");
+  height: 500px;
+  background-size: cover;
+  background-position: center center;
+}
+.jo_index .topbanner .topbanner__text {
+  color: #000000;
+  text-align: left;
+  padding-top: 130px;
+  margin-bottom: 20px;
+}
+.jo_index .topbanner .topbanner__text h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.jo_index .topbanner .topbanner__text p {
+  margin-bottom: 20px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+.jo_index .topbanner .topbanner__text .search_location {
+  background-color: #f9cf00;
+  display: inline;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+  border-radius: 30px;
+  margin-top: 15px;
+  font-weight: bold;
+  line-height: 40px;
+  height: 40px;
+}
+.jo_index .topbanner .topbanner__text .searchbox {
+  margin-top: 25px;
+  width: 700px;
+  position: relative;
+}
+.jo_index .topbanner .topbanner__text .searchbox input {
+  height: 55px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.jo_index .topbanner .topbanner__text .searchbox button {
+  position: absolute;
+  height: 45px;
+  right: -10px;
+  top: 5px;
+  bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f9cf00;
+  font-weight: bold;
+}
+.jo_index .midbanner {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.jo_index .midbanner div i {
+  margin-top: 0;
+  font-size: 50px;
+}
+
+.qa header {
+  height: 165px;
+  width: 1200px;
+  background-color: #747774;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 60px;
+  box-sizing: border-box;
+  z-index: 100;
+}
+.qa .topbanner {
+  background-image: url("../../img/otherpage/qa-banner.jpg");
+  height: 305px;
+  background-size: cover;
+  background-position: center center;
+}
+.qa .topbanner .topbanner__text {
+  color: #747774;
+  text-align: center;
+  padding-top: 30px;
+  font-weight: bold;
+}
+.qa .topbanner .top-btn {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.qa .topbanner .top-btn .btn {
+  background-color: #ffffff;
+  color: #747774;
+  width: 200px;
+  height: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 25px;
+}
+.qa .topbanner .top-btn .btn :hover {
+  background-color: #4484ce;
+  color: #ffffff;
+  border-radius: 25px;
+}
+.qa .topbanner .top-btn .btn h4 {
+  line-height: 100px;
+  text-align: center;
+  font-weight: bold;
+}
+.qa .mid {
+  display: flex;
+}
+.qa .mid .leftnav {
+  width: 300px;
+  position: sticky;
+  top: 165px;
+  height: 500px;
+}
+.qa .mid .leftnav ul li {
+  padding: 16px;
+}
+.qa .mid .question .question_type {
+  margin-bottom: 30px;
+}
+.qa .mid .question .question_type h3 {
+  margin-bottom: 30px;
+}
+.qa .mid .question .question_type .question_content {
+  box-shadow: 0 0 7px;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  width: 600px;
+}
+.qa .mid .question .question_type .question_content h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.qa .mid .question .question_type .question_content h5 button {
+  position: absolute;
+  right: 0;
+  border: none;
+  background-color: #fff;
+  height: 100%;
+}
+.qa .mid .question .question_type .question_content h5 button :hover {
+  transform: scale(1.1);
+}
+.qa .mid .question .question_type .question_content h5 button i {
+  font-size: 20px;
+}
+.qa .mid .question .question_type .question_content .question_a p {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.qa .-close {
+  display: none;
+}
+
 .product-list {
   display: flex;
 }
