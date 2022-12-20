@@ -131,7 +131,7 @@ table {
 
 .index header {
   height: 165px;
-  width: 1280px;
+  width: 100%;
   background-color: #747774;
   position: fixed;
   top: 0;
@@ -141,19 +141,47 @@ table {
   text-align: center;
   padding-top: 60px;
   box-sizing: border-box;
+  z-index: 20;
 }
 .index .topbanner {
   background-image: url("../../img/otherpage/index-topbanner1.jpg");
   height: 330px;
   background-size: cover;
   background-position: center center;
+  margin-bottom: 100px;
 }
 .index .topbanner .topbanner__text {
   color: #ffffff;
   text-align: center;
   padding-top: 80px;
 }
-
+.index .product-card__top__pic.p1 {
+  background-image: url("../../../img/product/sightseeing/friend/sightseeing_friend_taoyuanseeandbuy1.jpg");
+}
+.index .product-card__top__pic.p2 {
+  background-image: url("../../../img/product/sightseeing/friend/sightseeing_friend_newtaipeibeauty1.jpg");
+}
+.index .product-card__top__pic.p3 {
+  background-image: url("../../../img/product/sightseeing/friend/sightseeing_friend_kimmon_bridge.jpg");
+}
+.index .jo-card__top.j1 {
+  background-image: url("../../img/jo/jo_nanjingeasteat1.jpg");
+}
+.index .jo-card__top.j2 {
+  background-image: url("../../img/jo/jo_boardgame1.jpg");
+}
+.index .jo-card__top.j3 {
+  background-image: url("../../img/jo/jo_raohenightmarket1.jpg");
+}
+.index .jo-card__bottom__message .member-pic.m1 {
+  background-image: url("../../img/jo/jo_memberpic1.jpg");
+}
+.index .jo-card__bottom__message .member-pic.m2 {
+  background-image: url("../../img/jo/jo_memberpic2.jpg");
+}
+.index .jo-card__bottom__message .member-pic.m3 {
+  background-image: url("../../img/jo/jo_memberpic3.jpg");
+}
 .jo_index header {
   height: 165px;
   width: 1280px;
@@ -339,6 +367,132 @@ table {
   display: none;
 }
 
+.product-list {
+  display: flex;
+}
+.product-list .product-card {
+  width: 390px;
+  height: 300px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.product-list .product-card:hover .product-card__top__pic img {
+  transform: scale(1.2);
+}
+.product-list .product-card .fa-heart {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  z-index: 15;
+}
+.product-list .product-card .product-card__location {
+  color: white;
+}
+.product-list .product-card .product-card__location .fa-location-dot {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 15;
+}
+.product-list .product-card .product-card__location .p__location {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  z-index: 15;
+}
+.product-list .product-card .product-card__top {
+  color: #ffffff;
+  width: 390px;
+  height: 155px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.product-list .product-card .product-card__top .product-card__top__pic img {
+  width: 390px;
+  transition: all 0.3s;
+}
+.product-list .product-card .product-card__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 5px 5px;
+}
+.product-list .product-card .product-card__bottom h6 {
+  margin-top: 20px;
+}
+.product-list .product-card .product-card__bottom .fa-star {
+  margin-right: 5px;
+  color: #f9cf00;
+}
+
+.jo-list {
+  display: flex;
+}
+.jo-list .jo-card {
+  width: 390px;
+  height: 300px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.jo-list .jo-card:hover .jo-card__top img {
+  transform: scale(1.2);
+}
+.jo-list .jo-card .jo-card__top__location {
+  color: #ffffff;
+}
+.jo-list .jo-card .jo-card__top__location .fa-location-dot {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 15;
+}
+.jo-list .jo-card .jo-card__top__location .jo__location {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  z-index: 15;
+}
+.jo-list .jo-card .jo-card__top {
+  color: #ffffff;
+  width: 390px;
+  height: 155px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.jo-list .jo-card .jo-card__top img {
+  width: 390px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.jo-list .jo-card .jo-card__bottom {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5px 5px;
+}
+.jo-list .jo-card .jo-card__bottom .jo-card__bottom__message {
+  display: flex;
+  align-items: center;
+}
+.jo-list .jo-card .jo-card__bottom .jo-card__bottom__message .member-pic {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center center;
+  margin-right: 10px;
+}
+.jo-list .jo-card .jo-card__bottom .jo-card__bottom__message .left-time {
+  margin-left: auto;
+}
+
 .htob {
   margin-top: 165px;
 }
@@ -383,6 +537,52 @@ table {
 .gray {
   font-size: 14px;
   color: #747774;
+}
+
+.product-tag {
+  padding: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #fe9f4d;
+}
+
+.blueBtn {
+  background-color: #4484ce;
+  text-align: center;
+  width: 100px;
+  padding: 10px 30px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.2 all ease-in-out;
+  box-sizing: border-box;
+}
+
+.yellowBtn {
+  background-color: #f9cf00;
+  text-align: center;
+  width: 100px;
+  padding: 10px 30px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.2 all ease-in-out;
+  box-sizing: border-box;
+}
+
+.orangeBtn {
+  background-color: #fe9f4d;
+  text-align: center;
+  width: 100px;
+  padding: 10px 30px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.2 all ease-in-out;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -436,6 +636,9 @@ h6 {
   h6 {
     font-size: 16px;
   }
+}
+a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */
