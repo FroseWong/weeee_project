@@ -38,6 +38,9 @@ $small-font: 20px;
 header {
   height: 165px;
   background-color: $gray;
+  top: 0;
+  position: sticky;
+  z-index: 2;
 }
 .productdetail__content {
   i {
@@ -261,7 +264,7 @@ header {
   width: 200px;
   height: 200px;
   position: sticky;
-  top: 100px;
+  top: 200px;
   right: 0px;
   padding: 20px;
   float: right;
