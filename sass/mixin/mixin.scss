@@ -15,22 +15,4 @@
 @mixin t_color {
   @for $i from 1 through 6 {
   }
-}
-
-// btn
-@mixin btn($size, $bgc, $color, $borderRadius: null) {
-  background-color: $bgc;
-  text-align: center;
-  width: $size;
-  padding: 10px 30px;
-  font-size: 20px;
-  color: $color;
-  cursor: pointer;
-  border-radius: $borderRadius;
-  transition: 0.2 all ease-in-out;
-  box-sizing: border-box;
-
-  // &:hover {
-  //   background-color: darken($bgc, 10);
-  // }
-}
+} ;
