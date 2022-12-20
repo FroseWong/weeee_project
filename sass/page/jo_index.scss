@@ -1,0 +1,91 @@
+.jo_index{
+    header {
+        height: 165px;
+        width: 1280px;
+        background-color: $gray;
+        position: fixed;
+        top: 0;
+        left: 0;
+        font-size: 40px;
+        color: $white;
+        text-align: center;
+        padding-top: 60px;
+        box-sizing: border-box;
+    }
+    
+    .topbanner {
+        background-image: url("../../img/jo_index-topbanner1.jpg");
+        height: 500px;
+        background-size: cover;
+        background-position: center center;
+    
+        .topbanner__text {
+          color: $black;
+          text-align: left;
+          padding-top: 130px;
+          margin-bottom: 20px;
+          h1{
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          p{
+            margin-bottom: 20px;
+            padding-left: 10px;
+            font-weight: bold;
+          }
+          .search_location{
+            background-color: $yellow;
+            display: inline;
+            padding:10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 16px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-weight: bold;
+            line-height: 40px;
+            height: 40px;
+            
+          }
+          .searchbox{
+            margin-top: 25px;
+            width: 700px;
+            position: relative;
+            input{
+                height: 55px;
+                width: 100%;
+                border: none;
+                border-radius: 10px;
+                padding-left: 20px;
+                font-size: 20px;
+                font-weight: 400;
+            }
+            button{
+                position: absolute;
+                height: 45px;
+                right: -10px;
+                top: 5px;
+                bottom: 5px;
+                padding-left: 20px;
+                padding-right: 20px;
+                border: none;
+                border-radius: 10px;
+                background-color: $yellow;
+                font-weight: bold;
+
+
+            }
+          }
+        }
+    }
+    .midbanner{
+        margin-top: 30px;
+        margin-bottom: 20px;
+        div{
+            i{
+                margin-top: 0;
+                font-size: 50px;
+            }
+        }
+    }
+}
