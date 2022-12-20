@@ -1,7 +1,7 @@
 .index {
   header {
     height: 165px;
-    width: 1280px;
+    width: 100%;
     background-color: $gray;
     position: fixed;
     top: 0;
@@ -11,6 +11,7 @@
     text-align: center;
     padding-top: 60px;
     box-sizing: border-box;
+    z-index: 20;
   }
 
   .topbanner {
@@ -18,11 +19,66 @@
     height: 330px;
     background-size: cover;
     background-position: center center;
+    margin-bottom: 100px;
 
     .topbanner__text {
       color: $white;
       text-align: center;
       padding-top: 80px;
+    }
+  }
+
+  .product-card__top__pic {
+    &.p1 {
+      background-image: url("../../../img/product/sightseeing/friend/sightseeing_friend_taoyuanseeandbuy1.jpg");
+    }
+
+    &.p2 {
+      background-image: url("../../../img/product/sightseeing/friend/sightseeing_friend_newtaipeibeauty1.jpg");
+    }
+
+    &.p3 {
+      background-image: url("../../../img/product/sightseeing/friend/sightseeing_friend_kimmon_bridge.jpg");
+    }
+  }
+
+  .jo-card__top {
+    &.j1 {
+      background-image: url("../../img/jo/jo_nanjingeasteat1.jpg");
+    }
+
+    &.j2 {
+      background-image: url("../../img/jo/jo_boardgame1.jpg");
+    }
+
+    &.j3 {
+      background-image: url("../../img/jo/jo_raohenightmarket1.jpg");
+    }
+  }
+
+  .jo-card__bottom__message {
+    .member-pic {
+      &.m1 {
+        background-image: url("../../img/jo/jo_memberpic1.jpg");
+      }
+
+      &.m2 {
+        background-image: url("../../img/jo/jo_memberpic2.jpg");
+      }
+
+      &.m3 {
+        background-image: url("../../img/jo/jo_memberpic3.jpg");
+      }
+    }
+  }
+
+  .popular-country__list {
+    .popular-country {
+      &.active {
+      }
+
+      .overlap {
+      }
     }
   }
 }
