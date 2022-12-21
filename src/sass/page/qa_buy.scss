@@ -17,7 +17,7 @@
     }
   
     .topbanner {
-      background-image: url("../../img/otherpage/qa-banner.jpg");
+      background-image: url("../img/otherpage/qa-banner.jpg");
       height: 305px;
       background-size: cover;
       background-position: center center;
@@ -45,6 +45,7 @@
                 background-color:$blue;
                 color:  $white; 
                 border-radius: 25px;
+                opacity: 0.9;
             }
             
             h4{
@@ -53,7 +54,11 @@
                 font-weight: bold;
                 
             }
-        }
+          }
+          .btn.on_watch{
+            background-color: $blue;
+            color: $white;
+          }
       }
     }
     .mid{
@@ -119,7 +124,7 @@
     .-close{
       display: none;
     }
-
+    
     
 
   }
