@@ -182,6 +182,73 @@ table {
 .index .jo-card__bottom__message .member-pic.m3 {
   background-image: url("../../img/jo/jo_memberpic3.jpg");
 }
+.index .popular-country__list {
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.index .popular-country__list .popular-country {
+  width: 180px;
+  height: 270px;
+  background-color: gray;
+  padding-top: 150px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.index .popular-country__list .popular-country.active {
+  width: 360px;
+  height: 270px;
+}
+.index .popular-country__list .popular-country.active .popular-country__bottom {
+  bottom: -10px;
+}
+.index .popular-country__list .popular-country .caption {
+  font-size: 35px;
+  padding-left: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.index .popular-country__list .popular-country .popular-country__bottom {
+  width: 360px;
+  height: 64px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 0 15px;
+  font-size: 14px;
+  box-sizing: border-box;
+  overflow: hidden;
+  bottom: -100px;
+  left: 0px;
+}
+.index .popular-country__list .popular-country .popular-country__bottom .travel {
+  border: 1px solid #ffffff;
+  border-radius: 40px;
+  padding: 5px 10px;
+  color: #ffffff;
+}
+.index .popular-country__list .popular-country .popular-country__bottom .travel:hover {
+  background-color: rgba(217, 217, 217, 0.5);
+}
+.index .popular-country__list .popular-country .popular-country__bottom .ticket {
+  border: 1px solid #ffffff;
+  border-radius: 40px;
+  padding: 5px 10px;
+  color: #ffffff;
+}
+.index .popular-country__list .popular-country .popular-country__bottom .ticket:hover {
+  background-color: rgba(217, 217, 217, 0.5);
+}
+.index .popular-country__list .popular-country .popular-country__bottom .local {
+  border-radius: 40px;
+  padding: 5px 10px;
+  color: #ffffff;
+  background-color: rgba(217, 217, 217, 0.5);
+}
+
 .jo_index header {
   height: 165px;
   width: 1280px;
@@ -421,6 +488,10 @@ table {
   align-items: flex-start;
   padding: 0 5px 5px;
 }
+.product-list .product-card .product-card__bottom .product-name {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
 .product-list .product-card .product-card__bottom h6 {
   margin-top: 20px;
 }
@@ -475,6 +546,10 @@ table {
   display: flex;
   flex-direction: column;
   padding: 0 5px 5px;
+}
+.jo-list .jo-card .jo-card__bottom .jo-name {
+  margin-bottom: 5px;
+  font-size: 20px;
 }
 .jo-list .jo-card .jo-card__bottom .jo-card__bottom__message {
   display: flex;
@@ -540,7 +615,7 @@ table {
 }
 
 .product-tag {
-  padding: 5px;
+  padding: 2.5px 4px;
   font-size: 16px;
   color: #ffffff;
   background-color: #fe9f4d;

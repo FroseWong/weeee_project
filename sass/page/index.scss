@@ -73,11 +73,87 @@
   }
 
   .popular-country__list {
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
     .popular-country {
+      width: 180px;
+      height: 270px;
+      background-color: gray;
+      padding-top: 150px;
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
       &.active {
+        width: 360px;
+        height: 270px;
+        .popular-country__bottom {
+          bottom: -10px;
+        }
       }
 
       .overlap {
+      }
+
+      .caption {
+        font-size: $pc_h2;
+        padding-left: 20px;
+        color: $white;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .popular-country__bottom {
+        width: 360px;
+        height: 64px;
+        // background-color: $blue;
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        padding: 0 15px;
+        // flex-shrink: 0;
+        font-size: 14px;
+        // border: solid red 1px;
+        box-sizing: border-box;
+        // border: solid red 1px;
+        overflow: hidden;
+
+        bottom: -100px;
+        left: 0px;
+        .travel {
+          // position: absolute;
+          // top: 0px;
+          // left: 20px;
+          border: 1px solid $white;
+          border-radius: 40px;
+          padding: 5px 10px;
+          color: $white;
+          &:hover {
+            background-color: rgba(217, 217, 217, 0.5);
+          }
+        }
+        .ticket {
+          // top: 0px;
+          // left: 150px;
+          border: 1px solid $white;
+          border-radius: 40px;
+          padding: 5px 10px;
+          color: $white;
+          &:hover {
+            background-color: rgba(217, 217, 217, 0.5);
+          }
+        }
+        .local {
+          // position: absolute;
+          // top: 0px;
+          // left: 235px;
+          // border: 1px solid $white;
+          border-radius: 40px;
+          padding: 5px 10px;
+          color: $white;
+          background-color: rgba(217, 217, 217, 0.5);
+        }
       }
     }
   }
