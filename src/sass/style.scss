@@ -40,7 +40,6 @@
   // 每個頁面的最外層
   line-height: 1.6;
   font-size: $default_fz;
-  // color: black;
 }
 
 .container {
@@ -59,6 +58,26 @@
   // card下方的灰色文字顯示
   font-size: $pc_gray;
   color: $gray;
+}
+
+.product-tag {
+  padding: 2.5px 4px;
+  font-size: 16px;
+  color: $white;
+  background-color: $orange;
+  // margin-top: 15px;
+}
+
+.blueBtn {
+  @include btn(100px, $blue, $white, 10px);
+}
+
+.yellowBtn {
+  @include btn(100px, $yellow, $white, 10px);
+}
+
+.orangeBtn {
+  @include btn(100px, $orange, $white, 10px);
 }
 
 h1 {
@@ -125,4 +144,8 @@ h6 {
   h6 {
     font-size: $rwd_h6;
   }
-} ;
+}
+
+a {
+  text-decoration: none;
+}
