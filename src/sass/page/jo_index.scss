@@ -14,16 +14,18 @@
     }
     
     .topbanner {
-        background-image: url("../../img/jo_index-topbanner1.jpg");
+        background-image: url("../img/jo/jo_index-topbanner1.jpg");
         height: 500px;
         background-size: cover;
         background-position: center center;
+        
     
         .topbanner__text {
           color: $black;
           text-align: left;
           padding-top: 130px;
           margin-bottom: 20px;
+          padding-left: 30px;
           h1{
             font-weight: bold;
             margin-bottom: 10px;
@@ -81,11 +83,25 @@
     .midbanner{
         margin-top: 30px;
         margin-bottom: 20px;
-        div{
+        .icon_map{
+          display: flex;
+          justify-content: center;
+          padding: 30px;
             i{
-                margin-top: 0;
                 font-size: 50px;
+                align-items: center;
+                margin: 0 auto;
+                text-align: center;
             }
+            div{
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              i{
+                margin-bottom: 30px;
+              }
+            }
+
         }
     }
 }
