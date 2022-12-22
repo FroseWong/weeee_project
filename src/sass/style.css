@@ -296,6 +296,7 @@ header {
   height: 165px;
   background-color: #747774;
   top: 0;
+  position: -webkit-sticky;
   position: sticky;
   z-index: 2;
 }
@@ -509,6 +510,7 @@ header {
   background-color: #ffffff;
   width: 200px;
   height: 200px;
+  position: -webkit-sticky;
   position: sticky;
   top: 200px;
   right: 0px;
@@ -622,6 +624,7 @@ footer {
 }
 .qa .mid .leftnav {
   width: 300px;
+  position: -webkit-sticky;
   position: sticky;
   top: 165px;
   height: 500px;
@@ -678,12 +681,12 @@ footer {
   color: blue;
   font-size: 16px;
   position: absolute;
-  margin-left: 40px;
-  margin-top: 134px;
+  margin-left: 36px;
+  margin-top: 101px;
 }
 .terms .user {
   color: #4484ce;
-  margin-top: 90px;
+  margin-top: 101px;
 }
 .terms .topbanner {
   background-color: #4484ce;
@@ -716,7 +719,7 @@ footer {
 }
 .terms .topbanner .topbanner__text {
   text-align: center;
-  padding-top: 33px;
+  padding-top: 40px;
 }
 
 .product-list {
@@ -999,6 +1002,4 @@ h6 {
 }
 a {
   text-decoration: none;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
