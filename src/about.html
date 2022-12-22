@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 
@@ -81,12 +84,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 
 <body>
     <div class="wrapper" id="app">
-        <header class="productdetail__header"></header>
+        <!-- <header class="productdetail__header"></header> -->
+        <div class="headerpage"></div>
         <div class="about2__main">
             <div class="about2_title">
                 <h1>1200</h1>
@@ -97,8 +104,8 @@
                     <div class="about2__sort">
                         <h4>排序</h4>
                         <ul>
-                            <li>熱門程度</li>
-                            <li>價格低到高</li>
+                            <li @click="filterOrder">熱門程度</li>
+                            <li @click="filterPrice">價格低到高</li>
                         </ul>
                     </div>
                     <div class="about2__category">
@@ -115,9 +122,9 @@
                         <span @click="open_city" class="about2__open">台灣<i
                                 class="fa-solid fa-circle-chevron-down"></i></span>
                         <ul class="about2__city about2__block">
-                            <li>基隆市</li>
-                            <li>台北市</li>
-                            <li>新北市</li>
+                            <li @click="filterCity">基隆</li>
+                            <li @click="filterCity">台北</li>
+                            <li @click="filterCity">新北</li>
                         </ul>
                     </div>
                     <div class="about2__price">
@@ -131,7 +138,7 @@
                     </div>
                 </div>
                 <div class="about2__card">
-                    <div class="about2__card--group" v-for="card in cardlist">
+                    <div class="about2__card--group" v-for="card in cardlist" :id="card.cardid">
                         <div class="about2__card--img">
                             <img :src="card.src" alt="">
                         </div>
@@ -142,7 +149,7 @@
                             <div>
                                 <h3>★</h3>
                                 <h4>{{card.score}}{{card.scorepeople}}</h4>
-                                <h4>｜95K+個已訂購</h4>
+                                <h4>｜{{card.order}}個已訂購</h4>
                                 <h5>TWD {{card.price}}元</h5>
                             </div>
                         </div>
@@ -157,6 +164,7 @@
                 </div>
             </div>
         </div>
+        <div class="footerpage"></div>
     </div>
     <script src="/src/vue/vue.global.prod.js"></script>
     <script>
@@ -168,64 +176,73 @@
                     cardlist: [
                         {
                             src: "/src/img/sightseeing_family/sightseeing_family_sandbeach1.jpg",
-                            title: '基隆港煙火 情侶行程',
-                            label: '情侶行程',
-                            content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            title: '新北港煙火 情侶行程',
+                            label: '家庭行程',
+                            content: '新北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
                             score: 4.5,
                             scorepeople: '(2300)',
-                            order: '｜95K+個已訂購',
-                            price: 450,
+                            order: 1000,
+                            price: 6450,
+                            city: '新北',
+                            cardid: 1,
                         },
                         {
                             src: "/src/img/sightseeing_family/sightseeing_family_sandbeach2.jpg",
                             title: '基隆港煙火 情侶行程',
-                            label: '情侶行程',
+                            label: '家庭行程',
                             content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
                             score: 4.5,
                             scorepeople: '(2300)',
-                            order: '｜95K+個已訂購',
-                            price: 450,
+                            order: 50,
+                            price: 5500,
+                            city: '基隆',
+                            cardid: 2,
                         },
                         {
                             src: "/src/img/sightseeing_family/sightseeing_family_sandbeach3.jpg",
-                            title: '基隆港煙火 情侶行程',
-                            label: '情侶行程',
-                            content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            title: '台北港煙火 情侶行程',
+                            label: '寵物行程',
+                            content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
                             score: 4.5,
                             scorepeople: '(2300)',
-                            order: '｜95K+個已訂購',
-                            price: 450,
+                            order: 350,
+                            price: 2250,
+                            city: '台北',
+                            cardid: 3,
                         },
                         {
                             src: "/src/img/sightseeing_family/sightseeing_family_beach2.jpg",
-                            title: '基隆港煙火 情侶行程',
+                            title: '台北港煙火 情侶行程',
                             label: '情侶行程',
-                            content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
                             score: 4.5,
                             scorepeople: '(2300)',
-                            order: '｜95K+個已訂購',
-                            price: 450,
+                            order: 1750,
+                            price: 1450,
+                            city: '台北',
+                            cardid: 4,
                         },
                         {
                             src: "/src/img/sightseeing_family/sightseeing_family_beach3.jpg",
                             title: '基隆港煙火 情侶行程',
-                            label: '情侶行程',
+                            label: '朋友行程',
                             content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
                             score: 4.5,
                             scorepeople: '(2300)',
-                            order: '｜95K+個已訂購',
+                            order: 150,
                             price: 450,
+                            city: '基隆',
+                            cardid: 5,
                         },
-                    ]
+                    ],
+                    prices: [],
+
                 }
             },
             methods: {
                 open_city() {
                     let city = document.getElementsByClassName('about2__city')[0].classList;
-                    console.log(city);
                     let fa = document.getElementsByClassName('fa-solid')[0];
-
-
                     if (city.contains('about2__block')) {
                         city.remove('about2__block');
                         city.add('about2__none');
@@ -238,8 +255,49 @@
                         fa.classList.remove('fa-circle-chevron-up');
                         fa.classList.add('fa-circle-chevron-down');
                     }
+                },
+                filterCity(e) {
+                    let path = e.path[0].textContent;
+                    let card = document.getElementsByClassName('about2__card--group')[0];
+                    for (j = 0; j < this.cardlist.length; j++) {
+                        document.getElementById(j + 1).style.display = 'flex';
+
+                    }
+                    for (i = 0; i < this.cardlist.length; i++) {
+                        if (path == this.cardlist[i].city) {
+                            let cardid = this.cardlist[i].cardid;
+                            document.getElementById(cardid).style.display = 'none';
+                        }
+                    }
+                },
+                filterPrice() {
+                    let arr = this.cardlist;
+                    const eitherSort = (arr = []) => {
+                        const sorter = (a, b) => {
+                            return +a.price - +b.price;
+                        };
+                        arr.sort(sorter);
+                    };
+                    eitherSort(arr);
+                    this.classList = arr;
+                },
+                filterOrder(){
+                    let arr = this.cardlist;
+                    const eitherSort = (arr = []) => {
+                        const sorter = (a, b) => {
+                            return +a.order - +b.order;
+                        };
+                        arr.sort(sorter);
+                    };
+                    eitherSort(arr);
+                    this.classList = arr;  
                 }
             },
+
+            mounted() {
+                $(".headerpage").load("/src/layout/header.html");
+                $(".footerpage").load("/src/layout/footer.html");
+            }
         }).mount('#app')
     </script>
 </body>
