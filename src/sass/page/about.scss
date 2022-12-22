@@ -29,6 +29,7 @@
   align-items: center;
   flex-direction: column;
   background-color: #f4f4f4;
+  width: 100%;
   span {
     font-size: 48px;
     color: $blue;
@@ -41,14 +42,14 @@
   }
   h3 {
     font-size: 36px;
-    width: 1000px;
+    max-width: 1000px;
     text-align: center;
     font-weight: 900;
     margin-bottom: 60px;
   }
   p {
     font-size: 32px;
-    width: 1000px;
+    max-width: 1000px;
     text-align: center;
     margin-bottom: 60px;
   }
@@ -97,15 +98,15 @@
     align-items: flex-start;
     text-align: center;
     margin-bottom: 40px;
+    width: auto;
     div {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 315px;
+      max-width: 315px;
       margin: 0 20px;
       img {
-        width: 180px;
-        height: 180px;
+        max-width: 180px;
       }
       h4 {
         font-size: 36px;
@@ -113,7 +114,7 @@
         font-weight: 900;
         margin: 40px 0;
       }
-      p{
+      p {
         font-size: 20px;
       }
     }
@@ -131,19 +132,17 @@
     margin-top: 70px;
     margin-bottom: 70px;
   }
-  h3{
+  h3 {
     margin-bottom: 50px;
     font-weight: 900;
   }
-  div{
-    width: 100%;
+  div {
     display: flex;
-    flex-direction: row;
-    justify-content:center;
+    justify-content: center;
     margin-bottom: 100px;
-    img{
-        width: 150px;
-        margin:50px;
+    img {
+      max-width: 150px;
+      margin: 50px;
     }
   }
 }
