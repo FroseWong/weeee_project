@@ -194,6 +194,10 @@ table {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+  transition: all 0.3s;
+}
+.index .popular-country__list .popular-country:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.15);
 }
 .index .popular-country__list .popular-country.c1 {
   background-image: url("../img/otherpage/index_nantou1.jpg");
@@ -244,6 +248,7 @@ table {
   position: absolute;
   top: 202px;
   left: 0px;
+  transition: all 0.3s;
 }
 .index .popular-country__list .popular-country .popular-country__bottom {
   width: 360px;
@@ -256,6 +261,7 @@ table {
   font-size: 14px;
   box-sizing: border-box;
   overflow: hidden;
+  transition: all 0.3s;
   bottom: -100px;
   left: 0px;
 }
@@ -348,6 +354,205 @@ table {
   text-align: center;
   padding-top: 100px;
   color: #ffffff;
+}
+
+.jo_detail {
+  background-color: #f4f4f4;
+}
+.jo_detail header {
+  height: 165px;
+  width: 100%;
+  background-color: #747774;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 60px;
+  box-sizing: border-box;
+  z-index: 30;
+}
+.jo_detail .jo__title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.jo_detail .jo__img {
+  height: 520px;
+  background-image: url("../img/jo/jo_wanttoseefish.jpg");
+  border-radius: 10px;
+  margin-bottom: 75px;
+}
+.jo_detail .jo__content {
+  font-size: 35px;
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  margin-bottom: 75px;
+}
+.jo_detail .jo-leader {
+  padding: 75px 10px;
+  background-color: #ffffff;
+  margin-bottom: 70px;
+  border-radius: 10px;
+}
+.jo_detail .jo-leader .jo-leader__top {
+  display: flex;
+  margin-bottom: 70px;
+}
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__left {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__left .jo-leader-img {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  background-position: center center;
+  background-size: cover;
+  background-image: url("../img/jo/jo_leader1.jpg");
+  margin: 0 auto 20px;
+}
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__left .jo-leader-name {
+  font-size: 35px;
+  text-align: center;
+}
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__right {
+  flex-grow: 1;
+  font-size: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 0;
+}
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__right .jo-start-date i,
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__right .jo-location i,
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__right .jo-detailaddress i,
+.jo_detail .jo-leader .jo-leader__top .jo-leader__top__right .jo-number i {
+  width: 60px;
+}
+.jo_detail .jo-leader .jo-leader__bottom {
+  display: flex;
+}
+.jo_detail .jo-leader .jo-leader__bottom .jo-leader__bottom__left {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  align-items: center;
+}
+.jo_detail .jo-leader .jo-leader__bottom .jo-leader__bottom__left .contact-leader {
+  display: block;
+  margin: 0 auto;
+}
+.jo_detail .jo-leader .jo-leader__bottom .jo-leader__bottom__right {
+  flex-grow: 1;
+  flex-basis: 0;
+  font-size: 35px;
+}
+.jo_detail .jo-leader .jo-leader__bottom .jo-leader__bottom__right .contact-title {
+  font-weight: bold;
+}
+.jo_detail .useweeee__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+}
+.jo_detail .useweeee__title::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 50px;
+  background-color: #000000;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+.jo_detail .useweeee {
+  height: 315px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 70px;
+  border-radius: 10px;
+}
+.jo_detail .saysomething__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+}
+.jo_detail .saysomething__title::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 50px;
+  background-color: #000000;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+.jo_detail .saysomething__content {
+  width: 100%;
+  resize: none;
+  padding-top: 30px;
+  padding-left: 30px;
+  font-size: 30px;
+  box-sizing: border-box;
+  border: none;
+  outline: 1px solid #747774;
+  margin-bottom: 70px;
+}
+.jo_detail .saysomething__send {
+  display: block;
+  margin: 0 auto 100px;
+}
+.jo_detail .jo__comment__list {
+  margin-bottom: 110px;
+}
+.jo_detail .jo__comment__list .jo__comment {
+  height: 170px;
+  display: flex;
+  background-color: #ffffff;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+.jo_detail .jo__comment__list .jo__comment .jo__comment__left {
+  width: 70%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+.jo_detail .jo__comment__list .jo__comment .jo__comment__right {
+  width: 30%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  padding-top: 120px;
+  font-size: 25px;
+  align-items: center;
+}
+.jo_detail .jo__comment__list .jo__comment .jo__comment__right .mamber-img {
+  width: 30px;
+  height: 30px;
+  background-image: url("../img/jo/jo_member4.jpg");
+  background-size: cover;
+  background-position: center center;
+  border-radius: 30px;
+  margin-right: 15px;
+}
+.jo_detail .jo__comment__list .jo__comment .jo__comment__right .member-name {
+  margin-right: 35px;
+}
+.jo_detail .footer {
+  background-color: #747774;
+  color: #ffffff;
+  height: 310px;
+  text-align: center;
+}
+.jo_detail .footer .footcontent {
+  padding-top: 150px;
 }
 
 .jo_index header {
@@ -449,6 +654,47 @@ table {
   margin-bottom: 30px;
 }
 
+.jo_new {
+  background-color: #f4f4f4;
+}
+.jo_new header {
+  height: 165px;
+  width: 1280px;
+  background-color: #747774;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+.jo_new .jo_new__title {
+  margin-bottom: 30px;
+}
+.jo_new .jo_new__addimg {
+  width: 100%;
+  height: 330px;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jo_new .jo_new__addimg .box {
+  height: 100px;
+  width: 100px;
+  background-color: #ffffff;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jo_new .jo_new__addimg .box .fa-file-image {
+  z-index: 30;
+  color: #747774;
+  font-size: 50px;
+}
 .productdetail__container {
   width: 800px;
 }
@@ -1065,12 +1311,58 @@ footer {
   margin-left: auto;
 }
 
+.product-card-row-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-row {
+  width: 810px;
+  height: 250px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #000000;
+  outline: 1px solid #747774;
+}
+.product-card-row .product-card-row__left {
+  width: 270px;
+  height: 250px;
+  background-image: url("../img/jo/jo_aquarium.jpg");
+  background-size: cover;
+}
+.product-card-row .product-card-row__right {
+  width: 540px;
+  height: 250px;
+  padding: 30px 25px 0px;
+  box-sizing: border-box;
+}
+.product-card-row .product-card-row__right .price {
+  float: right;
+}
+.product-card-row .product-card-row__right .product-name {
+  margin-bottom: 20px;
+}
+.product-card-row .product-card-row__right .product__text {
+  margin-bottom: 15px;
+}
+.product-card-row .fa-star {
+  color: #f9cf00;
+  margin-right: 5px;
+}
+.product-card-row .product-tag {
+  width: 60px;
+  height: 30px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
 .htob {
   margin-top: 165px;
 }
 
 .nb {
-  margin-top: 215px;
+  padding-top: 215px;
 }
 
 .hb {
@@ -1101,7 +1393,7 @@ footer {
   max-width: 1200px;
 }
 
-.prize {
+.price {
   font-size: 16px;
   font-weight: bold;
 }
@@ -1116,45 +1408,46 @@ footer {
   font-size: 16px;
   color: #ffffff;
   background-color: #fe9f4d;
+  text-align: center;
 }
 
 .blueBtn {
   background-color: #4484ce;
   text-align: center;
-  width: 100px;
   padding: 10px 30px;
-  font-size: 20px;
+  font-size: 30px;
   color: #ffffff;
   cursor: pointer;
   border-radius: 10px;
   transition: 0.2 all ease-in-out;
   box-sizing: border-box;
+  border: none;
 }
 
 .yellowBtn {
   background-color: #f9cf00;
   text-align: center;
-  width: 100px;
   padding: 10px 30px;
-  font-size: 20px;
-  color: #ffffff;
+  font-size: 30px;
+  color: #000000;
   cursor: pointer;
   border-radius: 10px;
   transition: 0.2 all ease-in-out;
   box-sizing: border-box;
+  border: none;
 }
 
 .orangeBtn {
   background-color: #fe9f4d;
   text-align: center;
-  width: 100px;
   padding: 10px 30px;
-  font-size: 20px;
+  font-size: 30px;
   color: #ffffff;
   cursor: pointer;
   border-radius: 10px;
   transition: 0.2 all ease-in-out;
   box-sizing: border-box;
+  border: none;
 }
 
 h1 {
@@ -1182,7 +1475,7 @@ h6 {
 }
 
 @media all and (max-width: 768px) {
-  .prize {
+  .price {
     font-size: 16px;
     font-weight: bold;
   }
