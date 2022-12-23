@@ -85,7 +85,11 @@
       position: relative;
       box-sizing: border-box;
       overflow: hidden;
+      transition: all 0.3s;
 
+      &:hover {
+        box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.15);
+      }
       &.c1 {
         background-image: url("../img/otherpage/index_nantou1.jpg");
         background-position: center center;
@@ -141,6 +145,7 @@
         position: absolute;
         top: 202px;
         left: 0px;
+        transition: all 0.3s;
       }
 
       .popular-country__bottom {
@@ -158,6 +163,7 @@
         box-sizing: border-box;
         // border: solid red 1px;
         overflow: hidden;
+        transition: all 0.3s;
 
         bottom: -100px;
         left: 0px;
