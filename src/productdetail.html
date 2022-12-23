@@ -10,16 +10,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
-    <div class="wrapper">
-        <header></header>
+    <div class="wrapper" id="app">
+        <header class="headerpage"></header>
         <nav class="container breadcrumb-group">
             <ol class="hb breadcrumb">
-                <li class="breadcrumb__item">&nbsp首頁&nbsp</li>
-                <li class="breadcrumb__item">&nbsp觀光行程&nbsp</li>
-                <li class="breadcrumb__item--current">&nbsp桃園｜Weeeepark 海洋公園門票&nbsp</li>
+                <li class="breadcrumb__item"><a href="">&nbsp首頁&nbsp</a></li>
+                <li class="breadcrumb__item"><a href="">&nbsp觀光行程&nbsp</a></li>
+                <li class="breadcrumb__item--current"><a href="">&nbsp桃園｜Weeeepark 海洋公園門票&nbsp</a></li>
             </ol>
         </nav>
         <div class="container">
@@ -72,35 +75,37 @@
                     </ul>
                 </div>
                 <div class="productdetail__operate">
-                    <span>收起商品說明</span>
+                    <span @click="open">{{operate}}</span>
                     <i class="fa-solid fa-angle-up"></i>
                 </div>
-                <div class="productdetail__directions">
-                    <h3>商品說明</h3>
-                    <p>
-                        Weeeepark
-                        為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出
-                        360°
-                        具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Weeeepark
-                        是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。
-                    </p>
-                </div>
-                <div class="productdetail__img">
-                    <p>► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心
-                    </p>
-                    <img src="./img/sightseeing_family/sightseeing_family_sandbeach1.jpg" alt="">
-                </div>
-                <div class="productdetail__img">
-                    <p>► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』
+                <div class="productdetail__directions--group productdetail__open">
+                    <div class="productdetail__directions">
+                        <h3>商品說明</h3>
+                        <p>
+                            Weeeepark
+                            為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出
+                            360°
+                            具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Weeeepark
+                            是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。
+                        </p>
+                    </div>
+                    <div class="productdetail__img">
+                        <p>► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心
+                        </p>
+                        <img src="./img/sightseeing_family/sightseeing_family_sandbeach1.jpg" alt="">
+                    </div>
+                    <div class="productdetail__img">
+                        <p>► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』
 
-                    </p>
-                    <img src="./img/sightseeing_family/sightseeing_family_sandbeach2.jpg" alt="">
-                </div>
-                <div class="productdetail__img">
-                    <p>► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界
+                        </p>
+                        <img src="./img/sightseeing_family/sightseeing_family_sandbeach2.jpg" alt="">
+                    </div>
+                    <div class="productdetail__img">
+                        <p>► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界
 
-                    </p>
-                    <img src="./img/sightseeing_family/sightseeing_family_sandbeach3.jpg" alt="">
+                        </p>
+                        <img src="./img/sightseeing_family/sightseeing_family_sandbeach3.jpg" alt="">
+                    </div>
                 </div>
                 <div class="productdetail__notice">
                     <h3>購買須知</h3>
@@ -286,8 +291,45 @@
                 </div>
             </div>
         </div>
-        <footer></footer>
+        <div class="footerpage"></div>
     </div>
+    <script src="/src/vue/vue.global.prod.js"></script>
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    operate: '收起商品說明 ',
+                }
+            },
+            methods: {
+                open() {
+                    let directions = document.getElementsByClassName('productdetail__directions--group')[0].classList;
+                    let fa = document.getElementsByClassName('productdetail__operate')[0].children[1].classList;
+                    if (directions.contains('productdetail__open')) {
+                        directions.remove('productdetail__open');
+                        directions.add('productdetail__none');
+                        this.operate = '看完整商品說明 ';
+                        fa.remove('fa-angle-up');
+                        fa.add('fa-angle-down')
+                    }
+                    else {
+                        directions.remove('productdetail__none');
+                        directions.add('productdetail__open');
+                        this.operate = '收起商品說明 ';
+                        fa.remove('fa-angle-down');
+                        fa.add('fa-angle-up')
+                    }
+
+                }
+            },
+            mounted() {
+                $(".headerpage").load("/src/layout/header.html");
+                $(".footerpage").load("/src/layout/footer.html");
+            }
+        }).mount('#app')
+    </script>
 </body>
 
 </html>
