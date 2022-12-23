@@ -4,58 +4,48 @@
     box-sizing: border-box;
 }
 
-.header_wrapper_top {
+.header_wrapper {
     border-bottom: #d9d9d9 solid 1px;
 }
 
 .header_top {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     padding: 10px 5px;
 
-
-
-
-    .left {
+    .header_top_left {
         display: flex;
         align-items: center;
 
         img {
-            width: 115px;
+            width: 110px;
             margin-right: 20px;
         }
 
         input {
-            height: 40px;
+            height: 35px;
             border-radius: 5px;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
-            font-size: $pc_h6;
+            font-size: 12px;
             border: none;
             background-color: #f4f4f4;
-
             padding-left: 5px;
-
-            width: 320px;
+            width: 300px;
 
             &:focus {
                 outline: none;
             }
         }
 
-        button {
-            height: 40px;
+        button.header_search {
+            height: 35px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-
             background-color: #f4f4f4;
-
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
-
             font-size: $pc_h5;
 
             i {
@@ -69,110 +59,97 @@
         }
     }
 
-    .right {
+    .header_top_right {
         display: flex;
         gap: 36px;
         align-items: center;
 
         li {
-
-
             i {
                 font-size: $pc_h4;
                 color: $black;
-
             }
         }
     }
 }
 
-.header_wrapper {
-    border-bottom: #d9d9d9 solid 1px;
-}
+
 
 .header_bottom {
     max-width: 1200px;
     margin: 0 auto;
 
-    // border-bottom: #d9d9d9 solid 1px;
     ul {
         display: flex;
-
         justify-content: center;
         align-items: center;
 
-        li:last-child {
+        a:last-child {
             border-right: none;
         }
 
-        .main_menu {
+        &>li {
             text-align: center;
-            // margin: 5px 0;
-            padding: 10px 0 10px 0;
-            // padding-right: 0;
+            padding: 5px 0;
             position: relative;
-
+            // border-right: #d9d9d9 1px solid;
             flex-grow: 1;
+
+            &:hover ol {
+                visibility: visible;
+
+            }
 
             a {
                 display: block;
                 text-decoration: none;
-                border-right: #d9d9d9 1px solid;
                 color: $black;
+                border-right: #d9d9d9 1px solid;
 
                 &:hover {
                     color: $gray;
-     
                 }
 
                 i {
-                    font-size: $pc_h3;
+                    font-size: $pc_h4;
                 }
 
                 h6 {
+                    font-size: 14px;
                     margin-top: 5px;
                 }
-
             }
-
-
 
             ol {
                 position: absolute;
-                left: 0px;
                 border-radius: 10px;
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
                 border: #d9d9d9 solid 1px;
                 // display: none;
-                margin-top: 10px;
+                visibility: hidden;
+                margin-top: 5px;
                 width: 100%;
 
-                .sub_menu {
+                li {
                     padding: 0;
                     margin: 0;
-                    
 
                     a {
                         text-decoration: none;
                         display: block;
-                        line-height: 40px;
+                        line-height: 35px;
                         border-right: none;
                         color: $black;
                         margin: 5px;
                         border-radius: 5px;
+                        font-size: 14px;
 
                         &:hover {
                             color: $white;
                             background-color: $blue;
                         }
-
-
-
                     }
-
-
-
                 }
             }
         }
