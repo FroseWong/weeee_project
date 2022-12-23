@@ -1,0 +1,39 @@
+{
+  "name": "tgd103",
+  "version": "1.0.0",
+  "description": "tgd103 前端工具",
+  "main": "index.js",
+  "scripts": {
+    "安裝所有套件": "npm i",
+    "上線用": "gulp package",
+    "開發用": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sexfat/tgd103.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sexfat/tgd103/issues"
+  },
+  "homepage": "https://github.com/sexfat/tgd103#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "browser-sync": "^2.27.11",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-file-include": "^2.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.57.1"
+  }
+}

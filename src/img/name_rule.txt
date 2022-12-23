@@ -1,0 +1,43 @@
+商品圖片命名規則：
+子分類_圖片編號_第幾張圖片.jpg
+ex:
+et_1_1.jpg
+
+jo圖片命名規則：
+jo_圖片名稱.jpg
+ex:
+jo_boardgame1.jpg
+
+otherpage圖片命名規則：
+網頁名稱_圖片名稱.jpg
+ex:
+index_topbanner1.jpg
+
+=================
+1.觀光行程 sightseeing(ss)
+o行程分類
+朋友行程 friend(fr)
+家庭行程 family(fa)
+情侶行程 couple(co)
+寵物有愛行程 pet(pe)
+
+2.體驗活動 experience(ep)
+o體驗分類
+手作體驗 handmade(hm)
+水上活動 onwater(ow)
+觀光農場 farm(fa)
+極限運動 extreme(et)
+
+3.交通票卡 transticket(tt)
+o票卡分類
+無限暢遊卡 unlimited(un)
+景點暢遊卡 viewpoint(vp)
+交通暢遊卡 trans(tr)
+經典暢遊卡 classic(cl)
+
+4.景點門票 viewpointticket(vp)
+o門票分類
+主題樂園 theme(th)
+水族館 aquarium(aq)
+博物館 museum(mu)
+美術館 art(ar)

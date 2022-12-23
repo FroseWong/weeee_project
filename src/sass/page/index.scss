@@ -1,7 +1,7 @@
 .index {
   header {
     height: 165px;
-    width: 1280px;
+    width: 100%;
     background-color: $gray;
     position: fixed;
     top: 0;
@@ -11,18 +11,270 @@
     text-align: center;
     padding-top: 60px;
     box-sizing: border-box;
+    z-index: 30;
   }
 
   .topbanner {
-    background-image: url("../../img/otherpage/index-topbanner1.jpg");
+    background-image: url("../img/otherpage/index_topbanner1.jpg");
     height: 330px;
+    width: 100%;
     background-size: cover;
     background-position: center center;
+    margin-bottom: 100px;
 
     .topbanner__text {
       color: $white;
       text-align: center;
       padding-top: 80px;
+    }
+  }
+
+  .product-card__top__pic {
+    &.p1 {
+      background-image: url("../../img/sightseeing/fr_28_1.jpg");
+    }
+
+    &.p2 {
+      background-image: url("../../img/sightseeing/fr_27_1.jpg");
+    }
+
+    &.p3 {
+      background-image: url("../../img/sightseeing/fr_3_1.jpg");
+    }
+  }
+
+  .jo-card__top {
+    &.j1 {
+      background-image: url("../../img/jo/jo_nanjingeasteat1.jpg");
+    }
+
+    &.j2 {
+      background-image: url("../../img/jo/jo_boardgame1.jpg");
+    }
+
+    &.j3 {
+      background-image: url("../../img/jo/jo_raohenightmarket1.jpg");
+    }
+  }
+
+  .jo-card__bottom__message {
+    .member-pic {
+      &.m1 {
+        background-image: url("../img/jo/jo_memberpic1.jpg");
+      }
+
+      &.m2 {
+        background-image: url("../img/jo/jo_memberpic2.jpg");
+      }
+
+      &.m3 {
+        background-image: url("../img/jo/jo_memberpic3.jpg");
+      }
+    }
+  }
+
+  .popular-country__list {
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+    .popular-country {
+      width: 180px;
+      height: 270px;
+      // background-color: gray;
+      // padding-top: 150px;
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+      transition: all 0.3s;
+
+      &:hover {
+        box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.15);
+      }
+      &.c1 {
+        background-image: url("../img/otherpage/index_nantou1.jpg");
+        background-position: center center;
+        background-size: cover;
+      }
+
+      &.c2 {
+        background-image: url("../img/otherpage/index_taichung1.jpg");
+        background-position: center center;
+        background-size: cover;
+      }
+      &.c3 {
+        background-image: url("../img/otherpage/index_changhua1.jpg");
+        background-position: center center;
+        background-size: cover;
+      }
+      &.c4 {
+        background-image: url("../img/otherpage/index_yunlin1.jpg");
+        background-position: center center;
+        background-size: cover;
+      }
+      &.c5 {
+        background-image: url("../img/otherpage/index_hualian1.jpg");
+        background-position: center center;
+        background-size: cover;
+      }
+
+      &.active {
+        width: 360px;
+        height: 270px;
+        .caption {
+          top: 150px;
+          left: 0px;
+        }
+
+        .popular-country__bottom {
+          bottom: -10px;
+        }
+      }
+
+      .overlap {
+        width: 100%;
+        height: 100%;
+        // background-color: gray;
+      }
+
+      .caption {
+        font-size: $pc_h2;
+        padding-left: 20px;
+        color: $white;
+        font-weight: bold;
+        margin-bottom: 10px;
+        position: absolute;
+        top: 202px;
+        left: 0px;
+        transition: all 0.3s;
+      }
+
+      .popular-country__bottom {
+        width: 360px;
+        height: 64px;
+        // background-color: $blue;
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        padding: 0 15px;
+        // flex-shrink: 0;
+        font-size: 14px;
+        // border: solid red 1px;
+        box-sizing: border-box;
+        // border: solid red 1px;
+        overflow: hidden;
+        transition: all 0.3s;
+
+        bottom: -100px;
+        left: 0px;
+        .travel {
+          // position: absolute;
+          // top: 0px;
+          // left: 20px;
+          border: 1px solid $white;
+          border-radius: 40px;
+          padding: 5px 10px;
+          color: $white;
+          &:hover {
+            background-color: rgba(217, 217, 217, 0.5);
+          }
+        }
+        .ticket {
+          // top: 0px;
+          // left: 150px;
+          border: 1px solid $white;
+          border-radius: 40px;
+          padding: 5px 10px;
+          color: $white;
+          &:hover {
+            background-color: rgba(217, 217, 217, 0.5);
+          }
+        }
+        .local {
+          // position: absolute;
+          // top: 0px;
+          // left: 235px;
+          // border: 1px solid $white;
+          border-radius: 40px;
+          padding: 5px 10px;
+          color: $white;
+          background-color: rgba(217, 217, 217, 0.5);
+        }
+      }
+    }
+  }
+
+  .bottombanner {
+    height: 330px;
+    margin-top: 120px;
+    // border: solid 1px red;
+    background-image: url("../img/otherpage/index_bottombanner1.jpg");
+    display: flex;
+    align-items: center;
+    .bottom__text {
+      color: $white;
+      .medium {
+        font-size: 35px;
+      }
+      .bigger {
+        font-size: 70px;
+      }
+    }
+  }
+  .lazybag {
+    width: 1000px;
+    margin: 0 auto;
+    // display: flex;
+    .lazybag__title {
+      margin-top: 45px;
+      margin-bottom: 20px;
+    }
+    .lazybag__list {
+      display: flex;
+      flex-wrap: wrap;
+      a {
+        margin-right: 15px;
+        margin-bottom: 20px;
+        color: $black;
+        transition: all 0.3s;
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+
+  .easydin {
+    width: 1000px;
+    margin: 0 auto;
+    .easydin__title {
+      margin-bottom: 20px;
+    }
+    .easydin__list {
+      display: flex;
+      flex-wrap: wrap;
+      a {
+        margin-right: 15px;
+        margin-bottom: 20px;
+        color: $black;
+        transition: all 0.3s;
+
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+
+  .footer {
+    height: 310px;
+    background-color: $gray;
+    .footcontent {
+      h1 {
+        text-align: center;
+        padding-top: 100px;
+        color: $white;
+      }
     }
   }
 }
