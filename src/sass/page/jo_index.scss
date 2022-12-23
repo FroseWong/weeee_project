@@ -1,7 +1,7 @@
 .jo_index{
     header {
         height: 165px;
-        width: 1280px;
+        width: 100%;
         background-color: $gray;
         position: fixed;
         top: 0;
@@ -11,6 +11,7 @@
         text-align: center;
         padding-top: 60px;
         box-sizing: border-box;
+        z-index: 100;
     }
     
     .topbanner {
@@ -103,5 +104,46 @@
             }
 
         }
+    }
+    .content{  
+      
+      .jo-list{
+        position: relative;
+        .btn-right{
+          position: absolute;
+          right: -80px;
+          top: 45%;
+          background-color: $orange;
+          border-radius: 50%;
+          width: 45px;
+          height: 45px;
+          text-align: center;
+          i{
+            font-size: 30px;
+            line-height: 45px;
+            color: $white;
+            
+            
+          }
+        }
+        .member-pic{
+        background-image: url(../img/jo/jo_memberpic1.jpg);
+      }
+      }
+    }
+    .back_to_top{
+      position: fixed;
+      right: 50px;
+      bottom: 50px;
+      width: 40px;
+      height: 40px;
+      color: $white;
+      background-color: orange;
+      text-align: center;
+      i{
+        line-height: 40px;
+        font-size: 30px;
+      }
+      
     }
 }
