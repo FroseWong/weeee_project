@@ -1,6 +1,6 @@
 .qa {
     header {
-      height: 165px;
+      height: 110px;
       width: 1200px;
       background-color: $gray;
       position: fixed;
@@ -18,42 +18,40 @@
   
     .topbanner {
       background-image: url("../img/otherpage/qa-banner.jpg");
-      height: 305px;
+      height: 255px;
+      margin-top: 110px;
       background-size: cover;
       background-position: center center;
   
       .topbanner__text {
         color: $gray;
         text-align: center;
-        padding-top: 30px;
+        padding-top: 20px;
         font-weight: bold;
       }
       .top-btn{
-        padding-top: 40px;
+        padding-top: 20px;
         display: flex;
-        
         justify-content: center;
         .btn{
+            height: 50px;
+            width: 120px;
+            border-radius: 15px;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
             background-color: $white;
-            color: $gray;
-            width: 200px;
-            height: 100px;
-            margin-left: 20px;
-            margin-right: 20px;
-            border-radius: 25px;
-            :hover{
-                background-color:$blue;
-                color:  $white; 
-                border-radius: 25px;
-                opacity: 0.9;
-            }
             
-            h4{
-                line-height: 100px;
+            h5{ 
                 text-align: center;
                 font-weight: bold;
-                
+                border-radius: 15px;
+                line-height: 50px;
             }
+          }
+          :hover{
+            background-color:$blue;
+            color:  $white; 
           }
           .btn.on_watch{
             background-color: $blue;
@@ -63,33 +61,36 @@
     }
     .mid{
       display: flex;
+      justify-content: center;
       
       .leftnav{
-        width: 300px;
+        width: 200px;
         position: sticky;
-        top: 165px;
-        height: 500px;
+        top: 110px;
+        height: 300px;
         
         ul{
+          text-align: center;
+          
           li{
-            padding: 16px;
-            
+            padding: 8px;
+            cursor: pointer;
           }
         }
       }
       .question{
         .question_type{
-          margin-bottom: 30px;
-          h3{
-            margin-bottom: 30px;
+          margin-bottom: 10px;
+          h5{
+            margin-bottom: 10px;
           }
           .question_content{
-            box-shadow: 0 0 7px;
-            padding: 20px;
+            box-shadow: 0 0 4px $gray;
+            padding: 10px;
             border-radius: 5px;
             margin-bottom: 30px;
             width: 600px;
-            h5{
+            h6{
               margin-top: 10px;
               margin-bottom: 10px;
               position: relative;
@@ -99,11 +100,16 @@
                 border: none;
                 background-color: #fff;
                 height: 100%;
+                
                 :hover{
                   transform: scale(1.1);
                 }
+              //  button.hand{
+              //   cursor: pointer;
+              //  } 
               i{
-                font-size: 20px;
+                font-size: 16px;
+                cursor: pointer;
                 }
               }
              
