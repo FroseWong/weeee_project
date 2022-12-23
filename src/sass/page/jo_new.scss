@@ -1,0 +1,56 @@
+.jo_new {
+  background-color: #f4f4f4;
+  header {
+    height: 165px;
+    width: 1280px;
+    background-color: $gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 40px;
+    color: $white;
+    text-align: center;
+    padding-top: 60px;
+    box-sizing: border-box;
+  }
+
+  .jo_new__title {
+    margin-bottom: 30px;
+  }
+
+  .jo_new__addimg {
+    width: 100%;
+    height: 330px;
+    background-color: $l_gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .box {
+      height: 100px;
+      width: 100px;
+      background-color: $white;
+      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .fa-file-image {
+        z-index: 30;
+        color: $gray;
+        font-size: 50px;
+      }
+    }
+  }
+
+  .jo_new__content {
+    .top {
+      .top__left {
+      }
+      .top__right {
+      }
+    }
+
+    .bottom {
+    }
+  }
+}

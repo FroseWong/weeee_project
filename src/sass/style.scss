@@ -11,7 +11,7 @@
 
 .nb {
   // 沒有麵包屑時 給內容
-  margin-top: 215px;
+  padding-top: 215px;
 }
 
 .hb {
@@ -48,9 +48,9 @@
   max-width: 1200px;
 }
 
-.prize {
+.price {
   // product的價格顯示
-  font-size: $pc_prize;
+  font-size: $pc_price;
   font-weight: bold;
 }
 
@@ -65,19 +65,20 @@
   font-size: 16px;
   color: $white;
   background-color: $orange;
+  text-align: center;
   // margin-top: 15px;
 }
 
 .blueBtn {
-  @include btn(100px, $blue, $white, 10px);
+  @include btn($blue, $white, 10px);
 }
 
 .yellowBtn {
-  @include btn(100px, $yellow, $white, 10px);
+  @include btn($yellow, $black, 10px);
 }
 
 .orangeBtn {
-  @include btn(100px, $orange, $white, 10px);
+  @include btn($orange, $white, 10px);
 }
 
 h1 {
@@ -110,8 +111,8 @@ h6 {
 
 @include m {
   // 768以內
-  .prize {
-    font-size: $rwd_prize;
+  .price {
+    font-size: $rwd_price;
     font-weight: bold;
   }
 

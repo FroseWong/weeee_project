@@ -18,17 +18,18 @@
 }
 
 // btn
-@mixin btn($size, $bgc, $color, $borderRadius: null) {
+@mixin btn($bgc, $color, $borderRadius: null) {
   background-color: $bgc;
   text-align: center;
-  width: $size;
+  // width: $size;
   padding: 10px 30px;
-  font-size: 20px;
+  font-size: 30px;
   color: $color;
   cursor: pointer;
   border-radius: $borderRadius;
   transition: 0.2 all ease-in-out;
   box-sizing: border-box;
+  border: none;
 
   // &:hover {
   //   background-color: darken($bgc, 10);

@@ -2,7 +2,7 @@
     position: absolute;
 width: 195px;
 height: 19px;
-left: 1080px;
+left: 1060px;
 top: 337px;
 
 font-family: 'Inter';
@@ -14,12 +14,27 @@ line-height: 19px;
 color: #000000;
 
 }
+.use1{
+    color:white;
+    position: relative;
+    
+}
+.use1::before{
+    display: block;
+    content: "|";
+    color: blue;
+   
+    font-size: 16px;
+    position:absolute;
+   margin-left: 40px;
+   margin-top:185px;
+}
 .p1{
     position: absolute;
 width: 874px;
 height: 22px;
-margin-left: 180px;
-top: 455px;
+margin-left: 1px;
+top:433px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -37,7 +52,7 @@ h5{
     width: 189px;
     height: 24px;
     left: 178px;
-    top: 515px;
+    top: 490px;
     
     font-family: 'Inter';
     font-style: normal;
@@ -119,7 +134,7 @@ color: #000000;
 width: 153px;
 height: 24px;
 left: 178px;
-margin-top: 388px;
+margin-top: 398px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -134,7 +149,7 @@ color: #000000;
 width: 897px;
 height: 78px;
 left: 178px;
-margin-top: 450px;
+margin-top: 440px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -151,7 +166,7 @@ color: #000000;
 width: 880px;
 height: 52px;
 left: 178px;
-margin-top:533px;
+margin-top:523px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -168,7 +183,7 @@ color: #000000;
 width: 881px;
 height: 78px;
 left: 178px;
-margin-top: 589px;
+margin-top: 579px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -185,7 +200,7 @@ color: #000000;
 width: 99px;
 height: 24px;
 left:178px;
-margin-top: 648px;
+margin-top: 668px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -212,4 +227,299 @@ line-height: 160%;
 
 
 color: #000000;
+}
+.p3-2{
+    position: absolute;
+    width: 905px;
+    height: 78px;
+    left: 178px;
+    margin-top: 757px;
+    
+    font-family: 'Inter';
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height:25px;
+    /* or 26px */
+    
+    
+    color: #000000; 
+}
+.p3-3{
+    position: absolute;
+    width: 905px;
+    height: 78px;
+    left: 178px;
+    margin-top: 920px;
+    
+    font-family: 'Inter';
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    /* or 26px */
+    
+    
+    color: #000000;
+}
+.h5py{
+    position: absolute;
+width: 874px;
+height: 22px;
+left:178px;
+
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 15px;
+/* or 22px */
+
+
+color: #000000;
+
+}
+.py1{
+    position: absolute;
+width: 874px;
+height: 52px;
+left:178px;
+margin-top: 130px;
+
+font-family: 'Inter';
+
+font-weight: 400;
+font-size: 16px;
+line-height: 25px;
+/* or 26px */
+
+
+color: #000000;
+
+}
+.py2{
+    position: absolute;
+width: 874px;
+height: 52px;
+left: 178px;
+margin-top: 198px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 25px;
+/* or 26px */
+
+
+color: #000000;
+}
+.py3{
+    position: absolute;
+width: 359px;
+height: 24px;
+left: 178px;
+margin-top: 197px;
+
+font-family: 'Inter';
+
+font-weight: bold;
+font-size: 20px;
+line-height: 24px;
+
+color: #000000;
+}
+.py{
+    position: absolute;
+width: 874px;
+height: 22px;
+left: 178px;
+top:450px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 160%;
+/* or 22px */
+
+
+color: #000000;
+
+
+}
+.py4{
+    position: absolute;
+width: 505px;
+height: 26px;
+left: 178px;
+margin-top: 280px;
+
+font-family: 'Inter';
+
+font-weight: 400;
+font-size: 16px;
+line-height: 25px;
+/* identical to box height, or 26px */
+
+
+color: #000000;
+
+}
+.py5{
+    position: absolute;
+width: 453px;
+height: 26px;
+left: 178px;
+margin-top: 297px;
+
+font-family: 'Inter';
+
+font-weight: 400;
+font-size: 16px;
+line-height: 25px;
+/* identical to box height, or 26px */
+
+
+color: #000000;
+
+}
+.py6{
+    position: absolute;
+    width: 453px;
+    height: 26px;
+    left: 178px;
+    margin-top: 330px;
+    
+    font-family: 'Inter';
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    /* identical to box height, or 26px */
+    
+    
+    color: #000000; 
+}
+.py7{
+    position: absolute;
+    width: 453px;
+    height: 26px;
+    left: 178px;
+    margin-top: 360px;
+    
+    font-family: 'Inter';
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    /* identical to box height, or 26px */
+    
+    
+    color: #000000;   
+}
+.py8{
+    position: absolute;
+    width: 453px;
+    height: 26px;
+    left: 178px;
+    margin-top: 390px;
+    
+    font-family: 'Inter';
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    /* identical to box height, or 26px */
+    
+    
+    color: #000000; 
+}
+.py9{
+    position: absolute;
+    width: 453px;
+    height: 26px;
+    left: 178px;
+    margin-top: 420px;
+    
+    font-family: 'Inter';
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    /* identical to box height, or 26px */
+    
+    
+    color: #000000; 
+}
+.pyh5{
+    position: absolute;
+width: 399px;
+height: 24px;
+left: 178px;
+margin-top: 430px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 24px;
+
+color: #000000;
+}
+.py3-11{
+    position: absolute;
+width: 761px;
+height: 52px;
+left: 178px;
+margin-top: 503px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 160%;
+/* or 26px */
+
+
+color: #000000;
+}
+.py3-2{
+    position: absolute;
+    width: 453px;
+    height: 26px;
+    left: 178px;
+    margin-top: 560px;
+    
+    font-family: 'Inter';
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    /* identical to box height, or 26px */
+    
+    
+    color: #000000; 
+}
+
+.py3-3{
+    position: absolute;
+width: 832px;
+height: 208px;
+left:178px;
+margin-top: 712px;
+
+font-family: 'Inter';
+
+font-weight: 400;
+font-size: 16px;
+line-height: 160%;
+/* or 26px */
+
+
+color: #000000;
+}
+.user-p{
+    color: #4484CE;
 }
