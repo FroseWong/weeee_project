@@ -9,21 +9,22 @@
     <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    
     <div class="wrapper qa app1">
       <header class="">header</header>
       <div class="topbanner htob">
         <div class="container topbanner__text">
-          <h1>需要幫助嗎？</h1>
-          <h1>讓我們為您服務！</h1>
+          <h2>需要幫助嗎？</h2>
+          <h2>讓我們為您服務！</h2>
         </div>
         <div class="top-btn">
             <div class="btn" @click="switchtype"
             :class="{on_watch:qa_buy}">
-                <h4>購買問題</h4>
+                <h5>購買問題</h5>
             </div>
             <div class="btn" @click="switchtype" 
             :class="{on_watch:qa_jo}">
-                <h4>揪團問題</h4>
+                <h5>揪團問題</h5>
             </div>
         </div>  
       </div>
@@ -39,15 +40,15 @@
         </div>
         <div class="question ttoc">
           <section class="question_type">
-            <h3>訂單問題</h3>
+            <h5>訂單問題</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 如何知道訂單確認了沒?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   訂單確認後，Weeee! 將傳送確認信與憑證至您的電子信箱，亦可至「訂單」頁面查看訂單詳情。
@@ -55,13 +56,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 下單後沒收到訂單確認信，怎麼辦？?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   建議先查看電子信箱垃圾郵件匣。
@@ -72,15 +73,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>退改訂單</h3>
+            <h5>退改訂單</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 如何更改訂單？
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   部分訂單可更改預訂資料（如參加日期、旅客資料、特殊需求等），步驟如下：
@@ -94,13 +95,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 如何申請退費？
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   完成訂單更改流程，並且收到確認信後，我們將會在10個工作日內將款項退回，請耐心等候。如有其他問題，請聯繫客服!
@@ -109,15 +110,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>帳號相關</h3>
+            <h5>帳號相關</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 如果忘記密碼怎麼辦
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   如果你忘記密碼，請在登入頁面點擊「忘記密碼」按鈕進入驗證程序我們將會寄送驗證信到您的信箱，完成程序後，便可設定新的密碼。
@@ -125,13 +126,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 我沒有收到驗證信怎麼辦?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   寄送驗證信需要5~10分鐘時間，若是超過時間還未收到驗證信，建議至垃圾郵件區域查看。
@@ -140,15 +141,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>點數問題</h3>
+            <h5>點數問題</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 我要怎麼累計點數?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   只要你有在Weeee!進行消費，每100元將會回饋1點Weeee! Points，每1點Weeee! Points可以折抵1元台幣，你可以在會員專區查看現在擁有的點數。
@@ -156,13 +157,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 點數要怎麼使用?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   在商品結帳頁面可以選擇是否使用點數。
@@ -173,15 +174,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>聯絡我們</h3>
+            <h5>聯絡我們</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 還有其他問題嗎?直接聯繫我們!
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   若是以上問題皆未能解決您的問題，歡迎透過以下方式聯繫我們:
@@ -209,15 +210,15 @@
         </div>
         <div class="question ttoc">
           <section class="question_type">
-            <h3>揪團介紹</h3>
+            <h5>揪團介紹</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 我要怎麼參加別人的揪團？
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   <ul>
@@ -230,13 +231,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 我要怎麼發起揪團?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   <ul>
@@ -250,15 +251,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>揪團資格</h3>
+            <h5>揪團資格</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 我想要發起/參加揪團，需要符合哪些資格?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   weeee!提供開放的平台給使用者進行揪團旅遊，想要使用揪團功能不需要額外的資格證明，只要註冊並登入weeee!會員即可使用!
@@ -266,13 +267,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 我的帳號被凍結了，我還能進行揪團嗎?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   若是會員帳號處於被凍結的階段，將無法進行揪團，請聯繫我們了解凍結原因!
@@ -281,15 +282,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>揪團條例</h3>
+            <h5>揪團條例</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 揪團有哪些需要遵守的規範?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   本網站僅提供平台給會員自發進行連絡、揪團，並無特定的規範，但請盡量遵守遵照團主或團體共同約定準則，才能享受更好的旅遊體驗喔!
@@ -297,13 +298,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 我沒有收到驗證信怎麼辦?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   寄送驗證信需要5~10分鐘時間，若是超過時間還未收到驗證信，建議至垃圾郵件區域查看。
@@ -312,15 +313,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>安全問題</h3>
+            <h5>安全問題</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 我要怎麼累計點數?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   只要你有在Weeee!進行消費，每100元將會回饋1點Weeee! Points，每1點Weeee! Points可以折抵1元台幣，你可以在會員專區查看現在擁有的點數。
@@ -328,13 +329,13 @@
               </div>
             </div>
             <div class="question_content">
-              <h5>
+              <h6>
                 點數要怎麼使用?
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   在商品結帳頁面可以選擇是否使用點數。
@@ -345,15 +346,15 @@
             </div>
           </section>
           <section class="question_type">
-            <h3>聯絡我們</h3>
+            <h5>聯絡我們</h5>
             <div class="question_content ">
-              <h5>
+              <h6>
                 還有其他問題嗎?直接聯繫我們!
                 <button @click="draw">
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
-              </h5>
+              </h6>
               <div class="question_a -close">
                 <p>
                   若是以上問題皆未能解決您的問題，歡迎透過以下方式聯繫我們:

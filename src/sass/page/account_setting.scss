@@ -2,7 +2,7 @@
     background-color: $l_gray;
     
     header {
-            height: 165px;
+            height: 110px;
             width: 100%;
             background-color: $gray;
             position: fixed;
@@ -16,14 +16,15 @@
             z-index: 100;
     }
     .container{
-        margin-top: 165px;
+        margin-top: 110px;
+        
         .on_page{
             color: $orange;
         }
         .hb{
             padding-top: 30px;
-            
-            font-size: 20px;
+            padding-left: 100px;
+            font-size: 16px;
             a{
                 margin-right: 10px;
                 color: $blue;
@@ -37,15 +38,16 @@
             
         }
         .mid{
-            display: flex;            
+            display: flex;
+            justify-content: center;          
             .left_bar{
-                width: 250px;
+                width: 220px;
     
                 .img_block{
                     border-radius: 10px;
                     background-color: $white;
                     text-align: center;
-                    padding-top: 50px;
+                    padding-top: 30px;
                     padding-bottom: 20px;
                     
                     .mem_img{
@@ -55,7 +57,7 @@
                         background-color: $gray;
                         margin: 0 auto;
                         
-                        margin-bottom: 50px;
+                        margin-bottom: 20px;
                     }
                     h2{
     
@@ -64,18 +66,18 @@
                 }
     
                 .page_list{
-                    margin-top: 20px;
+                    margin-top: 10px;
                     ul{
-                        padding-left: 50px;
+                       padding-left: 35px;
                         padding-bottom: 50px;
-                        padding-top: 20px;
+                        padding-top: 10px;
                         background-color: $white;
                         border-radius: 10px;
     
                         li{
                            
                             margin-top: 40px;
-                            font-size: 25px;
+                            font-size: 20px;
                             
                             
                             line-height: 25px;
@@ -109,108 +111,108 @@
                     }
                 }
             }
-            
-
+        }
+        //以上為重複使用
+        .content{
+            margin-left: 50px;
+            width: 60%;
+            .setting{
+                background-color: $white;
+                padding: 15px;
+                margin-top: 15px;
+                width: 100%;
+                border-radius: 10px;
+                position: relative;
+                .row.name{
+                    .form_group{
+                        width: 20%;
+                    }
+                }
+                .row{
+                    width: 100%;
+                    padding: 20px;
+                    padding-left: 50px;
+                    display: flex;
+                    margin-bottom: 10px;
+                    .form_group{
+                        width: 42.5%;
+                        margin-right: 20px;
+                        label{
+                            display: block;
+                            margin-bottom: 5px;
+                            font-size: 16px;
+                        }
+                        input{
+                            width: 100%;
+                            border: 1px solid $gray;
+                            padding: 5px;
+                            padding-left: 10px;
+                            font-size: 16px;
+                            border-radius: 5px;
+                        }
+                        input#phone{
+        
+                            
+                        }
+                        select{
+                            width: 105%;
+                            border: 1px solid $gray;
+                            text-align: left;
+                            padding: 5px;
+                            padding-left: 10px;
+                            
+                            font-size: 16px;
+                            border-radius: 5px;
+                            
+                        }
+        
+                        select#loc{
+                            margin-right: 10px;
+                            width: 150px;
+        
+                        }
+        
+                    }
+                    .form_group#phone_group>div{
+                        display: flex;
+                    }
+                    .form_group:last-child{
+                        margin-left: 20px;
+                    }
+                }
+                .row.interest{
+                    width: 600px;
+                    display: flex;
+                    flex-direction: column;
+                    h5{
+                        margin-bottom: 20px;
+                    }
+                    .row{
+                        padding-left: 0;
+                        input{
+                            margin-right: 10px;
+                        }
+                        label{
+                            margin-right: 20px;
+                        }
+                        color: $gray;
+                    }
+                }
+                .save{
+                    position: absolute;
+                    right: 50px;
+                    bottom: 10px;
+                    width: 15%;
+                    background-color: $blue;
+                    color: $white;
+                    text-align: center;
+                    border-radius: 5px;
+                    padding: 5px 5px;
+                }
+            }
         }
         
     }
     
     
-}
-.content{
-    margin-left: 50px;
-    width: 70%;
-    .setting{
-        background-color: $white;
-        padding: 20px;
-        margin-top: 20px;
-        width: 100%;
-        border-radius: 10px;
-        position: relative;
-        .row.name{
-            .form_group{
-                width: 20%;
-            }
-        }
-        .row{
-            width: 100%;
-            padding: 20px;
-            padding-top: 0;
-            display: flex;
-            margin-bottom: 10px;
-            .form_group{
-                width: 42.5%;
-                margin-right: 20px;
-                label{
-                    display: block;
-                    margin-bottom: 5px;
-                    font-size: 20px;
-                }
-                input{
-                    width: 100%;
-                    border: 1px solid $gray;
-                    padding: 5px;
-                    padding-left: 10px;
-                    font-size: 20px;
-                    border-radius: 5px;
-                }
-                input#phone{
-
-                    
-                }
-                select{
-                    width: 105%;
-                    border: 1px solid $gray;
-                    text-align: left;
-                    padding: 5px;
-                    padding-left: 10px;
-                    
-                    font-size: 20px;
-                    border-radius: 5px;
-                    
-                }
-
-                select#loc{
-                    margin-right: 10px;
-                    width: 150px;
-
-                }
-
-            }
-            .form_group#phone_group>div{
-                display: flex;
-            }
-            .form_group:last-child{
-                margin-left: 20px;
-            }
-        }
-        .row.interest{
-            width: 600px;
-            display: flex;
-            flex-direction: column;
-            h2{
-                margin-bottom: 20px;
-            }
-            .row{
-                input{
-                    margin-right: 10px;
-                }
-                label{
-                    margin-right: 20px;
-                }
-                color: $gray;
-            }
-        }
-        .save{
-            position: absolute;
-            right: 50px;
-            bottom: 10px;
-            width: 15%;
-            background-color: $blue;
-            color: $white;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 5px;
-        }
-    }
 }
