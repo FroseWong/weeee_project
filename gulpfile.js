@@ -107,18 +107,18 @@ exports.template = html;
 
 // 打包圖片
 function img() {
-  return src("src/img/**/*.*").pipe(dest("dist/images"));
+  return src("src/img/**/*.*").pipe(dest("dist/img"));
 }
 
 //圖片壓縮
 function imgmini() {
-  return src(["src/images/**/**/*.*", "src/images/*.*"])
+  return src(["src/img/**/**/*.*", "src/img/*.*"])
     .pipe(
       imagemin([
         imagemin.mozjpeg({ quality: 80, progressive: true }), // 壓縮品質      quality越低 -> 壓縮越大 -> 品質越差
       ])
     )
-    .pipe(dest("dist/images/mini/"));
+    .pipe(dest("dist/img/mini/"));
 }
 
 exports.minifyimg = imgmini;
@@ -128,7 +128,7 @@ function watchfile() {
   watch(["src/*.html", "src/layout/*.html"], html);
   watch(["src/sass/*.style", "src/sass/**/*.scss"], sassStyle);
   watch("src/js/*.js", jsmini);
-  watch(["src/images/*.*", "src/images/**/*.*"], img);
+  watch(["src/img/*.*", "src/img/**/*.*"], img);
 }
 
 //瀏覽器同步
@@ -146,7 +146,7 @@ function browser(done) {
     reload
   );
   watch("src/js/*.js", jsmini).on("change", reload);
-  watch(["src/images/*.*", "src/images/**/*.*"], img).on("change", reload);
+  watch(["src/img/*.*", "src/img/**/*.*"], img).on("change", reload);
   done();
 }
 
