@@ -1,5 +1,216 @@
 .account{
-    .left_bar{
+    background-color: $l_gray;
+    
+    header {
+            height: 165px;
+            width: 100%;
+            background-color: $gray;
+            position: fixed;
+            top: 0;
+            left: 0;
+            font-size: 40px;
+            color: $white;
+            text-align: center;
+            padding-top: 60px;
+            box-sizing: border-box;
+            z-index: 100;
+    }
+    .container{
+        margin-top: 165px;
+        .on_page{
+            color: $orange;
+        }
+        .hb{
+            padding-top: 30px;
+            
+            font-size: 20px;
+            a{
+                margin-right: 10px;
+                color: $blue;
+            }
+            .on_page{
+                color: $orange;
+            }
+            i{
+                margin-right: 10px;
+            }
+            
+        }
+        .mid{
+            display: flex;            
+            .left_bar{
+                width: 250px;
+    
+                .img_block{
+                    border-radius: 10px;
+                    background-color: $white;
+                    text-align: center;
+                    padding-top: 50px;
+                    padding-bottom: 20px;
+                    
+                    .mem_img{
+                        width: 120px;
+                        height: 120px;
+                        border-radius: 50%;
+                        background-color: $gray;
+                        margin: 0 auto;
+                        
+                        margin-bottom: 50px;
+                    }
+                    h2{
+    
+                    }
+    
+                }
+    
+                .page_list{
+                    margin-top: 20px;
+                    ul{
+                        padding-left: 50px;
+                        padding-bottom: 50px;
+                        padding-top: 20px;
+                        background-color: $white;
+                        border-radius: 10px;
+    
+                        li{
+                           
+                            margin-top: 40px;
+                            font-size: 25px;
+                            
+                            
+                            line-height: 25px;
+                            a{
+                                
+                              
+                                color: $blue;
+                                display: flex;
+                                div{
+                                    width: 40px;
+                                    height: 25px;
+                                }
+                            
+                            }
+                            
+                            .w{
+                                background-color: $blue;
+                                color: $white;
+                                border-radius: 50%;
+                                width: 25px;
+                                height: 25px;
+                                display: block;
+                                line-height: 25px;
+                                text-align: center;
+                            }
+                        }
+                        #on_page{
+                            color: $orange;
+                        }
+                        
+                    }
+                }
+            }
+            
+
+        }
         
+    }
+    
+    
+}
+.content{
+    margin-left: 50px;
+    width: 70%;
+    .setting{
+        background-color: $white;
+        padding: 20px;
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 10px;
+        position: relative;
+        .row.name{
+            .form_group{
+                width: 20%;
+            }
+        }
+        .row{
+            width: 100%;
+            padding: 20px;
+            padding-top: 0;
+            display: flex;
+            margin-bottom: 10px;
+            .form_group{
+                width: 42.5%;
+                margin-right: 20px;
+                label{
+                    display: block;
+                    margin-bottom: 5px;
+                    font-size: 20px;
+                }
+                input{
+                    width: 100%;
+                    border: 1px solid $gray;
+                    padding: 5px;
+                    padding-left: 10px;
+                    font-size: 20px;
+                    border-radius: 5px;
+                }
+                input#phone{
+
+                    
+                }
+                select{
+                    width: 105%;
+                    border: 1px solid $gray;
+                    text-align: left;
+                    padding: 5px;
+                    padding-left: 10px;
+                    
+                    font-size: 20px;
+                    border-radius: 5px;
+                    
+                }
+
+                select#loc{
+                    margin-right: 10px;
+                    width: 150px;
+
+                }
+
+            }
+            .form_group#phone_group>div{
+                display: flex;
+            }
+            .form_group:last-child{
+                margin-left: 20px;
+            }
+        }
+        .row.interest{
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            h2{
+                margin-bottom: 20px;
+            }
+            .row{
+                input{
+                    margin-right: 10px;
+                }
+                label{
+                    margin-right: 20px;
+                }
+                color: $gray;
+            }
+        }
+        .save{
+            position: absolute;
+            right: 50px;
+            bottom: 10px;
+            width: 15%;
+            background-color: $blue;
+            color: $white;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px 5px;
+        }
     }
 }

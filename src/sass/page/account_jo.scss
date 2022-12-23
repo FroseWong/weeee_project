@@ -1,0 +1,32 @@
+.account_jo{
+    .content{
+        h5{
+            color: $gray;
+            margin-bottom: 30px;
+        }
+        .setting{
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .jo-list{
+            margin-bottom: 20px;
+        }
+        .member-pic{
+            background-image: url(../img/jo/jo_memberpic1.jpg);
+        }
+        .account_jo_icon{
+            position: absolute;
+            right: 10px;
+            span{
+                margin-right: 10px;
+                text-align: center;
+
+                i{
+                    font-size: 25px;
+                    
+                }
+            }
+            
+        }
+    }
+}
