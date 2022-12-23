@@ -4,47 +4,57 @@
     box-sizing: border-box;
 }
 
-.footer_wrapper{
+.footer_wrapper {
     background-color: #444444;
     color: $white;
-    
-    
-    .footer_container{
+
+
+    .footer_container {
         display: flex;
         flex-grow: 1;
         justify-content: space-between;
         padding: 20px 0;
-        .footer_left{
+
+        .footer_left {
             font-size: 14px;
         }
-        .footer_center{
+
+        .footer_center {
             font-size: 14px;
-            a{
+
+            a {
                 color: $white;
                 text-decoration: none;
-                &:hover{
+
+                &:hover {
                     color: #9c9da0;
                 }
             }
 
         }
-        .footer_right{
+
+        .footer_right {
             font-size: 14px;
-            .tips{
-                p{
+
+            &_tips {
+                p {
                     margin-top: 6px;
                     font-size: 12px;
-                a{
-                    color: #9c9da0;
+
+                    a {
+                        color: #9c9da0;
+                        text-decoration: underline;
+                    }
                 }
-            }
 
             }
-            .input{
+
+            &_input {
                 margin-top: 12px;
-                input{
+
+                input {
                     width: 259px;
-                    height: 42px;
+                    height: 40px;
                     padding: 7px 12px;
                     border-radius: 8px 0 0 8px;
                     border: none;
@@ -52,12 +62,13 @@
                     font-size: 14px;
                     background-color: $white;
                 }
-                button{
-                    font-size: 12px;
+
+                button {
+                    font-size: 14px;
                     line-height: 1.5;
                     font-weight: 500;
                     width: 101px;
-                    height: 42px;
+                    height: 40px;
                     background-color: $blue;
                     border: 1px solid $blue;
                     border-radius: 0 8px 8px 0;
@@ -67,13 +78,16 @@
                     transition: all .3s;
                 }
 
-            
+
             }
-            .payment{
+
+            &_payment {
                 margin-top: 12px;
-                ul{
+
+                ul {
                     display: flex;
-                    li{
+
+                    li {
                         margin-right: 10px;
                         margin-top: 6px;
                     }
@@ -86,13 +100,13 @@
 }
 
 
-.footer_tibame{
+.footer_tibame {
     background-color: #333;
-    p{
+
+    p {
         color: #9c9da0;
         text-align: center;
         font-size: 12px;
         padding: 10px 0;
     }
 }
-
