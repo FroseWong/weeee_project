@@ -1,7 +1,9 @@
 .about__banner {
   background-image: url("../img/otherpage/about_topbanner1.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  // background-size: 100% 100%;
+  background-size: cover;
+  background-position: center center;
   height: 505px;
   display: flex;
   flex-direction: column;

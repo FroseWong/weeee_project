@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <header class="productdetail__header"></header>
+    <div class="wrapper" id="app">
+        <div class="headerpage"></div>
         <div class="about__banner">
             <h1>玩樂，從此開始</h1>
             <h2>讓 Weeee！ 帶領你發現屬於自己的玩樂世界</h2>
@@ -66,14 +66,30 @@
                 <img src="/src/img/otherpage/about_bank5.png" alt="">
             </div>
         </div>
-        <footer .productdetail__footer></footer>
+        <div class="footerpage"></div>
+        <script src="/src/vue/vue.global.prod.js"></script>
+        <script>
+            const { createApp } = Vue
 
+            createApp({
+                data() {
+                    return {
+                        message: 'Hello Vue!'
+                    }
+                },
+                mounted() {
+                    $(".headerpage").load("/src/layout/header.html");
+                    $(".footerpage").load("/src/layout/footer.html");
+                },
+            }).mount('#app')
+        </script>
     </div>
 </body>
-</html> -->
+
+</html>
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -92,7 +108,6 @@
 
 <body>
     <div class="wrapper" id="app">
-        <!-- <header class="productdetail__header"></header> -->
         <div class="headerpage"></div>
         <div class="about2__main">
             <div class="about2_title">
@@ -302,4 +317,4 @@
     </script>
 </body>
 
-</html>
+</html> -->
