@@ -450,7 +450,7 @@ table {
   background-color: #d9d9d9;
 }
 .account header {
-  height: 110px;
+  height: 165px;
   width: 100%;
   background-color: #747774;
   position: fixed;
@@ -464,15 +464,14 @@ table {
   z-index: 100;
 }
 .account .container {
-  margin-top: 110px;
+  margin-top: 165px;
 }
 .account .container .on_page {
   color: #fe9f4d;
 }
 .account .container .hb {
   padding-top: 30px;
-  padding-left: 100px;
-  font-size: 16px;
+  font-size: 20px;
 }
 .account .container .hb a {
   margin-right: 10px;
@@ -486,16 +485,15 @@ table {
 }
 .account .container .mid {
   display: flex;
-  justify-content: center;
 }
 .account .container .mid .left_bar {
-  width: 220px;
+  width: 250px;
 }
 .account .container .mid .left_bar .img_block {
   border-radius: 10px;
   background-color: #ffffff;
   text-align: center;
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 20px;
 }
 .account .container .mid .left_bar .img_block .mem_img {
@@ -504,21 +502,21 @@ table {
   border-radius: 50%;
   background-color: #747774;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .account .container .mid .left_bar .page_list {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .account .container .mid .left_bar .page_list ul {
-  padding-left: 35px;
+  padding-left: 50px;
   padding-bottom: 50px;
-  padding-top: 10px;
+  padding-top: 20px;
   background-color: #ffffff;
   border-radius: 10px;
 }
 .account .container .mid .left_bar .page_list ul li {
   margin-top: 40px;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 25px;
 }
 .account .container .mid .left_bar .page_list ul li a {
@@ -542,83 +540,83 @@ table {
 .account .container .mid .left_bar .page_list ul #on_page {
   color: #fe9f4d;
 }
-.account .container .content {
+
+.content {
   margin-left: 50px;
-  width: 60%;
+  width: 70%;
 }
-.account .container .content .setting {
+.content .setting {
   background-color: #ffffff;
-  padding: 15px;
-  margin-top: 15px;
+  padding: 20px;
+  margin-top: 20px;
   width: 100%;
   border-radius: 10px;
   position: relative;
 }
-.account .container .content .setting .row.name .form_group {
+.content .setting .row.name .form_group {
   width: 20%;
 }
-.account .container .content .setting .row {
+.content .setting .row {
   width: 100%;
   padding: 20px;
-  padding-left: 50px;
+  padding-top: 0;
   display: flex;
   margin-bottom: 10px;
 }
-.account .container .content .setting .row .form_group {
+.content .setting .row .form_group {
   width: 42.5%;
   margin-right: 20px;
 }
-.account .container .content .setting .row .form_group label {
+.content .setting .row .form_group label {
   display: block;
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: 20px;
 }
-.account .container .content .setting .row .form_group input {
+.content .setting .row .form_group input {
   width: 100%;
   border: 1px solid #747774;
   padding: 5px;
   padding-left: 10px;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 5px;
 }
-.account .container .content .setting .row .form_group select {
+.content .setting .row .form_group select {
   width: 105%;
   border: 1px solid #747774;
   text-align: left;
   padding: 5px;
   padding-left: 10px;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 5px;
 }
-.account .container .content .setting .row .form_group select#loc {
+.content .setting .row .form_group select#loc {
   margin-right: 10px;
   width: 150px;
 }
-.account .container .content .setting .row .form_group#phone_group > div {
+.content .setting .row .form_group#phone_group > div {
   display: flex;
 }
-.account .container .content .setting .row .form_group:last-child {
+.content .setting .row .form_group:last-child {
   margin-left: 20px;
 }
-.account .container .content .setting .row.interest {
+.content .setting .row.interest {
   width: 600px;
   display: flex;
   flex-direction: column;
 }
-.account .container .content .setting .row.interest h5 {
+.content .setting .row.interest h2 {
   margin-bottom: 20px;
 }
-.account .container .content .setting .row.interest .row {
-  padding-left: 0;
+.content .setting .row.interest .row {
   color: #747774;
 }
-.account .container .content .setting .row.interest .row input {
+.content .setting .row.interest .row input {
   margin-right: 10px;
 }
-.account .container .content .setting .row.interest .row label {
+.content .setting .row.interest .row label {
   margin-right: 20px;
 }
-.account .container .content .setting .save {
+.content .setting .save {
   position: absolute;
   right: 50px;
   bottom: 10px;
@@ -630,6 +628,20 @@ table {
   padding: 5px 5px;
 }
 
+.index header {
+  height: 165px;
+  width: 100%;
+  background-color: #747774;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 60px;
+  box-sizing: border-box;
+  z-index: 30;
+}
 .index .topbanner {
   background-image: url("../img/otherpage/index_topbanner1.jpg");
   height: 330px;
@@ -1161,6 +1173,20 @@ table {
 }
 .jo_index .content .jo-list .member-pic {
   background-image: url(../img/jo/jo_memberpic1.jpg);
+}
+.jo_index .back_to_top {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  background-color: orange;
+  text-align: center;
+}
+.jo_index .back_to_top i {
+  line-height: 40px;
+  font-size: 30px;
 }
 
 .jo_new {
@@ -1923,19 +1949,20 @@ table {
 .footer_wrapper .footer_container .footer_right {
   font-size: 14px;
 }
-.footer_wrapper .footer_container .footer_right .tips p {
+.footer_wrapper .footer_container .footer_right_tips p {
   margin-top: 6px;
   font-size: 12px;
 }
-.footer_wrapper .footer_container .footer_right .tips p a {
+.footer_wrapper .footer_container .footer_right_tips p a {
   color: #9c9da0;
+  text-decoration: underline;
 }
-.footer_wrapper .footer_container .footer_right .input {
+.footer_wrapper .footer_container .footer_right_input {
   margin-top: 12px;
 }
-.footer_wrapper .footer_container .footer_right .input input {
+.footer_wrapper .footer_container .footer_right_input input {
   width: 259px;
-  height: 42px;
+  height: 40px;
   padding: 7px 12px;
   border-radius: 8px 0 0 8px;
   border: none;
@@ -1943,12 +1970,12 @@ table {
   font-size: 14px;
   background-color: #ffffff;
 }
-.footer_wrapper .footer_container .footer_right .input button {
-  font-size: 12px;
+.footer_wrapper .footer_container .footer_right_input button {
+  font-size: 14px;
   line-height: 1.5;
   font-weight: 500;
   width: 101px;
-  height: 42px;
+  height: 40px;
   background-color: #4484ce;
   border: 1px solid #4484ce;
   border-radius: 0 8px 8px 0;
@@ -1957,13 +1984,13 @@ table {
   cursor: pointer;
   transition: all 0.3s;
 }
-.footer_wrapper .footer_container .footer_right .payment {
+.footer_wrapper .footer_container .footer_right_payment {
   margin-top: 12px;
 }
-.footer_wrapper .footer_container .footer_right .payment ul {
+.footer_wrapper .footer_container .footer_right_payment ul {
   display: flex;
 }
-.footer_wrapper .footer_container .footer_right .payment ul li {
+.footer_wrapper .footer_container .footer_right_payment ul li {
   margin-right: 10px;
   margin-top: 6px;
 }
@@ -2132,7 +2159,7 @@ header .header_top .header_top_left {
   align-items: center;
 }
 header .header_top .header_top_left img {
-  width: 110px;
+  width: 115px;
   margin-right: 20px;
 }
 header .header_top .header_top_left input {
