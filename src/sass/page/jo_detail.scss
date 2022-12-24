@@ -23,35 +23,36 @@
   }
 
   .jo__img {
-    height: 520px;
+    height: 300px;
     background-image: url("../img/jo/jo_wanttoseefish.jpg");
     border-radius: 10px;
     margin-bottom: 75px;
+    background-position: center center;
   }
 
   .jo__content {
-    font-size: 35px;
+    font-size: $pc_h5;
     background-color: $white;
     padding: 20px 30px;
     border-radius: 10px;
     margin-bottom: 75px;
   }
   .jo-leader {
-    padding: 75px 10px;
+    padding: 30px 10px;
     background-color: $white;
     margin-bottom: 70px;
     border-radius: 10px;
     .jo-leader__top {
       display: flex;
       //   justify-content: space-between;
-      margin-bottom: 70px;
+      margin-bottom: 30px;
       .jo-leader__top__left {
         // border: 1px solid red;
         flex-grow: 1;
         flex-basis: 0;
         .jo-leader-img {
-          width: 300px;
-          height: 300px;
+          width: 150px;
+          height: 150px;
           border-radius: 150px;
           background-position: center center;
           background-size: cover;
@@ -60,13 +61,13 @@
         }
 
         .jo-leader-name {
-          font-size: 35px;
+          font-size: $pc_h5;
           text-align: center;
         }
       }
       .jo-leader__top__right {
         flex-grow: 1;
-        font-size: 35px;
+        font-size: $pc_h5;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -81,7 +82,7 @@
           //   display: flex;
           //   justify-content: space-between;
           //   align-items: center;
-          width: 60px;
+          width: 40px;
           //   outline: solid red 1px;
         }
       }
@@ -103,7 +104,7 @@
       .jo-leader__bottom__right {
         flex-grow: 1;
         flex-basis: 0;
-        font-size: 35px;
+        font-size: $pc_h4;
         .contact-title {
           font-weight: bold;
         }
@@ -119,7 +120,7 @@
       content: "";
       display: inline-block;
       width: 5px;
-      height: 50px;
+      height: 30px;
       background-color: $black;
       margin-right: 15px;
       border-radius: 5px;
@@ -127,7 +128,7 @@
   }
 
   .useweeee {
-    height: 315px;
+    height: 300px;
     background-color: $white;
     display: flex;
     justify-content: center;
@@ -144,7 +145,7 @@
       content: "";
       display: inline-block;
       width: 5px;
-      height: 50px;
+      height: 30px;
       background-color: $black;
       margin-right: 15px;
       border-radius: 5px;
@@ -154,9 +155,9 @@
   .saysomething__content {
     width: 100%;
     resize: none;
-    padding-top: 30px;
-    padding-left: 30px;
-    font-size: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: $pc_h6;
     box-sizing: border-box;
     border: none;
     outline: 1px solid $gray;
@@ -171,17 +172,17 @@
   .jo__comment__list {
     margin-bottom: 110px;
     .jo__comment {
-      height: 170px;
+      height: 100px;
       display: flex;
       background-color: $white;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
       border-radius: 10px;
       .jo__comment__left {
         width: 70%;
         height: 100%;
         box-sizing: border-box;
         // background-color: red;
-        font-size: 25px;
+        font-size: $pc_h6;
         display: flex;
         align-items: center;
         padding: 0 20px;
@@ -192,8 +193,8 @@
         box-sizing: border-box;
         // background-color: blue;
         display: flex;
-        padding-top: 120px;
-        font-size: 25px;
+        padding-top: 50px;
+        font-size: $pc_h5;
         align-items: center;
         .mamber-img {
           width: 30px;
