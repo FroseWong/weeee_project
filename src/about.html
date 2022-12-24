@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 
@@ -84,10 +81,11 @@
     </div>
 </body>
 
-</html>
+</html> -->
 
+<!-- ------------------------------------------------------------------------- -->
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -98,9 +96,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 
@@ -179,7 +174,7 @@
         </div>
         <div class="footerpage"></div>
     </div>
-    <script src="/src/vue/vue.global.prod.js"></script>
+    <script src="/vue/vue.global.prod.js"></script>
     <script>
         const { createApp } = Vue
 
@@ -188,7 +183,7 @@
                 return {
                     cardlist: [
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_sandbeach1.jpg",
+                            src: "/img/sightseeing/fa_19_1.jpg",
                             title: '新北港煙火 情侶行程',
                             label: '家庭行程',
                             content: '新北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -200,7 +195,7 @@
                             cardid: 1,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_sandbeach2.jpg",
+                            src:"/img/sightseeing/fa_19_2.jpg",
                             title: '基隆港煙火 情侶行程',
                             label: '家庭行程',
                             content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -212,7 +207,7 @@
                             cardid: 2,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_sandbeach3.jpg",
+                            src: "/img/sightseeing/fa_19_3.jpg",
                             title: '台北港煙火 情侶行程',
                             label: '寵物行程',
                             content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -224,7 +219,7 @@
                             cardid: 3,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_beach2.jpg",
+                            src: "/img/sightseeing/fa_20_1.jpg",
                             title: '台北港煙火 情侶行程',
                             label: '情侶行程',
                             content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -236,7 +231,7 @@
                             cardid: 4,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_beach3.jpg",
+                            src: "/img/sightseeing/fa_20_2.jpg",
                             title: '基隆港煙火 情侶行程',
                             label: '朋友行程',
                             content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -294,7 +289,7 @@
                     eitherSort(arr);
                     this.classList = arr;
                 },
-                filterOrder(){
+                filterOrder() {
                     let arr = this.cardlist;
                     const eitherSort = (arr = []) => {
                         const sorter = (a, b) => {
@@ -303,16 +298,14 @@
                         arr.sort(sorter);
                     };
                     eitherSort(arr);
-                    this.classList = arr;  
+                    this.classList = arr;
                 }
             },
 
             mounted() {
-                $(".headerpage").load("/src/layout/header.html");
-                $(".footerpage").load("/src/layout/footer.html");
             }
         }).mount('#app')
     </script>
 </body>
 
-</html> -->
+</html>
