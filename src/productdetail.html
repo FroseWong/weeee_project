@@ -13,8 +13,8 @@
 </head>
 
 <body>
+    @@include('layout/header.html')
     <div class="wrapper" id="app">
-        <header class="headerpage"></header>
         <nav class="container breadcrumb-group">
             <ol class="hb breadcrumb">
                 <li class="breadcrumb__item"><a href="">&nbsp首頁&nbsp</a></li>
@@ -316,8 +316,8 @@
                 </div>
             </div>
         </div>
-        <div class="footerpage"></div>
     </div>
+    @@include('layout/footer.html')
     <script src="/vue/vue.global.prod.js"></script>
     <script>
         const { createApp } = Vue
@@ -379,7 +379,7 @@
                     // console.log(e.target);
                     let num = document.getElementsByClassName('productdetail__operate')[0].offsetTop;
                     window.scrollTo({
-                        top: num,
+                        top: num-150,
                         left: 0,
                         behavior: 'smooth'
                     });
