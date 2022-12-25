@@ -1,25 +1,8 @@
 .qa {
-    header {
-      height: 110px;
-      width: 100%;;
-      background-color: $gray;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      font-size: 40px;
-      color: $white;
-      text-align: center;
-      padding-top: 60px;
-      box-sizing: border-box;
-      z-index: 100;
-      
-    }
-  
     .topbanner {
       background-image: url("../img/otherpage/qa-banner.jpg");
       height: 255px;
-      margin-top: 110px;
+
       background-size: cover;
       background-position: center center;
   
