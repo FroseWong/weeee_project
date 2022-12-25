@@ -10,14 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
+    @@include('layout/header.html')
     <div class="wrapper" id="app">
-        <header class="headerpage"></header>
         <nav class="container breadcrumb-group">
             <ol class="hb breadcrumb">
                 <li class="breadcrumb__item"><a href="">&nbsp首頁&nbsp</a></li>
@@ -34,23 +31,26 @@
                 <div class="productdetail__fixedfield--group">
                     <div class="productdetail__fixedfield1">
                         <h2>TWD 550</h2>
-                        <button>選擇方案</button>
-                        <div>
+                        <button  @click="pd_check">
                             <i class="fa-solid fa-bolt"></i>
-                            <h3>立即確認</h3>
-                        </div>
+                            <span>立即確認</span>
+                        </button>
+
                     </div>
-                    <div class="productdetail__fixedfield">
-                        <a href="">商品說明</a>
-                        <a href="">購買須知</a>
-                        <a href="">體驗地點</a>
-                        <a href="">旅客評價</a>
+                    <div class="productdetail__fixedfield2">
+                        <a @click="fixedfield">商品說明</a>
+                        <a @click="fixedfield">購買須知</a>
+                        <a @click="fixedfield">體驗地點</a>
+                        <a @click="fixedfield">旅客評價</a>
+                    </div>
+                    <div class="productdetail__scrollToTop">
+                        <i class="fa-solid fa-angle-up" @click="scrollToTop"></i>
                     </div>
                 </div>
                 <div class="productdetail__container">
                     <div class="productdetail__title">
                         <h1>桃園｜Weeeepark 海洋公園門票</h1>
-                        <a href=""><i class="fa-solid fa-heart"></i></a>
+                        <i class="fa-regular fa-heart" @click="heartclick"></i>
                     </div>
 
                     <div class="productdetail__content">
@@ -62,10 +62,14 @@
                         </div>
                     </div>
                     <div class="productdetail__time">
-                        <i class="fa-solid fa-clock"></i>
-                        <span>行程時間2小時</span>
-                        <i class="fa-solid fa-table"></i>
-                        <span>使用效期依主辦單位提供為主 </span>
+                        <div>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>行程時間2小時</span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-table"></i>
+                            <span>使用效期依主辦單位提供為主 </span>
+                        </div>
                     </div>
                     <div class="productdetail__list">
                         <ul>
@@ -104,19 +108,19 @@
                         <div class="productdetail__img">
                             <p>► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心
                             </p>
-                            <img src="./img/sightseeing_family/sightseeing_family_sandbeach1.jpg" alt="">
+                            <img src="/img/sightseeing/fa_19_1.jpg" alt="">
                         </div>
                         <div class="productdetail__img">
                             <p>► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』
 
                             </p>
-                            <img src="./img/sightseeing_family/sightseeing_family_sandbeach2.jpg" alt="">
+                            <img src="/img/sightseeing/fa_19_2.jpg" alt="">
                         </div>
                         <div class="productdetail__img">
                             <p>► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界
 
                             </p>
-                            <img src="./img/sightseeing_family/sightseeing_family_sandbeach3.jpg" alt="">
+                            <img src="/img/sightseeing/fa_19_3.jpg" alt="">
                         </div>
                     </div>
                     <div class="productdetail__notice">
@@ -161,7 +165,11 @@
                             <h5>地點名稱 : WeeeePark</h5>
                             <h5>地址 : 320台灣桃園市中壢區春德路105號</h5>
                         </div>
-                        <img src="./img/sightseeing_family/sightseeing_family_sandbeach1.jpg" alt="">
+                        <!-- <img src="./img/sightseeing_family/sightseeing_family_sandbeach1.jpg" alt=""> -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.2338948479887!2d121.5426387215347!3d25.052129362458672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823c18fcb9855%3A0x784fb0d91b7fc01f!2zVGliYU1lIOWFqOaWueS9jeaVuOS9jeihjOmKt-WvpuaIsOmkiuaIkOePrSjlj7DljJcp!5e0!3m2!1szh-TW!2stw!4v1671903363935!5m2!1szh-TW!2stw"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="productreview">
                         <h2>旅客評價</h2>
@@ -252,8 +260,9 @@
         </div>
         <div class="productdetail__bot wrapper">
             <div class="card" style="width: 18rem;">
-                <img src="./img/sightseeing_family/sightseeing_family_sandbeach1.jpg" alt="">
+                <img src="/img/sightseeing/fa_19_1.jpg" alt="">
                 <div class="card-body">
+                    <span class="card-body_label">情侶行程</span>
                     <h5 class="card-title">新北 | Weeee渡假村門票
                     </h5>
                     <div>
@@ -265,8 +274,9 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img src="./img/sightseeing_family/sightseeing_family_sandbeach2.jpg" alt="">
+                <img src="/img/sightseeing/fa_19_2.jpg" alt="">
                 <div class="card-body">
+                    <span class="card-body_label">朋友行程</span>
                     <h5 class="card-title">新北 | Weeee渡假村門票
                     </h5>
                     <div>
@@ -278,8 +288,9 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img src="./img/sightseeing_family/sightseeing_family_sandbeach3.jpg" alt="">
+                <img src="/img/sightseeing/fa_19_3.jpg" alt="">
                 <div class="card-body">
+                    <span class="card-body_label">家庭行程</span>
                     <h5 class="card-title">新北 | Weeee渡假村門票
                     </h5>
                     <div>
@@ -291,8 +302,9 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
-                <img src="./img/sightseeing_family/sightseeing_family_beach1.jpg" alt="">
+                <img src="/img/sightseeing/fa_20_1.jpg" alt="">
                 <div class="card-body">
+                    <span class="card-body_label">寵物行程</span>
                     <h5 class="card-title">新北 | Weeee渡假村門票
                     </h5>
                     <div>
@@ -304,9 +316,9 @@
                 </div>
             </div>
         </div>
-        <div class="footerpage"></div>
     </div>
-    <script src="/src/vue/vue.global.prod.js"></script>
+    @@include('layout/footer.html')
+    <script src="/vue/vue.global.prod.js"></script>
     <script>
         const { createApp } = Vue
 
@@ -335,11 +347,45 @@
                         fa.add('fa-angle-up')
                     }
 
+                },
+                heartclick(e) {
+                    let list = e.target.classList;
+                    if (list.contains("fa-regular")) {
+                        list.add("fa-solid");
+                        list.remove("fa-regular");
+                        document.cookie = "ProductId=1";
+                        let x = document.cookie;
+                        console.log("cookie:" + x);
+                    }
+                    else {
+                        list.remove("fa-solid");
+                        list.add("fa-regular");
+                    }
+
+                },
+                scrollToTop() {
+                    // window.scrollTo(0, 0);
+                    window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+
+                },
+                pd_check() {
+                    alert(404);
+                },
+                fixedfield(e) {
+                    // console.log(e.target);
+                    let num = document.getElementsByClassName('productdetail__operate')[0].offsetTop;
+                    window.scrollTo({
+                        top: num-150,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
                 }
             },
             mounted() {
-                $(".headerpage").load("/src/layout/header.html");
-                $(".footerpage").load("/src/layout/footer.html");
             }
         }).mount('#app')
     </script>

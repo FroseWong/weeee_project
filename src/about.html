@@ -9,21 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 
 <body>
+    @@include('layout/header.html')
     <div class="wrapper" id="app">
-        <div class="headerpage"></div>
         <div class="about__banner">
             <h1>玩樂，從此開始</h1>
             <h2>讓 Weeee！ 帶領你發現屬於自己的玩樂世界</h2>
         </div>
         <div class="about__banner--top">
-            <span>關於<img src="../src/img/otherpage/about_Weeee!.png" alt=""></span>
+            <span>關於<img src="/img/otherpage/about_Weeee!.png" alt=""></span>
             <h3>無論何時何地，我們都能帶你找到最棒的吃喝玩樂體驗！</h3>
             <p>想知道附近有什麼好吃好玩？想享受最超值的飯店住宿優惠？或想來趟放鬆身心靈的旅行？<br> Weeee！ 通通有！輕鬆動動手指，玩樂一手掌握！</p>
         </div>
@@ -36,19 +33,19 @@
             <span>我們的承諾</span>
             <div>
                 <div>
-                    <img src="/src/img/otherpage/about_midpic1.png" alt="">
+                    <img src="/img/otherpage/about_midpic1.png" alt="">
                     <h4>探索的樂趣</h4>
                     <p>哪裡有玩樂，Weeee！ 就帶你去！小至美食品嚐，大至人生壯遊，跟隨我們的腳步探索各種玩樂體驗
                     </p>
                 </div>
                 <div>
-                    <img src="/src/img/otherpage/about_midpic2.png" alt="">
+                    <img src="/img/otherpage/about_midpic2.png" alt="">
                     <h4>在地人帶路</h4>
                     <p>想知道怎麼玩最好玩？找我們準沒錯！Weeee！在地團隊精心挑選最道地的玩法，只為讓你享受最愉快的玩樂時光
                     </p>
                 </div>
                 <div>
-                    <img src="/src/img/otherpage/about_midpic3.png" alt="">
+                    <img src="/img/otherpage/about_midpic3.png" alt="">
                     <h4>好奇心不息</h4>
                     <p>世界這麼大！我們保持無限好奇心，不遺餘力發掘新奇獨特的趣味玩法
                     </p>
@@ -59,15 +56,15 @@
             <span>強大的投資陣容</span>
             <h3>我們的耀眼表現深獲世界級投資者青睞與支持</h3>
             <div>
-                <img src="/src/img/otherpage/about_bank1.png" alt="">
-                <img src="/src/img/otherpage/about_bank2.png" alt="">
-                <img src="/src/img/otherpage/about_bank3.png" alt="">
-                <img src="/src/img/otherpage/about_bank4.png" alt="">
-                <img src="/src/img/otherpage/about_bank5.png" alt="">
+                <img src="/img/otherpage/about_bank1.png" alt="">
+                <img src="/img/otherpage/about_bank2.png" alt="">
+                <img src="/img/otherpage/about_bank3.png" alt="">
+                <img src="/img/otherpage/about_bank4.png" alt="">
+                <img src="/img/otherpage/about_bank5.png" alt="">
             </div>
         </div>
-        <div class="footerpage"></div>
-        <script src="/src/vue/vue.global.prod.js"></script>
+        @@include('layout/footer.html')
+        <script src="/vue/vue.global.prod.js"></script>
         <script>
             const { createApp } = Vue
 
@@ -78,8 +75,6 @@
                     }
                 },
                 mounted() {
-                    $(".headerpage").load("/src/layout/header.html");
-                    $(".footerpage").load("/src/layout/footer.html");
                 },
             }).mount('#app')
         </script>
@@ -88,6 +83,7 @@
 
 </html>
 
+<!-- ------------------------------------------------------------------------- -->
 
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -100,15 +96,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
 </head>
 
 <body>
+    @@include('layout/header.html')
     <div class="wrapper" id="app">
-        <div class="headerpage"></div>
         <div class="about2__main">
             <div class="about2_title">
                 <h1>1200</h1>
@@ -179,9 +172,9 @@
                 </div>
             </div>
         </div>
-        <div class="footerpage"></div>
     </div>
-    <script src="/src/vue/vue.global.prod.js"></script>
+    @@include('layout/footer.html')
+    <script src="/vue/vue.global.prod.js"></script>
     <script>
         const { createApp } = Vue
 
@@ -190,7 +183,7 @@
                 return {
                     cardlist: [
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_sandbeach1.jpg",
+                            src: "/img/sightseeing/fa_19_1.jpg",
                             title: '新北港煙火 情侶行程',
                             label: '家庭行程',
                             content: '新北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -202,7 +195,7 @@
                             cardid: 1,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_sandbeach2.jpg",
+                            src:"/img/sightseeing/fa_19_2.jpg",
                             title: '基隆港煙火 情侶行程',
                             label: '家庭行程',
                             content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -214,7 +207,7 @@
                             cardid: 2,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_sandbeach3.jpg",
+                            src: "/img/sightseeing/fa_19_3.jpg",
                             title: '台北港煙火 情侶行程',
                             label: '寵物行程',
                             content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -226,7 +219,7 @@
                             cardid: 3,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_beach2.jpg",
+                            src: "/img/sightseeing/fa_20_1.jpg",
                             title: '台北港煙火 情侶行程',
                             label: '情侶行程',
                             content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -238,7 +231,7 @@
                             cardid: 4,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_beach3.jpg",
+                            src: "/img/sightseeing/fa_20_2.jpg",
                             title: '基隆港煙火 情侶行程',
                             label: '朋友行程',
                             content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
@@ -296,7 +289,7 @@
                     eitherSort(arr);
                     this.classList = arr;
                 },
-                filterOrder(){
+                filterOrder() {
                     let arr = this.cardlist;
                     const eitherSort = (arr = []) => {
                         const sorter = (a, b) => {
@@ -305,13 +298,11 @@
                         arr.sort(sorter);
                     };
                     eitherSort(arr);
-                    this.classList = arr;  
+                    this.classList = arr;
                 }
             },
 
             mounted() {
-                $(".headerpage").load("/src/layout/header.html");
-                $(".footerpage").load("/src/layout/footer.html");
             }
         }).mount('#app')
     </script>
