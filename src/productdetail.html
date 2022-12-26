@@ -18,19 +18,24 @@
         <nav class="container breadcrumb-group">
             <ol class="hb breadcrumb">
                 <li class="breadcrumb__item"><a href="">&nbsp首頁&nbsp</a></li>
-                <li class="breadcrumb__item"><a href="">&nbsp觀光行程&nbsp</a></li>
-                <li class="breadcrumb__item--current"><a href="">&nbsp桃園｜Weeeepark 海洋公園門票&nbsp</a></li>
+                <li class="breadcrumb__item"><a href="">&nbsp{{ProductDetail.type}}&nbsp</a></li>
+                <li class="breadcrumb__item--current"><a href="">&nbsp{{ProductDetail.city}}｜{{ProductDetail.name}}</a>
+                </li>
             </ol>
         </nav>
         <div class="container">
             <div class="carousel">
+                <img v-for="carousel in carousels" :src=carousel.src alt="" :id=carousel.id @click="test">
+                <div class="carouselBtn">
+                    <li v-for="(item,index) in 3"><button :id=`btn${index+1}` @click="carouselBtn"></button></li>
+                </div>
             </div>
         </div>
         <div class="container">
             <div class="productdetail__fixedfield--container">
                 <div class="productdetail__fixedfield--group">
                     <div class="productdetail__fixedfield1">
-                        <h2>TWD 550</h2>
+                        <h2>TWD {{ProductDetail.price}}</h2>
                         <button @click="pd_check">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
@@ -38,10 +43,8 @@
 
                     </div>
                     <div class="productdetail__fixedfield2">
-                        <a @click="fixedfield">商品說明</a>
-                        <a @click="fixedfield">購買須知</a>
-                        <a @click="fixedfield">體驗地點</a>
-                        <a @click="fixedfield">旅客評價</a>
+                        <a v-for="fieldData in fieldDatas" :id="fieldData.fieldID"
+                            @click=fieldClick(fieldData.fieldID)>{{fieldData.title}}</a>
                     </div>
                     <div class="productdetail__scrollToTop">
                         <i class="fa-solid fa-angle-up" @click="scrollToTop"></i>
@@ -49,13 +52,13 @@
                 </div>
                 <div class="productdetail__container">
                     <div class="productdetail__title">
-                        <h1>桃園｜Weeeepark 海洋公園門票</h1>
+                        <h1>{{ProductDetail.city}}｜{{ProductDetail.name}}</h1>
                         <i class="fa-regular fa-heart" @click="heartclick"></i>
                     </div>
 
                     <div class="productdetail__content">
                         <i class="fa-solid fa-location-dot"></i>
-                        <span>桃園</span>
+                        <span>{{ProductDetail.city}}</span>
                         <div>
                             <h5>4.5</h5>
                             <p>★★★★</p><span>(2300)｜已售出7K+</span>
@@ -64,7 +67,7 @@
                     <div class="productdetail__time">
                         <div>
                             <i class="fa-solid fa-clock"></i>
-                            <span>行程時間2小時</span>
+                            <span>行程時間{{ProductDetail.time}}小時</span>
                         </div>
                         <div>
                             <i class="fa-solid fa-table"></i>
@@ -96,223 +99,92 @@
                     </div>
                     <div class="productdetail__directions--group productdetail__open">
                         <div class="productdetail__directions">
-                            <h3>商品說明</h3>
+                            <h3 class="pd_h3">商品說明</h3>
                             <p>
-                                Weeeepark
-                                為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出
-                                360°
-                                具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Weeeepark
-                                是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。
+                                {{ProductDetail.Text}}
                             </p>
                         </div>
-                        <div class="productdetail__img">
-                            <p>► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心
+                        <div v-for="Img in Imgs" class="productdetail__img">
+                            <p>{{Img.Content}}
                             </p>
-                            <img src="/img/sightseeing/fa_19_1.jpg" alt="">
-                        </div>
-                        <div class="productdetail__img">
-                            <p>► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』
-
-                            </p>
-                            <img src="/img/sightseeing/fa_19_2.jpg" alt="">
-                        </div>
-                        <div class="productdetail__img">
-                            <p>► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界
-
-                            </p>
-                            <img src="/img/sightseeing/fa_19_3.jpg" alt="">
+                            <img :src=Img.src alt="">
                         </div>
                     </div>
                     <div class="productdetail__notice">
-                        <h3>購買須知</h3>
+                        <h3 class="pn_h3">購買須知</h3>
                         <ul class="notice__list">
-                            <li>
-                                未滿 4 歲的兒童可免費入場，需有家長陪同入場。
-                            </li>
-                            <li>
-                                下訂時請以「票券使用日」為主，下訂後即無法變更，敬請留意。
-                            </li>
-                            <li>
-                                訂單一次最高訂購上限為 6 張，每日場次數量為限量販售，售完為止；團體預約請洽 WeeeePark 官網。
-                            </li>
-                            <li>
-                                訂單恕不接受部分變更，若需變更入場日及場次請整筆重新下訂。
-                            </li>
-                            <li>
-                                訂購博愛票旅客陪同者也需購買一張博愛票（陪同者僅限於身心障礙旅客）。
-                            </li>
-                            <li>
-                                本館禁止攜帶外食、寵物，可攜帶開水。
-                            </li>
-                            <li>
-                                館內提供嬰兒車租借，未提供輪椅租借，敬請旅客見諒。
-                            </li>
-                            <li>
-                                請務必於訂購時確認訂購之票種是否正確，資格是否符合。
-                            </li>
-                            <li>
-                                此商品恕無法使用任何折扣券，敬請見諒。
-                            </li>
-                            <li>
-                                購票時請主動出示相關證件供售票處工作人員驗證，相關證件說明如下：學生票：本人有效學生證正本(若為應屆畢業生則提供當年度正式入學通知單或註冊單及攜帶身分證)。兒童票、博愛票：身心障礙證明、孕婦健康手冊、國民身分證或政府核發附有照片、身分證字號及出生年、月、日等足以證明身分證件。
+                            <li v-for="noticeList in noticeLists">
+                                {{noticeList}}
                             </li>
                         </ul>
                     </div>
                     <div class="productdetail__address">
-                        <h3>體驗地點</h3>
-                        <h5>地址</h5>
+                        <h3 class="pa_h3">體驗地點</h3>
+                        <h5>地址 👇</h5>
                         <div class=" productdetail__addressdetail">
-                            <h5>地點名稱 : WeeeePark</h5>
-                            <h5>地址 : 320台灣桃園市中壢區春德路105號</h5>
+                            <h5>地點名稱 : {{ProductDetail.shortname}}</h5>
+                            <h5>地址 : {{ProductDetail.address}}</h5>
                         </div>
-                        <!-- <img src="./img/sightseeing_family/sightseeing_family_sandbeach1.jpg" alt=""> -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.2338948479887!2d121.5426387215347!3d25.052129362458672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823c18fcb9855%3A0x784fb0d91b7fc01f!2zVGliYU1lIOWFqOaWueS9jeaVuOS9jeihjOmKt-WvpuaIsOmkiuaIkOePrSjlj7DljJcp!5e0!3m2!1szh-TW!2stw!4v1671903363935!5m2!1szh-TW!2stw"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe :src=googleMap.src :width=googleMap.width :height=googleMap.height style="border:0;"
+                            :allowfullscreen=googleMap.allowfullscreen :loading=googleMap.loading
+                            :referrerpolicy=googleMap.referrerpolicy></iframe>
                     </div>
                     <div class="productreview">
-                        <h3>旅客評價</h3>
+                        <h3 class="pv_h3">旅客評價</h3>
                         <div class="productreview__group">
                             <div class="productreview__score">
                                 <p>4.6</p>
                             </div>
                             <div class="productreview__star">
-                                <span class="star__color">★★★★</span>
-                                <span>6430則旅客評價</span>
+                                <span class="star__color">{{ProductDetail.stars}}</span>
+                                <span>{{ProductDetail.comments}}則旅客評價</span>
                             </div>
                         </div>
                     </div>
-                    <div class="message">
-                        <span>🐶</span>
-                        <span>品元</span>
+                    <div class="message" v-for="message in messages">
+                        <span>{{message.pic}}</span>
+                        <span>{{message.name}}</span>
                         <div class="message_text">
-                            <p>★★★★</p>
+                            <p>{{message.star}}</p>
                             <h5>
-                                活潑有朝氣的水族館
-                                因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！
-                                整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠
+                                {{message.comment}}
                             </h5>
                         </div>
                     </div>
-                    <div class="message">
-                        <span>🐶</span>
-                        <span>品元</span>
-                        <div class="message_text">
-                            <p>★★★★</p>
-                            <h5>
-                                活潑有朝氣的水族館
-                                因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！
-                                整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠
-                            </h5>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <span>🐶</span>
-                        <span>品元</span>
-                        <div class="message_text">
-                            <p>★★★★</p>
-                            <h5>
-                                活潑有朝氣的水族館
-                                因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！
-                                整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠
-                            </h5>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <span>🐶</span>
-                        <span>品元</span>
-                        <div class="message_text">
-                            <p>★★★★</p>
-                            <h5>
-                                活潑有朝氣的水族館
-                                因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！
-                                整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠
-                            </h5>
-                        </div>
-                        <nav>
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                <li class="page-item"><a class="page-link" href="#">8</a></li>
-                                <li class="page-item"><a class="page-link" href="#">9</a></li>
-                                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
+                            <li class="page-item" v-for="pageItem in pageItems"><a class="page-link"
+                                    href="#">{{pageItem}}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
+
         <div class="productdetail__bot wrapper">
-            <div class="card" style="width: 18rem;">
-                <img src="/img/sightseeing/fa_19_1.jpg" alt="">
+            <div class="card" style="width: 18rem;" v-for="card in cards">
+                <img :src="card.src" alt="">
                 <div class="card-body">
-                    <span class="card-body_label">情侶行程</span>
-                    <h5 class="card-title">新北 | Weeee渡假村門票
+                    <span class="card-body_label">{{card.label}}</span>
+                    <h5 class="card-title">{{card.title}}
                     </h5>
                     <div>
                         <p>★</p>
-                        <h5>4.5</h5>
-                        <span>(2300)｜95K+個已訂購</span>
+                        <h5>{{card.score}} ({{card.scoreNum}})</h5>
+                        <span>{{card.order}}</span>
                     </div>
-                    <h5>TWD 450元</h5>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="/img/sightseeing/fa_19_2.jpg" alt="">
-                <div class="card-body">
-                    <span class="card-body_label">朋友行程</span>
-                    <h5 class="card-title">新北 | Weeee渡假村門票
-                    </h5>
-                    <div>
-                        <p>★</p>
-                        <h5>4.5</h5>
-                        <span>(2300)｜95K+個已訂購</span>
-                    </div>
-                    <h5>TWD 450元</h5>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="/img/sightseeing/fa_19_3.jpg" alt="">
-                <div class="card-body">
-                    <span class="card-body_label">家庭行程</span>
-                    <h5 class="card-title">新北 | Weeee渡假村門票
-                    </h5>
-                    <div>
-                        <p>★</p>
-                        <h5>4.5</h5>
-                        <span>(2300)｜95K+個已訂購</span>
-                    </div>
-                    <h5>TWD 450元</h5>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="/img/sightseeing/fa_20_1.jpg" alt="">
-                <div class="card-body">
-                    <span class="card-body_label">寵物行程</span>
-                    <h5 class="card-title">新北 | Weeee渡假村門票
-                    </h5>
-                    <div>
-                        <p>★</p>
-                        <h5>4.5</h5>
-                        <span>(2300)｜95K+個已訂購</span>
-                    </div>
-                    <h5>TWD 450元</h5>
+                    <h5>TWD {{card.price}}元</h5>
                 </div>
             </div>
         </div>
@@ -326,7 +198,153 @@
             data() {
                 return {
                     operate: '收起商品說明 ',
-                    lastKnownScrollPosition : 0,
+                    fieldDatas: [
+                        {
+                            title: '商品說明',
+                            fieldID: 'f1'
+                        },
+                        {
+                            title: '購買須知',
+                            fieldID: 'f2'
+                        },
+                        {
+                            title: '體驗地點',
+                            fieldID: 'f3'
+                        },
+                        {
+                            title: '旅客評價',
+                            fieldID: 'f4'
+                        }
+                    ],
+                    cards: [
+                        {
+                            src: "/img/sightseeing/fa_19_1.jpg",
+                            label: "情侶行程",
+                            title: "新北 | Weeee渡假村門票",
+                            score: 4.5,
+                            scoreNum: 2300,
+                            order: '｜95K+個已訂購',
+                            price: 450,
+                        }, {
+                            src: "/img/sightseeing/fa_20_3.jpg",
+                            label: "朋友行程",
+                            title: "台中 | Weeee渡假村門票",
+                            score: 4.1,
+                            scoreNum: 3300,
+                            order: '｜55K+個已訂購',
+                            price: 420,
+                        }, {
+                            src: "/img/sightseeing/fa_19_3.jpg",
+                            label: "家庭行程",
+                            title: "台南 | Weeee渡假村門票",
+                            score: 4.3,
+                            scoreNum: 3500,
+                            order: '｜45K+個已訂購',
+                            price: 430,
+                        }, {
+                            src: "/img/sightseeing/fa_20_2.jpg",
+                            label: "寵物行程",
+                            title: "高雄 | Weeee渡假村門票",
+                            score: 4.4,
+                            scoreNum: 4500,
+                            order: '｜54K+個已訂購',
+                            price: 440,
+                        },
+                    ],
+                    messages: [
+                        {
+                            pic: '😹',
+                            name: '品元',
+                            star: '★★★★★',
+                            comment: "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
+                        }, {
+                            pic: '👦',
+                            name: '品源',
+                            star: '★★★',
+                            comment: "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
+                        }, {
+                            pic: '🙋‍♀️',
+                            name: '元元',
+                            star: '★★★★',
+                            comment: "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
+                        }, {
+                            pic: '🐵',
+                            name: '品品',
+                            star: '★★★★★',
+                            comment: "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
+                        },
+                    ],
+                    pageItems: [2, 3, 4, 5, 6, 7, 8, 9, 10],
+                    googleMap: {
+                        src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.2338948479887!2d121.5426387215347!3d25.052129362458672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823c18fcb9855%3A0x784fb0d91b7fc01f!2zVGliYU1lIOWFqOaWueS9jeaVuOS9jeihjOmKt-WvpuaIsOmkiuaIkOePrSjlj7DljJcp!5e0!3m2!1szh-TW!2stw!4v1671903363935!5m2!1szh-TW!2stw",
+                        width: 600,
+                        height: 450,
+                        style: "border:0;",
+                        allowfullscreen: "",
+                        loading: "lazy",
+                        referrerpolicy: "no-referrer-when-downgrade",
+                    },
+                    noticeLists: [
+                        '未滿 4 歲的兒童可免費入場，需有家長陪同入場。',
+                        '下訂時請以「票券使用日」為主，下訂後即無法變更，敬請留意。',
+                        '訂單一次最高訂購上限為 6 張，每日場次數量為限量販售，售完為止；團體預約請洽 WeeeePark 官網。',
+                        '訂單恕不接受部分變更，若需變更入場日及場次請整筆重新下訂。',
+                        '訂購博愛票旅客陪同者也需購買一張博愛票（陪同者僅限於身心障礙旅客）。',
+                        '本館禁止攜帶外食、寵物，可攜帶開水。',
+                        '館內提供嬰兒車租借，未提供輪椅租借，敬請旅客見諒。',
+                        '請務必於訂購時確認訂購之票種是否正確，資格是否符合。',
+                        '此商品恕無法使用任何折扣券，敬請見諒。',
+                        '購票時請主動出示相關證件供售票處工作人員驗證，相關證件說明如下：學生票：本人有效學生證正本(若為應屆畢業生則提供當年度正式入學通知單或註冊單及攜帶身分證)。兒童票、博愛票：身心障礙證明、孕婦健康手冊、國民身分證或政府核發附有照片、身分證字號及出生年、月、日等足以證明身分證件。',
+                    ],
+                    Imgs: [
+                        {
+                            Content: '► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心',
+                            src: '/img/sightseeing/fa_19_1.jpg',
+                        },
+                        {
+                            Content: '► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』',
+                            src: '/img/sightseeing/fa_19_2.jpg',
+                        },
+                        {
+                            Content: '► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界',
+                            src: '/img/sightseeing/fa_19_3.jpg',
+                        }
+                    ],
+                    ProductDetail: {
+                        type: '觀光行程',
+                        city: '桃園',
+                        price: 550,
+                        name: 'Weeeepark 海洋公園門票',
+                        Text: 'Weeeepark為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出360°具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Weeeepark是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。',
+                        shortname: 'WeeeePark',
+                        address: '320台灣桃園市中壢區春德路105號',
+                        comments: 6430,
+                        stars: '★★★★',
+                        time: 2,
+                    },
+                    carousels: [{
+                        src: "./img/sightseeing/fa_20_1.jpg",
+                        id: 'img1'
+                    },
+                    {
+                        src: "./img/sightseeing/fa_20_2.jpg",
+                        id: 'img2'
+                    },
+                    {
+                        src: "./img/sightseeing/fa_20_3.jpg",
+                        id: 'img3'
+                    }
+                    ],
+                    count: {
+                        count1: 3,
+                        count2: 2,
+                        count3: 1,
+                    },
+                    count2: {
+                        count1: 1,
+                        count2: 2,
+                        count3: 3,
+                    },
                 }
             },
             methods: {
@@ -365,7 +383,6 @@
 
                 },
                 scrollToTop() {
-                    // window.scrollTo(0, 0);
                     window.scrollTo({
                         top: 0,
                         left: 0,
@@ -376,28 +393,142 @@
                 pd_check() {
                     alert(404);
                 },
-                fixedfield(e) {
-                    // console.log(e.target);
-                    let num = document.getElementsByClassName('productdetail__operate')[0].offsetTop;
+                fieldClick(e) {
+                    let num = document.getElementById(e).offsetTop;
+                    let pd = document.getElementsByClassName('productdetail__operate')[0].offsetTop;
+                    let pn = document.getElementsByClassName('productdetail__notice')[0].offsetTop;
+                    let pa = document.getElementsByClassName('productdetail__address')[0].offsetTop;
+                    let pv = document.getElementsByClassName('productreview')[0].offsetTop
+                    switch (e) {
+                        case 'f1':
+                            num = pd - 120;
+                            break;
+                        case 'f2':
+                            num = pn - 110;
+                            break;
+                        case 'f3':
+                            num = pa - 130;
+                            break;
+                        case 'f4':
+                            num = pv - 100;
+                            break;
+                    }
                     window.scrollTo({
-                        top: num - 150,
+                        top: num,
                         left: 0,
                         behavior: 'smooth'
                     });
+
                 },
-                test() {
+                fieldMark() {
+                    let pd = document.getElementById('f1').style;
+                    let pn = document.getElementById('f2').style;
+                    let pa = document.getElementById('f3').style;
+                    let pv = document.getElementById('f4').style;
+                    let weblack = '#000';
+                    let weblue = '#4484ce';
+                    let num = document.getElementsByClassName('productdetail__bot')[0].offsetTop;
+                    let ff = document.getElementsByClassName('productdetail__fixedfield2')[0];
+                    let check = document.getElementsByClassName('productdetail__directions--group')[0].classList;
+                    let tf = check.contains('productdetail__open');
+                    // console.log(tf);
                     document.addEventListener('scroll', function (e) {
-                        lastKnownScrollPosition = window.scrollY;
-                        console.log(lastKnownScrollPosition);
-                        if(lastKnownScrollPosition==5650)
-                        {
-                            alert('hi');
+                        ScrollPosition = window.scrollY;
+                        // console.log(check.contains('productdetail__open'));
+                        // console.log(ScrollPosition);
+
+                        if (ScrollPosition <= 1106) {
+                            pn.color = weblack;
+                            pa.color = weblack;
+                            pv.color = weblack;
+                            pd.color = weblack;
+                        }
+                        if (ScrollPosition >= 1106) {
+                            pn.color = weblack;
+                            pa.color = weblack;
+                            pv.color = weblack;
+                            pd.color = weblue;
+                        }
+                        if (ScrollPosition >= 3332) {
+                            pa.color = weblack;
+                            pv.color = weblack;
+                            pd.color = weblack;
+                            pn.color = weblue;
+                        }
+                        if (ScrollPosition >= 4051) {
+                            pn.color = weblack;
+                            pv.color = weblack;
+                            pd.color = weblack;
+                            pa.color = weblue;
+                        }
+                        if (ScrollPosition >= 4807) {
+                            pn.color = weblack;
+                            pa.color = weblack;
+                            pd.color = weblack;
+                            pv.color = weblue;
+                        }
+                        if (ScrollPosition >= num - 600) {
+                            ff.style.display = 'none';
+                        }
+                        else {
+                            ff.style.display = 'flex';
                         }
                     });
                 },
+                test(e) {
+                    if (this.count.count1 < 3) {
+                        this.count.count1++;
+                    }
+                    else {
+                        this.count.count1 = 1;
+                    }
+                    if (this.count.count2 < 3) {
+                        this.count.count2++;
+                    }
+                    else {
+                        this.count.count2 = 1;
+                    }
+                    if (this.count.count3 < 3) {
+                        this.count.count3++;
+                    }
+                    else {
+                        this.count.count3 = 1;
+                    }
+                    this.carousels[0].src = `./img/sightseeing/fa_20_${this.count.count1}.jpg`;
+                    this.carousels[1].src = `./img/sightseeing/fa_20_${this.count.count2}.jpg`;
+                    this.carousels[2].src = `./img/sightseeing/fa_20_${this.count.count3}.jpg`;
+
+                },
+                carouselBtn(e) {
+
+                    let left = document.getElementById('img1');
+                    let mid = document.getElementById('img2');
+                    let right = document.getElementById('img3');
+
+                    if (e.path[0].id == 'btn3') {
+                        right.style.backgroundColor = 'blue';
+
+                        mid.src = "./img/sightseeing/fa_20_3.jpg";
+                        left.src = "./img/sightseeing/fa_20_2.jpg";
+                        right.src = "./img/sightseeing/fa_20_1.jpg";
+                    }
+                    if (e.path[0].id == 'btn2') {
+                        mid.style.backgroundColor = 'blue';
+                        mid.src = "./img/sightseeing/fa_20_2.jpg";
+                        right.src = "./img/sightseeing/fa_20_3.jpg";
+                        left.src = "./img/sightseeing/fa_20_1.jpg";
+                    }
+                    if (e.path[0].id == 'btn1') {
+                        left.style.backgroundColor = 'blue';
+                        mid.src = "./img/sightseeing/fa_20_1.jpg";
+                        left.src = "./img/sightseeing/fa_20_3.jpg";
+                        right.src = "./img/sightseeing/fa_20_2.jpg";
+                    }
+                },
+
             },
             mounted() {
-                this.test();
+                this.fieldMark();
             },
         }).mount('#app')
     </script>
