@@ -31,7 +31,7 @@
                 <div class="productdetail__fixedfield--group">
                     <div class="productdetail__fixedfield1">
                         <h2>TWD 550</h2>
-                        <button  @click="pd_check">
+                        <button @click="pd_check">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
                         </button>
@@ -326,6 +326,7 @@
             data() {
                 return {
                     operate: '收起商品說明 ',
+                    lastKnownScrollPosition : 0,
                 }
             },
             methods: {
@@ -379,14 +380,25 @@
                     // console.log(e.target);
                     let num = document.getElementsByClassName('productdetail__operate')[0].offsetTop;
                     window.scrollTo({
-                        top: num-150,
+                        top: num - 150,
                         left: 0,
                         behavior: 'smooth'
                     });
-                }
+                },
+                test() {
+                    document.addEventListener('scroll', function (e) {
+                        lastKnownScrollPosition = window.scrollY;
+                        console.log(lastKnownScrollPosition);
+                        if(lastKnownScrollPosition==5650)
+                        {
+                            alert('hi');
+                        }
+                    });
+                },
             },
             mounted() {
-            }
+                this.test();
+            },
         }).mount('#app')
     </script>
 </body>
