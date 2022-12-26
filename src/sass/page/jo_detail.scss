@@ -104,9 +104,12 @@
       .jo-leader__bottom__right {
         flex-grow: 1;
         flex-basis: 0;
-        font-size: $pc_h4;
-        .contact-title {
-          font-weight: bold;
+        font-size: $pc_h5;
+        .contact-detail {
+          display: none;
+          .contact-title {
+            font-weight: bold;
+          }
         }
       }
     }
