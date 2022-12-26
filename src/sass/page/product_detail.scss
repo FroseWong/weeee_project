@@ -1,7 +1,8 @@
-$small-font: 20px;
+
 
 .breadcrumb {
   display: flex;
+  margin: 0 30px;
   .breadcrumb__item:after {
     content: ">";
   }
@@ -29,11 +30,13 @@ $small-font: 20px;
 .carousel {
   background-color: $gray;
   height: 382px;
+  margin: 0 30px;
 }
 
 .productdetail__fixedfield--container {
   display: flex;
   justify-content: space-between;
+  margin: 0 30px;
   .productdetail__fixedfield--group {
     display: flex;
     flex-direction: column;
@@ -45,7 +48,7 @@ $small-font: 20px;
       width: 300px;
       max-height: 200px;
       position: sticky;
-      top: 20px;
+      top: 120px;
       float: right;
       border: $l_gray 1px solid;
       border-radius: 10px;
@@ -56,7 +59,7 @@ $small-font: 20px;
       padding: 20px;
 
       h2 {
-        font-size: $pc_h4;
+        font-size: 22px;
         margin-right: 100px;
         margin-bottom: 20px;
         font-weight: bold;
@@ -70,7 +73,7 @@ $small-font: 20px;
         color: $white;
         cursor: pointer;
         span {
-          font-size: $pc_h5;
+          font-size: 16px;
           font-weight: bold;
         }
         i {
@@ -90,7 +93,7 @@ $small-font: 20px;
         display: block;
         text-decoration: none;
         margin-bottom: 10px;
-        font-size: 24px;
+        font-size: 16px;
         color: $black;
         font-weight: bold;
         cursor: pointer;
@@ -99,7 +102,7 @@ $small-font: 20px;
       width: 200px;
       height: 200px;
       position: sticky;
-      top: 190px;
+      top: 270px;
       padding: 20px;
       float: right;
       color: $gray;
@@ -136,7 +139,7 @@ $small-font: 20px;
   justify-content: space-between;
   align-items: center;
   h1 {
-    font-size: 40px;
+    font-size: 24px;
     font-weight: bold;
     display: inline;
   }
@@ -149,26 +152,27 @@ $small-font: 20px;
 
 .productdetail__content {
   i {
-    font-size: $small-font;
+    font-size: 16px;
     margin-right: 10px;
   }
   h5 {
     color: $blue;
     display: inline;
-    font-size: $small-font;
+    font-size: 14px;
   }
   span {
-    font-size: $small-font;
+    font-size: 14px;
     font-weight: bold;
   }
   div {
     p {
       display: inline;
       color: $yellow;
-      font-size: 20px;
+      font-size: 14px;
     }
     h5 {
       font-weight: bold;
+      font-size: 14px;
     }
   }
 }
@@ -178,13 +182,14 @@ $small-font: 20px;
   padding: 30px 0 30px 0;
   border-top: 1px solid $gray;
   border-bottom: 1px solid $gray;
+
   display: flex;
   div {
     margin-right: 100px;
     i,
     span {
       margin-right: 10px;
-      font-size: $small-font;
+      font-size: 15px;
       font-weight: bold;
     }
   }
@@ -196,20 +201,22 @@ $small-font: 20px;
       list-style: disc;
       margin-bottom: 20px;
       font-weight: bold;
+      font-size: 14px;
     }
   }
 }
 .productdetail__operate {
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid $l_gray;
   margin-top: 70px;
   margin-bottom: 35px;
   font-weight: bold;
   display: flex;
   align-items: center;
   span {
-    font-size: 32px;
+    font-size: 16px;
     cursor: pointer;
     color: $blue;
+  
   }
   i {
     margin-left: 30px;
@@ -221,16 +228,17 @@ $small-font: 20px;
   h3 {
     font-weight: bold;
     margin-bottom: 45px;
+    font-size: 24px;
   }
   p {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 40px;
   }
 }
 .productdetail__img {
   p {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 40px 0 40px 0;
   }
@@ -244,6 +252,7 @@ $small-font: 20px;
   h3 {
     font-weight: bold;
     margin-bottom: 30px;
+    font-size: 24px;
   }
   .notice__list {
     max-width: 800px;
@@ -252,7 +261,7 @@ $small-font: 20px;
     padding: 50px;
     border-radius: 10px;
     li {
-      font-size: 24px;
+      font-size: 14px;
       list-style: disc;
       padding-bottom: 20px;
       font-weight: bold;
@@ -265,6 +274,7 @@ $small-font: 20px;
     font-weight: bold;
     margin-top: 100px;
     margin-bottom: 50px;
+    font-size: 24px;
   }
   img {
     width: 800px;
@@ -278,6 +288,7 @@ $small-font: 20px;
   }
   h5 {
     font-weight: bold;
+    font-size: 14px;
   }
 }
 .productreview {
@@ -285,8 +296,9 @@ $small-font: 20px;
   border-bottom: 1px solid $gray;
   margin: 30px 0 30px 0;
   padding: 30px 0 30px 0;
-  h2 {
+  h3 {
     font-weight: bold;
+    font-size: 24px;
   }
   .productreview__group {
     display: flex;
@@ -326,10 +338,11 @@ $small-font: 20px;
 .message {
   margin: 30px 0 50px 0;
   span {
-    font-size: 30px;
+    font-size: 15px;
   }
   h5 {
     background-color: #f4f4f4;
+    font-size: 14px;
   }
 
   .message_text {
@@ -349,8 +362,8 @@ $small-font: 20px;
   margin: 40px 0 80px 0;
   li {
     background-color: $white;
-    width: 45px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
   }
   .page__link--current {
     background-color: $blue;
@@ -359,16 +372,16 @@ $small-font: 20px;
   .page-item {
     border: 1px solid $gray;
     text-align: center;
-    line-height: 50px;
+    line-height: 30px;
     display: block;
     a {
       font-weight: bold;
-      font-size: 20px;
+      font-size: 14px;
       display: block;
     }
   }
   .page-link {
-    font-size: $small-font;
+    font-size: 16px;
     text-decoration: none;
     &:visited,
     &:active,
@@ -403,15 +416,15 @@ $small-font: 20px;
       display: flex;
       p {
         color: $yellow;
-        font-size: $small-font;
+        font-size: 16px;
       }
       h5 {
-        font-size: $small-font;
+        font-size: 16px;
         color: $gray;
         font-weight: normal;
       }
       span {
-        font-size: $small-font;
+        font-size: 16px;
         color: $gray;
       }
     }
