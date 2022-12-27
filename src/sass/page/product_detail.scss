@@ -1,7 +1,6 @@
-$small-font: 20px;
-
 .breadcrumb {
   display: flex;
+  margin: 0 30px;
   .breadcrumb__item:after {
     content: ">";
   }
@@ -27,13 +26,49 @@ $small-font: 20px;
   }
 }
 .carousel {
-  background-color: $gray;
-  height: 382px;
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 416px;
+  position: relative;
+  #img1 {
+    width: 200px;
+  }
+  #img2 {
+    width: 740px;
+    margin: 0 10px;
+  }
+  #img3 {
+    width: 200px;
+  }
+  img {
+    width: 1200px;
+    height: 382px;
+  }
+  div {
+    position: absolute;
+    display: flex;
+    bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    li {
+      list-style: none;
+      margin: 10px;
+      button {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        border: 0;
+      }
+    }
+  }
 }
 
 .productdetail__fixedfield--container {
   display: flex;
   justify-content: space-between;
+  margin: 0 30px;
   .productdetail__fixedfield--group {
     display: flex;
     flex-direction: column;
@@ -45,7 +80,7 @@ $small-font: 20px;
       width: 300px;
       max-height: 200px;
       position: sticky;
-      top: 20px;
+      top: 120px;
       float: right;
       border: $l_gray 1px solid;
       border-radius: 10px;
@@ -56,7 +91,7 @@ $small-font: 20px;
       padding: 20px;
 
       h2 {
-        font-size: $pc_h4;
+        font-size: 22px;
         margin-right: 100px;
         margin-bottom: 20px;
         font-weight: bold;
@@ -70,7 +105,7 @@ $small-font: 20px;
         color: $white;
         cursor: pointer;
         span {
-          font-size: $pc_h5;
+          font-size: $pc_h6;
           font-weight: bold;
         }
         i {
@@ -90,24 +125,23 @@ $small-font: 20px;
         display: block;
         text-decoration: none;
         margin-bottom: 10px;
-        font-size: 24px;
+        font-size: $pc_h6;
         color: $black;
         font-weight: bold;
+        padding-left: 5px;
         cursor: pointer;
       }
       background-color: $white;
       width: 200px;
       height: 200px;
       position: sticky;
-      top: 190px;
-      padding: 20px;
+      top: 270px;
+      padding: 5px;
       float: right;
       color: $gray;
-      // margin-top: 200px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 100px;
     }
     .productdetail__scrollToTop {
       background-color: $blue;
@@ -115,11 +149,13 @@ $small-font: 20px;
       width: 40px;
       height: 40px;
       text-align: center;
-      position: sticky;
-      top: 850px;
+      position: fixed;
+      right: 30px;
+      bottom: 50px;
+      border-radius: 10px;
       i {
         color: $white;
-        font-size: 40px;
+        font-size: $pc_h1;
       }
     }
   }
@@ -136,39 +172,40 @@ $small-font: 20px;
   justify-content: space-between;
   align-items: center;
   h1 {
-    font-size: 40px;
+    font-size: $pc_h4;
     font-weight: bold;
     display: inline;
   }
   i {
     color: $orange;
-    font-size: 40px;
+    font-size: $pc_h1;
     cursor: pointer;
   }
 }
 
 .productdetail__content {
   i {
-    font-size: $small-font;
+    font-size: $pc_h6;
     margin-right: 10px;
   }
   h5 {
     color: $blue;
     display: inline;
-    font-size: $small-font;
+    font-size: 14px;
   }
   span {
-    font-size: $small-font;
+    font-size: 14px;
     font-weight: bold;
   }
   div {
     p {
       display: inline;
       color: $yellow;
-      font-size: 20px;
+      font-size: 14px;
     }
     h5 {
       font-weight: bold;
+      font-size: 14px;
     }
   }
 }
@@ -178,13 +215,14 @@ $small-font: 20px;
   padding: 30px 0 30px 0;
   border-top: 1px solid $gray;
   border-bottom: 1px solid $gray;
+
   display: flex;
   div {
     margin-right: 100px;
     i,
     span {
       margin-right: 10px;
-      font-size: $small-font;
+      font-size: 15px;
       font-weight: bold;
     }
   }
@@ -196,18 +234,19 @@ $small-font: 20px;
       list-style: disc;
       margin-bottom: 20px;
       font-weight: bold;
+      font-size: 14px;
     }
   }
 }
 .productdetail__operate {
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid $l_gray;
   margin-top: 70px;
   margin-bottom: 35px;
   font-weight: bold;
   display: flex;
   align-items: center;
   span {
-    font-size: 32px;
+    font-size: $pc_h6;
     cursor: pointer;
     color: $blue;
   }
@@ -221,16 +260,17 @@ $small-font: 20px;
   h3 {
     font-weight: bold;
     margin-bottom: 45px;
+    font-size: $pc_h4;
   }
   p {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 40px;
   }
 }
 .productdetail__img {
   p {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     margin: 40px 0 40px 0;
   }
@@ -244,6 +284,7 @@ $small-font: 20px;
   h3 {
     font-weight: bold;
     margin-bottom: 30px;
+    font-size: $pc_h4;
   }
   .notice__list {
     max-width: 800px;
@@ -252,7 +293,7 @@ $small-font: 20px;
     padding: 50px;
     border-radius: 10px;
     li {
-      font-size: 24px;
+      font-size: 14px;
       list-style: disc;
       padding-bottom: 20px;
       font-weight: bold;
@@ -265,6 +306,7 @@ $small-font: 20px;
     font-weight: bold;
     margin-top: 100px;
     margin-bottom: 50px;
+    font-size: $pc_h4;
   }
   img {
     width: 800px;
@@ -278,6 +320,7 @@ $small-font: 20px;
   }
   h5 {
     font-weight: bold;
+    font-size: 14px;
   }
 }
 .productreview {
@@ -285,8 +328,9 @@ $small-font: 20px;
   border-bottom: 1px solid $gray;
   margin: 30px 0 30px 0;
   padding: 30px 0 30px 0;
-  h2 {
+  h3 {
     font-weight: bold;
+    font-size: $pc_h4;
   }
   .productreview__group {
     display: flex;
@@ -299,7 +343,7 @@ $small-font: 20px;
       display: inline-block;
       margin-right: 30px;
       p {
-        font-size: 32px;
+        font-size: $pc_h3;
         text-align: center;
         color: $white;
         line-height: 65px;
@@ -310,7 +354,7 @@ $small-font: 20px;
       flex-direction: column;
       .star__color {
         color: $yellow;
-        font-size: 30px;
+        font-size: $pc_h3;
       }
     }
   }
@@ -326,20 +370,22 @@ $small-font: 20px;
 .message {
   margin: 30px 0 50px 0;
   span {
-    font-size: 30px;
+    font-size: $pc_h4;
   }
   h5 {
     background-color: #f4f4f4;
+    font-size: 14px;
   }
 
   .message_text {
     margin-left: 40px;
     p {
-      font-size: 30px;
+      font-size: $pc_h3;
       color: $yellow;
     }
     h5 {
       padding: 30px;
+      border-radius: 10px;
     }
   }
 }
@@ -349,8 +395,8 @@ $small-font: 20px;
   margin: 40px 0 80px 0;
   li {
     background-color: $white;
-    width: 45px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
   }
   .page__link--current {
     background-color: $blue;
@@ -359,16 +405,16 @@ $small-font: 20px;
   .page-item {
     border: 1px solid $gray;
     text-align: center;
-    line-height: 50px;
+    line-height: 30px;
     display: block;
     a {
       font-weight: bold;
-      font-size: 20px;
+      font-size: 14px;
       display: block;
     }
   }
   .page-link {
-    font-size: $small-font;
+    font-size: $pc_h6;
     text-decoration: none;
     &:visited,
     &:active,
@@ -403,15 +449,15 @@ $small-font: 20px;
       display: flex;
       p {
         color: $yellow;
-        font-size: $small-font;
+        font-size: $pc_h6;
       }
       h5 {
-        font-size: $small-font;
+        font-size: $pc_h6;
         color: $gray;
         font-weight: normal;
       }
       span {
-        font-size: $small-font;
+        font-size: $pc_h6;
         color: $gray;
       }
     }

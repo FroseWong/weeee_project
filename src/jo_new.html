@@ -12,23 +12,119 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    @@include('layout/header.html')
     <div class="wrapper jo_new">
-      <header>header</header>
-      <div class="wrapper">
-        <div class="container">
-          <h1 class="nb jo_new__title">主辦揪團</h1>
-          <div class="jo_new__addimg">
-            <a href="#" class="box"><i class="fa-solid fa-file-image"></i></a>
-          </div>
-          <div class="jo_new__content">
-            <div class="top">
-              <div class="top__left"></div>
-              <div class="top__right"></div>
+      <!-- <header>header</header> -->
+
+      <div class="container">
+        <h1 class="nb jo_new__title">發起揪團</h1>
+        <div class="jo_new__addimg">
+          <a href="#" class="box"><i class="fa-solid fa-file-image"></i></a>
+        </div>
+        <div class="jo_new__content">
+          <div class="top">
+            <div class="top__left">
+              <label for="jo-title" class="jo__title"
+                >揪團名稱 <em class="em">*</em></label
+              >
+
+              <input
+                type="text"
+                placeholder="請填寫揪團名稱"
+                class="jo__title__input"
+                id="jo-title"
+              />
+              <label for="jo-content" class="jo-content"
+                >揪團描述 <em class="em">*</em></label
+              >
+              <textarea
+                class="jo-content__input"
+                name="jo-content"
+                id="jo-content"
+                cols="30"
+                rows="10"
+                placeholder="請填寫揪團描述"
+              ></textarea>
+              <label for="jo-contact" class="jo-contact"
+                >聯絡方式 <em class="em">*</em></label
+              >
+              <textarea
+                name="jo-contact"
+                id="jo-contact"
+                class="jo-contact__input"
+                cols="30"
+                rows="10"
+                placeholder="請填寫聯絡方式"
+              ></textarea>
             </div>
-            <div class="bottom"></div>
+            <div class="top__right">
+              <label for="jo__location" class="jo__location"
+                >揪團縣市 <em class="em">*</em></label
+              >
+              <select
+                class="jo__location__input"
+                name="jo__location"
+                id="jo__location"
+                required
+              >
+                <option value="">請選擇揪團縣市</option>
+                <option value="taipei">台北</option>
+                <option value="taoyuan">桃園</option>
+                <option value="hsinchu">新竹</option>
+                <option value="miaoli">苗栗</option>
+              </select>
+
+              <label for="jo__detail-address" class="jo__detail-address"
+                >詳細地點 <em class="em">*</em></label
+              >
+              <input
+                type="text"
+                id="jo__detail-address"
+                class="jo__detail-address__input"
+                placeholder="請輸入詳細地點"
+              />
+
+              <label for="jo__number" class="jo__number"
+                >揪團人數 <em class="em">*</em></label
+              >
+              <input
+                type="number"
+                id="jo__number"
+                placeholder="請輸入揪團人數"
+              />
+              <label for="jo__start-date" class="jo__start-date"
+                >揪團日期 <em class="em">*</em></label
+              >
+              <input type="date" id="jo__start-date" />
+              <label for="jo__start-time" class="jo__start-time"
+                >揪團時間 <em class="em">*</em></label
+              >
+              <input type="time" id="jo__start-time" />
+              <label for="useweeee" class="useweeee">選擇Weeee!的行程</label>
+              <input
+                list="useweeee"
+                type="text"
+                name="useweeee"
+                placeholder="請選擇行程"
+              />
+
+              <datalist id="useweeee">
+                <option value="欣賞台南生態水之美">欣賞台南生態水之美</option>
+                <option value="在台南與大自然擁抱">在台南與大自然擁抱</option>
+                <option value="金門二日遊">金門二日遊</option>
+                <option value="屏東｜墾丁三天兩夜豪華度假旅程">
+                  屏東｜墾丁三天兩夜豪華度假旅程
+                </option>
+                <option value="新北｜蔚藍海岸之旅">新北｜蔚藍海岸之旅</option>
+              </datalist>
+            </div>
+          </div>
+          <div class="bottom">
+            <button class="yellowBtn previewBtn">預覽</button>
           </div>
         </div>
       </div>
+      @@include('layout/footer.html')
     </div>
   </body>
 </html>

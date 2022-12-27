@@ -4,14 +4,14 @@
 @import "./component/component.scss";
 @import "./mixin/mixin.scss";
 
-.htob {
-  // header下方和banner不要有空隙時 給banner
-  margin-top: 165px;
-}
+// .htob {
+//   // header下方和banner不要有空隙時 給banner
+//   margin-top: 165px;
+// }
 
 .nb {
   // 沒有麵包屑時 給內容
-  padding-top: 215px;
+  padding-top: 50px;
 }
 
 .hb {
@@ -71,10 +71,21 @@
 
 .blueBtn {
   @include btn($blue, $white, 10px);
+  transition: all 0.3s;
+  &:hover {
+    background-color: $orange;
+    color: $white;
+  }
 }
 
 .yellowBtn {
   @include btn($yellow, $black, 10px);
+
+  transition: all 0.3s;
+  &:hover {
+    background-color: $orange;
+    color: $white;
+  }
 }
 
 .orangeBtn {
@@ -154,4 +165,7 @@ a {
 
 .text-danger{
   color: #ef7a70;
+}
+.em {
+  color: #e61f6e;
 }
