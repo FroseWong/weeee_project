@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weeee!</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/85f014293c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./vender/datatables/sb-admin-2.min.css">
+
+    <link rel="stylesheet" href="./vender/datatables/dataTables.bootstrap4.css">
+  </head>
+  <body>
+    @@include('layout/header.html')
+    <div class="wrapper account account_point">
+      <div class="container">
+        <div class="hbb">
+          <a href="">首頁</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="#">會員中心</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="#" class="on_page">Weeee! Points</a>
+        </div>
+        <div class="mid">
+          <div class="left_bar">
+            <div class="img_block">
+              <div class="mem_img"></div>
+              <h5>陳品元元</h5>
+            </div>
+            <div class="page_list">
+              <ul>
+                <li>
+                  <a href="#">
+                    <div>
+                      <i class="fa-regular fa-newspaper"></i>
+                    </div>
+
+                    訂單管理
+                  </a>
+                </li>
+
+                <li>
+                  <a href="account_jo.html">
+                    <div>
+                      <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                    我的揪團
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#">
+                    <div><i class="fa-solid fa-heart"></i></div>
+
+                    我的收藏
+                  </a>
+                </li>
+                <li>
+                  <a href="#" id="on_page">
+                    <div>
+                      <span
+                        class="w w_on_page"
+                        style="background-color: #f19f4d"
+                        >w</span
+                      >
+                    </div>
+
+                    Weeee! Points
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div>
+                      <i class="fa-solid fa-gear"></i>
+                    </div>
+
+                    帳號設定
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Weeee! Points</h3>
+            <div class="w_point">
+              <h5>目前可使用點數</h5>
+              <h5 class="w w_yellow">w</h5>
+              <h5 class="point_count">50</h5>
+            </div>
+
+            <div class="points">
+              <h5 class="how_use">Weeee! Points 怎麼用?</h5>
+              <div class="how_use_rule">
+                <i class="fa-regular fa-hand-point-right pointer_right"></i>
+                <p class="rule">
+                  於Weeee! 進行消費，每100元將回饋1點 Weeee! Points
+                  <br/>可於下次預訂時折抵訂單總金額，1點可折抵新台幣1元<br />
+                  每筆訂單最多可折抵總金額的20%
+                </p>
+              </div>
+              <hr>
+              <h5>點數紀錄</h5>
+            <div class="point_record">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>訂單編號</th>
+                                <th>點數</th>
+                                <th>日期</th>  
+                                <th>商品內容</th>                           
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>OR3456</td>
+                                <td>-20</td>
+                                <td>2022-11-19</td>
+                                <td>新竹北埔三日遊</i></td>                             
+                            </tr>
+                            <tr>
+                                <td>OR3456</td>
+                                <td>-20</td>
+                                <td>2022-11-19</td>
+                                <td>新竹北埔三日遊</i></td>                                 
+                            </tr>                
+                            <tr>
+                                <td>OR3456</td>
+                                <td>-20</td>
+                                <td>2022-11-19</td>
+                                <td>新竹北埔三日遊</i></td>                              
+                            </tr>         
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+            </div>
+        
+      </div>
+    </div>
+    @@include('layout/footer.html')
+    <script src="/vender/jquery/jquery.min.js"></script>
+    <script src="/vender/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vender/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+    // Call the dataTables jQuery plugin
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            paging: false, // 拿掉一頁顯示幾個篩選結果
+            "searching": false, // 拿掉搜尋bar
+            "info": false // 拿掉左下角共幾個結果的資訊
+        });
+    });
+    </script>
+  </body>
+</html>
