@@ -1,0 +1,238 @@
+.jo_preview {
+  background-color: #f4f4f4;
+  //   header {
+  //     height: 165px;
+  //     width: 100%;
+  //     background-color: $gray;
+  //     position: fixed;
+  //     top: 0;
+  //     left: 0;
+  //     font-size: 40px;
+  //     color: $white;
+  //     text-align: center;
+  //     padding-top: 60px;
+  //     box-sizing: border-box;
+  //     z-index: 30;
+  // color: $blue;
+  //   }
+  .jo__title {
+    text-align: center;
+    margin-bottom: 20px;
+    // padding-top: 215px;
+    font-weight: bold;
+  }
+
+  .jo__img {
+    height: 300px;
+    background-image: url("../img/jo/jo_wanttoseefish.jpg");
+    border-radius: 10px;
+    margin-bottom: 60px;
+    background-position: center center;
+  }
+
+  .jo__content {
+    font-size: $pc_h5;
+    background-color: $white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+  }
+  .jo-leader {
+    padding: 30px 10px;
+    background-color: $white;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    .jo-leader__top {
+      display: flex;
+      //   justify-content: space-between;
+      margin-bottom: 35px;
+      .jo-leader__top__left {
+        // border: 1px solid red;
+        flex-grow: 1;
+        flex-basis: 0;
+        .jo-leader-img {
+          width: 150px;
+          height: 150px;
+          border-radius: 150px;
+          background-position: center center;
+          background-size: cover;
+          background-image: url("../img/jo/jo_leader1.jpg");
+          margin: 0 auto 20px;
+        }
+
+        .jo-leader-name {
+          font-size: $pc_h5;
+          text-align: center;
+        }
+      }
+      .jo-leader__top__right {
+        flex-grow: 1;
+        font-size: $pc_h5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-basis: 0;
+
+        // padding: 0 0px;
+        // padding-left: 50px;
+        .jo-start-date i,
+        .jo-location i,
+        .jo-detailaddress i,
+        .jo-number i {
+          //   display: flex;
+          //   justify-content: space-between;
+          //   align-items: center;
+          width: 40px;
+          //   outline: solid red 1px;
+        }
+      }
+    }
+    .jo-leader__bottom {
+      display: flex;
+      .jo-leader__bottom__left {
+        flex-grow: 1;
+        flex-basis: 0;
+        // border: 1px solid red;
+        // display: flex;
+        display: flex;
+        align-items: center;
+        .contact-leader {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      .jo-leader__bottom__right {
+        flex-grow: 1;
+        flex-basis: 0;
+        font-size: $pc_h5;
+        .contact-title {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .useweeee__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 30px;
+      background-color: $black;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+  }
+
+  .useweeee {
+    height: 300px;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+    border-radius: 10px;
+  }
+
+  .saysomething__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 30px;
+      background-color: $black;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+  }
+
+  .saysomething__content {
+    width: 100%;
+    resize: none;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: $pc_h6;
+    box-sizing: border-box;
+    border: none;
+    outline: 1px solid $gray;
+    margin-bottom: 45px;
+  }
+
+  .saysomething__send {
+    display: block;
+    margin: 0 auto 70px;
+  }
+
+  .jo__comment__list {
+    margin-bottom: 110px;
+    .jo__comment {
+      height: 100px;
+      display: flex;
+      background-color: $white;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      .jo__comment__left {
+        width: 70%;
+        height: 100%;
+        box-sizing: border-box;
+        // background-color: red;
+        font-size: $pc_h6;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+      }
+      .jo__comment__right {
+        width: 30%;
+        height: 100%;
+        box-sizing: border-box;
+        // background-color: blue;
+        display: flex;
+        padding-top: 50px;
+        font-size: $pc_h5;
+        align-items: center;
+        .mamber-img {
+          width: 30px;
+          height: 30px;
+          background-image: url("../img/jo/jo_member4.jpg");
+          background-size: cover;
+          background-position: center center;
+          border-radius: 30px;
+          margin-right: 15px;
+        }
+        .member-name {
+          margin-right: 35px;
+        }
+        .member-leavetime {
+        }
+      }
+    }
+  }
+  .footer {
+    background-color: $gray;
+    color: $white;
+    height: 310px;
+    text-align: center;
+    .footcontent {
+      padding-top: 150px;
+    }
+  }
+
+  .sendjoBtn {
+    width: 100%;
+    display: block;
+    margin-bottom: 25px;
+  }
+
+  .backtoeditBtn {
+    background-color: $white;
+    outline: 1px solid $yellow;
+    width: 100%;
+    display: block;
+  }
+}

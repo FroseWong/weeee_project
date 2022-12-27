@@ -1,0 +1,174 @@
+.payment {
+    width: 65%;
+    margin: 0 auto;
+
+
+    .payment_item {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+
+        .payment_item_header {
+            display: flex;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+
+            i {
+                margin-right: 30px;
+                transform: rotate(90deg);
+            }
+
+            h5 {
+                font-weight: bold;
+            }
+
+            span {
+                margin-left: 15px;
+            }
+        }
+
+        .payment_item_buyer {
+            padding: 20px 20px 0;
+
+            .buyer_row {
+                font-size: 14px;
+                color: #333;
+                display: flex;
+                margin-bottom: 20px;
+
+                ul {
+                    background-color: #f4f4f4;
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 20px;
+
+                    li:last-child {
+                        border: none;
+                    }
+
+                    li {
+                        padding: 10px;
+                        border-bottom: 1px solid #eaeaea;
+                        color: #666;
+                    }
+                }
+
+                .buyer_row_col {
+                    padding: 0 15px;
+
+                    label {
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+
+                    input,
+                    select {
+                        height: 45px;
+                        padding: 10px 12px;
+                        font-family: inherit;
+                        line-height: 1.5;
+                        letter-spacing: .5px;
+                        border-radius: 4px;
+                        background-color: #fff;
+                        border: 1px solid #e1e1e1;
+                        -webkit-box-shadow: none;
+                        box-shadow: none;
+                        opacity: 1;
+                        width: 200px;
+                    }
+
+                    select {
+                        appearance: none;
+                        background-image: url(../../img/otherpage/arrow-down.svg);
+                        background-repeat: no-repeat;
+                        background-position: right 0.7em top 50%, 0px 0px;
+                    }
+
+                }
+            }
+
+            .cart_group {
+                .cart_item {
+                    .product-image {
+                        img {
+                            width: 80px;
+                            height: 60px;
+                        }
+                    }
+
+                    .product-price {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        .payment_list{
+            border-top: 2px dashed #eaeaea;
+
+            ul:last-child {
+                border-top: 1px solid #eaeaea;
+            }
+
+            }
+            ul {
+                padding: 10px 0;
+                display: flex;
+                justify-content: space-between;
+
+                li {
+                    padding: 0 20px;
+                    padding-top: 10px;
+                    font-weight: bold;
+
+
+                    .points_yellow {
+                        color: $yellow;
+                        font-weight: bold;
+                        font-size: 16px;
+
+                        img {
+                            width: 16px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .cart_footer_right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: right;
+        font-size: 14px;
+        color: #666;
+
+        .cart_total {
+            span {
+                h4 {
+                    display: inline-block;
+                    color: $blue;
+                    font-weight: bold;
+                }
+            }
+
+            .points_yellow {
+                color: $yellow;
+                font-weight: bold;
+                font-size: 16px;
+
+                img {
+                    width: 16px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .blueBtn {
+        margin-left: 20px;
+        box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+    }

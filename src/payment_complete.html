@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車 - Weeee!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body style="background-color:#f5f5f5;">
+
+    @@include('layout/header.html')
+    <div class="shoppingcart_wrapper wrapper payment_complete">
+        <div class="container">
+            <div class="cart_breadcrumb hb">
+                <ol>
+                    <li>購物車</li>
+                    <li>填寫資料與付款</li>
+                    <li>訂購完成</li>
+                </ol>
+            </div>
+
+
+            <section class="payment_check shoppingcart" style="padding-bottom: 20px;">
+                <div class="payment_complete">
+                    <img src="img/otherpage/check_circle.svg" alt="">
+                    <span>
+                        <p>訂購完成</p>
+                        <p>憑證及訂單明細將寄至：happy123@gmail.com</p>
+                    </span>
+                </div>
+                <div class="payment">
+                    <div class="payment_item">
+                        <!-- <div class="payment_item_header">
+                            <h5>訂單編號#1212121212</h5>
+                        </div> -->
+                        <div class="payment_item_buyer">
+                            <div class="payment_item_header">
+                                <h5>訂單編號#1212121212</h5>
+                            </div>
+                            <div class="cart_group">
+                                <div class="cart_item">
+                                    <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg"
+                                            alt=""></a>
+                                    <div class="product-name">
+                                        <a href="">
+                                            <h6>有得逛有得買，就在桃園</h6>
+                                        </a>
+                                    </div>
+                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                    <div class="product-price">
+                                        <h6>TWD 3,475</h6>
+                                    </div>
+                                </div>
+
+                                <div class="cart_item">
+                                    <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg"
+                                            alt=""></a>
+                                    <div class="product-name">
+                                        <a href="">
+                                            <h6>有得逛有得買，就在桃園</h6>
+                                        </a>
+                                    </div>
+                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                    <div class="product-price">
+                                        <h6>TWD 3,475</h6>
+                                    </div>
+                                </div>
+
+                                <div class="cart_item">
+                                    <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg"
+                                            alt=""></a>
+                                    <div class="product-name">
+                                        <a href="">
+                                            <h6>有得逛有得買，就在桃園</h6>
+                                        </a>
+                                    </div>
+                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                    <div class="product-price">
+                                        <h6>TWD 3,475</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment_list">
+                            <ul>
+                                <li>小計</li>
+                                <li>
+                                    <h6>TWD 2,100</h6>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>Weeee! Points 折抵</li>
+                                <li>
+                                    <h6>-TWD 420</h6>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>付款金額</li>
+                                <li>
+                                    <h5 style="color: #4484ce;">TWD 1,680</h5>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>訂單完成後回饋</li>
+                                <li><span class="points_yellow">
+                                        <img src="img/otherpage/Weeee!Points_yellow.svg" alt="">36</li>
+                            </ul>
+                        </div>
+                        <div class="payment_list_points">
+                            <h6 style="text-align: right; font-size: 14px; padding-right: 20px;"><span>至</span><a
+                                    href="" style="color: #4484ce;"> Ｗeeee! Points </a><span>查看回饋詳情</span></h6>
+                        </div>
+                    </div>
+            </section>
+            <section class="most_buy">
+                <h5 class="ttoc">多數旅客還買了以下商品</h5>
+
+                <div class="product-list">
+                    <a class="product-card">
+                        <i class="fa-regular fa-heart"></i>
+                        <div class="product-card__location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p class="p__location">桃園</p>
+                        </div>
+                        <div class="product-card__top">
+                            <div class="product-card__top__pic">
+                                <img src="./img/sightseeing/fr_28_1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="product-card__bottom">
+                            <span class="product-tag">朋友行程</span>
+                            <h6 class="product-name">有得逛有得買，就在桃園</h6>
+                            <span class="gray"><i class="fa-solid fa-star"></i>4.4(44325) |
+                                <span class="product-bought">590K+</span>個已訂購
+                            </span>
+                            <span class="price">TWD <span class="product-price">550</span>元</span>
+                        </div>
+                    </a>
+
+                    <a class="product-card">
+                        <i class="fa-regular fa-heart"></i>
+                        <div class="product-card__location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p class="p__location">新北</p>
+                        </div>
+                        <div class="product-card__top">
+                            <div class="product-card__top__pic">
+                                <img src="./img/sightseeing/fr_27_1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="product-card__bottom">
+                            <span class="product-tag">朋友行程</span>
+                            <h6 class="product-name">新北的山，新北的海，水啦</h6>
+                            <span class="gray"><i class="fa-solid fa-star"></i>4.4(44325) |
+                                <span class="product-bought">590K+</span>個已訂購
+                            </span>
+                            <span class="price">TWD <span class="product-price">400</span>元</span>
+                        </div>
+                    </a>
+
+                    <a class="product-card">
+                        <i class="fa-regular fa-heart"></i>
+                        <div class="product-card__location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p class="p__location">金門</p>
+                        </div>
+                        <div class="product-card__top">
+                            <div class="product-card__top__pic">
+                                <img src="./img/sightseeing/fr_3_1.jpg" alt="" />
+                            </div>
+                        </div>
+                        <div class="product-card__bottom">
+                            <span class="product-tag">朋友行程</span>
+                            <h6 class="product-name">金門二日遊</h6>
+                            <span class="gray"><i class="fa-solid fa-star"></i>4.4(44325) |
+                                <span class="product-bought">590K+</span>個已訂購
+                            </span>
+                            <span class="price">TWD <span class="product-price">550</span>元</span>
+                        </div>
+                    </a>
+                </div>
+        </div>
+        </section>
+    </div>
+    </div>
+    @@include('layout/footer.html')
+</body>
+
+</html>
