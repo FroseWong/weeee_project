@@ -1,0 +1,51 @@
+.payment_complete{
+    .payment_check {
+        margin-bottom: 20px;
+        .payment_complete {
+            display: flex;
+            width: 65%;
+            margin: 0 auto;
+            
+    
+            span {
+                margin-left: 20px;
+                margin-top: 10px;
+            }
+        }
+    
+    
+        .payment {
+            border-radius: 10px;
+    
+    
+            .payment_item {
+                .payment_item_buyer{
+                    border-radius: 10px;
+                    box-shadow: 0 8px 20px 0 rgb(0 0 0 / 10%);
+    
+                }
+                .payment_item_header {
+                    h5 {
+                        color: #666;
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                }
+    
+            }
+    
+        }
+    
+        
+    }
+    .cart_breadcrumb {
+        ol {
+            li:first-child{
+                font-weight: normal;
+            }
+
+        }
+    }
+    
+    
+}
