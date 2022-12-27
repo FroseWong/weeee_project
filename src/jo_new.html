@@ -91,6 +91,7 @@
                 type="number"
                 id="jo__number"
                 placeholder="請輸入揪團人數"
+                min="1"
               />
               <label for="jo__start-date" class="jo__start-date"
                 >揪團日期 <em class="em">*</em></label
@@ -106,6 +107,7 @@
                 type="text"
                 name="useweeee"
                 placeholder="請選擇行程"
+                class="useweeee-input"
               />
 
               <datalist id="useweeee">
@@ -121,10 +123,12 @@
           </div>
           <div class="bottom">
             <button class="yellowBtn previewBtn">預覽</button>
+            <button class="yellowBtn testBtn">測試</button>
           </div>
         </div>
       </div>
       @@include('layout/footer.html')
     </div>
+    <script src="./js/jo_new.js"></script>
   </body>
 </html>
