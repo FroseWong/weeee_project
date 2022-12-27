@@ -128,6 +128,7 @@
         font-size: $pc_h6;
         color: $black;
         font-weight: bold;
+        padding-left: 5px;
         cursor: pointer;
       }
       background-color: $white;
@@ -135,7 +136,7 @@
       height: 200px;
       position: sticky;
       top: 270px;
-      padding: 20px;
+      padding: 5px;
       float: right;
       color: $gray;
       display: flex;
