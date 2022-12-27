@@ -16,6 +16,8 @@
 </head>
 
 <body>
+  @@include('layout/header.html')
+x
     <div class="wrapper" id="app">
         <!-- <header class="productdetail__header"></header> -->
         <div class="headerpage"></div>
@@ -103,65 +105,78 @@
                 return {
                     cardlist: [
                         {
-                            src: "img/otherpage/",
-                            title: '新北兒童美術館 ',
-                            label: '家庭行程',
-                            content: '新北舉辦兒童美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            src: "img/otherpage/ar_9_1.jpg",
+                            title: '新北美術館 ',
+                            label: '美術館',
+                            content: '新北舉辦美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 1000,
-                            price: 6450,
+                            price: 550,
                             city: '新北',
                             cardid: 1,
                         },
                         {
-                            src: "img/sightseeing_family/sightseeing_family_sandbeach2.jpg",
-                            title: '基隆港煙火 情侶行程',
-                            label: '家庭行程',
-                            content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            src: "img//otherpage/ar_10_1.jpg",
+                            title: '基隆美術館',
+                            label: '美術館',
+                            content: '這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 50,
-                            price: 5500,
+                            price: 550,
                             city: '基隆',
                             cardid: 2,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_sandbeach3.jpg",
-                            title: '台北港煙火 情侶行程',
-                            label: '寵物行程',
-                            content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            src: "img//otherpage/th_6_1.jpg",
+                            title: '動漫主題樂園',
+                            label: '主題樂園',
+                            content: '台北首家以動漫人氣冠軍「動畫間諜扮演」為主題的兒童成長樂園。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 350,
-                            price: 2250,
-                            city: '台北',
+                            price: 550,
+                            city: '新北',
                             cardid: 3,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_beach2.jpg",
-                            title: '台北港煙火 情侶行程',
-                            label: '情侶行程',
-                            content: '台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            src: "img//otherpage/aq_8_1.jpg",
+                            title: '基隆海洋水族館',
+                            label: '水族館',
+                            content: '新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 1750,
-                            price: 1450,
+                            price: 450,
                             city: '台北',
                             cardid: 4,
                         },
                         {
-                            src: "/src/img/sightseeing_family/sightseeing_family_beach3.jpg",
-                            title: '基隆港煙火 情侶行程',
-                            label: '朋友行程',
-                            content: '基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            src: "img//otherpage/aq_7_2.jpg",
+                            title: '海洋水族館',
+                            label: '水族館',
+                            content: '新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 150,
                             price: 450,
-                            city: '基隆',
+                            city: '台北',
                             cardid: 5,
                         },
+                        {
+                            src: "img//otherpage/mu_11_1.jpg",
+                            title: '兒童卡通博物館',
+                            label: '博物館',
+                            content: '博物館的蒐藏以藝術為主要收藏方向，總計展出約四千多件藏品，約整體蒐藏的三分之一。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 150,
+                            price: 550,
+                            city: '台北',
+                            cardid: 6,
+                        }
+
                     ],
                     prices: [],
 
@@ -229,5 +244,5 @@
         }).mount('#app')
     </script>
 </body>
-
+@@include('layout/footer.html')
 </html>
