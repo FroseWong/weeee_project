@@ -13,6 +13,11 @@
   //   padding-top: 60px;
   //   box-sizing: border-box;
   // }
+  textarea:focus,
+  input:focus,
+  select:focus {
+    outline: none;
+  }
 
   .jo_new__title {
     margin-bottom: 30px;
@@ -50,6 +55,7 @@
       padding-top: 0px;
       margin-bottom: 50px;
       color: $gray;
+
       label {
         margin-bottom: 10px;
         // padding-left: 10px;
@@ -59,6 +65,8 @@
       select {
         margin-bottom: 20px;
         padding-left: 10px;
+        // outline: none;
+        // border: none;
       }
 
       textarea {

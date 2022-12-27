@@ -1,23 +1,23 @@
 .jo_detail {
   background-color: #f4f4f4;
-  header {
-    height: 165px;
-    width: 100%;
-    background-color: $gray;
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-size: 40px;
-    color: $white;
-    text-align: center;
-    padding-top: 60px;
-    box-sizing: border-box;
-    z-index: 30;
-    // color: $blue;
-  }
+  // header {
+  //   height: 165px;
+  //   width: 100%;
+  //   background-color: $gray;
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   font-size: 40px;
+  //   color: $white;
+  //   text-align: center;
+  //   padding-top: 60px;
+  //   box-sizing: border-box;
+  //   z-index: 30;
+  //   // color: $blue;
+  // }
   .jo__title {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     // padding-top: 215px;
     font-weight: bold;
   }
@@ -26,7 +26,7 @@
     height: 300px;
     background-image: url("../img/jo/jo_wanttoseefish.jpg");
     border-radius: 10px;
-    margin-bottom: 75px;
+    margin-bottom: 60px;
     background-position: center center;
   }
 
@@ -35,17 +35,17 @@
     background-color: $white;
     padding: 20px 30px;
     border-radius: 10px;
-    margin-bottom: 75px;
+    margin-bottom: 50px;
   }
   .jo-leader {
     padding: 30px 10px;
     background-color: $white;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
     border-radius: 10px;
     .jo-leader__top {
       display: flex;
       //   justify-content: space-between;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
       .jo-leader__top__left {
         // border: 1px solid red;
         flex-grow: 1;
@@ -118,7 +118,7 @@
   .useweeee__title {
     display: flex;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
     &::before {
       content: "";
       display: inline-block;
@@ -136,14 +136,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 70px;
+    margin-bottom: 35px;
     border-radius: 10px;
   }
 
   .saysomething__title {
     display: flex;
     align-items: center;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
     &::before {
       content: "";
       display: inline-block;
@@ -164,12 +164,12 @@
     box-sizing: border-box;
     border: none;
     outline: 1px solid $gray;
-    margin-bottom: 70px;
+    margin-bottom: 45px;
   }
 
   .saysomething__send {
     display: block;
-    margin: 0 auto 100px;
+    margin: 0 auto 70px;
   }
 
   .jo__comment__list {
