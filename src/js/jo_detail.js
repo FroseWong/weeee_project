@@ -7,7 +7,7 @@ const jo__comment__list = document.querySelector(".jo__comment__list");
 $(".contact-leader").on("click", function () {
   console.log("hi");
 
-  $(".contact-detail").toggle(3000);
+  $(".contact-detail").toggle(1000);
 });
 
 saysomething__sendBtn.addEventListener("click", function () {

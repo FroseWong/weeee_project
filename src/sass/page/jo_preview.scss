@@ -15,6 +15,12 @@
   //     z-index: 30;
   // color: $blue;
   //   }
+
+  .jo_container {
+    margin: 0 auto;
+    width: 1000px;
+  }
+
   .jo__title {
     text-align: center;
     margin-bottom: 20px;
@@ -207,8 +213,6 @@
         }
         .member-name {
           margin-right: 35px;
-        }
-        .member-leavetime {
         }
       }
     }

@@ -40,6 +40,7 @@
   // 每個頁面的最外層
   line-height: 1.6;
   font-size: $default_fz;
+  font-family: Microsoft JhengHei;
 }
 
 .container {
@@ -164,4 +165,10 @@ a {
 
 .em {
   color: #e61f6e;
+}
+
+input,
+textarea,
+select:focus {
+  outline: none;
 }

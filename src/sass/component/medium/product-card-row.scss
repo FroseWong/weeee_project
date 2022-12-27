@@ -12,12 +12,15 @@
   align-items: flex-start;
   color: $black;
   outline: 1px solid $gray;
+  border-radius: 10px;
+  overflow: hidden;
   .product-card-row__left {
     width: 270px;
     height: 250px;
     // background-color: aqua;
     background-image: url("../img/jo/jo_aquarium.jpg");
     background-size: cover;
+    // border-radius: 10px;
   }
   .product-card-row__right {
     width: 540px;

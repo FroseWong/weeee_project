@@ -6,6 +6,7 @@ $color: (
   "l_gray": #d9d9d9,
   "white": #ffffff,
   "black": #000000,
+  "ll_gray": #f4f4f4,
 );
 
 $blue: map-get($color, "buy_primary");
@@ -15,3 +16,4 @@ $gray: map-get($color, "gray");
 $l_gray: map-get($color, "l_gray");
 $white: map-get($color, "white");
 $black: map-get($color, "black");
+$ll_gray: map-get($color, "ll_gray");
