@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂購 - Weeee!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body style="background-color:#f5f5f5;">
+    <header>
+        <div class="header_wrapper">
+
+            <div class="header_top container">
+
+                <ul class="header_top_left">
+                    <li>
+                        <a href="../index.html"><img src="../img/otherpage/Weeee!.svg" alt=""></a>
+                    </li>
+                </ul>
+                <ul class="header_top_right">
+
+                    <li>
+                        <a href="../login.html"><i class="fa-solid fa-user"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="shoppingcart_wrapper wrapper">
+        <div class="container">
+            <section class="payment">
+                <div class="cart_breadcrumb hb">
+                    <ol>
+                        <li>購物車</li>
+                        <li>填寫資料與付款</li>
+                        <li>訂購完成</li>
+                    </ol>
+                </div>
+
+                <!-- payment_buyer -->
+                <div class="payment_item">
+                    <div class="payment_item_header">
+                        <i class="fa fa-angle-right expand-icon"></i>
+                        <h5>訂購人資料</h5>
+                    </div>
+                    <div class="payment_item_buyer">
+                        <div class="buyer_row">
+                            <div class="buyer_row_col">
+                                <label for="">名字<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="例：品元">
+                            </div>
+                            <div class="buyer_row_col">
+                                <label for="">姓氏<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="例：陳">
+                            </div>
+                        </div>
+                        <div class="buyer_row">
+                            <div class="buyer_row_col">
+                                <label for="">國家/地區<span class="text-danger">*</span></label>
+                                <select name="" id="" placeholder="請選擇">
+                                    <option value="" disabled="disabled">請選擇</option>
+                                    <option value="">台灣</option>
+                                    <option value="">日本</option>
+                                    <option value="">韓國</option>
+                                    <option value="">泰國</option>
+                                    <option value="">美國</option>
+                                    <option value="">英國</option>
+                                </select>
+                            </div>
+                            <div class="buyer_row_col">
+                                <label for="">聯絡電話<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="請輸入聯絡電話">
+                            </div>
+                        </div>
+
+                        <div class="buyer_row">
+                            <div class="buyer_row_col">
+                                <label for="">電子郵件信箱<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="請輸入常用電子郵件信箱">
+                            </div>
+                        </div>
+                        <div class="buyer_row">
+                            <div class="checkall"><label for="checkall"><input type="checkbox"
+                                        name="checkall">同會員資料</label></div>
+                        </div>
+                        <div class="buyer_row">
+                            <a href="" class="blueBtn">繼續</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- payment_points -->
+                <div class="payment_item">
+                    <div class="payment_item_header">
+                        <div class="checkall"><label for="checkall"><input type="checkbox" name="checkall"></label>
+                        </div>
+                        <h5>我要使用 Weeee! Points
+                        </h5>
+                    </div>
+                    <div class="payment_item_buyer">
+
+                        <div class="buyer_row">
+                            <ul>
+                                Weeee! Points 440 折抵 TWD440 <br><br>
+                                注意事項<br>
+                                常態性可折抵訂單價格的 20%，實際折抵金額依結帳頁面顯示為準
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- payment_creditcard -->
+                <div class="payment_item">
+                    <div class="payment_item_header">
+                        <i class="fa fa-angle-right expand-icon"></i>
+                        <h5>信用卡/簽帳金融卡付款</h5>
+                        <span>
+                            <img src="../img/otherpage/visa.svg" alt="" />
+                            <img src="../img/otherpage/mastercard.svg" alt="" />
+                            <img src="../img/otherpage/jcb.svg" alt="" />
+                            <img src="../img/otherpage/ae.svg" alt="" />
+                        </span>
+                    </div>
+                    <div class="payment_item_buyer">
+                        <div class="buyer_row">
+                            <div class="buyer_row_col">
+                                <label for="">信用卡號碼<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="oooo oooo oooo oooo">
+                            </div>
+                            <div class="buyer_row_col">
+                                <label for="">有效期限<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="MM / YY">
+                            </div>
+                            <div class="buyer_row_col">
+                                <label for="">背面末3碼<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="CVC/CVV">
+                            </div>
+                        </div>
+                        <div class="buyer_row">
+                            <div class="buyer_row_col" style="color: #666;">
+                                請注意本平台不會向您收取任何平台交易手續費，但你下單時使用的信用卡可能會向您收取相關手續費，
+                                請參考其相關服務政策和規定，並向你所選的交易服務商取得更多資訊。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- payment_invoice -->
+                <div class="payment_item">
+                    <div class="payment_item_header">
+                        <i class="fa fa-angle-right expand-icon"></i>
+                        <h5>電子發票、收據
+                        </h5>
+                    </div>
+                    <div class="payment_item_buyer">
+                        <div class="buyer_row">
+                            <div class="buyer_row_col">
+                                <label for="">旅行業代收轉付電子收據</label>
+                                <select name="" id="" placeholder="請選擇">
+                                    <option value="">寄至訂購人E-mail</option>
+                                    <option value="">開立統編/抬頭</option>
+                                </select>
+                            </div>
+                            <div class="buyer_row_col">
+                                <label for="">寄送信箱</label>
+                                <input type="text" placeholder="abc123@gmail.com" disabled="disabled"
+                                    style="background-color: #f4f4f4;">
+                            </div>
+                        </div>
+                        <div class="buyer_row">
+                            <div class="buyer_row_col">
+                                <label for="">統一編號<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="請輸入統一編號">
+                            </div>
+                            <div class="buyer_row_col">
+                                <label for="">抬頭(買受人)<span class="text-danger">*</span></label>
+                                <input type="text" placeholder="請輸入公司名稱(抬頭)">
+                            </div>
+                        </div>
+                        <div class="buyer_row">
+                            <ul>
+                                <li>有得逛有得買，就在桃園</li>
+                                <li>新北的山，新北的海，水啦</li>
+                                <li>金門二日遊</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- payment_list -->
+
+                <div class="payment_item">
+                    <div class="payment_item_header">
+                        <i class="fa fa-angle-right expand-icon"></i>
+                        <h5>付款明細
+                        </h5>
+                    </div>
+                    <div class="payment_item_buyer">
+                        <div class="cart_group">
+                            <div class="cart_item">
+                                <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg"
+                                        alt=""></a>
+                                <div class="product-name">
+                                    <a href="">
+                                        <h6>有得逛有得買，就在桃園</h6>
+                                    </a>
+                                </div>
+                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                <div class="product-price">
+                                    <h6>TWD 3,475</h6>
+                                </div>
+                            </div>
+
+                            <div class="cart_item">
+                                <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg"
+                                        alt=""></a>
+                                <div class="product-name">
+                                    <a href="">
+                                        <h6>有得逛有得買，就在桃園</h6>
+                                    </a>
+                                </div>
+                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                <div class="product-price">
+                                    <h6>TWD 3,475</h6>
+                                </div>
+                            </div>
+
+                            <div class="cart_item">
+                                <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg"
+                                        alt=""></a>
+                                <div class="product-name">
+                                    <a href="">
+                                        <h6>有得逛有得買，就在桃園</h6>
+                                    </a>
+                                </div>
+                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                <div class="product-price">
+                                    <h6>TWD 3,475</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment_list">
+                        <ul class="payment_list_row">
+                            <li>小計</li>
+                            <li>
+                                <h6>TWD 2,100</h6>
+                            </li>
+                        </ul>
+                        <ul class="payment_list_row">
+                            <li>Weeee! Points 折抵</li>
+                            <li>
+                                <h6>-TWD 420</h6>
+                            </li>
+                        </ul>
+                        <ul class="payment_list_row">
+                            <li>支付金額</li>
+                            <li>
+                                <h5 style="color: #4484ce;">TWD 1,680</h5>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>訂單完成後回饋</li>
+                            <li><span class="points_yellow">
+                                    <img src="img/otherpage/Weeee!Points_yellow.svg" alt="">36</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- payment_confirm -->
+
+                <div class="payment_item">
+                    <div class="cart_footer_right">
+                        <div class="cart_total">
+                            <div>
+                                <span> 2 件商品合計</span>
+                                <span>
+                                    <h4>TWD 1,100</h4>
+                                </span>
+                            </div>
+                            <div>
+                                <span>您可獲得 Weeee! Points</span>
+                                <span class="points_yellow">
+                                    <img src="img/otherpage/Weeee!Points_yellow.svg" alt="">36
+                                </span>
+                            </div>
+                        </div>
+                        <a href="payment_complete.html" class="blueBtn">確認付款</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer class="ftoc">
+
+        <div class="footer_tibame">
+            <p>
+                本網站為緯育TibaMe前端工程師班第80期學員專題作品，本平台僅供學習、展示之用。參考資源：KKday
+                、Klook
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>

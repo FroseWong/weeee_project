@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 58 (101010) - https://sketch.com -->
+    <title>59304674-AFC4-4015-83E1-19854A804D0D</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M1.46852129,0.914348393 C1.14507483,0.655591232 0.673105554,0.708032263 0.414348393,1.03147871 C0.155591232,1.35492517 0.208032263,1.82689445 0.531478714,2.08565161 L5.53147871,6.08565161 C5.8053927,6.3047828 6.1946073,6.3047828 6.46852129,6.08565161 L11.4685213,2.08565161 C11.7919677,1.82689445 11.8444088,1.35492517 11.5856516,1.03147871 C11.3268944,0.708032263 10.8549252,0.655591232 10.5314787,0.914348393 L6,4.53953136 L1.46852129,0.914348393 Z" id="path-1"></path>
+    </defs>
+    <g id="Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-47.000000, -592.000000)" id="ic_20x20_dropdown_arrow">
+            <g transform="translate(47.000000, 591.000000)">
+                <g id="Glyphs/Action/Arrow-Gray">
+                    <g id="Color" transform="translate(4.000000, 7.500000)">
+                        <g>
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <use id="Path-3" fill="#979797" fill-rule="nonzero" xlink:href="#path-1"></use>
+                            <g id="Color/Grey-700" mask="url(#mask-2)" fill="#4A4A4A">
+                                <g transform="translate(-4.000000, -6.000000)" id="Rectangle">
+                                    <rect x="0" y="0" width="20" height="20"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

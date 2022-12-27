@@ -1,0 +1,54 @@
+.account_point{
+    
+    .w_yellow{
+        background-color: $yellow;
+        color: $white;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+       display: block;
+        line-height: 25px;
+        text-align: center;
+        margin-left: 20px;
+        margin-right: 15px;
+       margin-top: 3px;
+    }
+    .w_point{
+        display: flex;
+        margin: 20px auto 10px auto;
+    }
+
+    .point_count{
+        color: $yellow;
+        font-size: 135%;
+        font-weight: 600;
+    }
+
+    .how_use{
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+  
+    .points{
+        background-color: $white;
+        border-radius: 10px;
+        padding: 30px;
+        
+    }
+
+    .how_use_rule{
+        display: flex;
+    }
+
+    .pointer_right{
+        font-size: 20px;
+       margin-right: 20px;
+    }
+
+    .rule{
+        line-height: 2;
+    }
+    
+    
+
+}

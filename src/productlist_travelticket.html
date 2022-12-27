@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+
+<body> 
+    @@include('layout/header.html')
+
+    <div class="wrapper" id="app">
+        <header class="productdetail__header"></header> 
+        <div class="headerpage"></div>
+        <div class="about2__main">
+            <div class="about2_title">
+                <h1>1200</h1>
+                <h2>個項目</h2>
+            </div>
+            <div class="about2__barcard">
+                <div class="container about2__bar">
+                    <div class="about2__sort">
+                        <h4>排序</h4>
+                        <ul>
+                            <li @click="filterOrder">熱門程度</li>
+                            <li @click="filterPrice">價格低到高</li>
+                        </ul>
+                    </div>
+                    <div class="about2__category">
+                        <h4>門票分類</h4>
+
+                        
+                        <ul>
+                            <li><input type="checkbox" name="" id="">&emsp;主題樂園 </li>
+                            <li><input type="checkbox" name="" id="">&emsp;水族館 </li>
+                            <li><input type="checkbox" name="" id="">&emsp;博物館</li>
+                            <li><input type="checkbox" name="" id="">&emsp;美術館</li>
+                        </ul>
+                    </div>
+                    <div class="about2__destination">
+                        <h4>目的地</h4>
+                        <span @click="open_city" class="about2__open">台灣
+                          
+                                <i  class="fa-solid fa-circle-chevron-down"></i></span>
+                        <ul class="about2__city about2__block">
+                            <li @click="filterCity">基隆</li>
+                            <li @click="filterCity">台北</li>
+                            <li @click="filterCity">新北</li>
+                        </ul>
+                    </div>
+                    <div class="about2__price">
+                        <h4>價格</h4>
+                        <ul>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 2,000~3,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 4,000~5,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 6,000~7,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 8,000~9,999</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about2__card">
+                    <div class="about2__card--group" v-for="card in cardlist" :id="card.cardid">
+                        <div class="about2__card--img">
+                            <img :src="card.src" alt="">
+                        </div>
+                        <div class="about2__card--title">
+                            <h1>{{card.title}}</h1>
+                            <h2>{{card.label}}</h2>
+                            <h1>{{card.content}}</h1>
+                            <div>
+                                <h3>★</h3>
+                                <h4>{{card.score}}{{card.scorepeople}}</h4>
+                                <h4>｜{{card.order}}個已訂購</h4>
+                                <h5>TWD {{card.price}}元</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="footerpage"></div>
+    </div>
+    <script src="vue/vue.global.prod.js"></script>
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    cardlist: [
+                        {
+                            src: "img/otherpage/cl_8_1.jpg",
+                            title: '經典暢遊卡 ',
+                            label: '經典暢遊卡',
+                            content: '漫遊台北城的最佳工具，帶來旅行台北的最佳體驗。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 1000,
+                            price: 650,
+                            city: '北北基',
+                            cardid: 1,
+                        },
+                        {
+                            src: "img//otherpage/un_2_1.jpg",
+                            title: '無限暢遊卡二日遊',
+                            label: '無限暢遊卡',
+                            content: '只要一張無限暢遊卡，就能暢遊 25 個台北市、新北市與基隆市的熱門景點',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 50,
+                            price: 500,
+                            city: '北北基',
+                            cardid: 2,
+                        },
+                        {
+                            src: "img//otherpage/un_7_1.jpg",
+                            title: '無限暢遊卡三日遊',
+                            label: '無限暢遊卡',
+                            content: '只要一張無限暢遊卡，就能暢遊 25 個台北市、新北市與基隆市的熱門景點',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 350,
+                            price: 850,
+                            city: '北北基',
+                            cardid: 3,
+                        },
+                        {
+                            src: "img//otherpage/vi_3_1.jpg",
+                            title: '景點暢遊卡二日遊',
+                            label: '景點暢遊卡',
+                            content: '讓旅遊比你想的更輕鬆無負擔,內含北北基23個景點門票及「快樂的旅人」。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 1750,
+                            price: 600,
+                            city: '北北基',
+                            cardid: 4,
+                        },
+                        {
+                            src: "img//otherpage/tr_5_1.jpg",
+                            title: '交通暢遊卡二日遊',
+                            label: '交通暢遊卡',
+                            content: '可在效期內不限次數搭乘台北捷運。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 150,
+                            price: 600,
+                            city: '北北基',
+                            cardid: 5,
+                        },
+                        {
+                            src: "img//otherpage/tr_6_1.jpg",
+                            title: '交通暢遊卡三日遊',
+                            label: '交通暢遊卡',
+                            content: '可在效期內不限次數搭乘台北捷運。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 150,
+                            price: 850,
+                            city: '北北基',
+                            cardid: 6,
+                        }
+                    ],
+                    prices: [],
+
+                }
+            },
+            methods: {
+                open_city() {
+                    let city = document.getElementsByClassName('about2__city')[0].classList;
+                    let fa = document.getElementsByClassName('fa-solid')[0];
+                    if (city.contains('about2__block')) {
+                        city.remove('about2__block');
+                        city.add('about2__none');
+                        fa.classList.remove('fa-circle-chevron-down');
+                        fa.classList.add('fa-circle-chevron-up');
+                    }
+                    else {
+                        city.remove('about2__none');
+                        city.add('about2__block');
+                        fa.classList.remove('fa-circle-chevron-up');
+                        fa.classList.add('fa-circle-chevron-down');
+                    }
+                },
+                filterCity(e) {
+                    let path = e.path[0].textContent;
+                    let card = document.getElementsByClassName('about2__card--group')[0];
+                    for (j = 0; j < this.cardlist.length; j++) {
+                        document.getElementById(j + 1).style.display = 'flex';
+
+                    }
+                    for (i = 0; i < this.cardlist.length; i++) {
+                        if (path == this.cardlist[i].city) {
+                            let cardid = this.cardlist[i].cardid;
+                            document.getElementById(cardid).style.display = 'none';
+                        }
+                    }
+                },
+                filterPrice() {
+                    let arr = this.cardlist;
+                    const eitherSort = (arr = []) => {
+                        const sorter = (a, b) => {
+                            return +a.price - +b.price;
+                        };
+                        arr.sort(sorter);
+                    };
+                    eitherSort(arr);
+                    this.classList = arr;
+                },
+                filterOrder(){
+                    let arr = this.cardlist;
+                    const eitherSort = (arr = []) => {
+                        const sorter = (a, b) => {
+                            return +a.order - +b.order;
+                        };
+                        arr.sort(sorter);
+                    };
+                    eitherSort(arr);
+                    this.classList = arr;  
+                }
+            },
+
+            mounted() {
+                $(".headerpage").load("/src/layout/header.html");
+                $(".footerpage").load("/src/layout/footer.html");
+            }
+        }).mount('#app')
+    </script>
+</body>
+@@include('layout/footer.html')
+</html>

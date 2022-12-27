@@ -121,6 +121,10 @@ function movevue() {
   return src("src/vue/*.js").pipe(dest("dist/vue"));
 }
 
+function moveVender() {
+  return src("src/vender/**/*.*").pipe(dest("dist/vender"));
+}
+
 // 打包圖片
 function img() {
   return src("src/img/**/*.*").pipe(dest("dist/img"));
@@ -149,6 +153,7 @@ function watchfile() {
   watch("src/js/*.js", jsmini);
   watch(["src/img/*.*", "src/img/**/*.*"], img);
   watch(["src/vue/*.js"], movevue);
+  watch(["src/vue/**/*.*"], moveVender);
 }
 
 //瀏覽器同步
@@ -168,12 +173,13 @@ function browser(done) {
   watch("src/js/*.js", jsmini).on("change", reload);
   watch(["src/img/*.*", "src/img/**/*.*"], img).on("change", reload);
   watch(["src/vue/*.js"], movevue).on("change", reload);
+  watch(["src/vender/**/*.*"], moveVender).on("change", reload);
   done();
 }
 
 //開發用
 exports.default = series(
-  parallel(html, layout, movevue, sassStyle, jsmini, img),
+  parallel(html, layout, movevue, moveVender, sassStyle, jsmini, img),
   browser
 );
 
