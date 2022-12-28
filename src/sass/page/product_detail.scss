@@ -396,7 +396,7 @@
   li {
     background-color: $white;
     width: 35px;
-    height: 50px;
+   
   }
   .page__link--current {
     background-color: $blue;
@@ -465,7 +465,7 @@
 }
 .productdetail__header {
   height: 165px;
-  background-color: $gray;
+  // background-color: $gray;
   top: 0;
   position: sticky;
   z-index: 2;
