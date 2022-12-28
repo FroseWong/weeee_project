@@ -24,11 +24,23 @@
             </ol>
         </nav>
         <div class="container">
-            <div class="carousel">
-                <img v-for="carousel in carousels" :src=carousel.src alt="" :id=carousel.id @click="test">
-                <div class="carouselBtn">
-                    <li v-for="(item,index) in 3"><button :id=`btn${index+1}` @click="carouselBtn"></button></li>
-                </div>
+            <div class="slideshow-container">
+                <a href="#" v-for="carousel in carousels">
+                    <div class="mySlides fade">
+                        <img :src="carousel.src" alt="">
+                        <!-- <img :src="carousel.src" alt=""> -->
+                        <!-- <img :src="carousel.src" alt=""> -->
+                    </div>
+                </a>
+                <!-- Next and previous buttons -->
+                <a class="prev" @click="plusSlides(-1)">&#10094;</a>
+                <a class="next" @click="plusSlides(1)">&#10095;</a>
+            </div>
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot" @click="currentSlide(1)"></span>
+                <span class="dot" @click="currentSlide(2)"></span>
+                <span class="dot" @click="currentSlide(3)"></span>
             </div>
         </div>
         <div class="container">
@@ -322,18 +334,19 @@
                         stars: '★★★★',
                         time: 2,
                     },
-                    carousels: [{
-                        src: "./img/sightseeing/fa_20_1.jpg",
-                        id: 'img1'
-                    },
-                    {
-                        src: "./img/sightseeing/fa_20_2.jpg",
-                        id: 'img2'
-                    },
-                    {
-                        src: "./img/sightseeing/fa_20_3.jpg",
-                        id: 'img3'
-                    }
+                    carousels: [
+                        {
+                            // href: "./shopAccessories.html",
+                            src: '/img/sightseeing/fa_19_1.jpg'
+                        },
+                        {
+                            // href: "./shopBag.html",
+                            src: '/img/sightseeing/fa_19_2.jpg'
+                        },
+                        {
+                            // href: "./shopNewproduct.html",
+                            src: '/img/sightseeing/fa_19_3.jpg'
+                        },
                     ],
                     count: {
                         count1: 3,
@@ -345,6 +358,10 @@
                         count2: 2,
                         count3: 3,
                     },
+                    slideIndex: 1,
+                    img1:'/img/sightseeing/fa_19_2.jpg',
+                    img2:'/img/sightseeing/fa_19_3.jpg',
+
                 }
             },
             methods: {
@@ -442,51 +459,51 @@
                             pa.color = weblack;
                             pv.color = weblack;
                             pd.color = weblack;
-                            pd.borderLeft='0'
-                            pv.borderLeft='0'
-                            pa.borderLeft='0'
-                            pn.borderLeft='0'
-                
+                            pd.borderLeft = '0'
+                            pv.borderLeft = '0'
+                            pa.borderLeft = '0'
+                            pn.borderLeft = '0'
+
                         }
                         if (ScrollPosition >= 1106) {
                             pn.color = weblack;
                             pa.color = weblack;
                             pv.color = weblack;
                             pd.color = weblue;
-                            pd.borderLeft='3px solid #4484CE';
-                            pv.borderLeft='0';
-                            pa.borderLeft='0';
-                            pn.borderLeft='0';
+                            pd.borderLeft = '3px solid #4484CE';
+                            pv.borderLeft = '0';
+                            pa.borderLeft = '0';
+                            pn.borderLeft = '0';
                         }
                         if (ScrollPosition >= 3332) {
                             pa.color = weblack;
                             pv.color = weblack;
                             pd.color = weblack;
                             pn.color = weblue;
-                            pn.borderLeft='3px solid #4484CE';
-                            pd.borderLeft='0';
-                            pv.borderLeft='0';
-                            pa.borderLeft='0';
+                            pn.borderLeft = '3px solid #4484CE';
+                            pd.borderLeft = '0';
+                            pv.borderLeft = '0';
+                            pa.borderLeft = '0';
                         }
                         if (ScrollPosition >= 4051) {
                             pn.color = weblack;
                             pv.color = weblack;
                             pd.color = weblack;
                             pa.color = weblue;
-                            pa.borderLeft='3px solid #4484CE';
-                            pd.borderLeft='0';
-                            pv.borderLeft='0';
-                            pn.borderLeft='0';
+                            pa.borderLeft = '3px solid #4484CE';
+                            pd.borderLeft = '0';
+                            pv.borderLeft = '0';
+                            pn.borderLeft = '0';
                         }
                         if (ScrollPosition >= 4807) {
                             pn.color = weblack;
                             pa.color = weblack;
                             pd.color = weblack;
                             pv.color = weblue;
-                            pv.borderLeft='3px solid #4484CE';
-                            pd.borderLeft='0';
-                            pa.borderLeft='0';
-                            pn.borderLeft='0';
+                            pv.borderLeft = '3px solid #4484CE';
+                            pd.borderLeft = '0';
+                            pa.borderLeft = '0';
+                            pn.borderLeft = '0';
                         }
                         if (ScrollPosition >= num - 600) {
                             ff.style.display = 'none';
@@ -496,59 +513,31 @@
                         }
                     });
                 },
-                test(e) {
-                    if (this.count.count1 < 3) {
-                        this.count.count1++;
+                showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("dot");
+                    if (n > slides.length) { this.slideIndex = 1 }
+                    if (n < 1) { this.slideIndex = slides.length }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
                     }
-                    else {
-                        this.count.count1 = 1;
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
                     }
-                    if (this.count.count2 < 3) {
-                        this.count.count2++;
-                    }
-                    else {
-                        this.count.count2 = 1;
-                    }
-                    if (this.count.count3 < 3) {
-                        this.count.count3++;
-                    }
-                    else {
-                        this.count.count3 = 1;
-                    }
-                    this.carousels[0].src = `./img/sightseeing/fa_20_${this.count.count1}.jpg`;
-                    this.carousels[1].src = `./img/sightseeing/fa_20_${this.count.count2}.jpg`;
-                    this.carousels[2].src = `./img/sightseeing/fa_20_${this.count.count3}.jpg`;
-
+                    slides[this.slideIndex - 1].style.display = "block";
+                    dots[this.slideIndex - 1].className += " active";
                 },
-                carouselBtn(e) {
-
-                    let left = document.getElementById('img1');
-                    let mid = document.getElementById('img2');
-                    let right = document.getElementById('img3');
-
-                    if (e.path[0].id == 'btn3') {
-                        right.style.backgroundColor = 'blue';
-
-                        mid.src = "./img/sightseeing/fa_20_3.jpg";
-                        left.src = "./img/sightseeing/fa_20_2.jpg";
-                        right.src = "./img/sightseeing/fa_20_1.jpg";
-                    }
-                    if (e.path[0].id == 'btn2') {
-                        mid.style.backgroundColor = 'blue';
-                        mid.src = "./img/sightseeing/fa_20_2.jpg";
-                        right.src = "./img/sightseeing/fa_20_3.jpg";
-                        left.src = "./img/sightseeing/fa_20_1.jpg";
-                    }
-                    if (e.path[0].id == 'btn1') {
-                        left.style.backgroundColor = 'blue';
-                        mid.src = "./img/sightseeing/fa_20_1.jpg";
-                        left.src = "./img/sightseeing/fa_20_3.jpg";
-                        right.src = "./img/sightseeing/fa_20_2.jpg";
-                    }
+                plusSlides(n) {
+                    this.showSlides(this.slideIndex += n);
                 },
+                currentSlide(n) {
+                    this.showSlides(this.slideIndex = n);
+                }
 
             },
             mounted() {
+                this.showSlides(this.slideIndex);
                 this.fieldMark();
             },
         }).mount('#app')
