@@ -48,6 +48,7 @@
                     </div>
                     <div class="about2__destination">
                         <h4>目的地</h4>
+                        
                         <span @click="open_city" class="about2__open">台灣
                           
                                 <i  class="fa-solid fa-circle-chevron-down"></i></span>
@@ -165,7 +166,7 @@
                             cardid: 5,
                         },
                         {
-                            src: "img//otherpage/tr_6_1.jpg",
+                            src: "img//otherpage/tr_6_3.jpg",
                             title: '交通暢遊卡三日遊',
                             label: '交通暢遊卡',
                             content: '可在效期內不限次數搭乘台北捷運。',
@@ -237,10 +238,31 @@
             },
 
             mounted() {
-                $(".headerpage").load("/src/layout/header.html");
-                $(".footerpage").load("/src/layout/footer.html");
+                // $(".headerpage").load("./layout/header.html");
+                // $(".footerpage").load("./layout/footer.html");
             }
         }).mount('#app')
+    </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+     integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+//         $(".about2__open").on("click",function(){
+//             // console.log('hi');
+//             // e.preventDefault();
+   
+//    $('.about2__block').slideToggle();
+     
+
+//         })
+        $(".about2__open").on("click",function(){
+          $('.about2__block').slideToggle();
+       } ) //jquery 開關程式碼
+      
+
+
+
     </script>
 </body>
 @@include('layout/footer.html')
