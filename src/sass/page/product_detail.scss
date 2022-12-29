@@ -350,40 +350,6 @@
     }
   }
 }
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0 80px 0;
-  li {
-    background-color: $white;
-    width: 35px;
-  }
-  .page__link--current {
-    background-color: $blue;
-    display: block;
-  }
-  .page-item {
-    border: 1px solid $gray;
-    text-align: center;
-    line-height: 30px;
-    display: block;
-    a {
-      font-weight: bold;
-      font-size: 14px;
-      display: block;
-    }
-  }
-  .page-link {
-    font-size: $pc_h6;
-    text-decoration: none;
-    &:visited,
-    &:active,
-    &:link,
-    &hover {
-      color: $black;
-    }
-  }
-}
 
 .productdetail__bot {
   background-color: #f4f4f4;
