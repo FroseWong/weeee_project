@@ -321,15 +321,12 @@
                     },
                     carousels: [
                         {
-                            // href: "./shopAccessories.html",
                             src: '/img/sightseeing/fa_19_1.jpg'
                         },
                         {
-                            // href: "./shopBag.html",
                             src: '/img/sightseeing/fa_19_2.jpg'
                         },
                         {
-                            // href: "./shopNewproduct.html",
                             src: '/img/sightseeing/fa_19_3.jpg'
                         },
                     ],
@@ -383,7 +380,7 @@
 
                 },
                 pd_check() {
-                    alert(404);
+                    // alert(404);
                 },
                 fieldClick(e) {
                     let directions = document.getElementsByClassName('productdetail__directions--group')[0].classList;
@@ -431,9 +428,13 @@
                     let ff = document.getElementsByClassName('productdetail__fixedfield2')[0];
                     let check = document.getElementsByClassName('productdetail__directions--group')[0].classList;
                     let tf = check.contains('productdetail__open');
+                    let directions = document.getElementsByClassName('productdetail__directions--group')[0].classList;
 
                     document.addEventListener('scroll', function (e) {
                         ScrollPosition = window.scrollY;
+                        if (directions.contains('productdetail__none')) {
+                            ScrollPosition = ScrollPosition + 2226;
+                        }
                         if (ScrollPosition <= 1106) {
                             pn.color = weblack;
                             pa.color = weblack;
@@ -443,7 +444,6 @@
                             pv.borderLeft = '0'
                             pa.borderLeft = '0'
                             pn.borderLeft = '0'
-
                         }
                         if (ScrollPosition >= 1106) {
                             pn.color = weblack;
@@ -454,6 +454,10 @@
                             pv.borderLeft = '0';
                             pa.borderLeft = '0';
                             pn.borderLeft = '0';
+                            if (directions.contains('productdetail__none') == true) {
+                                pd.color = weblack;
+                                pd.borderLeft = '0';
+                            }
                         }
                         if (ScrollPosition >= 3332) {
                             pa.color = weblack;
