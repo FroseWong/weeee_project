@@ -1,9 +1,8 @@
 @use "sass:math";
 @import "./base/base.scss";
-@import "./page/page.scss";
-@import "./component/component.scss";
 @import "./mixin/mixin.scss";
-
+@import "./component/component.scss";
+@import "./page/page.scss";
 // .htob {
 //   // header下方和banner不要有空隙時 給banner
 //   margin-top: 165px;
@@ -67,7 +66,6 @@
   color: $white;
   background-color: $orange;
   text-align: center;
-  // margin-top: 15px;
 }
 
 .blueBtn {
@@ -157,14 +155,30 @@ h6 {
   h6 {
     font-size: $rwd_h6;
   }
+
+  .ttoc {
+    //card to title & title to card 給title
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+
+  .ftoc {
+    //footer to 內容 給footer
+    margin-top: 30px;
+  }
+
+  .container {
+    // 需要包在1200px裡面的內容
+    margin: 0 auto;
+    max-width: 400px;
+  }
 }
 
 a {
   text-decoration: none;
 }
 
-
-.text-danger{
+.text-danger {
   color: #ef7a70;
 }
 .em {
@@ -175,4 +189,8 @@ input,
 textarea,
 select:focus {
   outline: none;
+}
+
+.noHover {
+  pointer-events: none;
 }

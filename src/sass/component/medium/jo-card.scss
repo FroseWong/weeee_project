@@ -1,14 +1,47 @@
 .jo-list {
   display: flex;
+  position: relative;
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 45px;
+    color: $yellow;
+  }
+
+  @include m {
+    width: 350px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .slick-prev:before {
+    position: absolute;
+    top: 0px;
+    left: -50px;
+  }
+  .slick-next:before {
+    position: absolute;
+    top: 0px;
+    right: -50px;
+  }
   .jo-card {
-    width: 390px;
+    // width: 390px;
     height: 300px;
     position: relative;
     cursor: pointer;
-    margin-right: 20px;
+    // margin-right: 20px;
+    margin: 0 10px;
+    background-color: $white;
+    border-radius: 10px;
 
+    @include m {
+      height: auto;
+    }
     &:hover .jo-card__top img {
       transform: scale(1.2);
+      @include m {
+        transform: none;
+      }
     }
 
     .jo-card__top__location {
@@ -31,7 +64,7 @@
 
     .jo-card__top {
       color: $white;
-      width: 390px;
+      // width: 390px;
       height: 155px;
       border-radius: 10px;
       margin-bottom: 15px;
@@ -73,6 +106,31 @@
           margin-left: auto;
         }
       }
+    }
+  }
+
+  @include pc {
+    // 1200以內
+    .slick-prev:before,
+    .slick-next:before {
+      font-size: 25px;
+    }
+
+    .slick-prev:before {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+    .slick-next:before {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+  }
+  @include m {
+    .slick-prev:before,
+    .slick-next:before {
+      display: none;
     }
   }
 }
