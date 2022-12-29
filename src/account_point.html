@@ -10,7 +10,7 @@
       src="https://kit.fontawesome.com/85f014293c.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./vender/datatables/sb-admin-2.min.css">
+    <link rel="stylesheet" href="./vender/datatables/datatables.min.css">
 
     <link rel="stylesheet" href="./vender/datatables/dataTables.bootstrap4.css">
   </head>
@@ -63,11 +63,7 @@
                 <li>
                   <a href="#" id="on_page">
                     <div>
-                      <span
-                        class="w w_on_page"
-                        style="background-color: #f19f4d"
-                        >w</span
-                      >
+                     <img src="./img/weeeepoints/orange.svg" class="">
                     </div>
 
                     Weeee! Points
@@ -89,7 +85,7 @@
             <h3>Weeee! Points</h3>
             <div class="w_point">
               <h5>目前可使用點數</h5>
-              <h5 class="w w_yellow">w</h5>
+              <img src="./img/weeeepoints/yellow.svg" alt="">
               <h5 class="point_count">50</h5>
             </div>
 
@@ -107,9 +103,9 @@
               <h5>點數紀錄</h5>
             <div class="point_record">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table row-border stripe hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                            <tr>
+                            <tr class="table-head">
                                 <th>訂單編號</th>
                                 <th>點數</th>
                                 <th>日期</th>  
@@ -145,8 +141,9 @@
             </div>
         
       </div>
+      @@include('layout/footer.html')
     </div>
-    @@include('layout/footer.html')
+  
     <script src="/vender/jquery/jquery.min.js"></script>
     <script src="/vender/datatables/jquery.dataTables.min.js"></script>
     <script src="/vender/datatables/dataTables.bootstrap4.min.js"></script>
@@ -157,7 +154,8 @@
         $('#dataTable').DataTable({
             paging: false, // 拿掉一頁顯示幾個篩選結果
             "searching": false, // 拿掉搜尋bar
-            "info": false // 拿掉左下角共幾個結果的資訊
+            "info": false, // 拿掉左下角共幾個結果的資訊
+            "ordering": false
         });
     });
     </script>

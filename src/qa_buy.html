@@ -31,15 +31,15 @@
       <div class="container mid" v-if="isShow">
         <div class="leftnav">
           <ul class="ttoc">
-            <li>購買問題</li>
-            <li>退改訂單</li>
-            <li>帳號相關</li>
-            <li>點數問題</li>
-            <li>聯絡我們</li>
+            <li @click="scrollto_buy" class="position_a">購買問題</li>
+            <li @click="scrollto_buy" class="position_b">退改訂單</li>
+            <li @click="scrollto_buy" class="position_c">帳號相關</li>
+            <li @click="scrollto_buy" class="position_d">點數問題</li>
+            <li @click="scrollto_buy" class="position_e">聯絡我們</li>
           </ul>
         </div>
         <div class="question ttoc">
-          <section class="question_type">
+          <section class="question_type ">
             <h5>訂單問題</h5>
             <div class="question_content ">
               <h6>
@@ -72,7 +72,7 @@
               </div>
             </div>
           </section>
-          <section class="question_type">
+          <section class="question_type ">
             <h5>退改訂單</h5>
             <div class="question_content ">
               <h6>
@@ -109,7 +109,7 @@
               </div>
             </div>
           </section>
-          <section class="question_type">
+          <section class="question_type ">
             <h5>帳號相關</h5>
             <div class="question_content ">
               <h6>
@@ -140,7 +140,7 @@
               </div>
             </div>
           </section>
-          <section class="question_type">
+          <section class="question_type ">
             <h5>點數問題</h5>
             <div class="question_content ">
               <h6>
@@ -173,7 +173,7 @@
               </div>
             </div>
           </section>
-          <section class="question_type">
+          <section class="question_type ">
             <h5>聯絡我們</h5>
             <div class="question_content ">
               <h6>
@@ -201,11 +201,11 @@
       <div class="container mid" v-else>
         <div class="leftnav">
           <ul class="ttoc">
-            <li>揪團介紹</li>
-            <li>揪團資格</li>
-            <li>揪團條例</li>
-            <li>安全問題</li>
-            <li>聯絡我們</li>
+            <li @click="scrollto_jo" class="position_f">揪團介紹</li>
+            <li @click="scrollto_jo" class="position_g">揪團資格</li>
+            <li @click="scrollto_jo" class="position_h">揪團條例</li>
+            <li @click="scrollto_jo" class="position_i">安全問題</li>
+            <li @click="scrollto_jo" class="position_j">聯絡我們</li>
           </ul>
         </div>
         <div class="question ttoc">
@@ -400,9 +400,56 @@
               this.qa_jo = !this.qa_jo
               this.isShow= !this.isShow
             }
-            
-            
-          }
+          },
+          scrollto_buy(e){
+            let num = e.target.closest(".ttoc").offsetTop;
+            let a = document.getElementsByClassName('question_type')[0].offsetTop;
+            let b = document.getElementsByClassName('question_type')[1].offsetTop;
+            let c = document.getElementsByClassName('question_type')[2].offsetTop;
+            let d = document.getElementsByClassName('question_type')[3].offsetTop
+            let e1 = document.getElementsByClassName('question_type')[4].offsetTop;
+            if(e.target.classList.contains("position_a")){
+              num = a -120
+            }else if(e.target.classList.contains("position_b")){
+              num = b -120
+            }else if(e.target.classList.contains("position_c")){
+              num = c -120
+            }else if(e.target.classList.contains("position_d")){
+              num = d -120
+            }else if(e.target.classList.contains("position_e")){
+              num = e1 -120
+            };
+            window.scrollTo({
+                        top: num,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+          },
+          scrollto_jo(e){
+            let num = e.target.closest(".ttoc").offsetTop;
+            let f = document.getElementsByClassName('question_type')[0].offsetTop;
+            let g = document.getElementsByClassName('question_type')[1].offsetTop;
+            let h = document.getElementsByClassName('question_type')[2].offsetTop;
+            let i = document.getElementsByClassName('question_type')[3].offsetTop
+            let j = document.getElementsByClassName('question_type')[4].offsetTop;
+            if(e.target.classList.contains("position_f")){
+              num = f -120
+            }else if(e.target.classList.contains("position_g")){
+              num = g -120
+            }else if(e.target.classList.contains("position_h")){
+              num = h -120
+            }else if(e.target.classList.contains("position_i")){
+              num = i -120
+            }else if(e.target.classList.contains("position_j")){
+              num = j -120
+            };
+            window.scrollTo({
+                        top: num,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+          },
+
         }
       });
       app1.mount(".app1");
