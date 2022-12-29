@@ -26,7 +26,6 @@
   }
 }
 
-
 .productdetail__fixedfield--container {
   display: flex;
   justify-content: space-between;
@@ -358,7 +357,6 @@
   li {
     background-color: $white;
     width: 35px;
-   
   }
   .page__link--current {
     background-color: $blue;
@@ -449,23 +447,33 @@
   transition: 0.8s;
 }
 
-
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1920px;
+  max-width: 1150px;
   position: relative;
   margin: auto;
-  div{
-    img{
-      height: 420px;
-      width: 700px;
-    }
-  }
 }
 
 /* Hide the images by default */
 .mySlides {
   display: none;
+  .mySlidesFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    // max-width: 1150px;
+    .mySlides__img1,
+    .mySlides__img3 {
+      height: 420px;
+      // width: 150px;
+    }
+    .mySlides__img2 {
+      height: 420px;
+      margin: 0 10px;
+
+    }
+  }
 }
 
 /* Next & previous buttons */
@@ -561,4 +569,3 @@
     opacity: 1;
   }
 }
-

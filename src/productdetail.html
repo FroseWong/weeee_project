@@ -27,9 +27,11 @@
             <div class="slideshow-container">
                 <a href="#" v-for="carousel in carousels">
                     <div class="mySlides fade">
-                        <img :src="carousel.src" alt="">
-                        <!-- <img :src="carousel.src" alt=""> -->
-                        <!-- <img :src="carousel.src" alt=""> -->
+                        <div class="mySlidesFlex">
+                            <img :src="carousel.src" alt="" class="mySlides__img1">
+                            <img :src="carousel.src" alt="" class="mySlides__img2">
+                            <img :src="carousel.src" alt="" class="mySlides__img3">
+                        </div>
                     </div>
                 </a>
                 <!-- Next and previous buttons -->
@@ -163,23 +165,6 @@
                             </h5>
                         </div>
                     </div>
-                    <nav>
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
-                            <li class="page-item" v-for="pageItem in pageItems"><a class="page-link"
-                                    href="#">{{pageItem}}</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>
@@ -348,19 +333,9 @@
                             src: '/img/sightseeing/fa_19_3.jpg'
                         },
                     ],
-                    count: {
-                        count1: 3,
-                        count2: 2,
-                        count3: 1,
-                    },
-                    count2: {
-                        count1: 1,
-                        count2: 2,
-                        count3: 3,
-                    },
                     slideIndex: 1,
-                    img1:'/img/sightseeing/fa_19_2.jpg',
-                    img2:'/img/sightseeing/fa_19_3.jpg',
+                    img1: '/img/sightseeing/fa_19_2.jpg',
+                    img2: '/img/sightseeing/fa_19_3.jpg',
 
                 }
             },
@@ -411,6 +386,13 @@
                     alert(404);
                 },
                 fieldClick(e) {
+                    let directions = document.getElementsByClassName('productdetail__directions--group')[0].classList;
+                    let fa = document.getElementsByClassName('productdetail__operate')[0].children[1].classList;
+                    directions.remove('productdetail__none');
+                    directions.add('productdetail__open');
+                    this.operate = '收起商品說明 ';
+                    fa.remove('fa-angle-down');
+                    fa.add('fa-angle-up');
                     let num = document.getElementById(e).offsetTop;
                     let pd = document.getElementsByClassName('productdetail__operate')[0].offsetTop;
                     let pn = document.getElementsByClassName('productdetail__notice')[0].offsetTop;
@@ -438,6 +420,7 @@
 
                 },
                 fieldMark() {
+
                     let pd = document.getElementById('f1').style;
                     let pn = document.getElementById('f2').style;
                     let pa = document.getElementById('f3').style;
@@ -448,12 +431,9 @@
                     let ff = document.getElementsByClassName('productdetail__fixedfield2')[0];
                     let check = document.getElementsByClassName('productdetail__directions--group')[0].classList;
                     let tf = check.contains('productdetail__open');
-                    // console.log(tf);
+
                     document.addEventListener('scroll', function (e) {
                         ScrollPosition = window.scrollY;
-                        // console.log(check.contains('productdetail__open'));
-                        // console.log(ScrollPosition);
-
                         if (ScrollPosition <= 1106) {
                             pn.color = weblack;
                             pa.color = weblack;
