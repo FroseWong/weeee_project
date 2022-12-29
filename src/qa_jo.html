@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+<body>
+    @@include('layout/header.html')
+    <div class="wrapper" id="app">
+        <div class="about2__main">
+            <div class="about2_title">
+                <h1>1200</h1>
+                <h2>個項目</h2>
+            </div>
+            <div class="about2__barcard">
+                <div class="container about2__bar">
+                    <div class="about2__sort">
+                        <h4>排序</h4>
+                        <ul>
+                            <li @click="filterOrder">熱門程度</li>
+                            <li @click="filterPrice">價格低到高</li>
+                        </ul>
+                    </div>
+                    <div class="about2__category">
+                        <h4>行程分類</h4>
+                        <ul>
+                            <li><input type="checkbox" name="" id="">&emsp;朋友行程</li>
+                            <li><input type="checkbox" name="" id="">&emsp;家庭行程</li>
+                            <li><input type="checkbox" name="" id="">&emsp;情侶行程</li>
+                            <li><input type="checkbox" name="" id="">&emsp;寵物行程</li>
+                        </ul>
+                    </div>
+                    <div class="about2__destination">
+                        <h4>目的地</h4>
+                        <span @click="open_city" class="about2__open">台灣<i
+                                class="fa-solid fa-circle-chevron-down"></i></span>
+                        <ul class="about2__city about2__block">
+                            <li @click="filterCity">基隆</li>
+                            <li @click="filterCity">台北</li>
+                            <li @click="filterCity">新北</li>
+                        </ul>
+                    </div>
+                    <div class="about2__price">
+                        <h4>價格</h4>
+                        <ul>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 2,000~3,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 4,000~5,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 6,000~7,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 8,000~9,999</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about2__card">
+                    <div class="about2__card--group" v-for="card in cardlist" :id="card.cardid">
+                        <div class="about2__card--img">
+                            <img :src="card.src" alt="">
+                        </div>
+                        <div class="about2__card--title">
+                            <h1>{{card.title}}</h1>
+                            <h2>{{card.label}}</h2>
+                            <h1>{{card.content}}</h1>
+                            <div>
+                                <h3>★</h3>
+                                <h4>{{card.score}}{{card.scorepeople}}</h4>
+                                <h4>｜{{card.order}}個已訂購</h4>
+                                <h5>TWD {{card.price}}元</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    @@include('layout/footer.html')
+    <script src="/vue/vue.global.prod.js"></script>
+    <script src="./js/qa_jo.js"></script>
+</body>
+
+</html>
