@@ -1,17 +1,23 @@
 .index {
-  header {
-    height: 165px;
-    width: 100%;
-    background-color: $gray;
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-size: 40px;
-    color: $white;
-    text-align: center;
-    padding-top: 60px;
-    box-sizing: border-box;
-    z-index: 30;
+  // header {
+  //   height: 165px;
+  //   width: 100%;
+  //   background-color: $gray;
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   font-size: 40px;
+  //   color: $white;
+  //   text-align: center;
+  //   padding-top: 60px;
+  //   box-sizing: border-box;
+  //   z-index: 30;
+  // }
+
+  h2 {
+    @include m {
+      text-align: center;
+    }
   }
 
   .topbanner {
@@ -77,6 +83,11 @@
     margin-bottom: 100px;
     display: flex;
     justify-content: space-between;
+    @include m {
+      width: 330px;
+      margin: 0 auto 70px;
+      box-sizing: border-box;
+    }
     .popular-country {
       width: 180px;
       height: 270px;
@@ -86,9 +97,16 @@
       box-sizing: border-box;
       overflow: hidden;
       transition: all 0.3s;
-
+      @include m {
+        width: 150px;
+        height: 150px;
+        margin: 0 7px;
+      }
       &:hover {
         box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.15);
+        @include m {
+          box-shadow: none;
+        }
       }
       &.c1 {
         background-image: url("../img/otherpage/index_nantou1.jpg");
@@ -146,6 +164,12 @@
         top: 202px;
         left: 0px;
         transition: all 0.3s;
+
+        @include m {
+          font-size: 16px;
+          top: 96px;
+          left: -5px;
+        }
       }
 
       .popular-country__bottom {
@@ -167,6 +191,11 @@
 
         bottom: -100px;
         left: 0px;
+
+        @include m {
+          bottom: -35px;
+        }
+
         .travel {
           // position: absolute;
           // top: 0px;
@@ -191,14 +220,31 @@
           }
         }
         .local {
-          // position: absolute;
-          // top: 0px;
-          // left: 235px;
-          // border: 1px solid $white;
           border-radius: 40px;
           padding: 5px 10px;
           color: $white;
           background-color: rgba(217, 217, 217, 0.5);
+        }
+        .number__items {
+          display: none;
+        }
+
+        @include m {
+          .travel,
+          .ticket,
+          .local {
+            display: none;
+          }
+
+          .number__items {
+            display: block;
+            font-size: 14px;
+            color: $white;
+            font-weight: bold;
+            // position: absolute;
+            // top: 0px;
+            // left: 0px;
+          }
         }
       }
     }
@@ -211,20 +257,40 @@
     background-image: url("../img/otherpage/index_bottombanner1.jpg");
     display: flex;
     align-items: center;
+
+    @include m {
+      height: 145px;
+      text-align: center;
+      background-size: cover;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
     .bottom__text {
       color: $white;
       .medium {
         font-size: 35px;
+        display: block;
+        @include m {
+          font-size: 24px;
+        }
       }
       .bigger {
+        display: block;
+
         font-size: 70px;
+        @include m {
+          font-size: 48px;
+        }
       }
     }
   }
   .lazybag {
     width: 1000px;
     margin: 0 auto;
-    // display: flex;
+    @include m {
+      width: 330px;
+    }
     .lazybag__title {
       margin-top: 45px;
       margin-bottom: 20px;
@@ -239,6 +305,10 @@
         transition: all 0.3s;
         &:hover {
           color: $blue;
+
+          @include m {
+            color: $black;
+          }
         }
       }
     }
@@ -247,6 +317,9 @@
   .easydin {
     width: 1000px;
     margin: 0 auto;
+    @include m {
+      width: 330px;
+    }
     .easydin__title {
       margin-bottom: 20px;
     }
@@ -261,6 +334,9 @@
 
         &:hover {
           color: $blue;
+          @include m {
+            color: $black;
+          }
         }
       }
     }
@@ -275,6 +351,13 @@
         padding-top: 100px;
         color: $white;
       }
+    }
+  }
+
+  @include m {
+    // 1200以內
+    .topbanner {
+      display: none;
     }
   }
 }

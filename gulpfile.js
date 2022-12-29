@@ -56,7 +56,7 @@ exports.js = jsmini;
 // sass complier
 // 沒壓縮css
 function sassStyle() {
-  return src("src/sass/*.scss")
+  return src(["src/sass/*.scss", "src/sass/**/*.scss", "src/sass/**/**/*.scss"])
     .pipe(sourcemaps.init())
     .pipe(sass.sync().on("error", sass.logError)) // sass ->css
     .pipe(sourcemaps.write())
