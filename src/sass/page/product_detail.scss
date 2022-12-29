@@ -425,13 +425,13 @@
     }
   }
 }
-.productdetail__header {
-  height: 165px;
-  // background-color: $gray;
-  top: 0;
-  position: sticky;
-  z-index: 2;
-}
+// .productdetail__header {
+//   height: 165px;
+//   // background-color: $gray;
+//   top: 0;
+//   position: sticky;
+//   z-index: 2;
+// }
 
 .productdetail__footer {
   height: 309px;
@@ -531,7 +531,7 @@
 
 .active,
 .dot:hover {
-  background-color: #717171;
+  
 }
 
 /* Fading animation */
