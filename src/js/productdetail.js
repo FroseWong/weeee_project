@@ -29,32 +29,54 @@ createApp({
                     title: "新北 | Weeee渡假村門票",
                     score: 4.5,
                     scoreNum: 2300,
-                    order: '｜95K+個已訂購',
-                    price: 450,
+                    order: '95K+',
+                    price: 576,
+                    city:'新北',
                 }, {
-                    src: "/img/sightseeing/fa_20_3.jpg",
+                    src: "/img/sightseeing/fa_20_1.jpg",
                     label: "朋友行程",
                     title: "台中 | Weeee渡假村門票",
                     score: 4.1,
                     scoreNum: 3300,
-                    order: '｜55K+個已訂購',
-                    price: 420,
+                    order: '55K+',
+                    price: 1920,
+                    city:'台中',
                 }, {
-                    src: "/img/sightseeing/fa_19_3.jpg",
+                    src: "/img/sightseeing/fa_19_2.jpg",
                     label: "家庭行程",
                     title: "台南 | Weeee渡假村門票",
                     score: 4.3,
                     scoreNum: 3500,
-                    order: '｜45K+個已訂購',
-                    price: 430,
+                    order: '45K+',
+                    price:1024,
+                    city:'台南',
                 }, {
                     src: "/img/sightseeing/fa_20_2.jpg",
                     label: "寵物行程",
                     title: "高雄 | Weeee渡假村門票",
                     score: 4.4,
                     scoreNum: 4500,
-                    order: '｜54K+個已訂購',
-                    price: 440,
+                    order: '54K+',
+                    price: 768,
+                    city:'高雄',
+                }, {
+                    src: "/img/sightseeing/fa_19_3.jpg",
+                    label: "寵物行程",
+                    title: "新竹 | Weeee渡假村門票",
+                    score: 4.4,
+                    scoreNum: 4500,
+                    order: '54K+',
+                    price: 1080,
+                    city:'新竹',
+                }, {
+                    src: "/img/sightseeing/fa_20_3.jpg",
+                    label: "寵物行程",
+                    title: "花蓮 | Weeee渡假村門票",
+                    score: 4.4,
+                    scoreNum: 4500,
+                    order: '54K+',
+                    price: 1440,
+                    city:'花蓮',
                 },
             ],
             messages: [
@@ -326,11 +348,20 @@ createApp({
         },
         currentSlide(n) {
             this.showSlides(this.slideIndex = n);
-        }
-
+        },
+        product_list(){
+            $(".product-list").slick({
+                infinite: false,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                arrows:true,
+                dots:false,
+            });
+        },
     },
     mounted() {
         this.showSlides(this.slideIndex);
         this.fieldMark();
+        this.product_list();
     },
 }).mount('#app')
