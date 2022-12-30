@@ -1,6 +1,13 @@
+@mixin desktop {
+  @media all and (max-width: $desktop_breakpoint) {
+    // 桌電斷點
+    @content;
+  }
+}
+
 @mixin pc {
   @media all and (max-width: $pc_breakpoint) {
-    // 筆電版
+    // 暫時未知是給誰用
     @content;
   }
 }

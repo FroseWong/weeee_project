@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+<body>
+    @@include('layout/header.html')
+    <div class="wrapper" id="app">
+        <div class="qa_jo__main">
+            <div class="qa_jo_title">
+                <h1>1200</h1>
+                <h2>個項目</h2>
+            </div>
+            <div class="qa_jo__barcard">
+                <div class="container qa_jo__bar">
+                    <div class="qa_jo__sort">
+                        <h4>排序</h4>
+                        <ul>
+                            <li @click="filterOrder">熱門程度</li>
+                            <li @click="filterSort">價格低到高</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__category">
+                        <h4>行程分類</h4>
+                        <ul>
+                            <li v-for="(category,index) in categorys" @click="filterCategory"><input type="checkbox"
+                                    :id=`category${index+1}`>&emsp;{{category}}</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__destination">
+                        <h4>目的地</h4>
+                        <span @click="open_city" class="qa_jo__open">台灣
+                            <i class="fa-solid fa-circle-chevron-down"></i>
+                        </span>
+                        <ul class="qa_jo__city qa_jo__block">
+                            <li v-for="AllCity in AllCitys" v-if=cityshow @click="filterCity">{{AllCity}}</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__price">
+                        <h4>價格</h4>
+                        <ul>
+                            <li v-for="(price,index) in prices" @click="filterPrice"><input type="checkbox"
+                                    :id=`price${index+1}`>&emsp;{{price}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="qa_jo__card">
+                    <div class="qa_jo__card--group" v-for="card in cardlist"  :key="index">
+                        <template v-if="card.vif">
+                            <div class="qa_jo__card--img">
+                                <img :src="card.src" alt="">
+                            </div>
+                            <div class="qa_jo__card--title">
+                                <h1>{{card.title}}</h1>
+                                <h2>{{card.label}}</h2>
+                                <h1>{{card.content}}</h1>
+                                <div>
+                                    <h3>★</h3>
+                                    <h4>{{card.score}}{{card.scorepeople}}</h4>
+                                    <h4>｜{{card.order}}個已訂購</h4>
+                                    <h5>TWD {{card.price}}元</h5>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <nav>
+                        <ul class="qa_jo__pagination">
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link qa_jo__page-link--current"
+                                    href="#">1</a></li>
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">2</a></li>
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">3</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    @@include('layout/footer.html')
+    <script src="/vue/vue.global.prod.js"></script>
+    <script src="./js/qa_jo.js"></script>
+</body>
+
+</html>

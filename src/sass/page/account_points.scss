@@ -49,6 +49,16 @@
         line-height: 2;
     }
     
+    .table-head {
+        background-color: $blue;
+        color: $white;
+    }
     
+    .table {
+        th, td {
+            text-align: center;
+            border-right: 1px solid $l_gray;
+        }
+    }
 
 }
