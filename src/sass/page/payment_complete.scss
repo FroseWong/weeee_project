@@ -19,6 +19,7 @@
     
     
             .payment_item {
+                padding: 0;
                 .payment_item_buyer{
                     border-radius: 10px;
                     box-shadow: 0 8px 20px 0 rgb(0 0 0 / 10%);
@@ -30,6 +31,9 @@
                         font-size: 14px;
                         font-weight: normal;
                     }
+                }
+                .payment_list{
+                   margin-top: 45px;
                 }
     
             }

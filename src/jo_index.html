@@ -247,11 +247,24 @@
             </div>
           </a>
         </div>
-        
+        <a id="jo_button" href="./jo_new.html"><img src="./img/jo/jo_create.gif" alt=""><h5>發起揪團</h5></a>
       </div> 
 
       @@include('layout/footer.html')
     </div>
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      var btn = $('#jo_button');
+  
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 300) {
+      btn.addClass('show');
+    } else {
+      btn.removeClass('show');
+    }
+  });
+  
+  
+    </script>
   </body>
 </html>
