@@ -1,148 +1,157 @@
-.jo_index {
-  header {
-    height: 165px;
-    width: 100%;
-    background-color: $gray;
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-size: 40px;
+.jo_index{
+  .slider-right {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    background-color: $blue;
+    top: 56px;
+    right: -30px;
+    z-index: 20;
+    font-size: 17px;
     color: $white;
     text-align: center;
-    padding-top: 60px;
+    padding-top: 10px;
     box-sizing: border-box;
-    z-index: 100;
+    cursor: pointer;
   }
+    header {
+        height: 165px;
+        width: 100%;
+        background-color: $gray;
+        position: fixed;
+        top: 0;
+        left: 0;
+        font-size: 40px;
+        color: $white;
+        text-align: center;
+        padding-top: 60px;
+        box-sizing: border-box;
+        z-index: 100;
+    }
+    
+    .topbanner {
+        background-image: url("../img/jo/jo_index-topbanner1.jpg");
+        height: 500px;
+        background-size: cover;
+        background-position: center center;
+        
+    
+        .topbanner__text {
+          color: $black;
+          text-align: left;
+          padding-top: 130px;
+          margin-bottom: 20px;
+          padding-left: 100px;
+          h1{
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+          p{
+            margin-bottom: 20px;
+            padding-left: 10px;
+            font-weight: bold;
+          }
+          .search_location{
+            background-color: $yellow;
+            display: inline;
+            padding:10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 16px;
+            border-radius: 30px;
+            margin-top: 15px;
+            font-weight: bold;
+            line-height: 40px;
+            height: 40px;
+            cursor: pointer;
+            
+          }
+          .searchbox{
+            margin-top: 25px;
+            width: 700px;
+            position: relative;
+            input{
+                height: 45px;
+                width: 100%;
+                border: none;
+                border-radius: 10px;
+                padding-left: 20px;
+                font-size: 20px;
+                font-weight: 400;
+            }
+            button{
+                position: absolute;
+                height: 35px;
+                right: 10px;
+                top: 5px;
+                bottom: 5px;
+                padding-left: 20px;
+                padding-right: 20px;
+                border: none;
+                border-radius: 10px;
+                background-color: $yellow;
+                transition: 0.2 all ease-in-out;
+                box-sizing: border-box;
+                font-weight: bold;
+                cursor: pointer;
 
-  .topbanner {
-    background-image: url("../img/jo/jo_index-topbanner1.jpg");
-    height: 500px;
-    background-size: cover;
-    background-position: center center;
 
-
-    .topbanner__text {
-      color: $black;
-      text-align: left;
-      padding-top: 130px;
-      margin-bottom: 20px;
-      padding-left: 30px;
-
-      h1 {
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
-
-      p {
+            }
+          }
+        }
+    }
+    .midbanner{
+        margin-top: 30px;
         margin-bottom: 20px;
-        padding-left: 10px;
-        font-weight: bold;
-      }
+        .icon_map{
+          display: flex;
+          justify-content: center;
+          padding-top: 30px;
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-bottom: 0;
+            i{
+                font-size: 35px;
+                align-items: center;
+                margin: 0 auto;
+                text-align: center;
+            }
+            div{
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              i{
+                margin-bottom: 20px;
+              }
+            }
 
-      .search_location {
-        background-color: $yellow;
-        display: inline;
-        padding: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        font-size: 16px;
-        border-radius: 30px;
-        margin-top: 15px;
-        font-weight: bold;
-        line-height: 40px;
-        height: 40px;
-
-      }
-
-      .searchbox {
-        margin-top: 25px;
-        width: 700px;
+        }
+    }
+    .content{  
+      
+      .jo-list{
         position: relative;
-
-        input {
-          height: 55px;
-          width: 100%;
-          border: none;
-          border-radius: 10px;
-          padding-left: 20px;
-          font-size: 20px;
-          font-weight: 400;
-        }
-
-        button {
+        .btn-right{
           position: absolute;
+          right: -80px;
+          top: 45%;
+          background-color: $orange;
+          border-radius: 50%;
+          width: 45px;
           height: 45px;
-          right: -10px;
-          top: 5px;
-          bottom: 5px;
-          padding-left: 20px;
-          padding-right: 20px;
-          border: none;
-          border-radius: 10px;
-          background-color: $yellow;
-          font-weight: bold;
-
-
+          text-align: center;
+          i{
+            font-size: 30px;
+            line-height: 45px;
+            color: $white;
+            
+            
+          }
         }
-      }
-    }
-  }
-
-  .midbanner {
-    margin-top: 30px;
-    margin-bottom: 20px;
-
-    .icon_map {
-      display: flex;
-      justify-content: center;
-      padding: 30px;
-
-      i {
-        font-size: 50px;
-        align-items: center;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        i {
-          margin-bottom: 30px;
-        }
-      }
-
-    }
-  }
-
-  .content {
-
-    .jo-list {
-      position: relative;
-
-      .btn-right {
-        position: absolute;
-        right: -80px;
-        top: 45%;
-        background-color: $orange;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-        text-align: center;
-
-        i {
-          font-size: 30px;
-          line-height: 45px;
-          color: $white;
-
-
-        }
-      }
-
-      .member-pic {
+        .member-pic{
         background-image: url(../img/jo/jo_memberpic1.jpg);
+      }
       }
     }
 
@@ -166,21 +175,21 @@
         text-align: center;
       }
     }
-  }
 
-  // .back_to_top{
-  //   position: fixed;
-  //   right: 50px;
-  //   bottom: 50px;
-  //   width: 40px;
-  //   height: 40px;
-  //   color: $white;
-  //   background-color: orange;
-  //   text-align: center;
-  //   i{
-  //     line-height: 40px;
-  //     font-size: 30px;
-  //   }
 
-  // }
+    // .back_to_top{
+    //   position: fixed;
+    //   right: 50px;
+    //   bottom: 50px;
+    //   width: 40px;
+    //   height: 40px;
+    //   color: $white;
+    //   background-color: orange;
+    //   text-align: center;
+    //   i{
+    //     line-height: 40px;
+    //     font-size: 30px;
+    //   }
+      
+    // }
 }
