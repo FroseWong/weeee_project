@@ -352,55 +352,10 @@
 }
 
 .productdetail__bot {
-  background-color: #f4f4f4;
   height: 437px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  img {
-    height: 187px;
-    width: 302px;
-    border-radius: 10px;
-  }
-  .card-body {
-    .card-body_label {
-      background-color: $orange;
-      color: $white;
-      padding: 5px;
-    }
-    h5 {
-      font-weight: bold;
-    }
-    div {
-      display: flex;
-      p {
-        color: $yellow;
-        font-size: $pc_h6;
-      }
-      h5 {
-        font-size: $pc_h6;
-        color: $gray;
-        font-weight: normal;
-      }
-      span {
-        font-size: $pc_h6;
-        color: $gray;
-      }
-    }
-  }
 }
-// .productdetail__header {
-//   height: 165px;
-//   // background-color: $gray;
-//   top: 0;
-//   position: sticky;
-//   z-index: 2;
-// }
 
-.productdetail__footer {
-  height: 309px;
-  background-color: $gray;
-}
+
 .productdetail__open {
   transition: 2s;
   display: block;
