@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"> 
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 
@@ -26,25 +26,12 @@
             </ol>
         </nav>
         <div class="container">
-            <div class="slideshow-container">
+            <div class="productdetail__slideshow">
                 <a href="#" v-for="carousel in carousels">
-                    <div class="mySlides fade">
-                        <div class="mySlidesFlex">
-                            <img :src="carousel.src" alt="" class="mySlides__img1">
-                            <img :src="carousel.src" alt="" class="mySlides__img2">
-                            <img :src="carousel.src" alt="" class="mySlides__img3">
-                        </div>
+                    <div class="mySlidesFlex">
+                        <img :src="carousel.src" alt="">
                     </div>
                 </a>
-                <!-- Next and previous buttons -->
-                <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                <a class="next" @click="plusSlides(1)">&#10095;</a>
-            </div>
-            <!-- The dots/circles -->
-            <div style="text-align:center">
-                <span class="dot" @click="currentSlide(1)"></span>
-                <span class="dot" @click="currentSlide(2)"></span>
-                <span class="dot" @click="currentSlide(3)"></span>
             </div>
         </div>
         <div class="container">
@@ -197,9 +184,10 @@
         <!-- </div> -->
     </div>
     @@include('layout/footer.html')
+    <script src="/vue/vue.global.prod.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="/vue/vue.global.prod.js"></script>
+    <script src="./scripts/modal.min.js"></script>
     <script src="./js/productdetail.js"></script>
 </body>
 

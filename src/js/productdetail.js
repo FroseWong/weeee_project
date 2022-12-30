@@ -159,12 +159,8 @@ createApp({
                 },
                 {
                     src: '/img/sightseeing/fa_19_3.jpg'
-                },
+                }
             ],
-            slideIndex: 1,
-            img1: '/img/sightseeing/fa_19_2.jpg',
-            img2: '/img/sightseeing/fa_19_3.jpg',
-
         }
     },
     methods: {
@@ -328,27 +324,6 @@ createApp({
                 }
             });
         },
-        showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) { this.slideIndex = 1 }
-            if (n < 1) { this.slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[this.slideIndex - 1].style.display = "block";
-            dots[this.slideIndex - 1].className += " active";
-        },
-        plusSlides(n) {
-            this.showSlides(this.slideIndex += n);
-        },
-        currentSlide(n) {
-            this.showSlides(this.slideIndex = n);
-        },
         product_list(){
             $(".product-list").slick({
                 infinite: false,
@@ -358,10 +333,19 @@ createApp({
                 dots:false,
             });
         },
+        productdetail__slideshow(){
+            $(".productdetail__slideshow").slick({
+                infinite: true,
+                slidesToShow: 1.65,
+                slidesToScroll: 1,
+                arrows:true,
+                dots:true,
+            });
+        },
     },
     mounted() {
-        this.showSlides(this.slideIndex);
         this.fieldMark();
         this.product_list();
+        this.productdetail__slideshow();
     },
 }).mount('#app')
