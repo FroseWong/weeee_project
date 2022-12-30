@@ -54,10 +54,15 @@
         
         ul{
           text-align: center;
+          box-sizing: border-box;
           
           li{
             padding: 8px;
             cursor: pointer;
+          }
+          li.on{
+            color: $blue;
+            border-bottom: 2px solid $blue;
           }
         }
       }
