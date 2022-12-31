@@ -1,6 +1,6 @@
 .breadcrumb {
   display: flex;
-  margin: 0 30px;
+  margin: 0 0 10px 0;
   .breadcrumb__item:after {
     content: ">";
   }
@@ -30,12 +30,19 @@
   display: flex;
   justify-content: space-between;
   margin: 0 30px;
+  @include m{
+    flex-direction: column;
+  }
   .productdetail__fixedfield--group {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     align-items: center;
     order: 2;
+    @include m{
+      order: 0;
+      display: none;
+    }
     .productdetail__fixedfield1 {
       background-color: $white;
       width: 300px;
@@ -132,15 +139,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include m{
+    margin: 0 0;
+  }
   h1 {
     font-size: $pc_h4;
     font-weight: bold;
     display: inline;
+    @include m{
+      font-size: 20px;
+    }
   }
   i {
     color: $orange;
     font-size: $pc_h1;
     cursor: pointer;
+    @include m{
+      display: none;
+    }
   }
 }
 
@@ -176,7 +192,9 @@
   padding: 30px 0 30px 0;
   border-top: 1px solid $gray;
   border-bottom: 1px solid $gray;
-
+@include m{
+  flex-direction: column;
+}
   display: flex;
   div {
     margin-right: 100px;
@@ -239,6 +257,10 @@
     width: 800px;
     height: 487px;
     border-radius: 10px;
+    @include m{
+      width: 340px;
+      height: 250px;
+    }
   }
 }
 .productdetail__notice {
@@ -249,10 +271,12 @@
   }
   .notice__list {
     max-width: 800px;
-    // max-height: 800px;
     background-color: #f4f4f4;
     padding: 50px;
     border-radius: 10px;
+    @include m{
+      padding: 30px;
+    }
     li {
       font-size: 14px;
       list-style: disc;
@@ -268,10 +292,15 @@
     margin-top: 100px;
     margin-bottom: 50px;
     font-size: $pc_h4;
+    @include m{
+      margin: 10px 0 10px 0;
+    }
   }
-  img {
-    width: 800px;
-    height: 487px;
+  iframe{
+    @include m{
+      width: 340px;
+      height: 260px;
+    }
   }
   div {
     border-top: 1px solid $gray;
@@ -373,6 +402,9 @@
     z-index: 100;
     img {
       width: 715px;
+      @include m{
+        width: 100%;
+      }
     }
   }
   .slick-prev:before {

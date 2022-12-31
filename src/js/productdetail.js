@@ -331,6 +331,16 @@ createApp({
                 slidesToScroll: 1,
                 arrows:true,
                 dots:false,
+                responsive: [
+                    {
+                      breakpoint: 768,
+                      settings: {
+                        slidesToShow: 1.5,
+                        slidesToScroll: 1,
+                        infinite: true,
+                      },
+                    },
+                  ],
             });
         },
         productdetail__slideshow(){
@@ -340,6 +350,18 @@ createApp({
                 slidesToScroll: 1,
                 arrows:true,
                 dots:true,
+                responsive: [
+                    {
+                      breakpoint: 768,
+                      settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        arrows:false,
+                      },
+                    },
+                  ],
+                
             });
         },
     },
