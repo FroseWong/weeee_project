@@ -1,5 +1,5 @@
 .account{
-    background-color: $l_gray;
+    background-color: $ll_gray;
 
     .container{    
         .on_page{
@@ -20,6 +20,9 @@
             i{
                 margin-right: 10px;
             }
+            @include m{
+                display: none;
+            }
             
         }
         .mid{
@@ -27,6 +30,9 @@
             justify-content: center;          
             .left_bar{
                 width: 220px;
+                @include m{
+                    display: none;
+                }
     
                 .img_block{
                     border-radius: 10px;
@@ -101,6 +107,21 @@
         .content{
             margin-left: 50px;
             width: 60%;
+            @include m{
+                width: 100%;
+                margin: 0;
+            }
+            h4{
+                @include m{
+                    width: 100%;
+                    background-color: $blue;
+                    color: $white;
+                    text-align: center;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    margin-bottom: 10px;
+                }
+            }
             .setting{
                 background-color: $white;
                 padding: 15px;
@@ -108,9 +129,15 @@
                 width: 100%;
                 border-radius: 10px;
                 position: relative;
+                @include m{
+                    margin-top: 0;
+                }
                 .row.name{
                     .form_group{
                         width: 20%;
+                        @include m{
+                            width: 100%;
+                        }
                     }
                 }
                 .row{
@@ -119,9 +146,21 @@
                     padding-left: 50px;
                     display: flex;
                     margin-bottom: 10px;
+                    box-sizing: border-box;
+                    @include m{
+                        flex-direction: column;
+                        padding: 0;
+                        padding-left: 10px;
+                        
+                    }
                     .form_group{
                         width: 42.5%;
                         margin-right: 20px;
+                        @include m{
+                            width: 100%;
+                            margin-right: 0;
+                            margin-bottom: 10px;
+                        }
                         label{
                             display: block;
                             margin-bottom: 5px;
@@ -134,13 +173,14 @@
                             padding-left: 10px;
                             font-size: 16px;
                             border-radius: 5px;
-                        }
-                        input#phone{
-        
-                            
+                            @include m{
+                                border: none;
+                                border-bottom: 1px solid $black;
+                                border-radius: 0;
+                            }
                         }
                         select{
-                            width: 105%;
+                            width: 100%;
                             border: 1px solid $gray;
                             text-align: left;
                             padding: 5px;
@@ -148,7 +188,11 @@
                             
                             font-size: 16px;
                             border-radius: 5px;
-                            
+                            @include m{
+                                border: none;
+                                border-bottom: 1px solid $black;
+                                border-radius: 0;
+                            }
                         }
         
                         select#loc{
@@ -163,25 +207,100 @@
                     }
                     .form_group:last-child{
                         margin-left: 20px;
+                        @include m{
+                            margin-left: 0;
+                        }
+                    }
+                }
+                .row#date_group{
+                    .form_group{
+                        margin-left: 0;
                     }
                 }
                 .row.interest{
-                    width: 600px;
+                    width: 100%;
                     display: flex;
                     flex-direction: column;
+                    @include m{
+                        flex-direction: row;
+                        position: relative;
+                        padding-top: 20px;
+                    }
                     h5{
                         margin-bottom: 20px;
+                        @include m{
+                            position: absolute;
+                            top: -10px;
+                            
+                        }
                     }
                     .row{
                         padding-left: 0;
+                        @include m{
+                            display: flex;
+                            flex-direction: column;
+                        }
                         input{
                             margin-right: 10px;
+                            @include m{
+                                margin: 0; 
+                                display: inline;
+                                margin-top: 5px;
+                                
+                            }
+                        }
+                        input:nth-child(1){
+                            @include m{
+                                order: 2;
+                            }
+                        }
+                        input:nth-child(3){
+                            @include m{
+                                order: 4;
+                            }
+                        }
+                        input:nth-child(5){
+                            @include m{
+                                order: 7;
+                            }
+                        }
+                        input:nth-child(7){
+                            @include m{
+                                order: 8;
+                            }
                         }
                         label{
                             margin-right: 20px;
+                            @include m{
+                                margin: 0;
+                                margin-top: 10px;
+                                text-align: center;
+                                display: inline;
+                            }
+                        }
+                        label:nth-child(2){
+                            @include m{
+                                order: 1;
+                            }
+                        }
+                        label:nth-child(4){
+                            @include m{
+                                order: 3;
+                            }
+                        }
+                        label:nth-child(6){
+                            @include m{
+                                order: 5;
+                            }
+                        }
+                        label:nth-child(8){
+                            @include m{
+                                order: 7;
+                            }
                         }
                         color: $gray;
                     }
+                   
                 }
                 .save{
                     position: absolute;
@@ -193,6 +312,10 @@
                     text-align: center;
                     border-radius: 5px;
                     padding: 5px 5px;
+                    @include m{
+                        position: static;
+                        width: 100%;
+                    }
                 }
             }
         }
