@@ -15,26 +15,78 @@
         justify-content: space-between;
         padding: 20px 0;
 
+        @include m {
+            flex-direction: column;
+        }
+
         .footer_left {
             font-size: 14px;
+
+            @include m {
+                order: 2;
+                text-align: center;
+                padding-top: 20px;
+                color: #9c9da0;
+            }
         }
 
         .footer_center {
             font-size: 14px;
 
-            a {
-                color: $white;
-                text-decoration: none;
+            @include m {
+                order: 1;
+            }
 
-                &:hover {
-                    color: #9c9da0;
+            ul {
+                @include m {
+                    display: flex;
+                    // justify-content: center;
+                }
+
+                li:last-child a {
+                    @include m {
+                        border-right: none;
+                    }
+                }
+
+                li {
+                    @include m {
+                        flex-grow: 1;
+                    }
+
+                    a {
+                        color: $white;
+                        text-decoration: none;
+
+                        @include m {
+                            border-right: solid 2px #fff;
+                            padding: 0 10px;
+                        }
+
+                        a:last-child {
+
+                            @include m {
+                                border-right: none;
+
+                            }
+                        }
+
+                        &:hover {
+                            color: #9c9da0;
+                        }
+                    }
                 }
             }
+
 
         }
 
         .footer_right {
             font-size: 14px;
+
+            @include m {
+                display: none;
+            }
 
             &_tips {
                 p {
@@ -108,5 +160,9 @@
         text-align: center;
         font-size: 12px;
         padding: 10px 0;
+
+        @include m {
+            padding: 15px 10px;
+        }
     }
 }
