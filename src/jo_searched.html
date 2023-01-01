@@ -10,7 +10,7 @@
   </head>
   <body>
     @@include('layout/header.html')
-    <div class="wrapper jo_index">
+    <div class="wrapper jo_index app1">
 
       <div class="topbanner">
         <div class="container topbanner__text">
@@ -52,10 +52,7 @@
       </div>
       <div class="container content">
         <h2 class="ttoc">全部結果 <span>100</span>項</h2>
-        <div class="jo-list ctoc">
-          <div class="slider-right">
-            <i class="fa-solid fa-angle-right"></i>
-          </div>
+        <div class="jo-list">
           <a class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
@@ -74,7 +71,6 @@
                 <span class="left-time">剩餘1天</span></span
               >
             </div>
-            .
           </a>
 
           <a class="jo-card">
@@ -96,7 +92,7 @@
               >
             </div>
           </a>
-  
+
           <a class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
@@ -116,13 +112,9 @@
               >
             </div>
           </a>
-          
         </div>
 
         <div class="jo-list ctoc">
-          <div class="slider-right">
-            <i class="fa-solid fa-angle-right"></i>
-          </div>
           <a class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
@@ -186,9 +178,6 @@
         </div>   
 
         <div class="jo-list ctoc">
-          <div class="slider-right">
-            <i class="fa-solid fa-angle-right"></i>
-          </div>
           <a class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
@@ -250,12 +239,58 @@
           </a>
           
         </div> 
+        <a id="jo_button" href="./jo_new.html">
+          <img src="./img/jo/jo_create.gif" alt="">
+          <h5>發起揪團</h5>
+        </a>
+        <div class="jo_scrollToTop">
+          <i class="fa-solid fa-angle-up" @click="scrollToTop"></i>
+        </div>
 
       </div>
 
         
       @@include('layout/footer.html')
     </div>
+    <script src="/vue/vue.global.prod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+      let app1 = Vue.createApp({
+        data(){
+          return{
+
+          }
+        },
+        created() {
+            window.addEventListener("scroll", this.btn_show);
+
+        },
+        methods:{
+          scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+
+            },
+          btn_show(){
+             let btn = $('#jo_button');
+              if (window.scrollY > 300) {
+                btn.addClass('show');
+              } else {
+                btn.removeClass('show');
+              }
+            },
+        },
+
+      });
+      app1.mount(".app1");
+     
+  
+  
+    </script>
 
   </body>
 </html>

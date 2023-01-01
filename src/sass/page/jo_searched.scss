@@ -1,0 +1,15 @@
+.jo_scrollToTop{
+    background-color: $orange;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    bottom: 50px;
+    border-radius: 10px;
+    i {
+      color: $white;
+      font-size: $pc_h1;
+    }
+}
