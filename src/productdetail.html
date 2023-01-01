@@ -39,11 +39,19 @@
                 <div class="productdetail__fixedfield--group">
                     <div class="productdetail__fixedfield1">
                         <h2>TWD {{ProductDetail.price}}</h2>
-                        <button @click="pd_check">
+                        <i class="fa-regular fa-heart"></i>
+                        <button @click="pd_check" class="field1_btn1">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
                         </button>
-
+                        <button @click="pd_check" class="field1_btn2">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>加入購物車</span>
+                        </button>
+                        <button @click="cle_check" class="field1_btn3">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>立即訂購</span>
+                        </button>
                     </div>
                     <div class="productdetail__fixedfield2">
                         <a v-for="fieldData in fieldDatas" :id="fieldData.fieldID"
