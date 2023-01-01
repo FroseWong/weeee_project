@@ -272,7 +272,7 @@ createApp({
                     pa.borderLeft = '0'
                     pn.borderLeft = '0'
                 }
-                if (ScrollPosition >= 1106) {
+                if (ScrollPosition >= 1000) {
                     pn.color = weblack;
                     pa.color = weblack;
                     pv.color = weblack;
@@ -286,7 +286,7 @@ createApp({
                         pd.borderLeft = '0';
                     }
                 }
-                if (ScrollPosition >= 3332) {
+                if (ScrollPosition >= 3250) {
                     pa.color = weblack;
                     pv.color = weblack;
                     pd.color = weblack;
@@ -296,7 +296,7 @@ createApp({
                     pv.borderLeft = '0';
                     pa.borderLeft = '0';
                 }
-                if (ScrollPosition >= 4051) {
+                if (ScrollPosition >= 3900) {
                     pn.color = weblack;
                     pv.color = weblack;
                     pd.color = weblack;
@@ -306,7 +306,7 @@ createApp({
                     pv.borderLeft = '0';
                     pn.borderLeft = '0';
                 }
-                if (ScrollPosition >= 4807) {
+                if (ScrollPosition >= 4707) {
                     pn.color = weblack;
                     pa.color = weblack;
                     pd.color = weblack;
@@ -316,7 +316,7 @@ createApp({
                     pa.borderLeft = '0';
                     pn.borderLeft = '0';
                 }
-                if (ScrollPosition >= num - 600) {
+                if (ScrollPosition >= num - 100) {
                     ff.style.display = 'none';
                 }
                 else {
@@ -350,6 +350,7 @@ createApp({
                 slidesToScroll: 1,
                 arrows:true,
                 dots:true,
+                speed: 1000,
                 responsive: [
                     {
                       breakpoint: 768,
