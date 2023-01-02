@@ -16,4 +16,15 @@
     .useweeee{
         margin-bottom: 30px;
     }
+
+    .product-name{
+        font-size: 20px;
+    }
+    
+    .gray{
+        @include m {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+    }
 }
