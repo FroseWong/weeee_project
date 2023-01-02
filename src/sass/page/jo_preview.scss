@@ -19,6 +19,9 @@
   .jo_container {
     margin: 0 auto;
     width: 1000px;
+    @include m {
+      width: 330px;
+    }
   }
 
   .jo__title {
@@ -34,6 +37,10 @@
     border-radius: 10px;
     margin-bottom: 60px;
     background-position: center center;
+    background-size: cover;
+    @include m {
+      margin-bottom: 30px;
+    }
   }
 
   .jo__content {
@@ -42,6 +49,11 @@
     padding: 20px 30px;
     border-radius: 10px;
     margin-bottom: 50px;
+    @include m {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-bottom: 330px;
+    }
   }
   .jo-leader {
     padding: 30px 10px;
@@ -50,10 +62,14 @@
     border-radius: 10px;
     .jo-leader__top {
       display: flex;
-      //   justify-content: space-between;
+
       margin-bottom: 35px;
+
+      @include m {
+        position: relative;
+        margin-bottom: 20px;
+      }
       .jo-leader__top__left {
-        // border: 1px solid red;
         flex-grow: 1;
         flex-basis: 0;
         .jo-leader-img {
@@ -64,6 +80,10 @@
           background-size: cover;
           background-image: url("../img/jo/jo_leader1.jpg");
           margin: 0 auto 20px;
+          @include m {
+            width: 120px;
+            height: 120px;
+          }
         }
 
         .jo-leader-name {
@@ -79,22 +99,36 @@
         justify-content: space-between;
         flex-basis: 0;
 
-        // padding: 0 0px;
-        // padding-left: 50px;
+        @include m {
+          position: absolute;
+          top: -330px;
+          left: -10px;
+          width: 330px;
+          background-color: $white;
+          border-radius: 10px;
+          padding: 10px 20px 10px 30px;
+          box-sizing: border-box;
+          .jo-start-date,
+          .jo-location,
+          .jo-detailaddress,
+          .jo-number {
+            margin: 15px 0;
+          }
+        }
+
         .jo-start-date i,
         .jo-location i,
         .jo-detailaddress i,
         .jo-number i {
-          //   display: flex;
-          //   justify-content: space-between;
-          //   align-items: center;
           width: 40px;
-          //   outline: solid red 1px;
         }
       }
     }
     .jo-leader__bottom {
       display: flex;
+      @include m {
+        flex-direction: column;
+      }
       .jo-leader__bottom__left {
         flex-grow: 1;
         flex-basis: 0;
@@ -102,6 +136,11 @@
         // display: flex;
         display: flex;
         align-items: center;
+
+        @include m {
+          margin-bottom: 20px;
+        }
+
         .contact-leader {
           display: block;
           margin: 0 auto;
@@ -111,8 +150,16 @@
         flex-grow: 1;
         flex-basis: 0;
         font-size: $pc_h5;
-        .contact-title {
-          font-weight: bold;
+
+        @include m {
+          padding-left: 3px;
+        }
+
+        .contact-detail {
+          display: none;
+          .contact-title {
+            font-weight: bold;
+          }
         }
       }
     }
@@ -168,55 +215,65 @@
     border: none;
     outline: 1px solid $gray;
     margin-bottom: 45px;
+    @include m {
+      margin-bottom: 30px;
+    }
   }
 
   .saysomething__send {
     display: block;
     margin: 0 auto 70px;
-  }
 
-  .jo__comment__list {
-    margin-bottom: 110px;
-    .jo__comment {
-      height: 100px;
-      display: flex;
-      background-color: $white;
+    @include m {
       margin-bottom: 30px;
-      border-radius: 10px;
-      .jo__comment__left {
-        width: 70%;
-        height: 100%;
-        box-sizing: border-box;
-        // background-color: red;
-        font-size: $pc_h6;
-        display: flex;
-        align-items: center;
-        padding: 0 20px;
-      }
-      .jo__comment__right {
-        width: 30%;
-        height: 100%;
-        box-sizing: border-box;
-        // background-color: blue;
-        display: flex;
-        padding-top: 50px;
-        font-size: $pc_h5;
-        align-items: center;
-        .mamber-img {
-          width: 30px;
-          height: 30px;
-          background-image: url("../img/jo/jo_member4.jpg");
-          background-size: cover;
-          background-position: center center;
-          border-radius: 30px;
-          margin-right: 15px;
-        }
-        .member-name {
-          margin-right: 35px;
-        }
-      }
     }
   }
+
+  // .jo__comment__list {
+  //   margin-bottom: 110px;
+  //   .jo__comment {
+  //     height: 100px;
+  //     display: flex;
+  //     background-color: $white;
+  //     margin-bottom: 30px;
+  //     border-radius: 10px;
+  //     @include m {
+  //       flex-direction: column;
+  //     }
+  //     .jo__comment__left {
+  //       width: 70%;
+  //       height: 100%;
+  //       box-sizing: border-box;
+  //       // background-color: red;
+  //       font-size: $pc_h6;
+  //       display: flex;
+  //       align-items: center;
+  //       padding: 0 20px;
+  //     }
+  //     .jo__comment__right {
+  //       width: 30%;
+  //       height: 100%;
+  //       box-sizing: border-box;
+  //       // background-color: blue;
+  //       display: flex;
+  //       padding-top: 50px;
+  //       font-size: $pc_h5;
+  //       align-items: center;
+  //       .mamber-img {
+  //         width: 30px;
+  //         height: 30px;
+  //         background-image: url("../img/jo/jo_member4.jpg");
+  //         background-size: cover;
+  //         background-position: center center;
+  //         border-radius: 30px;
+  //         margin-right: 15px;
+  //       }
+  //       .member-name {
+  //         margin-right: 35px;
+  //       }
+  //     }
+  //   }
+  // }
   .footer {
     background-color: $gray;
     color: $white;

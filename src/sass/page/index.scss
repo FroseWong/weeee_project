@@ -14,6 +14,13 @@
   //   z-index: 30;
   // }
 
+  .index__container {
+    width: 1000px;
+    @include m {
+      width: 330px;
+    }
+  }
+
   h2 {
     @include m {
       text-align: center;
@@ -89,7 +96,8 @@
       box-sizing: border-box;
     }
     .popular-country {
-      width: 180px;
+      // width: 180px;
+      width: 150px;
       height: 270px;
       // background-color: gray;
       // padding-top: 150px;
