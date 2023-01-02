@@ -3,13 +3,22 @@
         h5{
             color: $gray;
             margin-bottom: 30px;
-        }
-        .setting{
-            width: 100%;
-            margin-bottom: 30px;
+            @include m{
+                margin-bottom: 15px;
+                display: none;
+            }
         }
         .jo-list{
             margin-bottom: 20px;
+            @include m{
+                flex-direction: column;
+                margin-bottom: 0;
+            }
+            .jo-card{
+                @include m{
+                    margin-bottom: 10px;
+                }
+            }
         }
         .member-pic{
             background-image: url(../img/jo/jo_memberpic1.jpg);

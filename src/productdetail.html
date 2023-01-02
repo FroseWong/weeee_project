@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weeee!</title>
-    <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"> 
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -24,25 +26,12 @@
             </ol>
         </nav>
         <div class="container">
-            <div class="slideshow-container">
+            <div class="productdetail__slideshow">
                 <a href="#" v-for="carousel in carousels">
-                    <div class="mySlides fade">
-                        <div class="mySlidesFlex">
-                            <img :src="carousel.src" alt="" class="mySlides__img1">
-                            <img :src="carousel.src" alt="" class="mySlides__img2">
-                            <img :src="carousel.src" alt="" class="mySlides__img3">
-                        </div>
+                    <div class="mySlidesFlex">
+                        <img :src="carousel.src" alt="">
                     </div>
                 </a>
-                <!-- Next and previous buttons -->
-                <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-                <a class="next" @click="plusSlides(1)">&#10095;</a>
-            </div>
-            <!-- The dots/circles -->
-            <div style="text-align:center">
-                <span class="dot" @click="currentSlide(1)"></span>
-                <span class="dot" @click="currentSlide(2)"></span>
-                <span class="dot" @click="currentSlide(3)"></span>
             </div>
         </div>
         <div class="container">
@@ -50,11 +39,19 @@
                 <div class="productdetail__fixedfield--group">
                     <div class="productdetail__fixedfield1">
                         <h2>TWD {{ProductDetail.price}}</h2>
-                        <button @click="pd_check">
+                        <i class="fa-regular fa-heart"></i>
+                        <button @click="pd_check" class="field1_btn1">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
                         </button>
-
+                        <button @click="pd_check" class="field1_btn2">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>加入購物車</span>
+                        </button>
+                        <button @click="cle_check" class="field1_btn3">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>立即訂購</span>
+                        </button>
                     </div>
                     <div class="productdetail__fixedfield2">
                         <a v-for="fieldData in fieldDatas" :id="fieldData.fieldID"
@@ -168,26 +165,37 @@
                 </div>
             </div>
         </div>
-
-        <div class="productdetail__bot wrapper">
-            <div class="card" style="width: 18rem;" v-for="card in cards">
-                <img :src="card.src" alt="">
-                <div class="card-body">
-                    <span class="card-body_label">{{card.label}}</span>
-                    <h5 class="card-title">{{card.title}}
-                    </h5>
-                    <div>
-                        <p>★</p>
-                        <h5>{{card.score}} ({{card.scoreNum}})</h5>
-                        <span>{{card.order}}</span>
+        <div class="container productdetail__bot">
+            <div class="product-list">
+                <a class="product-card" v-for="card in cards">
+                    <i class="fa-regular fa-heart"></i>
+                    <div class="product-card__location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p class="p__location">新北</p>
                     </div>
-                    <h5>TWD {{card.price}}元</h5>
-                </div>
+                    <div class="product-card__top">
+                        <div class="product-card__top__pic">
+                            <img :src="card.src" alt="" />
+                        </div>
+                    </div>
+                    <div class="product-card__bottom">
+                        <span class="product-tag">{{card.label}}</span>
+                        <h6 class="product-name">{{card.title}}</h6>
+                        <span class="gray"><i class="fa-solid fa-star"></i>{{card.score}} ({{card.scoreNum}}) |
+                            <span class="product-bought">{{card.order}}</span>個已訂購
+                        </span>
+                        <span class="price">TWD <span class="product-price">{{card.price}}</span>元</span>
+                    </div>
+                </a>
             </div>
         </div>
+        <!-- </div> -->
     </div>
     @@include('layout/footer.html')
     <script src="/vue/vue.global.prod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./js/productdetail.js"></script>
 </body>
 

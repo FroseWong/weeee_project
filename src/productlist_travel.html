@@ -36,14 +36,14 @@ x
                         </ul>
                     </div>
                     <div class="about2__category">
-                        <h4>門票分類</h4>
+                        <h4>行程分類</h4>
 
                         
                         <ul>
-                            <li><input type="checkbox" name="" id="">&emsp;主題樂園 </li>
-                            <li><input type="checkbox" name="" id="">&emsp;水族館 </li>
-                            <li><input type="checkbox" name="" id="">&emsp;博物館</li>
-                            <li><input type="checkbox" name="" id="">&emsp;美術館</li>
+                            <li><input type="checkbox" name="" id="">&emsp;朋友行程 </li>
+                            <li><input type="checkbox" name="" id="">&emsp;家人行程 </li>
+                            <li><input type="checkbox" name="" id="">&emsp;情侶行程</li>
+                            <li><input type="checkbox" name="" id="">&emsp;寵物行程</li>
                         </ul>
                     </div>
                     <div class="about2__destination">
@@ -60,10 +60,10 @@ x
                     <div class="about2__price">
                         <h4>價格</h4>
                         <ul>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 2,000~3,999</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 4,000~5,999</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 6,000~7,999</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 8,000~9,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 300 ~ 400</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 401~500</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 501~600</li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -86,9 +86,10 @@ x
                     </div>
                     <nav>
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link page-link--current"
+                                    href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                           
                         </ul>
                     </nav>
                 </div>
@@ -105,76 +106,98 @@ x
                 return {
                     cardlist: [
                         {
-                            src: "img/otherpage/ar_9_1.jpg",
-                            title: '新北美術館 ',
-                            label: '美術館',
-                            content: '新北舉辦美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。',
+                            src: "img/otherpage/fa_8_1.jpg",
+                            title: '家庭行程水族館 ',
+                            label: '家庭行程',
+                            content: '打造全新都會型水族館，全台首見。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 1000,
                             price: 550,
-                            city: '新北',
+                            city: '台北',
                             cardid: 1,
                         },
                         {
-                            src: "img//otherpage/ar_10_1.jpg",
-                            title: '基隆美術館',
-                            label: '美術館',
-                            content: '這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。',
+                            src: "img//otherpage/co_9_1.jpg",
+                            title: '情侶行程水族館',
+                            label: '情侶行程',
+                            content: '打造全新都會型水族館，全台首見',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 50,
                             price: 550,
-                            city: '基隆',
+                            city: '台北',
                             cardid: 2,
                         },
                         {
-                            src: "img//otherpage/th_6_1.jpg",
-                            title: '動漫主題樂園',
-                            label: '主題樂園',
-                            content: '台北首家以動漫人氣冠軍「動畫間諜扮演」為主題的兒童成長樂園。',
+                            src: "img//otherpage/fa_10_1.jpg",
+                            title: '家庭行程動物園',
+                            label: '家庭行程',
+                            content: '超過 12 種動物主題區，適合大小朋友一起探索大自然的奧妙',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 350,
-                            price: 550,
+                            price: 350,
                             city: '新北',
                             cardid: 3,
                         },
                         {
-                            src: "img//otherpage/aq_8_1.jpg",
-                            title: '基隆海洋水族館',
-                            label: '水族館',
-                            content: '新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。',
+                            src: "img//otherpage/fr_11_1.jpg",
+                            title: '朋友行程動物園',
+                            label: '朋友行程',
+                            content: '超過 12 種動物主題區，適合大小朋友一起探索大自然的奧妙',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 1750,
-                            price: 450,
-                            city: '台北',
+                            price: 350,
+                            city: '新北',
                             cardid: 4,
                         },
                         {
-                            src: "img//otherpage/aq_7_2.jpg",
-                            title: '海洋水族館',
-                            label: '水族館',
-                            content: '新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。',
+                            src: "img//otherpage/fa_12_1.jpg",
+                            title: '家庭行程美術館',
+                            label: '家庭行程',
+                            content: '全國最大的公園美術館，適合親子體驗藝術饗宴的最佳去處！',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 150,
-                            price: 450,
-                            city: '台北',
+                            price: 350,
+                            city: '基隆',
                             cardid: 5,
                         },
                         {
-                            src: "img//otherpage/mu_11_1.jpg",
-                            title: '兒童卡通博物館',
-                            label: '博物館',
-                            content: '博物館的蒐藏以藝術為主要收藏方向，總計展出約四千多件藏品，約整體蒐藏的三分之一。',
+                            src: "img//otherpage/co_13_1.jpg",
+                            title: '情侶行程101',
+                            label: '情侶行程',
+                            content: '91樓戶外觀景台天空草原野餐場地，在海拔400公尺的高空之上來場Chill的「天際之旅」。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 150,
-                            price: 550,
+                            price: 500,
                             city: '台北',
                             cardid: 6,
+                        }, {
+                            src: "img//otherpage/fr_14_1.jpg",
+                            title: '朋友行程101',
+                            label: '朋友行程',
+                            content: '91樓戶外觀景台天空草原野餐場地，在海拔400公尺的高空之上來場Chill的「天際之旅」。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 150,
+                            price: 500,
+                            city: '台北',
+                            cardid: 6,
+                        }, {
+                            src: "img//otherpage/pe_15_1.jpg",
+                            title: '寵物行程海邊遊玩',
+                            label: '寵物友愛行程',
+                            content: '帶寵物一起郊遊去',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 150,
+                            price: 500,
+                            city: '基隆',
+                            cardid: 7,
                         }
 
                     ],
@@ -243,6 +266,12 @@ x
             }
         }).mount('#app')
     </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+     ></script>
+    <script>
+    $(".about2__open").on("click",function(){
+        $('.about2__block').slideToggle();
+     } ) //jquery 開關程式碼</script>
 </body>
 @@include('layout/footer.html')
 </html>

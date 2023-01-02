@@ -36,14 +36,14 @@
                         </ul>
                     </div>
                     <div class="about2__category">
-                        <h4>門票分類</h4>
+                        <h4>交通票卡分類</h4>
 
                         
                         <ul>
-                            <li><input type="checkbox" name="" id="">&emsp;主題樂園 </li>
-                            <li><input type="checkbox" name="" id="">&emsp;水族館 </li>
-                            <li><input type="checkbox" name="" id="">&emsp;博物館</li>
-                            <li><input type="checkbox" name="" id="">&emsp;美術館</li>
+                            <li><input type="checkbox" name="" id="">&emsp;無限暢遊卡 </li>
+                            <li><input type="checkbox" name="" id="">&emsp;景點暢遊卡 </li>
+                            <li><input type="checkbox" name="" id="">&emsp;交通暢遊卡</li>
+                            <li><input type="checkbox" name="" id="">&emsp;經典暢遊卡</li>
                         </ul>
                     </div>
                     <div class="about2__destination">
@@ -61,10 +61,10 @@
                     <div class="about2__price">
                         <h4>價格</h4>
                         <ul>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 2,000~3,999</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 4,000~5,999</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 6,000~7,999</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 8,000~9,999</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 400~500</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 501~600</li>
+                            <li><input type="checkbox" name="" id="">&emsp;TWD 601~850</li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -87,9 +87,10 @@
                     </div>
                     <nav>
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link page-link--current"
+                                    href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                           
                         </ul>
                     </nav>
                 </div>
@@ -186,15 +187,15 @@
                 open_city() {
                     let city = document.getElementsByClassName('about2__city')[0].classList;
                     let fa = document.getElementsByClassName('fa-solid')[0];
-                    if (city.contains('about2__block')) {
-                        city.remove('about2__block');
-                        city.add('about2__none');
+                    if (city.contains('about2__none')) {
+                        city.remove('about2__none');
+                        city.add('about2__block');
                         fa.classList.remove('fa-circle-chevron-down');
                         fa.classList.add('fa-circle-chevron-up');
                     }
                     else {
-                        city.remove('about2__none');
-                        city.add('about2__block');
+                        city.remove('about2__block');
+                        city.add('about2__none');
                         fa.classList.remove('fa-circle-chevron-up');
                         fa.classList.add('fa-circle-chevron-down');
                     }
@@ -244,8 +245,7 @@
         }).mount('#app')
     </script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-     integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    ></script>
     <script>
 
 //         $(".about2__open").on("click",function(){

@@ -41,10 +41,10 @@
         <div class="question ttoc">
           <section class="question_type ">
             <h5>訂單問題</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 如何知道訂單確認了沒?
-                <button @click="draw">
+                <button >
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -55,10 +55,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 下單後沒收到訂單確認信，怎麼辦？?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -74,10 +74,10 @@
           </section>
           <section class="question_type ">
             <h5>退改訂單</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 如何更改訂單？
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -94,10 +94,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 如何申請退費？
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -111,10 +111,10 @@
           </section>
           <section class="question_type ">
             <h5>帳號相關</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 如果忘記密碼怎麼辦
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -125,10 +125,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 我沒有收到驗證信怎麼辦?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -142,10 +142,10 @@
           </section>
           <section class="question_type ">
             <h5>點數問題</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 我要怎麼累計點數?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -156,10 +156,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 點數要怎麼使用?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -175,10 +175,10 @@
           </section>
           <section class="question_type ">
             <h5>聯絡我們</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 還有其他問題嗎?直接聯繫我們!
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -211,10 +211,10 @@
         <div class="question ttoc">
           <section class="question_type">
             <h5>揪團介紹</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 我要怎麼參加別人的揪團？
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -230,10 +230,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 我要怎麼發起揪團?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -252,10 +252,10 @@
           </section>
           <section class="question_type">
             <h5>揪團資格</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 我想要發起/參加揪團，需要符合哪些資格?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -266,10 +266,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 我的帳號被凍結了，我還能進行揪團嗎?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -283,10 +283,10 @@
           </section>
           <section class="question_type">
             <h5>揪團條例</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 揪團有哪些需要遵守的規範?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -297,10 +297,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 我沒有收到驗證信怎麼辦?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -314,10 +314,10 @@
           </section>
           <section class="question_type">
             <h5>安全問題</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 我要怎麼累計點數?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -328,10 +328,10 @@
                 </p>
               </div>
             </div>
-            <div class="question_content">
+            <div class="question_content" @click="draw">
               <h6>
                 點數要怎麼使用?
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -347,10 +347,10 @@
           </section>
           <section class="question_type">
             <h5>聯絡我們</h5>
-            <div class="question_content ">
+            <div class="question_content " @click="draw">
               <h6>
                 還有其他問題嗎?直接聯繫我們!
-                <button @click="draw">
+                <button>
                   <i class="fa-solid fa-plus"></i>
                   <i class="fa-solid fa-minus -close"></i>
                 </button>
@@ -383,13 +383,17 @@
             qa_jo: false
           }
         },
+        created() {
+            window.addEventListener("scroll", this.changecolor_buy);
+            window.addEventListener("scroll", this.changecolor_jo)
+ 
+        },
         methods:{
           draw(e){
             let father = e.target.closest(".question_content");
             father.querySelector(".question_a").classList.toggle("-close");
-            let btn1 = e.target.closest("button");
-            btn1.querySelector(".fa-plus").classList.toggle("-close");
-            btn1.querySelector(".fa-minus").classList.toggle("-close");
+            father.querySelector(".fa-plus").classList.toggle("-close");
+            father.querySelector(".fa-minus").classList.toggle("-close");
            
           },
           switchtype(e){
@@ -399,19 +403,21 @@
               this.qa_buy = !this.qa_buy
               this.qa_jo = !this.qa_jo
               this.isShow= !this.isShow
+              
             }
+            
           },
-          scrollto_buy(e){
+          scrollto_buy(e){  
             let num = e.target.closest(".ttoc").offsetTop;
             let a = document.getElementsByClassName('question_type')[0].offsetTop;
             let b = document.getElementsByClassName('question_type')[1].offsetTop;
             let c = document.getElementsByClassName('question_type')[2].offsetTop;
-            let d = document.getElementsByClassName('question_type')[3].offsetTop
+            let d = document.getElementsByClassName('question_type')[3].offsetTop;
             let e1 = document.getElementsByClassName('question_type')[4].offsetTop;
             if(e.target.classList.contains("position_a")){
-              num = a -120
+              num = a -120;
             }else if(e.target.classList.contains("position_b")){
-              num = b -120
+              num = b -120;
             }else if(e.target.classList.contains("position_c")){
               num = c -120
             }else if(e.target.classList.contains("position_d")){
@@ -424,6 +430,7 @@
                         left: 0,
                         behavior: 'smooth'
                     });
+
           },
           scrollto_jo(e){
             let num = e.target.closest(".ttoc").offsetTop;
@@ -449,7 +456,119 @@
                         behavior: 'smooth'
                     });
           },
+          changecolor_buy(){
+            scrollswatch = this.qa_buy;
+            if(scrollswatch){
+              let a_list = document.querySelector(".position_a");
+              let b_list = document.querySelector(".position_b");
+              let c_list = document.querySelector(".position_c");
+              let d_list = document.querySelector(".position_d");
+              let e_list = document.querySelector(".position_e");
+              let a = document.getElementsByClassName('question_type')[0];
+              let b = document.getElementsByClassName('question_type')[1];
+              let c = document.getElementsByClassName('question_type')[2];
+              let d = document.getElementsByClassName('question_type')[3];
+              let e = document.getElementsByClassName('question_type')[4];
+              a_position = a.offsetTop;
+              b_position = b.offsetTop;
+              c_position = c.offsetTop;
+              d_position = d.offsetTop;
+              e_position = e.offsetTop;
+              // console.log([a_position,b_position,c_position,d_position,e_position])
+              let arr = [a_list,b_list,c_list,d_list,e_list]
+              ScrollPosition = window.scrollY;
+              // console.log(ScrollPosition);
+              if (ScrollPosition + 136 >= a_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                a_list.classList.add("on");
+              }
+              if (ScrollPosition + 120 >= b_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                b_list.classList.add("on");
+              }
+              if (ScrollPosition + 132 >= c_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                c_list.classList.add("on");
+              }
+              if (ScrollPosition + 132 >= d_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                d_list.classList.add("on");
+              }
+              if (ScrollPosition + 260 >= e_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                e_list.classList.add("on");
+              }
+              
+            }
 
+            
+          },
+          changecolor_jo(){
+            scrollswatch = this.qa_jo;
+            if(scrollswatch){
+              let f_list = document.querySelector(".position_f");
+              let g_list = document.querySelector(".position_g");
+              let h_list = document.querySelector(".position_h");
+              let i_list = document.querySelector(".position_i");
+              let j_list = document.querySelector(".position_j");
+              let f = document.getElementsByClassName('question_type')[0];
+              let g = document.getElementsByClassName('question_type')[1];
+              let h = document.getElementsByClassName('question_type')[2];
+              let i = document.getElementsByClassName('question_type')[3];
+              let j = document.getElementsByClassName('question_type')[4];
+              f_position = f.offsetTop;
+              g_position = g.offsetTop;
+              h_position = h.offsetTop;
+              i_position = i.offsetTop;
+              j_position = j.offsetTop;
+              console.log([f_position,g_position,h_position,i_position,j_position])
+              let arr = [f_list,g_list,h_list,i_list,j_list]
+              ScrollPosition = window.scrollY;
+              console.log(ScrollPosition);
+              if (ScrollPosition + 136 >= f_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                f_list.classList.add("on");
+              }
+              if (ScrollPosition + 120 >= g_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                g_list.classList.add("on");
+              }
+              if (ScrollPosition + 132 >= h_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                h_list.classList.add("on");
+              }
+              if (ScrollPosition + 132 >= i_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                i_list.classList.add("on");
+              }
+              if (ScrollPosition + 260 >= j_position){
+                arr.forEach(element => {
+                  element.classList.remove("on")
+                });
+                j_list.classList.add("on");
+              }
+              
+            }
+          },
+ 
         }
       });
       app1.mount(".app1");

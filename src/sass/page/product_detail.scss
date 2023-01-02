@@ -1,8 +1,11 @@
 .breadcrumb {
   display: flex;
-  margin: 0 30px;
+  margin: 0 0 10px 0;
   .breadcrumb__item:after {
     content: ">";
+  }
+  @include m {
+    display: none;
   }
   .breadcrumb__item {
     a {
@@ -30,12 +33,18 @@
   display: flex;
   justify-content: space-between;
   margin: 0 30px;
+  @include m {
+    flex-direction: column;
+  }
   .productdetail__fixedfield--group {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     align-items: center;
     order: 2;
+    @include m {
+      order: 0;
+    }
     .productdetail__fixedfield1 {
       background-color: $white;
       width: 300px;
@@ -50,18 +59,62 @@
       justify-content: center;
       align-items: center;
       padding: 20px;
+      @include m {
+        padding: 15px;
+        width: 100%;
+        flex-direction: row;
+        border-radius: 0px;
+        position: fixed;
+        top: 1185px;
+        z-index: 3000;
+      }
+      .fa-heart {
+        display: none;
+        @include m {
+          display: block;
+          font-size: 25px;
+          color: $orange;
+          margin-right: 30px;
+        }
+      }
 
       h2 {
         font-size: 22px;
         margin-right: 100px;
         margin-bottom: 20px;
         font-weight: bold;
+        @include m {
+          display: none;
+        }
+      }
+
+      .field1_btn1 {
+        background-color: $blue;
+        @include m {
+          display: none;
+        }
+      }
+      .field1_btn2 {
+        background-color: $blue;
+        display: none;
+        @include m {
+          display: block;
+          width: 140px;
+          margin-right: 20px;
+        }
+      }
+      .field1_btn3 {
+        background-color: $orange;
+        display: none;
+        @include m {
+          display: block;
+          width: 140px;
+        }
       }
       button {
-        background-color: $blue;
         width: 250px;
         height: 45px;
-        border-radius: 10px;
+        border-radius: 5px;
         border: 0;
         color: $white;
         cursor: pointer;
@@ -69,29 +122,21 @@
           font-size: $pc_h6;
           font-weight: bold;
         }
-        i {
+        .fa-bolt {
           color: $white;
           margin-right: 10px;
           font-weight: bold;
+          @include m {
+            display: none;
+          }
         }
       }
-
       div {
         display: flex;
         align-items: center;
       }
     }
     .productdetail__fixedfield2 {
-      a {
-        display: block;
-        text-decoration: none;
-        margin-bottom: 10px;
-        font-size: $pc_h6;
-        color: $black;
-        font-weight: bold;
-        padding-left: 5px;
-        cursor: pointer;
-      }
       background-color: $white;
       width: 200px;
       height: 200px;
@@ -103,6 +148,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      @include m {
+        width: 300px;
+        height: 0px;
+        flex-direction: row;
+        position: fixed;
+        top: 100px;
+        background-color: #ffffff00;
+        z-index: -1;
+
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-size: $pc_h6;
+        color: $black;
+        font-weight: bold;
+        padding-left: 5px;
+        cursor: pointer;
+
+      }
     }
     .productdetail__scrollToTop {
       background-color: $blue;
@@ -114,6 +180,9 @@
       right: 30px;
       bottom: 50px;
       border-radius: 10px;
+      @include m {
+        display: none;
+      }
       i {
         color: $white;
         font-size: $pc_h1;
@@ -127,20 +196,28 @@
 }
 
 .productdetail__title {
-  margin-top: 50px;
-  margin-bottom: 80px;
+  margin: 10px 0 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include m {
+    margin: 0 0;
+  }
   h1 {
     font-size: $pc_h4;
     font-weight: bold;
     display: inline;
+    @include m {
+      font-size: 20px;
+    }
   }
   i {
     color: $orange;
-    font-size: $pc_h1;
+    font-size: $pc_h3;
     cursor: pointer;
+    @include m {
+      display: none;
+    }
   }
 }
 
@@ -171,12 +248,14 @@
   }
 }
 .productdetail__time {
-  margin-top: 70px;
+  margin-top: 25px;
   margin-bottom: 35px;
-  padding: 30px 0 30px 0;
+  padding: 15px 0 15px 0;
   border-top: 1px solid $gray;
   border-bottom: 1px solid $gray;
-
+  @include m {
+    flex-direction: column;
+  }
   display: flex;
   div {
     margin-right: 100px;
@@ -239,6 +318,10 @@
     width: 800px;
     height: 487px;
     border-radius: 10px;
+    @include m {
+      width: 340px;
+      height: 250px;
+    }
   }
 }
 .productdetail__notice {
@@ -249,10 +332,12 @@
   }
   .notice__list {
     max-width: 800px;
-    // max-height: 800px;
     background-color: #f4f4f4;
     padding: 50px;
     border-radius: 10px;
+    @include m {
+      padding: 30px;
+    }
     li {
       font-size: 14px;
       list-style: disc;
@@ -268,10 +353,15 @@
     margin-top: 100px;
     margin-bottom: 50px;
     font-size: $pc_h4;
+    @include m {
+      margin: 10px 0 10px 0;
+    }
   }
-  img {
-    width: 800px;
-    height: 487px;
+  iframe {
+    @include m {
+      width: 340px;
+      height: 260px;
+    }
   }
   div {
     border-top: 1px solid $gray;
@@ -350,91 +440,11 @@
     }
   }
 }
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0 80px 0;
-  li {
-    background-color: $white;
-    width: 35px;
-  }
-  .page__link--current {
-    background-color: $blue;
-    display: block;
-  }
-  .page-item {
-    border: 1px solid $gray;
-    text-align: center;
-    line-height: 30px;
-    display: block;
-    a {
-      font-weight: bold;
-      font-size: 14px;
-      display: block;
-    }
-  }
-  .page-link {
-    font-size: $pc_h6;
-    text-decoration: none;
-    &:visited,
-    &:active,
-    &:link,
-    &hover {
-      color: $black;
-    }
-  }
-}
 
 .productdetail__bot {
-  background-color: #f4f4f4;
   height: 437px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  img {
-    height: 187px;
-    width: 302px;
-    border-radius: 10px;
-  }
-  .card-body {
-    .card-body_label {
-      background-color: $orange;
-      color: $white;
-      padding: 5px;
-    }
-    h5 {
-      font-weight: bold;
-    }
-    div {
-      display: flex;
-      p {
-        color: $yellow;
-        font-size: $pc_h6;
-      }
-      h5 {
-        font-size: $pc_h6;
-        color: $gray;
-        font-weight: normal;
-      }
-      span {
-        font-size: $pc_h6;
-        color: $gray;
-      }
-    }
-  }
 }
-// .productdetail__header {
-//   height: 165px;
-//   // background-color: $gray;
-//   top: 0;
-//   position: sticky;
-//   z-index: 2;
-// }
 
-.productdetail__footer {
-  height: 309px;
-  background-color: $gray;
-}
 .productdetail__open {
   transition: 2s;
   display: block;
@@ -447,125 +457,21 @@
   transition: 0.8s;
 }
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1150px;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
+/* Slideshow */
+.productdetail__slideshow {
   .mySlidesFlex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    // max-width: 1150px;
-    .mySlides__img1,
-    .mySlides__img3 {
-      height: 420px;
-      // width: 150px;
-    }
-    .mySlides__img2 {
-      height: 420px;
-      margin: 0 10px;
-
+    z-index: 100;
+    img {
+      width: 715px;
+      @include m {
+        width: 100%;
+      }
     }
   }
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Caption text */
-.text {
-  color: #fff;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 10px;
-  width: 10px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active,
-.dot:hover {
-  color: #fff;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.4;
+  .slick-prev:before {
+    color: $blue;
   }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-
-  to {
-    opacity: 1;
+  .slick-next:before {
+    color: $blue;
   }
 }

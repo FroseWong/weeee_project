@@ -9,12 +9,19 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  @include m {
+    height: 190px;
+  }
   h1 {
-    color: $white;
+    color: #fff;
     font-weight: bold;
     font-size: 64px;
     position: absolute;
     top: 100px;
+    @include m {
+      font-size: 25px;
+      top: 50px;
+    }
   }
   h2 {
     color: $white;
@@ -22,6 +29,11 @@
     font-size: 48px;
     position: absolute;
     top: 280px;
+    @include m {
+      font-size: 10px;
+      position: absolute;
+      top: 100px;
+    }
   }
 }
 .about__banner--top {
@@ -31,14 +43,21 @@
   flex-direction: column;
   background-color: #f4f4f4;
   width: 100%;
+  padding: 0 30px;
   span {
     font-size: 48px;
     color: $blue;
     font-weight: bold;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    padding: 70px;
+    @include m {
+      font-size: 20px;
+      padding: 32px 0 16px;
+    }
     img {
       width: 160px;
+      @include m {
+        width: 70px;
+      }
     }
   }
   h3 {
@@ -47,12 +66,19 @@
     text-align: center;
     font-weight: 900;
     margin-bottom: 60px;
+    @include m {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
   }
   p {
     font-size: 32px;
     max-width: 1000px;
     text-align: center;
     margin-bottom: 60px;
+    @include m {
+      font-size: 14px;
+    }
   }
 }
 .about__banner--mid {
@@ -60,23 +86,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 30px;
   span {
     font-size: 48px;
     color: $blue;
     font-weight: bold;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    padding: 70px;
+    @include m {
+      font-size: 20px;
+      padding: 32px 0 16px;
+    }
   }
   h3 {
     font-size: 36px;
     text-align: center;
     font-weight: 900;
     margin-bottom: 60px;
+    @include m {
+      font-size: 18px;
+      margin: 0 0 16px;
+    }
   }
   p {
     font-size: 32px;
     text-align: center;
     margin-bottom: 60px;
+    @include m {
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
   }
 }
 .about__banner--bot {
@@ -85,12 +123,16 @@
   justify-content: center;
   align-items: center;
   background-color: #f4f4f4;
+  padding: 0 30px;
   span {
     font-size: 48px;
     color: $blue;
     font-weight: bold;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    padding: 70px;
+    @include m {
+      font-size: 20px;
+      padding: 32px 0 16px;
+    }
   }
   div {
     display: flex;
@@ -100,23 +142,40 @@
     text-align: center;
     margin-bottom: 40px;
     width: auto;
+    @include m {
+      flex-direction: column;
+    }
     div {
       display: flex;
       flex-direction: column;
       align-items: center;
       max-width: 315px;
       margin: 0 20px;
+      @include m {
+        margin-bottom: 50px;
+      }
       img {
         max-width: 180px;
+        @include m {
+          max-width: 100px;
+        }
       }
       h4 {
         font-size: 36px;
         text-align: center;
         font-weight: 900;
         margin: 40px 0;
+        @include m {
+          font-size: 20px;
+          margin: 20px 0;
+        }
       }
       p {
         font-size: 20px;
+        color: $gray;
+        @include m {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -130,20 +189,36 @@
     font-size: 48px;
     color: $blue;
     font-weight: bold;
-    margin-top: 70px;
-    margin-bottom: 70px;
+    padding: 70px;
+    @include m {
+      font-size: 20px;
+      padding: 32px 0 16px;
+    }
   }
   h3 {
     margin-bottom: 50px;
     font-weight: 900;
+    @include m {
+      font-size: 16px;
+      margin: 0 0 24px;
+    }
   }
   div {
     display: flex;
     justify-content: center;
     margin-bottom: 100px;
+    @include m {
+      margin-bottom: 0px;
+      display: inline-block;
+      text-align: center;
+    }
     img {
       max-width: 150px;
       margin: 50px;
+      @include m {
+        margin: 20px;
+        max-width: 80px;
+      }
     }
   }
 }

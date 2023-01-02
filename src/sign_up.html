@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/sass/page/sign_up.scss">
     <title>註冊</title>
 </head>
 <body>
-    <form action="sign_up.php" method="post">
+    <div class="header"></div>
+    <div class="wapper sign_up"> 
+        <div class="sign_upbg">
+            <div class="container sign_up">
+                <div class="sur">
+                    <h1>註冊</h1>
+                
+                    <form class="surform" action="sign_up.php" method="post">
 
-        加入會員
-        <br>
-        帳號:  
-        <input type="text"  name="account"/><br>
-        密碼:  
-        <input type="text"  name="password"/><br>
-        <input type="submit" value="送出"/>
+                        <input type="text"  name="account" value="E-mail"/><br> 
+                        <input type="text"  name="password" value="PassWord"/><br>
+                        <input type="text"  name="passwordag" value="請再次輸入密碼"/><br>
+                        <input class="submit" type="submit" value="註冊"/>
+                        <p>已經有帳號了嗎？</p>
+                        
+                    </form>
+                
+                    <button class="login" ref="#">登入</button>
+                       
+                </div>
+                
+                </div>
+        </div>    
 
-    </form>
+</div>
+   
 </body>
 </html>
