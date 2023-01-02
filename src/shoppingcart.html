@@ -15,9 +15,8 @@
 <body style="background-color:#f5f5f5;">
 
     @@include('layout/header.html')
-    <div class="shoppingcart_wrapper wrapper">
+    <div class="cart_wrapper wrapper">
         
-        <!-- @@include('layout/header.html') -->
         <div class="container">
             
             <div class="cart_breadcrumb hb">
@@ -33,8 +32,9 @@
                 <div class="cart_header">
                     <h5>購物車</h5>
                 </div>
-                <div class="cart_group">
-                    <div class="cart_item">
+                <div class="product_group">
+                    <div class="product_item">
+                        
                         <div class="checkbox"><input type="checkbox"></div>
 
                         <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg" alt=""></a>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
 
-                    <div class="cart_item">
+                    <div class="product_item">
                         <div class="checkbox"><input type="checkbox"></div>
 
                         <a href="" class="product-image"><img src="../../img/sightseeing/fr_27_1.jpg" alt=""></a>
@@ -80,7 +80,7 @@
                         </div>
 
                     </div>
-                    <div class="cart_item">
+                    <div class="product_item">
                         <div class="checkbox"><input type="checkbox"></div>
 
                         <a href="" class="product-image"><img src="../../img/sightseeing/fr_27_1.jpg" alt=""></a>
@@ -103,7 +103,7 @@
                         </div>
 
                     </div>
-                    <div class="cart_item">
+                    <div class="product_item">
                         <div class="checkbox"><input type="checkbox"></div>
 
                         <a href="" class="product-image"><img src="../../img/sightseeing/fr_27_1.jpg" alt=""></a>
@@ -126,7 +126,7 @@
                         </div>
 
                     </div>
-                    <div class="cart_item">
+                    <div class="product_item">
                         <div class="checkbox"><input type="checkbox"></div>
 
                         <a href="" class="product-image"><img src="../../img/sightseeing/fr_27_1.jpg" alt=""></a>
@@ -154,7 +154,10 @@
 
 
                 <div class="cart_footer">
-                    <div class="checkall"><label for="checkall"><input type="checkbox" name="checkall">全選</label></div>
+                    <div class="checkall">
+                        <label for="checkall"><input type="checkbox" name="checkall" id="checkall">全選</label>
+                    <a href="">刪除已選項目</a>
+                </div>
                     <div class="cart_footer_right">
                         <div class="cart_total">
                             <div>
