@@ -1,20 +1,21 @@
+
 .account_favor{
     .trash{
         float: right;
-    }
-
-    .product-card-row{
-        outline: none;
     }
 
     .product-card-row__right_bgc{
         background-color: $white;
         outline: none;
         border-radius: 0px 12px 12px 0px;
+        @include m {
+            
+        }
     }
 
     .useweeee{
         margin-bottom: 30px;
     }
 
+    
 }
