@@ -222,10 +222,6 @@ createApp({
         behavior: "smooth",
       });
     },
-    // ---------------立即確認---------------
-    pd_check() {
-      // alert(404);
-    },
     // ---------------固定框滑動---------------
     fieldClick(e) {
       let directions = document.getElementsByClassName(
@@ -276,17 +272,17 @@ createApp({
       let weblue = "#4484ce";
       let num =
         document.getElementsByClassName("productdetail__bot")[0].offsetTop;
-      let ff = document.getElementsByClassName("productdetail__fixedfield2")[0];
-      let check = document.getElementsByClassName(
-        "productdetail__directions--group"
-      )[0].classList;
-      let tf = check.contains("productdetail__open");
+      let fixedfield2 = document.getElementsByClassName(
+        "productdetail__fixedfield2"
+      )[0];
+
       let directions = document.getElementsByClassName(
         "productdetail__directions--group"
       )[0].classList;
 
-      document.addEventListener("scroll", function (e) {
+      document.addEventListener("scroll", function () {
         ScrollPosition = window.scrollY;
+
         if (directions.contains("productdetail__none")) {
           ScrollPosition = ScrollPosition + 2226;
         }
@@ -345,9 +341,9 @@ createApp({
           pn.borderLeft = "0";
         }
         if (ScrollPosition >= num - 100) {
-          ff.style.display = "none";
+          fixedfield2.style.display = "none";
         } else {
-          ff.style.display = "flex";
+          fixedfield2.style.display = "flex";
         }
       });
     },
@@ -394,20 +390,22 @@ createApp({
         ],
       });
     },
-    // ---------------測試---------------
-    window_scroll() {
+    // ---------------超過4825時隱藏---------------
+    display_scroll() {
       let field = document.getElementsByClassName(
         "productdetail__fixedfield1"
       )[0];
-      let ScrollPosition0 = window.scrollY;
+      let bro = window.innerWidth;
       document.addEventListener("scroll", function (e) {
         let ScrollPosition = window.scrollY;
-        if (ScrollPosition > ScrollPosition0) {
-          field.style.display = "flex";
-        } else {
+        window.addEventListener("resize", function () {
+          bro = window.innerWidth;
+        });
+        if (ScrollPosition > 4825 && bro < 768) {
           field.style.display = "none";
+        } else {
+          field.style.display = "flex";
         }
-        ScrollPosition0 = ScrollPosition;
       });
     },
     // ---------------axios---------------
@@ -441,20 +439,15 @@ createApp({
       });
       $.datetimepicker.setLocale("zh-TW");
     },
-    test1(){
-
-    },
+    test1() {},
   },
   mounted() {
     this.fieldMark();
     this.product_list();
     this.productdetail__slideshow();
-    // this.window_scroll();
+    this.display_scroll();
+    this.timefun();
     // this.axiosget();
     // this.axiospost();
-    this.timefun();
-    // this.test1();
   },
 }).mount("#app");
-
-
