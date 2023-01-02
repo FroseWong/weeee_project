@@ -111,21 +111,21 @@
 
   @include pc {
     // 1200以內
-    .slick-prev:before,
-    .slick-next:before {
-      font-size: 25px;
-    }
+    // .slick-prev:before,
+    // .slick-next:before {
+    //   font-size: 25px;
+    // }
 
-    .slick-prev:before {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-    }
-    .slick-next:before {
-      position: absolute;
-      top: 0px;
-      right: 0px;
-    }
+    // .slick-prev:before {
+    //   position: absolute;
+    //   top: 0px;
+    //   left: 0px;
+    // }
+    // .slick-next:before {
+    //   position: absolute;
+    //   top: 0px;
+    //   right: 0px;
+    // }
   }
   @include m {
     .slick-prev:before,

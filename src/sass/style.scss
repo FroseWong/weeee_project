@@ -74,6 +74,10 @@
   &:hover {
     background-color: $orange;
     color: $white;
+
+    @include m {
+      background-color: $blue;
+    }
   }
 }
 
@@ -84,6 +88,10 @@
   &:hover {
     background-color: $orange;
     color: $white;
+    @include m {
+      background-color: $yellow;
+      color: $black;
+    }
   }
 }
 

@@ -1,18 +1,6 @@
 .jo_new {
   background-color: #f4f4f4;
-  // header {
-  //   height: 165px;
-  //   width: 1280px;
-  //   background-color: $gray;
-  //   position: fixed;
-  //   top: 0;
-  //   left: 0;
-  //   font-size: 40px;
-  //   color: $white;
-  //   text-align: center;
-  //   padding-top: 60px;
-  //   box-sizing: border-box;
-  // }
+
   textarea:focus,
   input:focus,
   select:focus {
@@ -56,6 +44,10 @@
       margin-bottom: 50px;
       color: $gray;
 
+      @include m {
+        flex-direction: column;
+      }
+
       label {
         margin-bottom: 10px;
         // padding-left: 10px;
@@ -65,8 +57,10 @@
       select {
         margin-bottom: 20px;
         padding-left: 10px;
-        // outline: none;
-        // border: none;
+
+        @include m {
+          font-size: 16px;
+        }
       }
 
       textarea {
@@ -84,6 +78,10 @@
         flex-basis: 0;
         padding: 30px 15px;
         box-sizing: border-box;
+
+        @include m {
+          padding: 10px 15px 0;
+        }
       }
       .top__right {
         display: flex;
@@ -92,6 +90,22 @@
         // background-color: blue;
         flex-basis: 0;
         padding: 30px 15px;
+
+        @include m {
+          padding: 10px 15px 0;
+        }
+
+        .jo__location__input {
+          // @include m {
+          //   font-size: 16px;
+          // }
+        }
+
+        .jo__start-date__input {
+          // @include m {
+          //   font-size: 16px;
+          // }
+        }
       }
     }
 

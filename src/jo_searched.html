@@ -9,8 +9,8 @@
     <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    @@include('layout/header.html')
-    <div class="wrapper jo_index app1">
+    <!-- @@include('layout/header.html') -->
+    <div class="wrapper jo_index app1 jo_searched">
 
       <div class="topbanner">
         <div class="container topbanner__text">
@@ -277,11 +277,20 @@
             },
           btn_show(){
              let btn = $('#jo_button');
+             if(screen.width <= 768){
+              if (window.scrollY > 100) {
+                btn.addClass('show');
+              } else {
+                btn.removeClass('show');
+              }
+             }else{
               if (window.scrollY > 300) {
                 btn.addClass('show');
               } else {
                 btn.removeClass('show');
               }
+             }
+              
             },
         },
 
