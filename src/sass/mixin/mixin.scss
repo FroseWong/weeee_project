@@ -7,7 +7,7 @@
 
 @mixin pc {
   @media all and (max-width: $pc_breakpoint) {
-    // 暫時未知是給誰用
+    // 筆電
     @content;
   }
 }

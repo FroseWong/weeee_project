@@ -114,14 +114,47 @@
           line-height: 48px;
           margin-left: 140px;
         }
-      .about2__city{
-        display: block;
-      }
+      
       .about2__block{
         display: none;
+      }
+      .about2__city{
+        display: block;
       }
       }
     }
   }
- 
-  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 80px 0;
+    li {
+      background-color: $white;
+      width: 35px;
+    }
+    .page-link--current {
+      background-color: $blue;
+      display: block;
+    }
+    .page-item {
+      border: 1px solid $gray;
+      text-align: center;
+      line-height: 30px;
+      display: block;
+      a {
+        font-weight: bold;
+        font-size: 14px;
+        display: block;
+      }
+    }
+    .page-link {
+      font-size: $pc_h6;
+      text-decoration: none;
+      &:visited,
+      &:active,
+      &:link,
+      &hover {
+        color: $black;
+      }
+    }
+  }
