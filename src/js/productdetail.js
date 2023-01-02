@@ -179,6 +179,7 @@ createApp({
     };
   },
   methods: {
+    // ---------------開闔商品說明---------------
     open() {
       let directions = document.getElementsByClassName(
         "productdetail__directions--group"
@@ -199,6 +200,7 @@ createApp({
         fa.add("fa-angle-up");
       }
     },
+    // ---------------橘心---------------
     heartclick(e) {
       let list = e.target.classList;
       if (list.contains("fa-regular")) {
@@ -212,6 +214,7 @@ createApp({
         list.add("fa-regular");
       }
     },
+    // ---------------Totop---------------
     scrollToTop() {
       window.scrollTo({
         top: 0,
@@ -219,9 +222,11 @@ createApp({
         behavior: "smooth",
       });
     },
+    // ---------------立即確認---------------
     pd_check() {
       // alert(404);
     },
+    // ---------------固定框滑動---------------
     fieldClick(e) {
       let directions = document.getElementsByClassName(
         "productdetail__directions--group"
@@ -261,6 +266,7 @@ createApp({
         behavior: "smooth",
       });
     },
+    // ---------------固定框變色---------------
     fieldMark() {
       let pd = document.getElementById("f1").style;
       let pn = document.getElementById("f2").style;
@@ -345,6 +351,7 @@ createApp({
         }
       });
     },
+    // ---------------下方輪播---------------
     product_list() {
       $(".product-list").slick({
         infinite: false,
@@ -352,6 +359,7 @@ createApp({
         slidesToScroll: 1,
         arrows: true,
         dots: false,
+        speed: 1000,
         responsive: [
           {
             breakpoint: 768,
@@ -364,6 +372,7 @@ createApp({
         ],
       });
     },
+    // ---------------上方輪播---------------
     productdetail__slideshow() {
       $(".productdetail__slideshow").slick({
         infinite: true,
@@ -385,6 +394,7 @@ createApp({
         ],
       });
     },
+    // ---------------測試---------------
     window_scroll() {
       let field = document.getElementsByClassName(
         "productdetail__fixedfield1"
@@ -400,6 +410,7 @@ createApp({
         ScrollPosition0 = ScrollPosition;
       });
     },
+    // ---------------axios---------------
     axiosget() {
       axios({
         method: "get",
@@ -412,14 +423,26 @@ createApp({
     },
     axiospost() {
       axios({
-        method: 'post',
-        url: 'https://hexschool-tutorial.herokuapp.com/api/signup',
+        method: "post",
+        url: "https://hexschool-tutorial.herokuapp.com/api/signup",
         data: {
-            email: 'alysa@gmail.com',
-            password: '11223344'
-        }
-    })
-    .then( (response) => console.log(response.data))
+          email: "",
+          password: "",
+        },
+      }).then((response) => console.log(response.data));
+    },
+    // ---------------日曆---------------
+    timefun() {
+      jQuery("#datetimepicker").datetimepicker({
+        format: "d.m.Y H:i",
+        inline: true,
+        lang: "ru",
+        timepicker: false,
+      });
+      $.datetimepicker.setLocale("zh-TW");
+    },
+    test1(){
+
     },
   },
   mounted() {
@@ -429,5 +452,9 @@ createApp({
     // this.window_scroll();
     // this.axiosget();
     // this.axiospost();
+    this.timefun();
+    // this.test1();
   },
 }).mount("#app");
+
+
