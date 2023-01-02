@@ -87,9 +87,10 @@
                     </div>
                     <nav>
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link page__link--current" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link page-link--current"
+                                    href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                           
                         </ul>
                     </nav>
                 </div>
@@ -186,15 +187,15 @@
                 open_city() {
                     let city = document.getElementsByClassName('about2__city')[0].classList;
                     let fa = document.getElementsByClassName('fa-solid')[0];
-                    if (city.contains('about2__block')) {
-                        city.remove('about2__block');
-                        city.add('about2__none');
+                    if (city.contains('about2__none')) {
+                        city.remove('about2__none');
+                        city.add('about2__block');
                         fa.classList.remove('fa-circle-chevron-down');
                         fa.classList.add('fa-circle-chevron-up');
                     }
                     else {
-                        city.remove('about2__none');
-                        city.add('about2__block');
+                        city.remove('about2__block');
+                        city.add('about2__none');
                         fa.classList.remove('fa-circle-chevron-up');
                         fa.classList.add('fa-circle-chevron-down');
                     }
