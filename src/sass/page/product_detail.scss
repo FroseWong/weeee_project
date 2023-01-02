@@ -11,6 +11,9 @@
     order: 2;
     font-weight: bold;
     margin-right: 160px;
+    @include m{
+      margin-right: 100px;
+    }
   }
   .btn-close {
     margin: 0;
@@ -21,17 +24,36 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px;
-  // ---------------modal_人數---------------
+  padding: 20px;
+  // ---------------modal_日期---------------
   .productdetail__modal--top {
     .xdsoft_datetimepicker {
       border: 0;
     }
     .xdsoft_monthpicker {
       height: 50px;
+      width: 100%;
+      display: flex;
+      .xdsoft_today_button{
+        margin-right: 50px;
+      }
+      .xdsoft_prev {
+        order: 3;
+        margin-left: 90px;
+      }
+      .xdsoft_next {
+        order: 4;
+      }
+      i {
+        display: none;
+        order: -1;
+      }
     }
     .xdsoft_datepicker {
-      width: 400px;
+      width: 460px;
+      @include m {
+        width: 360px;
+      }
       td {
         color: $gray;
         border: 0;
@@ -43,7 +65,7 @@
       }
     }
   }
-  // ---------------modal_總金額---------------
+  // ---------------modal_人數---------------
   .productdetail__modal--mid {
     width: 100%;
     display: flex;
@@ -53,6 +75,20 @@
     border-bottom: 1px solid $l_gray;
     p {
       font-weight: bold;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      p {
+        font-size: 20px;
+        margin: 0 15px;
+      }
+      i {
+        font-size: 20px;
+        color: $blue;
+        cursor: pointer;
+      }
+      display: flex;
     }
   }
   // ---------------modal_點數---------------
@@ -68,7 +104,29 @@
       p {
         font-weight: bold;
       }
+      img {
+        margin-left: 280px;
+        @include m{
+          margin-left: 200px;
+        }
+      }
     }
+  }
+}
+.productdetail__modal--footer {
+  button {
+    width: 120px;
+    height: 40px;
+    color: $white;
+    border: 0;
+    border-radius: 5px;
+  }
+  .productdetail__modal--secondary {
+    background-color: $orange;
+    margin-right: 25px;
+  }
+  .productdetail__modal--primary {
+    background-color: $blue;
   }
 }
 // ---------------麵包屑---------------

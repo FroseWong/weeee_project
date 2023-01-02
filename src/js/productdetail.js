@@ -176,6 +176,9 @@ createApp({
           src: "/img/sightseeing/fa_19_3.jpg",
         },
       ],
+      modalPeople: 1,
+      modalTotal: 777,
+      modalDate:"",
     };
   },
   methods: {
@@ -439,7 +442,37 @@ createApp({
       });
       $.datetimepicker.setLocale("zh-TW");
     },
-    test1() {},
+    // ---------------人數加減---------------
+    pelpleMinus() {
+      if (this.modalPeople <= 1) {
+        this.modalPeople = 1;
+      } else {
+        this.modalPeople--;
+      }
+    },
+    pelplePlus() {
+      this.modalPeople++;
+    },
+    // ---------------結帳寫入cookie---------------
+    modalCheckout(){
+      let time = document.getElementById('datetimepicker').value;
+      document.cookie =`日期=${time}`;
+      document.cookie =`總金額=${this.modalPricetotal}`
+      document.cookie =`點數=${this.modalPoints}`;
+        let x = document.cookie;
+        console.log(x);
+    }
+  },
+  computed: {
+    // ---------------總金額---------------
+    modalPricetotal() {
+      return this.modalTotal * this.modalPeople;
+    },
+    // ---------------點數計算滿500元1點---------------
+    modalPoints(){
+     let points=this.modalTotal * this.modalPeople;
+      return Math.floor(points / 500);
+    },
   },
   mounted() {
     this.fieldMark();

@@ -37,24 +37,33 @@
                         </div>
                         <div class="productdetail__modal--mid">
                             <p>人數</p>
-                            <p>TWD 777/每人</p>
-                            <input type="number" name="" id="">
+                            <p>TWD {{modalTotal}}/每人</p>
+                            <div>
+                                <i class="fa-solid fa-circle-minus" @click="pelpleMinus"></i>
+                                <p>{{modalPeople}}</p>
+                                <i class="fa-solid fa-circle-plus" @click="pelplePlus"></i>
+                            </div>
                         </div>
                         <div class="productdetail__modal--bot">
                             <div>
                                 <p>總金額</p>
-                                <p>TWD 0</p>
+                                <p>TWD {{modalPricetotal}}</p>
 
                             </div>
                             <div>
                                 <p>Weeee!Points</p>
-                                <p>0</p>
+                                <img src="./img/weeeepoints/yellow.svg" alt="">
+                                <p>
+                                    {{modalPoints}}
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">加入購物車</button>
-                        <button type="button" class="btn btn-primary">立即訂購</button>
+                        <div class="productdetail__modal--footer">
+                            <button type="button" class="productdetail__modal--secondary">加入購物車</button>
+                            <button type="button" class="productdetail__modal--primary" @click="modalCheckout">立即訂購</button>
+                        </div>
                     </div>
                 </div>
             </div>
