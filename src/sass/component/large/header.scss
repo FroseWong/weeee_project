@@ -60,22 +60,12 @@ header {
                 font-size: $pc_h5;
 
                 @include m {
-                    background-color: transparent;
-                    margin-left: 110px;
-                    padding: 0;
+                    display: none;
                 }
 
                 i {
                     padding: 5px;
                     color: $gray;
-
-                    @include m {
-                        color: $black;
-                    }
-
-                    &:hover {
-                        color: $black;
-                    }
                 }
             }
         }
@@ -86,9 +76,24 @@ header {
             align-items: center;
 
             li {
+                .header_search_m {
+                    display: none;
+
+                    @include m {
+                        display: block;
+                        cursor: pointer;
+                        border: none;
+                        background-color: transparent;
+                    }
+                }
+
                 i {
                     font-size: $pc_h4;
                     color: $black;
+                    cursor: pointer;
+                    @include m{
+                        // font-size: $pc_h5;
+                    }
                 }
             }
         }
@@ -185,6 +190,7 @@ header {
     .submenu {
         display: none;
         transition: 0.5s ease-out;
+
         @include m {
             // display: block;
             transition: 0.5s ease-out;
@@ -195,7 +201,7 @@ header {
             background-color: #fff;
             position: fixed;
             width: 100vw;
-            top: 111px;
+            top: 104px;
             left: 0;
 
 
@@ -222,6 +228,15 @@ header {
     }
 
     .header_overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+
+        z-index: 300;
+        display: none;
+
         @include m {
             position: fixed;
             top: 0;
@@ -243,52 +258,48 @@ header {
         display: none;
 
         @include m {
-            // display: none;
-
             position: fixed;
-            top: 111px;
+            top: 0;
             left: 0;
-            height: 50px;
-            padding: 5px;
+            padding: 10px;
             z-index: 600;
             background-color: #fff;
             width: 100vw;
-            height: 56px;
             box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
 
             input {
-                height: 40px;
+                height: 35px;
                 border-radius: 5px;
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
-                // font-size: 14px;
+                font-size: 14px;
                 border: none;
                 background-color: #f4f4f4;
                 padding-left: 5px;
                 width: 300px;
             }
 
-            button.header_search2 {
-                height: 40px;
+            button.header_search {
+                height: 35px;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
                 background-color: #f4f4f4;
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
+                font-size: 14px;
 
                 i {
                     padding: 5px;
                     color: $gray;
-                    // font-size: $pc_h5;
                 }
-
             }
+
         }
     }
 
     .user_menu {
-        visibility: hidden;
+        display: none;
         position: fixed;
         top: 55px;
         right: 350px;
@@ -296,6 +307,14 @@ header {
         width: 10%;
         border-radius: 10px;
         box-shadow: 0 2px 20px rgb(0 0 0 / 15%);
+        z-index: 3000;
+
+        @include m {
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 0 0 10px 10px;
+        }
 
         // padding: 10px 0;
         i {
@@ -307,29 +326,36 @@ header {
 
         .user_setting {
             padding: 10px;
-            display: flex;
-            justify-content: space-between;
 
-            .user_info {
+            a {
+                display: block;
                 display: flex;
+                justify-content: space-between;
 
-                .user_icon {
-                    height: 50px;
-                    width: 50px;
-                    background-color: #eee;
-                    border-radius: 50%;
+                .user_info {
+                    display: flex;
+
+                    .user_icon {
+                        height: 50px;
+                        width: 50px;
+                        background-color: #eee;
+                        border-radius: 50%;
+                    }
+
+                    .user_name {
+                        margin-left: 10px;
+                        line-height: 50px;
+                        font-weight: bold;
+                        color: $black;
+                    }
                 }
 
-                .user_name {
-                    margin-left: 10px;
+                i {
                     line-height: 50px;
-                    font-weight: bold;
                 }
+
             }
 
-            i {
-                line-height: 50px;
-            }
 
         }
 
@@ -340,7 +366,7 @@ header {
 
             li {
                 padding: 5px 0;
-                
+
 
                 a {
                     color: #333333;
@@ -348,7 +374,7 @@ header {
                     border-radius: 5px;
                     line-height: 16px;
                     padding: 5px;
-                    
+
 
                     i,
                     img {

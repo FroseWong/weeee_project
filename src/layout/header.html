@@ -16,6 +16,9 @@
             </ul>
             <ul class="header_top_right">
                 <li>
+                    <button class="header_search_m"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </li>
+                <li>
                     <a href="../shoppingcart.html"><i class="fa-solid fa-cart-shopping"></i></a>
 
                 </li>
@@ -125,19 +128,20 @@
 
     <div class="search_modal">
 
-        <!-- <i class="fa-solid fa-x"></i> -->
-        <input type="text" placeholder="輸入目的地、景點、體驗行程或活動名稱..." maxlength="50"><button class="header_search2"><i
-                class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="text" placeholder="輸入目的地、景點、體驗行程或活動名稱...
+      " maxlength="50"><button class="header_search"><i class="fa-solid fa-magnifying-glass"></i></button>
 
     </div>
 
     <div class="user_menu">
         <div class="user_setting">
-            <div class="user_info">
-                <div class="user_icon"></div>
-                <div class="user_name">寧寶</div>
-            </div>
-            <a href="../account_setting.html"><i class="fa-solid fa-gear"></i></a>
+            <a href="../account_setting.html">
+                <div class="user_info">
+                    <div class="user_icon"></div>
+                    <div class="user_name">寧寶</div>
+                </div>
+                <i class="fa-solid fa-gear"></i>
+            </a>
         </div>
         <ol>
             <li>
@@ -178,30 +182,31 @@
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script>
     $(".header_modal_show").on("click", function (e) {
-        event.preventDefault(e);
-        $(this).next(".submenu").addClass("active");
+        if ($(window).width() < 768) {
+            event.preventDefault(e);
+            $(this).next(".submenu").addClass("active");
+            $(".header_overlay").addClass("active");
+        };
+    });
+
+
+    $(".header_search_m").on("click", function () {
+        // console.log($(".search_modal"));
+        $(".search_modal").css("display", "block");
         $(".header_overlay").addClass("active");
     });
 
-    // $(".header_search").on("click", function () {
-    //     // console.log($(".search_modal"));
-    //     $(".search_modal").css("display","block");
-    //     $(".header_overlay").addClass("active");
+    $(".fa-user").on("click", function () {
+        $(".user_menu").css("display", "block");
+        $(".header_overlay").addClass("active");
 
-    // });
-
-    // $(".fa-user").on("click", function () {
-    //     console.log("ttt");
-    //     $(".user_menu").css("visibility","visible");
-    // });
-
-
-
+    });
 
     // Function for close the Modal
     $(".header_overlay").on("click", function () {
         $(".header_overlay").removeClass("active");
         $(".submenu").removeClass("active");
-        $(".search_modal").removeClass("active");
+        $(".search_modal").css("display", "none");
+        $(".user_menu").css("display", "none");
     });
 </script>
