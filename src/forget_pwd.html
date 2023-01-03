@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>忘記密碼</title>
 </head>
 <body>
-    <div class="header"></div>
+    @@include('layout/header.html')
     <div class="wapper forget_pwd"> 
-        <div class="forget_pwd_bg">
+        <div class="forgetpwd_bg">
             <div class="container forget_pwd">
-                <div class="forget_pwd">
+                <div class="forgetpwd">
                     <h1>忘記密碼</h1>
                     <p>輸人你註冊 Weeee! 帳號的電子信箱，<br>
                         我們發送重該密碼的連結</p>
-                    <form class="forget_pwd_form" action="#" method="post">
-                        <input type="text"  name="account" value="E-mail"/><br> 
-                        <input class="submit" type="submit" value="送出"/>
-                        <p>還沒有帳號？趕快註冊！</p>
+                    <form class="forgetpwd_form" action="#" method="post">
+                        <input type="text"  name="account" value=" E-mail"/>
+                        <i class="fa-regular fa-envelope"></i>
+                        <br> 
+                        <!-- <input class="submit" type="submit" value="送出"/> -->
+                       
                         
                     </form> 
-                
-                    <button class="login" ref="#">註冊</button>
+                    <a class="forgetpwdsubmit" href="./reset_pwd.html">送出</a> 
+                    <div class="forgetpwdsignup">
+                        <p>還沒有帳號？趕快<a class="signupa" href="./sign_up.html"> 註冊</a>！</p>
+                       
+                        </div>
                        
                 </div>
                 
@@ -31,6 +37,6 @@
         </div>    
 
 </div>
-   
+@@include('layout/footer.html')
 </body>
 </html>

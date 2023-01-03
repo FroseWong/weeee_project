@@ -1,0 +1,80 @@
+
+.forgetpwd_bg {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../img/otherpage/signup01.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.forgetpwd h1 {
+    font-weight: 400;
+    padding-bottom: 20px;
+    margin-top: 45px;
+    margin-left: 60px;
+}
+
+.forgetpwd p {
+
+    margin-left: 72px;
+}
+
+.forgetpwd {
+    position: absolute;
+    width: 593px;
+    height: 522px;
+    left: 980px;
+    top: 272px;
+    background-color:$white;
+    border-radius: 10px;
+}
+
+  .forgetpwd_form{
+    padding-left: 69px;
+    padding-top: 20px;
+    // margin-top: 30px;
+    
+    padding-bottom: 10px;
+  }
+
+  .forgetpwd input{
+    width: 411px;
+    height: 59px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    margin: 0 auto;
+  }
+  .forgetpwdsubmit{
+    // display: block;
+    // width: 147px;
+    // height: 21.5px;
+
+    // margin-top: 15px;
+    // margin-bottom: 8px;
+    // background-color:$blue;
+    // color: $white;
+    text-align: center;
+padding-top: 20px;
+    display: block;
+    width: 147px;
+    height: 21.5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 70px;
+    background-color: #4484ce;
+    color: #ffffff;
+width: 411px;
+height: 59px;
+cursor: pointer;
+font-size: 20px;
+transition: 0.2 all ease-in-out;
+  box-sizing: border-box;
+  border: none;
+    
+  }
+.forgetpwdsignup{
+    margin-top: 20px;
+}

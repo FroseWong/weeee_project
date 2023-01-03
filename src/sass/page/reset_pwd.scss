@@ -1,0 +1,62 @@
+
+
+.resetpwd_bg {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../../img/otherpage/signup01.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+.resetpwd h1 {
+  padding-bottom: 20px;
+  margin-top: 45px;
+  margin-left: 60px;
+}
+
+.resetpwd p {
+
+  margin-left: 72px;
+}
+
+.resetpwd {
+  position: absolute;
+  width: 593px;
+  height: 439px;
+  left: 988px;
+  top: 285px;
+  border-radius: 20px;
+  background-color: $white;
+
+}
+
+.resetpwd_form {
+  padding-left: 69px;
+  padding-top: 20px;
+  margin-top: 30px;
+  line-height: 2.4;
+  padding-bottom: 10px;
+}
+
+.resetpwd_form input {
+  width: 411px;
+  height: 59px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.submit {
+  display: block;
+  width: 147px;
+  height: 21.5px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  background-color: $blue;
+  color: $white;
+}
+
+
+

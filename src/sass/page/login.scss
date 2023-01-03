@@ -1,0 +1,106 @@
+// header{
+
+// }
+
+.login_bg {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../img/otherpage/signup01.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.log h1 {
+    padding-bottom: 20px;
+    margin-top: 25px;
+    margin-left: 60px;
+}
+
+.log p {
+
+    margin-left: 72px;
+}
+
+.log {
+    position: absolute;
+    width: 567px;
+    height: 599px;
+    left: 988px;
+    top: 185px;
+
+    // background: #FFFFFF;
+    border-radius: 20px;
+
+
+    // display: flex;
+    // flex-direction: column;
+    background-color: $white;
+    // margin-top: 250px;
+    // margin-left: 850px;
+    // padding-top: 10px;
+    // border-radius: 10px;
+    // width: 567px;
+    // height: 599px
+
+}
+
+.log form {
+    padding-left: 69px;
+    padding-top: 20px;
+    margin-top: 30px;
+    line-height: 2.4;
+    padding-bottom: 10px;
+}
+
+.loginform input {
+    width: 411px;
+    height: 59px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.submit {
+    display: block;
+    width: 147px;
+    height: 21.5px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    background-color: $blue;
+    color: $white;
+}
+
+
+
+.loginforgetpwd {
+    display: block;
+    color: $orange;
+    margin-left: 230px;
+
+    margin-bottom: 40px;
+    margin-top: 8px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.checkbox {
+    position: absolute;
+    width: 166px;
+    height: 50px;
+    margin-left: 70px;
+    margin-top: 10px;
+}
+
+.signup{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    
+}
+.signupa{
+    color: $orange;
+    text-align: center;
+    text-decoration: none;
+}
