@@ -11,9 +11,9 @@
     order: 2;
     font-weight: bold;
     margin-right: 160px;
-    @include m{
+    @include m {
       margin-right: 115px;
-      @include m{
+      @include m {
         font-size: 18px;
       }
     }
@@ -37,12 +37,15 @@
       height: 50px;
       width: 100%;
       display: flex;
-      .xdsoft_today_button{
+      .xdsoft_today_button {
         margin-right: 50px;
       }
       .xdsoft_prev {
         order: 3;
-        margin-left: 60px;
+        margin-left: 185px;
+        @include m{
+          margin-left: 50px;
+        }
       }
       .xdsoft_next {
         order: 4;
@@ -61,7 +64,7 @@
         color: $gray;
         border: 0;
         background-color: $white;
-        height: 30px;
+        height: 35px;
         div {
           text-align: center;
         }
@@ -73,13 +76,17 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
     border-top: 1px solid $l_gray;
     border-bottom: 1px solid $l_gray;
+    padding: 15px;
     p {
       font-weight: bold;
-      @include m{
+      margin: 0 0 0 25px;
+      @include m {
         font-size: 14px;
+        margin: 0 0 0 23px;
+        // margin-right: 50px;
+        // padding: 20px 30px;
       }
     }
     div {
@@ -88,7 +95,7 @@
       p {
         font-size: 20px;
         margin: 0 15px;
-        @include m{
+        @include m {
           font-size: 14px;
         }
       }
@@ -106,21 +113,22 @@
     flex-direction: column;
     justify-content: space-around;
     width: 100%;
+    padding: 15px;
     div {
       display: flex;
       justify-content: space-between;
       align-items: center;
       // padding: 15px 0;
-      margin: 15px;
+      margin: 5px;
       p {
         font-weight: bold;
         padding: 0 0 0 20px;
-        @include m{
+        @include m {
           font-size: 14px;
           padding: 0 0 0 20px;
         }
       }
-      .productdetail__modal--points{
+      .productdetail__modal--points {
         display: flex;
         width: auto;
       }
@@ -142,11 +150,11 @@
     border-radius: 5px;
   }
   .productdetail__modal--secondary {
-    background-color: $orange;
+    background-color: $blue;    
     margin-right: 25px;
   }
   .productdetail__modal--primary {
-    background-color: $blue;
+    background-color: $orange;
   }
 }
 // ---------------麵包屑---------------
@@ -335,6 +343,7 @@
       right: 30px;
       bottom: 50px;
       border-radius: 10px;
+      z-index: 10000;
       @include m {
         display: none;
       }
@@ -636,5 +645,63 @@
   }
   .slick-next:before {
     color: $blue;
+  }
+}
+
+
+// ---------------愛心---------------
+.productdetail__small {
+  .flex-container {
+    max-width: 300px;
+    min-height: 300px;
+    margin-top: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .flex-child {
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+  }
+  .flex-child p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1;
+  }
+  #heart-like,
+  #heart-unlike {
+    outline: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    margin: auto;
+    outline: none;
+  }
+  #heart-unlike {
+    display: none;
+  }
+  .liked #heart-like {
+    display: none;
+  }
+  .liked #heart-unlike {
+    display: block;
+  }
+  width: 100px;
+  height: 100px;
+  @include m{
+    display: none;
+  }
+  .flex-container {
+    margin-top: 0;
+    min-height: 90px;
+    text-align: center;
   }
 }
