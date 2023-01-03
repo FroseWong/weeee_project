@@ -79,7 +79,7 @@
             </div>
           </div>
           <div class="content">
-            <h4>我的收藏</h4>
+            <h4 style="margin-bottom: 30px;">我的收藏</h4>
             <div class="useweeee">
               <a href="#" class="product-card-row">
                 <div class="product-card-row__left"></div>
@@ -161,10 +161,47 @@
                 </div>
               </a>
             </div>
+
+            <!-- RWD -->
+            <script>
+              console.log(document.body.clientWidth);
+              let useweeee = document.getElementsByClassName("useweeee");
+              
+              if (document.body.clientWidth <= 768) {
+                for (let i = 0; i < useweeee.length; i++){
+                  let str = ` <div class="product-list">
+                <a class="product-card" >
+                          <i class="fas fa-trash trash"></i>
+                          <div class="product-card__location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p class="p__location">桃園</p>
+                          </div>
+                          <div class="product-card__top">
+                            <div class="product-card__top__pic" >
+                              <img src="./img/jo/jo_aquarium.jpg" alt="" />
+                            </div>
+                          </div>
+                          <div class="product-card__bottom">
+                            <span class="product-tag">水族館</span>
+                            <h6 class="product-name" style="font-size: 18px">桃園青埔 | Xpark 都會型水生公園門票</h6>
+                            <span class="gray"
+                              ><i class="fa-solid fa-star"></i>4.4(44325) |
+                              <span class="product-bought">590K+</span>個已訂購
+                            </span>
+                            <span class="price"
+                              >TWD <span class="product-price">550</span>元</span
+                            >
+                          </div>
+                        </a>
+                  </div>`;
+                  useweeee[i].innerHTML = str;
+                } 
+              }
+            </script>
           </div>
         </div>
       </div>
+      @@include('layout/footer.html')
     </div>
-    @@include('layout/footer.html')
   </body>
 </html>

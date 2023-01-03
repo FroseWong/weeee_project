@@ -4,6 +4,9 @@
   
     .topbanner{
       margin-bottom: 35px;
+      @include m{
+        margin-bottom: 25px;
+      }
     }
     .content{
   display: flex;
@@ -11,6 +14,15 @@
     width: 200px;
     height: 1000px;
     // background-color: red;
+    @include m{
+      width: 350px ;
+      display: none;
+    }
+    .privacy-btn{
+      @include m{
+       font-size: 16px;
+      }
+    }
   
     .user-btn{
       position: relative;
@@ -18,7 +30,9 @@
       &.active{
         color: $blue;
       }
-  
+      @include m{
+        margin-top: 25px;
+      }
       &:before{
         content: '';
         width: 3px;
@@ -28,10 +42,14 @@
         left: -11px;
         // color: $blue;
         background-color: $blue;
+        @include m{
+          left: -9px;
+          top: 3px;
+        }
       }
     }
   
-    .privacy-btn{}
+   
   }
   
     .content__right{
@@ -53,10 +71,18 @@
     .title{
       margin-bottom: 25px;
       font-weight: bold;
+      @include m{
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
     }
   
     .inner{
       margin-bottom: 25px;
+      @include m{
+       
+        font-size: 14px;
+      }
     }
     .content__right__version{
       margin-left: auto;
@@ -67,7 +93,9 @@
       font-size: 14px;
       margin-bottom: 50px;
       font-weight: bold;
-  
+      @include m{
+        margin-bottom: 25px;
+      }
     }
     }
   }
@@ -153,6 +181,10 @@
       
        
     //   }
+
+
+
+
   }
     
      

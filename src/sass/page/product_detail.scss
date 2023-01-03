@@ -1,13 +1,145 @@
-.breadcrumb {
+// ---------------modal---------------
+#peopleModal {
+  z-index: 99999;
+}
+.productdetail__modal--header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  h5 {
+    order: 2;
+    font-weight: bold;
+    margin-right: 160px;
+    @include m{
+      margin-right: 100px;
+    }
+  }
+  .btn-close {
+    margin: 0;
+  }
+}
+.productdetail__modal--group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  // ---------------modal_日期---------------
+  .productdetail__modal--top {
+    .xdsoft_datetimepicker {
+      border: 0;
+    }
+    .xdsoft_monthpicker {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      .xdsoft_today_button{
+        margin-right: 50px;
+      }
+      .xdsoft_prev {
+        order: 3;
+        margin-left: 90px;
+      }
+      .xdsoft_next {
+        order: 4;
+      }
+      i {
+        display: none;
+        order: -1;
+      }
+    }
+    .xdsoft_datepicker {
+      width: 460px;
+      @include m {
+        width: 360px;
+      }
+      td {
+        color: $gray;
+        border: 0;
+        background-color: $white;
+        height: 50px;
+        div {
+          text-align: center;
+        }
+      }
+    }
+  }
+  // ---------------modal_人數---------------
+  .productdetail__modal--mid {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-top: 1px solid $l_gray;
+    border-bottom: 1px solid $l_gray;
+    p {
+      font-weight: bold;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      p {
+        font-size: 20px;
+        margin: 0 15px;
+      }
+      i {
+        font-size: 20px;
+        color: $blue;
+        cursor: pointer;
+      }
+      display: flex;
+    }
+  }
+  // ---------------modal_點數---------------
+  .productdetail__modal--bot {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    div {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      p {
+        font-weight: bold;
+      }
+      img {
+        margin-left: 280px;
+        @include m{
+          margin-left: 200px;
+        }
+      }
+    }
+  }
+}
+.productdetail__modal--footer {
+  button {
+    width: 120px;
+    height: 40px;
+    color: $white;
+    border: 0;
+    border-radius: 5px;
+  }
+  .productdetail__modal--secondary {
+    background-color: $orange;
+    margin-right: 25px;
+  }
+  .productdetail__modal--primary {
+    background-color: $blue;
+  }
+}
+// ---------------麵包屑---------------
+.productdetail__breadcrumb {
   display: flex;
   margin: 0 0 10px 0;
-  .breadcrumb__item:after {
+  .productdetail__breadcrumb__item:after {
     content: ">";
   }
   @include m {
     display: none;
   }
-  .breadcrumb__item {
+  .productdetail__breadcrumb__item {
     a {
       &:visited,
       &:active,
@@ -17,7 +149,7 @@
       }
     }
   }
-  .breadcrumb__item--current {
+  .productdetail__breadcrumb__item--current {
     a {
       &:visited,
       &:active,
@@ -28,7 +160,7 @@
     }
   }
 }
-
+// ---------------右邊固定框---------------
 .productdetail__fixedfield--container {
   display: flex;
   justify-content: space-between;
@@ -40,18 +172,25 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    margin-left: 50px;
     align-items: center;
     order: 2;
     @include m {
-      order: 0;
+      // order: 0;
+      margin: 0;
+      position: sticky;
+      bottom: 0px;
+      z-index: 3000;
+      width: auto;
     }
+    // ---------------立即確認按鈕---------------
     .productdetail__fixedfield1 {
       background-color: $white;
       width: 300px;
       max-height: 200px;
       position: sticky;
       top: 120px;
-      float: right;
+      // float: right;
       border: $l_gray 1px solid;
       border-radius: 10px;
       display: flex;
@@ -61,12 +200,9 @@
       padding: 20px;
       @include m {
         padding: 15px;
-        width: 100%;
         flex-direction: row;
         border-radius: 0px;
-        position: fixed;
-        top: 1185px;
-        z-index: 3000;
+        width: 768px;
       }
       .fa-heart {
         display: none;
@@ -136,6 +272,7 @@
         align-items: center;
       }
     }
+    // ---------------右側四選項---------------
     .productdetail__fixedfield2 {
       background-color: $white;
       width: 200px;
@@ -153,10 +290,8 @@
         height: 0px;
         flex-direction: row;
         position: fixed;
-        top: 100px;
+        top: -100px;
         background-color: #ffffff00;
-        z-index: -1;
-
       }
       a {
         display: block;
@@ -167,9 +302,9 @@
         font-weight: bold;
         padding-left: 5px;
         cursor: pointer;
-
       }
     }
+    // ---------------scrollToTop---------------
     .productdetail__scrollToTop {
       background-color: $blue;
       cursor: pointer;
@@ -194,7 +329,7 @@
 .productdetail__container {
   max-width: 800px;
 }
-
+// ---------------商品標題---------------
 .productdetail__title {
   margin: 10px 0 25px;
   display: flex;
@@ -220,7 +355,7 @@
     }
   }
 }
-
+// ---------------商品資訊---------------
 .productdetail__content {
   i {
     font-size: $pc_h6;
@@ -247,12 +382,13 @@
     }
   }
 }
+// ---------------行程時間---------------
 .productdetail__time {
   margin-top: 25px;
   margin-bottom: 35px;
   padding: 15px 0 15px 0;
-  border-top: 1px solid $gray;
-  border-bottom: 1px solid $gray;
+  border-top: 1px solid $l_gray;
+  border-bottom: 1px solid $l_gray;
   @include m {
     flex-direction: column;
   }
@@ -267,6 +403,7 @@
     }
   }
 }
+// ---------------商品介紹---------------
 .productdetail__list {
   ul {
     margin-left: 20px;
@@ -278,6 +415,7 @@
     }
   }
 }
+// ---------------商品說明---------------
 .productdetail__operate {
   border-bottom: 1px solid $l_gray;
   margin-top: 70px;
@@ -324,13 +462,14 @@
     }
   }
 }
+// ---------------購買須知---------------
 .productdetail__notice {
   h3 {
     font-weight: bold;
     margin-bottom: 30px;
     font-size: $pc_h4;
   }
-  .notice__list {
+  .productdetail__notice__list {
     max-width: 800px;
     background-color: #f4f4f4;
     padding: 50px;
@@ -346,7 +485,7 @@
     }
   }
 }
-
+// ---------------體驗地點---------------
 .productdetail__address {
   h3 {
     font-weight: bold;
@@ -364,8 +503,8 @@
     }
   }
   div {
-    border-top: 1px solid $gray;
-    border-bottom: 1px solid $gray;
+    border-top: 1px solid $l_gray;
+    border-bottom: 1px solid $l_gray;
     margin: 30px 0 30px 0;
     padding: 10px 0 10px 0;
   }
@@ -374,9 +513,10 @@
     font-size: 14px;
   }
 }
+// ---------------旅客評價---------------
 .productreview {
-  border-top: 1px solid $gray;
-  border-bottom: 1px solid $gray;
+  border-top: 1px solid $l_gray;
+  border-bottom: 1px solid $l_gray;
   margin: 30px 0 30px 0;
   padding: 30px 0 30px 0;
   h3 {
@@ -410,15 +550,15 @@
     }
   }
 }
-.ping-big {
-  border-top: 1px solid $gray;
-  border-bottom: 1px solid $gray;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  padding: 30px 0 30px 0;
-}
-
-.message {
+// .ping-big {
+//   border-top: 1px solid $orange;
+//   border-bottom: 1px solid $orange;
+//   margin-top: 50px;
+//   margin-bottom: 50px;
+//   padding: 30px 0 30px 0;
+// }
+// ---------------留言---------------
+.productdetail__message {
   margin: 30px 0 50px 0;
   span {
     font-size: $pc_h4;
@@ -428,7 +568,7 @@
     font-size: 14px;
   }
 
-  .message_text {
+  .productdetail__message_text {
     margin-left: 40px;
     p {
       font-size: $pc_h3;
@@ -440,9 +580,12 @@
     }
   }
 }
-
+// ---------------下方輪播卡---------------
 .productdetail__bot {
   height: 437px;
+  a {
+    color: $black;
+  }
 }
 
 .productdetail__open {
@@ -457,12 +600,12 @@
   transition: 0.8s;
 }
 
-/* Slideshow */
+// ---------------上方輪播---------------
 .productdetail__slideshow {
   .mySlidesFlex {
     z-index: 100;
     img {
-      width: 715px;
+      width: 703px;
       @include m {
         width: 100%;
       }

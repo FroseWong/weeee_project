@@ -176,9 +176,13 @@ createApp({
           src: "/img/sightseeing/fa_19_3.jpg",
         },
       ],
+      modalPeople: 1,
+      modalTotal: 777,
+      modalDate:"",
     };
   },
   methods: {
+    // ---------------開闔商品說明---------------
     open() {
       let directions = document.getElementsByClassName(
         "productdetail__directions--group"
@@ -199,6 +203,7 @@ createApp({
         fa.add("fa-angle-up");
       }
     },
+    // ---------------橘心---------------
     heartclick(e) {
       let list = e.target.classList;
       if (list.contains("fa-regular")) {
@@ -212,6 +217,7 @@ createApp({
         list.add("fa-regular");
       }
     },
+    // ---------------Totop---------------
     scrollToTop() {
       window.scrollTo({
         top: 0,
@@ -219,9 +225,7 @@ createApp({
         behavior: "smooth",
       });
     },
-    pd_check() {
-      // alert(404);
-    },
+    // ---------------固定框滑動---------------
     fieldClick(e) {
       let directions = document.getElementsByClassName(
         "productdetail__directions--group"
@@ -261,6 +265,7 @@ createApp({
         behavior: "smooth",
       });
     },
+    // ---------------固定框變色---------------
     fieldMark() {
       let pd = document.getElementById("f1").style;
       let pn = document.getElementById("f2").style;
@@ -270,17 +275,17 @@ createApp({
       let weblue = "#4484ce";
       let num =
         document.getElementsByClassName("productdetail__bot")[0].offsetTop;
-      let ff = document.getElementsByClassName("productdetail__fixedfield2")[0];
-      let check = document.getElementsByClassName(
-        "productdetail__directions--group"
-      )[0].classList;
-      let tf = check.contains("productdetail__open");
+      let fixedfield2 = document.getElementsByClassName(
+        "productdetail__fixedfield2"
+      )[0];
+
       let directions = document.getElementsByClassName(
         "productdetail__directions--group"
       )[0].classList;
 
-      document.addEventListener("scroll", function (e) {
+      document.addEventListener("scroll", function () {
         ScrollPosition = window.scrollY;
+
         if (directions.contains("productdetail__none")) {
           ScrollPosition = ScrollPosition + 2226;
         }
@@ -339,12 +344,13 @@ createApp({
           pn.borderLeft = "0";
         }
         if (ScrollPosition >= num - 100) {
-          ff.style.display = "none";
+          fixedfield2.style.display = "none";
         } else {
-          ff.style.display = "flex";
+          fixedfield2.style.display = "flex";
         }
       });
     },
+    // ---------------下方輪播---------------
     product_list() {
       $(".product-list").slick({
         infinite: false,
@@ -352,6 +358,7 @@ createApp({
         slidesToScroll: 1,
         arrows: true,
         dots: false,
+        speed: 1000,
         responsive: [
           {
             breakpoint: 768,
@@ -364,6 +371,7 @@ createApp({
         ],
       });
     },
+    // ---------------上方輪播---------------
     productdetail__slideshow() {
       $(".productdetail__slideshow").slick({
         infinite: true,
@@ -385,21 +393,25 @@ createApp({
         ],
       });
     },
-    window_scroll() {
+    // ---------------超過4825時隱藏---------------
+    display_scroll() {
       let field = document.getElementsByClassName(
         "productdetail__fixedfield1"
       )[0];
-      let ScrollPosition0 = window.scrollY;
+      let bro = window.innerWidth;
       document.addEventListener("scroll", function (e) {
         let ScrollPosition = window.scrollY;
-        if (ScrollPosition > ScrollPosition0) {
-          field.style.display = "flex";
-        } else {
+        window.addEventListener("resize", function () {
+          bro = window.innerWidth;
+        });
+        if (ScrollPosition > 4825 && bro < 768) {
           field.style.display = "none";
+        } else {
+          field.style.display = "flex";
         }
-        ScrollPosition0 = ScrollPosition;
       });
     },
+    // ---------------axios---------------
     axiosget() {
       axios({
         method: "get",
@@ -412,21 +424,62 @@ createApp({
     },
     axiospost() {
       axios({
-        method: 'post',
-        url: 'https://hexschool-tutorial.herokuapp.com/api/signup',
+        method: "post",
+        url: "https://hexschool-tutorial.herokuapp.com/api/signup",
         data: {
-            email: 'alysa@gmail.com',
-            password: '11223344'
-        }
-    })
-    .then( (response) => console.log(response.data))
+          email: "",
+          password: "",
+        },
+      }).then((response) => console.log(response.data));
+    },
+    // ---------------日曆---------------
+    timefun() {
+      jQuery("#datetimepicker").datetimepicker({
+        format: "d.m.Y H:i",
+        inline: true,
+        lang: "ru",
+        timepicker: false,
+      });
+      $.datetimepicker.setLocale("zh-TW");
+    },
+    // ---------------人數加減---------------
+    pelpleMinus() {
+      if (this.modalPeople <= 1) {
+        this.modalPeople = 1;
+      } else {
+        this.modalPeople--;
+      }
+    },
+    pelplePlus() {
+      this.modalPeople++;
+    },
+    // ---------------結帳寫入cookie---------------
+    modalCheckout(){
+      let time = document.getElementById('datetimepicker').value;
+      document.cookie =`日期=${time}`;
+      document.cookie =`總金額=${this.modalPricetotal}`
+      document.cookie =`點數=${this.modalPoints}`;
+        let x = document.cookie;
+        console.log(x);
+    }
+  },
+  computed: {
+    // ---------------總金額---------------
+    modalPricetotal() {
+      return this.modalTotal * this.modalPeople;
+    },
+    // ---------------點數計算滿500元1點---------------
+    modalPoints(){
+     let points=this.modalTotal * this.modalPeople;
+      return Math.floor(points / 500);
     },
   },
   mounted() {
     this.fieldMark();
     this.product_list();
     this.productdetail__slideshow();
-    // this.window_scroll();
+    this.display_scroll();
+    this.timefun();
     // this.axiosget();
     // this.axiospost();
   },

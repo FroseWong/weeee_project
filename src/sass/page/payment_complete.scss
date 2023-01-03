@@ -1,55 +1,72 @@
-.payment_complete{
+.payment_complete {
     .payment_check {
-        margin-bottom: 20px;
-        .payment_complete {
-            display: flex;
-            width: 65%;
-            margin: 0 auto;
-            
-    
-            span {
-                margin-left: 20px;
-                margin-top: 10px;
-            }
+        display: flex;
+        width: 65%;
+        margin: 0 auto;
+        @include m{
+            width: auto; 
         }
-    
-    
-        .payment {
-            border-radius: 10px;
-    
-    
-            .payment_item {
-                padding: 0;
-                .payment_item_buyer{
-                    border-radius: 10px;
-                    box-shadow: 0 8px 20px 0 rgb(0 0 0 / 10%);
-    
+
+
+        span {
+            margin-left: 20px;
+            margin-top: 10px;
+            h5{
+                font-weight: bold;
+            } 
+        }
+    }
+
+
+    .payment {
+        border-radius: 10px;
+
+
+        .payment_item {
+            padding: 0;
+
+            .payment_item_list {
+                border-radius: 10px;
+                box-shadow: 0 8px 20px 0 rgb(0 0 0 / 10%);
+
+            }
+
+            .payment_item_header {
+                h5 {
+                    color: #666;
+                    font-size: 14px;
+                    font-weight: normal;
                 }
-                .payment_item_header {
-                    h5 {
-                        color: #666;
-                        font-size: 14px;
-                        font-weight: normal;
+            }
+
+            .payment_list {
+                margin-top: 45px;
+            }
+
+            .payment_list_points {
+                h6 {
+                    text-align: right;
+                    font-size: 14px;
+                    padding-right: 20px;
+
+                    a {
+                        color: $blue;
                     }
                 }
-                .payment_list{
-                   margin-top: 45px;
-                }
-    
-            }
-    
-        }
-    
-        
-    }
-    .cart_breadcrumb {
-        ol {
-            li:first-child{
-                font-weight: normal;
             }
 
         }
+
     }
-    
-    
+
+
+}
+
+.cart_breadcrumb {
+    ol {
+        li:first-child {
+            font-weight: normal;
+        }
+
+    }
 }

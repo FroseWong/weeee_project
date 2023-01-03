@@ -13,6 +13,12 @@
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
+    <style>
+        .active1{
+            background-color: #4484CE;
+            color: rgb(255, 255, 255);
+        }
+    </style>
 </head>
 
 <body> 
@@ -26,16 +32,16 @@
                 <h1>1200</h1>
                 <h2>個項目</h2>
             </div>
-            <div class="about2__barcard">
-                <div class="container about2__bar">
+            <div class="about__barcard">
+                <div class="container about__bar">
                     <div class="about2__sort">
                         <h4>排序</h4>
-                        <ul>
-                            <li @click="filterOrder">熱門程度</li>
+                        <ul >
+                            <li class="active1" @click="filterOrder">熱門程度</li>
                             <li @click="filterPrice">價格低到高</li>
                         </ul>
                     </div>
-                    <div class="about2__category">
+                    <div class="about__category">
                         <h4>交通票卡分類</h4>
 
                         
@@ -46,7 +52,7 @@
                             <li><input type="checkbox" name="" id="">&emsp;經典暢遊卡</li>
                         </ul>
                     </div>
-                    <div class="about2__destination">
+                    <div class="about__destination">
                         <h4>目的地</h4>
                         
                         <span @click="open_city" class="about2__open">台灣
@@ -68,12 +74,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="about2__card">
-                    <div class="about2__card--group" v-for="card in cardlist" :id="card.cardid">
-                        <div class="about2__card--img">
+                <div class="about__card">
+                    <div class="about__card--group" v-for="card in cardlist" :id="card.cardid">
+                        <div class="about__card--img">
                             <img :src="card.src" alt="">
                         </div>
-                        <div class="about2__card--title">
+                        <div class="about__card--title">
                             <h1>{{card.title}}</h1>
                             <h2>{{card.label}}</h2>
                             <h1>{{card.content}}</h1>
@@ -259,6 +265,10 @@
         $(".about2__open").on("click",function(){
           $('.about2__block').slideToggle();
        } ) //jquery 開關程式碼
+       $(".about2__sort ul").on("click","li",function() {
+        $(".about2__sort ul li").removeClass("active1");
+        $(this).addClass("active1");
+       })
       
 
 

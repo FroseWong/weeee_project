@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <!-- @@include('layout/header.html') -->
+    @@include('layout/header.html')
     <div class="wrapper jo_index app1 jo_searched">
 
       <div class="topbanner">
@@ -26,7 +26,7 @@
             </div> 
           </div>
       </div>
-      <div class="midbanner container">
+      <div class="midbanner container ">
           <div class="icon_map">
               <div>
                <i class="fa-solid fa-magnifying-glass"></i> 
@@ -50,7 +50,7 @@
               
             </div>
       </div>
-      <div class="container content">
+      <div class="container content ">
         <h2 class="ttoc">全部結果 <span>100</span>項</h2>
         <div class="jo-list">
           <a class="jo-card">
@@ -114,7 +114,7 @@
           </a>
         </div>
 
-        <div class="jo-list ctoc">
+        <div class="jo-list ">
           <a class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
@@ -277,10 +277,15 @@
             },
           btn_show(){
              let btn = $('#jo_button');
+             let btn_bottom = document.querySelector("footer").offsetTop;
+             console.log(btn_bottom);
+             console.log(window.scrollY);
              if(screen.width <= 768){
-              if (window.scrollY > 100) {
+              if (window.scrollY > 100 && window.scrollY <= btn_bottom -1050) {
                 btn.addClass('show');
-              } else {
+              } else if( window.scrollY <=100){
+                btn.removeClass('show');
+              }else if(window.scrollY >= btn_bottom -1050){
                 btn.removeClass('show');
               }
              }else{
