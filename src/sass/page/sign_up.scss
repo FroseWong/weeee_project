@@ -1,3 +1,4 @@
+
 // header{
   
 // }
@@ -12,11 +13,7 @@
   }
   
   
-  // .container.sign_up{
-  
-  //   margin-top:150px
-   
-  // }
+
   .sur h1{
     padding-bottom: 20px;
     margin-top: 20px;
@@ -27,10 +24,9 @@
   .sur{
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color:$white;
     margin-top: 250px;
     margin-left: 850px;
-    
     padding-top: 10px;
     border-radius: 10px;
     width: 567px;
@@ -59,14 +55,14 @@
     height: 21.5px;
     margin-top: 15px;
     margin-bottom: 8px;
-    background-color: $blue;
+    background-color:$blue;
     color: $white;
   }
   .login{
     display: block;
     width: 98px;
     height: 40px;
-    background-color: $orange;
+    background-color:$orange;
     color: $white;
     margin-left: 330px;
   
