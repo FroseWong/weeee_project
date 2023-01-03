@@ -606,6 +606,9 @@
     h5 {
       padding: 30px;
       border-radius: 10px;
+      @include m{
+        padding: 15px;
+      }
     }
   }
 }
