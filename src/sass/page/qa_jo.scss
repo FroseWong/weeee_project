@@ -191,7 +191,7 @@
     flex-direction: column;
     width: 250px;
     @include m{
-      width: 428px;
+      width: 380px;
       position: relative;
     }
     div {
@@ -221,9 +221,9 @@
           color: $white;
         }
         @include m{
-          width: 428px;
-          padding-top: 10px;
-          line-height: 60px;
+          width: 370px;
+          // padding-top: 10px;
+          line-height: 40px;
   
         }
       }
@@ -231,7 +231,7 @@
         font-weight: bold;
         font-size: 16px;
         text-align: center;
-        line-height: 60px;
+        line-height: 30px;
         border-bottom: 1px solid $gray;
       }
     }
