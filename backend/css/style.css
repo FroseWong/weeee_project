@@ -1,0 +1,124 @@
+
+
+.navbar-nav a{
+    color: black;
+}
+
+.text_place {
+    text-align: center;
+}
+
+.date_select {
+    border-radius: 8px;
+    border: 2px solid #F19F4D;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.filter {
+    border-radius: 8px;
+    border: 2px solid #F19F4D;
+    height: 40px;
+    padding-left: 10px;
+    margin-right: 20px;
+}
+
+.button_bgc{
+    background-color: white;
+    width: 120px;
+}
+
+.button_bgc:hover{
+    background-color: #F19F4D;
+    color: white;
+}
+
+.button_bgc:focus{
+    background-color: #F19F4D;
+    color: white;
+}
+
+.form_select {
+    border: 2px solid #F19F4D;
+    padding-left: 10px;
+    height: 40px;
+    border-radius: 8px;
+    width: 210px;
+}
+
+.submit_button{
+    width: 100px;
+    background-color: #F19F4D;
+    margin-left: 20px;
+}
+
+.new_product{
+    width: 100px;
+    background-color: #F19F4D;
+}
+
+.list_style{
+    color: #F19F4D;
+    font-size: 22px;
+}
+
+.row {
+    margin-top: 25px;
+}
+
+.row_bottom {
+    margin-bottom: 40px;
+}
+
+.producttype_text{
+    font-size: 18px;
+}
+
+.save_update {
+    display: block;
+    margin: 0 auto;
+}
+
+.readonly {
+    background-color: rgb(231, 231, 231);
+    border: none;
+}
+
+.readonly_height{
+    height: 35px;
+}
+
+.form_label {
+    font-size: 16px;
+}
+
+.product_img {
+    width: 80px;
+    height: 70px;
+}
+
+textarea {
+    margin-bottom: 30px;
+}
+
+input, .form_select{
+    outline: none;
+    
+}
+
+select:focus{
+    outline: none;
+}
+
+.btn_login{
+    background-color:#4484ce ;
+}
+
+.bg-gradient-primary{
+    background-image: url(../img/experience_farm_bug2.jpg);          
+}
+
+.add{
+    margin-right: 10px;
+}
+
