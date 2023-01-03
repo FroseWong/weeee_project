@@ -5,6 +5,10 @@
       font-size: 32px;
       color: $blue;
       display: inline;
+      @include m {
+     
+        font-size: 14px;
+       }
     }
     h2 {
       font-size: 32px;
@@ -68,16 +72,32 @@
     display: flex;
     flex-direction: column;
     margin-left: 35px;
+    @include m {
+      display: block;
+     flex-direction: column;
+    }
     .about2__card--group {
       width: 800px;
       background-color: #fff;
       display: flex;
       margin-bottom: 40px;
+      @include m {
+        width: 520px;
+    background-color: #fff;
+    display: block;
+    margin-bottom: 40px
+       }
     }
     .about2__card--img {
       img {
         width: 270px;
         height: 250px;
+        overflow: hidden;
+        border-radius: 5px;
+        @include m {
+          width: 100%;
+          display: block;
+           }
       }
     }
     .about2__card--title {

@@ -190,6 +190,10 @@
         }
     }
     .content{  
+      max-width: 1000px;
+      @include m{
+        max-width: 400px;
+      }
       .jo-list{
         position: relative;
         .member-pic{
@@ -197,6 +201,7 @@
       }
       }
       }
+    
     }
     #jo_button {
       display: inline-block;

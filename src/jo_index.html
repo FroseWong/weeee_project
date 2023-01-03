@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <!-- @@include('layout/header.html') -->
+    @@include('layout/header.html')
     <div class="wrapper jo_index app1">
 
       <div class="topbanner">
@@ -59,7 +59,7 @@
               
           </div>
       </div>
-      <div class="container content">
+      <div class="container content ">
         <h2 class="ttoc">熱門開團</h2>
         
         <div class="jo-list jo-lista">
@@ -450,12 +450,24 @@
         methods:{
 
           btn_show(){
-             let btn = $('#jo_button');
-              if (window.scrollY > 500) {
+            let btn = $('#jo_button');
+
+             if(screen.width <= 768){
+              if (window.scrollY > 100 && window.scrollY <= 605) {
+                btn.addClass('show');
+              } else if( window.scrollY <=100){
+                btn.removeClass('show');
+              }else if(window.scrollY >= 605){
+                btn.removeClass('show');
+              }
+             }else{
+              if (window.scrollY > 300) {
                 btn.addClass('show');
               } else {
                 btn.removeClass('show');
               }
+             }
+              
             },
           jo_list_slick(){
           $(".jo-list").slick({
