@@ -22,7 +22,16 @@
             </div>
             <div class="qa_jo__barcard">
                 <div class="container qa_jo__bar">
+                    <div class="rwd_bar">
+                        <ul>
+                            <li>行程</li>
+                            <li>目的</li>
+                            <li>價格</li>
+                            <li>排序</li>
+                        </ul>
+                    </div>
                     <div class="qa_jo__sort">
+                        
                         <h4>排序</h4>
                         <ul>
                             <li @click="filterOrder">熱門程度</li>
@@ -60,7 +69,7 @@
                                 <img :src="card.src" alt="">
                             </div>
                             <div class="qa_jo__card--title">
-                                <h1>{{card.title}}</h1>
+                                <h1 class="qa_jo__title">{{card.title}}</h1>
                                 <h2>{{card.label}}</h2>
                                 <h1>{{card.content}}</h1>
                                 <div>

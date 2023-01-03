@@ -21,6 +21,7 @@
     @@include('layout/header.html')
     <div class="wrapper" id="app">
         <!-- <input id="datetimepicker" type="text"> -->
+
         <!---------------bs-modal--------------->
         <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -52,17 +53,20 @@
                             </div>
                             <div>
                                 <p>Weeee!Points</p>
-                                <img src="./img/weeeepoints/yellow.svg" alt="">
-                                <p>
-                                    {{modalPoints}}
-                                </p>
+                                <div class="productdetail__modal--points">
+                                    <img src="./img/weeeepoints/yellow.svg" alt="">
+                                    <p>
+                                        {{modalPoints}}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="productdetail__modal--footer">
                             <button type="button" class="productdetail__modal--secondary">加入購物車</button>
-                            <button type="button" class="productdetail__modal--primary" @click="modalCheckout">立即訂購</button>
+                            <button type="button" class="productdetail__modal--primary"
+                                @click="modalCheckout">立即訂購</button>
                         </div>
                     </div>
                 </div>
@@ -95,7 +99,7 @@
                 <div class="productdetail__fixedfield--group">
                     <div class="productdetail__fixedfield1">
                         <h2>TWD {{ProductDetail.price}}</h2>
-                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-regular fa-heart" @click="heartclick"></i>
                         <!-- <button class="field1_btn1">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
@@ -129,7 +133,15 @@
                 <div class="productdetail__container">
                     <div class="productdetail__title">
                         <h1>{{ProductDetail.city}}｜{{ProductDetail.name}}</h1>
-                        <i class="fa-regular fa-heart" @click="heartclick"></i>
+                        <!-- <i class="fa-regular fa-heart" @click="heartclick"></i> -->
+                        <div class="productdetail__small">
+                            <div class="flex-container">
+                                <div class="flex-child">
+                                    <div id="heart-like"></div>
+                                    <div id="heart-unlike"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- ---------------商品資訊--------------- -->
                     <div class="productdetail__content">
@@ -262,6 +274,9 @@
             </div>
         </div>
     </div>
+    
+    
+
     @@include('layout/footer.html')
     <script src="/vender/vue/vue.global.prod.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -271,7 +286,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="/vender/datetimepicker/jquery.datetimepicker.full.min.js"></script>
-
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bodymovin.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/gziped3.js" type="text/javascript"></script>
     <script src="./js/productdetail.js"></script>
 </body>
 

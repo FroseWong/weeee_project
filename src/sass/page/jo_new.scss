@@ -1,6 +1,10 @@
 .jo_new {
   background-color: #f4f4f4;
 
+  .jo_new__container {
+    width: 1000px;
+  }
+
   textarea:focus,
   input:focus,
   select:focus {
@@ -18,7 +22,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     margin-bottom: 25px;
+
+    .img-space {
+      position: relative;
+      // border: solid red 1px;
+      display: inline;
+    }
+
+    .delete {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(10, 10, 10, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: $white;
+    }
+    .fa-xmark {
+      font-size: 12px;
+    }
+
     .box {
       height: 100px;
       width: 100px;
@@ -32,6 +62,61 @@
         z-index: 30;
         color: $gray;
         font-size: 50px;
+      }
+    }
+    .img-file__input {
+      display: none;
+    }
+
+    .preview {
+      height: 300px;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .delete-img {
+      // background-color: rgba(10, 10, 10, 0.2);
+      background-color: red;
+      border: none;
+      border-radius: 50%;
+      // cursor: pointer;
+      // pointer-events: auto;
+      display: inline-block;
+      flex-grow: 0;
+      flex-shrink: 0;
+      font-size: 0;
+      height: 20px;
+      width: 20px;
+      outline: none;
+      position: relative;
+      vertical-align: top;
+      width: 20px;
+      z-index: 300;
+
+      &::before {
+        height: 2px;
+        width: 50%;
+        background-color: #fff;
+        content: "";
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        transform-origin: center center;
+      }
+
+      &::after {
+        height: 50%;
+        width: 2px;
+        background-color: #fff;
+        content: "";
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        transform-origin: center center;
       }
     }
   }

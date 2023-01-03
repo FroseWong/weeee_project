@@ -58,7 +58,7 @@
             <div>
                 <img src="/img/otherpage/about_bank1.png" alt="">
                 <img src="/img/otherpage/about_bank2.png" alt="">
-                <img src="/img/otherpage/about_bank3.png" alt="">
+                <img src="/img/otherpage/about_bank3.png" alt=""  @click="functionn">
                 <img src="/img/otherpage/about_bank4.png" alt="">
                 <img src="/img/otherpage/about_bank5.png" alt="">
             </div>
@@ -72,6 +72,11 @@
                 data() {
                     return {
                         message: 'Hello Vue!'
+                    }
+                },
+                methods:{
+                    functionn(){
+                        window.location.href = "./productdetail.html";
                     }
                 },
                 mounted() {

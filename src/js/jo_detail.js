@@ -34,7 +34,7 @@ if (window.innerWidth <= 768) {
 }
 
 $(".contact-leader").on("click", function () {
-  console.log("hi");
+  // console.log("hi");
 
   $(".contact-detail").toggle(1000);
 });
