@@ -12,7 +12,10 @@
     font-weight: bold;
     margin-right: 160px;
     @include m{
-      margin-right: 100px;
+      margin-right: 115px;
+      @include m{
+        font-size: 18px;
+      }
     }
   }
   .btn-close {
@@ -39,7 +42,7 @@
       }
       .xdsoft_prev {
         order: 3;
-        margin-left: 90px;
+        margin-left: 60px;
       }
       .xdsoft_next {
         order: 4;
@@ -52,13 +55,13 @@
     .xdsoft_datepicker {
       width: 460px;
       @include m {
-        width: 360px;
+        width: 300px;
       }
       td {
         color: $gray;
         border: 0;
         background-color: $white;
-        height: 50px;
+        height: 30px;
         div {
           text-align: center;
         }
@@ -70,11 +73,14 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 30px 0;
+    padding: 20px 0;
     border-top: 1px solid $l_gray;
     border-bottom: 1px solid $l_gray;
     p {
       font-weight: bold;
+      @include m{
+        font-size: 14px;
+      }
     }
     div {
       display: flex;
@@ -82,6 +88,9 @@
       p {
         font-size: 20px;
         margin: 0 15px;
+        @include m{
+          font-size: 14px;
+        }
       }
       i {
         font-size: 20px;
@@ -100,23 +109,34 @@
     div {
       display: flex;
       justify-content: space-between;
-      padding: 20px 0;
+      align-items: center;
+      // padding: 15px 0;
+      margin: 15px;
       p {
         font-weight: bold;
-      }
-      img {
-        margin-left: 280px;
+        padding: 0 0 0 20px;
         @include m{
-          margin-left: 200px;
+          font-size: 14px;
+          padding: 0 0 0 20px;
         }
       }
+      .productdetail__modal--points{
+        display: flex;
+        width: auto;
+      }
+      // img {
+      //   margin-left: 280px;
+      //   @include m{
+      //     margin-left: 100px;
+      //   }
+      // }
     }
   }
 }
 .productdetail__modal--footer {
   button {
-    width: 120px;
-    height: 40px;
+    width: 100px;
+    height: 35px;
     color: $white;
     border: 0;
     border-radius: 5px;
@@ -235,7 +255,7 @@
         display: none;
         @include m {
           display: block;
-          width: 140px;
+          width: 110px;
           margin-right: 20px;
         }
       }
@@ -244,12 +264,12 @@
         display: none;
         @include m {
           display: block;
-          width: 140px;
+          width: 110px;
         }
       }
       button {
         width: 250px;
-        height: 45px;
+        height: 35px;
         border-radius: 5px;
         border: 0;
         color: $white;
