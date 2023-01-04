@@ -17,6 +17,7 @@
             display: flex;
             border-bottom: 1px solid #eaeaea;
             padding-bottom: 20px;
+
             @include m {
                 flex-wrap: wrap;
             }
@@ -63,6 +64,10 @@
                     padding: 20px;
                     flex-direction: column;
 
+                    img {
+                        width: 16px;
+                    }
+
                     li:last-child {
                         border: none;
                     }
@@ -71,10 +76,12 @@
                         padding: 10px;
                         border-bottom: 1px solid #eaeaea;
                         color: #666;
+
                     }
                 }
-                .blueBtn{
-                    @include m{
+
+                .blueBtn {
+                    @include m {
                         font-size: 12px;
                         font-weight: bold;
                     }
@@ -120,6 +127,12 @@
                         img {
                             width: 80px;
                             height: 60px;
+                        }
+                    }
+
+                    .product-name {
+                        @include m {
+                            width: 70%;
                         }
                     }
 

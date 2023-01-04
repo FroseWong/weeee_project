@@ -66,9 +66,10 @@ header {
                 i {
                     padding: 5px;
                     color: $gray;
-                    &:hover{
+
+                    &:hover {
                         color: $black;
-                    }    
+                    }
                 }
             }
         }
@@ -94,6 +95,7 @@ header {
                     font-size: $pc_h4;
                     color: $black;
                     cursor: pointer;
+
                     &:hover {
                         color: $gray;
                     }
@@ -312,6 +314,7 @@ header {
         z-index: 3000;
         margin-top: 15px;
         margin-left: -180px;
+
         @include m {
             width: 100%;
             top: 0;
@@ -357,6 +360,7 @@ header {
                     line-height: 50px;
                 }
 
+
             }
 
 
@@ -369,27 +373,29 @@ header {
 
             li {
                 padding: 5px 0;
-
-
                 a {
                     color: #333333;
                     display: block;
                     border-radius: 5px;
                     line-height: 16px;
                     padding: 5px;
+                    display: flex;
+                    align-items: center;
 
-
-                    i,
-                    img {
-                        margin-right: 10px;
+                    div {
+                        text-align: center;
+                        img {
+                            margin-left: 2.5px;
+                        }
                     }
 
+                    h6 {
+                        margin-left: 20px;
+                    }
                     &:hover {
                         background-color: #eee;
-
                     }
                 }
-
             }
         }
 
