@@ -1,7 +1,7 @@
 .login_bg {
     width: 100%;
     height: 100vh;
-    background-image: url(../../img/otherpage/signup01.jpg);
+    background-image: url(../img/otherpage/signup01.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,34 +9,34 @@
 
 
 
-.log h1 {
+.log h3 {
     padding-bottom: 20px;
     margin-top: 25px;
     margin-left: 60px;
 }
 
 .log p {
-
-    margin-left: 72px;
+    display: block;
+    margin: auto 70px;
 }
 
 .container.login{
   
     width: 100%;
     height: 100%;
-    padding-top: 5%;
-    padding-left: 50%;
+    padding-top: 7%;
+    padding-left: 45%;
   }
 
 .log {
 
   
-    width: 567px;
-    height: 599px;
+    width: 370px;
+    height: 400px;
   
     
   
-    padding-top: 10px;
+    padding-top: 3px;
   
     border-radius: 20px;
     background-color: $white;
@@ -45,15 +45,14 @@
 
 .log form {
     padding-left: 69px;
-    padding-top: 20px;
-    margin-top: 30px;
+    
     line-height: 2.4;
     padding-bottom: 10px;
 }
 
 .loginform input {
-    width: 411px;
-    height: 59px;
+    width: 242px;
+    height: 52px;
     margin-bottom: 10px;
     font-size: 20px;
     border: 1px solid $gray;
