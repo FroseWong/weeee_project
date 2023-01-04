@@ -16,39 +16,12 @@ const previewBtn = document.querySelector(".previewBtn");
 // const imgFile = document.querySelector(".img-file__input");
 // const boxBtn = document.querySelector(".box");
 const joAddImg = document.querySelector(".jo_new__addimg");
-let reader;
+let reader = {
+  result: "",
+};
 // console.log(joAddImg);
 
 init();
-
-// 點擊預覽按鈕 儲存內容至sessionStorage
-previewBtn.addEventListener("click", function () {
-  //   console.log(joTitleInput.value);
-  //   console.log(joContentInput.value);
-  //   console.log(joContactInput.value);
-  //   console.log(joLocationInput.value);
-  //   console.log(joDetailAddressInput.value);
-  //   console.log(joNumber.value);
-  //   console.log(joStartDate.value);
-  //   console.log(joStartTime.value);
-  //   console.log(useweeee.value);
-  // console.log(reader.result);
-  sessionStorage.setItem(
-    "joNew",
-    JSON.stringify({
-      joTitle: joTitleInput.value,
-      joContent: joContentInput.value,
-      joContact: joContactInput.value,
-      joLocation: joLocationInput.value,
-      joDetailAddress: joDetailAddressInput.value,
-      joNumber: joNumberInput.value,
-      joStartDate: joStartDateInput.value,
-      joStartTime: joStartTimeInput.value,
-      useweeee: useweeeeInput.value,
-      img: reader.result,
-    })
-  );
-});
 
 // 當sessionStorage中有內容時，將session的東西放回input欄位
 if (sessionStorage.getItem("joNew")) {
@@ -135,3 +108,35 @@ function deleteInit() {
     init();
   });
 }
+
+// 點擊預覽按鈕 儲存內容至sessionStorage
+previewBtn.addEventListener("click", function () {
+  // console.log("hi");
+  //   console.log(joTitleInput.value);
+  //   console.log(joContentInput.value);
+  //   console.log(joContactInput.value);
+  //   console.log(joLocationInput.value);
+  //   console.log(joDetailAddressInput.value);
+  //   console.log(joNumber.value);
+  //   console.log(joStartDate.value);
+  //   console.log(joStartTime.value);
+  //   console.log(useweeee.value);
+  // console.log(reader.result);
+  sessionStorage.setItem(
+    "joNew",
+    JSON.stringify({
+      joTitle: joTitleInput.value,
+      joContent: joContentInput.value,
+      joContact: joContactInput.value,
+      joLocation: joLocationInput.value,
+      joDetailAddress: joDetailAddressInput.value,
+      joNumber: joNumberInput.value,
+      joStartDate: joStartDateInput.value,
+      joStartTime: joStartTimeInput.value,
+      useweeee: useweeeeInput.value,
+      img: reader.result,
+    })
+  );
+
+  location.href = "./jo_preview.html";
+});

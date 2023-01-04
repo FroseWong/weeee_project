@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weeee!</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/85f014293c.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     @@include('layout/header.html')
@@ -22,56 +25,54 @@
         <div class="mid">
           <div class="left_bar">
             <div class="img_block">
-              <div class="mem_img">
-  
-              </div>
+              <div class="mem_img"></div>
               <h5>陳品元元</h5>
             </div>
             <div class="page_list">
               <ul>
                 <li>
-                  <a href="#">
+                  <a href="account_order.html">
                     <div>
                       <i class="fa-regular fa-newspaper"></i>
                     </div>
-                  
-                  訂單管理
-                </a>
+
+                    訂單管理
+                  </a>
                 </li>
-                  
+
                 <li>
                   <a href="account_jo.html">
                     <div>
                       <i class="fa-solid fa-user-group"></i>
                     </div>
-                  
-                  我的揪團
+
+                    我的揪團
                   </a>
                 </li>
-  
+
                 <li>
-                  <a href="#">
+                  <a href="account_favor.html">
                     <div><i class="fa-solid fa-heart"></i></div>
-                  
-                  我的收藏
+
+                    我的收藏
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="account_point.html">
                     <div>
-                      <img src="./img/weeeepoints/blue.svg" alt="">
+                      <img src="./img/weeeepoints/blue.svg" alt="" />
                     </div>
-                  
-                  Weeee! Points
+
+                    Weeee! Points
                   </a>
                 </li>
                 <li >
-                  <a href="#" id="on_page">
+                  <a href="account_setting.html" id="on_page">
                     <div>
                       <i class="fa-solid fa-gear"></i>
                     </div>
-                  
-                  帳號設定
+
+                    帳號設定
                   </a>
                 </li>
               </ul>
@@ -82,174 +83,128 @@
             <div class="setting">
               <div class="row name">
                 <div class="form_group">
-                    <label for="">姓氏</label>
-                    <input type="text">
+                  <label for="">姓氏</label>
+                  <input type="text" />
                 </div>
                 <div class="form_group">
-                    <label for="">名字</label>
-                    <input type="text">
+                  <label for="">名字</label>
+                  <input type="text" />
                 </div>
                 <div class="form_group">
-                  
-                    <label for="">性別</label>
-                    <select name="sex" id="sex">
-                      <option value="1">男</option>
-                      <option value="2">女</option>
-                    </select>
-                  
+                  <label for="">性別</label>
+                  <select name="sex" id="sex">
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                  </select>
                 </div>
               </div>
               <div class="row">
                 <div class="form_group">
-                  
-                    <label for="">英文姓(同護照)</label>
-                    <input type="text">
-                 
+                  <label for="">英文姓(同護照)</label>
+                  <input type="text" />
                 </div>
                 <div class="form_group">
-                  
-                    <label for="">英文名(同護照)</label>
-                    <input type="text">
-                  
+                  <label for="">英文名(同護照)</label>
+                  <input type="text" />
                 </div>
-                
               </div>
               <div class="row">
                 <div class="form_group">
-                  
-                    <label for="">護照號碼</label>
-                    <input type="text">
-                 
+                  <label for="">護照號碼</label>
+                  <input type="text" />
                 </div>
                 <div class="form_group">
-                  
-                    <label for="">國家/地區</label>
-                    <input list="countrys" name="country" id="country">
-                    <datalist id="countrys">
-                      <option value="台灣">
-                      <option value="中國">
-                      <option value="日本">
-                      <option value="韓國">
-                      <option value="越南">
-                      <option value="美國">
-                      <option value="加拿大">
-                      <option value="俄羅斯">
-                      <option value="馬來西亞">
-                      <option value="新加坡">
-                      <option value="印度尼西亞">
-                      <option value="菲律賓">
-                      <option value="泰國">
-                      <option value="澳大利亞">
-                      <option value="紐西蘭">
-                      <option value="緬甸">
-                      <option value="印度">
-                      <option value="法國">
-                      <option value="英國">
-                      <option value="西班牙">
-                      <option value="葡萄牙">
-                      <option value="比利時">
-                      <option value="荷蘭">
-                      <option value="德國">
-                      <option value="義大利">
-                      <option value="波蘭">
-                      <option value="挪威">
-                      <option value="瑞典">
-                      <option value="芬蘭">
-                      <option value="烏克蘭">
-                      <option value="立陶宛">
-                      <option value="愛沙尼亞">
-                    </datalist>
-                  
+                  <label for="">國家/地區</label>
+                  <input list="countrys" name="country" id="country" />
+                  <datalist id="countrys">
+                    <option value="台灣"></option>
+                    <option value="中國"></option>
+                    <option value="日本"></option>
+                    <option value="韓國"></option>
+                    <option value="越南"></option>
+                    <option value="美國"></option>
+                    <option value="加拿大"></option>
+                    <option value="俄羅斯"></option>
+                    <option value="馬來西亞"></option>
+                    <option value="新加坡"></option>
+                    <option value="印度尼西亞"></option>
+                    <option value="菲律賓"></option>
+                    <option value="泰國"></option>
+                    <option value="澳大利亞"></option>
+                    <option value="紐西蘭"></option>
+                    <option value="緬甸"></option>
+                    <option value="印度"></option>
+                    <option value="法國"></option>
+                    <option value="英國"></option>
+                    <option value="西班牙"></option>
+                    <option value="葡萄牙"></option>
+                    <option value="比利時"></option>
+                    <option value="荷蘭"></option>
+                    <option value="德國"></option>
+                    <option value="義大利"></option>
+                    <option value="波蘭"></option>
+                    <option value="挪威"></option>
+                    <option value="瑞典"></option>
+                    <option value="芬蘭"></option>
+                    <option value="烏克蘭"></option>
+                    <option value="立陶宛"></option>
+                    <option value="愛沙尼亞"></option>
+                  </datalist>
                 </div>
-                
               </div>
               <div class="row">
                 <div class="form_group" id="phone_group">
-                  
-                    <label for="">電話號碼</label>
-                    <div>
-
-
-                      <input type="text" id="phone">
-
-                    </div>
-                    
-                 
+                  <label for="">電話號碼</label>
+                  <div>
+                    <input type="text" id="phone" />
+                  </div>
                 </div>
                 <div class="form_group">
-                  
-                    <label for="">E-MAIL</label>
-                   <input type="text">
-                  
+                  <label for="">E-MAIL</label>
+                  <input type="text" />
                 </div>
-                
               </div>
               <div class="row" id="date_group">
                 <div class="form_group">
-                  
-                    <label for="">出生日期</label>
-                    <div>
-                      <input type="date" id="date">
-                    </div>
+                  <label for="">出生日期</label>
+                  <div>
+                    <input type="date" id="date" />
+                  </div>
                 </div>
-                
               </div>
 
               <div class="row interest">
-                <h5>
-                  興趣喜好
-                </h5>
+                <h5>興趣喜好</h5>
                 <div class="row">
-                  <input type="checkbox" id="friend">
-                  <label for="friend">
-                    朋友行程
-                  </label>
-                  <input type="checkbox" id="family">
-                  <label for="family">
-                    家庭行程
-                  </label>
-                  <input type="checkbox" id="couple">
-                  <label for="couple">
-                    情侶行程
-                  </label>
-                  <input type="checkbox" id="pet">
-                  <label for="pet">
-                    寵物行程
-                  </label>
+                  <input type="checkbox" id="friend" />
+                  <label for="friend"> 朋友行程 </label>
+                  <input type="checkbox" id="family" />
+                  <label for="family"> 家庭行程 </label>
+                  <input type="checkbox" id="couple" />
+                  <label for="couple"> 情侶行程 </label>
+                  <input type="checkbox" id="pet" />
+                  <label for="pet"> 寵物行程 </label>
                 </div>
                 <div class="row">
-                  <input type="checkbox" id="handmade">
-                  <label for="handmade">
-                    手作體驗
-                  </label>
-                  <input type="checkbox" id="onwater">
-                  <label for="onwater">
-                    水上活動
-                  </label>
-                  <input type="checkbox" id="farm">
-                  <label for="farm">
-                    觀光農場
-                  </label>
-                  <input type="checkbox" id="extreme">
-                  <label for="extreme">
-                    極限運動
-                  </label>
+                  <input type="checkbox" id="handmade" />
+                  <label for="handmade"> 手作體驗 </label>
+                  <input type="checkbox" id="onwater" />
+                  <label for="onwater"> 水上活動 </label>
+                  <input type="checkbox" id="farm" />
+                  <label for="farm"> 觀光農場 </label>
+                  <input type="checkbox" id="extreme" />
+                  <label for="extreme"> 極限運動 </label>
                 </div>
-                
               </div>
               <div class="save">
                 <h5>儲存</h5>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
-     
-    
-      @@include('layout/footer.html') 
-    </div>
 
+      @@include('layout/footer.html')
+    </div>
   </body>
 </html>

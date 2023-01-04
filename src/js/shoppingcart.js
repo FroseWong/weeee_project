@@ -178,8 +178,7 @@ createApp({
       ],
       modalPeople: 1,
       modalTotal: 777,
-      modalDate: "",
-      field1show: true,
+      modalDate:"",
     };
   },
   methods: {
@@ -452,39 +451,14 @@ createApp({
       this.modalPeople++;
     },
     // ---------------結帳寫入cookie---------------
-    modalCheckout() {
-      let time = document.getElementById("datetimepicker").value;
-      let newDate = "";
-      if (time == "") {
-        let OldToday = new Date();
-        newDate = OldToday.toISOString().split("T")[0];
-      } else {
-        let oldDate = new String(time);
-        newDate =
-          oldDate[6] +
-          oldDate[7] +
-          oldDate[8] +
-          oldDate[9] +
-          "-" +
-          oldDate[3] +
-          oldDate[4] +
-          "-" +
-          oldDate[0] +
-          oldDate[1];
-      }
-      sessionStorage.setItem("日期", newDate);
-      sessionStorage.setItem("總金額", this.modalPricetotal);
-      sessionStorage.setItem("點數", this.modalPoints);
-      let data = sessionStorage.getItem("日期");
-      console.log(data);
-      window.location.href = "./payment.html";
-    },
-    cle_check() {
-      this.field1show = false;
-    },
-    field1showbtn(e) {
-      this.field1show = true;
-    },
+    modalCheckout(){
+      let time = document.getElementById('datetimepicker').value;
+      document.cookie =`日期=${time}`;
+      document.cookie =`總金額=${this.modalPricetotal}`
+      document.cookie =`點數=${this.modalPoints}`;
+        let x = document.cookie;
+        console.log(x);
+    }
   },
   computed: {
     // ---------------總金額---------------
@@ -492,9 +466,9 @@ createApp({
       return this.modalTotal * this.modalPeople;
     },
     // ---------------點數計算滿500元1點---------------
-    modalPoints() {
-      let points = this.modalTotal * this.modalPeople;
-      return Math.floor(points / 100);
+    modalPoints(){
+     let points=this.modalTotal * this.modalPeople;
+      return Math.floor(points / 500);
     },
   },
   mounted() {

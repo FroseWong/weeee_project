@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <!-- @@include('layout/header.html') -->
+    @@include('layout/header.html')
     <div class="wrapper jo_preview">
       <!-- <header>header</header> -->
       <div class="container jo_container">
@@ -30,17 +30,17 @@
             </div>
             <div class="jo-leader__top__right">
               <span class="jo-start-date"
-                ><i class="fa-solid fa-calendar-days"></i>2022/12/17 星期六
-                10:00</span
+                ><i class="fa-solid fa-calendar-days"></i><span class="date_and_time">2022/12/17 星期六
+                10:00</span></span
               >
               <span class="jo-location"
-                ><i class="fa-solid fa-location-dot"></i>桃園市</span
+                ><i class="fa-solid fa-location-dot"></i><span class="location">桃園市</span></span
               >
               <span class="jo-detailaddress"
-                ><i class="fa-solid fa-map-location-dot"></i>桃園高鐵站</span
+                ><i class="fa-solid fa-map-location-dot"></i><span class="detailAddress">桃園高鐵站</span></span
               >
               <span class="jo-number"
-                ><i class="fa-solid fa-person"></i>3人</span
+                ><i class="fa-solid fa-person"></i><span class="number">3</span>人</span
               >
             </div>
           </div>
@@ -52,7 +52,7 @@
               <div class="contact-detail">
                 <span class="contact-title">聯絡方式</span>
                 <br />
-                <span
+                <span class="contact"
                   >LINE ID：XXXX <br />
                   Email：TTTTT@gmail.com</span
                 >
@@ -64,7 +64,7 @@
         <h3 class="useweeee__title">我們的行程</h3>
 
         <div class="useweeee">
-          <a href="#" class="product-card-row">
+          <a href="./productdetail.html" class="product-card-row">
             <div class="product-card-row__left"></div>
             <div class="product-card-row__right">
               <div class="product-name">
@@ -92,7 +92,7 @@
        <a href="./jo_new.html" class="yellowBtn backtoeditBtn" >返回編輯</a>
       
       </div>
-      <!-- @@include('layout/footer.html') -->
+      @@include('layout/footer.html')
 
       </div>
     </div>

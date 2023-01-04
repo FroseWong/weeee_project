@@ -190,15 +190,15 @@
                                             <td>Jennifer Acosta</td>
                                             <td>Junior Javascript Developer</td>
                                             <td>Edinburgh</td>
-                                            <td>43</td>
-                                            <td>2013/02/01</td>                                         
+                                            <td>正常</td>
+                                            <td>凍結<i class="fas fa-ban"></i></td>                                         
                                         </tr>
                                         <tr>
                                             <td>Cara Stevens</td>
                                             <td>Sales Assistant</td>
                                             <td>New York</td>
-                                            <td>46</td>
-                                            <td>2013/02/01</td>
+                                            <td>凍結中</td>
+                                            <td>恢復<i class="fas fa-check"></td>
                                         </tr>
 
                                         

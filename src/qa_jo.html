@@ -14,7 +14,8 @@
 
 <body>
     @@include('layout/header.html')
-    <div class="wrapper" id="app">
+    <div class="wrapper qa_jo" id="app">
+        <div class="black_bg" @click="openSelectbar"></div>
         <div class="qa_jo__main">
             <div class="qa_jo_title">
                 <h1>1200</h1>
@@ -24,10 +25,10 @@
                 <div class="container qa_jo__bar">
                     <div class="rwd_bar">
                         <ul>
-                            <li>行程</li>
-                            <li>目的</li>
-                            <li>價格</li>
-                            <li>排序</li>
+                            <li class="qa_jo__category_btn"  @click="openSelectbar">行程</li>
+                            <li class="qa_jo__destination_btn" @click="openSelectbar">目的</li>
+                            <li class="qa_jo__price_btn"  @click="openSelectbar">價格</li>
+                            <li class="qa_jo__sort_btn"  @click="openSelectbar">排序</li>
                         </ul>
                     </div>
                     <div class="qa_jo__sort">
@@ -63,7 +64,7 @@
                     </div>
                 </div>
                 <div class="qa_jo__card">
-                    <div class="qa_jo__card--group" v-for="card in cardlist"  :key="index">
+                    <div class="qa_jo__card--group" v-for="card in cardlist"  :key="index" @click="jump_page">
                         <template v-if="card.vif">
                             <div class="qa_jo__card--img">
                                 <img :src="card.src" alt="">
@@ -92,8 +93,9 @@
                 </div>
             </div>
         </div>
+        @@include('layout/footer.html')
     </div>
-    @@include('layout/footer.html')
+  
     <script src="/vue/vue.global.prod.js"></script>
     <script src="./js/qa_jo.js"></script>
 </body>
