@@ -5,7 +5,7 @@
 
             <ul class="header_top_left">
                 <li>
-                    <a href="../index.html"><img src="../img/otherpage/Weeee!.svg" alt=""></a>
+                    <a href="../index.html"><img src="img/otherpage/Weeee!.svg" alt=""></a>
                 </li>
                 <li>
                     <input type="text" placeholder="輸入目的地、景點、體驗行程或活動名稱...
@@ -189,7 +189,9 @@
             event.preventDefault(e);
             $(this).next(".submenu").addClass("active");
             $(".header_overlay").addClass("active");
-        };
+        }else{
+            $(".submenu").removeClass("active");
+        }
     });
 
 
@@ -205,9 +207,9 @@
 
     });
 
-    if ($(window).width() > 768) {
-            $(".submenu").css("display", "none");
-        };
+    // if ($(window).width() > 768) {
+    //         $(".submenu").css("display", "none");
+    //     };
 
     // Function for close the Modal
     $(".header_overlay").on("click", function () {

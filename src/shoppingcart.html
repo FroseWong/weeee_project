@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+    <link rel="stylesheet" href="/vender/datetimepicker/jquery.datetimepicker.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" />
+
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 
@@ -16,9 +25,64 @@
 
     @@include('layout/header.html')
     <div class="cart_wrapper wrapper">
-        
+
         <div class="container">
-            
+            <!---------------bs-modal--------------->
+            <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="productdetail__modal--header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    請選擇使用日期
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="modal-body productdetail__modal--group">
+                            <div class="productdetail__modal--top">
+                                <input id="datetimepicker" type="text" />
+                            </div>
+                            <div class="productdetail__modal--mid">
+                                <p>人數</p>
+                                <p>TWD {{modalTotal}}/每人</p>
+                                <div>
+                                    <i class="fa-solid fa-circle-minus" @click="pelpleMinus"></i>
+                                    <p>{{modalPeople}}</p>
+                                    <i class="fa-solid fa-circle-plus" @click="pelplePlus"></i>
+                                </div>
+                            </div>
+                            <div class="productdetail__modal--bot">
+                                <div>
+                                    <p>總金額</p>
+                                    <p>TWD {{modalPricetotal}}</p>
+                                </div>
+                                <div>
+                                    <p>Weeee!Points</p>
+                                    <div class="productdetail__modal--points">
+                                        <img src="./img/weeeepoints/yellow.svg" alt="" />
+                                        <p>{{modalPoints}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="productdetail__modal--footer">
+                                <button type="button" class="productdetail__modal--secondary">
+                                    加入購物車
+                                </button>
+                                <button type="button" class="productdetail__modal--primary" @click="modalCheckout">
+                                    立即訂購
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="cart_breadcrumb hb">
                 <ol>
                     <li>購物車</li>
@@ -27,14 +91,14 @@
                 </ol>
             </div>
 
-            
+
             <section class="shoppingcart">
                 <div class="cart_header">
                     <h5>購物車</h5>
                 </div>
                 <div class="product_group">
                     <div class="product_item">
-                        
+
                         <div class="checkbox"><input type="checkbox"></div>
 
                         <a href="" class="product-image"><img src="../../img/sightseeing/fr_28_1.jpg" alt=""></a>
@@ -52,8 +116,8 @@
                             <h6>TWD 3,475</h6>
                         </div>
                         <div class="edit_delete">
-                            <div class="cart_edit"><i class="fa-solid fa-pen"></i></div>
-                            <div class="cart_delete"><i class="fa-solid fa-trash"></i></div>
+                            <button id="cart_edit"><i class="fa-solid fa-pen"></i></button>
+                            <button id="cart_delete"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </div>
 
@@ -75,8 +139,8 @@
                             <h6>TWD 400</h6>
                         </div>
                         <div class="edit_delete">
-                            <div class="cart_edit"><i class="fa-solid fa-pen"></i></div>
-                            <div class="cart_delete"><i class="fa-solid fa-trash"></i></div>
+                            <button id="cart_edit"><i class="fa-solid fa-pen"></i></button>
+                            <button id="cart_delete"><i class="fa-solid fa-trash"></i></button>
                         </div>
 
                     </div>
@@ -98,8 +162,8 @@
                             <h6>TWD 400</h6>
                         </div>
                         <div class="edit_delete">
-                            <div class="cart_edit"><i class="fa-solid fa-pen"></i></div>
-                            <div class="cart_delete"><i class="fa-solid fa-trash"></i></div>
+                            <button id="cart_edit"><i class="fa-solid fa-pen"></i></button>
+                            <button id="cart_delete"><i class="fa-solid fa-trash"></i></button>
                         </div>
 
                     </div>
@@ -121,8 +185,8 @@
                             <h6>TWD 400</h6>
                         </div>
                         <div class="edit_delete">
-                            <div class="cart_edit"><i class="fa-solid fa-pen"></i></div>
-                            <div class="cart_delete"><i class="fa-solid fa-trash"></i></div>
+                            <button id="cart_edit"><i class="fa-solid fa-pen"></i></button>
+                            <button id="cart_delete"><i class="fa-solid fa-trash"></i></button>
                         </div>
 
                     </div>
@@ -144,8 +208,9 @@
                             <h6>TWD 400</h6>
                         </div>
                         <div class="edit_delete">
-                            <div  class="cart_edit"><i class="fa-solid fa-pen"></i></div>
-                            <div class="cart_delete"><i class="fa-solid fa-trash"></i></div>
+                            <button id="cart_edit" type="button" class="field1_btn1" data-bs-toggle="modal"
+                                data-bs-target="#peopleModal"><i class="fa-solid fa-pen"></i></button>
+                            <button id="cart_delete"><i class="fa-solid fa-trash"></i></button>
                         </div>
 
                     </div>
@@ -156,8 +221,8 @@
                 <div class="cart_footer">
                     <div class="checkall">
                         <label for="checkall"><input type="checkbox" name="checkall" id="checkall">全選</label>
-                    <a href="">刪除已選項目</a>
-                </div>
+                        <a href="">刪除已選項目</a>
+                    </div>
                     <div class="cart_footer_right">
                         <div class="cart_total">
                             <div>
@@ -179,7 +244,6 @@
             </section>
             <section class="most_buy">
                 <h5 class="ttoc">多數旅客還買了以下商品</h5>
-
                 <div class="product-list">
                     <a class="product-card">
                         <i class="fa-regular fa-heart"></i>
@@ -248,6 +312,63 @@
         </div>
     </div>
     @@include('layout/footer.html')
+
+    <script src="/vender/vue/vue.global.prod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/vender/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bodymovin.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/gziped3.js" type="text/javascript"></script>
+    <script src="./js/shoppingcart.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".product-list").slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1.5,
+                            slidesToScroll: 1,
+                            infinite: true,
+                        },
+                    },
+                ],
+            });
+
+            $(".jo-list").slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1.5,
+                            slidesToScroll: 1,
+                            infinite: true,
+                        },
+                    },
+                ],
+            });
+
+            if (window.innerWidth <= 768) {
+                $(".popular-country__list").slick({
+                    infinite: true,
+                    slidesToShow: 2.1,
+                    slidesToScroll: 2,
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
