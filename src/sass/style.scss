@@ -210,10 +210,20 @@ select:focus {
     display: flex;
     li {
       padding: 20px 15px 20px 0px;
+
+      @include m {
+        padding: 10px 5px 0px 0px;
+        font-size: 12px;
+      }
+
       &::before {
         content: ">";
         color: $blue;
         padding-right: 15px;
+
+        @include m {
+          padding-right: 5px;
+        }
       }
 
       &:first-child::before {
@@ -231,6 +241,10 @@ select:focus {
       font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
+
+      @include m {
+        font-size: 12px;
+      }
 
       &:hover {
         color: $orange;
