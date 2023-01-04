@@ -20,12 +20,24 @@
     margin-left: 72px;
 }
 
+.container.login{
+  
+    width: 100%;
+    height: 100%;
+    padding-top: 5%;
+    padding-left: 50%;
+  }
+
 .log {
-    position: absolute;
+
+  
     width: 567px;
     height: 599px;
-    left: 988px;
-    top: 185px;
+  
+    
+  
+    padding-top: 10px;
+  
     border-radius: 20px;
     background-color: $white;
 

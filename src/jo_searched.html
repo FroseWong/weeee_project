@@ -18,7 +18,7 @@
             <p>探索揪團旅程</p>
             <div class="search_location">
                 <i class="fa-solid fa-location-dot"></i>
-                選擇目的地
+                選擇地點
                 <i class="fa-solid fa-chevron-down"></i></div>
             <div class="searchbox">
                 <input type="text" placeholder="想做什麼？">
@@ -50,7 +50,7 @@
               
             </div>
       </div>
-      <div class="container content ">
+      <div class="container content">
         <h2 class="ttoc">全部結果 <span>100</span>項</h2>
         <div class="jo-list">
           <a class="jo-card">
@@ -281,11 +281,11 @@
              console.log(btn_bottom);
              console.log(window.scrollY);
              if(screen.width <= 768){
-              if (window.scrollY > 100 && window.scrollY <= btn_bottom -1050) {
+              if (window.scrollY > 0 && window.scrollY <= btn_bottom -750) {
                 btn.addClass('show');
-              } else if( window.scrollY <=100){
+              } else if( window.scrollY <=0){
                 btn.removeClass('show');
-              }else if(window.scrollY >= btn_bottom -1050){
+              }else if(window.scrollY >= btn_bottom -750){
                 btn.removeClass('show');
               }
              }else{
