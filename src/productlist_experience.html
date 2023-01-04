@@ -18,12 +18,16 @@
             background-color: #4484CE;
             color: rgb(255, 255, 255);
         }
+        .page-link--current{
+            background-color: #4484CE;
+            color: rgb(255, 255, 255);
+        }
     </style>
 </head>
 
 <body>
   @@include('layout/header.html')
-x
+
     <div class="wrapper" id="app">
         <!-- <header class="productdetail__header"></header> -->
         <div class="headerpage"></div>
@@ -236,6 +240,12 @@ x
         $(".about2__sort ul li").removeClass("active1");
         $(this).addClass("active1");
        })
+
+
+       $(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("page-link--current");
+        $(this).addClass("page-link--current");
+        });
 
 
      </script>

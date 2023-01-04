@@ -18,6 +18,10 @@
             background-color: #4484CE;
             color: rgb(255, 255, 255);
         }
+        .page-link--current{
+            background-color: #4484CE;
+            color: rgb(255, 255, 255);
+        }
     </style>
 </head>
 
@@ -91,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                    <nav>
+                    <nav class="page1">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link page-link--current"
                                     href="#">1</a></li>
@@ -128,7 +132,7 @@
                             src: "img//otherpage/un_2_1.jpg",
                             title: '無限暢遊卡二日遊',
                             label: '無限暢遊卡',
-                            content: '只要一張無限暢遊卡，就能暢遊 25 個台北市、新北市與基隆市的熱門景點',
+                            content: '只要一張無限暢遊卡，就能暢遊北北基的熱門景點',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 50,
@@ -140,7 +144,7 @@
                             src: "img//otherpage/un_7_1.jpg",
                             title: '無限暢遊卡三日遊',
                             label: '無限暢遊卡',
-                            content: '只要一張無限暢遊卡，就能暢遊 25 個台北市、新北市與基隆市的熱門景點',
+                            content: '只要一張無限暢遊卡，就能暢遊北北基的熱門景點',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 350,
@@ -152,7 +156,7 @@
                             src: "img//otherpage/vi_3_1.jpg",
                             title: '景點暢遊卡二日遊',
                             label: '景點暢遊卡',
-                            content: '讓旅遊比你想的更輕鬆無負擔,內含北北基23個景點門票及「快樂的旅人」。',
+                            content: '讓旅遊比你想的更輕鬆無負擔,內含北北基景點門票。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 1750,
@@ -264,12 +268,18 @@
 //         })
         $(".about2__open").on("click",function(){
           $('.about2__block').slideToggle();
-       } ) //jquery 開關程式碼
+       } ) ;//jquery 開關程式碼
+       //塞選顏色
        $(".about2__sort ul").on("click","li",function() {
         $(".about2__sort ul li").removeClass("active1");
         $(this).addClass("active1");
-       })
-      
+       });
+    
+        $(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("page-link--current");
+        $(this).addClass("page-link--current");
+        });
+
 
 
 

@@ -8,7 +8,6 @@ $color: (
   "black": #000000,
   "ll_gray": #f4f4f4,
 );
-
 $blue: map-get($color, "buy_primary");
 $yellow: map-get($color, "jo_primary");
 $orange: map-get($color, "orange");
