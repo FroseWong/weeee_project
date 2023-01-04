@@ -10,7 +10,16 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
-</head>
+</head>  <style>
+    .active1{
+        background-color: #4484CE;
+        color: rgb(255, 255, 255);
+    }
+    .qa_jo__page-link--current{
+        background-color: #4484CE;
+        color: rgb(255, 255, 255);
+    }
+    </style>
 
 <body>
     @@include('layout/header.html')
@@ -82,12 +91,12 @@
                             </div>
                         </template>
                     </div>
-                    <nav>
+                    <nav  class="page1">
                         <ul class="qa_jo__pagination">
                             <li class="qa_jo__page-item"><a class="qa_jo__page-link qa_jo__page-link--current"
                                     href="#">1</a></li>
                             <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">2</a></li>
-                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">3</a></li>
+                          
                         </ul>
                     </nav>
                 </div>
@@ -155,6 +164,7 @@
             city: '基隆',
             cardid: 4,
             vif: true,
+<<<<<<< HEAD
         },
         {
             src: "./img/otherpage/ha_4_1.jpg",
@@ -283,30 +293,23 @@
             city: '基隆',
             cardid: 4,
             vif: true,
+=======
+>>>>>>> sally
         }
+       
       ],
       prices: [
-        "TWD 2,000~3,999",
-        "TWD 4,000~5,999",
-        "TWD 6,000~7,999",
-        "TWD 8,000~9,999",
+      "TWD 300~400",
+        "TWD 4,01~500",
+        "TWD 501~600",
+        "TWD 601~700",
       ],
-      categorys: ["朋友行程", "家庭行程", "情侶行程", "寵物行程"],
+      categorys: ["手作體驗", "水上活動", "觀光農場", "極限運動"],
       AllCitys: [
         "基隆",
         "台北",
         "新北",
-        "桃園",
-        "新竹",
-        "苗栗",
-        "台中",
-        "彰化",
-        "南投",
-        "雲林",
-        "嘉義",
-        "台南",
-        "高雄",
-        "屏東",
+       
       ],
       cityshow: false,
       pricelist: [],
@@ -525,6 +528,12 @@
 
   mounted() {},
 }).mount("#app");
+
+$(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("qa_jo__page-link--current");
+        $(this).addClass("qa_jo__page-link--current");
+        });
+
     </script>
 </body>
 

@@ -1,134 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Document</title>
-  </head>
 
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>  <style>
+    .active1{
+        background-color: #4484CE;
+        color: rgb(255, 255, 255);
+    }
+    .qa_jo__page-link--current{
+        background-color: #4484CE;
+        color: rgb(255, 255, 255);
+    }
+    </style>
+
+<body>
     @@include('layout/header.html')
     <div class="wrapper qa_jo" id="app">
-      <div class="black_bg" @click="openSelectbar"></div>
-      <div class="qa_jo__main">
-        <div class="qa_jo_title">
-          <h1>1200</h1>
-          <h2>個項目</h2>
-        </div>
-        <div class="qa_jo__barcard">
-          <div class="container qa_jo__bar">
-            <div class="rwd_bar">
-              <ul>
-                <li class="qa_jo__category_btn" @click="openSelectbar">行程</li>
-                <li class="qa_jo__destination_btn" @click="openSelectbar">
-                  目的
-                </li>
-                <li class="qa_jo__price_btn" @click="openSelectbar">價格</li>
-                <li class="qa_jo__sort_btn" @click="openSelectbar">排序</li>
-              </ul>
+        <div class="black_bg" @click="openSelectbar"></div>
+        <div class="qa_jo__main">
+            <div class="qa_jo_title">
+                <h1>1200</h1>
+                <h2>個項目</h2>
             </div>
-            <div class="qa_jo__sort">
-              <h4>排序</h4>
-              <ul>
-                <li @click="filterOrder">熱門程度</li>
-                <li @click="filterSort">價格低到高</li>
-              </ul>
-            </div>
-            <div class="qa_jo__category">
-              <h4>行程分類</h4>
-              <ul>
-                <li
-                  v-for="(category,index) in categorys"
-                  @click="filterCategory"
-                >
-                  <input
-                    type="checkbox"
-                    :id="`category${index+1}`"
-                  />&emsp;{{category}}
-                </li>
-              </ul>
-            </div>
-            <div class="qa_jo__destination">
-              <h4>目的地</h4>
-              <span @click="open_city" class="qa_jo__open"
-                >台灣
-                <i class="fa-solid fa-circle-chevron-down"></i>
-              </span>
-              <ul class="qa_jo__city qa_jo__block">
-                <li
-                  v-for="AllCity in AllCitys"
-                  v-if="cityshow"
-                  @click="filterCity"
-                >
-                  {{AllCity}}
-                </li>
-              </ul>
-            </div>
-            <div class="qa_jo__price">
-              <h4>價格</h4>
-              <ul>
-                <li v-for="(price,index) in prices" @click="filterPrice">
-                  <input
-                    type="checkbox"
-                    :id="`price${index+1}`"
-                  />&emsp;{{price}}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="qa_jo__card">
-            <div
-              class="qa_jo__card--group"
-              v-for="card in cardlist"
-              :key="index"
-              @click="jump_page"
-            >
-              <template v-if="card.vif">
-                <div class="qa_jo__card--img">
-                  <img :src="card.src" alt="" />
+            <div class="qa_jo__barcard">
+                <div class="container qa_jo__bar">
+                    <div class="rwd_bar">
+                        <ul>
+                            <li class="qa_jo__category_btn"  @click="openSelectbar">行程</li>
+                            <li class="qa_jo__destination_btn" @click="openSelectbar">目的</li>
+                            <li class="qa_jo__price_btn"  @click="openSelectbar">價格</li>
+                            <li class="qa_jo__sort_btn"  @click="openSelectbar">排序</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__sort">
+                        
+                        <h4>排序</h4>
+                        <ul>
+                            <li @click="filterOrder">熱門程度</li>
+                            <li @click="filterSort">價格低到高</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__category">
+                        <h4>行程分類</h4>
+                        <ul>
+                            <li v-for="(category,index) in categorys" @click="filterCategory"><input type="checkbox"
+                                    :id=`category${index+1}`>&emsp;{{category}}</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__destination">
+                        <h4>目的地</h4>
+                        <span @click="open_city" class="qa_jo__open">台灣
+                            <i class="fa-solid fa-circle-chevron-down"></i>
+                        </span>
+                        <ul class="qa_jo__city qa_jo__block">
+                            <li v-for="AllCity in AllCitys" v-if=cityshow @click="filterCity">{{AllCity}}</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__price">
+                        <h4>價格</h4>
+                        <ul>
+                            <li v-for="(price,index) in prices" @click="filterPrice"><input type="checkbox"
+                                    :id=`price${index+1}`>&emsp;{{price}}</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="qa_jo__card--title">
-                  <h1 class="qa_jo__title">{{card.title}}</h1>
-                  <h2>{{card.label}}</h2>
-                  <h1>{{card.content}}</h1>
-                  <div>
-                    <h3>★</h3>
-                    <h4>{{card.score}}{{card.scorepeople}}</h4>
-                    <h4>｜{{card.order}}個已訂購</h4>
-                    <h5>TWD {{card.price}}元</h5>
-                  </div>
+                <div class="qa_jo__card">
+                    <div class="qa_jo__card--group" v-for="card in cardlist"  :key="index" @click="jump_page">
+                        <template v-if="card.vif">
+                            <div class="qa_jo__card--img">
+                                <img :src="card.src" alt="">
+                            </div>
+                            <div class="qa_jo__card--title">
+                                <h1 class="qa_jo__title">{{card.title}}</h1>
+                                <h2>{{card.label}}</h2>
+                                <h1>{{card.content}}</h1>
+                                <div>
+                                    <h3>★</h3>
+                                    <h4>{{card.score}}{{card.scorepeople}}</h4>
+                                    <h4>｜{{card.order}}個已訂購</h4>
+                                    <h5>TWD {{card.price}}元</h5>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <nav  class="page1">
+                        <ul class="qa_jo__pagination">
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link qa_jo__page-link--current"
+                                    href="#">1</a></li>
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">2</a></li>
+                          
+                        </ul>
+                    </nav>
                 </div>
-              </template>
             </div>
-            <nav>
-              <ul class="qa_jo__pagination">
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link qa_jo__page-link--current" href="#"
-                    >1</a
-                  >
-                </li>
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">2</a>
-                </li>
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">3</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
         </div>
-      </div>
-      @@include('layout/footer.html')
+        @@include('layout/footer.html')
     </div>
+<<<<<<< HEAD
 
     <script src="./vue/vue.global.prod.js"></script>
     <script>
@@ -346,215 +322,333 @@
             pricelist: [],
             categorylist: [],
           };
-        },
-        created() {
-          window.addEventListener("resize", this.resize_adjust, true);
-        },
-        methods: {
-          open_city(e) {
-            this.cityshow = !this.cityshow;
-            let path = e.path[0].childNodes[1].classList;
-            if (path.contains("fa-circle-chevron-down")) {
-              path.remove("fa-circle-chevron-down");
-              path.add("fa-circle-chevron-up");
-            } else {
-              path.remove("fa-circle-chevron-up");
-              path.add("fa-circle-chevron-down");
-            }
-          },
-          filterCity(e) {
-            let path = e.path[0].textContent;
-            this.cardlist.forEach((e, index) => {
-              if (path == e.city) {
-                console.log(this.cardlist[index].vif);
-              }
-            });
-          },
-          filterSort(e) {
-            let arr = this.cardlist;
-            const eitherSort = (arr = []) => {
-              const sorter = (a, b) => {
-                return +a.price - +b.price;
-              };
-              arr.sort(sorter);
-            };
-            eitherSort(arr);
-            this.classList = arr;
-            let epath = e.path[0].style;
-            e.path[1].childNodes[0].style.backgroundColor = "#fff";
-            e.path[1].childNodes[0].style.color = "#747774";
-            epath.backgroundColor = "#4484ce";
-            epath.color = "#fff";
-          },
-          filterOrder(e) {
-            let arr = this.cardlist;
-            const eitherSort = (arr = []) => {
-              const sorter = (a, b) => {
-                return +a.order - +b.order;
-              };
-              arr.sort(sorter);
-            };
-            eitherSort(arr);
-            this.classList = arr;
-            let epath = e.path[0].style;
-            e.path[1].childNodes[1].style.backgroundColor = "#fff";
-            e.path[1].childNodes[1].style.color = "#747774";
-            epath.backgroundColor = "#4484ce";
-            epath.color = "#fff";
-          },
-          filterPrice(e) {
-            let price = e.path[0].childNodes[0];
-            let text = e.path[0].textContent;
-            if (price.checked == false) {
-              price.checked = true;
-              this.pricelist.push(e.path[0].textContent);
-            } else if (price.checked == true) {
-              price.checked = false;
-              this.pricelist.forEach((e, index) => {
-                if (e == text) {
-                  this.pricelist.splice(index, 1);
-                }
-              });
-            }
-          },
-          filterCategory(e) {
-            e.target.querySelector("input").click();
-            // for (let i = 0; i < this.cardlist.length; i++){
-            //   this.cardlist[i].vif=false;
-            // }
-            // let category = e.composedPath()[0].childNodes[0];
-            // let text = e.composedPath()[0].textContent;
-            // if (category.checked == false) {
-            //   category.checked = true;
-            //   this.categorylist.push(e.path[0].textContent);
-            // } else if (category.checked == true) {
-            //   category.checked = false;
-            //   this.categorylist.forEach((e, index) => {
-            //     if (e == text) {
-            //       this.categorylist.splice(index, 1);
-            //     }
-            //   });
-            // }
-            // for (let i = 0; i < this.cardlist.length; i++) {
-            //   let label = this.cardlist[i].label;
-            //   for (let j = 0; j < this.categorylist.length; j++) {
-            //     let list = this.categorylist[j];
-            //     if (label.trim() == list.trim()) {
-            //       let temp = this.cardlist[i];
-            //       temp.vif=true;
-            //     }
-            //   }
-            // }
-          },
-          openSelectbar(e) {
-            let category_btn = document.querySelector(".qa_jo__category_btn");
-            target_class = e.target.classList;
-            let cate_bar = document.querySelector(".qa_jo__category");
-            let dest_bar = document.querySelector(".qa_jo__destination");
-            let price_bar = document.querySelector(".qa_jo__price");
-            let sort_bar = document.querySelector(".qa_jo__sort");
-            let black_bg = document.querySelector(".black_bg");
-            let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
-            let body = document.querySelector("body");
-            if (target_class.contains("qa_jo__category_btn")) {
-              if (cate_bar.classList.contains("open")) {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                black_bg.classList.remove("on_watch");
-                body.classList.remove("stop_scroll");
-              } else {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                cate_bar.classList.add("open");
-                black_bg.classList.add("on_watch");
-                body.classList.add("stop_scroll");
-              }
-            }
-            if (target_class.contains("qa_jo__destination_btn")) {
-              console.log("aaa");
-              if (dest_bar.classList.contains("open")) {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                black_bg.classList.remove("on_watch");
-                body.classList.remove("stop_scroll");
-              } else {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                dest_bar.classList.add("open");
-                black_bg.classList.add("on_watch");
-                body.classList.add("stop_scroll");
-              }
-            }
-            if (target_class.contains("qa_jo__price_btn")) {
-              console.log("aaa");
-              if (price_bar.classList.contains("open")) {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                black_bg.classList.remove("on_watch");
-                body.classList.remove("stop_scroll");
-              } else {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                price_bar.classList.add("open");
-                black_bg.classList.add("on_watch");
-                body.classList.add("stop_scroll");
-              }
-            }
-            if (target_class.contains("qa_jo__sort_btn")) {
-              console.log("aaa");
-              if (sort_bar.classList.contains("open")) {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                black_bg.classList.remove("on_watch");
-                body.classList.remove("stop_scroll");
-              } else {
-                bar_arr.forEach((element) => {
-                  element.classList.remove("open");
-                });
-                sort_bar.classList.add("open");
-                black_bg.classList.add("on_watch");
-                body.classList.add("stop_scroll");
-              }
-            }
-            if (target_class.contains("black_bg")) {
-              bar_arr.forEach((element) => {
-                element.classList.remove("open");
-              });
-              black_bg.classList.remove("on_watch");
-              body.classList.remove("stop_scroll");
-            }
-          },
-          resize_adjust() {
-            if (screen.width <= 768) {
-            }
-            if (screen.width > 768) {
-              document.querySelector("body").classList.remove("stop_scroll");
-              let cate_bar = document.querySelector(".qa_jo__category");
-              let dest_bar = document.querySelector(".qa_jo__destination");
-              let price_bar = document.querySelector(".qa_jo__price");
-              let sort_bar = document.querySelector(".qa_jo__sort");
-              let black_bg = document.querySelector(".black_bg");
-              let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
-              bar_arr.forEach((element) => {
-                element.classList.remove("open");
-              });
-              black_bg.classList.remove("on_watch");
-            }
-          },
-          jump_page() {
-            window.location.assign("productdetail.html");
-          },
-        },
+=======
+  
+    <script src="/vue/vue.global.prod.js"></script>
+    <script >
+        const { createApp } = Vue;
 
-        mounted() {},
-      }).mount("#app");
+        createApp({
+  data() {
+    return {
+      cardlist: [
+        {
+            src: "img/otherpage/cl_8_1.jpg",
+                            title: '經典暢遊卡 ',
+                            label: '經典暢遊卡',
+                            content: '漫遊台北城的最佳工具，帶來旅行台北的最佳體驗。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 1000,
+                            price: 650,
+                            city: '北北基',
+                            cardid: 1,
+                             vif: true,
+>>>>>>> sally
+        },
+        {
+                          src: "img//otherpage/un_2_1.jpg",
+                            title: '無限暢遊卡二日遊',
+                            label: '無限暢遊卡',
+                            content: '只要一張無限暢遊卡，就能暢遊 25 個台北市、新北市與基隆市的熱門景點',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 50,
+                            price: 500,
+                            city: '北北基',
+                            cardid: 2,
+                                 vif: true,
+        },
+        {
+                            src: "img//otherpage/un_7_1.jpg",
+                            title: '無限暢遊卡三日遊',
+                            label: '無限暢遊卡',
+                            content: '只要一張無限暢遊卡，就能暢遊 25 個台北市、新北市與基隆市的熱門景點',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 350,
+                            price: 850,
+                            city: '北北基',
+                            cardid: 3,
+                                 vif: true,
+        },
+        {
+                            src: "img//otherpage/vi_3_1.jpg",
+                            title: '景點暢遊卡二日遊',
+                            label: '景點暢遊卡',
+                            content: '讓旅遊比你想的更輕鬆無負擔,內含北北基23個景點門票及「快樂的旅人」。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 1750,
+                            price: 600,
+                            city: '北北基',
+                            cardid: 4,
+                                vif: true,
+        },
+        {
+                             src: "img//otherpage/tr_5_1.jpg",
+                            title: '交通暢遊卡二日遊',
+                            label: '交通暢遊卡',
+                            content: '可在效期內不限次數搭乘台北捷運。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 150,
+                            price: 600,
+                            city: '北北基',
+                            cardid: 5,
+                             vif: true,
+        }, 
+        {
+            src: "img//otherpage/tr_6_3.jpg",
+                            title: '交通暢遊卡三日遊',
+                            label: '交通暢遊卡',
+                            content: '可在效期內不限次數搭乘台北捷運。',
+                            score: 4.5,
+                            scorepeople: '(2300)',
+                            order: 150,
+                            price: 850,
+                            city: '北北基',
+                            cardid: 6,
+                             vif: true,
+        }
+      ],
+      prices: [
+                "TWD 300~400",
+                "TWD 401~500",
+                "TWD 501~600",
+                "TWD 601~700",
+      ],
+      categorys: ["無限暢遊卡", "景點暢遊卡", "交通暢遊卡", "經典暢遊卡"],
+      AllCitys: [
+        "基隆",
+        "台北",
+        "新北",
+        
+      ],
+      cityshow: false,
+      pricelist: [],
+      categorylist: [],
+    };
+  },
+  created(){
+    window.addEventListener("resize",this.resize_adjust,true)
+  },
+  methods: {
+    open_city(e) {
+      this.cityshow = !this.cityshow;
+      let path = e.path[0].childNodes[1].classList;
+      if (path.contains("fa-circle-chevron-down")) {
+        path.remove("fa-circle-chevron-down");
+        path.add("fa-circle-chevron-up");
+      } else {
+        path.remove("fa-circle-chevron-up");
+        path.add("fa-circle-chevron-down");
+      }
+    },
+    filterCity(e) {
+      let path = e.path[0].textContent;
+      this.cardlist.forEach((e,index) => {
+        if(path==e.city){
+          console.log(this.cardlist[index].vif);
+        }
+      });
+
+    },
+    filterSort(e) {
+      let arr = this.cardlist;
+      const eitherSort = (arr = []) => {
+        const sorter = (a, b) => {
+          return +a.price - +b.price;
+        };
+        arr.sort(sorter);
+      };
+      eitherSort(arr);
+      this.classList = arr;
+      let epath=e.path[0].style;
+      e.path[1].childNodes[0].style.backgroundColor='#fff';
+      e.path[1].childNodes[0].style.color='#747774';
+      epath.backgroundColor='#4484ce';
+      epath.color='#fff';
+    },
+    filterOrder(e) {
+      let arr = this.cardlist;
+      const eitherSort = (arr = []) => {
+        const sorter = (a, b) => {
+          return +a.order - +b.order;
+        };
+        arr.sort(sorter);
+      };
+      eitherSort(arr);
+      this.classList = arr;
+      let epath=e.path[0].style;
+      e.path[1].childNodes[1].style.backgroundColor='#fff';
+      e.path[1].childNodes[1].style.color='#747774';
+      epath.backgroundColor='#4484ce';
+      epath.color='#fff';
+    },
+    filterPrice(e) {
+      let price = e.path[0].childNodes[0];
+      let text = e.path[0].textContent;
+      if (price.checked == false) {
+        price.checked = true;
+        this.pricelist.push(e.path[0].textContent);
+      } else if (price.checked == true) {
+        price.checked = false;
+        this.pricelist.forEach((e, index) => {
+          if (e == text) {
+            this.pricelist.splice(index, 1);
+          }
+        });
+      }
+    },
+    filterCategory(e) {
+      e.target.querySelector("input").click();
+      // for (let i = 0; i < this.cardlist.length; i++){
+      //   this.cardlist[i].vif=false;
+      // }
+      // let category = e.composedPath()[0].childNodes[0];
+      // let text = e.composedPath()[0].textContent;
+      // if (category.checked == false) {
+      //   category.checked = true;
+      //   this.categorylist.push(e.path[0].textContent);
+      // } else if (category.checked == true) {
+      //   category.checked = false;
+      //   this.categorylist.forEach((e, index) => {
+      //     if (e == text) {
+      //       this.categorylist.splice(index, 1);
+      //     }
+      //   });
+      // }
+      // for (let i = 0; i < this.cardlist.length; i++) {
+      //   let label = this.cardlist[i].label;
+      //   for (let j = 0; j < this.categorylist.length; j++) {
+      //     let list = this.categorylist[j];
+      //     if (label.trim() == list.trim()) {
+      //       let temp = this.cardlist[i];
+      //       temp.vif=true;
+      //     }
+      //   }
+      // }
+    },
+    openSelectbar(e){
+      let category_btn = document.querySelector(".qa_jo__category_btn");
+      target_class = e.target.classList;
+      let cate_bar = document.querySelector(".qa_jo__category");
+      let dest_bar = document.querySelector(".qa_jo__destination");
+      let price_bar = document.querySelector(".qa_jo__price");
+      let sort_bar = document.querySelector(".qa_jo__sort");
+      let black_bg = document.querySelector(".black_bg");
+      let bar_arr = [cate_bar,dest_bar,price_bar,sort_bar];
+      let body = document.querySelector("body")
+      if(target_class.contains("qa_jo__category_btn")){
+        if(cate_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          cate_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
+        }
+      }
+      if(target_class.contains("qa_jo__destination_btn")){
+        console.log("aaa");
+        if(dest_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          dest_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
+        }
+      }
+      if(target_class.contains("qa_jo__price_btn")){
+        console.log("aaa");
+        if(price_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          price_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
+        }
+      }
+      if(target_class.contains("qa_jo__sort_btn")){
+        console.log("aaa");
+        if(sort_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          sort_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
+        }
+      }
+      if(target_class.contains("black_bg")){
+        bar_arr.forEach(element => {
+          element.classList.remove("open")
+        });
+        black_bg.classList.remove("on_watch");
+        body.classList.remove("stop_scroll");
+      }
+      
+
+      
+    },
+    resize_adjust(){
+      if(screen.width <= 768){
+
+      }if(screen.width >768){
+        document.querySelector("body").classList.remove("stop_scroll");
+        let cate_bar = document.querySelector(".qa_jo__category");
+        let dest_bar = document.querySelector(".qa_jo__destination");
+        let price_bar = document.querySelector(".qa_jo__price");
+        let sort_bar = document.querySelector(".qa_jo__sort");
+        let black_bg = document.querySelector(".black_bg");
+        let bar_arr = [cate_bar,dest_bar,price_bar,sort_bar];        
+        bar_arr.forEach(element => {
+          element.classList.remove("open")
+        });
+        black_bg.classList.remove("on_watch");
+      }
+    },
+    jump_page(){
+      window.location.assign("productdetail.html");
+    }
+  },
+
+  mounted() {},
+}).mount("#app");
+
+$(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("qa_jo__page-link--current");
+        $(this).addClass("qa_jo__page-link--current");
+        });
+
     </script>
-  </body>
+</body>
+
 </html>
