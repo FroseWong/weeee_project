@@ -209,9 +209,6 @@ createApp({
       if (list.contains("fa-regular")) {
         list.add("fa-solid");
         list.remove("fa-regular");
-        document.cookie = "ProductId=1";
-        let x = document.cookie;
-        console.log("cookie:" + x);
       } else {
         list.remove("fa-solid");
         list.add("fa-regular");

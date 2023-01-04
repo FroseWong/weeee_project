@@ -15,7 +15,8 @@ display: flex;
   // background-color: red;
   @include m {
     
-    width: 250px;
+    width: 350px;
+    display: none;
  
  
   }
@@ -23,8 +24,7 @@ display: flex;
     position: relative;
     margin-bottom: 35px;
     @include m {
-      margin-bottom: 25px;
-      font-size: 12px;
+      font-size: 14px;
      
    
     }
@@ -53,7 +53,7 @@ display: flex;
 
   .privacy-btn{
     @include m {
-      font-size: 12px;
+   font-size: 16px;
      
    
     }
@@ -90,7 +90,7 @@ display: flex;
     margin-bottom: 25px;
     @include m {
       margin-bottom: 20px;
-     font-size: 16px;
+     font-size: 14px;
     }
   }
   .content__right__version{

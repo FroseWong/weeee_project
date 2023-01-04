@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/sass/page/sign_up.scss">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>註冊</title>
 </head>
 <body>
-    <div class="header"></div>
+    @@include('layout/header.html')
+    <!-- <div class="header"></div> -->
     <div class="wapper sign_up"> 
         <div class="sign_upbg">
             <div class="container sign_up">
@@ -17,15 +19,27 @@
                 
                     <form class="surform" action="sign_up.php" method="post">
 
-                        <input type="text"  name="account" value="E-mail"/><br> 
-                        <input type="text"  name="password" value="PassWord"/><br>
-                        <input type="text"  name="passwordag" value="請再次輸入密碼"/><br>
+                        <input type="text"  name="account" value=" E-mail"/>
+                        <i class="fa-regular fa-envelope"></i>
+                        <br> 
+                        <input type="text"  name="password" value=" PassWord"/>
+                        <i class="fa-regular fa-eye"></i>
+                        <br>
+                        <input type="text"  name="passwordag" value=" 請再次輸入密碼"/>
+                        <i class="fa-regular fa-eye"></i>
+                        <br>
                         <input class="submit" type="submit" value="註冊"/>
-                        <p>已經有帳號了嗎？</p>
+                       
                         
                     </form>
-                
-                    <button class="login" ref="#">登入</button>
+                    <div class="formbuttom">
+
+                        <p>已經有帳號了嗎？</p>
+                        <a class="sign_up_a" href="./login.html">登入</a>
+
+                    </div>
+                    
+
                        
                 </div>
                 
@@ -33,6 +47,6 @@
         </div>    
 
 </div>
-   
+@@include('layout/footer.html')
 </body>
 </html>

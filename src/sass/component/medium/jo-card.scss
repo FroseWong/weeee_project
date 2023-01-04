@@ -37,7 +37,7 @@
     @include m {
       height: auto;
     }
-    &:hover .jo-card__top img {
+    &:hover .jo-card__top__pic {
       transform: scale(1.2);
       @include m {
         transform: none;
@@ -66,15 +66,23 @@
       color: $white;
       // width: 390px;
       height: 155px;
+      width: 100%;
       border-radius: 10px;
       margin-bottom: 15px;
       box-sizing: border-box;
       // transition: all 0.3s;
       overflow: hidden;
-      img {
-        width: 390px;
-        border-radius: 10px;
-        transition: all 0.3s;
+
+      .jo-card__top__pic {
+        width: 100%;
+        height: 100%;
+        transition: 0.3s;
+
+        .jo-card__top__pic__src {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+        }
       }
     }
 
