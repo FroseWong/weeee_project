@@ -1,7 +1,6 @@
 .jo_index{
   position: relative;
   .black_bg{
-    display: none;
     position: absolute;
     left: 0;
     right: 0;
@@ -10,13 +9,7 @@
     background-color: rgba($color: $black, $alpha: 0.5);
     z-index: 15;
   }
-  .black_bg.on_watch{
-    @include m{
-      display: block;
-    }
-  }
-  .select_loc_box{
-    display: none;
+  .select_loc_box{ 
     position: absolute;
     left: 30%;
     right: 30%;
@@ -24,6 +17,10 @@
     background-color: $ll_gray;
     z-index: 20;
     border-radius: 10px;
+    @include m{
+      left: 10%;
+      right: 10%;
+    }
    
     h1{
       text-align: center;
@@ -61,9 +58,7 @@
       }
     }
   }
-  .select_loc_box.on_watch{
-    display: block;
-  }
+
     header {
         height: 165px;
         width: 100%;
@@ -136,6 +131,7 @@
             line-height: 40px;
             height: 40px;
             cursor: pointer;
+            z-index: 9;
             @include m{
               margin: 0;
               padding: 0;
@@ -172,6 +168,7 @@
                 font-size: 20px;
                 font-weight: 400;
                 @include m{
+                  padding-left: 10px;
                   height: 30px;
                   width: 55%;
                   font-size: 16px;
@@ -268,6 +265,7 @@
       }
     
     }
+
     #jo_button {
       display: inline-block;
       position: fixed;
