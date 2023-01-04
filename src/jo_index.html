@@ -5,71 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weeee!</title>
-    <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/85f014293c.js"
+      crossorigin="anonymous"
+    ></script>
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css"
     />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css"
     />
-  <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     @@include('layout/header.html')
     <div class="wrapper jo_index app1">
-
       <div class="topbanner">
         <div class="container topbanner__text">
-            <h1>揪遊趣!</h1>
-            <p>探索揪團旅程</p>
-            <div class="search_location">
-                <i class="fa-solid fa-location-dot"></i>
-                選擇地點
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="searchbox">
-                <input type="text" placeholder="想做什麼？">
-                <button><h5>搜尋</h5></button>
-            </div> 
+          <h1>揪遊趣!</h1>
+          <p>探索揪團旅程</p>
+          <div class="search_location">
+            <i class="fa-solid fa-location-dot"></i>
+            選擇地點
+            <i class="fa-solid fa-chevron-down"></i>
           </div>
+          <div class="searchbox">
+            <input type="text" placeholder="想做什麼？" @keyup.enter="jump_jo_searched"/>
+            <button @click="jump_jo_searched"><h5>搜尋</h5></button>
+          </div>
+        </div>
       </div>
       <div class="midbanner container">
-          <div class="icon_map">
-              <div>
-               <i class="fa-solid fa-magnifying-glass"></i> 
-               <h5>尋找喜愛的旅程</h5>
-              </div>
-              <i class="fa-solid fa-angles-right"></i>
-              <div>
-                <i class="fa-solid fa-comment-dots"></i>
-                <h5>提交申請給團主</h5>
-              </div>
-                <i class="fa-solid fa-angles-right"></i>
-              <div>
-                <i class="fa-solid fa-circle-check"></i>
-                <h5>團主審核通過</h5>
-              </div>
-              <i class="fa-solid fa-angles-right"></i>
-              <div>
-                <i class="fa-solid fa-child-reaching"></i>
-                <h5>出團遊玩</h5>
-              </div>
-              
+        <div class="icon_map">
+          <div>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <h5>尋找喜愛的旅程</h5>
           </div>
+          <i class="fa-solid fa-angles-right"></i>
+          <div>
+            <i class="fa-solid fa-comment-dots"></i>
+            <h5>提交申請給團主</h5>
+          </div>
+          <i class="fa-solid fa-angles-right"></i>
+          <div>
+            <i class="fa-solid fa-circle-check"></i>
+            <h5>團主審核通過</h5>
+          </div>
+          <i class="fa-solid fa-angles-right"></i>
+          <div>
+            <i class="fa-solid fa-child-reaching"></i>
+            <h5>出團遊玩</h5>
+          </div>
+        </div>
       </div>
-      <div class="container content ">
+      <div class="container content">
         <h2 class="ttoc">熱門開團</h2>
-        
-        <div class="jo-list jo-lista">
+
+        <div class="jo-list">
           <a class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j1"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">南京復興站吃晚餐</h6>
@@ -89,7 +92,9 @@
               <p class="jo__location">台中</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j2"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">突然決定玩桌遊</h6>
@@ -109,7 +114,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j3"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
@@ -128,7 +135,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j1"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">南京復興站吃晚餐</h6>
@@ -148,7 +157,9 @@
               <p class="jo__location">台中</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j2"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">突然決定玩桌遊</h6>
@@ -168,7 +179,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j3"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
@@ -190,7 +203,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j1"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">南京復興站吃晚餐</h6>
@@ -210,7 +225,9 @@
               <p class="jo__location">台中</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j2"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">突然決定玩桌遊</h6>
@@ -230,7 +247,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j3"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
@@ -249,7 +268,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j1"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">南京復興站吃晚餐</h6>
@@ -269,7 +290,9 @@
               <p class="jo__location">台中</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j2"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">突然決定玩桌遊</h6>
@@ -289,7 +312,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j3"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
@@ -311,7 +336,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j1"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">南京復興站吃晚餐</h6>
@@ -331,7 +358,9 @@
               <p class="jo__location">台中</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j2"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">突然決定玩桌遊</h6>
@@ -351,7 +380,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j3"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
@@ -370,7 +401,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j1"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">南京復興站吃晚餐</h6>
@@ -390,7 +423,9 @@
               <p class="jo__location">台中</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j2"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">突然決定玩桌遊</h6>
@@ -410,7 +445,9 @@
               <p class="jo__location">台北</p>
             </div>
             <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
+              <div class="jo-card__top__pic">
+                <div class="jo-card__top__pic__src j3"></div>
+              </div>
             </div>
             <div class="jo-card__bottom">
               <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
@@ -425,78 +462,80 @@
           </a>
         </div>
         <a id="jo_button" href="./jo_new.html">
-          <img src="./img/jo/jo_create.gif" alt="">
+          <img src="./img/jo/jo_create.gif" alt="" />
           <h5>發起揪團</h5>
         </a>
-
-      </div> 
+      </div>
 
       @@include('layout/footer.html')
     </div>
     <script src="/vue/vue.global.prod.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script>
       let app1 = Vue.createApp({
-        data(){
-          return{
-
-          }
+        data() {
+          return {};
         },
         created() {
-            window.addEventListener("scroll", this.btn_show);
-
+          window.addEventListener("scroll", this.btn_show);
         },
-        methods:{
+        methods: {
+          btn_show() {
+            let btn = $("#jo_button");
 
-          btn_show(){
-            let btn = $('#jo_button');
-
-             if(screen.width <= 768){
-              if (window.scrollY > 100 && window.scrollY <= 605) {
-                btn.addClass('show');
-              } else if( window.scrollY <=100){
-                btn.removeClass('show');
-              }else if(window.scrollY >= 605){
-                btn.removeClass('show');
+            if (screen.width <= 768) {
+              if (window.scrollY > 0 && window.scrollY <= 850) {
+                btn.addClass("show");
+              } else if (window.scrollY <= 0) {
+                btn.removeClass("show");
+              } else if (window.scrollY >= 850) {
+                btn.removeClass("show");
               }
-             }else{
+            } else {
               if (window.scrollY > 300) {
-                btn.addClass('show');
+                btn.addClass("show");
               } else {
-                btn.removeClass('show');
+                btn.removeClass("show");
               }
-             }
-              
-            },
-          jo_list_slick(){
-          $(".jo-list").slick({
-          infinite: true,
-          slidesToShow: 3,
-          slidesToScroll: 3,
-
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1.5,
-                slidesToScroll: 1,
-                infinite: true,
-              },
-            },
-          ],
-        });
-          
+            }
           },
+          jo_list_slick() {
+            $(".jo-list").slick({
+              infinite: true,
+              slidesToShow: 3,
+              slidesToScroll: 3,
+
+              responsive: [
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1.5,
+                    slidesToScroll: 1,
+                    infinite: true,
+                  },
+                },
+              ],
+            });
+          },
+          jump_jo_searched(){
+            let searchedbox = document.querySelector('.searchbox');
+            searchedbox_value = searchedbox.querySelector("input").value;
+            console.log(searchedbox_value)
+            if(searchedbox_value.length > 0){
+              window.location.assign("jo_searched.html");
+            }
+           
+          }
         },
         mounted() {
-        this.jo_list_slick();
-    },
+          this.jo_list_slick();
+        },
       });
       app1.mount(".app1");
-     
-  
-  
     </script>
   </body>
 </html>
