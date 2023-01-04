@@ -45,8 +45,8 @@
 
                 <!-- payment_list -->
                 <div class="payment_item">
-                    <div class="payment_item_header">
-                        <i class="fa fa-angle-right expand-icon"></i>
+                    <div class="payment_item_header hasBorder">
+                        <i class="fa fa-angle-right expand-icon rotate"></i>
                         <h5>訂購人資料</h5>
                     </div>
                     <div class="payment_item_list">
@@ -86,8 +86,8 @@
                             </div>
                         </div>
                         <div class="list_row">
-                            <div class="checkall"><label for="userInfo"><input type="checkbox"
-                                        name="checkall" id="userInfo">同會員資料</label></div>
+                            <div class="checkall"><label for="userInfo"><input type="checkbox" name="checkall"
+                                        id="userInfo">同會員資料</label></div>
                         </div>
                         <div class="list_row">
                             <a href="" class="blueBtn">繼續</a>
@@ -97,17 +97,21 @@
 
                 <!-- payment_points -->
                 <div class="payment_item">
-                    <div class="payment_item_header">
+                    <div class="payment_item_wp">
                         <input type="checkbox" name="checkall" id="useWeeee">
-                        <label for="useWeeee"><h5>我要使用 Weeee! Points</h5></label>
+                        <label for="useWeeee">
+                            <h5>我要使用 Weeee! Points</h5>
+                        </label>
                     </div>
                     <div class="payment_item_list">
 
                         <div class="list_row">
                             <ul>
                                 <h6 style="font-weight: bold;">Weeee! Points
-                                <img src="img/weeeepoints/yellow.svg" alt="">
-                                <span style="color: #f9cf00;">440</span>&nbsp折抵&nbsp<span style="color:#4484ce">TWD440</span></h6>
+                                    <img src="img/weeeepoints/yellow.svg" alt="">
+                                    <span style="color: #f9cf00;">440</span> 折抵 <span style="color:#4484ce">TWD
+                                        440</span>
+                                </h6>
                                 <br>
                                 注意事項<br>
                                 常態性可折抵訂單價格的 20%，實際折抵金額依結帳頁面顯示為準
@@ -128,7 +132,7 @@
                             <img src="img/creditcard/ae.svg" alt="" />
                         </span>
                     </div>
-                    <div class="payment_item_list">
+                    <div class="payment_item_list defaultHide">
                         <div class="list_row">
                             <div class="list_row_col">
                                 <label for="">信用卡號碼<span class="text-danger">*</span></label>
@@ -159,13 +163,13 @@
                         <h5>電子發票、收據
                         </h5>
                     </div>
-                    <div class="payment_item_list">
+                    <div class="payment_item_list defaultHide">
                         <div class="list_row">
                             <div class="list_row_col">
                                 <label for="">旅行業代收轉付電子收據</label>
-                                <select name="" id="" placeholder="請選擇">
-                                    <option value="">寄至訂購人E-mail</option>
-                                    <option value="">開立統編/抬頭</option>
+                                <select name="" class="taxId" id="taxId" placeholder="請選擇">
+                                    <option value="1">寄至訂購人E-mail</option>
+                                    <option value="2">開立統編/抬頭</option>
                                 </select>
                             </div>
                             <div class="list_row_col">
@@ -174,7 +178,7 @@
                                     style="background-color: #f4f4f4;">
                             </div>
                         </div>
-                        <div class="list_row">
+                        <div class="list_row keyTaxId">
                             <div class="list_row_col">
                                 <label for="">統一編號<span class="text-danger">*</span></label>
                                 <input type="text" placeholder="請輸入統一編號">
@@ -202,11 +206,10 @@
                         <h5>付款明細
                         </h5>
                     </div>
-                    <div class="payment_item_list">
+                    <div class="payment_item_list defaultHide">
                         <div class="product_group">
                             <div class="product_item">
-                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
-                                        alt=""></a>
+                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
                                 <div class="product-name">
                                     <a href="">
                                         <h6>有得逛有得買，就在桃園</h6>
@@ -220,8 +223,7 @@
                             </div>
 
                             <div class="product_item">
-                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
-                                        alt=""></a>
+                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
                                 <div class="product-name">
                                     <a href="">
                                         <h6>有得逛有得買，就在桃園</h6>
@@ -235,8 +237,7 @@
                             </div>
 
                             <div class="product_item">
-                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
-                                        alt=""></a>
+                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
                                 <div class="product-name">
                                     <a href="">
                                         <h6>有得逛有得買，就在桃園</h6>
@@ -250,7 +251,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="payment_list">
+                    <div class="payment_list defaultHide">
                         <ul class="payment_list_row">
                             <li>小計</li>
                             <li>
@@ -310,6 +311,44 @@
             </p>
         </div>
     </footer>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+    <script>
+        $(".defaultHide").hide();
+        $(".keyTaxId").hide();
+        $(".payment_item_wp").next(".payment_item_list").hide();
+        $(document).ready(function () {
+            $(".payment_item_header").click(function () {
+                $(this).toggleClass("hasBorder");
+                $(this).children(".fa-angle-right").toggleClass("rotate");
+                $(this).next(".payment_item_list").toggle();
+
+            });
+
+
+            $(".taxId").change(function () {
+                // foo is the id of the other select box 
+                // console.log('ttt');
+                if ($(this).val() != "1") {
+                    $(".keyTaxId").toggle();
+                } else {
+                    $(".keyTaxId").toggle();
+                }
+            });
+
+            $("#useWeeee").change(function () {
+
+                if ($(this).val() != false) {
+                    $(".payment_item_wp").next(".payment_item_list").toggle();
+                } else {
+                    $(".payment_item_wp").next(".payment_item_list").toggle();
+                }
+            });
+        });
+
+
+    </script>
+
 </body>
 
 </html>

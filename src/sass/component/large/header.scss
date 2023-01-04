@@ -262,6 +262,8 @@ header {
 
     .search_modal {
         display: none;
+        
+
 
         @include m {
             position: fixed;
@@ -272,6 +274,7 @@ header {
             background-color: #fff;
             width: 100vw;
             box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
+            // background-color: #f4f4f4;
 
             input {
                 height: 35px;
@@ -282,7 +285,7 @@ header {
                 border: none;
                 background-color: #f4f4f4;
                 padding-left: 5px;
-                width: 300px;
+                width: 295px;
             }
 
             button.header_search {
@@ -293,7 +296,7 @@ header {
                 background-color: #f4f4f4;
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
-                font-size: 14px;
+                font-size: 12px;
 
                 i {
                     padding: 5px;

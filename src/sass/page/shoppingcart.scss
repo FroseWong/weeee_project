@@ -103,7 +103,7 @@
                     padding: 0 15px;
 
                     @include m {
-                        width: 50%;
+                        width: 45%;
                     }
 
                     a {
@@ -133,8 +133,8 @@
 
                     @include m {
                         width: 100%;
-                        text-align-last: left;
-                        padding-left: 190px;
+                        text-align: left;
+                        padding-left: 180px;
 
                     }
                 }
@@ -219,10 +219,18 @@
                 .cart_total {
 
                     span {
+                        @include m {
+                            font-size: 12px;
+                        }
+
                         h4 {
                             display: inline-block;
                             color: $blue;
                             font-weight: bold;
+
+                            @include m {
+                                font-size: 20px;
+                            }
                         }
                     }
 
@@ -231,6 +239,10 @@
                         color: $yellow;
                         font-weight: bold;
                         font-size: 16px;
+
+                        @include m {
+                            font-size: 14px;
+                        }
 
                         img {
                             width: 16px;
@@ -254,13 +266,17 @@
 
 
         .most_buy {
-            a{
+            a {
                 background-color: transparent;
             }
+
             h5 {
                 font-weight: bold;
             }
-            .product-name, .product-price, .price{
+
+            .product-name,
+            .product-price,
+            .price {
                 color: $black;
             }
         }
