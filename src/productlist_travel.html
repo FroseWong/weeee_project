@@ -9,293 +9,95 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Document</title>
-    <style>
-        .active1{
-            background-color: #4484CE;
-            color: rgb(255, 255, 255);
-        }
-        .page-link--current{
-            background-color: #4484CE;
-            color: rgb(255, 255, 255);
-        }
-    </style>
 </head>
 
 <body>
-  @@include('layout/header.html')
-
-    <div class="wrapper" id="app">
-        <!-- <header class="productdetail__header"></header> -->
-        <div class="headerpage"></div>
-        <div class="about2__main">
-            <div class="about2_title">
+    @@include('layout/header.html')
+    <div class="wrapper qa_jo" id="app">
+        <div class="black_bg" @click="openSelectbar"></div>
+        <div class="qa_jo__main">
+            <div class="qa_jo_title">
                 <h1>1200</h1>
                 <h2>個項目</h2>
             </div>
-            <div class="about2__barcard">
-                <div class="container about2__bar">
-                    <div class="about2__sort">
+            <div class="qa_jo__barcard">
+                <div class="container qa_jo__bar">
+                    <div class="rwd_bar">
+                        <ul>
+                            <li class="qa_jo__category_btn"  @click="openSelectbar">行程</li>
+                            <li class="qa_jo__destination_btn" @click="openSelectbar">目的</li>
+                            <li class="qa_jo__price_btn"  @click="openSelectbar">價格</li>
+                            <li class="qa_jo__sort_btn"  @click="openSelectbar">排序</li>
+                        </ul>
+                    </div>
+                    <div class="qa_jo__sort">
+                        
                         <h4>排序</h4>
                         <ul>
-                            <li class="active1" @click="filterOrder">熱門程度</li>
-                            <li @click="filterPrice">價格低到高</li>
+                            <li @click="filterOrder">熱門程度</li>
+                            <li @click="filterSort">價格低到高</li>
                         </ul>
                     </div>
-                    <div class="about2__category">
+                    <div class="qa_jo__category">
                         <h4>行程分類</h4>
-
-                        
                         <ul>
-                            <li><input type="checkbox" name="" id="">&emsp;朋友行程 </li>
-                            <li><input type="checkbox" name="" id="">&emsp;家人行程 </li>
-                            <li><input type="checkbox" name="" id="">&emsp;情侶行程</li>
-                            <li><input type="checkbox" name="" id="">&emsp;寵物行程</li>
+                            <li v-for="(category,index) in categorys" @click="filterCategory"><input type="checkbox"
+                                    :id=`category${index+1}`>&emsp;{{category}}</li>
                         </ul>
                     </div>
-                    <div class="about2__destination">
+                    <div class="qa_jo__destination">
                         <h4>目的地</h4>
-                        <span @click="open_city" class="about2__open">台灣
-                          
-                                <i  class="fa-solid fa-circle-chevron-down"></i></span>
-                        <ul class="about2__city about2__block">
-                            <li @click="filterCity">基隆</li>
-                            <li @click="filterCity">台北</li>
-                            <li @click="filterCity">新北</li>
+                        <span @click="open_city" class="qa_jo__open">台灣
+                            <i class="fa-solid fa-circle-chevron-down"></i>
+                        </span>
+                        <ul class="qa_jo__city qa_jo__block">
+                            <li v-for="AllCity in AllCitys" v-if=cityshow @click="filterCity">{{AllCity}}</li>
                         </ul>
                     </div>
-                    <div class="about2__price">
+                    <div class="qa_jo__price">
                         <h4>價格</h4>
                         <ul>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 300 ~ 400</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 401~500</li>
-                            <li><input type="checkbox" name="" id="">&emsp;TWD 501~600</li>
-                            
+                            <li v-for="(price,index) in prices" @click="filterPrice"><input type="checkbox"
+                                    :id=`price${index+1}`>&emsp;{{price}}</li>
                         </ul>
                     </div>
                 </div>
-                <div class="about2__card">
-                    <div class="about2__card--group" v-for="card in cardlist" :id="card.cardid">
-                        <div class="about2__card--img">
-                            <img :src="card.src" alt="">
-                        </div>
-                        <div class="about2__card--title">
-                            <h1>{{card.title}}</h1>
-                            <h2>{{card.label}}</h2>
-                            <h1>{{card.content}}</h1>
-                            <div>
-                                <h3>★</h3>
-                                <h4>{{card.score}}{{card.scorepeople}}</h4>
-                                <h4>｜{{card.order}}個已訂購</h4>
-                                <h5>TWD {{card.price}}元</h5>
+                <div class="qa_jo__card">
+                    <div class="qa_jo__card--group" v-for="card in cardlist"  :key="index" @click="jump_page">
+                        <template v-if="card.vif">
+                            <div class="qa_jo__card--img">
+                                <img :src="card.src" alt="">
                             </div>
-                        </div>
+                            <div class="qa_jo__card--title">
+                                <h1 class="qa_jo__title">{{card.title}}</h1>
+                                <h2>{{card.label}}</h2>
+                                <h1>{{card.content}}</h1>
+                                <div>
+                                    <h3>★</h3>
+                                    <h4>{{card.score}}{{card.scorepeople}}</h4>
+                                    <h4>｜{{card.order}}個已訂購</h4>
+                                    <h5>TWD {{card.price}}元</h5>
+                                </div>
+                            </div>
+                        </template>
                     </div>
                     <nav>
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link page-link--current"
+                        <ul class="qa_jo__pagination">
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link qa_jo__page-link--current"
                                     href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                           
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">2</a></li>
+                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">3</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </div>
-        <div class="footerpage"></div>
+        @@include('layout/footer.html')
     </div>
-    <script src="vue/vue.global.prod.js"></script>
-    <script>
-        const { createApp } = Vue
-
-        createApp({
-            data() {
-                return {
-                    cardlist: [
-                        {
-                            src: "img/otherpage/fa_8_1.jpg",
-                            title: '家庭行程水族館 ',
-                            label: '家庭行程',
-                            content: '打造全新都會型水族館，全台首見。',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 1000,
-                            price: 550,
-                            city: '台北',
-                            cardid: 1,
-                        },
-                        {
-                            src: "img//otherpage/co_9_1.jpg",
-                            title: '情侶行程水族館',
-                            label: '情侶行程',
-                            content: '打造全新都會型水族館，全台首見',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 50,
-                            price: 550,
-                            city: '台北',
-                            cardid: 2,
-                        },
-                        {
-                            src: "img//otherpage/fa_10_1.jpg",
-                            title: '家庭行程動物園',
-                            label: '家庭行程',
-                            content: '適合大小朋友一起探索大自然的奧妙',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 350,
-                            price: 350,
-                            city: '新北',
-                            cardid: 3,
-                        },
-                        {
-                            src: "img//otherpage/fr_11_1.jpg",
-                            title: '朋友行程動物園',
-                            label: '朋友行程',
-                            content: '適合大小朋友一起探索大自然的奧妙',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 1750,
-                            price: 350,
-                            city: '新北',
-                            cardid: 4,
-                        },
-                        {
-                            src: "img//otherpage/fa_12_1.jpg",
-                            title: '家庭行程美術館',
-                            label: '家庭行程',
-                            content: '全國最大的公園美術館，適合親子體驗藝術饗宴的最佳去處！',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 150,
-                            price: 350,
-                            city: '基隆',
-                            cardid: 5,
-                        },
-                        {
-                            src: "img//otherpage/co_13_1.jpg",
-                            title: '情侶行程101',
-                            label: '情侶行程',
-                            content: '在海拔400公尺的高空之上來場Chill的「天際之旅」。',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 150,
-                            price: 500,
-                            city: '台北',
-                            cardid: 6,
-                        }, {
-                            src: "img//otherpage/fr_14_1.jpg",
-                            title: '朋友行程101',
-                            label: '朋友行程',
-                            content: '在海拔400公尺的高空之上來場Chill的「天際之旅」。',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 150,
-                            price: 500,
-                            city: '台北',
-                            cardid: 6,
-                        }, {
-                            src: "img//otherpage/pe_15_1.jpg",
-                            title: '寵物行程海邊遊玩',
-                            label: '寵物友愛行程',
-                            content: '帶寵物一起郊遊去',
-                            score: 4.5,
-                            scorepeople: '(2300)',
-                            order: 150,
-                            price: 500,
-                            city: '基隆',
-                            cardid: 7,
-                        }
-
-                    ],
-                    prices: [],
-
-                }
-            },
-            methods: {
-                open_city() {
-                    let city = document.getElementsByClassName('about2__city')[0].classList;
-                    let fa = document.getElementsByClassName('fa-solid')[0];
-                    if (city.contains('about2__block')) {
-                        city.remove('about2__block');
-                        city.add('about2__none');
-                        fa.classList.remove('fa-circle-chevron-down');
-                        fa.classList.add('fa-circle-chevron-up');
-                    }
-                    else {
-                        city.remove('about2__none');
-                        city.add('about2__block');
-                        fa.classList.remove('fa-circle-chevron-up');
-                        fa.classList.add('fa-circle-chevron-down');
-                    }
-                },
-                filterCity(e) {
-                    let path = e.path[0].textContent;
-                    let card = document.getElementsByClassName('about2__card--group')[0];
-                    for (j = 0; j < this.cardlist.length; j++) {
-                        document.getElementById(j + 1).style.display = 'flex';
-
-                    }
-                    for (i = 0; i < this.cardlist.length; i++) {
-                        if (path == this.cardlist[i].city) {
-                            let cardid = this.cardlist[i].cardid;
-                            document.getElementById(cardid).style.display = 'none';
-                        }
-                    }
-                },
-                filterPrice() {
-                    let arr = this.cardlist;
-                    const eitherSort = (arr = []) => {
-                        const sorter = (a, b) => {
-                            return +a.price - +b.price;
-                        };
-                        arr.sort(sorter);
-                    };
-                    eitherSort(arr);
-                    this.classList = arr;
-                },
-                filterOrder(){
-                    let arr = this.cardlist;
-                    const eitherSort = (arr = []) => {
-                        const sorter = (a, b) => {
-                            return +a.order - +b.order;
-                        };
-                        arr.sort(sorter);
-                    };
-                    eitherSort(arr);
-                    this.classList = arr;  
-                }
-            },
-
-            mounted() {
-                // $(".headerpage").load("/src/layout/header.html");
-                // $(".footerpage").load("/src/layout/footer.html");
-            }
-        }).mount('#app')
-    </script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-     ></script>
-    <script>
-    $(".about2__open").on("click",function(){
-        $('.about2__block').slideToggle();
-     } ) //jquery 開關程式碼
-     
-
-     $(".about2__sort ul").on("click","li",function() {
-        $(".about2__sort ul li").removeClass("active1");
-        $(this).addClass("active1");
-       })
-
-
-$(".page1 ul li ").on("click","a",function() {
-    $(".page1 ul li a").removeClass("page-link--current");
-   $(this).addClass("page-link--current");
-   });
-   
-   </script>
+  
+    <script src="/vue/vue.global.prod.js"></script>
+    <script src="./js/qa_jo.js"></script>
 </body>
-@@include('layout/footer.html')
+
 </html>
