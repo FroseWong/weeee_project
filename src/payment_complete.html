@@ -9,14 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css"
-      />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 
@@ -39,11 +33,13 @@
                 <div class="payment_check">
                     <img src="img/otherpage/check_circle.svg" alt="">
                     <span>
-                        <p><h5>訂購完成</h5></p>
+                        <p>
+                        <h5>訂購完成</h5>
+                        </p>
                         <p>憑證及訂單明細將寄至：happy123@gmail.com</p>
                     </span>
                 </div>
-                
+
                 <div class="payment">
                     <div class="payment_item">
                         <!-- <div class="payment_item_header">
@@ -127,8 +123,7 @@
                             </ul>
                         </div>
                         <div class="payment_list_points">
-                            <h6><span>至</span><a
-                                    href="./account_point.html"> Ｗeeee! Points </a><span>查看回饋詳情</span></h6>
+                            <h6><span>至</span><a href="./account_point.html"> Ｗeeee! Points </a><span>查看回饋詳情</span></h6>
                         </div>
                     </div>
             </section>
@@ -137,7 +132,6 @@
             <!-- other products start-->
             <section class="most_buy">
                 <h5 class="ttoc">多數旅客還買了以下商品</h5>
-
                 <div class="product-list">
                     <a class="product-card">
                         <i class="fa-regular fa-heart"></i>
@@ -147,7 +141,7 @@
                         </div>
                         <div class="product-card__top">
                             <div class="product-card__top__pic">
-                                <img src="./img/sightseeing/fr_28_1.jpg" alt="" />
+                                <div class="product-card__top__picsrc p1"></div>
                             </div>
                         </div>
                         <div class="product-card__bottom">
@@ -168,7 +162,7 @@
                         </div>
                         <div class="product-card__top">
                             <div class="product-card__top__pic">
-                                <img src="./img/sightseeing/fr_27_1.jpg" alt="" />
+                                <div class="product-card__top__picsrc p2"></div>
                             </div>
                         </div>
                         <div class="product-card__bottom">
@@ -189,7 +183,7 @@
                         </div>
                         <div class="product-card__top">
                             <div class="product-card__top__pic">
-                                <img src="./img/sightseeing/fr_3_1.jpg" alt="" />
+                                <div class="product-card__top__picsrc p3"></div>
                             </div>
                         </div>
                         <div class="product-card__bottom">
@@ -201,63 +195,62 @@
                             <span class="price">TWD <span class="product-price">550</span>元</span>
                         </div>
                     </a>
+
                 </div>
+
+
+            </section>
+            <!-- other products end-->
         </div>
-        </section>
-        <!-- other products end-->
-    </div>
     </div>
     @@include('layout/footer.html')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
         $(document).ready(function () {
-          $(".product-list").slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-  
-            responsive: [
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1.5,
-                  slidesToScroll: 1,
-                  infinite: true,
-                },
-              },
-            ],
-          });
-  
-          $(".jo-list").slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-  
-            responsive: [
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1.5,
-                  slidesToScroll: 1,
-                  infinite: true,
-                },
-              },
-            ],
-          });
-  
-          if (window.innerWidth <= 768) {
-            $(".popular-country__list").slick({
-              infinite: true,
-              slidesToShow: 2.1,
-              slidesToScroll: 2,
+            $(".product-list").slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1.5,
+                            slidesToScroll: 1,
+                            infinite: true,
+                        },
+                    },
+                ],
             });
-          }
+
+            $(".jo-list").slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1.5,
+                            slidesToScroll: 1,
+                            infinite: true,
+                        },
+                    },
+                ],
+            });
+
+            if (window.innerWidth <= 768) {
+                $(".popular-country__list").slick({
+                    infinite: true,
+                    slidesToShow: 2.1,
+                    slidesToScroll: 2,
+                });
+            }
         });
-      </script>
+    </script>
 </body>
 
 </html>

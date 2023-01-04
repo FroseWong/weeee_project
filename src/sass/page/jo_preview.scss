@@ -26,6 +26,10 @@
     overflow: hidden;
     margin-bottom: 25px;
 
+    @include m {
+      height: auto;
+    }
+
     .img-space {
       position: relative;
       display: flex;
@@ -134,6 +138,7 @@
     background-size: cover;
     @include m {
       margin-bottom: 30px;
+      height: auto;
     }
   }
 

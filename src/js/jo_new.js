@@ -111,7 +111,7 @@ function deleteInit() {
 
 // 點擊預覽按鈕 儲存內容至sessionStorage
 previewBtn.addEventListener("click", function () {
-  console.log("hi");
+  // console.log("hi");
   //   console.log(joTitleInput.value);
   //   console.log(joContentInput.value);
   //   console.log(joContactInput.value);
@@ -137,4 +137,6 @@ previewBtn.addEventListener("click", function () {
       img: reader.result,
     })
   );
+
+  location.href = "./jo_preview.html";
 });
