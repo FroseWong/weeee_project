@@ -6,7 +6,7 @@ const useweeee = document.querySelector(".useweeee");
 
 if (window.innerWidth <= 768) {
   let str = ` <div class="product-list">
-  <a class="product-card">
+  <a href="./productdetail.html" class="product-card">
   <i class="fa-regular fa-heart"></i>
   <div class="product-card__location">
     <i class="fa-solid fa-location-dot"></i>

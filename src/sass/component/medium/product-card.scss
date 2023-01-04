@@ -147,6 +147,7 @@
       .product-name {
         margin-bottom: 5px;
         font-size: 20px;
+        color: $black;
       }
 
       h6 {
@@ -159,6 +160,10 @@
       .fa-star {
         margin-right: 5px;
         color: $yellow;
+      }
+
+      .price {
+        color: $black;
       }
     }
   }

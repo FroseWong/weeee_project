@@ -20,12 +20,21 @@
   margin-left: 72px;
 }
 
+.container.reset_pwd{
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+  padding-left: 50%;
+}
+
 .resetpwd {
-  position: absolute;
-  width: 593px;
+  width: 567px;
   height: 439px;
-  left: 988px;
-  top: 285px;
+
+  
+
+  padding-top: 10px;
+
   border-radius: 20px;
   background-color: $white;
 

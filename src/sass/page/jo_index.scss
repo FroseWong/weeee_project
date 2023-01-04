@@ -208,8 +208,7 @@
       position: fixed;
       bottom: 280px;
       right: 5px;
-      transition: background-color .3s,
-      opacity .5s, visibility .5s;
+      
       visibility: hidden;
       z-index: 1000;
       @include m{
