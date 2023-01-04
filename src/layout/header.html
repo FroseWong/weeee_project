@@ -38,31 +38,29 @@
                         <ol>
                             <li>
                                 <a href="../account_order.html">
-                                    <i class="fa-regular fa-rectangle-list"></i>
-                                    訂單管理
+                                    <div><i class="fa-regular fa-rectangle-list"></i></div>
+                                    <h6>訂單管理</h6>
                                 </a>
-                
                             </li>
                             <li>
                                 <a href="../account_jo.html">
-                                    <i class="fa-solid fa-child-reaching"></i>
-                                    我的揪團
+                                    <div> <i class="fa-solid fa-child-reaching"></i></div>
+                                    <h6>我的揪團</h6>
                                 </a>
-                
                             </li>
                             <li>
                                 <a href="../account_favor.html">
-                                    <i class="fa-solid fa-heart"></i>
-                                    我的收藏
+
+                                    <div> <i class="fa-solid fa-heart"></i></div>
+                                    <h6>我的收藏</h6>
                                 </a>
-                
                             </li>
                             <li>
                                 <a href="../account_point.html">
-                                    <img src="../img/weeeepoints/yellow.svg" alt="">
-                                    Weeee! Points
+
+                                    <div> <img src="../img/weeeepoints/yellow.svg" alt=""></div>
+                                    <h6>Weeee! Point</h6>
                                 </a>
-                
                             </li>
                         </ol>
                         <div class="user_logout">
@@ -189,7 +187,7 @@
             event.preventDefault(e);
             $(this).next(".submenu").addClass("active");
             $(".header_overlay").addClass("active");
-        }else{
+        } else {
             $(".submenu").removeClass("active");
         }
     });
@@ -206,6 +204,13 @@
         $(".header_overlay").addClass("active");
 
     });
+
+
+    $(".user_menu").css("display", "none");
+
+
+
+
 
     // if ($(window).width() > 768) {
     //         $(".submenu").css("display", "none");
