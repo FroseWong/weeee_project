@@ -24,7 +24,7 @@ createApp({
       ],
       cards: [
         {
-          src: "/img/sightseeing/fa_19_1.jpg",
+          src: "./img/sightseeing/fa_19_1.jpg",
           label: "情侶行程",
           title: "新北 | Weeee渡假村門票",
           score: 4.5,
@@ -34,7 +34,7 @@ createApp({
           city: "新北",
         },
         {
-          src: "/img/sightseeing/fa_20_1.jpg",
+          src: "./img/sightseeing/fa_20_1.jpg",
           label: "朋友行程",
           title: "台中 | Weeee渡假村門票",
           score: 4.1,
@@ -44,7 +44,7 @@ createApp({
           city: "台中",
         },
         {
-          src: "/img/sightseeing/fa_19_2.jpg",
+          src: "./img/sightseeing/fa_19_2.jpg",
           label: "家庭行程",
           title: "台南 | Weeee渡假村門票",
           score: 4.3,
@@ -54,7 +54,7 @@ createApp({
           city: "台南",
         },
         {
-          src: "/img/sightseeing/fa_20_2.jpg",
+          src: "./img/sightseeing/fa_20_2.jpg",
           label: "寵物行程",
           title: "高雄 | Weeee渡假村門票",
           score: 4.4,
@@ -64,7 +64,7 @@ createApp({
           city: "高雄",
         },
         {
-          src: "/img/sightseeing/fa_19_3.jpg",
+          src: "./img/sightseeing/fa_19_3.jpg",
           label: "寵物行程",
           title: "新竹 | Weeee渡假村門票",
           score: 4.4,
@@ -74,7 +74,7 @@ createApp({
           city: "新竹",
         },
         {
-          src: "/img/sightseeing/fa_20_3.jpg",
+          src: "./img/sightseeing/fa_20_3.jpg",
           label: "寵物行程",
           title: "花蓮 | Weeee渡假村門票",
           score: 4.4,
@@ -140,17 +140,17 @@ createApp({
         {
           Content:
             "► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心",
-          src: "/img/sightseeing/fa_19_1.jpg",
+          src: "./img/sightseeing/fa_19_1.jpg",
         },
         {
           Content:
             "► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』",
-          src: "/img/sightseeing/fa_19_2.jpg",
+          src: "./img/sightseeing/fa_19_2.jpg",
         },
         {
           Content:
             "► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界",
-          src: "/img/sightseeing/fa_19_3.jpg",
+          src: "./img/sightseeing/fa_19_3.jpg",
         },
       ],
       ProductDetail: {
@@ -167,13 +167,13 @@ createApp({
       },
       carousels: [
         {
-          src: "/img/sightseeing/fa_19_1.jpg",
+          src: "./img/sightseeing/fa_19_1.jpg",
         },
         {
-          src: "/img/sightseeing/fa_19_2.jpg",
+          src: "./img/sightseeing/fa_19_2.jpg",
         },
         {
-          src: "/img/sightseeing/fa_19_3.jpg",
+          src: "./img/sightseeing/fa_19_3.jpg",
         },
       ],
       modalPeople: 1,
