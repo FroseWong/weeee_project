@@ -60,7 +60,8 @@
                 // gap: 90px;
                 padding: 20px 0;
                 border-bottom: 1px solid #eaeaea;
-                @include m{
+
+                @include m {
                     flex-wrap: wrap;
                 }
 
@@ -152,40 +153,31 @@
                 }
 
                 .edit_delete {
-                    display: flex;
-                    justify-content: flex-end;
                     width: 25%;
-                    font-size: $pc_h6;
-                    color: #666;
-                    cursor: pointer;
+                    text-align: right;
 
                     @include m {
                         width: 100%;
                     }
 
-                    .cart_edit {
+                    #cart_edit,
+                    #cart_delete {
+                        border: none;
+                        background-color: transparent;
+                        font-size: $pc_h6;
+                        color: #666;
                         padding: 0 15px;
-                    }
-
-                    @include m {
-                        padding: 0;
-                    }
-
-                    .cart_delete {
-                        padding: 0 15px;
+                        cursor: pointer;
+                        &:hover{
+                            color: $black;
+                        }
 
                         @include m {
                             padding: 0;
                         }
                     }
                 }
-
-
-
             }
-
-
-
         }
 
         .cart_footer {
