@@ -36,55 +36,42 @@
   <body>
     @@include('layout/header.html')
     <div class="wrapper" id="app">
-        <!-- <input id="datetimepicker" type="text"> -->
+      <!-- <input id="datetimepicker" type="text"> -->
 
-        <!---------------bs-modal--------------->
-        <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="productdetail__modal--header">
-                            <h5 class="modal-title" id="exampleModalLabel">請選擇使用日期</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                    </div>
-                    <div class="modal-body productdetail__modal--group">
-                        <div class="productdetail__modal--top">
-                            <input id="datetimepicker" type="text">
-                        </div>
-                        <div class="productdetail__modal--mid">
-                            <p>人數</p>
-                            <p>TWD {{modalTotal}}/每人</p>
-                            <div>
-                                <i class="fa-solid fa-circle-minus" @click="pelpleMinus"></i>
-                                <p>{{modalPeople}}</p>
-                                <i class="fa-solid fa-circle-plus" @click="pelplePlus"></i>
-                            </div>
-                        </div>
-                        <div class="productdetail__modal--bot">
-                            <div>
-                                <p>總金額</p>
-                                <p>TWD {{modalPricetotal}}</p>
-
-                            </div>
-                            <div>
-                                <p>Weeee!Points</p>
-                                <div class="productdetail__modal--points">
-                                    <img src="./img/weeeepoints/yellow.svg" alt="">
-                                    <p>
-                                        {{modalPoints}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="productdetail__modal--footer">
-                            <button type="button" class="productdetail__modal--secondary">加入購物車</button>
-                            <button type="button" class="productdetail__modal--primary"
-                                @click="modalCheckout">立即訂購</button>
-                        </div>
-                    </div>
+      <!---------------bs-modal--------------->
+      <div
+        class="modal fade"
+        id="peopleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="productdetail__modal--header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  請選擇使用日期
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+            </div>
+            <div class="modal-body productdetail__modal--group">
+              <div class="productdetail__modal--top">
+                <input id="datetimepicker" type="text" />
+              </div>
+              <div class="productdetail__modal--mid">
+                <p>人數</p>
+                <p>TWD {{modalTotal}}/每人</p>
+                <div>
+                  <i class="fa-solid fa-circle-minus" @click="pelpleMinus"></i>
+                  <p>{{modalPeople}}</p>
+                  <i class="fa-solid fa-circle-plus" @click="pelplePlus"></i>
                 </div>
               </div>
               <div class="productdetail__modal--bot">
@@ -94,8 +81,10 @@
                 </div>
                 <div>
                   <p>Weeee!Points</p>
-                  <img src="./img/weeeepoints/yellow.svg" alt="" />
-                  <p>{{modalPoints}}</p>
+                  <div class="productdetail__modal--points">
+                    <img src="./img/weeeepoints/yellow.svg" alt="" />
+                    <p>{{modalPoints}}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -118,7 +107,7 @@
       </div>
 
       <!---------------麵包屑--------------->
-      <!-- <nav class="container productdetail__breadcrumb-group">
+      <nav class="container productdetail__breadcrumb-group">
         <ol class="hb productdetail__breadcrumb">
           <li class="productdetail__breadcrumb__item">
             <a href="">&nbsp首頁&nbsp</a>
@@ -130,14 +119,7 @@
             <a href="">&nbsp{{ProductDetail.city}}｜{{ProductDetail.name}}</a>
           </li>
         </ol>
-      </nav> -->
-      <div class="breadcrumbList container">
-        <ol class="breadcrumb">
-          <li><a href="index.html">首頁</a></li>
-          <li><a href="productlist_travel.html">觀光行程</a></li>
-          <li>桃園｜Weeeepark 海洋公園門票</li>
-        </ol>
-      </div>
+      </nav>
       <!---------------輪播--------------->
       <div class="container">
         <div class="productdetail__slideshow">
@@ -147,159 +129,45 @@
             </div>
           </a>
         </div>
-        <!---------------右邊固定框--------------->
-        <div class="container">
-            <div class="productdetail__fixedfield--container">
-                <div class="productdetail__fixedfield--group">
-                    <div class="productdetail__fixedfield1">
-                        <h2>TWD {{ProductDetail.price}}</h2>
-                        <i class="fa-regular fa-heart" @click="heartclick"></i>
-                        <!-- <button class="field1_btn1">
+      </div>
+      <!---------------右邊固定框--------------->
+      <div class="container">
+        <div class="productdetail__fixedfield--container">
+          <div class="productdetail__fixedfield--group">
+            <div class="productdetail__fixedfield1">
+              <h2>TWD {{ProductDetail.price}}</h2>
+              <i class="fa-regular fa-heart" @click="heartclick"></i>
+              <!-- <button class="field1_btn1">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
                         </button> -->
-                        <button type="button" class="field1_btn1" data-bs-toggle="modal" data-bs-target="#peopleModal">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span>立即確認</span>
-                        </button>
-                        <button @click="pd_check" class="field1_btn2" data-bs-toggle="modal"
-                            data-bs-target="#peopleModal">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span>加入購物車</span>
-                        </button>
-                        <button @click="cle_check" class="field1_btn3" data-bs-toggle="modal"
-                            data-bs-target="#peopleModal">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span>立即訂購</span>
-                        </button>
-                    </div>
-                    <!---------------固定框四選項--------------->
-                    <div class="productdetail__fixedfield2">
-                        <a v-for="fieldData in fieldDatas" :id="fieldData.fieldID"
-                            @click=fieldClick(fieldData.fieldID)>{{fieldData.title}}</a>
-                    </div>
-                    <!---------------scrollToTop--------------->
-                    <div class="productdetail__scrollToTop">
-                        <i class="fa-solid fa-angle-up" @click="scrollToTop"></i>
-                    </div>
-                </div>
-                <!-- ---------------商品標題--------------- -->
-                <div class="productdetail__container">
-                    <div class="productdetail__title">
-                        <h1>{{ProductDetail.city}}｜{{ProductDetail.name}}</h1>
-                        <!-- <i class="fa-regular fa-heart" @click="heartclick"></i> -->
-                        <div class="productdetail__small">
-                            <div class="flex-container">
-                                <div class="flex-child">
-                                    <div id="heart-like"></div>
-                                    <div id="heart-unlike"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ---------------商品資訊--------------- -->
-                    <div class="productdetail__content">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>{{ProductDetail.city}}</span>
-                        <div>
-                            <h5>4.5</h5>
-                            <p>★★★★</p><span>(2300)｜已售出7K+</span>
-                        </div>
-                    </div>
-                    <!-- ---------------行程時間--------------- -->
-                    <div class="productdetail__time">
-                        <div>
-                            <i class="fa-solid fa-clock"></i>
-                            <span>行程時間{{ProductDetail.time}}小時</span>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-table"></i>
-                            <span>使用效期依主辦單位提供為主 </span>
-                        </div>
-                    </div>
-                    <!-- ---------------商品介紹--------------- -->
-                    <div class="productdetail__list">
-                        <ul>
-                            <li>
-                                跟著Weeee！出遊，兔年開春不用愁!!
-                            </li>
-                            <li>
-                                優惠行程不等人，看中就別猶豫 手刀報名好運來，喜迎好運順整年!!
-                            </li>
-                            <li>
-                                手刀報名好運來，喜迎好運順整年!!
-                            </li>
-                            <li>
-                                體驗泰國按摩產業 17 年豐富經驗的專業團隊技術
-                            </li>
-                            <li>
-                                在您購買之後，本票券享有長達180天的有效期。讓您彈性選擇期間內任何日期來使用。
-                            </li>
-                        </ul>
-                    </div>
-                    <!---------------商品說明--------------->
-                    <div class="productdetail__operate">
-                        <span @click="open">{{operate}}</span>
-                        <i class="fa-solid fa-angle-up"></i>
-                    </div>
-                    <div class="productdetail__directions--group productdetail__open">
-                        <div class="productdetail__directions">
-                            <h3 class="pd_h3">商品說明</h3>
-                            <p>
-                                {{ProductDetail.Text}}
-                            </p>
-                        </div>
-                        <div v-for="Img in Imgs" class="productdetail__img">
-                            <p>{{Img.Content}}
-                            </p>
-                            <img :src=Img.src alt="">
-                        </div>
-                    </div>
-                    <!---------------購買須知--------------->
-                    <div class="productdetail__notice">
-                        <h3 class="pn_h3">購買須知</h3>
-                        <ul class="productdetail__notice__list">
-                            <li v-for="noticeList in noticeLists">
-                                {{noticeList}}
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- ---------------體驗地點--------------- -->
-                    <div class="productdetail__address">
-                        <h3 class="pa_h3">體驗地點</h3>
-                        <h5>地址 👇</h5>
-                        <div class=" productdetail__addressdetail">
-                            <h5>地點名稱 : {{ProductDetail.shortname}}</h5>
-                            <h5>地址 : {{ProductDetail.address}}</h5>
-                        </div>
-                        <iframe :src=googleMap.src :width=googleMap.width :height=googleMap.height style="border:0;"
-                            :allowfullscreen=googleMap.allowfullscreen :loading=googleMap.loading
-                            :referrerpolicy=googleMap.referrerpolicy></iframe>
-                    </div>
-                    <!-- ---------------旅客評價--------------- -->
-                    <div class="productreview">
-                        <h3 class="pv_h3">旅客評價</h3>
-                        <div class="productreview__group">
-                            <div class="productreview__score">
-                                <p>4.6</p>
-                            </div>
-                            <div class="productreview__star">
-                                <span class="star__color">{{ProductDetail.stars}}</span>
-                                <span>{{ProductDetail.comments}}則旅客評價</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="productdetail__message" v-for="message in messages">
-                        <span>{{message.pic}}</span>
-                        <span>{{message.name}}</span>
-                        <div class="productdetail__message_text">
-                            <p>{{message.star}}</p>
-                            <h5>
-                                {{message.comment}}
-                            </h5>
-                        </div>
-                    </div>
-                </div>
+              <button
+                type="button"
+                class="field1_btn1"
+                data-bs-toggle="modal"
+                data-bs-target="#peopleModal"
+              >
+                <i class="fa-solid fa-bolt"></i>
+                <span>立即確認</span>
+              </button>
+              <button
+                @click="pd_check"
+                class="field1_btn2"
+                data-bs-toggle="modal"
+                data-bs-target="#peopleModal"
+              >
+                <i class="fa-solid fa-bolt"></i>
+                <span>加入購物車</span>
+              </button>
+              <button
+                @click="cle_check"
+                class="field1_btn3"
+                data-bs-toggle="modal"
+                data-bs-target="#peopleModal"
+              >
+                <i class="fa-solid fa-bolt"></i>
+                <span>立即訂購</span>
+              </button>
             </div>
             <!---------------固定框四選項--------------->
             <div class="productdetail__fixedfield2">
@@ -319,7 +187,15 @@
           <div class="productdetail__container">
             <div class="productdetail__title">
               <h1>{{ProductDetail.city}}｜{{ProductDetail.name}}</h1>
-              <i class="fa-regular fa-heart" @click="heartclick"></i>
+              <!-- <i class="fa-regular fa-heart" @click="heartclick"></i> -->
+              <div class="productdetail__small">
+                <div class="flex-container">
+                  <div class="flex-child">
+                    <div id="heart-like"></div>
+                    <div id="heart-unlike"></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- ---------------商品資訊--------------- -->
             <div class="productdetail__content">
@@ -450,8 +326,6 @@
         </div>
       </div>
     </div>
-    
-    
 
     @@include('layout/footer.html')
     <script src="/vender/vue/vue.global.prod.js"></script>
@@ -468,7 +342,10 @@
     ></script>
     <script src="/vender/datetimepicker/jquery.datetimepicker.full.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bodymovin.js"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/gziped3.js" type="text/javascript"></script>
+    <script
+      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/gziped3.js"
+      type="text/javascript"
+    ></script>
     <script src="./js/productdetail.js"></script>
   </body>
 </html>
