@@ -16,13 +16,12 @@ const previewBtn = document.querySelector(".previewBtn");
 // const imgFile = document.querySelector(".img-file__input");
 // const boxBtn = document.querySelector(".box");
 const joAddImg = document.querySelector(".jo_new__addimg");
+let reader;
+// console.log(joAddImg);
 
-// console.log(deleteBtn);
-
-console.log(joAddImg);
-
-// console.log(boxBtn);
 init();
+
+// 點擊預覽按鈕 儲存內容至sessionStorage
 previewBtn.addEventListener("click", function () {
   //   console.log(joTitleInput.value);
   //   console.log(joContentInput.value);
@@ -33,7 +32,7 @@ previewBtn.addEventListener("click", function () {
   //   console.log(joStartDate.value);
   //   console.log(joStartTime.value);
   //   console.log(useweeee.value);
-
+  // console.log(reader.result);
   sessionStorage.setItem(
     "joNew",
     JSON.stringify({
@@ -46,10 +45,12 @@ previewBtn.addEventListener("click", function () {
       joStartDate: joStartDateInput.value,
       joStartTime: joStartTimeInput.value,
       useweeee: useweeeeInput.value,
+      img: reader.result,
     })
   );
 });
 
+// 當sessionStorage中有內容時，將session的東西放回input欄位
 if (sessionStorage.getItem("joNew")) {
   let {
     joTitle,
@@ -61,6 +62,7 @@ if (sessionStorage.getItem("joNew")) {
     joStartDate,
     joStartTime,
     useweeee,
+    img,
   } = JSON.parse(sessionStorage.getItem("joNew"));
 
   joTitleInput.value = joTitle;
@@ -72,6 +74,19 @@ if (sessionStorage.getItem("joNew")) {
   joStartDateInput.value = joStartDate;
   joStartTimeInput.value = joStartTime;
   useweeeeInput.value = useweeee;
+
+  if (img) {
+    let li_html = `
+  <div class="img-space">
+              <img src="${img}" class="preview">
+              <div class="delete">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    </div>`;
+
+    joAddImg.innerHTML = li_html;
+    deleteInit();
+  }
 }
 
 // testBtn.addEventListener("click", function () {
@@ -81,6 +96,7 @@ if (sessionStorage.getItem("joNew")) {
 //   sessionStorage.clear();
 // });
 
+// 預設狀態初始化
 function init() {
   const imgFile = document.querySelector(".img-file__input");
   const boxBtn = document.querySelector(".box");
@@ -91,10 +107,10 @@ function init() {
   });
 
   imgFile.addEventListener("change", function (e) {
-    let reader = new FileReader(); // 用來讀取檔案
+    reader = new FileReader(); // 用來讀取檔案
     reader.readAsDataURL(this.files[0]); // 讀取檔案
     reader.addEventListener("load", function () {
-      console.log(reader.result);
+      // console.log(reader.result);
       let li_html = `
       <div class="img-space">
                   <img src="${reader.result}" class="preview">
@@ -109,6 +125,7 @@ function init() {
   });
 }
 
+// 可刪除圖片的狀態
 function deleteInit() {
   const deleteBtn = document.querySelector(".delete");
   deleteBtn.addEventListener("click", function () {
@@ -118,5 +135,3 @@ function deleteInit() {
     init();
   });
 }
-
-// test
