@@ -228,6 +228,9 @@ createApp({
       categorylist: [],
     };
   },
+  created(){
+    window.addEventListener("resize",this.resize_adjust,true)
+  },
   methods: {
     open_city(e) {
       this.cityshow = !this.cityshow;
@@ -297,33 +300,142 @@ createApp({
       }
     },
     filterCategory(e) {
-      for (let i = 0; i < this.cardlist.length; i++){
-        this.cardlist[i].vif=false;
-      }
-      let category = e.composedPath()[0].childNodes[0];
-      let text = e.composedPath()[0].textContent;
-      if (category.checked == false) {
-        category.checked = true;
-        this.categorylist.push(e.path[0].textContent);
-      } else if (category.checked == true) {
-        category.checked = false;
-        this.categorylist.forEach((e, index) => {
-          if (e == text) {
-            this.categorylist.splice(index, 1);
-          }
-        });
-      }
-      for (let i = 0; i < this.cardlist.length; i++) {
-        let label = this.cardlist[i].label;
-        for (let j = 0; j < this.categorylist.length; j++) {
-          let list = this.categorylist[j];
-          if (label.trim() == list.trim()) {
-            let temp = this.cardlist[i];
-            temp.vif=true;
-          }
+      e.target.querySelector("input").click();
+      // for (let i = 0; i < this.cardlist.length; i++){
+      //   this.cardlist[i].vif=false;
+      // }
+      // let category = e.composedPath()[0].childNodes[0];
+      // let text = e.composedPath()[0].textContent;
+      // if (category.checked == false) {
+      //   category.checked = true;
+      //   this.categorylist.push(e.path[0].textContent);
+      // } else if (category.checked == true) {
+      //   category.checked = false;
+      //   this.categorylist.forEach((e, index) => {
+      //     if (e == text) {
+      //       this.categorylist.splice(index, 1);
+      //     }
+      //   });
+      // }
+      // for (let i = 0; i < this.cardlist.length; i++) {
+      //   let label = this.cardlist[i].label;
+      //   for (let j = 0; j < this.categorylist.length; j++) {
+      //     let list = this.categorylist[j];
+      //     if (label.trim() == list.trim()) {
+      //       let temp = this.cardlist[i];
+      //       temp.vif=true;
+      //     }
+      //   }
+      // }
+    },
+    openSelectbar(e){
+      let category_btn = document.querySelector(".qa_jo__category_btn");
+      target_class = e.target.classList;
+      let cate_bar = document.querySelector(".qa_jo__category");
+      let dest_bar = document.querySelector(".qa_jo__destination");
+      let price_bar = document.querySelector(".qa_jo__price");
+      let sort_bar = document.querySelector(".qa_jo__sort");
+      let black_bg = document.querySelector(".black_bg");
+      let bar_arr = [cate_bar,dest_bar,price_bar,sort_bar];
+      let body = document.querySelector("body")
+      if(target_class.contains("qa_jo__category_btn")){
+        if(cate_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          cate_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
         }
       }
+      if(target_class.contains("qa_jo__destination_btn")){
+        console.log("aaa");
+        if(dest_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          dest_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
+        }
+      }
+      if(target_class.contains("qa_jo__price_btn")){
+        console.log("aaa");
+        if(price_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          price_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
+        }
+      }
+      if(target_class.contains("qa_jo__sort_btn")){
+        console.log("aaa");
+        if(sort_bar.classList.contains("open")){
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          black_bg.classList.remove("on_watch");
+          body.classList.remove("stop_scroll");
+        }else{
+          bar_arr.forEach(element => {
+            element.classList.remove("open")
+          });
+          sort_bar.classList.add("open");
+          black_bg.classList.add("on_watch");
+          body.classList.add("stop_scroll");
+        }
+      }
+      if(target_class.contains("black_bg")){
+        bar_arr.forEach(element => {
+          element.classList.remove("open")
+        });
+        black_bg.classList.remove("on_watch");
+        body.classList.remove("stop_scroll");
+      }
+      
+
+      
     },
+    resize_adjust(){
+      if(screen.width <= 768){
+
+      }if(screen.width >768){
+        document.querySelector("body").classList.remove("stop_scroll");
+        let cate_bar = document.querySelector(".qa_jo__category");
+        let dest_bar = document.querySelector(".qa_jo__destination");
+        let price_bar = document.querySelector(".qa_jo__price");
+        let sort_bar = document.querySelector(".qa_jo__sort");
+        let black_bg = document.querySelector(".black_bg");
+        let bar_arr = [cate_bar,dest_bar,price_bar,sort_bar];        
+        bar_arr.forEach(element => {
+          element.classList.remove("open")
+        });
+        black_bg.classList.remove("on_watch");
+      }
+    },
+    jump_page(){
+      window.location.assign("productdetail.html");
+    }
   },
 
   mounted() {},

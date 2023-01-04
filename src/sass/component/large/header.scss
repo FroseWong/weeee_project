@@ -66,6 +66,9 @@ header {
                 i {
                     padding: 5px;
                     color: $gray;
+                    &:hover{
+                        color: $black;
+                    }    
                 }
             }
         }
@@ -91,6 +94,9 @@ header {
                     font-size: $pc_h4;
                     color: $black;
                     cursor: pointer;
+                    &:hover {
+                        color: $gray;
+                    }
 
                     @include m {
                         // font-size: $pc_h5;

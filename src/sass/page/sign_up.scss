@@ -6,6 +6,9 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  @include m {
+    display: none;
+  }
 }
 
 
@@ -14,6 +17,7 @@
   padding-bottom: 20px;
   margin-top: 25px;
   margin-left: 60px;
+
 }
 
 .sur p {
@@ -21,7 +25,9 @@
   margin-left: 72px;
 }
 
-.sur {
+
+
+.sur{
   position: absolute;
   width: 567px;
   height: 599px;
@@ -49,6 +55,10 @@
   height: 59px;
   margin-bottom: 10px;
   font-size: 20px;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  text-indent: 5px;
+
 }
 
 .submit {
@@ -59,6 +69,8 @@
   margin-bottom: 8px;
   background-color: $blue;
   color: $white;
+  cursor:pointer;
+  outline: none;
 }
 
 .formbuttom {
@@ -78,6 +90,46 @@
   text-decoration: none;
 }
 
-.fa-regular {
+.email {
+  color: $gray;
+  position: relative; 
+  display: inline-block;
+}		
+.email .fa-regular{ /*左邊圖示*/
+  position: absolute; 			
+  right: 3px;
+  top: calc(50% - 0.5em);
+  font-size: 20px;
+  padding-bottom: 5px;
   padding-right: 10px;
+  margin: 0 auto ;
+}
+
+.password {
+  color: $gray;
+  position: relative; 
+  display: inline-block;
+}		
+.password .fa-regular{ /*左邊圖示*/
+  position: absolute; 			
+  right: 3px;
+  top: calc(50% - 0.5em);
+  font-size: 20px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  margin: 0 auto ;
+}
+.passwordag {
+  color: $gray;
+  position: relative; 
+  display: inline-block;
+}		
+.passwordag .fa-regular{ /*左邊圖示*/
+  position: absolute; 			
+  right: 3px;
+  top: calc(50% - 0.5em);
+  font-size: 20px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  margin: 0 auto ;
 }

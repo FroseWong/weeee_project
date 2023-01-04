@@ -66,7 +66,7 @@
                             </li>
                         </ol>
                         <div class="user_logout">
-                            <a href="">登出</a>
+                            <a href="../login.html">登出</a>
                         </div>
                     </div>
 
@@ -189,7 +189,9 @@
             event.preventDefault(e);
             $(this).next(".submenu").addClass("active");
             $(".header_overlay").addClass("active");
-        };
+        }else{
+            $(".submenu").removeClass("active");
+        }
     });
 
 
@@ -205,9 +207,9 @@
 
     });
 
-    if ($(window).width() > 768) {
-            $(".submenu").css("display", "none");
-        };
+    // if ($(window).width() > 768) {
+    //         $(".submenu").css("display", "none");
+    //     };
 
     // Function for close the Modal
     $(".header_overlay").on("click", function () {
