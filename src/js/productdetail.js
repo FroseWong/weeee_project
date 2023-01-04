@@ -180,6 +180,8 @@ createApp({
       modalTotal: 777,
       modalDate: "",
       field1show: true,
+      winSize: 0,
+      winsizeBoolean: true,
     };
   },
   methods: {
@@ -352,7 +354,7 @@ createApp({
     product_list() {
       $(".product-list").slick({
         infinite: false,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         arrows: true,
         dots: false,
@@ -485,6 +487,20 @@ createApp({
     field1showbtn(e) {
       this.field1show = true;
     },
+    winSizeWatch() {
+      window.addEventListener("resize", function () {
+        this.winSize = window.innerWidth;
+
+        if (this.winSize <= 768) {
+          this.winsizeBoolean = false;
+          console.log(this.winsizeBoolean);
+        }
+        if (this.winSize >= 768) {
+          this.winsizeBoolean = true;
+          console.log(this.winsizeBoolean);
+        }
+      });
+    },
   },
   computed: {
     // ---------------總金額---------------
@@ -503,6 +519,7 @@ createApp({
     this.productdetail__slideshow();
     this.display_scroll();
     this.timefun();
+    this.winSizeWatch();
     // this.axiosget();
     // this.axiospost();
   },
