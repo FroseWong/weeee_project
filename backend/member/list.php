@@ -191,14 +191,15 @@
                                             <td>Junior Javascript Developer</td>
                                             <td>Edinburgh</td>
                                             <td>正常</td>
-                                            <td>凍結<i class="fas fa-ban"></i></td>                                         
+                                            <td><a href="#">凍結<i class="fas fa-ban" style="margin-left: 10px"></i></a></td>                                         
+                                                                                 
                                         </tr>
                                         <tr>
                                             <td>Cara Stevens</td>
                                             <td>Sales Assistant</td>
                                             <td>New York</td>
                                             <td>凍結中</td>
-                                            <td>恢復<i class="fas fa-check"></td>
+                                            <td><a href="#">恢復<i class="fas fa-check" style="margin-left: 10px"><i></a></td>
                                         </tr>
 
                                         
@@ -207,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-warning submit_button save_update">儲存更新</button>
+                   
                 </div>
                 <!-- /.container-fluid -->
 
