@@ -1,4 +1,64 @@
 .jo_index{
+  position: relative;
+  .black_bg{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba($color: $black, $alpha: 0.5);
+    z-index: 15;
+  }
+  .select_loc_box{ 
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 30px;
+    background-color: $ll_gray;
+    z-index: 20;
+    border-radius: 10px;
+    @include m{
+      left: 10%;
+      right: 10%;
+    }
+   
+    h1{
+      text-align: center;
+      padding-top: 20px;
+      font-weight: bold;
+      border-bottom: 2px solid $l_gray;
+      position: relative;
+      i{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: $gray;
+      }
+    }
+    ul{
+      display: flex;
+      padding: 20px;
+      padding-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      li{
+        width: 25%;
+        text-align: center;
+        padding: 3px;
+        margin: 7px;
+        font-weight: bold;
+        cursor: pointer;
+        &:hover{
+          background-color: $yellow;
+          color: $white;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
     header {
         height: 165px;
         width: 100%;
@@ -71,6 +131,7 @@
             line-height: 40px;
             height: 40px;
             cursor: pointer;
+            z-index: 9;
             @include m{
               margin: 0;
               padding: 0;
@@ -107,6 +168,7 @@
                 font-size: 20px;
                 font-weight: 400;
                 @include m{
+                  padding-left: 10px;
                   height: 30px;
                   width: 55%;
                   font-size: 16px;
@@ -203,6 +265,7 @@
       }
     
     }
+
     #jo_button {
       display: inline-block;
       position: fixed;

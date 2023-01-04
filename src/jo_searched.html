@@ -6,305 +6,390 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weeee!</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/85f014293c.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     @@include('layout/header.html')
     <div class="wrapper jo_index app1 jo_searched">
-
-      <div class="topbanner">
-        <div class="container topbanner__text">
-            <h1>揪遊趣！</h1>
+      <div v-cloak>
+        <div
+          class="black_bg"
+          @click="closeSelectbar"
+          v-if="show_lightbox"
+        ></div>
+        <div class="select_loc_box" v-if="show_lightbox">
+          <h1>
+            選擇地點
+            <i class="fa-solid fa-xmark" @click="closeSelectbar"></i>
+          </h1>
+          <ul>
+            <li
+              v-for="(item, index) in AllCitys"
+              @click="changeSelectbar(item)"
+            >
+              {{item}}
+            </li>
+          </ul>
+        </div>
+        <div class="topbanner">
+          <div class="container topbanner__text">
+            <h1>揪遊趣!</h1>
             <p>探索揪團旅程</p>
-            <div class="search_location">
-                <i class="fa-solid fa-location-dot"></i>
-                選擇地點
-                <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="search_location" @click="openSelectbar">
+              <i class="fa-solid fa-location-dot"></i>
+              {{location_selected}}
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
             <div class="searchbox">
-                <input type="text" placeholder="想做什麼？">
-                <button><h5>搜尋</h5></button>
-            </div> 
+              <input
+                type="text"
+                placeholder="想做什麼？"
+                @keyup.enter="jump_jo_searched"
+              />
+              <button @click="jump_jo_searched"><h5>搜尋</h5></button>
+            </div>
           </div>
-      </div>
-      <div class="midbanner container ">
+        </div>
+        <div class="midbanner container">
           <div class="icon_map">
-              <div>
-               <i class="fa-solid fa-magnifying-glass"></i> 
-               <h5>尋找喜愛的旅程</h5>
-              </div>
-              <i class="fa-solid fa-angles-right"></i>
-              <div>
-                <i class="fa-solid fa-comment-dots"></i>
-                <h5>提交申請給團主</h5>
-              </div>
-                <i class="fa-solid fa-angles-right"></i>
-              <div>
-                <i class="fa-solid fa-circle-check"></i>
-                <h5>團主審核通過</h5>
-              </div>
-              <i class="fa-solid fa-angles-right"></i>
-              <div>
-                <i class="fa-solid fa-child-reaching"></i>
-                <h5>出團遊玩</h5>
-              </div>
-              
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <h5>尋找喜愛的旅程</h5>
             </div>
-      </div>
-      <div class="container content">
-        <h2 class="ttoc">全部結果 <span>100</span>項</h2>
-        <div class="jo-list">
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
+            <i class="fa-solid fa-angles-right"></i>
+            <div>
+              <i class="fa-solid fa-comment-dots"></i>
+              <h5>提交申請給團主</h5>
             </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
+            <i class="fa-solid fa-angles-right"></i>
+            <div>
+              <i class="fa-solid fa-circle-check"></i>
+              <h5>團主審核通過</h5>
             </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">南京復興站吃晚餐</h6>
-              <span class="gray jo__detailaddress">南京復興站</span>
-              <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m1"></span
-                ><span class="member-name">王小明</span>
-                <span class="left-time">剩餘1天</span></span
-              >
+            <i class="fa-solid fa-angles-right"></i>
+            <div>
+              <i class="fa-solid fa-child-reaching"></i>
+              <h5>出團遊玩</h5>
             </div>
-          </a>
-
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台中</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">突然決定玩桌遊</h6>
-              <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-              <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m2"></span
-                ><span class="member-name">吳筠萍</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a>
-
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-              <span class="gray jo__detailaddress">饒河夜市</span>
-              <span class="gray jo-time">星期三,一月 18日 19:00</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m3"></span
-                ><span class="member-name">劉品吉</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a>
+          </div>
         </div>
+        <div class="container content">
+          <h2 class="ttoc">全部結果 <span>100</span>項</h2>
+          <div class="jo-list">
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台北</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j1"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">南京復興站吃晚餐</h6>
+                <span class="gray jo__detailaddress">南京復興站</span>
+                <span class="gray jo-time">星期五,十二月 2日 17:50</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m1"></span
+                  ><span class="member-name">王小明</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
+  
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台中</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j2"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">突然決定玩桌遊</h6>
+                <span class="gray jo__detailaddress">快樂小屋桌遊</span>
+                <span class="gray jo-time">星期一,十二月 5日 12:40</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m2"></span
+                  ><span class="member-name">吳筠萍</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
+  
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台北</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j3"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
+                <span class="gray jo__detailaddress">饒河夜市</span>
+                <span class="gray jo-time">星期三,一月 18日 19:00</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m3"></span
+                  ><span class="member-name">劉品吉</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
+          </div>
 
-        <div class="jo-list ">
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">南京復興站吃晚餐</h6>
-              <span class="gray jo__detailaddress">南京復興站</span>
-              <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m1"></span
-                ><span class="member-name">王小明</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a>
+          <div class="jo-list">
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台北</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j1"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">南京復興站吃晚餐</h6>
+                <span class="gray jo__detailaddress">南京復興站</span>
+                <span class="gray jo-time">星期五,十二月 2日 17:50</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m1"></span
+                  ><span class="member-name">王小明</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
   
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台中</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">突然決定玩桌遊</h6>
-              <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-              <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m2"></span
-                ><span class="member-name">吳筠萍</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a>
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台中</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j2"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">突然決定玩桌遊</h6>
+                <span class="gray jo__detailaddress">快樂小屋桌遊</span>
+                <span class="gray jo-time">星期一,十二月 5日 12:40</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m2"></span
+                  ><span class="member-name">吳筠萍</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
   
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-              <span class="gray jo__detailaddress">饒河夜市</span>
-              <span class="gray jo-time">星期三,一月 18日 19:00</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m3"></span
-                ><span class="member-name">劉品吉</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a>
-         
-        </div>   
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台北</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j3"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
+                <span class="gray jo__detailaddress">饒河夜市</span>
+                <span class="gray jo-time">星期三,一月 18日 19:00</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m3"></span
+                  ><span class="member-name">劉品吉</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
+          </div>
 
-        <div class="jo-list ctoc">
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_nanjingeasteat1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">南京復興站吃晚餐</h6>
-              <span class="gray jo__detailaddress">南京復興站</span>
-              <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m1"></span
-                ><span class="member-name">王小明</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a>
+          <div class="jo-list ctoc">
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台北</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j1"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">南京復興站吃晚餐</h6>
+                <span class="gray jo__detailaddress">南京復興站</span>
+                <span class="gray jo-time">星期五,十二月 2日 17:50</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m1"></span
+                  ><span class="member-name">王小明</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
   
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台中</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_boardgame1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">突然決定玩桌遊</h6>
-              <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-              <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m2"></span
-                ><span class="member-name">吳筠萍</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a>
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台中</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j2"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">突然決定玩桌遊</h6>
+                <span class="gray jo__detailaddress">快樂小屋桌遊</span>
+                <span class="gray jo-time">星期一,十二月 5日 12:40</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m2"></span
+                  ><span class="member-name">吳筠萍</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
   
-          <a class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <img src="img/jo/jo_raohenightmarket1.jpg" alt="" />
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-              <span class="gray jo__detailaddress">饒河夜市</span>
-              <span class="gray jo-time">星期三,一月 18日 19:00</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m3"></span
-                ><span class="member-name">劉品吉</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
+            <a class="jo-card">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">台北</p>
+              </div>
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div class="jo-card__top__pic__src j3"></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
+                <span class="gray jo__detailaddress">饒河夜市</span>
+                <span class="gray jo-time">星期三,一月 18日 19:00</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m3"></span
+                  ><span class="member-name">劉品吉</span>
+                  <span class="left-time">剩餘1天</span></span
+                >
+              </div>
+            </a>
+          </div>
+          <a id="jo_button" href="./jo_new.html">
+            <img src="./img/jo/jo_create.gif" alt="" />
+            <h5>發起揪團</h5>
           </a>
-          
-        </div> 
-        <a id="jo_button" href="./jo_new.html">
-          <img src="./img/jo/jo_create.gif" alt="">
-          <h5>發起揪團</h5>
-        </a>
-        <div class="jo_scrollToTop">
-          <i class="fa-solid fa-angle-up" @click="scrollToTop"></i>
+          <div class="jo_scrollToTop">
+            <i class="fa-solid fa-angle-up" @click="scrollToTop"></i>
+          </div>
         </div>
-
       </div>
 
-        
       @@include('layout/footer.html')
     </div>
     <script src="/vue/vue.global.prod.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script>
       let app1 = Vue.createApp({
-        data(){
-          return{
-
-          }
+        data() {
+          return {
+            show_lightbox: false,
+            show_select_bar: false,
+            AllCitys: [
+              "基隆",
+              "台北",
+              "新北",
+              "桃園",
+              "新竹",
+              "苗栗",
+              "台中",
+              "彰化",
+              "南投",
+              "雲林",
+              "嘉義",
+              "台南",
+              "高雄",
+              "屏東",
+              "台東",
+              "花蓮",
+              "其他",
+            ],
+            location_selected: "選擇地點",
+          };
         },
         created() {
-            window.addEventListener("scroll", this.btn_show);
-
+          window.addEventListener("scroll", this.btn_show);
         },
-        methods:{
+        methods: {
           scrollToTop() {
             window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
+              top: 0,
+              left: 0,
+              behavior: "smooth",
             });
-
-            },
-          btn_show(){
-             let btn = $('#jo_button');
-             let btn_bottom = document.querySelector("footer").offsetTop;
-             console.log(btn_bottom);
-             console.log(window.scrollY);
-             if(screen.width <= 768){
-              if (window.scrollY > 0 && window.scrollY <= btn_bottom -750) {
-                btn.addClass('show');
-              } else if( window.scrollY <=0){
-                btn.removeClass('show');
-              }else if(window.scrollY >= btn_bottom -750){
-                btn.removeClass('show');
+          },
+          btn_show() {
+            let btn = $("#jo_button");
+            let btn_bottom = document.querySelector("footer").offsetTop;
+            console.log(btn_bottom);
+            console.log(window.scrollY);
+            if (screen.width <= 768) {
+              if (window.scrollY > 0 && window.scrollY <= btn_bottom - 750) {
+                btn.addClass("show");
+              } else if (window.scrollY <= 0) {
+                btn.removeClass("show");
+              } else if (window.scrollY >= btn_bottom - 750) {
+                btn.removeClass("show");
               }
-             }else{
+            } else {
               if (window.scrollY > 300) {
-                btn.addClass('show');
+                btn.addClass("show");
               } else {
-                btn.removeClass('show');
+                btn.removeClass("show");
               }
-             }
-              
-            },
+            }
+          },
+          // jump_jo_searched() {
+          //   let searchedbox = document.querySelector(".searchbox");
+          //   searchedbox_value = searchedbox.querySelector("input").value;
+          //   console.log(searchedbox_value);
+          //   if (searchedbox_value.length > 0) {
+          //     window.location.assign("jo_searched.html");
+          //   }
+          // },
+          openSelectbar() {
+            this.show_lightbox = true;
+            this.show_select_bar = true;
+            let body = document.querySelector("body");
+            body.classList.add("stop_scroll");
+          },
+          closeSelectbar() {
+            this.show_lightbox = false;
+            this.show_select_bar = false;
+            let body = document.querySelector("body");
+            body.classList.remove("stop_scroll");
+          },
+          changeSelectbar(item) {
+            console.log(item);
+            this.show_lightbox = false;
+            this.show_select_bar = false;
+            let body = document.querySelector("body");
+            this.location_selected = item;
+            body.classList.remove("stop_scroll");
+          },
         },
-
       });
       app1.mount(".app1");
-     
-  
-  
     </script>
-
   </body>
 </html>

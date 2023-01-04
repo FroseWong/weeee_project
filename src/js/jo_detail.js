@@ -4,8 +4,9 @@ const saysomething__content = document.querySelector(".saysomething__content");
 const jo__comment__list = document.querySelector(".jo__comment__list");
 const useweeee = document.querySelector(".useweeee");
 
-if (window.innerWidth <= 768) {
-  let str = ` <div class="product-list">
+window.addEventListener("resize", function () {
+  if (window.innerWidth <= 768) {
+    let str = ` <div class="product-list">
   <a href="./productdetail.html" class="product-card">
   <i class="fa-regular fa-heart"></i>
   <div class="product-card__location">
@@ -30,8 +31,34 @@ if (window.innerWidth <= 768) {
   </div>
 </a>
      </div>`;
-  useweeee.innerHTML = str;
-}
+    useweeee.innerHTML = str;
+  } else {
+    console.log("bigger than 768");
+    let str = `<a href="./productdetail.html" class="product-card-row">
+    <div class="product-card-row__left"></div>
+    <div class="product-card-row__right">
+      <div class="product-name">
+        桃園青埔 | Xpark 都會型水生公園門票
+      </div>
+      <div class="product-tag">水族館</div>
+      <div class="product__text">
+        Xpark 於 2022 年初推行大型企劃『Xbook~流向我們的
+        物語』,透過五官享受海底之書的魅力!加碼推出兒童節限定「Xpark
+        童樂套票」
+      </div>
+
+      <span class="gray"
+        ><i class="fa-solid fa-star"></i>4.4(44325) |
+        <span class="product-bought">590K+</span>個已訂購
+      </span>
+      <span class="price"
+        >TWD <span class="product-price">550</span>元</span
+      >
+    </div>
+  </a>`;
+    useweeee.innerHTML = str;
+  }
+});
 
 $(".contact-leader").on("click", function () {
   // console.log("hi");

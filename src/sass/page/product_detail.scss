@@ -614,7 +614,12 @@
 }
 // ---------------下方輪播卡---------------
 .productdetail__bot {
-  height: 437px;
+  display: flex;
+  justify-content: center;
+  // width: 100%;
+  div{
+    width: 1000px;
+  }
   a {
     color: $black;
   }
