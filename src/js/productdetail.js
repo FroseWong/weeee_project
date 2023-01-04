@@ -454,14 +454,13 @@ createApp({
     // ---------------結帳寫入cookie---------------
     modalCheckout() {
       let time = document.getElementById("datetimepicker").value;
+      let newDate = "";
       if (time == "") {
         let OldToday = new Date();
         newDate = OldToday.toISOString().split("T")[0];
-      } 
-      else 
-      {
+      } else {
         let oldDate = new String(time);
-        let newDate =
+        newDate =
           oldDate[6] +
           oldDate[7] +
           oldDate[8] +
@@ -473,20 +472,12 @@ createApp({
           oldDate[0] +
           oldDate[1];
       }
-
-      // document.cookie = `日期=${newDate}`;
-      // document.cookie = `總金額=${this.modalPricetotal}`;
-      // document.cookie = `點數=${this.modalPoints}`;
-
       sessionStorage.setItem("日期", newDate);
       sessionStorage.setItem("總金額", this.modalPricetotal);
       sessionStorage.setItem("點數", this.modalPoints);
       let data = sessionStorage.getItem("日期");
-      // let  data2 = sessionStorage.getItem('總金額');
-      // let  data3 = sessionStorage.getItem('點數');
       console.log(data);
-
-      // window.location.href = "./payment.html";
+      window.location.href = "./payment.html";
     },
     cle_check() {
       this.field1show = false;
