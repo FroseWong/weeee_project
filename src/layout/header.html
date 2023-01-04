@@ -23,7 +23,52 @@
 
                 </li>
                 <li>
-                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user">
+                    </i>
+                    <div class="user_menu">
+                        <div class="user_setting">
+                            <a href="../account_setting.html">
+                                <div class="user_info">
+                                    <div class="user_icon"></div>
+                                    <div class="user_name">寧寶</div>
+                                </div>
+                                <i class="fa-solid fa-gear"></i>
+                            </a>
+                        </div>
+                        <ol>
+                            <li>
+                                <a href="../account_order.html">
+                                    <i class="fa-regular fa-rectangle-list"></i>
+                                    訂單管理
+                                </a>
+                
+                            </li>
+                            <li>
+                                <a href="../account_jo.html">
+                                    <i class="fa-solid fa-child-reaching"></i>
+                                    我的揪團
+                                </a>
+                
+                            </li>
+                            <li>
+                                <a href="../account_favor.html">
+                                    <i class="fa-solid fa-heart"></i>
+                                    我的收藏
+                                </a>
+                
+                            </li>
+                            <li>
+                                <a href="../account_point.html">
+                                    <img src="../img/weeeepoints/yellow.svg" alt="">
+                                    Weeee! Points
+                                </a>
+                
+                            </li>
+                        </ol>
+                        <div class="user_logout">
+                            <a href="../login.html">登出</a>
+                        </div>
+                    </div>
 
                 </li>
             </ul>
@@ -133,54 +178,12 @@
 
     </div>
 
-    <div class="user_menu">
-        <div class="user_setting">
-            <a href="../account_setting.html">
-                <div class="user_info">
-                    <div class="user_icon"></div>
-                    <div class="user_name">寧寶</div>
-                </div>
-                <i class="fa-solid fa-gear"></i>
-            </a>
-        </div>
-        <ol>
-            <li>
-                <a href="../account_order.html">
-                    <i class="fa-regular fa-rectangle-list"></i>
-                    訂單管理
-                </a>
 
-            </li>
-            <li>
-                <a href="../account_jo.html">
-                    <i class="fa-solid fa-child-reaching"></i>
-                    我的揪團
-                </a>
-
-            </li>
-            <li>
-                <a href="../account_favor.html">
-                    <i class="fa-solid fa-heart"></i>
-                    我的收藏
-                </a>
-
-            </li>
-            <li>
-                <a href="../account_point.html">
-                    <img src="../img/weeeepoints/yellow.svg" alt="">
-                    Weeee! Points
-                </a>
-
-            </li>
-        </ol>
-        <div class="user_logout">
-            <a href="../login.html">登出</a>
-        </div>
-    </div>
 
 </header>
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script>
+
     $(".header_modal_show").on("click", function (e) {
         if ($(window).width() < 768) {
             event.preventDefault(e);
@@ -201,6 +204,10 @@
         $(".header_overlay").addClass("active");
 
     });
+
+    if ($(window).width() > 768) {
+            $(".submenu").css("display", "none");
+        };
 
     // Function for close the Modal
     $(".header_overlay").on("click", function () {

@@ -91,7 +91,11 @@ header {
                     font-size: $pc_h4;
                     color: $black;
                     cursor: pointer;
-                    @include m{
+                    &:hover {
+                        color: $gray;
+                    }
+
+                    @include m {
                         // font-size: $pc_h5;
                     }
                 }
@@ -189,15 +193,12 @@ header {
 
     .submenu {
         display: none;
-        transition: 0.5s ease-out;
 
         @include m {
             // display: block;
-            transition: 0.5s ease-out;
             padding: 20px 0 10px;
             z-index: 500;
             font-size: 14px;
-            border-radius: 0 0 16px 16px;
             background-color: #fff;
             position: fixed;
             width: 100vw;
@@ -301,22 +302,21 @@ header {
     .user_menu {
         display: none;
         position: fixed;
-        top: 55px;
-        right: 350px;
         background-color: #fff;
-        width: 10%;
+        width: 210px;
         border-radius: 10px;
         box-shadow: 0 2px 20px rgb(0 0 0 / 15%);
         z-index: 3000;
-
+        margin-top: 15px;
+        margin-left: -180px;
         @include m {
             width: 100%;
             top: 0;
             left: 0;
             border-radius: 0 0 10px 10px;
+            margin: 0;
         }
 
-        // padding: 10px 0;
         i {
             width: 22px;
             height: 22px;

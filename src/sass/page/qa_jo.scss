@@ -93,7 +93,7 @@
     display: flex;
     margin-bottom: 40px;
     @include m {
-      width: 520px;
+      width: 480px;
     background-color: #fff;
     display: block;
     margin-bottom: 40px
@@ -106,7 +106,8 @@
       overflow: hidden;
     border-radius: 5px;
       @include m {
-        width: 90%;
+        margin-left: 10px;
+        width: 89%;
         display: block;
      
        }
@@ -119,14 +120,14 @@
     align-items: flex-start;
     padding: 0 30px;
     @include m{
-      padding: 0 20px;
+      padding: 0 50px;
     }
     h1 {
       font-weight: bold;
       font-size: 20px;
       margin-top: 20px;
       @include m{
-        font-size: 16px;
+        font-size: 15px;
       }
     }
     h2 {
@@ -153,7 +154,10 @@
         line-height: 48px;
         margin-left: 140px;
         @include m{
-          margin-left: 70px;
+          font-weight: bold;
+    font-size: 20px;
+     line-height: 48px; 
+     margin-left: 50px;
         }
       }
     }

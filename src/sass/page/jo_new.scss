@@ -27,8 +27,9 @@
 
     .img-space {
       position: relative;
-      // border: solid red 1px;
-      display: inline;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .delete {
@@ -45,6 +46,7 @@
       cursor: pointer;
       color: $white;
     }
+
     .fa-xmark {
       font-size: 12px;
     }
@@ -69,9 +71,13 @@
     }
 
     .preview {
-      height: 300px;
+      max-height: 300px;
       position: relative;
       border-radius: 10px;
+
+      @include m {
+        width: 100%;
+      }
     }
 
     .delete-img {

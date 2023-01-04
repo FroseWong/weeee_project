@@ -21,7 +21,9 @@
   margin-left: 72px;
 }
 
-.sur {
+
+
+.sur{
   position: absolute;
   width: 567px;
   height: 599px;
@@ -49,6 +51,10 @@
   height: 59px;
   margin-bottom: 10px;
   font-size: 20px;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  text-indent: 5px;
+
 }
 
 .submit {
@@ -59,6 +65,8 @@
   margin-bottom: 8px;
   background-color: $blue;
   color: $white;
+  cursor:pointer;
+  outline: none;
 }
 
 .formbuttom {
@@ -80,4 +88,8 @@
 
 .fa-regular {
   padding-right: 10px;
+}
+
+.email{
+  color: $gray;
 }

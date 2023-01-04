@@ -207,7 +207,7 @@
       display: inline-block;
       position: fixed;
       bottom: 280px;
-      right: 30px;
+      right: 5px;
       transition: background-color .3s,
       opacity .5s, visibility .5s;
       visibility: hidden;
@@ -233,6 +233,11 @@
       h5{
         color: $yellow;
         text-align: center;
+        font-weight: bold;
+        ;
+        &:hover{
+          color: $blue;
+        }
         @include m{
          
           line-height: 60px;
