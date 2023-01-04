@@ -120,7 +120,7 @@
     align-items: flex-start;
     padding: 0 30px;
     @include m{
-      padding: 0 50px;
+     
     }
     h1 {
       font-weight: bold;
@@ -164,6 +164,33 @@
   }
 }
 // -----------------------------------------------
+
+.wrapper.qa_jo#app{
+  position: relative;
+  .black_bg{
+    display: none;
+    @include m{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba($color: $black, $alpha: 0.5);
+    }
+  }
+  .black_bg.on_watch{
+    @include m{
+      display: block;
+    }
+  }
+
+}
+body.stop_scroll{
+  height: 100%;
+  overflow: hidden;
+}
+
 .qa_jo__main {
     background-color: #f4f4f4;
     width: 100%;
@@ -214,6 +241,7 @@
         left: 0;
         right: 0;
         top: 45px;
+        display: none;
 
       }
 
@@ -231,9 +259,10 @@
           color: $white;
         }
         @include m{
-          width: 370px;
+          width: 100%;
           // padding-top: 10px;
           line-height: 40px;
+
   
         }
       }
@@ -243,6 +272,11 @@
         text-align: center;
         line-height: 30px;
         border-bottom: 1px solid $gray;
+      }
+    }
+    div.open{
+      @include m{
+        display: block;
       }
     }
     div.rwd_bar{
@@ -309,6 +343,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 35px;
+    
     @include m{
       margin-left: 0;
     }
@@ -317,6 +352,7 @@
       background-color: #fff;
       display: flex;
       margin-bottom: 40px;
+      cursor: pointer;
       @include m{
         flex-direction: column;
         max-width: 370px;
