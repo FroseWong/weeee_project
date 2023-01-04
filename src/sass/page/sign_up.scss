@@ -1,69 +1,83 @@
 
-// header{
-  
-// }
+.sign_upbg {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../../img/otherpage/signup01.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-.sign_upbg{
-    width: 100%;
-    height: 100vh;
-    // padding-top: 10px;
-    // margin-top: 130px;
-    background-image: url(/src/img/otherpage/signup01.jpg);
-    background-repeat: no-repeat;
-  }
-  
-  
 
-  .sur h1{
-    padding-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 20px;
-  }
-  
-  
-  .sur{
-    display: flex;
-    flex-direction: column;
-    background-color:$white;
-    margin-top: 250px;
-    margin-left: 850px;
-    padding-top: 10px;
-    border-radius: 10px;
-    width: 567px;
-    height: 599px
-    
-  }
-  
-  .sur form{
-    margin: 0 auto;
-    margin-top: 30px;
-    line-height: 2.4;
-    padding-bottom: 10px;
-  }
-  .sur form p{
-    margin-bottom: 5px;
-  }
-  .surform input{
-    width: 411px;
-    height: 59px;
-    margin-bottom: 10px;
-    font-size: 40px;
-  }
-  .submit{
-    display: block;
-    width: 147px;
-    height: 21.5px;
-    margin-top: 15px;
-    margin-bottom: 8px;
-    background-color:$blue;
-    color: $white;
-  }
-  .login{
-    display: block;
-    width: 98px;
-    height: 40px;
-    background-color:$orange;
-    color: $white;
-    margin-left: 330px;
-  
-  }
+
+.sur h1 {
+  padding-bottom: 20px;
+  margin-top: 25px;
+  margin-left: 60px;
+}
+
+.sur p {
+
+  margin-left: 72px;
+}
+
+.sur {
+  position: absolute;
+  width: 567px;
+  height: 599px;
+  left: 988px;
+  top: 185px;
+  border-radius: 20px;
+
+
+
+  background-color: $white;
+
+
+}
+
+.sur form {
+  padding-left: 69px;
+  padding-top: 20px;
+  margin-top: 30px;
+  line-height: 2.4;
+  padding-bottom: 10px;
+}
+
+.surform input {
+  width: 411px;
+  height: 59px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.submit {
+  display: block;
+  width: 147px;
+  height: 21.5px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  background-color: $blue;
+  color: $white;
+}
+
+.formbuttom {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.sign_up_a {
+  display: block;
+
+
+  color: $orange;
+  margin-left: 230px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa-regular {
+  padding-right: 10px;
+}

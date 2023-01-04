@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/sass/page/login.scss">
-    <title>註冊</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>登入</title>
 </head>
 <body>
-    <div class="header"></div>
-    <div class="wapper sign_up"> 
-        <div class="sign_upbg">
-            <div class="container sign_up">
-                <div class="sur">
+      @@include('layout/header.html')
+    <div class="wapper login"> 
+        <div class="login_bg">
+            <div class="container login">
+                <div class="log">
                     <h1>登入</h1>
                 
-                    <form class="loginform" action="login.php" method="post">
+                    <form class="loginform" action="#" method="post">
 
-                        <input type="text"  name="account" value="E-mail"/><br> 
-                        <input type="text"  name="password" value="PassWord"/><br>
+                        <input type="text"  name="account" value=" E-mail"/>
+                        <i class="fa-regular fa-envelope"></i>
+                        <br> 
+                        <input type="text"  name="password" value=" PassWord"/>
+                        <i class="fa-regular fa-eye"></i>
+                        <br>
                         <input class="submit" type="submit" value="登入" href="/dist/account_setting.html"/>
-                        <label><input type="checkbox" value="記住我">記住我</label>
-                        <a href="#">忘記密碼？</a>
-                        <p>還沒有帳號？趕快註冊！</p>
                         
                     </form>
-                
-                    <button class="login" ref="#">註冊</button>
+                    <div class="checkbox">
+                         <label><input type="checkbox" value="記住我"> 記住我</label>
+                    </div>
+                   
+                    <a class="loginforgetpwd" href="./forget_pwd.html">忘記密碼？</a>
+                    
+                    <div class="signup">
+                    <p>還沒有帳號？趕快<a class="signupa" href="./sign_up.html"> 註冊</a>！</p>
+                   
+                    </div>
+                        
                        
                 </div>
                 
@@ -34,6 +45,6 @@
         </div>    
 
 </div>
-   
+   @@include('layout/footer.html')
 </body>
 </html>

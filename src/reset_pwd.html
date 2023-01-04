@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>重設密碼</title>
 </head>
 <body>
-    <div class="header"></div>
+    @@include('layout/header.html')
     <div class="wapper reset_pwd"> 
-        <div class="reset_pwd_bg">
+        <div class="resetpwd_bg">
             <div class="container reset_pwd">
-                <div class="reset_pwd">
+                <div class="resetpwd">
                     <h1>重設密碼</h1>
 
-                    <form class="reset_pwd_form" action="#" method="post">
-                        <input type="text"  name="password" value="請輸入密碼"/><br> 
-                        <input type="text"  name="password_again" value="請再次輸入密碼"/><br> 
+                    <form class="resetpwd_form" action="#" method="post">
+                        <input type="text"  name="password" value=" 請輸入密碼"/>
+                        <i class="fa-regular fa-eye"></i>
+                        <br> 
+                        <input type="text"  name="password_again" value=" 請再次輸入密碼"/>
+                        <i class="fa-regular fa-eye"></i>
+                        <br> 
                         <input class="submit" type="submit" value="送出"/>
                     </form>
                        
@@ -27,6 +32,6 @@
         </div>    
 
 </div>
-   
+@@include('layout/footer.html')
 </body>
 </html>
