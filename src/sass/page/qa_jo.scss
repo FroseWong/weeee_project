@@ -289,6 +289,7 @@ body.stop_scroll{
       ul{
         li{
           @include m{
+            margin-top: 10px;
             padding-top: 0;
             height: 40px;
             line-height: 40px;
@@ -333,7 +334,7 @@ body.stop_scroll{
           justify-content: center;
         }
         li{
-          width: 45%;
+          width: 100%;
         }
       }
     }
@@ -365,7 +366,7 @@ body.stop_scroll{
         height: 250px;
         @include m{
           width: 370px;
-          height: 200px;
+      
         }
       }
     }
@@ -423,11 +424,13 @@ body.stop_scroll{
           }
         }
         h5 {
+          padding-top: 75px;
           font-weight: bold;
           font-size: 20px;
-          line-height: 48px;
-          margin-left: 115px;
+          line-height: 8px;
+          margin-left: 135px;
           @include m{
+            padding: 0;
             margin-left:0;
             font-size: 14px;
             display: block;

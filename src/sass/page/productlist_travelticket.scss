@@ -12,7 +12,7 @@
 }
 .about__barcard {
   display: flex;
-  
+
   margin-top: 75px;
 }
 .about__bar {
@@ -69,7 +69,7 @@
   margin-left: 35px;
   @include m {
     display: block;
-   flex-direction: column;
+    flex-direction: column;
   }
   .about__card--group {
     width: 800px;
@@ -81,8 +81,8 @@
       width: 480px;
       background-color: #fff;
       display: block;
-      margin-bottom: 40px
-     }
+      margin-bottom: 40px;
+    }
   }
   .about__card--img {
     img {
@@ -94,7 +94,7 @@
         margin-left: 10px;
         width: 89%;
         display: block;
-         }
+      }
     }
   }
   .about__card--title {
@@ -103,14 +103,13 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0 30px;
-    @include m{
-    
+    @include m {
     }
     h1 {
       font-weight: bold;
       font-size: 20px;
       margin-top: 20px;
-      @include m{
+      @include m {
         font-size: 15px;
       }
     }
@@ -137,19 +136,19 @@
         font-size: 20px;
         line-height: 48px;
         margin-left: 140px;
-        @include m{
+        @include m {
           font-weight: bold;
-    font-size: 20px;
-     line-height: 48px; 
-     margin-left: 50px;
+          font-size: 20px;
+          line-height: 48px;
+          margin-left: 50px;
         }
       }
-    .about2__city{
-      display: block;
-    }
-    .about2__block{
-      display: none;
-    }
+      .about2__city {
+        display: block;
+      }
+      .about2__block {
+        display: none;
+      }
     }
   }
 }
@@ -157,7 +156,7 @@
   display: flex;
   justify-content: center;
   margin: 40px 0 80px 0;
-  @include m{
+  @include m {
     display: flex;
     padding-right: 250px;
     margin: 0px 0 0px 0;
@@ -206,9 +205,8 @@
       color: $blue;
       display: inline;
       @include m {
-     
         font-size: 14px;
-       }
+      }
     }
     h2 {
       font-size: 32px;

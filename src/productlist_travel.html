@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title>
+    <title>Document</title> 
+    <style>
+    .active1{
+        background-color: #4484CE;
+        color: rgb(255, 255, 255);
+    }
+    .qa_jo__page-link--current{
+        background-color: #4484CE;
+        color: rgb(255, 255, 255);
+    }
+    </style>
 </head>
 
 <body>
@@ -82,13 +92,12 @@
                             </div>
                         </template>
                     </div>
-                    <nav>
+                    <nav class="page1">
                         <ul class="qa_jo__pagination">
                             <li class="qa_jo__page-item"><a class="qa_jo__page-link qa_jo__page-link--current"
                                     href="#">1</a></li>
                             <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">2</a></li>
-                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">3</a></li>
-                        </ul>
+                            
                     </nav>
                 </div>
             </div>
@@ -96,7 +105,7 @@
         @@include('layout/footer.html')
     </div>
   
-    <script src="/vue/vue.global.prod.js"></script>
+    <script src="./vue/vue.global.prod.js"></script>
     <script >
         const { createApp } = Vue;
 
@@ -105,7 +114,7 @@
     return {
         cardlist: [
         {
-          src: "/img/sightseeing/fa_19_1.jpg",
+          src: "./img/sightseeing/fa_19_1.jpg",
           title: "基隆港煙火 家庭行程",
           label: "家庭行程",
           content:
@@ -119,7 +128,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_19_2.jpg",
+          src: "./img/sightseeing/fa_19_2.jpg",
           title: "台北港煙火 家庭行程",
           label: "家庭行程",
           content:
@@ -133,7 +142,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_19_3.jpg",
+          src: "./img/sightseeing/fa_19_3.jpg",
           title: "新北港煙火 寵物行程",
           label: "寵物行程",
           content:
@@ -147,7 +156,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_1.jpg",
+          src: "./img/sightseeing/fa_20_1.jpg",
           title: "桃園港煙火 情侶行程",
           label: "情侶行程",
           content:
@@ -161,7 +170,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_2.jpg",
+          src: "./img/sightseeing/fa_20_2.jpg",
           title: "新竹港煙火 朋友行程",
           label: "朋友行程",
           content:
@@ -174,7 +183,7 @@
           cardid: 5,
           vif: true,
         }, {
-          src: "/img/sightseeing/fa_19_1.jpg",
+          src: "./img/sightseeing/fa_19_1.jpg",
           title: "苗栗港煙火 家庭行程",
           label: "家庭行程",
           content:
@@ -188,7 +197,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_19_2.jpg",
+          src: "./img/sightseeing/fa_19_2.jpg",
           title: "台中港煙火 家庭行程",
           label: "家庭行程",
           content:
@@ -202,7 +211,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_19_3.jpg",
+          src: "./img/sightseeing/fa_19_3.jpg",
           title: "彰化港煙火 寵物行程",
           label: "寵物行程",
           content:
@@ -216,7 +225,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_1.jpg",
+          src: "./img/sightseeing/fa_20_1.jpg",
           title: "南投港煙火 情侶行程",
           label: "情侶行程",
           content:
@@ -230,7 +239,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_2.jpg",
+          src: "./img/sightseeing/fa_20_2.jpg",
           title: "雲林港煙火 朋友行程",
           label: "朋友行程",
           content:
@@ -244,7 +253,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_2.jpg",
+          src: "./img/sightseeing/fa_20_2.jpg",
           title: "嘉義港煙火 朋友行程",
           label: "朋友行程",
           content:
@@ -258,7 +267,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_2.jpg",
+          src: "./img/sightseeing/fa_20_2.jpg",
           title: "台南港煙火 朋友行程",
           label: "朋友行程",
           content:
@@ -272,7 +281,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_2.jpg",
+          src: "./img/sightseeing/fa_20_2.jpg",
           title: "高雄港煙火 朋友行程",
           label: "朋友行程",
           content:
@@ -286,7 +295,7 @@
           vif: true,
         },
         {
-          src: "/img/sightseeing/fa_20_2.jpg",
+          src: "./img/sightseeing/fa_20_2.jpg",
           title: "屏東港煙火 朋友行程",
           label: "朋友行程",
           content:
@@ -301,27 +310,17 @@
         }
       ],
       prices: [
-        "TWD 2,000~3,999",
-        "TWD 4,000~5,999",
-        "TWD 6,000~7,999",
-        "TWD 8,000~9,999",
+      "TWD 2000~4000",
+        "TWD 4001~5000",
+        "TWD 5001~6000",
+        "TWD 6001~7000",
       ],
       categorys: ["朋友行程", "家庭行程", "情侶行程", "寵物行程"],
       AllCitys: [
         "基隆",
         "台北",
         "新北",
-        "桃園",
-        "新竹",
-        "苗栗",
-        "台中",
-        "彰化",
-        "南投",
-        "雲林",
-        "嘉義",
-        "台南",
-        "高雄",
-        "屏東",
+       
       ],
       cityshow: false,
       pricelist: [],
@@ -540,6 +539,19 @@
 
   mounted() {},
 }).mount("#app");
+
+
+
+$(".about2__sort ul").on("click","li",function() {
+        $(".about2__sort ul li").removeClass("active1");
+        $(this).addClass("active1");
+       });
+    
+        $(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("qa_jo__page-link--current");
+        $(this).addClass("qa_jo__page-link--current");
+        });
+
     </script>
 </body>
 
