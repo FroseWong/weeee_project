@@ -29,11 +29,17 @@
     font-weight: bold;
   }
 
-  .jo__img {
+  .jo_new__addimg {
     height: 300px;
+    // width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
     // width: 1000px;
     margin: 0 auto;
-    background-image: url("../img/jo/jo_wanttoseefish.jpg");
+    // background-image: url("../img/jo/jo_wanttoseefish.jpg");
     border-radius: 10px;
     margin-bottom: 60px;
     background-position: center center;
@@ -41,6 +47,16 @@
 
     @include m {
       margin-bottom: 30px;
+    }
+
+    .preview {
+      max-height: 300px;
+      position: relative;
+      border-radius: 10px;
+
+      @include m {
+        width: 100%;
+      }
     }
   }
 
