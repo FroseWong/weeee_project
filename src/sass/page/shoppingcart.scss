@@ -168,12 +168,13 @@
                         color: #666;
                         padding: 0 15px;
                         cursor: pointer;
-                        &:hover{
+
+                        &:hover {
                             color: $black;
                         }
 
                         @include m {
-                            padding: 0;
+                            padding-right: 0;
                         }
                     }
                 }
