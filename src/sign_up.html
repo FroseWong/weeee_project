@@ -17,18 +17,24 @@
                     <h1>註冊</h1>
                 
                     <form class="surform" action="sign_up.php" method="post">
+
                         <div class="email">
-                            <input type="text"  name="account" placeholder="E-mail"/>
-                            <a href=""><i class="fa-regular fa-envelope"></i></a>
+                            <i class='fa-regular fa-envelope'></i>
+                            <input type="text" name="account" placeholder="E-mail">
+                          </div>
+                          
+                        <div class="password">
+                            <input type="text"  name="password" placeholder="PassWord"/>
+                            <i class="fa-regular fa-eye"></i>
+                            <br>
+                        </div>
+                        <div class="passwordag">
+
+                            <input type="text"  name="passwordag" placeholder="Enter password again"/>
+                            <i class="fa-regular fa-eye"></i>
                             <br>
                         </div>
                         
-                        <input type="text"  name="password" placeholder="PassWord"/>
-                        <i class="fa-regular fa-eye"></i>
-                        <br>
-                        <input type="text"  name="passwordag" placeholder="請再次輸入密碼"/>
-                        <i class="fa-regular fa-eye"></i>
-                        <br>
                         <input class="submit" type="submit" value="註冊"/>
                        
                         
@@ -113,6 +119,30 @@
 
        
 </div>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+<script>
 
+jQuery(document).ready(function($) {
+	
+	$('email a').on('click', function(event) {
+		event.preventDefault();
+		
+		$('email i').toggleClass('far fa-caret-square-up');
+
+	});
+  
+  
+  $('.box2 a').on('click', function(event) {
+		event.preventDefault();
+		
+		$('.box2 i').toggleClass('fa-chevron-up');
+
+	});
+  
+  
+  
+  
+});
+</script>
 </body>
 </html>
