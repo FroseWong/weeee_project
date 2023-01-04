@@ -22,11 +22,40 @@
   <body>
     @@include('layout/header.html')
     <div class="wrapper jo_index app1">
+      <div class="black_bg" @click="openSelectbar" v-if="show_lightbox">
+      </div>
+      <div class="select_loc_box" v-if="show_select_bar">
+        
+        <h1>
+          選擇地點 
+          <i class="fa-solid fa-xmark"></i>
+        </h1>
+        <ul>
+          <li>台北</li>
+          <li>新北</li>
+          <li>基隆</li>
+          <li>宜蘭</li>
+          <li>桃園</li>
+          <li>新竹</li>
+          <li>苗栗</li>
+          <li>台中</li>
+          <li>彰化</li>
+          <li>雲林</li>
+          <li>南投</li>
+          <li>嘉義</li>
+          <li>台南</li>
+          <li>高雄</li>
+          <li>屏東</li>
+          <li>台東</li>
+          <li>花蓮</li>
+          <li>其他</li>
+        </ul>
+      </div>
       <div class="topbanner">
         <div class="container topbanner__text">
           <h1>揪遊趣!</h1>
           <p>探索揪團旅程</p>
-          <div class="search_location">
+          <div class="search_location" @click="openSelectbar">
             <i class="fa-solid fa-location-dot"></i>
             選擇地點
             <i class="fa-solid fa-chevron-down"></i>
@@ -478,7 +507,10 @@
     <script>
       let app1 = Vue.createApp({
         data() {
-          return {};
+          return {
+            show_lightbox : false,
+            show_select_bar : false,
+          };
         },
         created() {
           window.addEventListener("scroll", this.btn_show);
@@ -529,6 +561,10 @@
               window.location.assign("jo_searched.html");
             }
            
+          },
+          openSelectbar(){
+            this.show_lightbox = true;
+            this.show_select_bar = true;
           }
         },
         mounted() {

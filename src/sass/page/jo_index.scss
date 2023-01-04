@@ -1,4 +1,69 @@
 .jo_index{
+  position: relative;
+  .black_bg{
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba($color: $black, $alpha: 0.5);
+    z-index: 15;
+  }
+  .black_bg.on_watch{
+    @include m{
+      display: block;
+    }
+  }
+  .select_loc_box{
+    display: none;
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 30px;
+    background-color: $ll_gray;
+    z-index: 20;
+    border-radius: 10px;
+   
+    h1{
+      text-align: center;
+      padding-top: 20px;
+      font-weight: bold;
+      border-bottom: 2px solid $l_gray;
+      position: relative;
+      i{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: $gray;
+      }
+    }
+    ul{
+      display: flex;
+      padding: 20px;
+      padding-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      li{
+        width: 25%;
+        text-align: center;
+        padding: 3px;
+        margin: 7px;
+        font-weight: bold;
+        cursor: pointer;
+        &:hover{
+          background-color: $yellow;
+          color: $white;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .select_loc_box.on_watch{
+    display: block;
+  }
     header {
         height: 165px;
         width: 100%;
