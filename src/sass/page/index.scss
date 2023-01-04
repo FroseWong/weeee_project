@@ -19,6 +19,7 @@
 
   .index__container {
     width: 1000px;
+
     @include m {
       width: 330px;
     }
