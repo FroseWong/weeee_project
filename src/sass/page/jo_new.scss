@@ -27,8 +27,6 @@
 
     .img-space {
       position: relative;
-      // border: solid red 1px;
-      // display: inline;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -74,14 +72,10 @@
 
     .preview {
       max-height: 300px;
-      // width: 100%;
-
       position: relative;
       border-radius: 10px;
-      // background-size: cover;
+
       @include m {
-        // height: 300px;
-        // max-height: 300px;
         width: 100%;
       }
     }

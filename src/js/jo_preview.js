@@ -3,6 +3,7 @@ const saysomething__sendBtn = document.querySelector(".saysomething__send");
 const saysomething__content = document.querySelector(".saysomething__content");
 const jo__comment__list = document.querySelector(".jo__comment__list");
 const useweeee = document.querySelector(".useweeee");
+const joAddImg = document.querySelector(".jo_new__addimg");
 
 if (window.innerWidth <= 768) {
   let str = ` <div class="product-list">
@@ -38,3 +39,41 @@ $(".contact-leader").on("click", function () {
 
   $(".contact-detail").toggle(1000);
 });
+
+if (sessionStorage.getItem("joNew")) {
+  let {
+    joTitle,
+    joContent,
+    joContact,
+    joLocation,
+    joDetailAddress,
+    joNumber,
+    joStartDate,
+    joStartTime,
+    useweeee,
+    img,
+  } = JSON.parse(sessionStorage.getItem("joNew"));
+
+  // joTitleInput.value = joTitle;
+  // joContentInput.value = joContent;
+  // joContactInput.value = joContact;
+  // joLocationInput.value = joLocation;
+  // joDetailAddressInput.value = joDetailAddress;
+  // joNumberInput.value = joNumber;
+  // joStartDateInput.value = joStartDate;
+  // joStartTimeInput.value = joStartTime;
+  // useweeeeInput.value = useweeee;
+
+  if (img) {
+    let li_html = `
+  <div class="img-space">
+              <img src="${img}" class="preview">
+              <div class="delete">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    </div>`;
+
+    joAddImg.innerHTML = li_html;
+    deleteInit();
+  }
+}
