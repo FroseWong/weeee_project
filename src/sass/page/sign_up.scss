@@ -6,6 +6,9 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  @include m {
+    display: none;
+  }
 }
 
 
@@ -14,6 +17,7 @@
   padding-bottom: 20px;
   margin-top: 25px;
   margin-left: 60px;
+
 }
 
 .sur p {
@@ -86,7 +90,46 @@
   text-decoration: none;
 }
 
-.fa-regular {
+.email {
+  color: $gray;
+  position: relative; 
+  display: inline-block;
+}		
+.email .fa-regular{ /*左邊圖示*/
+  position: absolute; 			
+  right: 3px;
+  top: calc(50% - 0.5em);
+  font-size: 20px;
+  padding-bottom: 5px;
   padding-right: 10px;
+  margin: 0 auto ;
 }
 
+.password {
+  color: $gray;
+  position: relative; 
+  display: inline-block;
+}		
+.password .fa-regular{ /*左邊圖示*/
+  position: absolute; 			
+  right: 3px;
+  top: calc(50% - 0.5em);
+  font-size: 20px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  margin: 0 auto ;
+}
+.passwordag {
+  color: $gray;
+  position: relative; 
+  display: inline-block;
+}		
+.passwordag .fa-regular{ /*左邊圖示*/
+  position: absolute; 			
+  right: 3px;
+  top: calc(50% - 0.5em);
+  font-size: 20px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  margin: 0 auto ;
+}
