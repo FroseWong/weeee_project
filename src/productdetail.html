@@ -45,6 +45,7 @@
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
+        @click="field1showbtn"
       >
         <div class="modal-dialog">
           <div class="modal-content">
@@ -58,6 +59,7 @@
                   class="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
+                  @click="field1showbtn"
                 ></button>
               </div>
             </div>
@@ -134,7 +136,7 @@
       <div class="container">
         <div class="productdetail__fixedfield--container">
           <div class="productdetail__fixedfield--group">
-            <div class="productdetail__fixedfield1">
+            <div class="productdetail__fixedfield1" v-if="field1show">
               <h2>TWD {{ProductDetail.price}}</h2>
               <i class="fa-regular fa-heart" @click="heartclick"></i>
               <!-- <button class="field1_btn1">
