@@ -42,6 +42,7 @@
   .product-card {
     // width: 390px;
     height: 340px;
+    width: 100%;
     position: relative;
     cursor: pointer;
     // margin-right: 20px;
@@ -54,14 +55,15 @@
       overflow: hidden;
     }
 
-    &:hover .product-card__top__pic img {
+    &:hover .product-card__top__pic {
       transform: scale(1.2);
       @include m {
         transform: none;
       }
     }
 
-    .fa-heart, .fa-trash {
+    .fa-heart,
+    .fa-trash {
       position: absolute;
       top: 20px;
       right: 20px;
@@ -99,15 +101,20 @@
       }
 
       .product-card__top__pic {
+        width: 100%;
+        height: 100%;
+        transition: 0.3s;
         @include m {
           border-radius: 10px;
           overflow: hidden;
         }
       }
 
-      .product-card__top__pic img {
-        width: 390px;
+      .product-card__top__picsrc {
+        width: 100%;
+        height: 100%;
         transition: all 0.3s;
+        background-size: cover;
         @include m {
           width: auto;
         }

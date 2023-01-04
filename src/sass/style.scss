@@ -202,3 +202,39 @@ select:focus {
 .noHover {
   pointer-events: none;
 }
+
+/*麵包屑*/
+.breadcrumbList {
+  margin-top: 5px;
+  .breadcrumb {
+    display: flex;
+    li {
+      padding: 20px 15px 20px 0px;
+      &::before {
+        content: ">";
+        color: $blue;
+        padding-right: 15px;
+      }
+
+      &:first-child::before {
+        content: "";
+      }
+
+      &:last-child {
+        color: $orange;
+      }
+    }
+
+    a {
+      color: $blue;
+      font-weight: 100;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+}

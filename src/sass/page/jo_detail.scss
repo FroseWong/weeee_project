@@ -193,6 +193,16 @@
     align-items: center;
     margin-bottom: 35px;
     border-radius: 10px;
+
+    .product-card__top__picsrc {
+      &.p1 {
+        background-image: url("../../img/sightseeing/fr_28_1.jpg");
+      }
+    }
+
+    .product-card {
+      margin: 0;
+    }
   }
 
   .saysomething__title {
