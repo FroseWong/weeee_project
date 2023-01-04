@@ -15,7 +15,7 @@
 
 
 
-.sur h1 {
+.sur h3 {
   padding-bottom: 20px;
   margin-top: 25px;
   margin-left: 60px;
@@ -24,26 +24,28 @@
 
 .sur p {
 
-  margin-left: 72px;
+  display: block;
+ 
 }
 
 .container.sign_up{
   width: 100%;
   height: 100%;
-  padding-top: 5%;
-  padding-left: 50%;
+  padding-top: 7%;
+
+  padding-left: 45%;
   
 }
 
 .sur{
 
   
-  width: 567px;
-  height: 599px;
+  width: 370px;
+  height: 400px;
 
   
 
-  padding-top: 10px;
+  padding-top: 3px;
 
   border-radius: 20px;
   background-color: $white;
@@ -59,15 +61,14 @@
 
 .sur form {
   padding-left: 69px;
-  padding-top: 20px;
-  margin-top: 30px;
+ 
   line-height: 2.4;
   padding-bottom: 10px;
 }
 
 .surform input {
-  width: 411px;
-  height: 59px;
+  width: 242px;
+  height: 52px;
   margin-bottom: 10px;
   font-size: 20px;
   border: 1px solid $gray;
@@ -90,7 +91,8 @@
 
 .formbuttom {
   display: flex;
-  flex-direction: row;
+  
+  justify-content: space-around;
   margin: 0 auto;
 }
 
@@ -99,8 +101,7 @@
 
 
   color: $orange;
-  margin-left: 230px;
-  margin-bottom: 20px;
+
   text-align: center;
   text-decoration: none;
 }
