@@ -20,13 +20,14 @@
                 }
 
                 li {
-                    // display: inline-block;
+                    color: #666;
                 }
 
                 li:before {
                     content: ">";
                     margin: 0 10px;
-
+                    color: #666;
+                    font-weight: normal;
                 }
             }
         }
@@ -102,7 +103,7 @@
                     padding: 0 15px;
 
                     @include m {
-                        width: 45%;
+                        width: 50%;
                     }
 
                     a {
@@ -253,8 +254,14 @@
 
 
         .most_buy {
+            a{
+                background-color: transparent;
+            }
             h5 {
                 font-weight: bold;
+            }
+            .product-name, .product-price, .price{
+                color: $black;
             }
         }
     }
