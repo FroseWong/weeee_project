@@ -18,12 +18,16 @@
             background-color: #4484CE;
             color: rgb(255, 255, 255);
         }
+        .page-link--current{
+            background-color: #4484CE;
+            color: rgb(255, 255, 255);
+        }
     </style>
 </head>
 
 <body>
   @@include('layout/header.html')
-x
+
     <div class="wrapper" id="app">
         <!-- <header class="productdetail__header"></header> -->
         <div class="headerpage"></div>
@@ -139,7 +143,7 @@ x
                             src: "img//otherpage/fa_10_1.jpg",
                             title: '家庭行程動物園',
                             label: '家庭行程',
-                            content: '超過 12 種動物主題區，適合大小朋友一起探索大自然的奧妙',
+                            content: '適合大小朋友一起探索大自然的奧妙',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 350,
@@ -151,7 +155,7 @@ x
                             src: "img//otherpage/fr_11_1.jpg",
                             title: '朋友行程動物園',
                             label: '朋友行程',
-                            content: '超過 12 種動物主題區，適合大小朋友一起探索大自然的奧妙',
+                            content: '適合大小朋友一起探索大自然的奧妙',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 1750,
@@ -175,7 +179,7 @@ x
                             src: "img//otherpage/co_13_1.jpg",
                             title: '情侶行程101',
                             label: '情侶行程',
-                            content: '91樓戶外觀景台天空草原野餐場地，在海拔400公尺的高空之上來場Chill的「天際之旅」。',
+                            content: '在海拔400公尺的高空之上來場Chill的「天際之旅」。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 150,
@@ -186,7 +190,7 @@ x
                             src: "img//otherpage/fr_14_1.jpg",
                             title: '朋友行程101',
                             label: '朋友行程',
-                            content: '91樓戶外觀景台天空草原野餐場地，在海拔400公尺的高空之上來場Chill的「天際之旅」。',
+                            content: '在海拔400公尺的高空之上來場Chill的「天際之旅」。',
                             score: 4.5,
                             scorepeople: '(2300)',
                             order: 150,
@@ -283,7 +287,15 @@ x
      $(".about2__sort ul").on("click","li",function() {
         $(".about2__sort ul li").removeClass("active1");
         $(this).addClass("active1");
-       })</script>
+       })
+
+
+$(".page1 ul li ").on("click","a",function() {
+    $(".page1 ul li a").removeClass("page-link--current");
+   $(this).addClass("page-link--current");
+   });
+   
+   </script>
 </body>
 @@include('layout/footer.html')
 </html>
