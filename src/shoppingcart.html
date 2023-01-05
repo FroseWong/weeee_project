@@ -99,7 +99,7 @@
                 <div class="product_group">
                     <div class="product_item">
 
-                        <div class="checkbox"><input type="checkbox"></div>
+                        <div class="checkbox"><input type="checkbox" class="check_item"></div>
 
                         <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
 
@@ -122,7 +122,7 @@
                     </div>
 
                     <div class="product_item">
-                        <div class="checkbox"><input type="checkbox"></div>
+                        <div class="checkbox"><input type="checkbox" class="check_item"></div>
 
                         <a href="" class="product-image"><img src="img/sightseeing/fr_27_1.jpg" alt=""></a>
 
@@ -145,7 +145,7 @@
 
                     </div>
                     <div class="product_item">
-                        <div class="checkbox"><input type="checkbox"></div>
+                        <div class="checkbox"><input type="checkbox" class="check_item"></div>
 
                         <a href="" class="product-image"><img src="img/sightseeing/fr_27_1.jpg" alt=""></a>
 
@@ -168,7 +168,7 @@
 
                     </div>
                     <div class="product_item">
-                        <div class="checkbox"><input type="checkbox"></div>
+                        <div class="checkbox"><input type="checkbox" class="check_item"></div>
 
                         <a href="" class="product-image"><img src="img/sightseeing/fr_27_1.jpg" alt=""></a>
 
@@ -191,7 +191,7 @@
 
                     </div>
                     <div class="product_item">
-                        <div class="checkbox"><input type="checkbox"></div>
+                        <div class="checkbox"><input type="checkbox" class="check_item"></div>
 
                         <a href="" class="product-image"><img src="img/sightseeing/fr_27_1.jpg" alt=""></a>
 
@@ -221,7 +221,7 @@
                 <div class="cart_footer">
                     <div class="checkall">
                         <label for="checkall"><input type="checkbox" name="checkall" id="checkall">全選</label>
-                        <a href="">刪除已選項目</a>
+                        <a href="" id="delete_checked">刪除已選項目</a>
                     </div>
                     <div class="cart_footer_right">
                         <div class="cart_total">
@@ -376,9 +376,24 @@
 
             $(".cart_delete").click(function () {
                 $(this).closest(".product_item").remove();
-
             });
 
+
+            // ==================check box================================
+            $("#checkall").on("click", function () {
+                //console.log( $(this).prop("checked") );
+                $("input.check_item").prop("checked", $(this).prop("checked"));
+            });
+
+            $("input.check_item").on("click", function () {
+                $("#checkall").prop("checked", $("input.check_item:checked").length == $("input.check_item").length);
+            });
+
+            $("#delete_checked").on("click", function (e) {
+                event.preventDefault(e);
+                $("input.check_item:checked").closest(".product_item").remove();
+            })
+            
         });
 
 
