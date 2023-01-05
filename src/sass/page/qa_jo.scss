@@ -200,7 +200,7 @@ body.stop_scroll{
     align-items: center;
   }
   .qa_jo_title {
-    margin-top: 125px;
+    margin-top: 40px;
     @include m{
       display: none;
     }
@@ -237,7 +237,7 @@ body.stop_scroll{
       @include m{
         margin-bottom: 0;
         width: 100%;
-        position: absolute;
+       
         left: 0;
         right: 0;
         top: 45px;
@@ -320,6 +320,7 @@ body.stop_scroll{
           color: $white;
         }
         @include m{
+          padding-left: 12px;
           width: 100%;
         }
         .fa-solid {
