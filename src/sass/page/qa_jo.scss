@@ -238,7 +238,7 @@ body.stop_scroll{
       @include m{
         margin-bottom: 0;
         width: 100%;
-        position: absolute;
+       
         left: 0;
         right: 0;
         top: 50px;
@@ -321,6 +321,7 @@ body.stop_scroll{
           color: $white;
         }
         @include m{
+          padding-left: 12px;
           width: 100%;
         }
         .fa-solid {
