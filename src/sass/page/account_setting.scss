@@ -103,6 +103,12 @@
                 }
             }
         }
+        .breadcrumb{
+            margin-left: 90px;
+            @include m{
+                display: none;
+            }
+        }
         //以上為重複使用
         .content{
             margin-left: 50px;
