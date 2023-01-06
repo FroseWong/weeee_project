@@ -24,7 +24,7 @@
 
 <body>
   @@include('layout/header.html')
-  <div class="wrapper" id="app" >
+  <div class="wrapper" id="app">
     <div v-cloak>
       <!-- <input id="datetimepicker" type="text"> -->
       <!---------------bs-modal--------------->
@@ -106,7 +106,7 @@
           <div class="productdetail-fixedfield-group">
             <div class="productdetail-fixedfield1" v-if="field1Show">
               <h2>TWD {{ProductDetail.price}}</h2>
-              <i class="fa-regular fa-heart" @click="heart_click"></i>
+              <i class="fa-heart" :class=`fa-${faHeart}` @click="heart_click"></i>
               <!-- <button class="field1_btn1">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
@@ -184,11 +184,11 @@
               </ul>
             </div>
             <!---------------商品說明--------------->
-            <div class="productdetail-operate" v-if="winsizeBoolean">
+            <div class="productdetail-operate" v-if="winsizeBoolean" ref="Operate">
               <span @click="open">{{operate}}</span>
-              <i class="fa-solid fa-angle-up"></i>
+              <i class="fa-solid" :class=`fa-angle-${faAngle}`></i>
             </div>
-            <div class="productdetail-directions-group productdetail-open">
+            <div class="productdetail-directions-group" v-bind:class="{'productdetail-none':openCtrlnone}">
               <div class="productdetail-directions">
                 <h3 class="pd_h3">商品說明</h3>
                 <p>{{ProductDetail.Text}}</p>
@@ -199,14 +199,14 @@
               </div>
             </div>
             <!---------------購買須知--------------->
-            <div class="productdetail-notice">
+            <div class="productdetail-notice" ref="Notice">
               <h3 class="pn_h3">購買須知</h3>
               <ul class="productdetail-notice-list">
                 <li v-for="noticeList in noticeLists">{{noticeList}}</li>
               </ul>
             </div>
             <!-- ---------------體驗地點--------------- -->
-            <div class="productdetail-address">
+            <div class="productdetail-address" ref="Address">
               <h3 class="pa_h3">體驗地點</h3>
               <h5>地址 👇</h5>
               <div class="productdetail-addressdetail">
@@ -218,7 +218,7 @@
                 :referrerpolicy="googleMap.referrerpolicy"></iframe>
             </div>
             <!-- ---------------旅客評價--------------- -->
-            <div class="product-review">
+            <div class="product-review" ref="Review">
               <h3>旅客評價</h3>
               <div class="product-review-group">
                 <div class="product-review-score">

@@ -304,7 +304,7 @@
     }
     // ---------------scrollToTop---------------
     .productdetail-scrollToTop {
-      background-color: $blue;
+      background-color: #4484ce7a;
       cursor: pointer;
       width: 40px;
       height: 40px;
@@ -334,6 +334,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   @include m {
     margin: 0 0;
   }
@@ -668,6 +669,8 @@
   }
   width: 100px;
   height: 100px;
+  position: absolute;
+  right: 0;
   @include m{
     display: none;
   }

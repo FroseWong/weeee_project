@@ -1,5 +1,5 @@
 const { createApp } = Vue;
-
+// ---------------aa---------------
 createApp({
   data() {
     return {
@@ -181,41 +181,62 @@ createApp({
       field1Show: true,
       winSize: 0,
       winsizeBoolean: true,
+      openCtrlnone: false,
+      faAngle: "up",
+      faHeart: "regular",
+      productdetailOperate: 0,
+      productdetailNotice: 0,
+      productdetailAddress: 0,
+      productReview: 0,
     };
   },
-  // ---------------aa---------------
+  // ---------------bb---------------
   methods: {
     // ---------------開闔商品說明---------------
     open() {
-      let directions = document.getElementsByClassName(
-        "productdetail-directions-group"
-      )[0].classList;
-      let fa = document.getElementsByClassName("productdetail-operate")[0]
-        .children[1].classList;
-      if (directions.contains("productdetail-open")) {
-        directions.remove("productdetail-open");
-        directions.add("productdetail-none");
-        this.operate = "看完整商品說明 ";
-        fa.remove("fa-angle-up");
-        fa.add("fa-angle-down");
-      } else {
-        directions.remove("productdetail-none");
-        directions.add("productdetail-open");
-        this.operate = "收起商品說明 ";
-        fa.remove("fa-angle-down");
-        fa.add("fa-angle-up");
-      }
+      // let directions = document.getElementsByClassName(
+      //   "productdetail-directions-group"
+      // )[0].classList;
+      // let fa = document.getElementsByClassName("productdetail-operate")[0]
+      //   .children[1].classList;
+      // if (directions.contains("productdetail-open")) {
+      //   directions.remove("productdetail-open");
+      //   directions.add("productdetail-none");
+      //   this.operate = "看完整商品說明 ";
+      //   fa.remove("fa-angle-up");
+      //   fa.add("fa-angle-down");
+      // } else {
+      //   directions.remove("productdetail-none");
+      //   directions.add("productdetail-open");
+      //   this.operate = "收起商品說明 ";
+      //   fa.remove("fa-angle-down");
+      //   fa.add("fa-angle-up");
+      // }
+      this.openCtrlnone = !this.openCtrlnone;
+      this.openCtrlnone == false
+        ? (this.operate = "收起商品說明 ")
+        : (this.operate = "看完整商品說明");
+      this.openCtrlnone == false
+        ? (this.faAngle = "up")
+        : (this.faAngle = "down");
+      // console.log(this.$refs.Operate.offsetTop);
+      // console.log(this.$refs.Notice.offsetTop);
+      // console.log(this.$refs.Address.offsetTop);
+      // console.log(this.$refs.Review.offsetTop);
     },
     // ---------------橘心---------------
-    heart_click(e) {
-      let list = e.target.classList;
-      if (list.contains("fa-regular")) {
-        list.add("fa-solid");
-        list.remove("fa-regular");
-      } else {
-        list.remove("fa-solid");
-        list.add("fa-regular");
-      }
+    heart_click() {
+      // let list = e.target.classList;
+      // if (list.contains("fa-regular")) {
+      //   list.add("fa-solid");
+      //   list.remove("fa-regular");
+      // } else {
+      //   list.remove("fa-solid");
+      //   list.add("fa-regular");
+      // }
+      this.faHeart == "solid"
+        ? (this.faHeart = "regular")
+        : (this.faHeart = "solid");
     },
     // ---------------Totop---------------
     scroll_totop() {
@@ -230,21 +251,28 @@ createApp({
       let directions = document.getElementsByClassName(
         "productdetail-directions-group"
       )[0].classList;
-      let fa = document.getElementsByClassName("productdetail-operate")[0]
-        .children[1].classList;
-      directions.remove("productdetail-none");
-      directions.add("productdetail-open");
-      this.operate = "收起商品說明 ";
-      fa.remove("fa-angle-down");
-      fa.add("fa-angle-up");
-      let num = document.getElementById(e).offsetTop;
-      let pd = document.getElementsByClassName("productdetail-operate")[0]
-        .offsetTop;
-      let pn = document.getElementsByClassName("productdetail-notice")[0]
-        .offsetTop;
-      let pa = document.getElementsByClassName("productdetail-address")[0]
-        .offsetTop;
-      let pv = document.getElementsByClassName("product-review")[0].offsetTop;
+      // this.openCtrlnone = false;
+      // directions.remove("productdetail-none");
+      // directions.add("productdetail-open");
+      // this.operate = "收起商品說明 ";
+      // fa.remove("fa-angle-down");
+      // fa.add("fa-angle-up");
+      this.operate = "收起商品說明";
+      this.faAngle = "up";
+
+      // let num = document.getElementById(e).offsetTop;
+      // let pd = document.getElementsByClassName("productdetail-operate")[0]
+      //   .offsetTop;
+      // let pn = document.getElementsByClassName("productdetail-notice")[0]
+      //   .offsetTop;
+      // let pa = document.getElementsByClassName("productdetail-address")[0]
+      //   .offsetTop;
+      // let pv = document.getElementsByClassName("product-review")[0].offsetTop;
+
+      let pd = this.$refs.Operate.offsetTop;
+      let pn = this.$refs.Notice.offsetTop;
+      let pa = this.$refs.Address.offsetTop;
+      let pv = this.$refs.Review.offsetTop;
       switch (e) {
         case "f1":
           num = pd - 120;
@@ -524,4 +552,4 @@ createApp({
     // this.axios_post();
   },
 }).mount("#app");
-// ---------------aaa---------------
+// ---------------cc---------------
