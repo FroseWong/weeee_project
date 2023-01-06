@@ -18,8 +18,11 @@
       width: 350px ;
       display: none;
     }
-    .privacy-btn{
+  
+  .privacy-btn{
+     
       @include m{
+       
        font-size: 16px;
       }
     }
@@ -58,7 +61,7 @@
       padding-top: 30px;
       padding-left: 20px;
       padding-right: 20px;
-    background-color: $l_gray;
+ 
       display: flex;
       flex-direction: column;
     .content__right__time{
