@@ -1,12 +1,19 @@
-@mixin desktop {
-  @media all and (max-width: $desktop_breakpoint) {
+@mixin xxl {
+  @media all and (max-width: $xxl_breakpoint) {
     // 桌電斷點
     @content;
   }
 }
 
-@mixin pc {
-  @media all and (max-width: $pc_breakpoint) {
+@mixin xl {
+  @media all and (max-width: $xl_breakpoint) {
+    // 筆電
+    @content;
+  }
+}
+
+@mixin lg {
+  @media all and (max-width: $lg_breakpoint) {
     // 筆電
     @content;
   }
@@ -14,6 +21,13 @@
 
 @mixin m {
   @media all and (max-width: $m_breakpoint) {
+    //手機板
+    @content;
+  }
+}
+
+@mixin sm {
+  @media all and (max-width: $sm_breakpoint) {
     //手機板
     @content;
   }
