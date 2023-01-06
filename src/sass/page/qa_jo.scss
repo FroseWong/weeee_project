@@ -198,9 +198,10 @@ body.stop_scroll{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
   }
   .qa_jo_title {
-    margin-top: 125px;
+    margin-top: 30px;
     @include m{
       display: none;
     }
@@ -217,7 +218,7 @@ body.stop_scroll{
   .qa_jo__barcard {
     display: flex;
     max-width: 1100px;
-    margin-top: 75px;
+    margin-top: 30px;
     @include m{
       flex-direction: column;
       margin-top: 0;
@@ -237,10 +238,10 @@ body.stop_scroll{
       @include m{
         margin-bottom: 0;
         width: 100%;
-        position: absolute;
+       
         left: 0;
         right: 0;
-        top: 45px;
+        top: 50px;
         display: none;
 
       }
@@ -261,7 +262,7 @@ body.stop_scroll{
         @include m{
           width: 100%;
           // padding-top: 10px;
-          line-height: 40px;
+          line-height: 60px;
 
   
         }
@@ -289,8 +290,8 @@ body.stop_scroll{
       ul{
         li{
           @include m{
-            margin-top: 10px;
             padding-top: 0;
+            margin-top: 10px;
             height: 40px;
             line-height: 40px;
             margin-left: 10px;
@@ -320,6 +321,7 @@ body.stop_scroll{
           color: $white;
         }
         @include m{
+          padding-left: 12px;
           width: 100%;
         }
         .fa-solid {
@@ -328,13 +330,21 @@ body.stop_scroll{
         }
       }
       ul{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
         @include m{
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: start;
         }
         li{
-          width: 100%;
+          width: 50%;
+          @include m{
+            width: 50%;
+            line-height: 60px;
+            
+          }
         }
       }
     }
@@ -366,7 +376,7 @@ body.stop_scroll{
         height: 250px;
         @include m{
           width: 370px;
-      
+          height: 200px;
         }
       }
     }
@@ -376,11 +386,14 @@ body.stop_scroll{
       flex-direction: column;
       align-items: flex-start;
       padding: 0 30px;
+      position: relative;
       @include m{
         padding: 0;
       }
       .qa_jo__title{
         display: none;
+        
+        
       }
       h1 {
         font-weight: bold;
@@ -397,18 +410,23 @@ body.stop_scroll{
         background-color: $orange;
         padding: 3px;
         margin-top: 20px;
+        
         @include m{
           margin-top: 10px;
         }
       }
       div {
         display: flex;
+        margin-top: 20px;
+        
         @include m{
           display: inline;
         }
         h3 {
           color: $yellow;
-          line-height: 48px;
+          font-size: 30px;
+          line-height: 20px;
+          
           @include m{
             font-size: 14px;
             display: inline;
@@ -417,20 +435,22 @@ body.stop_scroll{
         h4 {
           color: #747774;
           font-size: 16px;
-          line-height: 48px;
+          line-height: 20px;
+          
           @include m{
             font-size: 14px;
             display: inline;
           }
         }
         h5 {
-          padding-top: 75px;
           font-weight: bold;
           font-size: 20px;
-          line-height: 8px;
-          margin-left: 135px;
+          line-height: 20px;
+          
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
           @include m{
-            padding: 0;
             margin-left:0;
             font-size: 14px;
             display: block;

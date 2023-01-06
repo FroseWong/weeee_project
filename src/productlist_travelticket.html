@@ -13,6 +13,9 @@
       referrerpolicy="no-referrer"
     />
     <title>Document</title>
+    <style>
+     
+    </style>
   </head>
 
   <body>
@@ -109,7 +112,7 @@
                 </div>
               </template>
             </div>
-            <nav>
+            <nav class="page1">
               <ul class="qa_jo__pagination">
                 <li class="qa_jo__page-item">
                   <a class="qa_jo__page-link qa_jo__page-link--current" href="#"
@@ -117,11 +120,9 @@
                   >
                 </li>
                 <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">2</a>
+                  <a class="qa_jo__page-link " href="#">2</a>
                 </li>
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">3</a>
-                </li>
+              
               </ul>
             </nav>
           </div>
@@ -252,72 +253,7 @@
                 price: 500,
                 city: "北北基",
                 cardid: 2,
-              },
-              {
-                src: "./img/otherpage/un_7_1.jpg",
-                title: "無限暢遊卡三日遊",
-                label: "無限暢遊卡",
-                content: "只要一張無限暢遊卡，就能暢遊北北基的熱門景點",
-                score: 4.5,
-                scorepeople: "(2300)",
-                order: 350,
-                price: 850,
-                city: "北北基",
-                cardid: 3,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/vi_3_1.jpg",
-                title: "景點暢遊卡二日遊",
-                label: "景點暢遊卡",
-                content: "讓旅遊比你想的更輕鬆無負擔,內含北北基景點門票。",
-                score: 4.5,
-                scorepeople: "(2300)",
-                order: 1750,
-                price: 600,
-                city: "北北基",
-                cardid: 4,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_5_1.jpg",
-                title: "交通暢遊卡二日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 4.5,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 600,
-                city: "北北基",
-                cardid: 5,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_6_3.jpg",
-                title: "交通暢遊卡三日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 4.5,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 850,
-                city: "北北基",
-                cardid: 6,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/cl_8_1.jpg",
-                title: "經典暢遊卡 ",
-                label: "經典暢遊卡",
-                content: "漫遊台北城的最來旅行台北的最佳體驗。",
-                score: 4.5,
-                scorepeople: "(2300)",
-                order: 1000,
-                price: 650,
-                city: "北北基",
-                cardid: 1,
-                vif: true,
-              },
+              }
             ],
             prices: [
               "TWD 2,000~3,999",
@@ -330,17 +266,7 @@
               "基隆",
               "台北",
               "新北",
-              "桃園",
-              "新竹",
-              "苗栗",
-              "台中",
-              "彰化",
-              "南投",
-              "雲林",
-              "嘉義",
-              "台南",
-              "高雄",
-              "屏東",
+              
             ],
             cityshow: false,
             pricelist: [],
@@ -555,6 +481,11 @@
 
         mounted() {},
       }).mount("#app");
+
+      $(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("qa_jo__page-link--current");
+        $(this).addClass("qa_jo__page-link--current");
+        });
     </script>
   </body>
 </html>

@@ -11,6 +11,13 @@
   />
   <link rel="stylesheet" href="./css/style.css" />
   <!-- <link rel="stylesheet" href="./css/terms.css"> -->
+  <style>
+    a{
+    
+      color: #000;
+    }
+    
+  </style>
 </head>
 <body>
   @@include('layout/header.html')
@@ -26,8 +33,10 @@
  
           <div class="content container"> 
           <div class="content__left">
-            <div href="#" class="privacy-btn"> 使用者條款</div>
-            <div href="#" class="user-btn active">隱私權政策</div>
+            <div ><a class="privacy-btn" href="./terms_of_use.html">使用者條款</a> </div>
+            <br>
+           
+            <div href="./privacy_policy.html" ><a class="user-btn active" href="./privacy_policy.html"> 隱私權政策</a></div>
         </div> 
 
       
@@ -69,7 +78,7 @@
                 2.5基於正當利益
               </span>
 
-                <h2 class="title">  3.我們如何蒐集個人資料／蒐集哪些個人資料</h2>
+                <h5 class="title">  3.我們如何蒐集個人資料／蒐集哪些個人資料</h5>
 
                 <span class="inner"> 3.1由您主動提供
                   我們將取得您於Weeee!網站，或經由電話、信件、電子郵件、通訊軟體或其他方式提供的個人資料，包含：</span>
