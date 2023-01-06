@@ -18,8 +18,11 @@
       width: 350px ;
       display: none;
     }
-    .privacy-btn{
+  
+  .privacy-btn{
+     
       @include m{
+       
        font-size: 16px;
       }
     }
