@@ -480,6 +480,11 @@
 
         mounted() {},
       }).mount("#app");
+
+      $(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("qa_jo__page-link--current");
+        $(this).addClass("qa_jo__page-link--current");
+        });
     </script>
   </body>
 </html>
