@@ -123,7 +123,7 @@ h6 {
   font-size: $pc_h6;
 }
 
-@include pc {
+@include xl {
   // 1200以內
 }
 
@@ -205,7 +205,7 @@ select:focus {
 
 /*麵包屑*/
 .breadcrumbList {
-  margin-top: 5px;
+  // margin-top: 5px;
   .breadcrumb {
     display: flex;
     li {

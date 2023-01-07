@@ -13,6 +13,8 @@
       referrerpolicy="no-referrer"
     />
     <title>Document</title>
+    <style>
+   </style>
   </head>
 
   <body>
@@ -109,7 +111,7 @@
                 </div>
               </template>
             </div>
-            <nav>
+            <nav class="page1">
               <ul class="qa_jo__pagination">
                 <li class="qa_jo__page-item">
                   <a class="qa_jo__page-link qa_jo__page-link--current" href="#"
@@ -119,9 +121,7 @@
                 <li class="qa_jo__page-item">
                   <a class="qa_jo__page-link" href="#">2</a>
                 </li>
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">3</a>
-                </li>
+               
               </ul>
             </nav>
           </div>
@@ -331,16 +331,7 @@
               "台北",
               "新北",
               "桃園",
-              "新竹",
-              "苗栗",
-              "台中",
-              "彰化",
-              "南投",
-              "雲林",
-              "嘉義",
-              "台南",
-              "高雄",
-              "屏東",
+           
             ],
             cityshow: false,
             pricelist: [],
@@ -555,6 +546,12 @@
 
         mounted() {},
       }).mount("#app");
+
+
+      $(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("qa_jo__page-link--current");
+        $(this).addClass("qa_jo__page-link--current");
+        });
     </script>
   </body>
 </html>

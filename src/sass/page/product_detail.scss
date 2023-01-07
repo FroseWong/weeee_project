@@ -2,7 +2,7 @@
 #peopleModal {
   z-index: 99999;
 }
-.productdetail__modal--header {
+.productdetail-modal-header {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -22,14 +22,14 @@
     margin: 0;
   }
 }
-.productdetail__modal--group {
+.productdetail-modal-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
   // ---------------modal_日期---------------
-  .productdetail__modal--top {
+  .productdetail-modal-top {
     .xdsoft_datetimepicker {
       border: 0;
     }
@@ -72,7 +72,7 @@
     }
   }
   // ---------------modal_人數---------------
-  .productdetail__modal--mid {
+  .productdetail-modal-mid {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -108,7 +108,7 @@
     }
   }
   // ---------------modal_點數---------------
-  .productdetail__modal--bot {
+  .productdetail-modal-bot {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -128,7 +128,7 @@
           padding: 0 0 0 20px;
         }
       }
-      .productdetail__modal--points {
+      .productdetail-modal-points {
         display: flex;
         width: auto;
       }
@@ -141,7 +141,7 @@
     }
   }
 }
-.productdetail__modal--footer {
+.productdetail-modal-footer {
   button {
     width: 100px;
     height: 35px;
@@ -149,58 +149,28 @@
     border: 0;
     border-radius: 5px;
   }
-  .productdetail__modal--secondary {
+  .productdetail-modal-secondary {
     background-color: $blue;    
     margin-right: 25px;
   }
-  .productdetail__modal--primary {
+  .productdetail-modal-primary {
     background-color: $orange;
   }
 }
-// ---------------麵包屑---------------
-.productdetail__breadcrumb {
-  display: flex;
-  margin: 0 0 10px 0;
-  .productdetail__breadcrumb__item:after {
-    content: ">";
-  }
-  @include m {
-    display: none;
-  }
-  .productdetail__breadcrumb__item {
-    a {
-      &:visited,
-      &:active,
-      &:link,
-      &hover {
-        color: $blue;
-      }
-    }
-  }
-  .productdetail__breadcrumb__item--current {
-    a {
-      &:visited,
-      &:active,
-      &:link,
-      &hover {
-        color: $orange;
-      }
-    }
-  }
-}
+
 // ---------------右邊固定框---------------
-.productdetail__fixedfield--container {
+.productdetail-fixedfield-container {
   display: flex;
   justify-content: space-between;
   margin: 0 30px;
   @include m {
     flex-direction: column;
   }
-  .productdetail__fixedfield--group {
+  .productdetail-fixedfield-group {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    margin-left: 50px;
+    // margin-left: 50px;
     align-items: center;
     order: 2;
     @include m {
@@ -212,7 +182,7 @@
       width: auto;
     }
     // ---------------立即確認按鈕---------------
-    .productdetail__fixedfield1 {
+    .productdetail-fixedfield1 {
       background-color: $white;
       width: 300px;
       max-height: 200px;
@@ -252,13 +222,13 @@
         }
       }
 
-      .field1_btn1 {
+      .field1-btn1 {
         background-color: $blue;
         @include m {
           display: none;
         }
       }
-      .field1_btn2 {
+      .field1-btn2 {
         background-color: $blue;
         display: none;
         @include m {
@@ -267,7 +237,7 @@
           margin-right: 20px;
         }
       }
-      .field1_btn3 {
+      .field1-btn3 {
         background-color: $orange;
         display: none;
         @include m {
@@ -301,7 +271,7 @@
       }
     }
     // ---------------右側四選項---------------
-    .productdetail__fixedfield2 {
+    .productdetail-fixedfield2 {
       background-color: $white;
       width: 200px;
       height: 200px;
@@ -333,8 +303,8 @@
       }
     }
     // ---------------scrollToTop---------------
-    .productdetail__scrollToTop {
-      background-color: $blue;
+    .productdetail-scrollToTop {
+      background-color: #4484ce7a;
       cursor: pointer;
       width: 40px;
       height: 40px;
@@ -355,15 +325,16 @@
   }
 }
 
-.productdetail__container {
+.productdetail-container {
   max-width: 800px;
 }
 // ---------------商品標題---------------
-.productdetail__title {
+.productdetail-title {
   margin: 10px 0 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   @include m {
     margin: 0 0;
   }
@@ -385,7 +356,7 @@
   }
 }
 // ---------------商品資訊---------------
-.productdetail__content {
+.productdetail-content {
   i {
     font-size: $pc_h6;
     margin-right: 10px;
@@ -412,7 +383,7 @@
   }
 }
 // ---------------行程時間---------------
-.productdetail__time {
+.productdetail-time {
   margin-top: 25px;
   margin-bottom: 35px;
   padding: 15px 0 15px 0;
@@ -433,7 +404,7 @@
   }
 }
 // ---------------商品介紹---------------
-.productdetail__list {
+.productdetail-list {
   ul {
     margin-left: 20px;
     li {
@@ -445,7 +416,7 @@
   }
 }
 // ---------------商品說明---------------
-.productdetail__operate {
+.productdetail-operate {
   border-bottom: 1px solid $l_gray;
   margin-top: 70px;
   margin-bottom: 35px;
@@ -462,7 +433,7 @@
     color: $blue;
   }
 }
-.productdetail__directions {
+.productdetail-directions {
   margin-bottom: 100px;
   h3 {
     font-weight: bold;
@@ -475,7 +446,7 @@
     line-height: 40px;
   }
 }
-.productdetail__img {
+.productdetail-img {
   p {
     font-size: 14px;
     font-weight: bold;
@@ -492,13 +463,13 @@
   }
 }
 // ---------------購買須知---------------
-.productdetail__notice {
+.productdetail-notice {
   h3 {
     font-weight: bold;
     margin-bottom: 30px;
     font-size: $pc_h4;
   }
-  .productdetail__notice__list {
+  .productdetail-notice-list {
     max-width: 800px;
     background-color: #f4f4f4;
     padding: 50px;
@@ -515,7 +486,7 @@
   }
 }
 // ---------------體驗地點---------------
-.productdetail__address {
+.productdetail-address {
   h3 {
     font-weight: bold;
     margin-top: 100px;
@@ -543,7 +514,7 @@
   }
 }
 // ---------------旅客評價---------------
-.productreview {
+.product-review {
   border-top: 1px solid $l_gray;
   border-bottom: 1px solid $l_gray;
   margin: 30px 0 30px 0;
@@ -552,10 +523,10 @@
     font-weight: bold;
     font-size: $pc_h4;
   }
-  .productreview__group {
+  .product-review-group {
     display: flex;
     align-items: flex-end;
-    .productreview__score {
+    .product-review-score {
       background-color: $blue;
       width: 65px;
       height: 65px;
@@ -569,25 +540,19 @@
         line-height: 65px;
       }
     }
-    .productreview__star {
+    .product-review-star {
       display: flex;
       flex-direction: column;
-      .star__color {
+      .star-color {
         color: $yellow;
         font-size: $pc_h3;
       }
     }
   }
 }
-// .ping-big {
-//   border-top: 1px solid $orange;
-//   border-bottom: 1px solid $orange;
-//   margin-top: 50px;
-//   margin-bottom: 50px;
-//   padding: 30px 0 30px 0;
-// }
+
 // ---------------留言---------------
-.productdetail__message {
+.productdetail-message {
   margin: 30px 0 50px 0;
   span {
     font-size: $pc_h4;
@@ -597,7 +562,7 @@
     font-size: 14px;
   }
 
-  .productdetail__message_text {
+  .productdetail-message-text {
     margin-left: 40px;
     p {
       font-size: $pc_h3;
@@ -613,7 +578,7 @@
   }
 }
 // ---------------下方輪播卡---------------
-.productdetail__bot {
+.productdetail-bot {
   display: flex;
   justify-content: center;
   // width: 100%;
@@ -625,20 +590,20 @@
   }
 }
 
-.productdetail__open {
+.productdetail-open {
   transition: 2s;
   display: block;
 }
-.productdetail__none {
+.productdetail-none {
   transition: 2s;
   display: none;
 }
-.productdetail__directions--group {
+.productdetail-directions-group {
   transition: 0.8s;
 }
 
 // ---------------上方輪播---------------
-.productdetail__slideshow {
+.productdetail-slideshow {
   .mySlidesFlex {
     z-index: 100;
     img {
@@ -658,7 +623,7 @@
 
 
 // ---------------愛心---------------
-.productdetail__small {
+.productdetail-small {
   .flex-container {
     max-width: 300px;
     min-height: 300px;
@@ -704,6 +669,8 @@
   }
   width: 100px;
   height: 100px;
+  position: absolute;
+  right: 0;
   @include m{
     display: none;
   }

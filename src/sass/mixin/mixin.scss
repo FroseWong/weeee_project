@@ -1,20 +1,34 @@
-@mixin desktop {
-  @media all and (max-width: $desktop_breakpoint) {
-    // 桌電斷點
+@mixin xxl {
+  @media all and (max-width: $xxl_breakpoint) {
+    // 1400px以內
     @content;
   }
 }
 
-@mixin pc {
-  @media all and (max-width: $pc_breakpoint) {
-    // 筆電
+@mixin xl {
+  @media all and (max-width: $xl_breakpoint) {
+    // 1200px以內
+    @content;
+  }
+}
+
+@mixin lg {
+  @media all and (max-width: $lg_breakpoint) {
+    // 992px以內
     @content;
   }
 }
 
 @mixin m {
   @media all and (max-width: $m_breakpoint) {
-    //手機板
+    // 768px以內
+    @content;
+  }
+}
+
+@mixin sm {
+  @media all and (max-width: $sm_breakpoint) {
+    // 576px以內
     @content;
   }
 }
