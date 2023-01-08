@@ -183,6 +183,7 @@
                                 border: none;
                                 border-bottom: 1px solid $black;
                                 border-radius: 0;
+                                padding-left: 3px;
                             }
                         }
                         select{
@@ -195,9 +196,12 @@
                             font-size: 16px;
                             border-radius: 5px;
                             @include m{
+                                background-color: $white;
+                                color: $black;
                                 border: none;
                                 border-bottom: 1px solid $black;
                                 border-radius: 0;
+                                padding-left: 3px;
                             }
                         }
         
@@ -221,6 +225,12 @@
                 .row#date_group{
                     .form_group{
                         margin-left: 0;
+                        input{
+                            @include m{
+                                background-color: $white;
+                                color: $black;
+                            }
+                        }
                     }
                 }
                 .row.interest{
@@ -242,69 +252,42 @@
                     }
                     .row{
                         padding-left: 0;
+                        color: $gray;
                         @include m{
                             display: flex;
                             flex-direction: column;
+                            
                         }
-                        input{
-                            margin-right: 10px;
+                        div{
                             @include m{
-                                margin: 0; 
-                                display: inline;
-                                margin-top: 5px;
-                                
-                            }
-                        }
-                        input:nth-child(1){
-                            @include m{
-                                order: 2;
-                            }
-                        }
-                        input:nth-child(3){
-                            @include m{
-                                order: 4;
-                            }
-                        }
-                        input:nth-child(5){
-                            @include m{
-                                order: 7;
-                            }
-                        }
-                        input:nth-child(7){
-                            @include m{
-                                order: 8;
-                            }
-                        }
-                        label{
-                            margin-right: 20px;
-                            @include m{
-                                margin: 0;
+                                display: flex;
+                                justify-content: center;
                                 margin-top: 10px;
-                                text-align: center;
-                                display: inline;
+                            }
+                            input{
+                                margin-right: 10px;
+                                @include m{
+                                    
+                                    margin: 0; 
+                                    margin-top: 5px;
+                                    
+                                }
+                            }
+    
+                            label{
+                                margin-right: 20px;
+                                @include m{
+                                    
+                                    padding-left: 10px;
+                                    margin: 0;
+                                    
+                                    text-align: center;
+                                    display: inline;
+                                }
                             }
                         }
-                        label:nth-child(2){
-                            @include m{
-                                order: 1;
-                            }
-                        }
-                        label:nth-child(4){
-                            @include m{
-                                order: 3;
-                            }
-                        }
-                        label:nth-child(6){
-                            @include m{
-                                order: 5;
-                            }
-                        }
-                        label:nth-child(8){
-                            @include m{
-                                order: 7;
-                            }
-                        }
-                        color: $gray;
+                       
+                        
                     }
                    
                 }

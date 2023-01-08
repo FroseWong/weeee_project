@@ -582,7 +582,15 @@
               window.location.assign("jo_searched.html");
             }
           },
+          scrollToTop() {
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            });
+          },
           openSelectbar() {
+            this.scrollToTop();
             this.show_lightbox = true;
             this.show_select_bar = true;
             let body = document.querySelector("body");

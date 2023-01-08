@@ -14,121 +14,138 @@
     />
     <title>Document</title>
   </head>
-
   <body>
     @@include('layout/header.html')
-    <div class="wrapper qa_jo" id="app">
-      <div class="black_bg" @click="openSelectbar"></div>
-      <div class="qa_jo__main">
-        <div class="qa_jo_title">
-          <h1>1200</h1>
-          <h2>個項目</h2>
-        </div>
-        <div class="qa_jo__barcard">
-          <div class="container qa_jo__bar">
-            <div class="rwd_bar">
-              <ul>
-                <li class="qa_jo__category_btn" @click="openSelectbar">行程</li>
-                <li class="qa_jo__destination_btn" @click="openSelectbar">
-                  目的
-                </li>
-                <li class="qa_jo__price_btn" @click="openSelectbar">價格</li>
-                <li class="qa_jo__sort_btn" @click="openSelectbar">排序</li>
-              </ul>
-            </div>
-            <div class="qa_jo__sort">
-              <h4>排序</h4>
-              <ul>
-                <li @click="filterOrder">熱門程度</li>
-                <li @click="filterSort">價格低到高</li>
-              </ul>
-            </div>
-            <div class="qa_jo__category">
-              <h4>行程分類</h4>
-              <ul>
-                <li
-                  v-for="(category,index) in categorys"
-                  @click="filterCategory"
-                >
-                  <input
-                    type="checkbox"
-                    :id="`category${index+1}`"
-                  />&emsp;{{category}}
-                </li>
-              </ul>
-            </div>
-            <div class="qa_jo__destination">
-              <h4>目的地</h4>
-              <span @click="open_city" class="qa_jo__open"
-                >台灣
-                <i class="fa-solid fa-circle-chevron-down"></i>
-              </span>
-              <ul class="qa_jo__city qa_jo__block">
-                <li
-                  v-for="AllCity in AllCitys"
-                  v-if="cityshow"
-                  @click="filterCity"
-                >
-                  {{AllCity}}
-                </li>
-              </ul>
-            </div>
-            <div class="qa_jo__price">
-              <h4>價格</h4>
-              <ul>
-                <li v-for="(price,index) in prices" @click="filterPrice">
-                  <input
-                    type="checkbox"
-                    :id="`price${index+1}`"
-                  />&emsp;{{price}}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="qa_jo__card">
-            <div
-              class="qa_jo__card--group"
-              v-for="card in cardlist"
-              :key="index"
-              @click="jump_page"
-            >
-              <template v-if="card.vif">
-                <div class="qa_jo__card--img">
-                  <img :src="card.src" alt="" />
-                </div>
-                <div class="qa_jo__card--title">
-                  <h1 class="qa_jo__title">{{card.title}}</h1>
-                  <h2>{{card.label}}</h2>
-                  <h1>{{card.content}}</h1>
-                  <div>
-                    <h3>★</h3>
-                    <h4>{{card.score}}{{card.scorepeople}}</h4>
-                    <h4>｜{{card.order}}個已訂購</h4>
-                    <h5>TWD {{card.price}}元</h5>
-                  </div>
-                </div>
-              </template>
-            </div>
-            <nav>
-              <ul class="qa_jo__pagination">
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link qa_jo__page-link--current" href="#"
-                    >1</a
+    <div class="wrapper productlist_new" id="app">
+        <div class="black_bg" @click="openSelectbar"></div>
+        <div class="productlist_new__main">
+          <div class="productlist_new__select container">
+            <div class="container productlist_new__bar">
+              <div class="rwd_bar">
+                <ul>
+                  <li
+                    class="productlist_new__category_btn"
+                    @click="openSelectbar"
                   >
-                </li>
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">2</a>
-                </li>
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">3</a>
-                </li>
-              </ul>
-            </nav>
+                    行程
+                  </li>
+                  <li
+                    class="productlist_new__destination_btn"
+                    @click="openSelectbar"
+                  >
+                    目的
+                  </li>
+                  <li class="productlist_new__price_btn" @click="openSelectbar">
+                    價格
+                  </li>
+                  <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
+                    排序
+                  </li> -->
+                </ul>
+              </div>
+  
+              <div class="productlist_new__category">
+                <h4>行程分類</h4>
+                <ul>
+                  <li
+                    v-for="(category,index) in categorys"
+                    @click="filterCategory"
+                  >
+                    <input type="checkbox" :id="`category${index+1}` " />
+  
+                    {{category}}
+                  </li>
+                </ul>
+              </div>
+              <div class="productlist_new__destination">
+                <h4>目的地</h4>
+                <span @click="open_city" class="productlist_new__open"
+                  >台灣
+                  <i class="fa-solid fa-circle-chevron-down"></i>
+                </span>
+                <ul class="productlist_new__city productlist_new__block">
+                  <li
+                    v-for="(AllCity,index) in AllCitys"
+                    v-if="cityshow"
+                    @click="filterCity"
+                  >
+                    <input
+                      type="checkbox"
+                      :id="`AllCity${index+1}`"
+                    />&emsp;{{AllCity}}
+                  </li>
+                </ul>
+              </div>
+              <div class="productlist_new__price">
+                <h4>價格</h4>
+                <ul>
+                  <li v-for="(price,index) in prices" @click="filterPrice">
+                    <input type="checkbox" :id="`price${index+1}`" />
+                    {{price}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="productlist_new_card_list container">
+              <div class="productlist_new__sort">
+                <h5>25個項目</h5>
+  
+                <ul>
+                    <li>排序｜</li>
+                    <li @click="filterOrder">熱門程度</li>
+                    <li @click="filterSort_bottom_to_top">價格低到高</li>
+                    <li @click="filterSort_top_to_bottom">價格高到低</li>
+                    <li @click="filterScore">最高評價</li>
+                  </ul>
+              </div>
+              <a
+                href="#"
+                class="product-card-row"
+                v-for="card in cardlist"
+                :key="index"
+                @click="jump_page"
+              >
+                <div
+                  class="product-card-row__left"
+                  v-bind:style="{ backgroundImage: 'url(' + card.src + ')' }"
+                ></div>
+                <div class="product-card-row__right">
+                  <div class="product-name">{{card.title}}</div>
+                  <div class="product-tag">{{card.label}}</div>
+                  <div class="product__text">{{card.content}}</div>
+  
+                  <span class="gray"
+                    ><i class="fa-solid fa-star"></i
+                    >{{card.score}}{{card.scorepeople}} |
+                    <span class="product-bought">{{card.order}}</span>個已訂購
+                  </span>
+                  <span class="price"
+                    >TWD <span class="product-price">{{card.price}}</span>元</span
+                  >
+                </div>
+              </a>
+              <nav>
+                <ul class="productlist_new__pagination">
+                  <li class="productlist_new__page-item">
+                    <a
+                      class="productlist_new__page-link productlist_new__page-link--current"
+                      href="#"
+                      >1</a
+                    >
+                  </li>
+                  <li class="productlist_new__page-item">
+                    <a class="productlist_new__page-link" href="#">2</a>
+                  </li>
+                  <li class="productlist_new__page-item">
+                    <a class="productlist_new__page-link" href="#">3</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
+        @@include('layout/footer.html')
       </div>
-      @@include('layout/footer.html')
-    </div>
 
     <script src="./vue/vue.global.prod.js"></script>
     <script>
@@ -143,7 +160,7 @@
                 title: "義大利麵 手作體驗 ",
                 label: "手作體驗",
                 content: "大家一起歡樂來參加義大利麵手作體驗",
-                score: 4.5,
+                score: 4.2,
                 scorepeople: "(2300)",
                 order: 1000,
                 price: 350,
@@ -154,9 +171,9 @@
               {
                 src: "./img/otherpage/fa_5_1.jpg",
                 title: "觀光農場 採水果體驗",
-                label: "採水果體驗",
+                label: "觀光農場",
                 content: "大家一起歡樂來參加觀光農場 採水果體驗",
-                score: 4.5,
+                score: 4.3,
                 scorepeople: "(2300)",
                 order: 50,
                 price: 600,
@@ -167,9 +184,9 @@
               {
                 src: "./img/otherpage/on_6_1.jpg",
                 title: "水上活動 玩水體驗",
-                label: "玩水體驗",
+                label: "水上活動",
                 content: "大家一起歡樂來參加水上活動 玩水體驗",
-                score: 4.5,
+                score: 4.8,
                 scorepeople: "(2300)",
                 order: 350,
                 price: 490,
@@ -182,7 +199,7 @@
                 title: "極限運動 滑翔翼",
                 label: "極限運動",
                 content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.5,
+                score: 3.5,
                 scorepeople: "(2300)",
                 order: 1750,
                 price: 500,
@@ -195,7 +212,7 @@
                 title: "義大利麵 手作體驗 ",
                 label: "手作體驗",
                 content: "大家一起歡樂來參加義大利麵手作體驗",
-                score: 4.5,
+                score: 3.6,
                 scorepeople: "(2300)",
                 order: 1000,
                 price: 350,
@@ -207,7 +224,7 @@
                 title: "極限運動 滑翔翼",
                 label: "極限運動",
                 content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.5,
+                score: 4.0,
                 scorepeople: "(2300)",
                 order: 1750,
                 price: 500,
@@ -220,7 +237,7 @@
                 title: "觀光農場 採水果體驗",
                 label: "觀光農場",
                 content: "大家一起歡樂來參加觀光農場 採水果體驗",
-                score: 4.5,
+                score: 4.9,
                 scorepeople: "(2300)",
                 order: 50,
                 price: 600,
@@ -233,7 +250,7 @@
                 title: "水上活動 玩水體驗",
                 label: "玩水體驗",
                 content: "大家一起歡樂來參加水上活動 玩水體驗",
-                score: 4.5,
+                score: 4.2,
                 scorepeople: "(2300)",
                 order: 350,
                 price: 490,
@@ -245,7 +262,7 @@
                 title: "極限運動 滑翔翼",
                 label: "極限運動",
                 content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.5,
+                score: 4.0,
                 scorepeople: "(2300)",
                 order: 1750,
                 price: 500,
@@ -271,7 +288,7 @@
                 label: "朋友行程",
                 content:
                   "嘉義港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-                score: 4.5,
+                score: 4.4,
                 scorepeople: "(2300)",
                 order: 150,
                 price: 3450,
@@ -284,7 +301,7 @@
                 title: "極限運動 滑翔翼",
                 label: "極限運動",
                 content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.5,
+                score: 4.7,
                 scorepeople: "(2300)",
                 order: 1750,
                 price: 500,
@@ -295,9 +312,9 @@
               {
                 src: "./img/otherpage/fa_5_1.jpg",
                 title: "觀光農場 採水果體驗",
-                label: "採水果體驗",
+                label: "觀光農場",
                 content: "大家一起歡樂來參加觀光農場 採水果體驗",
-                score: 4.5,
+                score: 4.2,
                 scorepeople: "(2300)",
                 order: 50,
                 price: 600,
@@ -310,7 +327,7 @@
                 title: "極限運動 滑翔翼",
                 label: "極限運動",
                 content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.5,
+                score: 4.0,
                 scorepeople: "(2300)",
                 order: 1750,
                 price: 500,
@@ -320,10 +337,11 @@
               },
             ],
             prices: [
+              "TWD 2,000 以下",
               "TWD 2,000~3,999",
               "TWD 4,000~5,999",
               "TWD 6,000~7,999",
-              "TWD 8,000~9,999",
+              "TWD 8,000 以上",
             ],
             categorys: ["手作體驗", "水上活動", "觀光農場", "極限運動"],
             AllCitys: [
@@ -363,14 +381,22 @@
             }
           },
           filterCity(e) {
-            let path = e.path[0].textContent;
-            this.cardlist.forEach((e, index) => {
-              if (path == e.city) {
-                console.log(this.cardlist[index].vif);
-              }
-            });
+            let city = e.path[0].childNodes[0];
+            let text = e.path[0].textContent;
+            if (city.checked == false) {
+              city.checked = true;
+              this.citylist.push(e.path[0].textContent);
+            } else if (city.checked == true) {
+              city.checked = false;
+              this.citylist.forEach((e, index) => {
+                if (e == text) {
+                  this.citylist.splice(index, 1);
+                }
+              });
+            }
+            
           },
-          filterSort(e) {
+          filterSort_bottom_to_top(e) {
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
@@ -381,16 +407,20 @@
             eitherSort(arr);
             this.classList = arr;
             let epath = e.path[0].style;
-            e.path[1].childNodes[0].style.backgroundColor = "#fff";
-            e.path[1].childNodes[0].style.color = "#747774";
+            e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
+            e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
             epath.backgroundColor = "#4484ce";
             epath.color = "#fff";
           },
-          filterOrder(e) {
+          filterSort_top_to_bottom(e) {
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +a.order - +b.order;
+                return  +b.price - +a.price;
               };
               arr.sort(sorter);
             };
@@ -398,7 +428,51 @@
             this.classList = arr;
             let epath = e.path[0].style;
             e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
             e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterOrder(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return +b.order - +a.order ;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterScore(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return +b.score - +a.score ;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
             epath.backgroundColor = "#4484ce";
             epath.color = "#fff";
           },
@@ -447,16 +521,25 @@
             // }
           },
           openSelectbar(e) {
-            let category_btn = document.querySelector(".qa_jo__category_btn");
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            });
+            let category_btn = document.querySelector(
+              ".productlist_new__category_btn"
+            );
             target_class = e.target.classList;
-            let cate_bar = document.querySelector(".qa_jo__category");
-            let dest_bar = document.querySelector(".qa_jo__destination");
-            let price_bar = document.querySelector(".qa_jo__price");
-            let sort_bar = document.querySelector(".qa_jo__sort");
+            let cate_bar = document.querySelector(".productlist_new__category");
+            let dest_bar = document.querySelector(
+              ".productlist_new__destination"
+            );
+            let price_bar = document.querySelector(".productlist_new__price");
+            let sort_bar = document.querySelector(".productlist_new__sort");
             let black_bg = document.querySelector(".black_bg");
             let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
             let body = document.querySelector("body");
-            if (target_class.contains("qa_jo__category_btn")) {
+            if (target_class.contains("productlist_new__category_btn")) {
               if (cate_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
                   element.classList.remove("open");
@@ -472,8 +555,7 @@
                 body.classList.add("stop_scroll");
               }
             }
-            if (target_class.contains("qa_jo__destination_btn")) {
-              console.log("aaa");
+            if (target_class.contains("productlist_new__destination_btn")) {
               if (dest_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
                   element.classList.remove("open");
@@ -489,7 +571,7 @@
                 body.classList.add("stop_scroll");
               }
             }
-            if (target_class.contains("qa_jo__price_btn")) {
+            if (target_class.contains("productlist_new__price_btn")) {
               console.log("aaa");
               if (price_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
@@ -506,7 +588,7 @@
                 body.classList.add("stop_scroll");
               }
             }
-            if (target_class.contains("qa_jo__sort_btn")) {
+            if (target_class.contains("productlist_new__sort_btn")) {
               console.log("aaa");
               if (sort_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
@@ -536,10 +618,14 @@
             }
             if (screen.width > 768) {
               document.querySelector("body").classList.remove("stop_scroll");
-              let cate_bar = document.querySelector(".qa_jo__category");
-              let dest_bar = document.querySelector(".qa_jo__destination");
-              let price_bar = document.querySelector(".qa_jo__price");
-              let sort_bar = document.querySelector(".qa_jo__sort");
+              let cate_bar = document.querySelector(
+                ".productlist_new__category"
+              );
+              let dest_bar = document.querySelector(
+                ".productlist_new__destination"
+              );
+              let price_bar = document.querySelector(".productlist_new__price");
+              let sort_bar = document.querySelector(".productlist_new__sort");
               let black_bg = document.querySelector(".black_bg");
               let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
               bar_arr.forEach((element) => {

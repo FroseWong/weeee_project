@@ -24,56 +24,56 @@
 
 <body>
   @@include('layout/header.html')
-  <div class="wrapper" id="app" >
+  <div class="wrapper" id="app">
     <div v-cloak>
       <!-- <input id="datetimepicker" type="text"> -->
       <!---------------bs-modal--------------->
       <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        @click="field1showbtn">
+        @click="field1_showbtn">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <div class="productdetail__modal--header">
+              <div class="productdetail-modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
                   請選擇使用日期
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                  @click="field1showbtn"></button>
+                  @click="field1_showbtn"></button>
               </div>
             </div>
-            <div class="modal-body productdetail__modal--group">
-              <div class="productdetail__modal--top">
+            <div class="modal-body productdetail-modal-group">
+              <div class="productdetail-modal-top">
                 <input id="datetimepicker" type="text" />
               </div>
-              <div class="productdetail__modal--mid">
+              <div class="productdetail-modal-mid">
                 <p>人數</p>
                 <p>TWD {{modalTotal}}/每人</p>
                 <div>
-                  <i class="fa-solid fa-circle-minus" @click="pelpleMinus"></i>
+                  <i class="fa-solid fa-circle-minus" @click="pelple_minus"></i>
                   <p>{{modalPeople}}</p>
-                  <i class="fa-solid fa-circle-plus" @click="pelplePlus"></i>
+                  <i class="fa-solid fa-circle-plus" @click="pelple_plus"></i>
                 </div>
               </div>
-              <div class="productdetail__modal--bot">
+              <div class="productdetail-modal-bot">
                 <div>
                   <p>總金額</p>
-                  <p>TWD {{modalPricetotal}}</p>
+                  <p>TWD {{modal_pricetotal}}</p>
                 </div>
                 <div>
                   <p>Weeee!Points</p>
-                  <div class="productdetail__modal--points">
+                  <div class="productdetail-modal-points">
                     <img src="./img/weeeepoints/yellow.svg" alt="" />
-                    <p>{{modalPoints}}</p>
+                    <p>{{modal_points}}</p>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <div class="productdetail__modal--footer">
-                <button type="button" class="productdetail__modal--secondary">
+              <div class="productdetail-modal-footer">
+                <button type="button" class="productdetail-modal-secondary">
                   加入購物車
                 </button>
-                <button type="button" class="productdetail__modal--primary" @click="modalCheckout">
+                <button type="button" class="productdetail-modal-primary" @click="modal_checkout">
                   立即訂購
                 </button>
               </div>
@@ -83,19 +83,6 @@
       </div>
 
       <!---------------麵包屑--------------->
-      <!-- <nav class="container productdetail__breadcrumb-group">
-        <ol class="hb productdetail__breadcrumb">
-          <li class="productdetail__breadcrumb__item">
-            <a href="">&nbsp首頁&nbsp</a>
-          </li>
-          <li class="productdetail__breadcrumb__item">
-            <a href="">&nbsp{{ProductDetail.type}}&nbsp</a>
-          </li>
-          <li class="productdetail__breadcrumb__item--current">
-            <a href="">&nbsp{{ProductDetail.city}}｜{{ProductDetail.name}}</a>
-          </li>
-        </ol>
-      </nav> -->
       <div class="breadcrumbList container">
         <ol class="breadcrumb">
           <li><a href="./index.html">首頁</a></li>
@@ -105,7 +92,7 @@
       </div>
       <!---------------輪播--------------->
       <div class="container">
-        <div class="productdetail__slideshow">
+        <div class="productdetail-slideshow">
           <a href="#" v-for="carousel in carousels">
             <div class="mySlidesFlex">
               <img :src="carousel.src" alt="" />
@@ -115,44 +102,44 @@
       </div>
       <!---------------右邊固定框--------------->
       <div class="container">
-        <div class="productdetail__fixedfield--container">
-          <div class="productdetail__fixedfield--group">
-            <div class="productdetail__fixedfield1" v-if="field1show">
+        <div class="productdetail-fixedfield-container">
+          <div class="productdetail-fixedfield-group">
+            <div class="productdetail-fixedfield1" v-if="field1Show">
               <h2>TWD {{ProductDetail.price}}</h2>
-              <i class="fa-regular fa-heart" @click="heartclick"></i>
+              <i class="fa-heart" :class=`fa-${faHeart}` @click="heart_click"></i>
               <!-- <button class="field1_btn1">
                             <i class="fa-solid fa-bolt"></i>
                             <span>立即確認</span>
                         </button> -->
-              <button type="button" class="field1_btn1" data-bs-toggle="modal" data-bs-target="#peopleModal">
+              <button type="button" class="field1-btn1" data-bs-toggle="modal" data-bs-target="#peopleModal">
                 <i class="fa-solid fa-bolt"></i>
                 <span>立即確認</span>
               </button>
-              <button @click="pd_check" class="field1_btn2" data-bs-toggle="modal" data-bs-target="#peopleModal">
+              <button class="field1-btn2" data-bs-toggle="modal" data-bs-target="#peopleModal">
                 <i class="fa-solid fa-bolt"></i>
                 <span>加入購物車</span>
               </button>
-              <button @click="cle_check" class="field1_btn3" data-bs-toggle="modal" data-bs-target="#peopleModal">
+              <button @click="cle_check" class="field1-btn3" data-bs-toggle="modal" data-bs-target="#peopleModal">
                 <i class="fa-solid fa-bolt"></i>
                 <span>立即訂購</span>
               </button>
             </div>
             <!---------------固定框四選項--------------->
-            <div class="productdetail__fixedfield2">
+            <div class="productdetail-fixedfield2">
               <a v-for="fieldData in fieldDatas" :id="fieldData.fieldID"
-                @click="fieldClick(fieldData.fieldID)">{{fieldData.title}}</a>
+                @click="field_click(fieldData.fieldID)">{{fieldData.title}}</a>
             </div>
             <!---------------scrollToTop--------------->
-            <div class="productdetail__scrollToTop">
-              <i class="fa-solid fa-angle-up" @click="scrollToTop"></i>
+            <div class="productdetail-scrollToTop">
+              <i class="fa-solid fa-angle-up" @click="scroll_totop"></i>
             </div>
           </div>
           <!-- ---------------商品標題--------------- -->
-          <div class="productdetail__container">
-            <div class="productdetail__title">
+          <div class="productdetail-container">
+            <div class="productdetail-title">
               <h1>{{ProductDetail.city}}｜{{ProductDetail.name}}</h1>
-              <!-- <i class="fa-regular fa-heart" @click="heartclick"></i> -->
-              <div class="productdetail__small">
+              <!-- <i class="fa-regular fa-heart" @click="heart_click"></i> -->
+              <div class="productdetail-small">
                 <div class="flex-container">
                   <div class="flex-child">
                     <div id="heart-like"></div>
@@ -162,7 +149,7 @@
               </div>
             </div>
             <!-- ---------------商品資訊--------------- -->
-            <div class="productdetail__content">
+            <div class="productdetail-content">
               <i class="fa-solid fa-location-dot"></i>
               <span>{{ProductDetail.city}}</span>
               <div>
@@ -172,7 +159,7 @@
               </div>
             </div>
             <!-- ---------------行程時間--------------- -->
-            <div class="productdetail__time">
+            <div class="productdetail-time">
               <div>
                 <i class="fa-solid fa-clock"></i>
                 <span>行程時間{{ProductDetail.time}}小時</span>
@@ -183,7 +170,7 @@
               </div>
             </div>
             <!-- ---------------商品介紹--------------- -->
-            <div class="productdetail__list">
+            <div class="productdetail-list">
               <ul>
                 <li>跟著Weeee！出遊，兔年開春不用愁!!</li>
                 <li>
@@ -197,32 +184,32 @@
               </ul>
             </div>
             <!---------------商品說明--------------->
-            <div class="productdetail__operate" v-if="winsizeBoolean">
+            <div class="productdetail-operate" v-if="winsizeBoolean" ref="Operate">
               <span @click="open">{{operate}}</span>
-              <i class="fa-solid fa-angle-up"></i>
+              <i class="fa-solid" :class=`fa-angle-${faAngle}`></i>
             </div>
-            <div class="productdetail__directions--group productdetail__open">
-              <div class="productdetail__directions">
+            <div class="productdetail-directions-group" v-bind:class="{'productdetail-none':openCtrlnone}">
+              <div class="productdetail-directions">
                 <h3 class="pd_h3">商品說明</h3>
                 <p>{{ProductDetail.Text}}</p>
               </div>
-              <div v-for="Img in Imgs" class="productdetail__img">
+              <div v-for="Img in Imgs" class="productdetail-img">
                 <p>{{Img.Content}}</p>
                 <img :src="Img.src" alt="" />
               </div>
             </div>
             <!---------------購買須知--------------->
-            <div class="productdetail__notice">
+            <div class="productdetail-notice" ref="Notice">
               <h3 class="pn_h3">購買須知</h3>
-              <ul class="productdetail__notice__list">
+              <ul class="productdetail-notice-list">
                 <li v-for="noticeList in noticeLists">{{noticeList}}</li>
               </ul>
             </div>
             <!-- ---------------體驗地點--------------- -->
-            <div class="productdetail__address">
+            <div class="productdetail-address" ref="Address">
               <h3 class="pa_h3">體驗地點</h3>
               <h5>地址 👇</h5>
-              <div class="productdetail__addressdetail">
+              <div class="productdetail-addressdetail">
                 <h5>地點名稱 : {{ProductDetail.shortname}}</h5>
                 <h5>地址 : {{ProductDetail.address}}</h5>
               </div>
@@ -231,22 +218,22 @@
                 :referrerpolicy="googleMap.referrerpolicy"></iframe>
             </div>
             <!-- ---------------旅客評價--------------- -->
-            <div class="productreview">
-              <h3 class="pv_h3">旅客評價</h3>
-              <div class="productreview__group">
-                <div class="productreview__score">
+            <div class="product-review" ref="Review">
+              <h3>旅客評價</h3>
+              <div class="product-review-group">
+                <div class="product-review-score">
                   <p>4.6</p>
                 </div>
-                <div class="productreview__star">
-                  <span class="star__color">{{ProductDetail.stars}}</span>
+                <div class="productreview-star">
+                  <span class="star-color">{{ProductDetail.stars}}</span>
                   <span>{{ProductDetail.comments}}則旅客評價</span>
                 </div>
               </div>
             </div>
-            <div class="productdetail__message" v-for="message in messages">
+            <div class="productdetail-message" v-for="message in messages">
               <span>{{message.pic}}</span>
               <span>{{message.name}}</span>
-              <div class="productdetail__message_text">
+              <div class="productdetail-message-text">
                 <p>{{message.star}}</p>
                 <h5>{{message.comment}}</h5>
               </div>
@@ -255,7 +242,7 @@
         </div>
       </div>
       <!-- ---------------下方輪播卡--------------- -->
-      <div class="container productdetail__bot">
+      <div class="container productdetail-bot">
         <div class="product-list">
           <a class="product-card">
             <i class="fa-regular fa-heart"></i>

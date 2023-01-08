@@ -48,14 +48,26 @@
   padding-bottom: 10px;
 }
 
-.resetpwd_form input {
+.password input {
   width: 242px;
   height: 52px;
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 14px;
   border: 1px solid $gray;
   border-radius: 5px;
   text-indent: 5px;
+  color: $gray;
+}
+
+.passwordag input {
+  width: 242px;
+  height: 52px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  text-indent: 5px;
+  color: $gray;
 }
 
 .submit {

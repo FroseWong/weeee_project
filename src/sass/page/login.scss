@@ -50,21 +50,34 @@
     padding-bottom: 10px;
 }
 
-.loginform input {
+
+.email input {
     width: 242px;
     height: 52px;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 14px;
     border: 1px solid $gray;
     border-radius: 5px;
     text-indent: 5px;
-
-}
+    color: $gray;
+  }
+  
+  .password input {
+    width: 242px;
+    height: 52px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    text-indent: 5px;
+    color: $gray;
+  }
 
 .submit {
     display: block;
-    width: 147px;
-    height: 21.5px;
+    width: 242px;
+    height: 52px;
+    font-size: 20px;
     margin-top: 15px;
     margin-bottom: 8px;
     background-color: $blue;
@@ -79,7 +92,6 @@
     display: block;
     color: $orange;
     margin-left: 230px;
-
     margin-bottom: 40px;
     margin-top: 14px;
     text-align: center;

@@ -192,6 +192,7 @@ body.stop_scroll{
 }
 
 .qa_jo__main {
+  padding-right: 20px;
     background-color: #f4f4f4;
     width: 100%;
     display: flex;
@@ -231,6 +232,9 @@ body.stop_scroll{
     @include m{
       width: 380px;
       position: relative;
+    }
+    @include sm{
+      width: 980px;
     }
     div {
       margin-bottom: 50px;
@@ -287,6 +291,9 @@ body.stop_scroll{
         top: 0;
         padding-bottom: 10px;
       }
+      @include sm{
+        width: 420px;
+      }
       ul{
         li{
           @include m{
@@ -303,7 +310,7 @@ body.stop_scroll{
         }
         @include m{
           display: flex;
-          width: 100%;
+          width: 400px;
         }
       }
     }
@@ -375,8 +382,12 @@ body.stop_scroll{
         width: 270px;
         height: 250px;
         @include m{
-          width: 370px;
-          height: 200px;
+          width: 250px;
+          height: 250px;
+        }
+        @include sm{
+          width: 420px;
+         height: 300px;
         }
       }
     }
