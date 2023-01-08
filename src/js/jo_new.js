@@ -96,6 +96,31 @@ function init() {
       deleteInit();
     });
   });
+
+  joAddImg.addEventListener("dragover", function (e) {
+    e.preventDefault();
+    // console.log("dropover");
+  });
+
+  joAddImg.addEventListener("drop", function (e) {
+    e.preventDefault();
+    reader = new FileReader(); // 用來讀取檔案
+    reader.readAsDataURL(e.dataTransfer.files[0]); // 讀取檔案
+    reader.addEventListener("load", function () {
+      // console.log(reader.result);
+      let li_html = `
+      <div class="img-space">
+                  <img src="${reader.result}" class="preview">
+                  <div class="delete">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        </div>`;
+
+      joAddImg.innerHTML = li_html;
+      // imgFile.value = "";
+      deleteInit();
+    });
+  });
 }
 
 // 可刪除圖片的狀態

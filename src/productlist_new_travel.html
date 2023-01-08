@@ -1,312 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title> 
-</head>
-
-<body>
+  <body>
     @@include('layout/header.html')
-    <div class="wrapper qa_jo" id="app">
-        <div class="black_bg" @click="openSelectbar"></div>
-        <div class="qa_jo__main">
-            <div class="qa_jo_title">
-                <h1>1200</h1>
-                <h2>個項目</h2>
+    <div class="wrapper productlist_new" id="app">
+      <div class="black_bg" @click="openSelectbar"></div>
+      <div class="productlist_new__main">
+        <div class="productlist_new__select container">
+          <div class="container productlist_new__bar">
+            <div class="rwd_bar">
+              <ul>
+                <li
+                  class="productlist_new__category_btn"
+                  @click="openSelectbar"
+                >
+                  行程
+                </li>
+                <li
+                  class="productlist_new__destination_btn"
+                  @click="openSelectbar"
+                >
+                  目的
+                </li>
+                <li class="productlist_new__price_btn" @click="openSelectbar">
+                  價格
+                </li>
+                <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
+                  排序
+                </li> -->
+              </ul>
             </div>
-            <div class="qa_jo__barcard">
-                <div class="container qa_jo__bar">
-                    <div class="rwd_bar">
-                        <ul>
-                            <li class="qa_jo__category_btn"  @click="openSelectbar">行程</li>
-                            <li class="qa_jo__destination_btn" @click="openSelectbar">目的</li>
-                            <li class="qa_jo__price_btn"  @click="openSelectbar">價格</li>
-                            <li class="qa_jo__sort_btn"  @click="openSelectbar">排序</li>
-                        </ul>
-                    </div>
-                    <div class="qa_jo__sort">
-                        
-                        <h4>排序</h4>
-                        <ul>
-                            <li @click="filterOrder">熱門程度</li>
-                            <li @click="filterSort">價格低到高</li>
-                        </ul>
-                    </div>
-                    <div class="qa_jo__category">
-                        <h4>行程分類</h4>
-                        <ul>
-                            <li v-for="(category,index) in categorys" @click="filterCategory"><input type="checkbox"
-                                    :id=`category${index+1}`>&emsp;{{category}}</li>
-                        </ul>
-                    </div>
-                    <div class="qa_jo__destination">
-                        <h4>目的地</h4>
-                        <span @click="open_city" class="qa_jo__open">台灣
-                            <i class="fa-solid fa-circle-chevron-down"></i>
-                        </span>
-                        <ul class="qa_jo__city qa_jo__block">
-                            <li v-for="AllCity in AllCitys" v-if=cityshow @click="filterCity">{{AllCity}}</li>
-                        </ul>
-                    </div>
-                    <div class="qa_jo__price">
-                        <h4>價格</h4>
-                        <ul>
-                            <li v-for="(price,index) in prices" @click="filterPrice"><input type="checkbox"
-                                    :id=`price${index+1}`>&emsp;{{price}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="qa_jo__card">
-                    <div class="qa_jo__card--group" v-for="card in cardlist"  :key="index" @click="jump_page">
-                        <template v-if="card.vif">
-                            <div class="qa_jo__card--img">
-                                <img :src="card.src" alt="">
-                            </div>
-                            <div class="qa_jo__card--title">
-                                <h1 class="qa_jo__title">{{card.title}}</h1>
-                                <h2>{{card.label}}</h2>
-                                <h1>{{card.content}}</h1>
-                                <div>
-                                    <h3>★</h3>
-                                    <h4>{{card.score}}{{card.scorepeople}}</h4>
-                                    <h4>｜{{card.order}}個已訂購</h4>
-                                    <h5>TWD {{card.price}}元</h5>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                    <nav class="page1">
-                        <ul class="qa_jo__pagination">
-                            <li class="qa_jo__page-item"><a class="qa_jo__page-link qa_jo__page-link--current"
-                                    href="#">1</a></li>
-                            <li class="qa_jo__page-item"><a class="qa_jo__page-link" href="#">2</a></li>
-                            
-                    </nav>
-                </div>
-            </div>
-        </div>
-        @@include('layout/footer.html')
-    </div>
-  
-    <script src="./vue/vue.global.prod.js"></script>
-    <script >
-        const { createApp } = Vue;
 
-        createApp({
-  data() {
-    return {
-        cardlist: [
-        {
-          src: "./img/sightseeing/fa_19_1.jpg",
-          title: "基隆港煙火 家庭行程",
-          label: "家庭行程",
-          content:
-            "基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 1000,
-          price: 6450,
-          city: "基隆",
-          cardid: 1,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_19_2.jpg",
-          title: "台北港煙火 家庭行程",
-          label: "家庭行程",
-          content:
-            "台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 50,
-          price: 5500,
-          city: "台北",
-          cardid: 2,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_19_3.jpg",
-          title: "新北港煙火 寵物行程",
-          label: "寵物行程",
-          content:
-            "新北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 350,
-          price: 2250,
-          city: "新北",
-          cardid: 3,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_1.jpg",
-          title: "桃園港煙火 情侶行程",
-          label: "情侶行程",
-          content:
-            "桃園港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 1750,
-          price: 1250,
-          city: "桃園",
-          cardid: 4,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_2.jpg",
-          title: "新竹港煙火 朋友行程",
-          label: "朋友行程",
-          content:
-            "新竹港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 150,
-          price: 9450,
-          city: "新竹",
-          cardid: 5,
-          vif: true,
-        }, {
-          src: "./img/sightseeing/fa_19_1.jpg",
-          title: "苗栗港煙火 家庭行程",
-          label: "家庭行程",
-          content:
-            "苗栗港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 1000,
-          price: 6450,
-          city: "苗栗",
-          cardid: 6,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_19_2.jpg",
-          title: "台中港煙火 家庭行程",
-          label: "家庭行程",
-          content:
-            "台中港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 50,
-          price: 5500,
-          city: "台中",
-          cardid: 7,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_19_3.jpg",
-          title: "彰化港煙火 寵物行程",
-          label: "寵物行程",
-          content:
-            "彰化港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 350,
-          price: 2250,
-          city: "彰化",
-          cardid: 8,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_1.jpg",
-          title: "南投港煙火 情侶行程",
-          label: "情侶行程",
-          content:
-            "南投港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 1750,
-          price: 1350,
-          city: "南投",
-          cardid: 9,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_2.jpg",
-          title: "雲林港煙火 朋友行程",
-          label: "朋友行程",
-          content:
-            "雲林港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 150,
-          price: 2450,
-          city: "雲林",
-          cardid: 10,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_2.jpg",
-          title: "嘉義港煙火 朋友行程",
-          label: "朋友行程",
-          content:
-            "嘉義港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 150,
-          price: 3450,
-          city: "嘉義",
-          cardid: 10,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_2.jpg",
-          title: "台南港煙火 朋友行程",
-          label: "朋友行程",
-          content:
-            "台南港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 150,
-          price: 4450,
-          city: "台南",
-          cardid: 10,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_2.jpg",
-          title: "高雄港煙火 朋友行程",
-          label: "朋友行程",
-          content:
-            "高雄港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 150,
-          price: 5450,
-          city: "高雄",
-          cardid: 10,
-          vif: true,
-        },
-        {
-          src: "./img/sightseeing/fa_20_2.jpg",
-          title: "屏東港煙火 朋友行程",
-          label: "朋友行程",
-          content:
-            "屏東港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-          score: 4.5,
-          scorepeople: "(2300)",
-          order: 150,
-          price: 8450,
-          city: "屏東",
-          cardid: 10,
-          vif: true,
-        }
-      ],
-      prices: [
-      "TWD 2000~4000",
-        "TWD 4001~5000",
-        "TWD 5001~6000",
-        "TWD 6001~7000",
-      ],
-      categorys: ["朋友行程", "家庭行程", "情侶行程", "寵物行程"],
-      AllCitys: [
+            <div class="productlist_new__category">
+              <h4>行程分類</h4>
+              <ul>
+                <li
+                  v-for="(category,index) in categorys"
+                  @click="filterCategory"
+                >
+                  <input type="checkbox" :id="`category${index+1}` " />
+
+                  {{category}}
+                </li>
+              </ul>
+            </div>
+            <div class="productlist_new__destination">
+              <h4>目的地</h4>
+              <span @click="open_city" class="productlist_new__open"
+                >台灣
+                <i class="fa-solid fa-circle-chevron-down"></i>
+              </span>
+              <ul class="productlist_new__city productlist_new__block">
+                <li
+                  v-for="(AllCity,index) in AllCitys"
+                  v-if="cityshow"
+                  @click="filterCity"
+                >
+                  <input
+                    type="checkbox"
+                    :id="`AllCity${index+1}`"
+                  />&emsp;{{AllCity}}
+                </li>
+              </ul>
+            </div>
+            <div class="productlist_new__price">
+              <h4>價格</h4>
+              <ul>
+                <li v-for="(price,index) in prices" @click="filterPrice">
+                  <input type="checkbox" :id="`price${index+1}`" />
+                  {{price}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="productlist_new_card_list container">
+            <div class="productlist_new__sort">
+              <h5>25個項目</h5>
+
+              <ul>
+                <li>排序｜</li>
+                <li @click="filterOrder">熱門程度</li>
+                <li @click="filterSort_bottom_to_top">價格低到高</li>
+                <li @click="filterSort_top_to_bottom">價格高到低</li>
+                <li @click="filterScore">最高評價</li>
+              </ul>
+            </div>
+            <a
+              href="#"
+              class="product-card-row"
+              v-for="card in cardlist"
+              :key="index"
+              @click="jump_page"
+            >
+              <div
+                class="product-card-row__left"
+                v-bind:style="{ backgroundImage: 'url(' + card.src + ')' }"
+              ></div>
+              <div class="product-card-row__right">
+                <div class="product-name">{{card.title}}</div>
+                <div class="product-tag">{{card.label}}</div>
+                <div class="product__text">{{card.content}}</div>
+
+                <span class="gray"
+                  ><i class="fa-solid fa-star"></i
+                  >{{card.score}}{{card.scorepeople}} |
+                  <span class="product-bought">{{card.order}}</span>個已訂購
+                </span>
+                <span class="price"
+                  >TWD <span class="product-price">{{card.price}}</span>元</span
+                >
+              </div>
+            </a>
+            <nav>
+              <ul class="productlist_new__pagination">
+                <li class="productlist_new__page-item">
+                  <a
+                    class="productlist_new__page-link productlist_new__page-link--current"
+                    href="#"
+                    >1</a
+                  >
+                </li>
+                <li class="productlist_new__page-item">
+                  <a class="productlist_new__page-link" href="#">2</a>
+                </li>
+                <li class="productlist_new__page-item">
+                  <a class="productlist_new__page-link" href="#">3</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      @@include('layout/footer.html')
+    </div>
+
+    <script src="./vue/vue.global.prod.js"></script>
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            cardlist: [
+              {
+                src: "./img/sightseeing/fa_19_1.jpg",
+                title: "基隆港煙火 家庭行程",
+                label: "家庭行程",
+                content:
+                  "基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.2,
+                scorepeople: "(2300)",
+                order: 1000,
+                price: 6450,
+                city: "基隆",
+                cardid: 1,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_19_2.jpg",
+                title: "台北港煙火 家庭行程",
+                label: "家庭行程",
+                content:
+                  "台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 50,
+                price: 5500,
+                city: "台北",
+                cardid: 2,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_19_3.jpg",
+                title: "新北港煙火 寵物行程",
+                label: "寵物行程",
+                content:
+                  "新北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 350,
+                price: 2250,
+                city: "新北",
+                cardid: 3,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_1.jpg",
+                title: "桃園港煙火 情侶行程",
+                label: "情侶行程",
+                content:
+                  "桃園港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.9,
+                scorepeople: "(2300)",
+                order: 1750,
+                price: 1250,
+                city: "桃園",
+                cardid: 4,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_2.jpg",
+                title: "新竹港煙火 朋友行程",
+                label: "朋友行程",
+                content:
+                  "新竹港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 9450,
+                city: "新竹",
+                cardid: 5,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_19_1.jpg",
+                title: "苗栗港煙火 家庭行程",
+                label: "家庭行程",
+                content:
+                  "苗栗港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.2,
+                scorepeople: "(2300)",
+                order: 1000,
+                price: 6450,
+                city: "苗栗",
+                cardid: 6,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_19_2.jpg",
+                title: "台中港煙火 家庭行程",
+                label: "家庭行程",
+                content:
+                  "台中港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 3.5,
+                scorepeople: "(2300)",
+                order: 50,
+                price: 5500,
+                city: "台中",
+                cardid: 7,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_19_3.jpg",
+                title: "彰化港煙火 寵物行程",
+                label: "寵物行程",
+                content:
+                  "彰化港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 3.7,
+                scorepeople: "(2300)",
+                order: 350,
+                price: 2250,
+                city: "彰化",
+                cardid: 8,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_1.jpg",
+                title: "南投港煙火 情侶行程",
+                label: "情侶行程",
+                content:
+                  "南投港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.2,
+                scorepeople: "(2300)",
+                order: 1750,
+                price: 1350,
+                city: "南投",
+                cardid: 9,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_2.jpg",
+                title: "雲林港煙火 朋友行程",
+                label: "朋友行程",
+                content:
+                  "雲林港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.8,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 2450,
+                city: "雲林",
+                cardid: 10,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_2.jpg",
+                title: "嘉義港煙火 朋友行程",
+                label: "朋友行程",
+                content:
+                  "嘉義港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.6,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 3450,
+                city: "嘉義",
+                cardid: 10,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_2.jpg",
+                title: "台南港煙火 朋友行程",
+                label: "朋友行程",
+                content:
+                  "台南港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.4,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 4450,
+                city: "台南",
+                cardid: 10,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_2.jpg",
+                title: "高雄港煙火 朋友行程",
+                label: "朋友行程",
+                content:
+                  "高雄港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.2,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 5450,
+                city: "高雄",
+                cardid: 10,
+                vif: true,
+              },
+              {
+                src: "./img/sightseeing/fa_20_2.jpg",
+                title: "屏東港煙火 朋友行程",
+                label: "朋友行程",
+                content:
+                  "屏東港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 8450,
+                city: "屏東",
+                cardid: 10,
+                vif: true,
+              },
+            ],
+            prices: [
+              "TWD 2,000 以下",
+              "TWD 2,000~3,999",
+              "TWD 4,000~5,999",
+              "TWD 6,000~7,999",
+              "TWD 8,000 以上",
+            ],
+            categorys: ["朋友行程", "家庭行程", "情侶行程", "寵物行程"],
+            AllCitys: [
               "基隆",
               "台北",
               "新北",
@@ -322,225 +377,283 @@
               "高雄",
               "屏東",
             ],
-      cityshow: false,
-      pricelist: [],
-      categorylist: [],
-    };
-  },
-  created(){
-    window.addEventListener("resize",this.resize_adjust,true)
-  },
-  methods: {
-    open_city(e) {
-      this.cityshow = !this.cityshow;
-      let path = e.path[0].childNodes[1].classList;
-      if (path.contains("fa-circle-chevron-down")) {
-        path.remove("fa-circle-chevron-down");
-        path.add("fa-circle-chevron-up");
-      } else {
-        path.remove("fa-circle-chevron-up");
-        path.add("fa-circle-chevron-down");
-      }
-    },
-    filterCity(e) {
-      let path = e.path[0].textContent;
-      this.cardlist.forEach((e,index) => {
-        if(path==e.city){
-          console.log(this.cardlist[index].vif);
-        }
-      });
+            cityshow: false,
+            pricelist: [],
+            categorylist: [],
+          };
+        },
+        created() {
+          window.addEventListener("resize", this.resize_adjust, true);
+        },
+        methods: {
+          open_city(e) {
+            this.cityshow = !this.cityshow;
+            let path = e.path[0].childNodes[1].classList;
+            if (path.contains("fa-circle-chevron-down")) {
+              path.remove("fa-circle-chevron-down");
+              path.add("fa-circle-chevron-up");
+            } else {
+              path.remove("fa-circle-chevron-up");
+              path.add("fa-circle-chevron-down");
+            }
+          },
+          filterCity(e) {
+            let city = e.path[0].childNodes[0];
+            let text = e.path[0].textContent;
+            if (city.checked == false) {
+              city.checked = true;
+              this.citylist.push(e.path[0].textContent);
+            } else if (city.checked == true) {
+              city.checked = false;
+              this.citylist.forEach((e, index) => {
+                if (e == text) {
+                  this.citylist.splice(index, 1);
+                }
+              });
+            }
+            
+          },
+          filterSort_bottom_to_top(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return +a.price - +b.price;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
+            e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterSort_top_to_bottom(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return  +b.price - +a.price;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
+            e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterOrder(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return +b.order - +a.order ;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterScore(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return +b.score - +a.score ;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterPrice(e) {
+            let price = e.path[0].childNodes[0];
+            let text = e.path[0].textContent;
+            if (price.checked == false) {
+              price.checked = true;
+              this.pricelist.push(e.path[0].textContent);
+            } else if (price.checked == true) {
+              price.checked = false;
+              this.pricelist.forEach((e, index) => {
+                if (e == text) {
+                  this.pricelist.splice(index, 1);
+                }
+              });
+            }
+          },
+          filterCategory(e) {
+            e.target.querySelector("input").click();
+            // for (let i = 0; i < this.cardlist.length; i++){
+            //   this.cardlist[i].vif=false;
+            // }
+            // let category = e.composedPath()[0].childNodes[0];
+            // let text = e.composedPath()[0].textContent;
+            // if (category.checked == false) {
+            //   category.checked = true;
+            //   this.categorylist.push(e.path[0].textContent);
+            // } else if (category.checked == true) {
+            //   category.checked = false;
+            //   this.categorylist.forEach((e, index) => {
+            //     if (e == text) {
+            //       this.categorylist.splice(index, 1);
+            //     }
+            //   });
+            // }
+            // for (let i = 0; i < this.cardlist.length; i++) {
+            //   let label = this.cardlist[i].label;
+            //   for (let j = 0; j < this.categorylist.length; j++) {
+            //     let list = this.categorylist[j];
+            //     if (label.trim() == list.trim()) {
+            //       let temp = this.cardlist[i];
+            //       temp.vif=true;
+            //     }
+            //   }
+            // }
+          },
+          openSelectbar(e) {
+            let category_btn = document.querySelector(
+              ".productlist_new__category_btn"
+            );
+            target_class = e.target.classList;
+            let cate_bar = document.querySelector(".productlist_new__category");
+            let dest_bar = document.querySelector(
+              ".productlist_new__destination"
+            );
+            let price_bar = document.querySelector(".productlist_new__price");
+            let sort_bar = document.querySelector(".productlist_new__sort");
+            let black_bg = document.querySelector(".black_bg");
+            let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
+            let body = document.querySelector("body");
+            if (target_class.contains("productlist_new__category_btn")) {
+              if (cate_bar.classList.contains("open")) {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                black_bg.classList.remove("on_watch");
+                body.classList.remove("stop_scroll");
+              } else {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                cate_bar.classList.add("open");
+                black_bg.classList.add("on_watch");
+                body.classList.add("stop_scroll");
+              }
+            }
+            if (target_class.contains("productlist_new__destination_btn")) {
+              console.log("aaa");
+              if (dest_bar.classList.contains("open")) {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                black_bg.classList.remove("on_watch");
+                body.classList.remove("stop_scroll");
+              } else {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                dest_bar.classList.add("open");
+                black_bg.classList.add("on_watch");
+                body.classList.add("stop_scroll");
+              }
+            }
+            if (target_class.contains("productlist_new__price_btn")) {
+              console.log("aaa");
+              if (price_bar.classList.contains("open")) {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                black_bg.classList.remove("on_watch");
+                body.classList.remove("stop_scroll");
+              } else {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                price_bar.classList.add("open");
+                black_bg.classList.add("on_watch");
+                body.classList.add("stop_scroll");
+              }
+            }
+            if (target_class.contains("productlist_new__sort_btn")) {
+              console.log("aaa");
+              if (sort_bar.classList.contains("open")) {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                black_bg.classList.remove("on_watch");
+                body.classList.remove("stop_scroll");
+              } else {
+                bar_arr.forEach((element) => {
+                  element.classList.remove("open");
+                });
+                sort_bar.classList.add("open");
+                black_bg.classList.add("on_watch");
+                body.classList.add("stop_scroll");
+              }
+            }
+            if (target_class.contains("black_bg")) {
+              bar_arr.forEach((element) => {
+                element.classList.remove("open");
+              });
+              black_bg.classList.remove("on_watch");
+              body.classList.remove("stop_scroll");
+            }
+          },
+          resize_adjust() {
+            if (screen.width <= 768) {
+            }
+            if (screen.width > 768) {
+              document.querySelector("body").classList.remove("stop_scroll");
+              let cate_bar = document.querySelector(
+                ".productlist_new__category"
+              );
+              let dest_bar = document.querySelector(
+                ".productlist_new__destination"
+              );
+              let price_bar = document.querySelector(".productlist_new__price");
+              let sort_bar = document.querySelector(".productlist_new__sort");
+              let black_bg = document.querySelector(".black_bg");
+              let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
+              bar_arr.forEach((element) => {
+                element.classList.remove("open");
+              });
+              black_bg.classList.remove("on_watch");
+            }
+          },
+          jump_page() {
+            window.location.assign("productdetail.html");
+          },
+        },
 
-    },
-    filterSort(e) {
-      let arr = this.cardlist;
-      const eitherSort = (arr = []) => {
-        const sorter = (a, b) => {
-          return +a.price - +b.price;
-        };
-        arr.sort(sorter);
-      };
-      eitherSort(arr);
-      this.classList = arr;
-      let epath=e.path[0].style;
-      e.path[1].childNodes[0].style.backgroundColor='#fff';
-      e.path[1].childNodes[0].style.color='#747774';
-      epath.backgroundColor='#4484ce';
-      epath.color='#fff';
-    },
-    filterOrder(e) {
-      let arr = this.cardlist;
-      const eitherSort = (arr = []) => {
-        const sorter = (a, b) => {
-          return +a.order - +b.order;
-        };
-        arr.sort(sorter);
-      };
-      eitherSort(arr);
-      this.classList = arr;
-      let epath=e.path[0].style;
-      e.path[1].childNodes[1].style.backgroundColor='#fff';
-      e.path[1].childNodes[1].style.color='#747774';
-      epath.backgroundColor='#4484ce';
-      epath.color='#fff';
-    },
-    filterPrice(e) {
-      let price = e.path[0].childNodes[0];
-      let text = e.path[0].textContent;
-      if (price.checked == false) {
-        price.checked = true;
-        this.pricelist.push(e.path[0].textContent);
-      } else if (price.checked == true) {
-        price.checked = false;
-        this.pricelist.forEach((e, index) => {
-          if (e == text) {
-            this.pricelist.splice(index, 1);
-          }
-        });
-      }
-    },
-    filterCategory(e) {
-      e.target.querySelector("input").click();
-      // for (let i = 0; i < this.cardlist.length; i++){
-      //   this.cardlist[i].vif=false;
-      // }
-      // let category = e.composedPath()[0].childNodes[0];
-      // let text = e.composedPath()[0].textContent;
-      // if (category.checked == false) {
-      //   category.checked = true;
-      //   this.categorylist.push(e.path[0].textContent);
-      // } else if (category.checked == true) {
-      //   category.checked = false;
-      //   this.categorylist.forEach((e, index) => {
-      //     if (e == text) {
-      //       this.categorylist.splice(index, 1);
-      //     }
-      //   });
-      // }
-      // for (let i = 0; i < this.cardlist.length; i++) {
-      //   let label = this.cardlist[i].label;
-      //   for (let j = 0; j < this.categorylist.length; j++) {
-      //     let list = this.categorylist[j];
-      //     if (label.trim() == list.trim()) {
-      //       let temp = this.cardlist[i];
-      //       temp.vif=true;
-      //     }
-      //   }
-      // }
-    },
-    openSelectbar(e){
-      let category_btn = document.querySelector(".qa_jo__category_btn");
-      target_class = e.target.classList;
-      let cate_bar = document.querySelector(".qa_jo__category");
-      let dest_bar = document.querySelector(".qa_jo__destination");
-      let price_bar = document.querySelector(".qa_jo__price");
-      let sort_bar = document.querySelector(".qa_jo__sort");
-      let black_bg = document.querySelector(".black_bg");
-      let bar_arr = [cate_bar,dest_bar,price_bar,sort_bar];
-      let body = document.querySelector("body")
-      if(target_class.contains("qa_jo__category_btn")){
-        if(cate_bar.classList.contains("open")){
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          black_bg.classList.remove("on_watch");
-          body.classList.remove("stop_scroll");
-        }else{
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          cate_bar.classList.add("open");
-          black_bg.classList.add("on_watch");
-          body.classList.add("stop_scroll");
-        }
-      }
-      if(target_class.contains("qa_jo__destination_btn")){
-        console.log("aaa");
-        if(dest_bar.classList.contains("open")){
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          black_bg.classList.remove("on_watch");
-          body.classList.remove("stop_scroll");
-        }else{
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          dest_bar.classList.add("open");
-          black_bg.classList.add("on_watch");
-          body.classList.add("stop_scroll");
-        }
-      }
-      if(target_class.contains("qa_jo__price_btn")){
-        console.log("aaa");
-        if(price_bar.classList.contains("open")){
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          black_bg.classList.remove("on_watch");
-          body.classList.remove("stop_scroll");
-        }else{
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          price_bar.classList.add("open");
-          black_bg.classList.add("on_watch");
-          body.classList.add("stop_scroll");
-        }
-      }
-      if(target_class.contains("qa_jo__sort_btn")){
-        console.log("aaa");
-        if(sort_bar.classList.contains("open")){
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          black_bg.classList.remove("on_watch");
-          body.classList.remove("stop_scroll");
-        }else{
-          bar_arr.forEach(element => {
-            element.classList.remove("open")
-          });
-          sort_bar.classList.add("open");
-          black_bg.classList.add("on_watch");
-          body.classList.add("stop_scroll");
-        }
-      }
-      if(target_class.contains("black_bg")){
-        bar_arr.forEach(element => {
-          element.classList.remove("open")
-        });
-        black_bg.classList.remove("on_watch");
-        body.classList.remove("stop_scroll");
-      }
-      
-
-      
-    },
-    resize_adjust(){
-      if(screen.width <= 768){
-
-      }if(screen.width >768){
-        document.querySelector("body").classList.remove("stop_scroll");
-        let cate_bar = document.querySelector(".qa_jo__category");
-        let dest_bar = document.querySelector(".qa_jo__destination");
-        let price_bar = document.querySelector(".qa_jo__price");
-        let sort_bar = document.querySelector(".qa_jo__sort");
-        let black_bg = document.querySelector(".black_bg");
-        let bar_arr = [cate_bar,dest_bar,price_bar,sort_bar];        
-        bar_arr.forEach(element => {
-          element.classList.remove("open")
-        });
-        black_bg.classList.remove("on_watch");
-      }
-    },
-    jump_page(){
-      window.location.assign("productdetail.html");
-    }
-  },
-
-  mounted() {},
-}).mount("#app");
-
+        mounted() {},
+      }).mount("#app");
     </script>
-</body>
-
+  </body>
 </html>
