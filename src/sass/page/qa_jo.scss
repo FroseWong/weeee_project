@@ -275,13 +275,16 @@ body.stop_scroll{
         font-weight: bold;
         font-size: 16px;
         text-align: center;
-        line-height: 30px;
+        line-height: 50px;
         border-bottom: 1px solid $gray;
       }
     }
     div.open{
       @include m{
         display: block;
+      }
+      @include sm{
+        width: 420px;
       }
     }
     div.rwd_bar{
