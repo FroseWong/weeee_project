@@ -4,28 +4,24 @@
     @content;
   }
 }
-
 @mixin xl {
   @media all and (max-width: $xl_breakpoint) {
     // 1200px以內
     @content;
   }
 }
-
 @mixin lg {
   @media all and (max-width: $lg_breakpoint) {
     // 992px以內
     @content;
   }
 }
-
 @mixin m {
   @media all and (max-width: $m_breakpoint) {
     // 768px以內
     @content;
   }
 }
-
 @mixin sm {
   @media all and (max-width: $sm_breakpoint) {
     // 576px以內
