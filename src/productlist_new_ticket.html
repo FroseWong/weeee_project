@@ -102,26 +102,27 @@
             <a
               href="#"
               class="product-card-row"
-              v-for="card in cardlist"
+              v-for="product in cardlist"
               :key="index"
               @click="jump_page"
+              v-if="dataget"
             >
               <div
                 class="product-card-row__left"
-                v-bind:style="{ backgroundImage: 'url(' + card.src + ')' }"
+                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
               ></div>
               <div class="product-card-row__right">
-                <div class="product-name">{{card.title}}</div>
-                <div class="product-tag">{{card.label}}</div>
-                <div class="product__text">{{card.content}}</div>
+                <div class="product-name">{{product.ProductName}}</div>
+                <div class="product-tag">{{product.ProductSecondType}}</div>
+                <div class="product__text">{{product.ProductText}}</div>
 
-                <span class="gray"
+                <!-- <span class="gray"
                   ><i class="fa-solid fa-star"></i
                   >{{card.score}}{{card.scorepeople}} |
                   <span class="product-bought">{{card.order}}</span>個已訂購
-                </span>
+                </span> -->
                 <span class="price"
-                  >TWD <span class="product-price">{{card.price}}</span>元</span
+                  >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
                 >
               </div>
             </a>
@@ -363,14 +364,58 @@
             cityshow: false,
             pricelist: [],
             categorylist: [],
+            dataget: false,
           };
         },
         created() {
           window.addEventListener("resize", this.resize_adjust, true);
+          this.getdata();
+          
+          
         },
+
         methods: {
+          getdata(){
+            var CID = (new URL(location.href));
+            console.log(CID.pathname);
+            this.cardlist = [];
+            console.log(this.cardlist)
+            let a = this.cardlist;
+            $.ajax({            
+            method: "POST",
+            url: "./Product.php",
+            data:{
+              path:CID.pathname
+            },          
+            dataType: "json",
+            success: function (response) {
+              response.forEach(element => {
+                a.push(element)
+              });
+              console.log(a)
+             
+            },
+            error: function(exception) {
+                alert("數據載入失敗: " + exception.status);
+            }
+            
+
+          });
+            this.cardlist = a;
+            console.log(this.cardlist);
+            this.showproduct();
+
+            
+            
+          },
+          showproduct(){
+            this.dataget = false;
+            this.dataget = true;
+            console.log("aaa") 
+          },
           open_city(e) {
             this.cityshow = !this.cityshow;
+            
             let path = e.path[0].childNodes[1].classList;
             if (path.contains("fa-circle-chevron-down")) {
               path.remove("fa-circle-chevron-down");
@@ -400,7 +445,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +a.price - +b.price;
+                return +a.ProductPrice - +b.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -420,7 +465,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return  +b.price - +a.price;
+                return  +b.ProductPrice - +a.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -491,9 +536,9 @@
               });
             }
           },
-         
           filterCategory(e) {
             e.target.querySelector("input").click();
+            console.log(this.productlist) ;
             // for (let i = 0; i < this.cardlist.length; i++){
             //   this.cardlist[i].vif=false;
             // }
@@ -522,10 +567,14 @@
             // }
           },
           openSelectbar(e) {
-            let category_btn = document.querySelector(".productlist_new__category_btn");
+            let category_btn = document.querySelector(
+              ".productlist_new__category_btn"
+            );
             target_class = e.target.classList;
             let cate_bar = document.querySelector(".productlist_new__category");
-            let dest_bar = document.querySelector(".productlist_new__destination");
+            let dest_bar = document.querySelector(
+              ".productlist_new__destination"
+            );
             let price_bar = document.querySelector(".productlist_new__price");
             let sort_bar = document.querySelector(".productlist_new__sort");
             let black_bg = document.querySelector(".black_bg");
@@ -611,8 +660,12 @@
             }
             if (screen.width > 768) {
               document.querySelector("body").classList.remove("stop_scroll");
-              let cate_bar = document.querySelector(".productlist_new__category");
-              let dest_bar = document.querySelector(".productlist_new__destination");
+              let cate_bar = document.querySelector(
+                ".productlist_new__category"
+              );
+              let dest_bar = document.querySelector(
+                ".productlist_new__destination"
+              );
               let price_bar = document.querySelector(".productlist_new__price");
               let sort_bar = document.querySelector(".productlist_new__sort");
               let black_bg = document.querySelector(".black_bg");
@@ -628,7 +681,10 @@
           },
         },
 
-        mounted() {},
+        mounted() {
+          
+          
+        },
       }).mount("#app");
     </script>
   </body>
