@@ -67,7 +67,7 @@
               <ul class="productlist_new__city productlist_new__block">
                 <li
                   v-for="(AllCity,index) in AllCitys"
-                  v-if="cityshow"
+                  v-show="cityshow"
                   @click="filterCity"
                 >
                   <input
@@ -102,26 +102,27 @@
             <a
               href="#"
               class="product-card-row"
-              v-for="card in cardlist"
+              v-for="product in cardlist"
               :key="index"
               @click="jump_page"
+              v-if="dataget"
             >
               <div
                 class="product-card-row__left"
-                v-bind:style="{ backgroundImage: 'url(' + card.src + ')' }"
+                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
               ></div>
               <div class="product-card-row__right">
-                <div class="product-name">{{card.title}}</div>
-                <div class="product-tag">{{card.label}}</div>
-                <div class="product__text">{{card.content}}</div>
+                <div class="product-name">{{product.ProductName}}</div>
+                <div class="product-tag">{{product.ProductSecondType}}</div>
+                <div class="product__text">{{product.ProductText}}</div>
 
-                <span class="gray"
+                <!-- <span class="gray"
                   ><i class="fa-solid fa-star"></i
                   >{{card.score}}{{card.scorepeople}} |
                   <span class="product-bought">{{card.order}}</span>個已訂購
-                </span>
+                </span> -->
                 <span class="price"
-                  >TWD <span class="product-price">{{card.price}}</span>元</span
+                  >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
                 >
               </div>
             </a>
@@ -147,8 +148,8 @@
       </div>
       @@include('layout/footer.html')
     </div>
-
-    <script src="./vue/vue.global.prod.js"></script>
+    <script src="./vender/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="./vue/vue.global.js"></script>
     <script>
       const { createApp } = Vue;
 
@@ -360,6 +361,36 @@
               "TWD 6,000~7,999",
               "TWD 8,000 以上",
             ],
+            productlist:[
+            {
+              ProductImgPath: "./img/sightseeing/fa_19_1.jpg",
+                ProductName: "基隆港煙火 家庭行程",
+                ProductSecondType: "家庭行程",
+                ProductText:
+                  "基隆港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.2,
+                scorepeople: "(2300)",
+                order: 1000,
+                ProductPrice: 6450,
+                city: "基隆",
+                cardid: 1,
+                vif: true,
+              },
+            {
+                src: "./img/sightseeing/fa_19_2.jpg",
+                title: "台北港煙火 家庭行程",
+                label: "家庭行程",
+                content:
+                  "台北港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 50,
+                price: 5500,
+                city: "台北",
+                cardid: 2,
+                vif: true,
+              },
+            ],
             categorys: ["朋友行程", "家庭行程", "情侶行程", "寵物行程"],
             AllCitys: [
               "基隆",
@@ -380,14 +411,59 @@
             cityshow: false,
             pricelist: [],
             categorylist: [],
+            dataget: false,
+            
           };
         },
         created() {
           window.addEventListener("resize", this.resize_adjust, true);
+          this.getdata();
+          
+          
         },
+
         methods: {
+          getdata(){
+            var CID = (new URL(location.href));
+            console.log(CID.pathname);
+            this.cardlist = [];
+            console.log(this.cardlist)
+            let a = this.cardlist;
+            $.ajax({            
+            method: "POST",
+            url: "./Product.php",
+            data:{
+              path:CID.pathname
+            },          
+            dataType: "json",
+            success: function (response) {
+              response.forEach(element => {
+                a.push(element)
+              });
+              console.log(a)
+             
+            },
+            error: function(exception) {
+                alert("數據載入失敗: " + exception.status);
+            }
+            
+
+          });
+            this.cardlist = a;
+            console.log(this.cardlist);
+            this.showproduct();
+
+            
+            
+          },
+          showproduct(){
+            this.dataget = false;
+            this.dataget = true;
+            console.log("aaa") 
+          },
           open_city(e) {
             this.cityshow = !this.cityshow;
+            
             let path = e.path[0].childNodes[1].classList;
             if (path.contains("fa-circle-chevron-down")) {
               path.remove("fa-circle-chevron-down");
@@ -417,7 +493,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +a.price - +b.price;
+                return +a.ProductPrice - +b.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -437,7 +513,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return  +b.price - +a.price;
+                return  +b.ProductPrice - +a.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -510,6 +586,7 @@
           },
           filterCategory(e) {
             e.target.querySelector("input").click();
+            console.log(this.productlist) ;
             // for (let i = 0; i < this.cardlist.length; i++){
             //   this.cardlist[i].vif=false;
             // }
@@ -652,7 +729,10 @@
           },
         },
 
-        mounted() {},
+        mounted() {
+          
+          
+        },
       }).mount("#app");
     </script>
   </body>

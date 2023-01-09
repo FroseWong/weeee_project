@@ -17,135 +17,136 @@
   <body>
     @@include('layout/header.html')
     <div class="wrapper productlist_new" id="app">
-        <div class="black_bg" @click="openSelectbar"></div>
-        <div class="productlist_new__main">
-          <div class="productlist_new__select container">
-            <div class="container productlist_new__bar">
-              <div class="rwd_bar">
-                <ul>
-                  <li
-                    class="productlist_new__category_btn"
-                    @click="openSelectbar"
-                  >
-                    行程
-                  </li>
-                  <li
-                    class="productlist_new__destination_btn"
-                    @click="openSelectbar"
-                  >
-                    目的
-                  </li>
-                  <li class="productlist_new__price_btn" @click="openSelectbar">
-                    價格
-                  </li>
-                  <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
+      <div class="black_bg" @click="openSelectbar"></div>
+      <div class="productlist_new__main">
+        <div class="productlist_new__select container">
+          <div class="container productlist_new__bar">
+            <div class="rwd_bar">
+              <ul>
+                <li
+                  class="productlist_new__category_btn"
+                  @click="openSelectbar"
+                >
+                  行程
+                </li>
+                <li
+                  class="productlist_new__destination_btn"
+                  @click="openSelectbar"
+                >
+                  目的
+                </li>
+                <li class="productlist_new__price_btn" @click="openSelectbar">
+                  價格
+                </li>
+                <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
                     排序
                   </li> -->
-                </ul>
-              </div>
-  
-              <div class="productlist_new__category">
-                <h4>行程分類</h4>
-                <ul>
-                  <li
-                    v-for="(category,index) in categorys"
-                    @click="filterCategory"
-                  >
-                    <input type="checkbox" :id="`category${index+1}` " />
-  
-                    {{category}}
-                  </li>
-                </ul>
-              </div>
-              <div class="productlist_new__destination">
-                <h4>目的地</h4>
-                <span @click="open_city" class="productlist_new__open"
-                  >台灣
-                  <i class="fa-solid fa-circle-chevron-down"></i>
-                </span>
-                <ul class="productlist_new__city productlist_new__block">
-                  <li
-                    v-for="(AllCity,index) in AllCitys"
-                    v-if="cityshow"
-                    @click="filterCity"
-                  >
-                    <input
-                      type="checkbox"
-                      :id="`AllCity${index+1}`"
-                    />&emsp;{{AllCity}}
-                  </li>
-                </ul>
-              </div>
-              <div class="productlist_new__price">
-                <h4>價格</h4>
-                <ul>
-                  <li v-for="(price,index) in prices" @click="filterPrice">
-                    <input type="checkbox" :id="`price${index+1}`" />
-                    {{price}}
-                  </li>
-                </ul>
-              </div>
+              </ul>
             </div>
-            <div class="productlist_new_card_list container">
-              <div class="productlist_new__sort">
-                <h5>25個項目</h5>
-  
-                <ul>
-                    <li>排序｜</li>
-                    <li @click="filterOrder">熱門程度</li>
-                    <li @click="filterSort_bottom_to_top">價格低到高</li>
-                    <li @click="filterSort_top_to_bottom">價格高到低</li>
-                    <li @click="filterScore">最高評價</li>
-                  </ul>
-              </div>
-              <a
-                href="#"
-                class="product-card-row"
-                v-for="card in cardlist"
-                :key="index"
-                @click="jump_page"
-              >
-                <div
-                  class="product-card-row__left"
-                  v-bind:style="{ backgroundImage: 'url(' + card.src + ')' }"
-                ></div>
-                <div class="product-card-row__right">
-                  <div class="product-name">{{card.title}}</div>
-                  <div class="product-tag">{{card.label}}</div>
-                  <div class="product__text">{{card.content}}</div>
-  
-                  <span class="gray"
-                    ><i class="fa-solid fa-star"></i
-                    >{{card.score}}{{card.scorepeople}} |
-                    <span class="product-bought">{{card.order}}</span>個已訂購
-                  </span>
-                  <span class="price"
-                    >TWD <span class="product-price">{{card.price}}</span>元</span
-                  >
-                </div>
-              </a>
-              <nav>
-                <ul class="productlist_new__pagination">
-                  <li class="productlist_new__page-item">
-                    <a
-                      class="productlist_new__page-link productlist_new__page-link--current"
-                      href="#"
-                      >1</a
-                    >
-                  </li>
-                  <li class="productlist_new__page-item">
-                    <a class="productlist_new__page-link" href="#">2</a>
-                  </li>
-                  <li class="productlist_new__page-item">
-                    <a class="productlist_new__page-link" href="#">3</a>
-                  </li>
-                </ul>
-              </nav>
+
+            <div class="productlist_new__category">
+              <h4>行程分類</h4>
+              <ul>
+                <li
+                  v-for="(category,index) in categorys"
+                  @click="filterCategory"
+                >
+                  <input type="checkbox" :id="`category${index+1}` " />
+
+                  {{category}}
+                </li>
+              </ul>
+            </div>
+            <div class="productlist_new__destination">
+              <h4>目的地</h4>
+              <span @click="open_city" class="productlist_new__open"
+                >台灣
+                <i class="fa-solid fa-circle-chevron-down"></i>
+              </span>
+              <ul class="productlist_new__city productlist_new__block">
+                <li
+                  v-for="(AllCity,index) in AllCitys"
+                  v-if="cityshow"
+                  @click="filterCity"
+                >
+                  <input
+                    type="checkbox"
+                    :id="`AllCity${index+1}`"
+                  />&emsp;{{AllCity}}
+                </li>
+              </ul>
+            </div>
+            <div class="productlist_new__price">
+              <h4>價格</h4>
+              <ul>
+                <li v-for="(price,index) in prices" @click="filterPrice">
+                  <input type="checkbox" :id="`price${index+1}`" />
+                  {{price}}
+                </li>
+              </ul>
             </div>
           </div>
+          <div class="productlist_new_card_list container">
+            <div class="productlist_new__sort">
+              <h5>25個項目</h5>
+
+              <ul>
+                <li>排序｜</li>
+                <li @click="filterOrder">熱門程度</li>
+                <li @click="filterSort_bottom_to_top">價格低到高</li>
+                <li @click="filterSort_top_to_bottom">價格高到低</li>
+                <li @click="filterScore">最高評價</li>
+              </ul>
+            </div>
+            <a
+              href="#"
+              class="product-card-row"
+              v-for="product in cardlist"
+              :key="index"
+              @click="jump_page"
+              v-if="dataget"
+            >
+              <div
+                class="product-card-row__left"
+                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
+              ></div>
+              <div class="product-card-row__right">
+                <div class="product-name">{{product.ProductName}}</div>
+                <div class="product-tag">{{product.ProductSecondType}}</div>
+                <div class="product__text">{{product.ProductText}}</div>
+
+                <!-- <span class="gray"
+                  ><i class="fa-solid fa-star"></i
+                  >{{card.score}}{{card.scorepeople}} |
+                  <span class="product-bought">{{card.order}}</span>個已訂購
+                </span> -->
+                <span class="price"
+                  >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
+                >
+              </div>
+            </a>
+            <nav>
+              <ul class="productlist_new__pagination">
+                <li class="productlist_new__page-item">
+                  <a
+                    class="productlist_new__page-link productlist_new__page-link--current"
+                    href="#"
+                    >1</a
+                  >
+                </li>
+                <li class="productlist_new__page-item">
+                  <a class="productlist_new__page-link" href="#">2</a>
+                </li>
+                <li class="productlist_new__page-item">
+                  <a class="productlist_new__page-link" href="#">3</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        @@include('layout/footer.html')
       </div>
+      @@include('layout/footer.html')
+    </div>
 
     <script src="./vue/vue.global.prod.js"></script>
     <script>
@@ -363,14 +364,58 @@
             cityshow: false,
             pricelist: [],
             categorylist: [],
+            dataget: false,
           };
         },
         created() {
           window.addEventListener("resize", this.resize_adjust, true);
+          this.getdata();
+          
+          
         },
+
         methods: {
+          getdata(){
+            var CID = (new URL(location.href));
+            console.log(CID.pathname);
+            this.cardlist = [];
+            console.log(this.cardlist)
+            let a = this.cardlist;
+            $.ajax({            
+            method: "POST",
+            url: "./Product.php",
+            data:{
+              path:CID.pathname
+            },          
+            dataType: "json",
+            success: function (response) {
+              response.forEach(element => {
+                a.push(element)
+              });
+              console.log(a)
+             
+            },
+            error: function(exception) {
+                alert("數據載入失敗: " + exception.status);
+            }
+            
+
+          });
+            this.cardlist = a;
+            console.log(this.cardlist);
+            this.showproduct();
+
+            
+            
+          },
+          showproduct(){
+            this.dataget = false;
+            this.dataget = true;
+            console.log("aaa") 
+          },
           open_city(e) {
             this.cityshow = !this.cityshow;
+            
             let path = e.path[0].childNodes[1].classList;
             if (path.contains("fa-circle-chevron-down")) {
               path.remove("fa-circle-chevron-down");
@@ -400,7 +445,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +a.price - +b.price;
+                return +a.ProductPrice - +b.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -420,7 +465,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return  +b.price - +a.price;
+                return  +b.ProductPrice - +a.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -493,6 +538,7 @@
           },
           filterCategory(e) {
             e.target.querySelector("input").click();
+            console.log(this.productlist) ;
             // for (let i = 0; i < this.cardlist.length; i++){
             //   this.cardlist[i].vif=false;
             // }
@@ -521,11 +567,6 @@
             // }
           },
           openSelectbar(e) {
-            window.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
             let category_btn = document.querySelector(
               ".productlist_new__category_btn"
             );
@@ -556,6 +597,7 @@
               }
             }
             if (target_class.contains("productlist_new__destination_btn")) {
+              console.log("aaa");
               if (dest_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
                   element.classList.remove("open");
@@ -639,7 +681,10 @@
           },
         },
 
-        mounted() {},
+        mounted() {
+          
+          
+        },
       }).mount("#app");
     </script>
   </body>
