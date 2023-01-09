@@ -71,6 +71,10 @@
       color: white;
       z-index: 15;
     }
+
+    .fa-heart.orange {
+      color: $orange;
+    }
     .product-card__location {
       color: white;
       .fa-location-dot {

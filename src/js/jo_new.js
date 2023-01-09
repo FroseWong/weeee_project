@@ -19,6 +19,7 @@ const joAddImg = document.querySelector(".jo_new__addimg");
 let reader = {
   result: "",
 };
+let imgstored = "";
 // console.log(joAddImg);
 
 init();
@@ -47,7 +48,7 @@ if (sessionStorage.getItem("joNew")) {
   joStartDateInput.value = joStartDate;
   joStartTimeInput.value = joStartTime;
   useweeeeInput.value = useweeee;
-
+  imgstored = img;
   if (img) {
     let li_html = `
   <div class="img-space">
@@ -117,7 +118,6 @@ function init() {
         </div>`;
 
       joAddImg.innerHTML = li_html;
-      // imgFile.value = "";
       deleteInit();
     });
   });
@@ -136,6 +136,7 @@ function deleteInit() {
 
 // 點擊預覽按鈕 儲存內容至sessionStorage
 previewBtn.addEventListener("click", function () {
+  let str = "";
   // console.log("hi");
   //   console.log(joTitleInput.value);
   //   console.log(joContentInput.value);
@@ -147,21 +148,73 @@ previewBtn.addEventListener("click", function () {
   //   console.log(joStartTime.value);
   //   console.log(useweeee.value);
   // console.log(reader.result);
-  sessionStorage.setItem(
-    "joNew",
-    JSON.stringify({
-      joTitle: joTitleInput.value,
-      joContent: joContentInput.value,
-      joContact: joContactInput.value,
-      joLocation: joLocationInput.value,
-      joDetailAddress: joDetailAddressInput.value,
-      joNumber: joNumberInput.value,
-      joStartDate: joStartDateInput.value,
-      joStartTime: joStartTimeInput.value,
-      useweeee: useweeeeInput.value,
-      img: reader.result,
-    })
-  );
 
-  location.href = "./jo_preview.html";
+  if (
+    joTitleInput.value !== "" &&
+    joContentInput.value !== "" &&
+    joContactInput.value !== "" &&
+    joLocationInput.value !== "" &&
+    joDetailAddressInput.value !== "" &&
+    joNumberInput.value !== "" &&
+    joStartDateInput.value !== "" &&
+    joStartTimeInput.value !== "" &&
+    // useweeeeInput.value !== "" &&
+    (reader.result !== "" || imgstored !== "")
+  ) {
+    if (reader.result) {
+      sessionStorage.setItem(
+        "joNew",
+        JSON.stringify({
+          joTitle: joTitleInput.value,
+          joContent: joContentInput.value,
+          joContact: joContactInput.value,
+          joLocation: joLocationInput.value,
+          joDetailAddress: joDetailAddressInput.value,
+          joNumber: joNumberInput.value,
+          joStartDate: joStartDateInput.value,
+          joStartTime: joStartTimeInput.value,
+          useweeee: useweeeeInput.value,
+          img: reader.result,
+        })
+      );
+    } else if (imgstored) {
+      sessionStorage.setItem(
+        "joNew",
+        JSON.stringify({
+          joTitle: joTitleInput.value,
+          joContent: joContentInput.value,
+          joContact: joContactInput.value,
+          joLocation: joLocationInput.value,
+          joDetailAddress: joDetailAddressInput.value,
+          joNumber: joNumberInput.value,
+          joStartDate: joStartDateInput.value,
+          joStartTime: joStartTimeInput.value,
+          useweeee: useweeeeInput.value,
+          img: imgstored,
+        })
+      );
+    }
+
+    location.href = "./jo_preview.html";
+  } else {
+    if (joTitleInput.value === "")
+      str += str === "" ? "請填寫揪團名稱" : "\n請填寫揪團名稱";
+    if (joContentInput.value === "")
+      str += str === "" ? "請填寫揪團描述" : "\n請填寫揪團描述";
+    if (joContactInput.value === "")
+      str += str === "" ? "請填寫聯絡方式" : "\n請填寫聯絡方式";
+    if (joLocationInput.value === "")
+      str += str === "" ? "請選擇揪團縣市" : "\n請選擇揪團縣市";
+    if (joDetailAddressInput.value === "")
+      str += str === "" ? "請輸入詳細地點" : "\n請輸入詳細地點";
+    if (joNumberInput.value === "")
+      str += str === "" ? "請輸入揪團人數" : "\n請輸入揪團人數";
+    if (joStartDateInput.value === "")
+      str += str === "" ? "請選擇揪團日期" : "\n請選擇揪團日期";
+    if (joStartTimeInput.value === "")
+      str += str === "" ? "請選擇揪團時間" : "\n請選擇揪團時間";
+    if (imgstored === "" && reader?.result === "")
+      str += str === "" ? "請上傳圖片" : "\n請上傳圖片";
+    alert(str);
+  }
 });
