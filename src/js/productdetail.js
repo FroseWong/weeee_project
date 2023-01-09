@@ -24,64 +24,70 @@ createApp({
       ],
       cards: [
         {
-          src: "./img/sightseeing/fa_19_1.jpg",
+          src: "./img/otherpage/fa_19_1.jpg",
           label: "情侶行程",
           title: "新北 | Weeee渡假村門票",
           score: 4.5,
-          scoreNum: 2300,
+          scoreNum: "(2336)",
           order: "95K+",
           price: 576,
           city: "新北",
+          url: "background-image:url('../img/otherpage/ar_10_1.jpg')",
         },
         {
-          src: "./img/sightseeing/fa_20_1.jpg",
+          src: "./img/otherpage/fa_20_1.jpg",
           label: "朋友行程",
           title: "台中 | Weeee渡假村門票",
-          score: 4.1,
-          scoreNum: 3300,
+          score: 4.3,
+          scoreNum: "(3315)",
           order: "55K+",
           price: 1920,
           city: "台中",
+          url: "background-image:url('../img/otherpage/fr_14_2.jpg')",
         },
         {
-          src: "./img/sightseeing/fa_19_2.jpg",
+          src: "./img/otherpage/fa_19_2.jpg",
           label: "家庭行程",
           title: "台南 | Weeee渡假村門票",
-          score: 4.3,
-          scoreNum: 3500,
+          score: 4.5,
+          scoreNum: "(2577)",
           order: "45K+",
           price: 1024,
           city: "台南",
+          url: "background-image:url('../img/otherpage/tr_6_1.jpg')",
         },
         {
-          src: "./img/sightseeing/fa_20_2.jpg",
+          src: "./img/otherpage/fa_20_2.jpg",
           label: "寵物行程",
           title: "高雄 | Weeee渡假村門票",
-          score: 4.4,
-          scoreNum: 4500,
+          score: 4.3,
+          scoreNum: "(3508)",
           order: "54K+",
           price: 768,
           city: "高雄",
+          url: "background-image:url('../img/sightseeing/fa_19_3.jpg')",
         },
         {
-          src: "./img/sightseeing/fa_19_3.jpg",
+          src: "./img/otherpage/fa_19_3.jpg",
           label: "寵物行程",
           title: "新竹 | Weeee渡假村門票",
-          score: 4.4,
-          scoreNum: 4500,
+          score: 4.6,
+          scoreNum: "(6511)",
           order: "54K+",
           price: 1080,
           city: "新竹",
+          url: "background-image:url('../img/otherpage/ex_7_1.jpg')",
         },
         {
-          src: "./img/sightseeing/fa_20_3.jpg",
+          src: "./img/otherpage/fa_20_3.jpg",
           label: "寵物行程",
           title: "花蓮 | Weeee渡假村門票",
-          score: 4.4,
-          scoreNum: 4500,
+          score: 4.7,
+          scoreNum: "(7714)",
           order: "54K+",
           price: 1440,
           city: "花蓮",
+          url: "background-image:url('../img/otherpage/pe_15_1.jpg')",
         },
       ],
       messages: [
@@ -164,17 +170,6 @@ createApp({
         stars: "★★★★",
         time: 2,
       },
-      carousels: [
-        {
-          src: "./img/sightseeing/fa_19_1.jpg",
-        },
-        {
-          src: "./img/sightseeing/fa_19_2.jpg",
-        },
-        {
-          src: "./img/sightseeing/fa_19_3.jpg",
-        },
-      ],
       modalPeople: 1,
       modalTotal: 777,
       modalDate: "",
@@ -219,10 +214,6 @@ createApp({
       this.openCtrlnone == false
         ? (this.faAngle = "up")
         : (this.faAngle = "down");
-      // console.log(this.$refs.Operate.offsetTop);
-      // console.log(this.$refs.Notice.offsetTop);
-      // console.log(this.$refs.Address.offsetTop);
-      // console.log(this.$refs.Review.offsetTop);
     },
     // ---------------橘心---------------
     heart_click() {
@@ -248,19 +239,16 @@ createApp({
     },
     // ---------------固定框滑動---------------
     field_click(e) {
-      let directions = document.getElementsByClassName(
-        "productdetail-directions-group"
-      )[0].classList;
+      // let directions = document.getElementsByClassName(
+      //   "productdetail-directions-group"
+      // )[0].classList;
       // this.openCtrlnone = false;
       // directions.remove("productdetail-none");
       // directions.add("productdetail-open");
       // this.operate = "收起商品說明 ";
       // fa.remove("fa-angle-down");
       // fa.add("fa-angle-up");
-      this.operate = "收起商品說明";
-      this.faAngle = "up";
 
-      // let num = document.getElementById(e).offsetTop;
       // let pd = document.getElementsByClassName("productdetail-operate")[0]
       //   .offsetTop;
       // let pn = document.getElementsByClassName("productdetail-notice")[0]
@@ -269,6 +257,8 @@ createApp({
       //   .offsetTop;
       // let pv = document.getElementsByClassName("product-review")[0].offsetTop;
 
+      this.operate = "收起商品說明";
+      this.faAngle = "up";
       let pd = this.$refs.Operate.offsetTop;
       let pn = this.$refs.Notice.offsetTop;
       let pa = this.$refs.Address.offsetTop;
@@ -293,24 +283,21 @@ createApp({
         behavior: "smooth",
       });
     },
-    // ---------------固定框變色---------------
+    // ---------------固定框四選項變色---------------
     field_mark() {
-      let pd = document.getElementById("f1").style;
-      let pn = document.getElementById("f2").style;
-      let pa = document.getElementById("f3").style;
-      let pv = document.getElementById("f4").style;
+      // let pd = document.getElementById("f1").style;
+      // let pn = document.getElementById("f2").style;
+      // let pa = document.getElementById("f3").style;
+      // let pv = document.getElementById("f4").style;
+      let pd = this.$refs.fieldDatas[0].style;
+      let pn = this.$refs.fieldDatas[1].style;
+      let pa = this.$refs.fieldDatas[2].style;
+      let pv = this.$refs.fieldDatas[3].style;
       let weblack = "#000";
       let weblue = "#4484ce";
-      let num =
-        document.getElementsByClassName("productdetail-bot")[0].offsetTop;
-      let fixedfield2 = document.getElementsByClassName(
-        "productdetail-fixedfield2"
-      )[0];
-
-      let directions = document.getElementsByClassName(
-        "productdetail-directions-group"
-      )[0].classList;
-
+      let botCardTop = this.$refs.botCard.offsetTop;
+      let fixedfield2 = this.$refs.field2.style;
+      let directions = this.$refs.directionsGroup.classList;
       document.addEventListener("scroll", function () {
         ScrollPosition = window.scrollY;
 
@@ -371,10 +358,10 @@ createApp({
           pa.borderLeft = "0";
           pn.borderLeft = "0";
         }
-        if (ScrollPosition >= num - 100) {
-          fixedfield2.style.display = "none";
+        if (ScrollPosition >= botCardTop - 150) {
+          fixedfield2.display = "none";
         } else {
-          fixedfield2.style.display = "flex";
+          fixedfield2.display = "flex";
         }
       });
     },
@@ -423,19 +410,21 @@ createApp({
     },
     // ---------------超過4825時隱藏---------------
     display_scroll() {
-      let field = document.getElementsByClassName(
-        "productdetail-fixedfield1"
-      )[0];
-      let bro = window.innerWidth;
-      document.addEventListener("scroll", function (e) {
+      // let field = document.getElementsByClassName(
+      //   "productdetail-fixedfield1"
+      // )[0];
+      let fieldStyle = this.$refs.field1.style;
+      let browserWidth = window.innerWidth;
+      document.addEventListener("scroll", function () {
         let ScrollPosition = window.scrollY;
+
         window.addEventListener("resize", function () {
-          bro = window.innerWidth;
+          browserWidth = window.innerWidth;
         });
-        if (ScrollPosition > 4825 && bro < 768) {
-          field.style.display = "none";
+        if (ScrollPosition > 4825 && browserWidth < 768) {
+          fieldStyle.display = "none";
         } else {
-          field.style.display = "flex";
+          fieldStyle.display = "flex";
         }
       });
     },
@@ -483,7 +472,8 @@ createApp({
     },
     // ---------------結帳寫入cookie---------------
     modal_checkout() {
-      let time = document.getElementById("datetimepicker").value;
+      // let time = document.getElementById("datetimepicker").value;
+      let time = this.$refs.timePicker.value;
       let newDate = "";
       if (time == "") {
         let OldToday = new Date();
