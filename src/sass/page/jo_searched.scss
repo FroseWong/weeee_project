@@ -1,4 +1,4 @@
-.jo_searched{
+.jo_index.jo_searched{
     .jo_scrollToTop{
         background-color: $orange;
         cursor: pointer;
@@ -15,19 +15,26 @@
         }
         
     }
-    .jo-list{
-        @include m{
-            width: 100%;
-            flex-direction: column;
-            margin-bottom: 0;
-        }
-        .jo-card{
-            margin: 0 auto;
-            margin-bottom: 10px;
+
+        .jo-list{
+            flex-wrap: wrap;
+            justify-content: center;
+    
+            @include m{
+                width: 100%;
+                flex-direction: column;
+                margin-bottom: 0;
+            }
+            .jo-card{
+                margin: 0 auto;
+                margin-bottom: 10px;
+                
+                
+            }
             
         }
-        
-    }
+
+    
     
 
 }
