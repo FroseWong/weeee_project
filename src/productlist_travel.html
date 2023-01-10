@@ -126,7 +126,7 @@
                 >
               </div>
             </a>
-            <nav>
+            <nav class="page1">
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
                   <a
@@ -443,9 +443,9 @@
               console.log(a)
              
             },
-            error: function(exception) {
-                alert("數據載入失敗: " + exception.status);
-            }
+            // error: function(exception) {
+            //     alert("數據載入失敗: " + exception.status);
+            // }
             
 
           });
@@ -734,6 +734,10 @@
           
         },
       }).mount("#app");
+      $(".page1 ul li ").on("click","a",function() {
+         $(".page1 ul li a").removeClass("productlist_new__page-link--current");
+        $(this).addClass("productlist_new__page-link--current");
+        });
     </script>
   </body>
 </html>
