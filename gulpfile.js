@@ -107,7 +107,7 @@ exports.template = html;
 
 // php
 function php() {
-  return src("src/*.php").pipe(dest("dist/"));
+  return src("src/php/*.php").pipe(dest("dist/php/"));
 }
 
 // layout template
@@ -151,7 +151,7 @@ exports.minifyimg = imgmini;
 // 監看所有變動
 function watchfile() {
   watch(["src/*.html", "src/layout/*.html"], html);
-  watch(["src/*.php"], php);
+  watch(["src/php/*.php"], php);
   watch(
     ["src/sass/*.scss", "src/sass/**/*.scss", "src/sass/**/**/*.scss"],
     sassStyle
@@ -179,7 +179,7 @@ function browser(done) {
   watch("src/js/*.js", jsmini).on("change", reload);
   watch(["src/img/*.*", "src/img/**/*.*"], img).on("change", reload);
   watch(["src/vue/*.js"], movevue).on("change", reload);
-  watch(["src/*.php"], php).on("change", reload);
+  watch(["src/php/*.php"], php).on("change", reload);
   watch(["src/vender/**/*.*"], moveVender).on("change", reload);
   done();
 }
