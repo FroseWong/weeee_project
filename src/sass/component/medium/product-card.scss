@@ -18,11 +18,18 @@
     position: absolute;
     top: 0px;
     left: -50px;
+
+    @include lg() {
+      left: -30px;
+    }
   }
   .slick-next:before {
     position: absolute;
     top: 0px;
     right: -50px;
+    // @include lg {
+    //   right: -30px;
+    // }
   }
   // .slider-right {
   //   position: absolute;
@@ -51,11 +58,29 @@
     background-color: $white;
     border-radius: 10px;
 
+    // @include lg {
+    //   width: auto;
+    //   height: auto;
+    //   overflow: hidden;
+    // }
+
     @include m {
       height: auto;
       overflow: hidden;
     }
-
+    .change-heart {
+      height: 30px;
+      width: 30px;
+      // background-color: red;
+      position: absolute;
+      cursor: pointer;
+      top: 10px;
+      right: 10px;
+      z-index: 15;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &:hover .product-card__top__pic {
       transform: scale(1.2);
       @include m {
@@ -65,30 +90,39 @@
 
     .fa-heart,
     .fa-trash {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+      // position: absolute;
+      // top: 20px;
+      // right: 20px;
       color: white;
-      z-index: 15;
     }
 
     .fa-heart.orange {
       color: $orange;
     }
     .product-card__location {
+      position: absolute;
+      z-index: 15;
       color: white;
+      width: 70px;
+      height: 35px;
+      // background-color: $blue;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
       .fa-location-dot {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 15;
+        // position: absolute;
+        // top: 20px;
+        // left: 20px;
+        // z-index: 15;
       }
 
       .p__location {
-        position: absolute;
-        top: 20px;
-        left: 40px;
-        z-index: 15;
+        // position: absolute;
+        // top: 20px;
+        // left: 40px;
+        // z-index: 15;
       }
     }
     .product-card__top {

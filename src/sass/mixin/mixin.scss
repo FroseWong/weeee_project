@@ -1,35 +1,39 @@
-@mixin xxl {
+@mixin xxl() {
   @media all and (max-width: $xxl_breakpoint) {
     // 1400px以內
     @content;
   }
 }
-@mixin xl {
+
+@mixin xl() {
   @media all and (max-width: $xl_breakpoint) {
     // 1200px以內
     @content;
   }
 }
-@mixin lg {
-  @media all and (max-width: $lg_breakpoint) {
+
+@mixin lg() {
+  @media all and (max-width: $lg_breakpoit) {
     // 992px以內
     @content;
   }
 }
-@mixin m {
+
+@mixin m() {
   @media all and (max-width: $m_breakpoint) {
     // 768px以內
     @content;
   }
 }
-@mixin sm {
+
+@mixin sm() {
   @media all and (max-width: $sm_breakpoint) {
     // 576px以內
     @content;
   }
 }
 
-@mixin t_color {
+@mixin t_color() {
   @for $i from 1 through 6 {
   }
 }
