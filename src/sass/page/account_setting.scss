@@ -292,6 +292,7 @@
                    
                 }
                 .save{
+                    height: 30px;
                     position: absolute;
                     right: 50px;
                     bottom: 10px;
@@ -301,6 +302,7 @@
                     text-align: center;
                     border-radius: 5px;
                     padding: 5px 5px;
+                    border: transparent;
                     @include m{
                         position: static;
                         width: 100%;

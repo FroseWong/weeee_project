@@ -20,6 +20,7 @@
 
   .jo_new__addimg {
     width: 100%;
+    // max-width: 1000px;
     height: 300px;
     background-color: $l_gray;
     display: flex;
@@ -27,7 +28,7 @@
     align-items: center;
     overflow: hidden;
     margin-bottom: 25px;
-
+    box-sizing: border-box;
     .img-space {
       position: relative;
       display: flex;
@@ -74,6 +75,7 @@
     }
 
     .preview {
+      max-width: 1000px;
       max-height: 300px;
       position: relative;
       border-radius: 10px;

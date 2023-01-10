@@ -80,149 +80,197 @@
           </div>
           <div class="content">
             <h4>帳號設定</h4>
-            <div class="setting">
-              <div class="row name">
-                <div class="form_group">
-                  <label for="">姓氏</label>
-                  <input type="text" />
-                </div>
-                <div class="form_group">
-                  <label for="">名字</label>
-                  <input type="text" />
-                </div>
-                <div class="form_group">
-                  <label for="">性別</label>
-                  <select name="sex" id="sex">
-                    <option value="1">男</option>
-                    <option value="2">女</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form_group">
-                  <label for="">英文姓(同護照)</label>
-                  <input type="text" />
-                </div>
-                <div class="form_group">
-                  <label for="">英文名(同護照)</label>
-                  <input type="text" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="form_group">
-                  <label for="">護照號碼</label>
-                  <input type="text" />
-                </div>
-                <div class="form_group">
-                  <label for="">國家/地區</label>
-                  <input list="countrys" name="country" id="country" />
-                  <datalist id="countrys">
-                    <option value="台灣"></option>
-                    <option value="中國"></option>
-                    <option value="日本"></option>
-                    <option value="韓國"></option>
-                    <option value="越南"></option>
-                    <option value="美國"></option>
-                    <option value="加拿大"></option>
-                    <option value="俄羅斯"></option>
-                    <option value="馬來西亞"></option>
-                    <option value="新加坡"></option>
-                    <option value="印度尼西亞"></option>
-                    <option value="菲律賓"></option>
-                    <option value="泰國"></option>
-                    <option value="澳大利亞"></option>
-                    <option value="紐西蘭"></option>
-                    <option value="緬甸"></option>
-                    <option value="印度"></option>
-                    <option value="法國"></option>
-                    <option value="英國"></option>
-                    <option value="西班牙"></option>
-                    <option value="葡萄牙"></option>
-                    <option value="比利時"></option>
-                    <option value="荷蘭"></option>
-                    <option value="德國"></option>
-                    <option value="義大利"></option>
-                    <option value="波蘭"></option>
-                    <option value="挪威"></option>
-                    <option value="瑞典"></option>
-                    <option value="芬蘭"></option>
-                    <option value="烏克蘭"></option>
-                    <option value="立陶宛"></option>
-                    <option value="愛沙尼亞"></option>
-                  </datalist>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form_group" id="phone_group">
-                  <label for="">電話號碼</label>
-                  <div>
-                    <input type="text" id="phone" />
+            <form action="account_setting.php" method="post">
+              <div class="setting">
+                <div class="row name">
+                  <div class="form_group">
+                    <label for="">姓氏</label>
+                    <input type="text" id="lastName"/>
                   </div>
-                </div>
-                <div class="form_group">
-                  <label for="">E-MAIL</label>
-                  <input type="text" />
-                </div>
-              </div>
-              <div class="row" id="date_group">
-                <div class="form_group">
-                  <label for="">出生日期</label>
-                  <div>
-                    <input type="date" id="date" />
+                  <div class="form_group">
+                    <label for="">名字</label>
+                    <input type="text" id="firstName"/>
                   </div>
-                </div>
-              </div>
-
-              <div class="row interest">
-                <h5>興趣喜好</h5>
-                <div class="row">
-                  <div>
-                    <input type="checkbox" id="friend" />
-                  <label for="friend"> 朋友行程 </label>
+                  <div class="form_group">
+                    <label for="">性別</label>
+                    <select name="sex" id="sex">
+                      <option value="1">男</option>
+                      <option value="0">女</option>
+                    </select>
                   </div>
-                  <div>
-                    <input type="checkbox" id="family" />
-                  <label for="family"> 家庭行程 </label>
-                  </div>
-                  <div>
-                    <input type="checkbox" id="couple" />
-                  <label for="couple"> 情侶行程 </label>
-                  </div>
-                  <div>
-                    <input type="checkbox" id="pet" />
-                  <label for="pet"> 寵物行程 </label>
-                  </div>
-                  
                 </div>
                 <div class="row">
-                  <div>
-                    <input type="checkbox" id="handmade" />
-                    <label for="handmade"> 手作體驗 </label>
+                  <div class="form_group">
+                    <label for="">英文姓(同護照)</label>
+                    <input type="text" id="englishLastName"/>
                   </div>
-                 <div>
-                  <input type="checkbox" id="onwater" />
-                  <label for="onwater"> 水上活動 </label>
-                 </div>
-                 <div>
-                  <input type="checkbox" id="farm" />
-                  <label for="farm"> 觀光農場 </label>
-                 </div>
-                  <div>
-                    <input type="checkbox" id="extreme" />
-                    <label for="extreme"> 極限運動 </label>
+                  <div class="form_group">
+                    <label for="">英文名(同護照)</label>
+                    <input type="text" id="englishFirstName"/>
                   </div>
-                
+                </div>
+                <div class="row">
+                  <div class="form_group">
+                    <label for="">護照號碼</label>
+                    <input type="text" id="passportNumber"/>
+                  </div>
+                  <div class="form_group">
+                    <label for="">國家/地區</label>
+                    <input list="countrys" name="country" id="country" />
+                    <datalist id="countrys">
+                      <option value="台灣"></option>
+                      <option value="中國"></option>
+                      <option value="日本"></option>
+                      <option value="韓國"></option>
+                      <option value="越南"></option>
+                      <option value="美國"></option>
+                      <option value="加拿大"></option>
+                      <option value="俄羅斯"></option>
+                      <option value="馬來西亞"></option>
+                      <option value="新加坡"></option>
+                      <option value="印度尼西亞"></option>
+                      <option value="菲律賓"></option>
+                      <option value="泰國"></option>
+                      <option value="澳大利亞"></option>
+                      <option value="紐西蘭"></option>
+                      <option value="緬甸"></option>
+                      <option value="印度"></option>
+                      <option value="法國"></option>
+                      <option value="英國"></option>
+                      <option value="西班牙"></option>
+                      <option value="葡萄牙"></option>
+                      <option value="比利時"></option>
+                      <option value="荷蘭"></option>
+                      <option value="德國"></option>
+                      <option value="義大利"></option>
+                      <option value="波蘭"></option>
+                      <option value="挪威"></option>
+                      <option value="瑞典"></option>
+                      <option value="芬蘭"></option>
+                      <option value="烏克蘭"></option>
+                      <option value="立陶宛"></option>
+                      <option value="愛沙尼亞"></option>
+                    </datalist>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form_group" id="phone_group">
+                    <label for="">電話號碼</label>
+                    <div>
+                      <input type="text" id="phone" />
+                    </div>
+                  </div>
+                  <div class="form_group">
+                    <label for="">E-MAIL</label>
+                    <input type="text" id="email"/>
+                  </div>
+                </div>
+                <div class="row" id="date_group">
+                  <div class="form_group">
+                    <label for="">出生日期</label>
+                    <div>
+                      <input type="date" id="birthDate" />
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row interest">
+                  <h5>興趣喜好</h5>
+                  <div class="row">
+                    <div>
+                      <input type="checkbox" id="friend" />
+                      <label for="friend"> 朋友行程 </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="family" />
+                      <label for="family"> 家庭行程 </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="couple" />
+                      <label for="couple"> 情侶行程 </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="pet" />
+                      <label for="pet"> 寵物行程 </label>
+                    </div>
+                    
+                  </div>
+                  <div class="row">
+                    <div>
+                      <input type="checkbox" id="handmade" />
+                      <label for="handmade"> 手作體驗 </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="onwater" />
+                      <label for="onwater"> 水上活動 </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="farm" />
+                      <label for="farm"> 觀光農場 </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="extreme" />
+                      <label for="extreme"> 極限運動 </label>
+                    </div>
+                  </div>
+                </div>
+                  <button type="submit" class="save" >儲存</button>
                 </div>
               </div>
-              <div class="save">
-                <h5>儲存</h5>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
+        @@include('layout/footer.html')
       </div>
-
-      @@include('layout/footer.html')
     </div>
+    <script src="vender/jquery/jquery.min.js"></script>
+    <script>
+      let person = {
+        lastName: "郭",
+        firstName: "寧寶",
+        sex: 0,
+        englishLastName: "Kuo",
+        englishFirstName: "Ning-Bao",
+        passportNumber: "315438771",
+        country: "汐止國",
+        phone: "0976234986",
+        email: "baobao@gmail.com",
+        birthDate: "1990-12-01",
+        interest: {    //物件中的物件
+          friend: true,
+          family: false,
+          couple: true,
+          pet: false,
+          handmade: false,
+          onwater: false,
+          farm: false,
+          extreme: true
+        }
+
+      }
+      $("#lastName").val(person.lastName);
+      $("#firstName").val(person.firstName);
+      $("#sex").val(person.sex);
+      $("#englishLastName").val(person.englishLastName);
+      $("#englishFirstName").val(person.englishFirstName);
+      $("#passportNumber").val(person.passportNumber);
+      $("#country").val(person.country);
+      $("#phone").val(person.phone);
+      $("#email").val(person.email);
+      $("#birthDate").val(person.birthDate);
+      $("#friend").attr("checked", person.interest.friend);
+      $("family").attr("checked", person.interest.family);
+      $("#couple").attr("checked", person.interest.couple);
+      $("#pet").attr("checked", person.interest.pet);
+      $("#handmade").attr("checked", person.interest.handmade);
+      $("#onwater").attr("checked", person.interest.onwater);
+      $("#farm").attr("checked", person.interest.farm);
+      $("#extreme").attr("checked", person.interest.extreme);
+      
+
+
+
+      // document.getElementById("lastName").value = person.lastName;
+    </script>
   </body>
 </html>
