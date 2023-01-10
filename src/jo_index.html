@@ -89,14 +89,14 @@
             </div>
           </div>
         </div>
-        <div class="container content">
+        <div class="container content" v-if="show_jo">
           <h2 class="ttoc">熱門開團</h2>
 
           <div class="jo-list" >
             <a class="jo-card" 
             v-for="jo in jo_list_hot"
             :key="index"
-            v-if="show_jo">
+            >
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">{{jo.Location}}</p>
@@ -125,7 +125,7 @@
             <a class="jo-card" 
             v-for="jo in jo_list_end"
             :key="index"
-            v-if="show_jo">
+            >
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">{{jo.Location}}</p>
@@ -154,7 +154,7 @@
             <a class="jo-card" 
             v-for="jo in jo_list_new"
             :key="index"
-            v-if="show_jo">
+            >
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">{{jo.Location}}</p>
@@ -202,8 +202,7 @@
             jo_list_hot:[],
             jo_list_end:[],
             jo_list_new:[],
-            show_jo : false,
-            a: false,
+            show_jo : true,
             slick_start: false,
             AllCitys: [
               "基隆",
@@ -229,13 +228,8 @@
         },
         created() {
           window.addEventListener("scroll", this.btn_show);
-          this.getdata_jo_list_hot()
-          // this.getdata_jo_list_new(),
-          // this.getdata_jo_list_end()
-          // this.show_hot_function();
-
-          
-          
+          this.show_hot_function();  
+              
         },
         methods: {
           getdata_jo_list_hot(){   
@@ -251,14 +245,13 @@
             success: function (response) {
               response.forEach(element => {
                 _this.jo_list_hot.push(element)
-              });
-                   
+              })
             },
             error: function(exception) {
                 alert("數據載入失敗: " + exception.status);
             }
           });  
-          this.getdata_jo_list_new();         
+                 
           },
           getdata_jo_list_new(){ 
             this.jo_list_new = [];
@@ -273,13 +266,13 @@
             success: function (response) {
               response.forEach(element => {
                 _this.jo_list_new.push(element)
-              });  
+              })  
             },
             error: function(exception) {
                 alert("數據載入失敗: " + exception.status);
             }
           });
-          this.getdata_jo_list_end();
+          
           },
           getdata_jo_list_end(){ 
             this.jo_list_end = [];
@@ -294,39 +287,21 @@
             success: function (response) {
               response.forEach(element => {
                 _this.jo_list_end.push(element)
-              });   
+              })
             },
             error: function(exception) {
                 alert("數據載入失敗: " + exception.status);
             }
           });    
-          this.show_hot_function();  
+           
           },
           show_hot_function(){
-
-          // Promise.all([
-          // this.getdata_jo_list_hot(),
-          // this.getdata_jo_list_new(),
-          // this.getdata_jo_list_end()
-          // ]).then(res =>{
-            this.show_jo = true;
-
-          // })
-
-            // this.show_end_function();
+            this.getdata_jo_list_hot();
+            this.getdata_jo_list_new();
+            this.getdata_jo_list_end();
           },
-          // show_end_function(){
-          //   this.show_end = false;
-          //   this.show_end = true;
-          //   this.show_new_function();
-          // },
-          // show_new_function(){
-          //   this.show_new = false;
-          //   this.show_new = true;
-          // },
           btn_show() {
             let btn = $("#jo_button");
-
             if (screen.width <= 768) {
               if (window.scrollY > 0 && window.scrollY <= 850) {
                 btn.addClass("show");
@@ -398,13 +373,11 @@
             body.classList.remove("stop_scroll");
           },
         },
-        mounted() {
-           
-          this.jo_list_slick();
-
+        mounted() {   
+        this.jo_list_slick();   
         },
         updated(){
-          
+         
         }
       });
       app1.mount(".app1");
