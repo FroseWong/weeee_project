@@ -27,9 +27,9 @@
     position: absolute;
     top: 0px;
     right: -50px;
-    // @include lg {
-    //   right: -30px;
-    // }
+    @include lg {
+      right: -30px;
+    }
   }
   // .slider-right {
   //   position: absolute;
@@ -58,11 +58,11 @@
     background-color: $white;
     border-radius: 10px;
 
-    // @include lg {
-    //   width: auto;
-    //   height: auto;
-    //   overflow: hidden;
-    // }
+    @include lg {
+      width: auto;
+      height: auto;
+      overflow: hidden;
+    }
 
     @include m {
       height: auto;

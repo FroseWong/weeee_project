@@ -72,6 +72,7 @@ if (sessionStorage.getItem("joNew")) {
 
 // 預設狀態初始化
 function init() {
+  //alert("aa");
   const imgFile = document.querySelector(".img-file__input");
   const boxBtn = document.querySelector(".box");
 
@@ -105,7 +106,7 @@ function init() {
 
   joAddImg.addEventListener("drop", function (e) {
     e.preventDefault();
-    reader = new FileReader(); // 用來讀取檔案
+    let reader = new FileReader(); // 用來讀取檔案
     reader.readAsDataURL(e.dataTransfer.files[0]); // 讀取檔案
     reader.addEventListener("load", function () {
       // console.log(reader.result);
