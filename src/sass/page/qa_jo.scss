@@ -225,6 +225,33 @@ body.stop_scroll{
       margin-top: 0;
     }
   }
+  .productlistnew__sort{
+    width: 100%;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    border-radius: 10px;
+    @include m{
+    
+      // display: none;
+    }
+    h5{
+      margin-left: 10px;
+    }
+    ul{
+      display: flex;
+      li{
+        margin: 5px 10px;
+        padding: 0px 5px;
+        color: $gray;
+        border-radius: 10px;
+        cursor: pointer;
+        
+      }
+    }
+
+  }
   .qa_jo__bar {
     display: flex;
     flex-direction: column;

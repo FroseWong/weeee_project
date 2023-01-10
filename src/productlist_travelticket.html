@@ -22,11 +22,7 @@
     @@include('layout/header.html')
     <div class="wrapper qa_jo" id="app">
       <div class="black_bg" @click="openSelectbar"></div>
-      <div class="qa_jo__main">
-        <div class="qa_jo_title">
-          <h1>1200</h1>
-          <h2>個項目</h2>
-        </div>
+     
         <div class="qa_jo__barcard">
           <div class="container qa_jo__bar">
             <div class="rwd_bar">
@@ -39,11 +35,15 @@
                 <li class="qa_jo__sort_btn" @click="openSelectbar">排序</li>
               </ul>
             </div>
-            <div class="qa_jo__sort">
-              <h4>排序</h4>
+            <div class="productlistnew__sort">
+              <h5>25個項目</h5>
+
               <ul>
+                <li>排序｜</li>
                 <li @click="filterOrder">熱門程度</li>
-                <li @click="filterSort">價格低到高</li>
+                <li @click="filterSort_bottom_to_top">價格低到高</li>
+                <li @click="filterSort_top_to_bottom">價格高到低</li>
+                <li @click="filterScore">最高評價</li>
               </ul>
             </div>
             <div class="qa_jo__category">
