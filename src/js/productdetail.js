@@ -1,5 +1,4 @@
 const { createApp } = Vue;
-// ---------------aa---------------
 createApp({
   data() {
     return {
@@ -32,7 +31,7 @@ createApp({
           order: "95K+",
           price: 576,
           city: "新北",
-          url: "background-image:url('../img/otherpage/ar_10_1.jpg')",
+          url: "background-image:url('./img/otherpage/ar_10_1.jpg')",
         },
         {
           src: "./img/otherpage/fa_20_1.jpg",
@@ -43,7 +42,7 @@ createApp({
           order: "55K+",
           price: 1920,
           city: "台中",
-          url: "background-image:url('../img/otherpage/fr_14_2.jpg')",
+          url: "background-image:url('./img/otherpage/fr_14_2.jpg')",
         },
         {
           src: "./img/otherpage/fa_19_2.jpg",
@@ -54,7 +53,7 @@ createApp({
           order: "45K+",
           price: 1024,
           city: "台南",
-          url: "background-image:url('../img/otherpage/tr_6_1.jpg')",
+          url: "background-image:url('./img/otherpage/ar_9_2.jpg')",
         },
         {
           src: "./img/otherpage/fa_20_2.jpg",
@@ -65,7 +64,7 @@ createApp({
           order: "54K+",
           price: 768,
           city: "高雄",
-          url: "background-image:url('../img/sightseeing/fa_19_3.jpg')",
+          url: "background-image:url('./img/sightseeing/fa_19_3.jpg')",
         },
         {
           src: "./img/otherpage/fa_19_3.jpg",
@@ -76,7 +75,7 @@ createApp({
           order: "54K+",
           price: 1080,
           city: "新竹",
-          url: "background-image:url('../img/otherpage/ex_7_1.jpg')",
+          url: "background-image:url('./img/otherpage/ex_7_1.jpg')",
         },
         {
           src: "./img/otherpage/fa_20_3.jpg",
@@ -87,7 +86,7 @@ createApp({
           order: "54K+",
           price: 1440,
           city: "花蓮",
-          url: "background-image:url('../img/otherpage/pe_15_1.jpg')",
+          url: "background-image:url('./img/otherpage/pe_15_1.jpg')",
         },
       ],
       messages: [
@@ -183,9 +182,10 @@ createApp({
       productdetailNotice: 0,
       productdetailAddress: 0,
       productReview: 0,
+      pd: [],
     };
   },
-  // ---------------bb---------------
+  // ---------------aa---------------
   methods: {
     // ---------------開闔商品說明---------------
     open() {
@@ -428,27 +428,7 @@ createApp({
         }
       });
     },
-    // ---------------axios---------------
-    axios_get() {
-      axios({
-        method: "get",
-        url: "https://randomuser.me/api/?gender=female&nat=us",
-      })
-        .then(function (response) {
-          console.log(response.data);
-        })
-        .catch((error) => console.log(error));
-    },
-    axios_post() {
-      axios({
-        method: "post",
-        url: "https://hexschool-tutorial.herokuapp.com/api/signup",
-        data: {
-          email: "",
-          password: "",
-        },
-      }).then((response) => console.log(response.data));
-    },
+
     // ---------------日曆---------------
     time_fun() {
       jQuery("#datetimepicker").datetimepicker({
@@ -519,6 +499,43 @@ createApp({
         }
       });
     },
+    // ---------------axios---------------
+    axios_get() {
+      _this = this;
+
+      let num = 3;
+      axios({
+        method: "get",
+        url: "./Product.php",
+        params: {
+          productid: num,
+        },
+      })
+        .then(function (response) {
+          response.data.forEach((e) => {
+            console.log(e);
+             obj = {
+              src: e.ProductImgPath,
+              Content:e.ProductImgContent,
+            };
+            _this.pd.push(obj);
+            _this.Imgs=_this.pd;
+          });
+          
+        })
+        .catch((error) => console.log(error));
+    },
+
+
+    axios_post() {
+      axios({
+        method: "post",
+        url: "./Product.php",
+        data: {
+          productid: 1,
+        },
+      }).then((response) => console.log(response.data));
+    },
   },
   computed: {
     // ---------------總金額---------------
@@ -538,8 +555,7 @@ createApp({
     this.display_scroll();
     this.time_fun();
     this.winSize_watch();
-    // this.axios_get();
+    this.axios_get();
     // this.axios_post();
   },
 }).mount("#app");
-// ---------------cc---------------

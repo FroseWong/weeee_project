@@ -3,8 +3,8 @@
 const heartAll = document.querySelectorAll(".fa-heart");
 const productAll = document.querySelectorAll(".product-card");
 const popularCountryAll = document.querySelectorAll(".popular-country");
+const changeHeartAll = document.querySelectorAll(".change-heart");
 let status = true;
-
 const mouseenterFu = function () {
   popularCountryAll.forEach((a) => a.classList.remove("active"));
   this.classList.add("active");
@@ -23,21 +23,24 @@ const popularRWD = function () {
   }
 };
 
-heartAll.forEach((heart) =>
-  heart.addEventListener("click", function (e) {
-    e.stopPropagation();
-    console.log("clicked heart");
-  })
-);
+// heartAll.forEach((heart) =>
+//   heart.addEventListener("click", function (e) {
+//     e.stopPropagation();
+//     console.log("clicked heart");
+//   })
+// );
 
 productAll.forEach((product) =>
-  product.addEventListener("click", function () {
+  product.addEventListener("click", function (e) {
+    e.stopPropagation();
     console.log("clicked product");
+    location.href = "./productdetail.html";
   })
 );
 
 window.addEventListener("resize", function () {
   let nowStatus = status;
+  // if (window.innerWidth > 768)
   if (window.innerWidth > 768) {
     status = true;
   } else status = false;
@@ -47,5 +50,15 @@ window.addEventListener("resize", function () {
     popularRWD();
   }
 });
+
+changeHeartAll.forEach((changeHeart) =>
+  changeHeart.addEventListener("click", function (e) {
+    e.stopPropagation();
+    this.querySelectorAll("i").forEach((i) => {
+      if (i.classList.contains("hidden")) i.classList.remove("hidden");
+      else if (!i.classList.contains("hidden")) i.classList.add("hidden");
+    });
+  })
+);
 
 popularRWD();
