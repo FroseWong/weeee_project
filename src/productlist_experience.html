@@ -86,9 +86,9 @@
               </ul>
             </div>
           </div>
-          <div class="productlist_new_card_list container">
-            <div class="productlist_new__sort">
-              <h5>25個項目</h5>
+          <div class="productlist_new_card_list1 container">
+            <div class="productlist_new__sort1">
+              <h5>20個項目</h5>
 
               <ul>
                 <li>排序｜</li>
@@ -691,6 +691,35 @@
          $(".page1 ul li a").removeClass("productlist_new__page-link--current");
         $(this).addClass("productlist_new__page-link--current");
         });
+
+       
+
+
+          $.ajax({            
+              method: "GET",
+
+              url: "./Category1.php",
+              // data:{ 
+              //     account:str
+              // },            
+              dataType: "json",
+              success: function (response) {
+                  //更新html內容前先清空原有資料
+                  // $("#result").html("");
+                  // //更新html內容(透過jQuery跑迴圈取值)
+                  // $.each(response, function(index, row) {
+                  //     $("#result").append(row.Account + "/" + row.PWD +  "/" + row.CreateDate + "<br/>");
+                  // });
+                  console.log(response);
+              },        
+              error: function(exception) {
+                alert("發生錯誤: " + exception.status);
+              }
+          });   
     </script>
+     <script
+     src="https://code.jquery.com/jquery-3.6.3.js"
+     integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+     crossorigin="anonymous"></script>
   </body>
 </html>

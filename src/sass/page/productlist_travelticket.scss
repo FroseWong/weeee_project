@@ -177,7 +177,7 @@
           }
         }
       }
-      .productlist_new_card_list {
+      .productlist_new_card_list1 {
         display: flex;
         flex-direction: column;
         margin-left: 35px;
@@ -186,11 +186,11 @@
         @include m {
           margin-left: 0;
         }
-        .productlist_new__sort{
+        .productlist_new__sort1{
           width: 100%;
           background-color: $white;
           display: flex;
-          flex-direction: column;
+         
           padding: 20px 0;
           border-radius: 10px;
           @include m{
