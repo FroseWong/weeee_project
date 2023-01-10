@@ -47,19 +47,28 @@
 
     .jo-card__top__location {
       color: $white;
-
+      position: absolute;
+      width: 70px;
+      height: 30px;
+      // background-color: $blue;
+      z-index: 15;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      top: 10px;
+      left: 10px;
       .fa-location-dot {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 15;
+        // position: absolute;
+        // top: 20px;
+        // left: 20px;
+        // z-index: 15;
       }
 
       .jo__location {
-        position: absolute;
-        top: 20px;
-        left: 40px;
-        z-index: 15;
+        // position: absolute;
+        // top: 20px;
+        // left: 40px;
+        // z-index: 15;
       }
     }
 
