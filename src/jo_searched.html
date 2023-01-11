@@ -79,7 +79,7 @@
           </div>
         </div>
         <div class="container content">
-          <h2 class="ttoc">全部結果 <span>100</span>項</h2>
+          <h2 class="ttoc">全部結果 <span>{{count}}</span>項</h2>
           <div class="jo-list container" id="searched_list">
             <a class="jo-card" v-for="jo in jo_list" :key="index">
               <div class="jo-card__top__location">
@@ -156,6 +156,7 @@
               "其他",
             ],
             location_selected: "全部地區",
+            count: 0,
           };
         },
         created() {
@@ -177,6 +178,7 @@
           },
           getdata_jo_list_searched() {
             this.jo_list = [];
+            let count = 0;
             let _this = this;
             let urlParams = new URLSearchParams(window.location.search);
             let loc = urlParams.get('loc');
@@ -194,7 +196,11 @@
               success: function (response) {
                 response.forEach((element) => {
                   _this.jo_list.push(element);
+                  count++;
+                  
                 });
+                
+                _this.count = count;
                 // console.log(response);
                 // console.log(_this.jo_list);
               },
@@ -202,6 +208,8 @@
                 alert("數據載入失敗: " + exception.status);
               },
             });
+            // this.count = this.jo_list.length
+           
           },
           scrollToTop() {
             window.scrollTo({

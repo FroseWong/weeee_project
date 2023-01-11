@@ -94,7 +94,13 @@
           <h2 class="ttoc">熱門開團</h2>
 
           <div class="jo-list">
-            <a class="jo-card" v-for="jo in jo_list_hot" :key="index">
+            <a class="jo-card" 
+            
+            @click="jump_jo_detail"
+            v-for="jo in jo_list_hot" 
+            :key="index"
+            
+            >
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
@@ -123,7 +129,10 @@
           </div>
           <h2 class="ttoc">即將結團</h2>
           <div class="jo-list">
-            <a class="jo-card" v-for="jo in jo_list_end" :key="index">
+            <a class="jo-card" 
+            
+            v-for="jo in jo_list_end" 
+            :key="index">
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
@@ -152,7 +161,10 @@
           </div>
           <h2 class="ttoc">新團推廣</h2>
           <div class="jo-list">
-            <a class="jo-card" v-for="jo in jo_list_new" :key="index">
+            <a class="jo-card" 
+            
+            v-for="jo in jo_list_new" 
+            :key="index">
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
@@ -227,19 +239,19 @@
               "其他",
             ],
             location_selected: "全部地區",
+
           };
         },
         created() {
           window.addEventListener("scroll", this.btn_show);
-          this.change_location_selected();
-          this.show__function();
+          // this.change_location_selected();
+          // this.show__function();
+          this.getdata_jo_list_hot();
         },
         methods: {
-          change_location_selected(){
-            let urlParams = new URLSearchParams(window.location.search);
-            let loc =  urlParams.get('loc');
+          jump_jo_detail(e){
+           console.log(e);
             
-            this.location_selected = loc;
           },
           getdata_jo_list_hot() {
             this.jo_list_hot = [];
@@ -254,6 +266,9 @@
               success: function (response) {
                 response.forEach((element) => {
                   _this.jo_list_hot.push(element);
+                });
+                _this.$nextTick(function () {
+                  _this.getdata_jo_list_new();
                 });
               },
               error: function (exception) {
@@ -274,6 +289,9 @@
               success: function (response) {
                 response.forEach((element) => {
                   _this.jo_list_new.push(element);
+                });
+                _this.$nextTick(function () {
+                  _this.getdata_jo_list_end();
                 });
               },
               error: function (exception) {
@@ -304,11 +322,11 @@
               },
             });
           },
-          show__function() {
-            this.getdata_jo_list_hot();
-            this.getdata_jo_list_new();
-            this.getdata_jo_list_end();
-          },
+          // show__function() {
+          //   this.getdata_jo_list_hot();
+          //   this.getdata_jo_list_new();
+          //   this.getdata_jo_list_end();
+          // },
           btn_show() {
             let btn = $("#jo_button");
             if (screen.width <= 768) {
