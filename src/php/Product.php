@@ -16,7 +16,6 @@ where p.ProductStatus = 1 and p.ProductType = ? ";
 
 $statement =  $pdo->prepare($sql);
 
-if($path == "/WEEEE_PROJET/dist/productlist_travel.html"){
     $statement->bindValue(1, "sightseeing");
 }
 else
