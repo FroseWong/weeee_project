@@ -225,49 +225,61 @@
     </div>
     <script src="vender/jquery/jquery.min.js"></script>
     <script>
-      let person = {
-        lastName: "郭",
-        firstName: "寧寶",
-        sex: 0,
-        englishLastName: "Kuo",
-        englishFirstName: "Ning-Bao",
-        passport: "315438771",
-        country: "汐止國",
-        phone: "0976234986",
-        username: "baobao@gmail.com",
-        birthDate: "1990-12-01",
-        interest: {    //物件中的物件
-          friend: true,
-          family: false,
-          couple: true,
-          pet: false,
-          handmade: false,
-          onwater: false,
-          farm: false,
-          extreme: true
+      
+      //會員一進到此頁面，就發送請求到後端取資料
+      $.ajax({
+        method: "GET",
+        url: "php/query_account_setting.php",
+        data: {},
+        dataType: "json",
+        success: function(response){
+            let person = {
+              lastName: response.LastName,
+              firstName: response.FirstName,
+              sex: response.Sex,
+              englishLastName: response.EnglishLastName,
+              englishFirstName: response.EnglishFirstName,
+              passport: response.Passport,
+              country: response.Country,
+              phone: response.Phone,
+              username: response.Username,
+              birthDate: response.Birthdate,
+              interest: {    //物件中的物件
+                friend: response.Friend ? true : false,
+                family: response.Family ? true : false,
+                couple: response.Couple ? true : false,
+                pet: response.Pet ? true : false,
+                handmade: response.Handmade ? true : false,
+                onwater: response.Onwater ? true : false,
+                farm: response.Farm ? true : false,
+                extreme: response.Extreme ? true : false
+              },
+              image: "img/jo/jo_member4.jpg" 
+            }
+            $("#lastName").val(person.lastName);
+            $("#firstName").val(person.firstName);
+            $("#sex").val(person.sex);
+            $("#englishLastName").val(person.englishLastName);
+            $("#englishFirstName").val(person.englishFirstName);
+            $("#passport").val(person.passport);
+            $("#country").val(person.country);
+            $("#phone").val(person.phone);
+            $("#username").val(person.username);
+            $("#birthDate").val(person.birthDate);
+            $("#friend").attr("checked", person.interest.friend);
+            $("family").attr("checked", person.interest.family);
+            $("#couple").attr("checked", person.interest.couple);
+            $("#pet").attr("checked", person.interest.pet);
+            $("#handmade").attr("checked", person.interest.handmade);
+            $("#onwater").attr("checked", person.interest.onwater);
+            $("#farm").attr("checked", person.interest.farm);
+            $("#extreme").attr("checked", person.interest.extreme);
         },
-        image: "img/jo/jo_member4.jpg" 
-      }
-      $("#lastName").val(person.lastName);
-      $("#firstName").val(person.firstName);
-      $("#sex").val(person.sex);
-      $("#englishLastName").val(person.englishLastName);
-      $("#englishFirstName").val(person.englishFirstName);
-      $("#passport").val(person.passport);
-      $("#country").val(person.country);
-      $("#phone").val(person.phone);
-      $("#username").val(person.username);
-      $("#birthDate").val(person.birthDate);
-      $("#friend").attr("checked", person.interest.friend);
-      $("family").attr("checked", person.interest.family);
-      $("#couple").attr("checked", person.interest.couple);
-      $("#pet").attr("checked", person.interest.pet);
-      $("#handmade").attr("checked", person.interest.handmade);
-      $("#onwater").attr("checked", person.interest.onwater);
-      $("#farm").attr("checked", person.interest.farm);
-      $("#extreme").attr("checked", person.interest.extreme);
-     
+        error: function(exception){
+          alert("錯誤");
+        }
 
+      })
 
 
       // document.getElementById("lastName").value = person.lastName;
