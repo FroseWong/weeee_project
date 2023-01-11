@@ -1,5 +1,5 @@
 <?php
-$memberNumber = "ME0002"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
+$memberNumber = "ME0003"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
 $lastName = $_POST["lastName"];
 $firstName = $_POST["firstName"];
 $sex = $_POST["sex"];
@@ -8,27 +8,21 @@ $englishFirstName = $_POST["englishFirstName"];
 $passport = $_POST["passport"];
 $country = $_POST["country"];
 $phone = $_POST["phone"];
-// $username = $_POST["username"];
 $birthDate = $_POST["birthDate"];
-$friend = $_POST["friend"];
-$family = $_POST["family"];
-$couple = $_POST["couple"];
-$pet = $_POST["pet"];
-$handmade = $_POST["handmade"];
-$onwater = $_POST["onwater"];
-$farm = $_POST["farm"];
-$extreme = $_POST["extreme"];
+$friend = isset($_POST["friend"]) ? 1 : 0;
+$family = isset($_POST["family"]) ? 1 : 0;
+$couple = isset($_POST["couple"]) ? 1 : 0;
+$pet = isset($_POST["pet"]) ? 1 : 0;
+$handmade = isset($_POST["handmade"]) ? 1 : 0;
+$onwater = isset($_POST["onwater"]) ? 1 : 0;
+$farm = isset($_POST["farm"]) ? 1 : 0;
+$extreme = isset($_POST["extreme"]) ? 1 : 0;
 
 //DB連線資訊
 include("connection.php");
 
 //建立SQL
-// $sql = "UPDATE Weeee.Member SET LastName = '郭', SET FirstName = '寧寶', SET Sex = 0, SET englishLastName = 'Kuo', SET englishFirstName = 'Ning-Bao', SET passportNumber = '315438771', SET country = '汐止國', SET phone = '0976234986', SET username = 'baobao@gmail.com', SET birthDate = '1990-12-01', SET interest.friend = true, SET interest.family = false, SET interest.couple = true, SET interest.pet = false, SET interest.handmade = false, SET interest.onwater = false, SET interest.farm = false, SET interest.extreme = true, WHERE MemberNumber = 'ME0001'";
-
-$sql = "UPDATE Weeee.Member SET LastName = ?, FirstName = ?, Sex = ?, EnglishLastName = ?, EnglishFirstName = ?, Passport = ?, Country = ?, Phone = ?,  BirthDate = ? interest.friend = ?, interest.family = ?, interest.couple = ?, interest.pet = ?, interest.handmade = ?, interest.onwater = ?, interest.farm = ?, interest.extreme = ?  WHERE MemberNumber = ?";
-
-//Username = ?, 
-
+$sql = "UPDATE Weeee.Member SET LastName = ?, FirstName = ?, Sex = ?, EnglishLastName = ?, EnglishFirstName = ?, Passport = ?, Country = ?, Phone = ?,  BirthDate = ?, Friend = ?, Family = ?, Couple = ?, Pet = ?, Handmade = ?, Onwater = ?, Farm = ?, Extreme = ?  WHERE MemberNumber = ?";
 
 //執行
 $statement = $pdo->prepare($sql);
@@ -40,7 +34,6 @@ $statement -> bindValue(5, $englishFirstName);
 $statement -> bindValue(6, $passport);
 $statement -> bindValue(7, $country);
 $statement -> bindValue(8, $phone);
-// $statement -> bindValue(9, $username);
 $statement -> bindValue(9, $birthDate);
 $statement -> bindValue(10, $friend);
 $statement -> bindValue(11, $family);
