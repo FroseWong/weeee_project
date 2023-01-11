@@ -1,5 +1,5 @@
 <?php
-include("Connect.php");
+include("Connection.php");
 $path = $_POST["path"];
 // echo $path;
 
