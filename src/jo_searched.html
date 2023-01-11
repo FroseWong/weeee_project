@@ -81,7 +81,10 @@
         <div class="container content">
           <h2 class="ttoc">全部結果 <span>{{count}}</span>項</h2>
           <div class="jo-list container" id="searched_list">
-            <a class="jo-card" v-for="jo in jo_list" :key="index">
+            <a class="jo-card" 
+            :href="'./jo_detail.html?id=' + jo.JoID"
+            v-for="jo in jo_list" 
+            :key="index">
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
