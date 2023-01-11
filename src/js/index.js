@@ -40,6 +40,7 @@ productAll.forEach((product) =>
 
 window.addEventListener("resize", function () {
   let nowStatus = status;
+  // if (window.innerWidth > 768)
   if (window.innerWidth > 768) {
     status = true;
   } else status = false;

@@ -29,6 +29,7 @@
             <li
               v-for="(item, index) in AllCitys"
               @click="changeSelectbar(item)"
+              
             >
               {{item}}
             </li>
@@ -48,6 +49,7 @@
                 type="text"
                 placeholder="想做什麼？"
                 @keyup.enter="jump_jo_searched"
+                v-model="keyword"
               />
               <button @click="jump_jo_searched"><h5>搜尋</h5></button>
             </div>
@@ -78,208 +80,34 @@
         </div>
         <div class="container content">
           <h2 class="ttoc">全部結果 <span>100</span>項</h2>
-          <div class="jo-list">
-            <a class="jo-card">
+          <div class="jo-list container" id="searched_list">
+            <a class="jo-card" v-for="jo in jo_list" :key="index">
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台北</p>
+                <p class="jo__location">{{jo.Location}}</p>
               </div>
               <div class="jo-card__top">
                 <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j1"></div>
+                  <div
+                    class="jo-card__top__pic__src j1"
+                    v-bind:style="{ backgroundImage: 'url(' + jo.JoImg + ')' }"
+                  ></div>
                 </div>
               </div>
               <div class="jo-card__bottom">
-                <h6 class="jo-name">南京復興站吃晚餐</h6>
-                <span class="gray jo__detailaddress">南京復興站</span>
-                <span class="gray jo-time">星期五,十二月 2日 17:50</span>
+                <h6 class="jo-name">{{jo.JoTitle}}</h6>
+                <span class="gray jo__detailaddress"
+                  >{{jo.JoDetailedAddressed}}</span
+                >
+                <span class="gray jo-time">{{jo.week}},{{jo.JoStartDate}}</span>
                 <span class="jo-card__bottom__message"
                   ><span class="member-pic m1"></span
-                  ><span class="member-name">王小明</span>
-                  <span class="left-time">剩餘1天</span></span
+                  ><span class="member-name">{{jo.FullName}}</span>
+                  <span class="left-time">剩餘{{jo.left_days}}天</span></span
                 >
               </div>
             </a>
-  
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台中</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j2"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">突然決定玩桌遊</h6>
-                <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-                <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m2"></span
-                  ><span class="member-name">吳筠萍</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
-  
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台北</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j3"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-                <span class="gray jo__detailaddress">饒河夜市</span>
-                <span class="gray jo-time">星期三,一月 18日 19:00</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m3"></span
-                  ><span class="member-name">劉品吉</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
-          </div>
 
-          <div class="jo-list">
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台北</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j1"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">南京復興站吃晚餐</h6>
-                <span class="gray jo__detailaddress">南京復興站</span>
-                <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m1"></span
-                  ><span class="member-name">王小明</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
-  
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台中</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j2"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">突然決定玩桌遊</h6>
-                <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-                <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m2"></span
-                  ><span class="member-name">吳筠萍</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
-  
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台北</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j3"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-                <span class="gray jo__detailaddress">饒河夜市</span>
-                <span class="gray jo-time">星期三,一月 18日 19:00</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m3"></span
-                  ><span class="member-name">劉品吉</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
-          </div>
-
-          <div class="jo-list ctoc">
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台北</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j1"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">南京復興站吃晚餐</h6>
-                <span class="gray jo__detailaddress">南京復興站</span>
-                <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m1"></span
-                  ><span class="member-name">王小明</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
-  
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台中</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j2"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">突然決定玩桌遊</h6>
-                <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-                <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m2"></span
-                  ><span class="member-name">吳筠萍</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
-  
-            <a class="jo-card">
-              <div class="jo-card__top__location">
-                <i class="fa-solid fa-location-dot"></i>
-                <p class="jo__location">台北</p>
-              </div>
-              <div class="jo-card__top">
-                <div class="jo-card__top__pic">
-                  <div class="jo-card__top__pic__src j3"></div>
-                </div>
-              </div>
-              <div class="jo-card__bottom">
-                <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-                <span class="gray jo__detailaddress">饒河夜市</span>
-                <span class="gray jo-time">星期三,一月 18日 19:00</span>
-                <span class="jo-card__bottom__message"
-                  ><span class="member-pic m3"></span
-                  ><span class="member-name">劉品吉</span>
-                  <span class="left-time">剩餘1天</span></span
-                >
-              </div>
-            </a>
           </div>
           <a id="jo_button" href="./jo_new.html">
             <img src="./img/jo/jo_create.gif" alt="" />
@@ -293,7 +121,7 @@
 
       @@include('layout/footer.html')
     </div>
-    <script src="./vue/vue.global.prod.js"></script>
+    <script src="./vue/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script
       type="text/javascript"
@@ -303,9 +131,12 @@
       let app1 = Vue.createApp({
         data() {
           return {
+            jo_list:[],
+            keyword : "",
             show_lightbox: false,
             show_select_bar: false,
             AllCitys: [
+              "全部地區",
               "基隆",
               "台北",
               "新北",
@@ -324,13 +155,54 @@
               "花蓮",
               "其他",
             ],
-            location_selected: "選擇地點",
+            location_selected: "全部地區",
           };
         },
         created() {
           window.addEventListener("scroll", this.btn_show);
+          this.change_location_selected();
+          this.getdata_jo_list_searched();
+          
         },
         methods: {
+          change_location_selected(){
+            let urlParams = new URLSearchParams(window.location.search);
+            let loc =  urlParams.get('loc');
+            if( loc == "%"){
+              this.location_selected = "全部地區";
+            }else{
+              this.location_selected = loc;
+            }
+            
+          },
+          getdata_jo_list_searched() {
+            this.jo_list = [];
+            let _this = this;
+            let urlParams = new URLSearchParams(window.location.search);
+            let loc = urlParams.get('loc');
+            let key = urlParams.get('key');
+            console.log(loc);
+            console.log(key);
+            $.ajax({
+              method: "POST",
+              url: "./php/jo_searched.php",
+              data: {
+                loc : loc,
+                key : key
+              },
+              dataType: "json",
+              success: function (response) {
+                response.forEach((element) => {
+                  _this.jo_list.push(element);
+                });
+                // console.log(response);
+                // console.log(_this.jo_list);
+              },
+              error: function (exception) {
+                alert("數據載入失敗: " + exception.status);
+              },
+            });
+          },
           scrollToTop() {
             window.scrollTo({
               top: 0,
@@ -341,8 +213,8 @@
           btn_show() {
             let btn = $("#jo_button");
             let btn_bottom = document.querySelector("footer").offsetTop;
-            console.log(btn_bottom);
-            console.log(window.scrollY);
+            // console.log(btn_bottom);
+            // console.log(window.scrollY);
             if (screen.width <= 768) {
               if (window.scrollY > 0 && window.scrollY <= btn_bottom - 750) {
                 btn.addClass("show");
@@ -359,14 +231,24 @@
               }
             }
           },
-          // jump_jo_searched() {
-          //   let searchedbox = document.querySelector(".searchbox");
-          //   searchedbox_value = searchedbox.querySelector("input").value;
-          //   console.log(searchedbox_value);
-          //   if (searchedbox_value.length > 0) {
-          //     window.location.assign("jo_searched.html");
-          //   }
-          // },
+          jump_jo_searched() {
+            let searchedbox = document.querySelector(".searchbox");
+            searchedbox_value = searchedbox.querySelector("input").value;
+            console.log(searchedbox_value);
+            if (searchedbox_value.length > 0 || this.location_selected != "全部地區") {
+              
+              let loc = this.location_selected;
+              let key = this.keyword;
+              if(loc == "全部地區"){
+              loc = "%";
+              let url = "jo_searched.html" + "?loc=" + loc + "&key="+ key;
+              window.location.assign(url);
+              }else{
+              let url = "jo_searched.html" + "?loc=" + loc + "&key="+ key;
+              window.location.assign(url);}
+              
+            }
+          },
           openSelectbar() {
             this.scrollToTop();
             this.show_lightbox = true;
@@ -381,7 +263,7 @@
             body.classList.remove("stop_scroll");
           },
           changeSelectbar(item) {
-            console.log(item);
+            // console.log(item);
             this.show_lightbox = false;
             this.show_select_bar = false;
             let body = document.querySelector("body");

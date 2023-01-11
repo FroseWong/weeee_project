@@ -1,7 +1,7 @@
-<header>
+<header id="header">
     <div class="header_wrapper">
 
-        <div class="header_top container">
+        <div class="header_top container"  @click="counter++">
 
             <ul class="header_top_left">
                 <li>
@@ -19,8 +19,10 @@
                     <button class="header_search_m"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </li>
                 <li>
-                    <a href="shoppingcart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-
+                    <a class="shoppingcart" href="shoppingcart.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <div class="shoppingcart-num hidden" ref="shoppingcartNum">{{counter}}</div>
+                    </a>
                 </li>
                 <li>
                     <i class="fa-solid fa-user">

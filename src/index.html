@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    <!-- @@include('layout/header.html') -->
+    @@include('layout/header.html')
     <div class="wrapper index">
       <div class="topbanner">
         <div class="container topbanner__text">
@@ -942,6 +942,7 @@
     </div>
     <!-- @@include('layout/footer.html') -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.prod.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
@@ -992,6 +993,29 @@
           });
         }
       });
+    </script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        watch: {
+          counter(value) {
+            if (value > 0) this.showcartNum();
+          },
+        },
+        methods: {
+          showcartNum() {
+            const num = this.$refs.shoppingcartNum;
+            // console.log(num);
+            num.classList.remove("hidden");
+          },
+        },
+      });
+
+      app.mount("#header");
     </script>
     <script src="./js/index.js"></script>
   </body>

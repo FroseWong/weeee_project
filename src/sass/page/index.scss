@@ -31,13 +31,14 @@
     width: 1000px;
 
     @include xl {
-      width: 900px;
+      width: 800px;
+      // color: red;
     }
 
-    // @include lg {
-    //   width: 400px;
-    //   color: red;
-    // }
+    @include lg {
+      width: 600px;
+      // color: red;
+    }
 
     @include m {
       width: 330px;
@@ -113,6 +114,13 @@
     margin-bottom: 100px;
     display: flex;
     justify-content: space-between;
+
+    // @include xl {
+    //   width: 330px;
+    //   margin: 0 auto 70px;
+    //   box-sizing: border-box;
+    // }
+
     @include m {
       width: 330px;
       margin: 0 auto 70px;
@@ -128,6 +136,13 @@
       box-sizing: border-box;
       overflow: hidden;
       transition: all 0.3s;
+
+      // @include xl {
+      //   width: 150px;
+      //   height: 150px;
+      //   margin: 0 7px;
+      // }
+
       @include m {
         width: 150px;
         height: 150px;
@@ -196,6 +211,12 @@
         left: 0px;
         transition: all 0.3s;
 
+        // @include xl {
+        //   font-size: 16px;
+        //   top: 96px;
+        //   left: -5px;
+        // }
+
         @include m {
           font-size: 16px;
           top: 96px;
@@ -223,6 +244,9 @@
         bottom: -100px;
         left: 0px;
 
+        // @include xl {
+        //   bottom: -35px;
+        // }
         @include m {
           bottom: -35px;
         }

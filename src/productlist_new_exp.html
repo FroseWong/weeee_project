@@ -383,7 +383,7 @@
             let a = this.cardlist;
             $.ajax({            
             method: "POST",
-            url: "./Product.php",
+            url: "./php/Product_jerry.php",
             data:{
               path:CID.pathname
             },          
@@ -391,15 +391,11 @@
             success: function (response) {
               response.forEach(element => {
                 a.push(element)
-              });
-              console.log(a)
-             
+              });             
             },
             error: function(exception) {
                 alert("數據載入失敗: " + exception.status);
             }
-            
-
           });
             this.cardlist = a;
             console.log(this.cardlist);
@@ -411,7 +407,6 @@
           showproduct(){
             this.dataget = false;
             this.dataget = true;
-            console.log("aaa") 
           },
           open_city(e) {
             this.cityshow = !this.cityshow;
