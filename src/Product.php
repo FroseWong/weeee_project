@@ -16,18 +16,18 @@ where p.ProductStatus = 1 and p.ProductType = ? ";
 
 $statement =  $pdo->prepare($sql);
 
-if($path == "/weeee_projet/dist/productlist_travel.html"){
+if($path == "/WEEEE_PROJET/dist/productlist_travel.html"){
     $statement->bindValue(1, "sightseeing");
 }
 else
-if($path == "/weeee_projet/dist/productlist_travelticket.html"){
+if($path == "/WEEEE_PROJET/dist/productlist_travelticket.html"){
     $statement->bindValue(1, "transticket");
 }
 else
-if($path == "//weeee_projet/dist/productlist_experience.html"){
+if($path == "/WEEEE_PROJET/dist/productlist_experience.html"){
     $statement->bindValue(1, "experience");
  }
-elseif($path == "//weeee_projet/dist/productlist_sightseeingticket.html"){
+elseif($path == "/WEEEE_PROJET/dist/productlist_sightseeingticket.html"){
     $statement->bindValue(1, "viewpointticket");
 }
 
