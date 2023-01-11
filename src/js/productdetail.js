@@ -144,17 +144,20 @@ createApp({
         {
           Content:
             "► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心",
-          src: "./img/sightseeing/fa_19_1.jpg",
+          // src: "./img/sightseeing/fa_19_1.jpg",
+          src: "",
         },
         {
           Content:
             "► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』",
-          src: "./img/sightseeing/fa_19_2.jpg",
+          // src: "./img/sightseeing/fa_19_2.jpg",
+          src: "",
         },
         {
           Content:
             "► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界",
-          src: "./img/sightseeing/fa_19_3.jpg",
+          // src: "./img/sightseeing/fa_19_3.jpg",
+          src: "",
         },
       ],
       ProductDetail: {
@@ -526,9 +529,9 @@ createApp({
 
     axios_post() {
       _this = this;
-      let urlParams = new URLSearchParams(window.location.search);
-      console.log(urlParams.has('productdetail'));
       let num =3;
+      let urlParams = new URLSearchParams(window.location.search);
+      num =urlParams.get('id');
       $.ajax({
         method: "POST",
         url: "php/ProductDetail.php",
@@ -539,13 +542,16 @@ createApp({
         success: function (response) {
           console.log(response);
           response.forEach((e) => {
-            // console.log(e);
             obj = {
               src: e.ProductImgPath,
               Content: e.ProductImgContent,
             };
+            
             _this.pd.push(obj);
             _this.Imgs = _this.pd;
+          });
+          _this.$nextTick(function () {
+            _this.productdetail_slideshow();
           });
         },
         error: function (exception) {
@@ -568,7 +574,7 @@ createApp({
   mounted() {
     this.field_mark();
     this.product_list();
-    this.productdetail_slideshow();
+    // this.productdetail_slideshow();
     this.display_scroll();
     this.time_fun();
     this.winSize_watch();
