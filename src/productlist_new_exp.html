@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    @@include('layout/header.html')
-    <div class="wrapper productlist_new" id="app">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  @@include('layout/header.html')
+  <div class="wrapper productlist_new" id="app">
+    <div v-cloak>
       <div class="black_bg" @click="openSelectbar"></div>
       <div class="productlist_new__main">
         <div class="productlist_new__select container">
           <div class="container productlist_new__bar">
             <div class="rwd_bar">
               <ul>
-                <li
-                  class="productlist_new__category_btn"
-                  @click="openSelectbar"
-                >
+                <li class="productlist_new__category_btn" @click="openSelectbar">
                   行程
                 </li>
-                <li
-                  class="productlist_new__destination_btn"
-                  @click="openSelectbar"
-                >
+                <li class="productlist_new__destination_btn" @click="openSelectbar">
                   目的
                 </li>
                 <li class="productlist_new__price_btn" @click="openSelectbar">
@@ -43,39 +41,29 @@
                   </li> -->
               </ul>
             </div>
-
+            <!--------行程篩選--------->
             <div class="productlist_new__category">
               <h4>行程分類</h4>
               <ul>
-                <li
-                  v-for="(category,index) in categorys"
-                  @click="filterCategory"
-                >
+                <li v-for="(category,index) in categorys" @click="filterCategory">
                   <input type="checkbox" :id="`category${index+1}` " />
-
                   {{category}}
                 </li>
               </ul>
             </div>
+            <!--------城市篩選--------->
             <div class="productlist_new__destination">
               <h4>目的地</h4>
-              <span @click="open_city" class="productlist_new__open"
-                >台灣
+              <span @click="open_city" class="productlist_new__open">台灣
                 <i class="fa-solid fa-circle-chevron-down"></i>
               </span>
               <ul class="productlist_new__city productlist_new__block">
-                <li
-                  v-for="(AllCity,index) in AllCitys"
-                  v-if="cityshow"
-                  @click="filterCity"
-                >
-                  <input
-                    type="checkbox"
-                    :id="`AllCity${index+1}`"
-                  />&emsp;{{AllCity}}
+                <li v-for="(AllCity,index) in AllCitys" v-if="cityshow" @click="filterCity">
+                  <input type="checkbox" :id="`AllCity${index+1}`" />&emsp;{{AllCity}}
                 </li>
               </ul>
             </div>
+            <!--------價格篩選--------->
             <div class="productlist_new__price">
               <h4>價格</h4>
               <ul>
@@ -86,10 +74,10 @@
               </ul>
             </div>
           </div>
+          <!--------排序--------->
           <div class="productlist_new_card_list container">
             <div class="productlist_new__sort">
               <h5>25個項目</h5>
-
               <ul>
                 <li>排序｜</li>
                 <li @click="filterOrder">熱門程度</li>
@@ -98,45 +86,26 @@
                 <li @click="filterScore">最高評價</li>
               </ul>
             </div>
-            <a
-            class="product-card-row"
-              :href=`./productdetail.html?id=${product.cardid}` 
-              v-for="product in cardlist"
-              :key="index"
-  
-              v-if="dataget"
-            >
+            <!--------商品卡--------->
+            <a class="product-card-row" :href=`./productdetail.html?id=${product.ProductID}` v-for="product in cardlist"
+              :key="index" v-if="dataget">
+              <!-- <div class="product-card-row__left" v-bind:style="{ backgroundImage: 'url{{product.src}}' }"></div> -->
               <div
                 class="product-card-row__left"
-                v-bind:style="{ backgroundImage: 'url{{product.src}}' }"
-              ></div>
-              <!-- <div
-                class="product-card-row__left"
                 v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
-              ></div> -->
+              ></div>
               <div class="product-card-row__right">
                 <div class="product-name">{{product.ProductName}}</div>
                 <div class="product-tag">{{product.ProductSecondType}}</div>
                 <div class="product__text">{{product.ProductText}}</div>
-
-                <!-- <span class="gray"
-                  ><i class="fa-solid fa-star"></i
-                  >{{card.score}}{{card.scorepeople}} |
-                  <span class="product-bought">{{card.order}}</span>個已訂購
-                </span> -->
-                <span class="price"
-                  >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
-                >
+                <span class="price">TWD <span class="product-price">{{product.ProductPrice}}</span>元</span>
               </div>
             </a>
+            <!--------分頁--------->
             <nav>
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
-                  <a
-                    class="productlist_new__page-link productlist_new__page-link--current"
-                    href="#"
-                    >1</a
-                  >
+                  <a class="productlist_new__page-link productlist_new__page-link--current" href="#">1</a>
                 </li>
                 <li class="productlist_new__page-item">
                   <a class="productlist_new__page-link" href="#">2</a>
@@ -146,14 +115,17 @@
                 </li>
               </ul>
             </nav>
+
           </div>
         </div>
       </div>
       @@include('layout/footer.html')
     </div>
+  </div>
 
-    <script src="./vue/vue.global.prod.js"></script>
-    <script>
+  <script src="./vue/vue.global.prod.js"></script>
+  <script src="./js/productlist_08.js"></script>
+  <!-- <script>
       const { createApp } = Vue;
 
       createApp({
@@ -685,6 +657,7 @@
           
         },
       }).mount("#app");
-    </script>
-  </body>
+    </script> -->
+</body>
+
 </html>
