@@ -500,41 +500,58 @@ createApp({
       });
     },
     // ---------------axios---------------
-    axios_get() {
-      _this = this;
-
-      let num = 3;
-      axios({
-        method: "get",
-        url: "./Product.php",
-        params: {
-          productid: num,
-        },
-      })
-        .then(function (response) {
-          response.data.forEach((e) => {
-            console.log(e);
-             obj = {
-              src: e.ProductImgPath,
-              Content:e.ProductImgContent,
-            };
-            _this.pd.push(obj);
-            _this.Imgs=_this.pd;
-          });
-          
-        })
-        .catch((error) => console.log(error));
-    },
-
+    // axios_get() {
+    //   _this = this;
+    //   let num = 6;
+    //   axios({
+    //     method: "get",
+    //     url: "./Product.php",
+    //     params: {
+    //       productid: num,
+    //     },
+    //   })
+    //     .then(function (response) {
+    //       response.data.forEach((e) => {
+    //         console.log(e);
+    //         obj = {
+    //           src: e.ProductImgPath,
+    //           Content: e.ProductImgContent,
+    //         };
+    //         _this.pd.push(obj);
+    //         _this.Imgs = _this.pd;
+    //       });
+    //     })
+    //     .catch((error) => console.log(error));
+    // },
 
     axios_post() {
-      axios({
-        method: "post",
-        url: "./Product.php",
+      _this = this;
+      let urlParams = new URLSearchParams(window.location.search);
+      console.log(urlParams.has('productdetail'));
+      let num =3;
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetail.php",
         data: {
-          productid: 1,
+          productid: num
         },
-      }).then((response) => console.log(response.data));
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          response.forEach((e) => {
+            // console.log(e);
+            obj = {
+              src: e.ProductImgPath,
+              Content: e.ProductImgContent,
+            };
+            _this.pd.push(obj);
+            _this.Imgs = _this.pd;
+          });
+        },
+        error: function (exception) {
+          alert("發生錯誤: " + exception.status);
+        }
+      });
     },
   },
   computed: {
@@ -555,7 +572,7 @@ createApp({
     this.display_scroll();
     this.time_fun();
     this.winSize_watch();
-    this.axios_get();
-    // this.axios_post();
+    // this.axios_get();
+    this.axios_post();
   },
 }).mount("#app");

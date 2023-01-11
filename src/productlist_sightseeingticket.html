@@ -13,120 +13,134 @@
       referrerpolicy="no-referrer"
     />
     <title>Document</title>
-    <style>
-        .active1{
-            background-color: #4484CE;
-            color: rgb(255, 255, 255);
-        }
-      
-        </style>
   </head>
 
   <body>
     @@include('layout/header.html')
-    <div class="wrapper qa_jo" id="app">
+    <div class="wrapper productlist_new" id="app">
       <div class="black_bg" @click="openSelectbar"></div>
-      <div class="qa_jo__main">
-        <div class="qa_jo_title">
-          <h1>1200</h1>
-          <h2>個項目</h2>
-        </div>
-        <div class="qa_jo__barcard">
-          <div class="container qa_jo__bar">
+      <div class="productlist_new__main">
+        <div class="productlist_new__select container">
+          <div class="container productlist_new__bar">
             <div class="rwd_bar">
               <ul>
-                <li class="qa_jo__category_btn" @click="openSelectbar">行程</li>
-                <li class="qa_jo__destination_btn" @click="openSelectbar">
+                <li
+                  class="productlist_new__category_btn"
+                  @click="openSelectbar"
+                >
+                  行程
+                </li>
+                <li
+                  class="productlist_new__destination_btn"
+                  @click="openSelectbar"
+                >
                   目的
                 </li>
-                <li class="qa_jo__price_btn" @click="openSelectbar">價格</li>
-                <li class="qa_jo__sort_btn" @click="openSelectbar">排序</li>
+                <li class="productlist_new__price_btn" @click="openSelectbar">
+                  價格
+                </li>
+                <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
+                  排序
+                </li> -->
               </ul>
             </div>
-            <div class="qa_jo__sort">
-              <h4>排序</h4>
-              <ul>
-                <li @click="filterOrder">熱門程度</li>
-                <li @click="filterSort">價格低到高</li>
-              </ul>
-            </div>
-            <div class="qa_jo__category">
-              <h4>門票分類</h4>
+
+            <div class="productlist_new__category">
+              <h4>行程分類</h4>
               <ul>
                 <li
                   v-for="(category,index) in categorys"
                   @click="filterCategory"
                 >
-                  <input
-                    type="checkbox"
-                    :id="`category${index+1}`"
-                  />&emsp;{{category}}
+                  <input type="checkbox" :id="`category${index+1}` " />
+
+                  {{category}}
                 </li>
               </ul>
             </div>
-            <div class="qa_jo__destination">
+            <div class="productlist_new__destination">
               <h4>目的地</h4>
-              <span @click="open_city" class="qa_jo__open"
+              <span @click="open_city" class="productlist_new__open"
                 >台灣
                 <i class="fa-solid fa-circle-chevron-down"></i>
               </span>
-              <ul class="qa_jo__city qa_jo__block">
+              <ul class="productlist_new__city productlist_new__block">
                 <li
-                  v-for="AllCity in AllCitys"
+                  v-for="(AllCity,index) in AllCitys"
                   v-if="cityshow"
                   @click="filterCity"
                 >
-                  {{AllCity}}
+                  <input
+                    type="checkbox"
+                    :id="`AllCity${index+1}`"
+                  />&emsp;{{AllCity}}
                 </li>
               </ul>
             </div>
-            <div class="qa_jo__price">
+            <div class="productlist_new__price">
               <h4>價格</h4>
               <ul>
                 <li v-for="(price,index) in prices" @click="filterPrice">
-                  <input
-                    type="checkbox"
-                    :id="`price${index+1}`"
-                  />&emsp;{{price}}
+                  <input type="checkbox" :id="`price${index+1}`" />
+                  {{price}}
                 </li>
               </ul>
             </div>
           </div>
-          <div class="qa_jo__card">
-            <div
-              class="qa_jo__card--group"
-              v-for="card in cardlist"
+          <div class="productlist_new_card_list1 container">
+            <div class="productlist_new__sort1">
+              <h5>20個項目</h5>
+
+              <ul>
+                <li>排序｜</li>
+                <li @click="filterOrder">熱門程度</li>
+                <li @click="filterSort_bottom_to_top">價格低到高</li>
+                <li @click="filterSort_top_to_bottom">價格高到低</li>
+                <li @click="filterScore">最高評價</li>
+              </ul>
+            </div>
+            <a
+              href="#"
+              class="product-card-row"
+              v-for="product in cardlist"
               :key="index"
               @click="jump_page"
+              v-if="dataget"
             >
-              <template v-if="card.vif">
-                <div class="qa_jo__card--img">
-                  <img :src="card.src" alt="" />
-                </div>
-                <div class="qa_jo__card--title">
-                  <h1 class="qa_jo__title">{{card.title}}</h1>
-                  <h2>{{card.label}}</h2>
-                  <h1>{{card.content}}</h1>
-                  <div>
-                    <h3>★</h3>
-                    <h4>{{card.score}}{{card.scorepeople}}</h4>
-                    <h4>｜{{card.order}}個已訂購</h4>
-                    <h5>TWD {{card.price}}元</h5>
-                  </div>
-                </div>
-              </template>
-            </div>
+              <div
+                class="product-card-row__left"
+                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
+              ></div>
+              <div class="product-card-row__right">
+                <div class="product-name">{{product.ProductName}}</div>
+                <div class="product-tag">{{product.ProductSecondType}}</div>
+                <div class="product__text">{{product.ProductText}}</div>
+
+                <!-- <span class="gray"
+                  ><i class="fa-solid fa-star"></i
+                  >{{card.score}}{{card.scorepeople}} |
+                  <span class="product-bought">{{card.order}}</span>個已訂購
+                </span> -->
+                <span class="price"
+                  >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
+                >
+              </div>
+            </a>
             <nav class="page1">
-              <ul class="qa_jo__pagination">
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link qa_jo__page-link--current" href="#"
+              <ul class="productlist_new__pagination">
+                <li class="productlist_new__page-item">
+                  <a
+                    class="productlist_new__page-link productlist_new__page-link--current"
+                    href="#"
                     >1</a
                   >
                 </li>
-                <li class="qa_jo__page-item">
-                  <a class="qa_jo__page-link" href="#">2</a>
+                <li class="productlist_new__page-item">
+                  <a class="productlist_new__page-link" href="#">2</a>
                 </li>
-               
+                <li class="productlist_new__page-item">
+                  <a class="productlist_new__page-link" href="#">3</a>
+                </li>
               </ul>
             </nav>
           </div>
@@ -163,7 +177,7 @@
                 label: "美術館",
                 content:
                   "這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。",
-                score: 4.5,
+                score: 4.8,
                 scorepeople: "(2300)",
                 order: 50,
                 price: 550,
@@ -177,7 +191,7 @@
                 label: "主題樂園",
                 content:
                   "台北首家以動漫人氣冠軍「動畫間諜扮演」為主題的兒童成長樂園。",
-                score: 4.5,
+                score: 3.8,
                 scorepeople: "(2300)",
                 order: 350,
                 price: 550,
@@ -191,7 +205,90 @@
                 label: "水族館",
                 content:
                   "新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。",
-                score: 4.5,
+                score: 3.9,
+                scorepeople: "(2300)",
+                order: 1750,
+                price: 450,
+                city: "台北",
+                cardid: 4,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/aq_7_2.jpg",
+                title: "海洋水族館",
+                label: "水族館",
+                content:
+                  "新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。",
+                score: 2.5,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 450,
+                city: "台北",
+                cardid: 5,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/mu_11_1.jpg",
+                title: "兒童卡通博物館",
+                label: "博物館",
+                content:
+                  "博物館的蒐藏以藝術為主要收藏方向，總計展出約四千多件藏品，約整體蒐藏的三分之一。",
+                score: 4.3,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 550,
+                city: "台北",
+                cardid: 6,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/ar_9_1.jpg",
+                title: "新北美術館 ",
+                label: "美術館",
+                content:
+                  "新北舉辦美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 1000,
+                price: 550,
+                city: "新北",
+                cardid: 1,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/ar_10_1.jpg",
+                title: "基隆美術館",
+                label: "美術館",
+                content:
+                  "這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。",
+                score: 4.8,
+                scorepeople: "(2300)",
+                order: 50,
+                price: 550,
+                city: "基隆",
+                cardid: 2,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/th_6_1.jpg",
+                title: "動漫主題樂園",
+                label: "主題樂園",
+                content:
+                  "台北首家以動漫人氣冠軍「動畫間諜扮演」為主題的兒童成長樂園。",
+                score: 4.9,
+                scorepeople: "(2300)",
+                order: 350,
+                price: 550,
+                city: "新北",
+                cardid: 3,
+              },
+              {
+                src: "./img/otherpage/aq_8_1.jpg",
+                title: "基隆海洋水族館",
+                label: "水族館",
+                content:
+                  "新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。",
+                score: 4.2,
                 scorepeople: "(2300)",
                 order: 1750,
                 price: 450,
@@ -219,7 +316,7 @@
                 label: "博物館",
                 content:
                   "博物館的蒐藏以藝術為主要收藏方向，總計展出約四千多件藏品，約整體蒐藏的三分之一。",
-                score: 4.5,
+                score: 4.9,
                 scorepeople: "(2300)",
                 order: 150,
                 price: 550,
@@ -233,39 +330,108 @@
                 label: "美術館",
                 content:
                   "新北舉辦美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-                score: 4.5,
+                score: 4.1,
                 scorepeople: "(2300)",
                 order: 1000,
                 price: 550,
                 city: "新北",
-                cardid: 7,
+                cardid: 1,
                 vif: true,
-              }
+              },
+              {
+                src: "./img/otherpage/ar_10_1.jpg",
+                title: "基隆美術館",
+                label: "美術館",
+                content:
+                  "這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。",
+                score: 4.2,
+                scorepeople: "(2300)",
+                order: 50,
+                price: 550,
+                city: "基隆",
+                cardid: 2,
+                vif: true,
+              },
             ],
             prices: [
-                    "TWD 300~400",
-                    "TWD 401~500",
-                    "TWD 501~600",
-                    "TWD 601~700",
-                    ],
+              "TWD 499 以下",
+              "TWD 500~799",
+              "TWD 800~999",
+              "TWD 1000 以上",
+            ],
             categorys: ["主題樂園", "水族館", "博物館", "美術館"],
             AllCitys: [
               "基隆",
               "台北",
               "新北",
-          
+              "桃園",
+              "新竹",
+              "苗栗",
+              "台中",
+              "彰化",
+              "南投",
+              "雲林",
+              "嘉義",
+              "台南",
+              "高雄",
+              "屏東",
             ],
             cityshow: false,
             pricelist: [],
             categorylist: [],
+            citylist: [],
+            dataget: false,
           };
         },
         created() {
           window.addEventListener("resize", this.resize_adjust, true);
+          this.getdata();
+          
+          
         },
+
         methods: {
+          getdata(){
+            var CID = (new URL(location.href));
+            console.log(CID.pathname);
+            this.cardlist = [];
+            console.log(this.cardlist)
+            let a = this.cardlist;
+            $.ajax({            
+            method: "POST",
+            url: "./Product.php",
+            data:{
+              path:CID.pathname
+            },          
+            dataType: "json",
+            success: function (response) {
+              response.forEach(element => {
+                a.push(element)
+              });
+              console.log(a)
+             
+            },
+            // error: function(exception) {
+            //     alert("數據載入失敗: " + exception.status);
+            // }
+            
+
+          });
+            this.cardlist = a;
+            console.log(this.cardlist);
+            this.showproduct();
+
+            
+            
+          },
+          showproduct(){
+            this.dataget = false;
+            this.dataget = true;
+            console.log("aaa") 
+          },
           open_city(e) {
             this.cityshow = !this.cityshow;
+            
             let path = e.path[0].childNodes[1].classList;
             if (path.contains("fa-circle-chevron-down")) {
               path.remove("fa-circle-chevron-down");
@@ -276,34 +442,26 @@
             }
           },
           filterCity(e) {
-            let path = e.path[0].textContent;
-            this.cardlist.forEach((e, index) => {
-              if (path == e.city) {
-                console.log(this.cardlist[index].vif);
-              }
-            });
+            let city = e.path[0].childNodes[0];
+            let text = e.path[0].textContent;
+            if (city.checked == false) {
+              city.checked = true;
+              this.citylist.push(e.path[0].textContent);
+            } else if (city.checked == true) {
+              city.checked = false;
+              this.citylist.forEach((e, index) => {
+                if (e == text) {
+                  this.citylist.splice(index, 1);
+                }
+              });
+            }
+            
           },
-          filterSort(e) {
+          filterSort_bottom_to_top(e) {
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +a.price - +b.price;
-              };
-              arr.sort(sorter);
-            };
-            eitherSort(arr);
-            this.classList = arr;
-            let epath = e.path[0].style;
-            e.path[1].childNodes[0].style.backgroundColor = "#fff";
-            e.path[1].childNodes[0].style.color = "#747774";
-            epath.backgroundColor = "#4484ce";
-            epath.color = "#fff";
-          },
-          filterOrder(e) {
-            let arr = this.cardlist;
-            const eitherSort = (arr = []) => {
-              const sorter = (a, b) => {
-                return +a.order - +b.order;
+                return +a.ProductPrice - +b.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -311,7 +469,71 @@
             this.classList = arr;
             let epath = e.path[0].style;
             e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
             e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterSort_top_to_bottom(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return  +b.ProductPrice - +a.ProductPrice;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
+            e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterOrder(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return +b.order - +a.order ;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[4].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
+            e.path[1].childNodes[4].style.color = "#747774";
+            epath.backgroundColor = "#4484ce";
+            epath.color = "#fff";
+          },
+          filterScore(e) {
+            let arr = this.cardlist;
+            const eitherSort = (arr = []) => {
+              const sorter = (a, b) => {
+                return +b.score - +a.score ;
+              };
+              arr.sort(sorter);
+            };
+            eitherSort(arr);
+            this.classList = arr;
+            let epath = e.path[0].style;
+            e.path[1].childNodes[1].style.backgroundColor = "#fff";
+            e.path[1].childNodes[2].style.backgroundColor = "#fff";
+            e.path[1].childNodes[3].style.backgroundColor = "#fff";
+            e.path[1].childNodes[1].style.color = "#747774";
+            e.path[1].childNodes[2].style.color = "#747774";
+            e.path[1].childNodes[3].style.color = "#747774";
             epath.backgroundColor = "#4484ce";
             epath.color = "#fff";
           },
@@ -332,6 +554,7 @@
           },
           filterCategory(e) {
             e.target.querySelector("input").click();
+            console.log(this.productlist) ;
             // for (let i = 0; i < this.cardlist.length; i++){
             //   this.cardlist[i].vif=false;
             // }
@@ -360,16 +583,20 @@
             // }
           },
           openSelectbar(e) {
-            let category_btn = document.querySelector(".qa_jo__category_btn");
+            let category_btn = document.querySelector(
+              ".productlist_new__category_btn"
+            );
             target_class = e.target.classList;
-            let cate_bar = document.querySelector(".qa_jo__category");
-            let dest_bar = document.querySelector(".qa_jo__destination");
-            let price_bar = document.querySelector(".qa_jo__price");
-            let sort_bar = document.querySelector(".qa_jo__sort");
+            let cate_bar = document.querySelector(".productlist_new__category");
+            let dest_bar = document.querySelector(
+              ".productlist_new__destination"
+            );
+            let price_bar = document.querySelector(".productlist_new__price");
+            let sort_bar = document.querySelector(".productlist_new__sort");
             let black_bg = document.querySelector(".black_bg");
             let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
             let body = document.querySelector("body");
-            if (target_class.contains("qa_jo__category_btn")) {
+            if (target_class.contains("productlist_new__category_btn")) {
               if (cate_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
                   element.classList.remove("open");
@@ -385,7 +612,7 @@
                 body.classList.add("stop_scroll");
               }
             }
-            if (target_class.contains("qa_jo__destination_btn")) {
+            if (target_class.contains("productlist_new__destination_btn")) {
               console.log("aaa");
               if (dest_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
@@ -402,7 +629,7 @@
                 body.classList.add("stop_scroll");
               }
             }
-            if (target_class.contains("qa_jo__price_btn")) {
+            if (target_class.contains("productlist_new__price_btn")) {
               console.log("aaa");
               if (price_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
@@ -419,7 +646,7 @@
                 body.classList.add("stop_scroll");
               }
             }
-            if (target_class.contains("qa_jo__sort_btn")) {
+            if (target_class.contains("productlist_new__sort_btn")) {
               console.log("aaa");
               if (sort_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
@@ -449,10 +676,14 @@
             }
             if (screen.width > 768) {
               document.querySelector("body").classList.remove("stop_scroll");
-              let cate_bar = document.querySelector(".qa_jo__category");
-              let dest_bar = document.querySelector(".qa_jo__destination");
-              let price_bar = document.querySelector(".qa_jo__price");
-              let sort_bar = document.querySelector(".qa_jo__sort");
+              let cate_bar = document.querySelector(
+                ".productlist_new__category"
+              );
+              let dest_bar = document.querySelector(
+                ".productlist_new__destination"
+              );
+              let price_bar = document.querySelector(".productlist_new__price");
+              let sort_bar = document.querySelector(".productlist_new__sort");
               let black_bg = document.querySelector(".black_bg");
               let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
               bar_arr.forEach((element) => {
@@ -466,13 +697,15 @@
           },
         },
 
-        mounted() {},
+        mounted() {
+          
+          
+        },
       }).mount("#app");
 
-
       $(".page1 ul li ").on("click","a",function() {
-         $(".page1 ul li a").removeClass("qa_jo__page-link--current");
-        $(this).addClass("qa_jo__page-link--current");
+         $(".page1 ul li a").removeClass("productlist_new__page-link--current");
+        $(this).addClass("productlist_new__page-link--current");
         });
     </script>
   </body>
