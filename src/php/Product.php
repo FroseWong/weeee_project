@@ -1,6 +1,6 @@
 <?php
-include("Connect.php");
-$path = $_POST["path"];
+include("Connection.php");
+// $path = $_POST["path"];
 // echo $path;
 
 
@@ -9,27 +9,27 @@ $sql =
 FROM Product p
 join ProductImg i 
 on p.ProductID =  i.ProductID
-where p.ProductStatus = 1 and p.ProductType = ? ";
+where p.ProductStatus = 1";
 
 
 
 
 $statement =  $pdo->prepare($sql);
 
-if($path == "/weeee!/dist/productlist_new_travel.html"){
-    $statement->bindValue(1, "sightseeing");
-}
-else
-if($path == "/weeee!/dist/productlist_new_ticket.html"){
-    $statement->bindValue(1, "transticket");
-}
-else
-if($path == "/weeee!/dist/productlist_new_exp.html"){
-    $statement->bindValue(1, "experience");
- }
-elseif($path == "/weeee!/dist/productlist_new_ss_ticket.html"){
-    $statement->bindValue(1, "viewpointticket");
-}
+// if($path == "/weeee!/dist/productlist_new_travel.html"){
+    // $statement->bindValue(1);
+// }
+// else
+// if($path == "/weeee!/dist/productlist_new_ticket.html"){
+//     $statement->bindValue(1, "transticket");
+// }
+// else
+// if($path == "/weeee!/dist/productlist_new_exp.html"){
+//     $statement->bindValue(1, "experience");
+//  }
+// elseif($path == "/weeee!/dist/productlist_new_ss_ticket.html"){
+//     $statement->bindValue(1, "viewpointticket");
+// }
 
 
 $statement->execute();

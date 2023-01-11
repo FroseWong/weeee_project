@@ -173,7 +173,7 @@
 
     <div class="search_modal">
 
-        <input type="text" placeholder="輸入目的地、景點、體驗行程或活動名稱...
+        <input id="search_m" type="text" placeholder="輸入目的地、景點、體驗行程或活動名稱...
       " maxlength="50"><button class="header_search"><i class="fa-solid fa-magnifying-glass"></i></button>
 
     </div>
@@ -199,6 +199,7 @@
         // console.log($(".search_modal"));
         $(".search_modal").css("display", "block");
         $(".header_overlay").addClass("active");
+        $("#search_m").focus();
     });
 
     $(".fa-user").on("click", function () {
