@@ -61,6 +61,7 @@
                 type="text"
                 placeholder="想做什麼？"
                 @keyup.enter="jump_jo_searched"
+                v-model="keyword"
               />
               <button @click="jump_jo_searched"><h5>搜尋</h5></button>
             </div>
@@ -92,91 +93,91 @@
         <div class="container content" v-if="show_jo">
           <h2 class="ttoc">熱門開團</h2>
 
-          <div class="jo-list" >
-            <a class="jo-card" 
-            v-for="jo in jo_list_hot"
-            :key="index"
-            >
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">{{jo.Location}}</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j1"
-                v-bind:style="{ backgroundImage: 'url(' + jo.JoImg + ')' }"></div>
+          <div class="jo-list">
+            <a class="jo-card" v-for="jo in jo_list_hot" :key="index">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">{{jo.Location}}</p>
               </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">{{jo.JoTitle}}</h6>
-              <span class="gray jo__detailaddress">{{jo.JoDetailedAddressed}}</span>
-              <span class="gray jo-time">{{jo.week}},{{jo.JoStartDate}}</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m1"></span
-                ><span class="member-name">{{jo.FullName}}</span>
-                <span class="left-time">剩餘{{jo.left_days}}天</span></span
-              >
-            </div>
-          </a>
-
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div
+                    class="jo-card__top__pic__src j1"
+                    v-bind:style="{ backgroundImage: 'url(' + jo.JoImg + ')' }"
+                  ></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">{{jo.JoTitle}}</h6>
+                <span class="gray jo__detailaddress"
+                  >{{jo.JoDetailedAddressed}}</span
+                >
+                <span class="gray jo-time">{{jo.week}},{{jo.JoStartDate}}</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m1"></span
+                  ><span class="member-name">{{jo.FullName}}</span>
+                  <span class="left-time">剩餘{{jo.left_days}}天</span></span
+                >
+              </div>
+            </a>
           </div>
           <h2 class="ttoc">即將結團</h2>
-          <div class="jo-list" >
-            <a class="jo-card" 
-            v-for="jo in jo_list_end"
-            :key="index"
-            >
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">{{jo.Location}}</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j1"
-                v-bind:style="{ backgroundImage: 'url(' + jo.JoImg + ')' }"></div>
+          <div class="jo-list">
+            <a class="jo-card" v-for="jo in jo_list_end" :key="index">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">{{jo.Location}}</p>
               </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">{{jo.JoTitle}}</h6>
-              <span class="gray jo__detailaddress">{{jo.JoDetailedAddressed}}</span>
-              <span class="gray jo-time">{{jo.week}},{{jo.JoStartDate}}</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m1"></span
-                ><span class="member-name">{{jo.FullName}}</span>
-                <span class="left-time">剩餘{{jo.left_days}}天</span></span
-              >
-            </div>
-          </a>
-
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div
+                    class="jo-card__top__pic__src j1"
+                    v-bind:style="{ backgroundImage: 'url(' + jo.JoImg + ')' }"
+                  ></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">{{jo.JoTitle}}</h6>
+                <span class="gray jo__detailaddress"
+                  >{{jo.JoDetailedAddressed}}</span
+                >
+                <span class="gray jo-time">{{jo.week}},{{jo.JoStartDate}}</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m1"></span
+                  ><span class="member-name">{{jo.FullName}}</span>
+                  <span class="left-time">剩餘{{jo.left_days}}天</span></span
+                >
+              </div>
+            </a>
           </div>
           <h2 class="ttoc">新團推廣</h2>
-          <div class="jo-list" >
-            <a class="jo-card" 
-            v-for="jo in jo_list_new"
-            :key="index"
-            >
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">{{jo.Location}}</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j1"
-                v-bind:style="{ backgroundImage: 'url(' + jo.JoImg + ')' }"></div>
+          <div class="jo-list">
+            <a class="jo-card" v-for="jo in jo_list_new" :key="index">
+              <div class="jo-card__top__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="jo__location">{{jo.Location}}</p>
               </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">{{jo.JoTitle}}</h6>
-              <span class="gray jo__detailaddress">{{jo.JoDetailedAddressed}}</span>
-              <span class="gray jo-time">{{jo.week}},{{jo.JoStartDate}}</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m1"></span
-                ><span class="member-name">{{jo.FullName}}</span>
-                <span class="left-time">剩餘{{jo.left_days}}天</span></span
-              >
-            </div>
-          </a>
-
+              <div class="jo-card__top">
+                <div class="jo-card__top__pic">
+                  <div
+                    class="jo-card__top__pic__src j1"
+                    v-bind:style="{ backgroundImage: 'url(' + jo.JoImg + ')' }"
+                  ></div>
+                </div>
+              </div>
+              <div class="jo-card__bottom">
+                <h6 class="jo-name">{{jo.JoTitle}}</h6>
+                <span class="gray jo__detailaddress"
+                  >{{jo.JoDetailedAddressed}}</span
+                >
+                <span class="gray jo-time">{{jo.week}},{{jo.JoStartDate}}</span>
+                <span class="jo-card__bottom__message"
+                  ><span class="member-pic m1"></span
+                  ><span class="member-name">{{jo.FullName}}</span>
+                  <span class="left-time">剩餘{{jo.left_days}}天</span></span
+                >
+              </div>
+            </a>
           </div>
           <a id="jo_button" href="./jo_new.html">
             <img src="./img/jo/jo_create.gif" alt="" />
@@ -199,12 +200,14 @@
           return {
             show_lightbox: false,
             show_select_bar: false,
-            jo_list_hot:[],
-            jo_list_end:[],
-            jo_list_new:[],
-            show_jo : true,
+            keyword : "",
+            jo_list_hot: [],
+            jo_list_end: [],
+            jo_list_new: [],
+            show_jo: true,
             slick_start: false,
             AllCitys: [
+              "全部地區",
               "基隆",
               "台北",
               "新北",
@@ -228,74 +231,80 @@
         },
         created() {
           window.addEventListener("scroll", this.btn_show);
-          this.show_hot_function();  
-              
+          this.change_location_selected();
+          this.show__function();
         },
         methods: {
-          getdata_jo_list_hot(){   
-            this.jo_list_hot = [];        
-            let _this = this;
-            $.ajax({            
-            method: "POST",
-            url: "./jo_index.php",
-            data:{
-              type:"hot"
-            },          
-            dataType: "json",
-            success: function (response) {
-              response.forEach(element => {
-                _this.jo_list_hot.push(element)
-              })
-            },
-            error: function(exception) {
-                alert("數據載入失敗: " + exception.status);
-            }
-          });  
-                 
+          change_location_selected(){
+            let urlParams = new URLSearchParams(window.location.search);
+            let loc =  urlParams.get('loc');
+            
+            this.location_selected = loc;
           },
-          getdata_jo_list_new(){ 
+          getdata_jo_list_hot() {
+            this.jo_list_hot = [];
+            let _this = this;
+            $.ajax({
+              method: "POST",
+              url: "./jo_index.php",
+              data: {
+                type: "hot",
+              },
+              dataType: "json",
+              success: function (response) {
+                response.forEach((element) => {
+                  _this.jo_list_hot.push(element);
+                });
+              },
+              error: function (exception) {
+                alert("數據載入失敗: " + exception.status);
+              },
+            });
+          },
+          getdata_jo_list_new() {
             this.jo_list_new = [];
             let _this = this;
-            $.ajax({            
-            method: "POST",
-            url: "./jo_index.php",
-            data:{
-              type:"new"
-            },          
-            dataType: "json",
-            success: function (response) {
-              response.forEach(element => {
-                _this.jo_list_new.push(element)
-              })  
-            },
-            error: function(exception) {
+            $.ajax({
+              method: "POST",
+              url: "./jo_index.php",
+              data: {
+                type: "new",
+              },
+              dataType: "json",
+              success: function (response) {
+                response.forEach((element) => {
+                  _this.jo_list_new.push(element);
+                });
+              },
+              error: function (exception) {
                 alert("數據載入失敗: " + exception.status);
-            }
-          });
-          
+              },
+            });
           },
-          getdata_jo_list_end(){ 
+          getdata_jo_list_end() {
             this.jo_list_end = [];
             let _this = this;
-            $.ajax({            
-            method: "POST",
-            url: "./jo_index.php",
-            data:{
-              type:"end"
-            },          
-            dataType: "json",
-            success: function (response) {
-              response.forEach(element => {
-                _this.jo_list_end.push(element)
-              })
-            },
-            error: function(exception) {
+            $.ajax({
+              method: "POST",
+              url: "./jo_index.php",
+              data: {
+                type: "end",
+              },
+              dataType: "json",
+              success: function (response) {
+                response.forEach((element) => {
+                  _this.jo_list_end.push(element);
+                });
+                _this.$nextTick(function () {
+                  _this.jo_list_slick();
+                });
+              },
+              error: function (exception) {
                 alert("數據載入失敗: " + exception.status);
-            }
-          });    
-           
+              },
+            });
           },
-          show_hot_function(){
+          show__function() {
             this.getdata_jo_list_hot();
             this.getdata_jo_list_new();
             this.getdata_jo_list_end();
@@ -319,6 +328,7 @@
             }
           },
           jo_list_slick() {
+            console.log( $(".jo-list"));
             $(".jo-list").slick({
               infinite: true,
               slidesToShow: 3,
@@ -340,8 +350,18 @@
             let searchedbox = document.querySelector(".searchbox");
             searchedbox_value = searchedbox.querySelector("input").value;
             console.log(searchedbox_value);
-            if (searchedbox_value.length > 0) {
-              window.location.assign("jo_searched.html");
+            if (searchedbox_value.length > 0 || this.location_selected != "全部地區") {
+              
+              let loc = this.location_selected;
+              let key = this.keyword;
+              if(loc == "全部地區"){
+              loc = "%";
+              let url = "jo_searched.html" + "?loc=" + loc + "&key="+ key;
+              window.location.assign(url);
+              }else{
+              let url = "jo_searched.html" + "?loc=" + loc + "&key="+ key;
+              window.location.assign(url);}
+              
             }
           },
           scrollToTop() {
@@ -373,12 +393,10 @@
             body.classList.remove("stop_scroll");
           },
         },
-        mounted() {   
-        this.jo_list_slick();   
+        mounted() {
+          // setTimeout(this.jo_list_slick(),3000)
         },
-        updated(){
-         
-        }
+        updated() {},
       });
       app1.mount(".app1");
     </script>
