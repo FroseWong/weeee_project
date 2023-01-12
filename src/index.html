@@ -1018,5 +1018,166 @@
       app.mount("#header");
     </script>
     <script src="./js/index.js"></script>
+    <script>
+      let app1 = Vue.createApp({
+        data() {
+          return {
+            show_lightbox: false,
+            show_select_bar: false,
+            jo_list_hot: [],
+            jo_list_end: [],
+            jo_list_new: [],
+            show_jo: true,
+            slick_start: false,
+          };
+        },
+        created() {
+          // this.show_hot_function();
+          this.getdata_product_list();
+        },
+        methods: {
+          getdata_product_list() {
+            // this.jo_list_hot = [];
+            let that = this;
+            $.ajax({
+              method: "POST",
+              url: "./php/Product.php",
+              data: {
+                type: "hot",
+              },
+              dataType: "json",
+              success: function (response) {
+                console.log(response);
+              },
+              error: function (exception) {
+                alert("數據載入失敗: " + exception.status);
+              },
+            });
+          },
+          // getdata_jo_list_new() {
+          //   this.jo_list_new = [];
+          //   let _this = this;
+          //   $.ajax({
+          //     method: "POST",
+          //     url: "./jo_index.php",
+          //     data: {
+          //       type: "new",
+          //     },
+          //     dataType: "json",
+          //     success: function (response) {
+          //       response.forEach((element) => {
+          //         _this.jo_list_new.push(element);
+          //       });
+          //     },
+          //     error: function (exception) {
+          //       alert("數據載入失敗: " + exception.status);
+          //     },
+          //   });
+          // },
+          // getdata_jo_list_end() {
+          //   this.jo_list_end = [];
+          //   let _this = this;
+          //   $.ajax({
+          //     method: "POST",
+          //     url: "./jo_index.php",
+          //     data: {
+          //       type: "end",
+          //     },
+          //     dataType: "json",
+          //     success: function (response) {
+          //       response.forEach((element) => {
+          //         _this.jo_list_end.push(element);
+          //       });
+          //     },
+          //     error: function (exception) {
+          //       alert("數據載入失敗: " + exception.status);
+          //     },
+          //   });
+          // },
+          // show_hot_function() {
+          //   this.getdata_jo_list_hot();
+          //   this.getdata_jo_list_new();
+          //   this.getdata_jo_list_end();
+          // },
+          // btn_show() {
+          //   let btn = $("#jo_button");
+          //   if (screen.width <= 768) {
+          //     if (window.scrollY > 0 && window.scrollY <= 850) {
+          //       btn.addClass("show");
+          //     } else if (window.scrollY <= 0) {
+          //       btn.removeClass("show");
+          //     } else if (window.scrollY >= 850) {
+          //       btn.removeClass("show");
+          //     }
+          //   } else {
+          //     if (window.scrollY > 300) {
+          //       btn.addClass("show");
+          //     } else {
+          //       btn.removeClass("show");
+          //     }
+          //   }
+          // },
+          // jo_list_slick() {
+          //   $(".jo-list").slick({
+          //     infinite: true,
+          //     slidesToShow: 3,
+          //     slidesToScroll: 3,
+
+          //     responsive: [
+          //       {
+          //         breakpoint: 768,
+          //         settings: {
+          //           slidesToShow: 1.5,
+          //           slidesToScroll: 1,
+          //           infinite: true,
+          //         },
+          //       },
+          //     ],
+          //   });
+          // },
+          // jump_jo_searched() {
+          //   let searchedbox = document.querySelector(".searchbox");
+          //   searchedbox_value = searchedbox.querySelector("input").value;
+          //   console.log(searchedbox_value);
+          //   if (searchedbox_value.length > 0) {
+          //     window.location.assign("jo_searched.html");
+          //   }
+          // },
+          // scrollToTop() {
+          //   window.scrollTo({
+          //     top: 0,
+          //     left: 0,
+          //     behavior: "smooth",
+          //   });
+          // },
+          // openSelectbar() {
+          //   this.scrollToTop();
+          //   this.show_lightbox = true;
+          //   this.show_select_bar = true;
+          //   let body = document.querySelector("body");
+          //   body.classList.add("stop_scroll");
+          // },
+          // closeSelectbar() {
+          //   this.show_lightbox = false;
+          //   this.show_select_bar = false;
+          //   let body = document.querySelector("body");
+          //   body.classList.remove("stop_scroll");
+          // },
+          // changeSelectbar(item) {
+          //   console.log(item);
+          //   this.show_lightbox = false;
+          //   this.show_select_bar = false;
+          //   let body = document.querySelector("body");
+          //   this.location_selected = item;
+          //   body.classList.remove("stop_scroll");
+          // },
+        },
+        mounted() {
+          // this.jo_list_slick();
+        },
+        updated() {},
+      });
+      app1.mount(".index");
+    </script>
   </body>
 </html>

@@ -93,8 +93,14 @@
         <div class="container content" v-if="show_jo">
           <h2 class="ttoc">熱門開團</h2>
 
-          <div class="jo-list">
-            <a class="jo-card" v-for="jo in jo_list_hot" :key="index">
+          <div class="jo-list jo-list_hot">
+            <a class="jo-card" 
+            :href="'./jo_detail.html?id=' + jo.JoID"
+            @click="jump_jo_detail"
+            v-for="jo in jo_list_hot" 
+            :key="index"
+            
+            >
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
@@ -122,8 +128,11 @@
             </a>
           </div>
           <h2 class="ttoc">即將結團</h2>
-          <div class="jo-list">
-            <a class="jo-card" v-for="jo in jo_list_end" :key="index">
+          <div class="jo-list jo-list_end">
+            <a class="jo-card" 
+            :href="'./jo_detail.html?id=' + jo.JoID"
+            v-for="jo in jo_list_end" 
+            :key="index">
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
@@ -151,8 +160,11 @@
             </a>
           </div>
           <h2 class="ttoc">新團推廣</h2>
-          <div class="jo-list">
-            <a class="jo-card" v-for="jo in jo_list_new" :key="index">
+          <div class="jo-list jo-list_new">
+            <a class="jo-card" 
+            :href="'./jo_detail.html?id=' + jo.JoID"
+            v-for="jo in jo_list_new" 
+            :key="index">
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
@@ -200,7 +212,7 @@
           return {
             show_lightbox: false,
             show_select_bar: false,
-            keyword : "",
+            keyword: "",
             jo_list_hot: [],
             jo_list_end: [],
             jo_list_new: [],
@@ -227,19 +239,19 @@
               "其他",
             ],
             location_selected: "全部地區",
+
           };
         },
         created() {
           window.addEventListener("scroll", this.btn_show);
-          this.change_location_selected();
+          // this.change_location_selected();
           this.show__function();
+          // this.getdata_jo_list_hot();
         },
         methods: {
-          change_location_selected(){
-            let urlParams = new URLSearchParams(window.location.search);
-            let loc =  urlParams.get('loc');
+          jump_jo_detail(e){
+           console.log(e);
             
-            this.location_selected = loc;
           },
           getdata_jo_list_hot() {
             this.jo_list_hot = [];
@@ -254,6 +266,9 @@
               success: function (response) {
                 response.forEach((element) => {
                   _this.jo_list_hot.push(element);
+                });
+                _this.$nextTick(function () {
+                  _this.jo_list_slick_hot();
                 });
               },
               error: function (exception) {
@@ -274,6 +289,9 @@
               success: function (response) {
                 response.forEach((element) => {
                   _this.jo_list_new.push(element);
+                });
+                _this.$nextTick(function () {
+                  _this.jo_list_slick_new();
                 });
               },
               error: function (exception) {
@@ -296,7 +314,7 @@
                   _this.jo_list_end.push(element);
                 });
                 _this.$nextTick(function () {
-                  _this.jo_list_slick();
+                  _this.jo_list_slick_end();
                 });
               },
               error: function (exception) {
@@ -327,9 +345,44 @@
               }
             }
           },
-          jo_list_slick() {
-            console.log( $(".jo-list"));
-            $(".jo-list").slick({
+          jo_list_slick_hot() {
+            $(".jo-list_hot").slick({
+              infinite: true,
+              slidesToShow: 3,
+              slidesToScroll: 3,
+
+              responsive: [
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1.5,
+                    slidesToScroll: 1,
+                    infinite: true,
+                  },
+                },
+              ],
+            });
+          },
+          jo_list_slick_end() {
+            $(".jo-list_end").slick({
+              infinite: true,
+              slidesToShow: 3,
+              slidesToScroll: 3,
+
+              responsive: [
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 1.5,
+                    slidesToScroll: 1,
+                    infinite: true,
+                  },
+                },
+              ],
+            });
+          },
+          jo_list_slick_new() {
+            $(".jo-list_new").slick({
               infinite: true,
               slidesToShow: 3,
               slidesToScroll: 3,
@@ -350,18 +403,20 @@
             let searchedbox = document.querySelector(".searchbox");
             searchedbox_value = searchedbox.querySelector("input").value;
             console.log(searchedbox_value);
-            if (searchedbox_value.length > 0 || this.location_selected != "全部地區") {
-              
+            if (
+              searchedbox_value.length > 0 ||
+              this.location_selected != "全部地區"
+            ) {
               let loc = this.location_selected;
               let key = this.keyword;
-              if(loc == "全部地區"){
-              loc = "%";
-              let url = "jo_searched.html" + "?loc=" + loc + "&key="+ key;
-              window.location.assign(url);
-              }else{
-              let url = "jo_searched.html" + "?loc=" + loc + "&key="+ key;
-              window.location.assign(url);}
-              
+              if (loc == "全部地區") {
+                loc = "%";
+                let url = "jo_searched.html" + "?loc=" + loc + "&key=" + key;
+                window.location.assign(url);
+              } else {
+                let url = "jo_searched.html" + "?loc=" + loc + "&key=" + key;
+                window.location.assign(url);
+              }
             }
           },
           scrollToTop() {

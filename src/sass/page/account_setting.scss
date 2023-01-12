@@ -303,10 +303,14 @@
                     border-radius: 5px;
                     padding: 5px 5px;
                     border: transparent;
+                    cursor: pointer;
                     @include m{
                         position: static;
                         width: 100%;
                     }
+                }
+                .disabled{
+                    background-color: rgb(236, 231, 231);
                 }
             }
         }
