@@ -497,7 +497,7 @@ createApp({
             };
             _this.pd.push(obj);
             _this.Imgs = _this.pd;
-            _this.ProductDetail=obj2
+            _this.ProductDetail = obj2;
           });
           _this.$nextTick(function () {
             _this.productdetail_slideshow();
@@ -516,8 +516,8 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeart.php",
         data: {
-          MID: 1,
-          PID: 1,
+          MID: 7,
+          PID: 30,
         },
         dataType: "json",
         success: function (response) {
@@ -528,9 +528,9 @@ createApp({
         },
       });
     },
-    heartclick(e){
-      console.log(e.path[6].classList.contains('liked'));
-    }
+    heartclick(e) {
+      console.log(e.path[6].classList.contains("liked"));
+    },
   },
   computed: {
     // ---------------總金額---------------
