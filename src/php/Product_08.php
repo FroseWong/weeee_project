@@ -5,7 +5,7 @@ $path = $_POST["path"];
 
 
 $sql = 
-"SELECT p.ProductName, p.ProductPrice, p.ProductText, p.Location, p.ProductSecondType, i.ProductImgPath 
+"SELECT p.ProductName, p.ProductPrice, p.ProductText, p.Location, p.ProductSecondType, i.ProductImgPath,i.ProductID
 FROM Product p
 join ProductImg i 
 on p.ProductID =  i.ProductID
