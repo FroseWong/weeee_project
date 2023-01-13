@@ -604,6 +604,7 @@
 
 // ---------------上方輪播---------------
 .productdetail-slideshow {
+
   .mySlidesFlex {
     z-index: 100;
     img {
@@ -613,11 +614,19 @@
       }
     }
   }
+  .slick-prev{
+    left: -50px;
+  }
+  .slick-next{
+    right: -35px;
+  }
   .slick-prev:before {
     color: $blue;
+    font-size: 35px;
   }
   .slick-next:before {
     color: $blue;
+    font-size: 35px;
   }
 }
 

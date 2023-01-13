@@ -168,7 +168,6 @@ createApp({
         Text: "",
         address: "",
         comments: 0,
-        stars: "★★★★★★",
         time: 100,
         // type: "觀光行程",
         // city: "桃園",
@@ -182,7 +181,7 @@ createApp({
         // time: 2,
       },
       modalPeople: 1,
-      modalTotal: 777,
+      modalTotal: 0,
       modalDate: "",
       field1Show: true,
       winSize: 0,
@@ -194,8 +193,6 @@ createApp({
       productdetailNotice: 0,
       productdetailAddress: 0,
       productReview: 0,
-      pd: [],
-      pd2: [],
     };
   },
   // ---------------aa---------------
@@ -375,9 +372,7 @@ createApp({
     },
     // ---------------超過4825時隱藏---------------
     display_scroll() {
-      // let field = document.getElementsByClassName(
-      //   "productdetail-fixedfield1"
-      // )[0];
+
       let fieldStyle = this.$refs.field1.style;
       let browserWidth = window.innerWidth;
       document.addEventListener("scroll", function () {
@@ -470,6 +465,9 @@ createApp({
       let num = 3;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
+      if(num==null){
+        num=1;
+      }
       $.ajax({
         method: "POST",
         url: "php/ProductDetail.php",
@@ -478,12 +476,22 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           response.forEach((e) => {
-            obj = {
-              src: e.ProductImgPath,
-              Content: e.ProductImgContent,
-            };
+            let arr1= [
+              {
+                Content:e.ProductImgContent1,
+                src: e.ProductImgPath1,
+              },
+              {
+                Content:e.ProductImgContent2,
+                src: e.ProductImgPath2,
+              },
+              {
+                Content:e.ProductImgContent3,
+                src: e.ProductImgPath3,
+              },
+            ];
             obj2 = {
               type: e.ProductType,
               city: e.Location,
@@ -491,13 +499,14 @@ createApp({
               name: e.ProductName,
               Text: e.ProductText,
               address: e.Location,
-              comments: 8787878787878788787878787888787,
-              stars: "★★★★★★",
+              comments:'好吃、好玩、又划算!',     
               time: 100,
             };
-            _this.pd.push(obj);
-            _this.Imgs = _this.pd;
+            _this.modalTotal=e.ProductPrice;
+            _this.Imgs = arr1;
             _this.ProductDetail = obj2;
+            console.log(arr1);
+            console.log(obj2);
           });
           _this.$nextTick(function () {
             _this.productdetail_slideshow();
@@ -516,8 +525,8 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeart.php",
         data: {
-          MID: 7,
-          PID: 30,
+          MID: 5,
+          PID: 3,
         },
         dataType: "json",
         success: function (response) {
