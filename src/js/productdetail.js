@@ -144,30 +144,42 @@ createApp({
         {
           Content:
             "► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心",
-          src: "./img/sightseeing/fa_19_1.jpg",
+          // src: "./img/sightseeing/fa_19_1.jpg",
+          src: "",
         },
         {
           Content:
             "► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』",
-          src: "./img/sightseeing/fa_19_2.jpg",
+          // src: "./img/sightseeing/fa_19_2.jpg",
+          src: "",
         },
         {
           Content:
             "► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界",
-          src: "./img/sightseeing/fa_19_3.jpg",
+          // src: "./img/sightseeing/fa_19_3.jpg",
+          src: "",
         },
       ],
       ProductDetail: {
-        type: "觀光行程",
-        city: "桃園",
-        price: 550,
-        name: "Weeeepark 海洋公園門票",
-        Text: "Weeeepark為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出360°具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Weeeepark是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。",
-        shortname: "WeeeePark",
-        address: "320台灣桃園市中壢區春德路105號",
-        comments: 6430,
-        stars: "★★★★",
-        time: 2,
+        type: "",
+        city: "",
+        price: 0,
+        name: "",
+        Text: "",
+        address: "",
+        comments: 0,
+        stars: "★★★★★★",
+        time: 100,
+        // type: "觀光行程",
+        // city: "桃園",
+        // price: 550,
+        // name: "Weeeepark 海洋公園門票",
+        // Text: "Weeeepark為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出360°具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Weeeepark是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。",
+        // shortname: "WeeeePark",
+        // address: "320台灣桃園市中壢區春德路105號",
+        // comments: 6430,
+        // stars: "★★★★",
+        // time: 2,
       },
       modalPeople: 1,
       modalTotal: 777,
@@ -183,30 +195,13 @@ createApp({
       productdetailAddress: 0,
       productReview: 0,
       pd: [],
+      pd2: [],
     };
   },
   // ---------------aa---------------
   methods: {
     // ---------------開闔商品說明---------------
     open() {
-      // let directions = document.getElementsByClassName(
-      //   "productdetail-directions-group"
-      // )[0].classList;
-      // let fa = document.getElementsByClassName("productdetail-operate")[0]
-      //   .children[1].classList;
-      // if (directions.contains("productdetail-open")) {
-      //   directions.remove("productdetail-open");
-      //   directions.add("productdetail-none");
-      //   this.operate = "看完整商品說明 ";
-      //   fa.remove("fa-angle-up");
-      //   fa.add("fa-angle-down");
-      // } else {
-      //   directions.remove("productdetail-none");
-      //   directions.add("productdetail-open");
-      //   this.operate = "收起商品說明 ";
-      //   fa.remove("fa-angle-down");
-      //   fa.add("fa-angle-up");
-      // }
       this.openCtrlnone = !this.openCtrlnone;
       this.openCtrlnone == false
         ? (this.operate = "收起商品說明 ")
@@ -217,14 +212,6 @@ createApp({
     },
     // ---------------橘心---------------
     heart_click() {
-      // let list = e.target.classList;
-      // if (list.contains("fa-regular")) {
-      //   list.add("fa-solid");
-      //   list.remove("fa-regular");
-      // } else {
-      //   list.remove("fa-solid");
-      //   list.add("fa-regular");
-      // }
       this.faHeart == "solid"
         ? (this.faHeart = "regular")
         : (this.faHeart = "solid");
@@ -239,24 +226,6 @@ createApp({
     },
     // ---------------固定框滑動---------------
     field_click(e) {
-      // let directions = document.getElementsByClassName(
-      //   "productdetail-directions-group"
-      // )[0].classList;
-      // this.openCtrlnone = false;
-      // directions.remove("productdetail-none");
-      // directions.add("productdetail-open");
-      // this.operate = "收起商品說明 ";
-      // fa.remove("fa-angle-down");
-      // fa.add("fa-angle-up");
-
-      // let pd = document.getElementsByClassName("productdetail-operate")[0]
-      //   .offsetTop;
-      // let pn = document.getElementsByClassName("productdetail-notice")[0]
-      //   .offsetTop;
-      // let pa = document.getElementsByClassName("productdetail-address")[0]
-      //   .offsetTop;
-      // let pv = document.getElementsByClassName("product-review")[0].offsetTop;
-
       this.operate = "收起商品說明";
       this.faAngle = "up";
       let pd = this.$refs.Operate.offsetTop;
@@ -285,10 +254,6 @@ createApp({
     },
     // ---------------固定框四選項變色---------------
     field_mark() {
-      // let pd = document.getElementById("f1").style;
-      // let pn = document.getElementById("f2").style;
-      // let pa = document.getElementById("f3").style;
-      // let pv = document.getElementById("f4").style;
       let pd = this.$refs.fieldDatas[0].style;
       let pn = this.$refs.fieldDatas[1].style;
       let pa = this.$refs.fieldDatas[2].style;
@@ -499,59 +464,72 @@ createApp({
         }
       });
     },
-    // ---------------axios---------------
-    // axios_get() {
-    //   _this = this;
-    //   let num = 6;
-    //   axios({
-    //     method: "get",
-    //     url: "./Product.php",
-    //     params: {
-    //       productid: num,
-    //     },
-    //   })
-    //     .then(function (response) {
-    //       response.data.forEach((e) => {
-    //         console.log(e);
-    //         obj = {
-    //           src: e.ProductImgPath,
-    //           Content: e.ProductImgContent,
-    //         };
-    //         _this.pd.push(obj);
-    //         _this.Imgs = _this.pd;
-    //       });
-    //     })
-    //     .catch((error) => console.log(error));
-    // },
-
-    axios_post() {
+    // ---------------ajax---------------
+    ajax_post() {
       _this = this;
+      let num = 3;
       let urlParams = new URLSearchParams(window.location.search);
-      console.log(urlParams.has('productdetail'));
-      let num =3;
+      num = urlParams.get("id");
       $.ajax({
         method: "POST",
         url: "php/ProductDetail.php",
         data: {
-          productid: num
+          productid: num,
         },
         dataType: "json",
         success: function (response) {
           console.log(response);
           response.forEach((e) => {
-            // console.log(e);
             obj = {
               src: e.ProductImgPath,
               Content: e.ProductImgContent,
             };
+            obj2 = {
+              type: e.ProductType,
+              city: e.Location,
+              price: e.ProductPrice,
+              name: e.ProductName,
+              Text: e.ProductText,
+              address: e.Location,
+              comments: 8787878787878788787878787888787,
+              stars: "★★★★★★",
+              time: 100,
+            };
             _this.pd.push(obj);
             _this.Imgs = _this.pd;
+            _this.ProductDetail = obj2;
+          });
+          _this.$nextTick(function () {
+            _this.productdetail_slideshow();
           });
         },
         error: function (exception) {
           alert("發生錯誤: " + exception.status);
-        }
+        },
       });
+    },
+    ajax_heart() {
+      _this = this;
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailHeart.php",
+        data: {
+          MID: 7,
+          PID: 30,
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (exception) {
+          alert("發生錯誤: " + exception.status);
+        },
+      });
+    },
+    heartclick(e) {
+      console.log(e.path[6].classList.contains("liked"));
     },
   },
   computed: {
@@ -568,11 +546,10 @@ createApp({
   mounted() {
     this.field_mark();
     this.product_list();
-    this.productdetail_slideshow();
     this.display_scroll();
     this.time_fun();
     this.winSize_watch();
-    // this.axios_get();
-    this.axios_post();
+    this.ajax_post();
+    // this.ajax_heart();
   },
 }).mount("#app");

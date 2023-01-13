@@ -25,7 +25,7 @@
         <div class="mid">
           <div class="left_bar">
             <div class="img_block">
-              <div class="mem_img"></div>
+              <div class="mem_img" id="mem_img"></div>
               <h5>陳品元元</h5>
             </div>
             <div class="page_list">
@@ -80,16 +80,16 @@
           </div>
           <div class="content">
             <h4>帳號設定</h4>
-            <form action="account_setting.php" method="post">
+            <form action="php/account_setting.php" method="post">
               <div class="setting">
                 <div class="row name">
                   <div class="form_group">
                     <label for="">姓氏</label>
-                    <input type="text" id="lastName"/>
+                    <input type="text" id="lastName" name="lastName"/>
                   </div>
                   <div class="form_group">
                     <label for="">名字</label>
-                    <input type="text" id="firstName"/>
+                    <input type="text" id="firstName" name="firstName"/>
                   </div>
                   <div class="form_group">
                     <label for="">性別</label>
@@ -102,17 +102,17 @@
                 <div class="row">
                   <div class="form_group">
                     <label for="">英文姓(同護照)</label>
-                    <input type="text" id="englishLastName"/>
+                    <input type="text" id="englishLastName" name="englishLastName"/>
                   </div>
                   <div class="form_group">
                     <label for="">英文名(同護照)</label>
-                    <input type="text" id="englishFirstName"/>
+                    <input type="text" id="englishFirstName" name="englishFirstName"/>
                   </div>
                 </div>
                 <div class="row">
                   <div class="form_group">
                     <label for="">護照號碼</label>
-                    <input type="text" id="passportNumber"/>
+                    <input type="text" id="passport" name= "passport"/>
                   </div>
                   <div class="form_group">
                     <label for="">國家/地區</label>
@@ -157,19 +157,19 @@
                   <div class="form_group" id="phone_group">
                     <label for="">電話號碼</label>
                     <div>
-                      <input type="text" id="phone" />
+                      <input type="text" id="phone" name="phone"/>
                     </div>
                   </div>
                   <div class="form_group">
                     <label for="">E-MAIL</label>
-                    <input type="text" id="email"/>
+                    <input type="text" id="username" class= "disabled" name="username"  disabled/>
                   </div>
                 </div>
                 <div class="row" id="date_group">
                   <div class="form_group">
                     <label for="">出生日期</label>
                     <div>
-                      <input type="date" id="birthDate" />
+                      <input type="date" id="birthDate" name="birthDate"/>
                     </div>
                   </div>
                 </div>
@@ -178,38 +178,38 @@
                   <h5>興趣喜好</h5>
                   <div class="row">
                     <div>
-                      <input type="checkbox" id="friend" />
+                      <input type="checkbox" id="friend" name="friend"/>
                       <label for="friend"> 朋友行程 </label>
                     </div>
                     <div>
-                      <input type="checkbox" id="family" />
+                      <input type="checkbox" id="family" name="family"/>
                       <label for="family"> 家庭行程 </label>
                     </div>
                     <div>
-                      <input type="checkbox" id="couple" />
+                      <input type="checkbox" id="couple" name="couple"/>
                       <label for="couple"> 情侶行程 </label>
                     </div>
                     <div>
-                      <input type="checkbox" id="pet" />
+                      <input type="checkbox" id="pet" name="pet"/>
                       <label for="pet"> 寵物行程 </label>
                     </div>
                     
                   </div>
                   <div class="row">
                     <div>
-                      <input type="checkbox" id="handmade" />
+                      <input type="checkbox" id="handmade" name="handmade"/>
                       <label for="handmade"> 手作體驗 </label>
                     </div>
                     <div>
-                      <input type="checkbox" id="onwater" />
+                      <input type="checkbox" id="onwater" name="onwater"/>
                       <label for="onwater"> 水上活動 </label>
                     </div>
                     <div>
-                      <input type="checkbox" id="farm" />
+                      <input type="checkbox" id="farm" name="farm"/>
                       <label for="farm"> 觀光農場 </label>
                     </div>
                     <div>
-                      <input type="checkbox" id="extreme" />
+                      <input type="checkbox" id="extreme" name="extreme"/>
                       <label for="extreme"> 極限運動 </label>
                     </div>
                   </div>
@@ -225,49 +225,61 @@
     </div>
     <script src="vender/jquery/jquery.min.js"></script>
     <script>
-      let person = {
-        lastName: "郭",
-        firstName: "寧寶",
-        sex: 0,
-        englishLastName: "Kuo",
-        englishFirstName: "Ning-Bao",
-        passportNumber: "315438771",
-        country: "汐止國",
-        phone: "0976234986",
-        email: "baobao@gmail.com",
-        birthDate: "1990-12-01",
-        interest: {    //物件中的物件
-          friend: true,
-          family: false,
-          couple: true,
-          pet: false,
-          handmade: false,
-          onwater: false,
-          farm: false,
-          extreme: true
+      
+      //會員一進到此頁面，就發送請求到後端取資料
+      $.ajax({
+        method: "GET",
+        url: "php/query_account_setting.php",
+        data: {},
+        dataType: "json",
+        success: function(response){
+            let person = {
+              lastName: response.LastName,
+              firstName: response.FirstName,
+              sex: response.Sex,
+              englishLastName: response.EnglishLastName,
+              englishFirstName: response.EnglishFirstName,
+              passport: response.Passport,
+              country: response.Country,
+              phone: response.Phone,
+              username: response.Username,
+              birthDate: response.Birthdate,
+              interest: {    //物件中的物件
+                friend: response.Friend ? true : false,
+                family: response.Family ? true : false,
+                couple: response.Couple ? true : false,
+                pet: response.Pet ? true : false,
+                handmade: response.Handmade ? true : false,
+                onwater: response.Onwater ? true : false,
+                farm: response.Farm ? true : false,
+                extreme: response.Extreme ? true : false
+              },
+              image: "img/jo/jo_member4.jpg" 
+            }
+            $("#lastName").val(person.lastName);
+            $("#firstName").val(person.firstName);
+            $("#sex").val(person.sex);
+            $("#englishLastName").val(person.englishLastName);
+            $("#englishFirstName").val(person.englishFirstName);
+            $("#passport").val(person.passport);
+            $("#country").val(person.country);
+            $("#phone").val(person.phone);
+            $("#username").val(person.username);
+            $("#birthDate").val(person.birthDate);
+            $("#friend").attr("checked", person.interest.friend);
+            $("family").attr("checked", person.interest.family);
+            $("#couple").attr("checked", person.interest.couple);
+            $("#pet").attr("checked", person.interest.pet);
+            $("#handmade").attr("checked", person.interest.handmade);
+            $("#onwater").attr("checked", person.interest.onwater);
+            $("#farm").attr("checked", person.interest.farm);
+            $("#extreme").attr("checked", person.interest.extreme);
+        },
+        error: function(exception){
+          alert("錯誤");
         }
 
-      }
-      $("#lastName").val(person.lastName);
-      $("#firstName").val(person.firstName);
-      $("#sex").val(person.sex);
-      $("#englishLastName").val(person.englishLastName);
-      $("#englishFirstName").val(person.englishFirstName);
-      $("#passportNumber").val(person.passportNumber);
-      $("#country").val(person.country);
-      $("#phone").val(person.phone);
-      $("#email").val(person.email);
-      $("#birthDate").val(person.birthDate);
-      $("#friend").attr("checked", person.interest.friend);
-      $("family").attr("checked", person.interest.family);
-      $("#couple").attr("checked", person.interest.couple);
-      $("#pet").attr("checked", person.interest.pet);
-      $("#handmade").attr("checked", person.interest.handmade);
-      $("#onwater").attr("checked", person.interest.onwater);
-      $("#farm").attr("checked", person.interest.farm);
-      $("#extreme").attr("checked", person.interest.extreme);
-      
-
+      })
 
 
       // document.getElementById("lastName").value = person.lastName;
