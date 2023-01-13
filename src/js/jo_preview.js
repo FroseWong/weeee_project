@@ -1,4 +1,5 @@
 "use strict";
+
 const saysomething__sendBtn = document.querySelector(".saysomething__send");
 const saysomething__content = document.querySelector(".saysomething__content");
 const jo__comment__list = document.querySelector(".jo__comment__list");
@@ -13,7 +14,7 @@ const numberP = document.querySelector(".number");
 const contactP = document.querySelector(".contact");
 
 // console.log(numberP);
-console.log(contactP);
+// console.log(contactP);
 // console.log(joContentP);
 
 // if (window.innerWidth <= 768) {
@@ -44,12 +45,6 @@ console.log(contactP);
 //        </div>`;
 //   useweeeeP.innerHTML = str;
 // }
-
-$(".contact-leader").on("click", function () {
-  // console.log("hi");
-
-  $(".contact-detail").toggle(1000);
-});
 
 // if (sessionStorage.getItem("joNew")) {
 let {
@@ -92,3 +87,38 @@ if (img) {
   joAddImg.innerHTML = li_html;
 }
 // }
+
+let app = Vue.createApp({
+  data() {
+    return {
+      name: "Frose",
+      testData: false,
+    };
+  },
+  created() {},
+  methods: {
+    changeHeart(e) {
+      // console.log("hi");
+      // console.log(this.$refs.hollow);
+      e.stopPropagation();
+      let a = e.target;
+      let b = e.target.nextElementSibling
+        ? e.target.nextElementSibling
+        : e.target.previousElementSibling;
+      a.classList.add("hidden");
+      b.classList.remove("hidden");
+      // a.classList.add("hidden");
+      // b.nextElementSibling.remove("hidden");
+      // console.log(e.target.closest("div"));
+      // console.log(e.target.closest("div").queryselectorAll("i"));
+      // this.$refs.hollow.classList.add("hidden");
+    },
+  },
+  mounted() {
+    $(".contact-leader").on("click", function () {
+      $(".contact-detail").toggle(1000);
+    });
+  },
+});
+
+app.mount(".jo_preview");
