@@ -14,6 +14,27 @@
     outline: none;
   }
 
+  input {
+    padding: 5px 0;
+  }
+
+  select {
+    padding: 6px 0;
+  }
+
+  #jo__start-time,
+  #jo__start-date {
+    position: relative;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
   .jo_new__title {
     margin-bottom: 30px;
   }

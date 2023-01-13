@@ -47,7 +47,7 @@ window.addEventListener("resize", function () {
 
   if (nowStatus !== status) {
     console.log("change");
-    popularRWD();
+    // popularRWD();
   }
 });
 
@@ -61,4 +61,4 @@ changeHeartAll.forEach((changeHeart) =>
   })
 );
 
-popularRWD();
+// popularRWD();
