@@ -1,0 +1,36 @@
+<div class="product-list">
+  <a
+    class="product-card"
+    v-for="(p,i) in sightseeingList"
+    :key="i"
+    @click="gotoproductDetail"
+  >
+    <div class="change-heart" ref="changeHeart" @click="changeHeart">
+      <i class="fa-regular fa-heart" ref="hollow"></i>
+      <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+    </div>
+    <div class="product-card__location">
+      <i class="fa-solid fa-location-dot"></i>
+      <p class="p__location">{{p.Location}}</p>
+    </div>
+    <div class="product-card__top">
+      <div class="product-card__top__pic">
+        <div
+          class="product-card__top__picsrc p1"
+          :style="{ backgroundImage: 'url(' + p.ProductImgPath+ ')' }"
+        ></div>
+      </div>
+    </div>
+    <div class="product-card__bottom">
+      <span class="product-tag">{{p.ProductSecondType}}</span>
+      <h6 class="product-name">{{p.ProductName}}</h6>
+      <span class="gray"
+        ><i class="fa-solid fa-star"></i>4.4(44325) |
+        <span class="product-bought">590K+</span>個已訂購
+      </span>
+      <span class="price"
+        >TWD <span class="product-price">{{p.ProductPrice}}</span>元</span
+      >
+    </div>
+  </a>
+</div>
