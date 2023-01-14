@@ -264,7 +264,7 @@ createApp({
         ScrollPosition = window.scrollY;
 
         if (directions.contains("productdetail-none")) {
-          ScrollPosition = ScrollPosition + 2226;
+          ScrollPosition = ScrollPosition + 2026;
         }
         if (ScrollPosition <= 1106) {
           pn.color = weblack;
@@ -276,7 +276,7 @@ createApp({
           pa.borderLeft = "0";
           pn.borderLeft = "0";
         }
-        if (ScrollPosition >= 1000) {
+        if (ScrollPosition >= 800) {
           pn.color = weblack;
           pa.color = weblack;
           pv.color = weblack;
@@ -290,7 +290,7 @@ createApp({
             pd.borderLeft = "0";
           }
         }
-        if (ScrollPosition >= 3250) {
+        if (ScrollPosition >= 3050) {
           pa.color = weblack;
           pv.color = weblack;
           pd.color = weblack;
@@ -300,7 +300,7 @@ createApp({
           pv.borderLeft = "0";
           pa.borderLeft = "0";
         }
-        if (ScrollPosition >= 3900) {
+        if (ScrollPosition >= 3500) {
           pn.color = weblack;
           pv.color = weblack;
           pd.color = weblack;
@@ -310,7 +310,7 @@ createApp({
           pv.borderLeft = "0";
           pn.borderLeft = "0";
         }
-        if (ScrollPosition >= 4707) {
+        if (ScrollPosition >= 4007) {
           pn.color = weblack;
           pa.color = weblack;
           pd.color = weblack;
@@ -526,7 +526,7 @@ createApp({
         url: "php/ProductDetailHeart.php",
         data: {
           MID: 5,
-          PID: 3,
+          PID: 41,
         },
         dataType: "json",
         success: function (response) {
