@@ -25,6 +25,23 @@
   #jo__start-time,
   #jo__start-date {
     position: relative;
+    background-image: url("../img/otherpage/angle-down-solid.svg");
+    background-repeat: no-repeat;
+    border: 1px solid $gray;
+    background-size: 2.2%;
+    border-radius: 3px;
+    background-position: 452px center;
+  }
+  #useweeee {
+    padding: 5px 0;
+  }
+  .useweeee-input {
+    // background-image: url("../img/otherpage/angle-down-solid.svg");
+    background-repeat: no-repeat;
+    border: 1px solid $gray;
+    background-size: 2.2%;
+    border-radius: 3px;
+    background-position: 452px center;
   }
 
   ::-webkit-calendar-picker-indicator {
@@ -219,9 +236,12 @@
         }
 
         .jo__start-date__input {
-          // @include m {
-          //   font-size: 16px;
-          // }
+          // background-image: url("../../img/otherpage/angle-down-solid.svg");
+          // background-repeat: no-repeat;
+          // border: 1px solid $gray;
+          // background-size: 2%;
+          // border-radius: 3px;
+          // background-position: 455px center;
         }
       }
     }

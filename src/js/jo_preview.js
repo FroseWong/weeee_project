@@ -91,11 +91,37 @@ if (img) {
 let app = Vue.createApp({
   data() {
     return {
-      name: "Frose",
-      testData: false,
+      joTitle: "",
+      joContent: "",
+      joContact: "",
+      joLocation: "",
+      joDetailAddress: "",
+      joNumber: "",
+      joStartDate: "",
+      joStartTime: "",
+      useweeee: "",
+      img: "",
+      sightseeingList: [],
+      targettravel: "",
     };
   },
-  created() {},
+  created() {
+    this.useweeee = useweeee;
+    this.joTitle = joTitle;
+    this.joContent = joContent;
+    this.joContact = joContact;
+    this.joLocation = joLocation;
+    this.joDetailAddress = joDetailAddress;
+    this.joNumber = joNumber;
+    console.log(this.joNumber);
+    this.getdata_product_list();
+  },
+  mounted() {},
+  updated() {
+    document.querySelector(
+      ".product-card-row__picsrc"
+    ).style.backgroundImage = `url('${this.targettravel.ProductImgPath}')`;
+  },
   methods: {
     changeHeart(e) {
       // console.log("hi");
@@ -112,6 +138,52 @@ let app = Vue.createApp({
       // console.log(e.target.closest("div"));
       // console.log(e.target.closest("div").queryselectorAll("i"));
       // this.$refs.hollow.classList.add("hidden");
+    },
+    getdata_product_list() {
+      // this.jo_list_hot = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/Product.php",
+        data: {
+          // type: "hot",
+        },
+
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          response.forEach((product) => {
+            if (product.ProductType === "sightseeing")
+              that.sightseeingList.push(product);
+          });
+          // console.log(that.sightseeingList);
+          that.sightseeingList.forEach((s) => {
+            if (that.useweeee === s.ProductName) that.targettravel = s;
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    completePreview(e) {
+      e.preventDefault();
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/jo_preview.php",
+        data: {
+          try: "try!",
+        },
+
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
     },
   },
   mounted() {
