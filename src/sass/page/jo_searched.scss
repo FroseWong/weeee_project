@@ -18,7 +18,7 @@
 
         .jo-list{
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start;
     
             @include m{
                 width: 100%;
@@ -26,7 +26,7 @@
                 margin-bottom: 0;
             }
             .jo-card{
-                margin: 0 auto;
+                margin: 5px;
                 margin-bottom: 10px;
                 
                 

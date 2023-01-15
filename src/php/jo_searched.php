@@ -1,5 +1,5 @@
 <?php
-include("Connect_jerry.php");
+include("connection.php");
 // $path = $_POST["path"];
 // echo $path;
 
