@@ -7,7 +7,7 @@ const joLocationInput = document.querySelector(".jo__location__input");
 const joDetailAddressInput = document.querySelector(
   ".jo__detail-address__input"
 );
-const joNumberInput = document.querySelector("#jo__number");
+const joAttendInput = document.querySelector("#jo__attend");
 const joStartDateInput = document.querySelector("#jo__start-date");
 const joStartTimeInput = document.querySelector("#jo__start-time");
 const useweeeeInput = document.querySelector(".useweeee-input");
@@ -32,7 +32,7 @@ if (sessionStorage.getItem("joNew")) {
     joContact,
     joLocation,
     joDetailAddress,
-    joNumber,
+    joAttend,
     joStartDate,
     joStartTime,
     useweeee,
@@ -44,7 +44,7 @@ if (sessionStorage.getItem("joNew")) {
   joContactInput.value = joContact;
   joLocationInput.value = joLocation;
   joDetailAddressInput.value = joDetailAddress;
-  joNumberInput.value = joNumber;
+  joAttendInput.value = joAttend;
   joStartDateInput.value = joStartDate;
   joStartTimeInput.value = joStartTime;
   useweeeeInput.value = useweeee;
@@ -144,7 +144,7 @@ previewBtn.addEventListener("click", function () {
   //   console.log(joContactInput.value);
   //   console.log(joLocationInput.value);
   //   console.log(joDetailAddressInput.value);
-  //   console.log(joNumber.value);
+  //   console.log(joAttend.value);
   //   console.log(joStartDate.value);
   //   console.log(joStartTime.value);
   //   console.log(useweeee.value);
@@ -156,7 +156,7 @@ previewBtn.addEventListener("click", function () {
     joContactInput.value !== "" &&
     joLocationInput.value !== "" &&
     joDetailAddressInput.value !== "" &&
-    joNumberInput.value !== "" &&
+    joAttendInput.value !== "" &&
     joStartDateInput.value !== "" &&
     joStartTimeInput.value !== "" &&
     // useweeeeInput.value !== "" &&
@@ -171,7 +171,7 @@ previewBtn.addEventListener("click", function () {
           joContact: joContactInput.value,
           joLocation: joLocationInput.value,
           joDetailAddress: joDetailAddressInput.value,
-          joNumber: joNumberInput.value,
+          joAttend: joAttendInput.value,
           joStartDate: joStartDateInput.value,
           joStartTime: joStartTimeInput.value,
           useweeee: useweeeeInput.value,
@@ -187,7 +187,7 @@ previewBtn.addEventListener("click", function () {
           joContact: joContactInput.value,
           joLocation: joLocationInput.value,
           joDetailAddress: joDetailAddressInput.value,
-          joNumber: joNumberInput.value,
+          joAttend: joAttendInput.value,
           joStartDate: joStartDateInput.value,
           joStartTime: joStartTimeInput.value,
           useweeee: useweeeeInput.value,
@@ -208,7 +208,7 @@ previewBtn.addEventListener("click", function () {
       str += str === "" ? "請選擇揪團縣市" : "\n請選擇揪團縣市";
     if (joDetailAddressInput.value === "")
       str += str === "" ? "請輸入詳細地點" : "\n請輸入詳細地點";
-    if (joNumberInput.value === "")
+    if (joAttendInput.value === "")
       str += str === "" ? "請輸入揪團人數" : "\n請輸入揪團人數";
     if (joStartDateInput.value === "")
       str += str === "" ? "請選擇揪團日期" : "\n請選擇揪團日期";

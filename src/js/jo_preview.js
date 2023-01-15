@@ -10,7 +10,7 @@ const joContentP = document.querySelector(".jo__content");
 const dateAndTimeP = document.querySelector(".date_and_time");
 const locationP = document.querySelector(".location");
 const detailAddressP = document.querySelector(".detailAddress");
-const numberP = document.querySelector(".number");
+const attendP = document.querySelector(".attend");
 const contactP = document.querySelector(".contact");
 
 // console.log(numberP);
@@ -53,7 +53,7 @@ let {
   joContact,
   joLocation,
   joDetailAddress,
-  joNumber,
+  joAttend,
   joStartDate,
   joStartTime,
   useweeee,
@@ -67,12 +67,12 @@ joContentP.textContent = joContent;
 dateAndTimeP.textContent = `${joStartDate} ${joStartTime}`;
 locationP.textContent = joLocation;
 detailAddressP.textContent = joDetailAddress;
-numberP.textContent = joNumber;
+attendP.textContent = joAttend;
 contactP.textContent = joContact;
 // joContactInput.value = joContact;
 // joLocationInput.value = joLocation;
 // joDetailAddressInput.value = joDetailAddress;
-// joNumberInput.value = joNumber;
+// joAttendInput.value = joAttend;
 // joStartDateInput.value = joStartDate;
 // joStartTimeInput.value = joStartTime;
 // useweeeeInput.value = useweeee;
@@ -96,7 +96,7 @@ let app = Vue.createApp({
       joContact: "",
       joLocation: "",
       joDetailAddress: "",
-      joNumber: "",
+      joAttend: "",
       joStartDate: "",
       joStartTime: "",
       useweeee: "",
@@ -112,8 +112,8 @@ let app = Vue.createApp({
     this.joContact = joContact;
     this.joLocation = joLocation;
     this.joDetailAddress = joDetailAddress;
-    this.joNumber = joNumber;
-    console.log(this.joNumber);
+    this.joAttend = joAttend;
+    console.log(this.joAttend);
     this.getdata_product_list();
   },
   mounted() {},
