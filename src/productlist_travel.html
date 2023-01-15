@@ -431,7 +431,7 @@
             let a = this.cardlist;
             $.ajax({            
             method: "POST",
-            url: "./Product.php",
+            url: "./php/Product.php",
             data:{
               path:CID.pathname
             },          
@@ -631,7 +631,7 @@
             if (target_class.contains("productlist_new__category_btn")) {
               if (cate_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                 element.classList.remove("open");
                 });
                 black_bg.classList.remove("on_watch");
                 body.classList.remove("stop_scroll");

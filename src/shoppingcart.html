@@ -42,17 +42,22 @@
                 <div class="cart_header">
                     <h5>購物車</h5>
                 </div>
-                <div class="product_group" v-for="(product, index) in productList">
+                <div class="product_group">
+                    <div class="empty_cart" ref="empty_cart" v-show="emptyCart">
+                        <img src="img/otherpage/empty-cart.png" alt="">
+                        <h6>您的購物車是空的</h6>
+                        <a href="index.html">跟著Weeee! 一起探索世界</a>
+                    </div>
 
                     <!-- 購物車商品模板 -->
-                    <div class="product_item">
+                    <div class="product_item" v-for="(product, index) in productList">
 
                         <div class="checkbox"><input type="checkbox" class="check_item" v-model="product.select"></div>
 
-                        <a href="" class="product-image"><img v-bind:src="product.img" alt=""></a>
+                        <a v-bind:href="product.url" class="product-image"><img v-bind:src="product.img" alt=""></a>
 
                         <div class="product-name">
-                            <a href="">
+                            <a v-bind:href="product.url">
                                 <h6>{{ product.name }}</h6>
                             </a>
                         </div>
@@ -64,63 +69,13 @@
                             <h6> {{ displayTWD(product.num * product.price) }}</h6>
                         </div>
                         <div class="edit_delete">
-                            <button class="cart_edit" type="button" class="field1_btn1" data-bs-toggle="modal"
-                                data-bs-target="#peopleModal"><i class="fa-solid fa-pen"></i></button>
+                            <button class="cart_edit" type="button" class="editProd" data-bs-toggle="modal"
+                                data-bs-target="#peopleModal" aria-expanded="true" @click="updateTempProd(index)"><i
+                                    class="fa-solid fa-pen"></i></button>
                             <button class="cart_delete" @click="btnClose(index)"><i
                                     class="fa-solid fa-trash"></i></button>
                         </div>
-                        <!---------------bs-modal--------------->
-                        <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true" @click="field1_showbtn">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="productdetail-modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">
-                                                請選擇使用日期
-                                            </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close" @click="field1_showbtn"></button>
-                                        </div>
-                                    </div>
-                                    <div class="modal-body productdetail-modal-group">
-                                        <div class="productdetail-modal-top">
-                                            <input id="datetimepicker" type="text" />
-                                        </div>
-                                        <div class="productdetail-modal-mid">
-                                            <p>人數</p>
-                                            <p>TWD {{product.price}}/每人</p>
-                                            <div>
-                                                <i class="fa-solid fa-circle-minus" @click="pelple_minus(index)"></i>
-                                                <p>{{product.num}}</p>
-                                                <i class="fa-solid fa-circle-plus" @click="pelple_plus(index)"></i>
-                                            </div>
-                                        </div>
-                                        <div class="productdetail-modal-bot">
-                                            <div>
-                                                <p>總金額</p>
-                                                <p>TWD {{product.price * product.num}}</p>
-                                            </div>
-                                            <div>
-                                                <p>Weeee!Points</p>
-                                                <div class="productdetail-modal-points">
-                                                    <img src="./img/weeeepoints/yellow.svg" alt="" />
-                                                    <p>{{getModalPoints(product.price* product.num)}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="productdetail-modal-footer">
-                                            <button type="button" class="productdetail-modal-secondary">
-                                                編輯完成
-                                            </button>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
 
@@ -180,9 +135,62 @@
                     </div> -->
                 </div>
 
+                
+                <!---------------bs-modal--------------->
+                <div class="modal fade" id="peopleModal" tabindex="-1" aria-hidden="false"
+                    aria-labelledby="exampleModalLabel" data-bs-backdrop="static" v-if="notEmptyCart">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="productdetail-modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        請選擇使用日期
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div class="modal-body productdetail-modal-group">
+                                <div class="productdetail-modal-top">
+                                    <input id="datetimepicker" type="text" ref="timePicker"/>
+                                </div>
+                                <div class="productdetail-modal-mid">
+                                    <p>人數</p>
+                                    <p>TWD {{tempProd.info.price}}/每人</p>
+                                    <div>
+                                        <i class="fa-solid fa-circle-minus" @click="peopleMinus"></i>
+                                        <p>{{tempProd.info.num }}</p>
+                                        <i class="fa-solid fa-circle-plus" @click="peoplePlus"></i>
+                                    </div>
+                                </div>
+                                <div class="productdetail-modal-bot">
+                                    <div>
+                                        <p>總金額</p>
+                                        <p>TWD {{tempProd.info.num * tempProd.info.price}}</p>
+                                    </div>
+                                    <div>
+                                        <p>Weeee!Points</p>
+                                        <div class="productdetail-modal-points">
+                                            <img src="./img/weeeepoints/yellow.svg" alt="" />
+                                            <p>{{getModalPoints(tempProd.info.num * tempProd.info.price)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="productdetail-modal-footer">
+                                    <button type="button" class="productdetail-modal-secondary" data-bs-dismiss="modal" aria-label="Close"@click="updateEditedProd">
+                                        編輯完成
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-                <div class="cart_footer">
+
+                <div class="cart_footer" ref="cart_footer" v-if="notEmptyCart">
                     <div class="checkall">
                         <label for="checkall"><input type="checkbox" name="checkall" id="checkall"
                                 :checked="isSelectAll" @click="selectProduct(isSelectAll)">全選</label>
@@ -193,7 +201,7 @@
                             <div>
                                 <span> {{ getTotal.totalNum }} 件商品合計</span>
                                 <span>
-                                    <h4>TWD {{ currency(getTotal.totalPrice) }}</h4>
+                                    <h4>{{ displayTWD(getTotal.totalPrice) }}</h4>
                                 </span>
                             </div>
                             <div>
@@ -203,7 +211,7 @@
                                 </span>
                             </div>
                         </div>
-                        <button type="button" class="blueBtn" @click="modal_checkout">前往結帳</button>
+                        <button type="button" class="blueBtn" @click="checkout">前往結帳</button>
                     </div>
                 </div>
             </section>
@@ -356,6 +364,10 @@
             //     event.preventDefault(e);
             //     $("input.check_item:checked").closest(".product_item").remove();
             // })
+
+
+
+
 
         });
 

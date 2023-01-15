@@ -51,6 +51,36 @@
         }
 
         .product_group {
+            .empty_cart {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+                // display: none;
+
+                img {
+                    width: 10%;
+                    margin: 20px;
+                }
+
+                h5 {
+                    margin: 20px;
+                }
+
+                a {
+                    margin: 20px;
+                    display: block;
+                    width: 220px;
+                    height: 40px;
+                    color: #fff;
+                    background-color: $blue;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    line-height: 40px;
+                    text-align: center;
+                }
+            }
 
             .product_item:last-child {
                 border: none;
@@ -280,5 +310,9 @@
                 color: $black;
             }
         }
+    }
+
+    .-none {
+        display: none;
     }
 }

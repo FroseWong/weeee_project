@@ -1,20 +1,65 @@
 
 .account_favor{
-    .trash{
+    .trashCan{
+        float: right;
+        font-size: 22px;
+    }
+
+    .favor_card{
+        width: 100%;
+        margin-bottom: 30px;
+        background-color: $white;
+        display: flex;
+        border-radius: 10px;
+        position: relative;
+        @include m{
+            flex-direction: column;
+        }
+    }
+
+    .favor_card_pic{
+        width: 270px;
+        border-radius: 10px 0px 0px 10px;
+        @include m{
+            width: 100%;
+            border-radius: 10px 10px 0px 0px;
+        }
+    }
+    .dot{
+        position: absolute;
+        top: 13px;
+        left: 12px;
+        font-size: 16px;
+        color: $white;
+    }
+    .product_name{
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    .product_type{
+        background-color: $orange;
+        width: 30%;
+        text-align: center;
+        color: $white;
+        margin-bottom: 10px;
+        padding: 1px;
+    }
+    .text{
+        width: 100%;
+        padding: 15px 15px 15px 30px;
+    }
+    .product__description{
+        font-size: 14px;
+    }
+    .card_bottom{
+        margin-top: 15px; 
+        color: $gray;
+    }
+  
+    .price{
         float: right;
     }
-
-    .product-card-row__right_bgc{
-        background-color: $white;
-        outline: none;
-        border-radius: 0px 12px 12px 0px;
-    }
-
-    .useweeee{
-        margin-bottom: 30px;
-    }
-
-    .product-name{
-        font-size: 20px;
+    .fa-star{
+        color: yellow;
     }
 }

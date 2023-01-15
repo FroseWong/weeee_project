@@ -264,7 +264,7 @@ createApp({
         ScrollPosition = window.scrollY;
 
         if (directions.contains("productdetail-none")) {
-          ScrollPosition = ScrollPosition + 2226;
+          ScrollPosition = ScrollPosition + 2026;
         }
         if (ScrollPosition <= 1106) {
           pn.color = weblack;
@@ -276,7 +276,7 @@ createApp({
           pa.borderLeft = "0";
           pn.borderLeft = "0";
         }
-        if (ScrollPosition >= 1000) {
+        if (ScrollPosition >= 800) {
           pn.color = weblack;
           pa.color = weblack;
           pv.color = weblack;
@@ -290,7 +290,7 @@ createApp({
             pd.borderLeft = "0";
           }
         }
-        if (ScrollPosition >= 3250) {
+        if (ScrollPosition >= 3050) {
           pa.color = weblack;
           pv.color = weblack;
           pd.color = weblack;
@@ -300,7 +300,7 @@ createApp({
           pv.borderLeft = "0";
           pa.borderLeft = "0";
         }
-        if (ScrollPosition >= 3900) {
+        if (ScrollPosition >= 3500) {
           pn.color = weblack;
           pv.color = weblack;
           pd.color = weblack;
@@ -310,7 +310,7 @@ createApp({
           pv.borderLeft = "0";
           pn.borderLeft = "0";
         }
-        if (ScrollPosition >= 4707) {
+        if (ScrollPosition >= 4007) {
           pn.color = weblack;
           pa.color = weblack;
           pd.color = weblack;
@@ -525,8 +525,8 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeart.php",
         data: {
-          MID: 5,
-          PID: 3,
+          MID: 1,
+          PID: num,
         },
         dataType: "json",
         success: function (response) {
@@ -537,8 +537,37 @@ createApp({
         },
       });
     },
-    heartclick(e) {
-      console.log(e.path[6].classList.contains("liked"));
+    ajax_heart_show() {
+      _this = this;
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailHeartShow.php",
+        data: {
+          MID: 1,
+          PID: num,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          if(response==0)
+          {
+            console.log('值為0');
+            _this.$refs.heartshow.classList.remove('liked');
+          }
+          else if(response==1)
+          {
+            console.log('值為1');
+            _this.$refs.heartshow.classList.add('liked');
+          }
+        },
+        error: function (exception) {
+          alert("發生錯誤: " + exception.status);
+        },
+      });
+      console.log(this.$refs.heartshow.classList);
+      
     },
   },
   computed: {
@@ -557,8 +586,8 @@ createApp({
     this.product_list();
     this.display_scroll();
     this.time_fun();
-    this.winSize_watch();
+    // this.winSize_watch();
     this.ajax_post();
-    // this.ajax_heart();
+    this.ajax_heart_show();
   },
 }).mount("#app");

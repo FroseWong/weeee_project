@@ -56,7 +56,7 @@ exports.js = jsmini;
 // sass complier
 // 沒壓縮css
 function sassStyle() {
-  return src(["src/sass/*.scss", "src/sass/**/*.scss", "src/sass/**/**/*.scss"])
+  return src(["src/sass/*.scss"])
     .pipe(sourcemaps.init())
     .pipe(sass.sync().on("error", sass.logError)) // sass ->css
     .pipe(sourcemaps.write())
@@ -164,13 +164,13 @@ function watchfile() {
 
 //瀏覽器同步
 function browser(done) {
-  browserSync.init({
-    server: {
-      baseDir: "./dist",
-      index: "index.html",
-    },
-    port: 3000,
-  });
+  // browserSync.init({
+  //   server: {
+  //     baseDir: "./dist",
+  //     index: "index.html",
+  //   },
+  //   port: 3000,
+  // });
   watch(["src/*.html", "src/layout/*.html"], html).on("change", reload);
   watch(
     ["src/sass/*.scss", "src/sass/**/*.scss", "src/sass/**/**/*.scss"],

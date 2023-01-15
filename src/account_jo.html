@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weeee!</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/85f014293c.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     @@include('layout/header.html')
     <div class="wrapper account account_jo">
-      <div class="container ">
+      <div class="container">
         <div class="breadcrumbList container">
           <ol class="breadcrumb">
             <li><a href="index.html">首頁</a></li>
@@ -22,9 +25,7 @@
         <div class="mid">
           <div class="left_bar">
             <div class="img_block">
-              <div class="mem_img">
-  
-              </div>
+              <div class="mem_img"></div>
               <h5>陳品元元</h5>
             </div>
             <div class="page_list">
@@ -34,236 +35,189 @@
                     <div>
                       <i class="fa-regular fa-newspaper"></i>
                     </div>
-                  
-                  訂單管理
-                </a>
+
+                    訂單管理
+                  </a>
                 </li>
-                  
+
                 <li>
                   <a href="account_jo.html" id="on_page">
                     <div>
                       <i class="fa-solid fa-user-group"></i>
                     </div>
-                  
-                  我的揪團
+
+                    我的揪團
                   </a>
                 </li>
-  
+
                 <li>
                   <a href="account_favor.html">
                     <div><i class="fa-solid fa-heart"></i></div>
-                  
-                  我的收藏
+
+                    我的收藏
                   </a>
                 </li>
                 <li>
                   <a href="account_point.html">
                     <div>
-                      <img src="./img/weeeepoints/blue.svg" alt="">
+                      <img src="./img/weeeepoints/blue.svg" alt="" />
                     </div>
-                  
-                  Weeee! Points
+
+                    Weeee! Points
                   </a>
                 </li>
-                <li >
+                <li>
                   <a href="account_setting.html">
                     <div>
                       <i class="fa-solid fa-gear"></i>
                     </div>
-                  
-                  帳號設定
+
+                    帳號設定
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="content">
+          <div class="content" id="content">
             <h4>我的揪團</h4>
-            <h5>您有6個揪團</h5>
+            <h5>您有<span id="count">6</span>個揪團</h5>
 
-            <div class="jo-list">
-              <a class="jo-card">
-                <div class="jo-card__top__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="jo__location">台北</p>
+            <!-- <div class="jo_row">
+              <a class="jo_card">
+                <div class="jo_card__top">
+                  <img src="img/jo/jo_boardgame1.jpg" class="jo_card_pic" />
                 </div>
-                <div class="jo-card__top">
-                  <div class="jo-card__top__pic">
-                    <div class="jo-card__top__pic__src j1"></div>
+                <div class="jo-card__top__location" style="color: white">
+                  <i class="fa-solid fa-location-dot dot"></i>
+                  <p class="location">台中</p>
+                </div>
+                <div class="bottom">
+                  <p class="jo_title">突然決定玩桌遊</p>
+                  <div class="gray address">快樂小屋桌遊</div>
+                  <div class="gray jo-time">星期一,十二月 5日 12:40</div>
+                  <div class="icons">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
                   </div>
                 </div>
-                <div class="jo-card__bottom">
-                  <h6 class="jo-name">南京復興站吃晚餐</h6>
-                  <span class="gray jo__detailaddress">南京復興站</span>
-                  <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-                  <span class="jo-card__bottom__message">
-                    <span class="member-pic m2"></span>
-                    <span class="member-name">方彥翔</span>
-                    <span class="account_jo_icon">
-                      <span class="pencil">
-                        <i class="fa-solid fa-pen"></i>
-                      </span>
-                      <span class="trash">
-                          <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </span>
-                  </span>  
-                </div>
               </a>
-    
-              <a class="jo-card">
-                <div class="jo-card__top__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="jo__location">台中</p>
+              <a class="jo_card">
+                <div class="jo_card__top">
+                  <img src="img/jo/jo_boardgame1.jpg" class="jo_card_pic" />
                 </div>
-                <div class="jo-card__top">
-                  <div class="jo-card__top__pic">
-                    <div class="jo-card__top__pic__src j2"></div>
+                <div class="jo-card__top__location" style="color: white">
+                  <i class="fa-solid fa-location-dot dot"></i>
+                  <p class="location">台中</p>
+                </div>
+                <div class="bottom">
+                  <p class="jo_title">突然決定玩桌遊</p>
+                  <div class="gray address">快樂小屋桌遊</div>
+                  <div class="gray jo-time">星期一,十二月 5日 12:40</div>
+                  <div class="icons">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
                   </div>
                 </div>
-                <div class="jo-card__bottom">
-                  <h6 class="jo-name">突然決定玩桌遊</h6>
-                  <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-                  <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-                  <span class="jo-card__bottom__message">
-                    <span class="member-pic m2"></span>
-                    <span class="member-name">張不平</span>
-                    <span class="account_jo_icon">
-                      <span class="pencil">
-                        <i class="fa-solid fa-pen"></i>
-                      </span>
-                      <span class="trash">
-                          <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </span>
-                  </span>  
-                </div>
               </a>
-            </div>
-            <div class="jo-list">
-              <a class="jo-card">
-                <div class="jo-card__top__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="jo__location">台北</p>
-                </div>
-                <div class="jo-card__top">
-                  <div class="jo-card__top__pic">
-                    <div class="jo-card__top__pic__src j1"></div>
-                  </div>
-                </div>
-                <div class="jo-card__bottom">
-                  <h6 class="jo-name">南京復興站吃晚餐</h6>
-                  <span class="gray jo__detailaddress">南京復興站</span>
-                  <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-                  <span class="jo-card__bottom__message">
-                    <span class="member-pic m2"></span>
-                    <span class="member-name">菜和一</span>
-                    <span class="account_jo_icon">
-                      <span class="pencil">
-                        <i class="fa-solid fa-pen"></i>
-                      </span>
-                      <span class="trash">
-                          <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </span>
-                  </span>  
-                </div>
-              </a>
-    
-              <a class="jo-card">
-                <div class="jo-card__top__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="jo__location">台中</p>
-                </div>
-                <div class="jo-card__top">
-                  <div class="jo-card__top__pic">
-                    <div class="jo-card__top__pic__src j2"></div>
-                  </div>
-                </div>
-                <div class="jo-card__bottom">
-                  <h6 class="jo-name">突然決定玩桌遊</h6>
-                  <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-                  <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-                  <span class="jo-card__bottom__message">
-                    <span class="member-pic m2"></span>
-                    <span class="member-name">盧古古</span>
-                    <span class="account_jo_icon">
-                      <span class="pencil">
-                        <i class="fa-solid fa-pen"></i>
-                      </span>
-                      <span class="trash">
-                          <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </span>
-                  </span>  
-                </div>
-              </a>
-            </div>
-            <div class="jo-list">
-              <a class="jo-card">
-                <div class="jo-card__top__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="jo__location">台北</p>
-                </div>
-                <div class="jo-card__top">
-                  <div class="jo-card__top__pic">
-                    <div class="jo-card__top__pic__src j1"></div>
-                  </div>
-                </div>
-                <div class="jo-card__bottom">
-                  <h6 class="jo-name">南京復興站吃晚餐</h6>
-                  <span class="gray jo__detailaddress">南京復興站</span>
-                  <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-                  <span class="jo-card__bottom__message">
-                    <span class="member-pic m2"></span>
-                    <span class="member-name">許浩南</span>
-                    <span class="account_jo_icon">
-                      <span class="pencil">
-                        <i class="fa-solid fa-pen"></i>
-                      </span>
-                      <span class="trash">
-                          <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </span>
-                  </span>  
-                </div>
-              </a>
-    
-              <a class="jo-card">
-                <div class="jo-card__top__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="jo__location">台中</p>
-                </div>
-                <div class="jo-card__top">
-                  <div class="jo-card__top__pic">
-                    <div class="jo-card__top__pic__src j2"></div>
-                  </div>
-                </div>
-                <div class="jo-card__bottom">
-                  <h6 class="jo-name">突然決定玩桌遊</h6>
-                  <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-                  <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-                  <span class="jo-card__bottom__message">
-                    <span class="member-pic m2"></span>
-                    <span class="member-name">陳品元元</span>
-                    <span class="account_jo_icon">
-                      <span class="pencil">
-                        <i class="fa-solid fa-pen"></i>
-                      </span>
-                      <span class="trash">
-                          <i class="fa-solid fa-trash"></i>
-                      </span>
-                    </span>
-                  </span>  
-                </div>
-              </a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
-    
+
       @@include('layout/footer.html')
     </div>
+    <script>
+      //會員一進到此頁面，就發送請求到後端取他的揪團資料
+      $.ajax({
+        method: "GET",
+        url: "php/query_account_jo.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          //印到HTML上
+          let content = document.getElementById("content");
+          for (let i = 0; i < response.length; i = i + 2) {
+            let jo_content;
+            if (i + 1 < response.length) {
+              jo_content = `
+              <div class="jo_row">
+                <a class="jo_card">
+                    <div class="jo_card__top">
+                      <img src="img/jo/jo_boardgame1.jpg" class="jo_card_pic">
+                    </div>
+                    <div class="jo-card__top__location" style="color: white;">
+                      <i class="fa-solid fa-location-dot dot"></i>
+                      <p class="location">${response[i].Location}</p>
+                    </div>
+                    <div class="bottom">
+                      <p class="jo_title">${response[i].JoTitle}</p>
+                      <div class="gray address">${
+                        response[i].JoDetailedAddressed
+                      }</div>
+                      <div class="gray jo-time">${response[i].JoStartDate}</div>
+                      <div class="icons">
+                          <i class="fa-solid fa-pen"></i>
+                          <i class="fa-solid fa-trash"></i>
+                      </div>
+                    </div>
+                  </a>
 
+                  <a class="jo_card">
+                    <div class="jo_card__top">
+                      <img src="img/jo/jo_boardgame1.jpg" class="jo_card_pic">
+                    </div>
+                    <div class="jo-card__top__location" style="color: white;">
+                      <i class="fa-solid fa-location-dot dot"></i>
+                      <p class="location">${response[i + 1].Location}</p>
+                    </div>
+                    <div class="bottom">
+                      <p class="jo_title">${response[i + 1].JoTitle}</p>
+                      <div class="gray address">${
+                        response[i + 1].JoDetailedAddressed
+                      }</div>
+                      <div class="gray jo-time">${
+                        response[i + 1].JoStartDate
+                      }</div>
+                      <div class="icons">
+                          <i class="fa-solid fa-pen"></i>
+                          <i class="fa-solid fa-trash"></i>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+        `;
+            } else {
+              jo_content = `
+              <div class="jo_row">
+                <a class="jo_card">
+                    <div class="jo_card__top">
+                      <img src="img/jo/jo_boardgame1.jpg" class="jo_card_pic">
+                    </div>
+                    <div class="jo-card__top__location" style="color: white;">
+                      <i class="fa-solid fa-location-dot dot"></i>
+                      <p class="location">${response[i].Location}</p>
+                    </div>
+                    <div class="bottom">
+                      <p class="jo_title">${response[i].JoTitle}</p>
+                      <div class="gray address">${response[i].JoDetailedAddressed}</div>
+                      <div class="gray jo-time">${response[i].JoStartDate}</div>
+                      <div class="icons">
+                          <i class="fa-solid fa-pen"></i>
+                          <i class="fa-solid fa-trash"></i>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+        `;
+            }
+
+            content.insertAdjacentHTML("beforeend", jo_content);
+          }
+          // $("#count").html(response.length); //jquery寫法
+          document.getElementById("count").innerHTML = response.length; //js寫法
+        },
+        
+      });
+    </script>
   </body>
 </html>
