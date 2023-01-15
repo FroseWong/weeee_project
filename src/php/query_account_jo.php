@@ -1,12 +1,12 @@
 <?php
-$memberID = "1"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
+$memberID = "2"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
 
 //DB連線資訊
 include("connection.php");
 
 //建立SQL語法
 // $sql = "SELECT * FROM Order WHERE MemberID = ?";
-$sql = "SELECT Jo.JoTitle, Jo.MemberID, Jo.Location, Jo.JoDetailedAddressed, Jo.JoStartDate
+$sql = "SELECT Jo.JoTitle, Jo.Location, Jo.JoDetailedAddressed, Jo.JoStartDate
 from Jo 
 WHERE MemberID = ?;";
 
