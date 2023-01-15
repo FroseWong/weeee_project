@@ -106,6 +106,9 @@
     height: 250px;
     padding: 30px 25px 0px;
     box-sizing: border-box;
+    // display: flex;
+    // justify-content: flex-start;
+    // flex-direction: column;
 
     @include m {
       width: auto;
@@ -143,8 +146,8 @@
   .product-tag {
     // width: 300px;
     // display: block;
-    width: 60px;
-    height: 30px;
+    width: 80px;
+    // height: 30px;
     box-sizing: border-box;
     margin-bottom: 10px;
 
