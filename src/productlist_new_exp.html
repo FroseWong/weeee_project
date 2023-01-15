@@ -87,18 +87,14 @@
               </ul>
             </div>
             <!--------商品卡--------->
-            <a class="product-card-row" :href=`./productdetail.html?id=${product.ProductID}` v-for="product in cardlist"
+            <a class="product-card-row" :href=`./productdetail.html?id=${product.cardid}` v-for="product in cardlist"
               :key="index" v-if="dataget">
-              <!-- <div class="product-card-row__left" v-bind:style="{ backgroundImage: 'url{{product.src}}' }"></div> -->
-              <div
-                class="product-card-row__left"
-                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
-              ></div>
+              <div class="product-card-row__left" v-bind:style="{ backgroundImage: 'url(' + product.src + ')' }"></div>
               <div class="product-card-row__right">
-                <div class="product-name">{{product.ProductName}}</div>
-                <div class="product-tag">{{product.ProductSecondType}}</div>
-                <div class="product__text">{{product.ProductText}}</div>
-                <span class="price">TWD <span class="product-price">{{product.ProductPrice}}</span>元</span>
+                <div class="product-name">{{product.title}}</div>
+                <div class="product-tag">{{product.label}}</div>
+                <div class="product__text">{{product.content}}</div>
+                <span class="price">TWD <span class="product-price">{{product.price}}</span>元</span>
               </div>
             </a>
             <!--------分頁--------->

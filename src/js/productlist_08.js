@@ -56,9 +56,11 @@
           getdata(){
             var CID = (new URL(location.href));
             console.log(CID.pathname);
-            this.cardlist = [];
+            // this.cardlist = [];
+            _this=this;
             console.log(this.cardlist)
             let a = this.cardlist;
+            let ggg= [];
             $.ajax({            
             method: "POST",
             url: "./php/Product_08.php",
@@ -67,9 +69,27 @@
             },          
             dataType: "json",
             success: function (response) {
-              response.forEach(element => {
-                a.push(element)
+              response.forEach(e => {
+                console.log(e);
+                obj={
+                src: e.ProductImgPath1,
+                title: e.ProductName,
+                label: e.ProductSecondType,
+                content: e.ProductText,
+                score: 50,
+                scorepeople: 5000,
+                order: 500,
+                price: e.ProductPrice,
+                city: e.Location,
+                cardid: e.ProductID,
+                vif: true,
+                }
+                
+                ggg.push(obj);
+              console.log(ggg);
+              _this.cardlist=ggg;
               });             
+              
             },
             error: function(exception) {
                 alert("數據載入失敗: " + exception.status);

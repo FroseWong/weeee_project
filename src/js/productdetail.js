@@ -525,8 +525,8 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeart.php",
         data: {
-          MID: 5,
-          PID: 41,
+          MID: 1,
+          PID: num,
         },
         dataType: "json",
         success: function (response) {
@@ -537,8 +537,37 @@ createApp({
         },
       });
     },
-    heartclick(e) {
-      console.log(e.path[6].classList.contains("liked"));
+    ajax_heart_show() {
+      _this = this;
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailHeartShow.php",
+        data: {
+          MID: 1,
+          PID: num,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          if(response==0)
+          {
+            console.log('值為0');
+            _this.$refs.heartshow.classList.remove('liked');
+          }
+          else if(response==1)
+          {
+            console.log('值為1');
+            _this.$refs.heartshow.classList.add('liked');
+          }
+        },
+        error: function (exception) {
+          alert("發生錯誤: " + exception.status);
+        },
+      });
+      console.log(this.$refs.heartshow.classList);
+      
     },
   },
   computed: {
@@ -557,8 +586,8 @@ createApp({
     this.product_list();
     this.display_scroll();
     this.time_fun();
-    this.winSize_watch();
+    // this.winSize_watch();
     this.ajax_post();
-    // this.ajax_heart();
+    this.ajax_heart_show();
   },
 }).mount("#app");
