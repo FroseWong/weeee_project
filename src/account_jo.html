@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weeee!</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://kit.fontawesome.com/85f014293c.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/85f014293c.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     @@include('layout/header.html')
     <div class="wrapper account account_jo">
-      <div class="container ">
+      <div class="container">
         <div class="breadcrumbList container">
           <ol class="breadcrumb">
             <li><a href="index.html">首頁</a></li>
@@ -22,9 +25,7 @@
         <div class="mid">
           <div class="left_bar">
             <div class="img_block">
-              <div class="mem_img">
-  
-              </div>
+              <div class="mem_img"></div>
               <h5>陳品元元</h5>
             </div>
             <div class="page_list">
@@ -34,44 +35,44 @@
                     <div>
                       <i class="fa-regular fa-newspaper"></i>
                     </div>
-                  
-                  訂單管理
-                </a>
+
+                    訂單管理
+                  </a>
                 </li>
-                  
+
                 <li>
                   <a href="account_jo.html" id="on_page">
                     <div>
                       <i class="fa-solid fa-user-group"></i>
                     </div>
-                  
-                  我的揪團
+
+                    我的揪團
                   </a>
                 </li>
-  
+
                 <li>
                   <a href="account_favor.html">
                     <div><i class="fa-solid fa-heart"></i></div>
-                  
-                  我的收藏
+
+                    我的收藏
                   </a>
                 </li>
                 <li>
                   <a href="account_point.html">
                     <div>
-                      <img src="./img/weeeepoints/blue.svg" alt="">
+                      <img src="./img/weeeepoints/blue.svg" alt="" />
                     </div>
-                  
-                  Weeee! Points
+
+                    Weeee! Points
                   </a>
                 </li>
-                <li >
+                <li>
                   <a href="account_setting.html">
                     <div>
                       <i class="fa-solid fa-gear"></i>
                     </div>
-                  
-                  帳號設定
+
+                    帳號設定
                   </a>
                 </li>
               </ul>
@@ -82,7 +83,7 @@
             <h5>您有6個揪團</h5>
 
             <div class="jo-list">
-              <a class="jo-card">
+              <!-- <a class="jo-card">
                 <div class="jo-card__top__location">
                   <i class="fa-solid fa-location-dot"></i>
                   <p class="jo__location">台北</p>
@@ -109,9 +110,9 @@
                     </span>
                   </span>  
                 </div>
-              </a>
-    
-              <a class="jo-card">
+              </a> -->
+
+              <!-- <a class="jo-card">
                 <div class="jo-card__top__location">
                   <i class="fa-solid fa-location-dot"></i>
                   <p class="jo__location">台中</p>
@@ -138,10 +139,10 @@
                     </span>
                   </span>  
                 </div>
-              </a>
+              </a> -->
             </div>
             <div class="jo-list">
-              <a class="jo-card">
+              <!-- <a class="jo-card">
                 <div class="jo-card__top__location">
                   <i class="fa-solid fa-location-dot"></i>
                   <p class="jo__location">台北</p>
@@ -168,9 +169,9 @@
                     </span>
                   </span>  
                 </div>
-              </a>
-    
-              <a class="jo-card">
+              </a> -->
+
+              <!-- <a class="jo-card">
                 <div class="jo-card__top__location">
                   <i class="fa-solid fa-location-dot"></i>
                   <p class="jo__location">台中</p>
@@ -197,10 +198,10 @@
                     </span>
                   </span>  
                 </div>
-              </a>
+              </a> -->
             </div>
             <div class="jo-list">
-              <a class="jo-card">
+              <!-- <a class="jo-card">
                 <div class="jo-card__top__location">
                   <i class="fa-solid fa-location-dot"></i>
                   <p class="jo__location">台北</p>
@@ -227,8 +228,8 @@
                     </span>
                   </span>  
                 </div>
-              </a>
-    
+              </a> -->
+
               <a class="jo-card">
                 <div class="jo-card__top__location">
                   <i class="fa-solid fa-location-dot"></i>
@@ -244,6 +245,72 @@
                   <span class="gray jo__detailaddress">快樂小屋桌遊</span>
                   <span class="gray jo-time">星期一,十二月 5日 12:40</span>
                   <span class="jo-card__bottom__message">
+                   
+                    <span class="account_jo_icon">
+                      <span class="pencil">
+                        <i class="fa-solid fa-pen"></i>
+                      </span>
+                      <span class="trash">
+                        <i class="fa-solid fa-trash"></i>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @@include('layout/footer.html')
+    </div>
+    <script>
+      //控制資料顯示在HTML上
+      let jo_management = [
+            {
+              joNumber: "JO0001",
+              joTitle: "南京復興站吃晚餐",
+              location: "台北",
+              joDetailAddressed: "南京復興站",
+              joStartDate: "2023/02/04",
+              joImage: "img/jo/jo_aquarium.jpg",
+            },
+          ];
+
+          //會員一進到此頁面，就發送請求到後端取他的揪團資料
+      $.ajax({
+        method: "GET",
+        url: "php/query_account_jo.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          let jo_management = {
+              joNumber: response.JoNumber,
+              joTitle: response.JoTitle,
+              location: response.Location,
+              joDetailAddressed: response.JoDetailAddressed,
+              joStartDate: JoStartDate,
+              joImage: "img/jo/jo_aquarium.jpg",
+          };
+          //印到HTML上
+          let content = document.getElementById("content");
+          for (let i = 0; i < order_management.length; i++) {
+            let jo_content = `
+            <a class="jo-card">
+                <div class="jo-card__top__location">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p class="jo__location">${jo_management[i].location}</p>
+                </div>
+                <div class="jo-card__top">
+                  <div class="jo-card__top__pic">
+                    <div class="jo-card__top__pic__src j2"></div>
+                  </div>
+                </div>
+                <div class="jo-card__bottom">
+                  <h6 class="jo-name">${jo_management[i].joTitle}</h6>
+                  <span class="gray jo__detailaddress">${jo_management[i].joDetailAddressed}</span>
+                  <span class="gray jo-time">${jo_management[i].joStartDate}</span>
+                  <span class="jo-card__bottom__message">
                     <span class="member-pic m2"></span>
                     <span class="member-name">陳品元元</span>
                     <span class="account_jo_icon">
@@ -251,19 +318,17 @@
                         <i class="fa-solid fa-pen"></i>
                       </span>
                       <span class="trash">
-                          <i class="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-trash"></i>
                       </span>
                     </span>
-                  </span>  
+                  </span>
                 </div>
               </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-      @@include('layout/footer.html')
-    </div>
-
+      `;
+            content.insertAdjacentHTML("beforeend", order_content);
+          }
+        },
+      });
+    </script>
   </body>
 </html>
