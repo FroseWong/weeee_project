@@ -219,3 +219,46 @@ previewBtn.addEventListener("click", function () {
     alert(str);
   }
 });
+
+let app = Vue.createApp({
+  data() {
+    return {
+      test: "123",
+      sightseeingList: [],
+    };
+  },
+  created() {
+    this.getdata_product_list();
+  },
+  methods: {
+    getdata_product_list() {
+      // this.jo_list_hot = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/Product.php",
+        data: {
+          // type: "hot",
+        },
+
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          response.forEach((product) => {
+            // that.productList.push(product);
+            if (product.ProductType === "sightseeing")
+              that.sightseeingList.push(product);
+          });
+          console.log(that.sightseeingList);
+
+          // console.log(that.sightseeingList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+  },
+});
+
+app.mount("#useweeee");

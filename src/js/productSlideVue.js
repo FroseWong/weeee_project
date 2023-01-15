@@ -1,27 +1,28 @@
 "use strict";
 
-const heartAll = document.querySelectorAll(".fa-heart");
-const productAll = document.querySelectorAll(".product-card");
-const popularCountryAll = document.querySelectorAll(".popular-country");
-const changeHeartAll = document.querySelectorAll(".change-heart");
-let status = true;
-const mouseenterFu = function () {
-  popularCountryAll.forEach((a) => a.classList.remove("active"));
-  this.classList.add("active");
-};
+// const heartAll = document.querySelectorAll(".fa-heart");
+// const productAll = document.querySelectorAll(".product-card");
+// // const popularCountryAll = document.querySelectorAll(".popular-country");
+// const changeHeartAll = document.querySelectorAll(".change-heart");
+// let status = true;
 
-const popularRWD = function () {
-  if (window.innerWidth > 768) {
-    popularCountryAll.forEach((p) => {
-      p.addEventListener("mouseenter", mouseenterFu.bind(p));
-    });
-  } else {
-    popularCountryAll.forEach((p) => p.classList.remove("active"));
-    popularCountryAll.forEach((p) =>
-      p.removeEventListener("mouseenter", mouseenterFu, true)
-    );
-  }
-};
+// const mouseenterFu = function () {
+//   popularCountryAll.forEach((a) => a.classList.remove("active"));
+//   this.classList.add("active");
+// };
+
+// const popularRWD = function () {
+//   if (window.innerWidth > 768) {
+//     popularCountryAll.forEach((p) => {
+//       p.addEventListener("mouseenter", mouseenterFu.bind(p));
+//     });
+//   } else {
+//     popularCountryAll.forEach((p) => p.classList.remove("active"));
+//     popularCountryAll.forEach((p) =>
+//       p.removeEventListener("mouseenter", mouseenterFu, true)
+//     );
+//   }
+// };
 
 // heartAll.forEach((heart) =>
 //   heart.addEventListener("click", function (e) {
@@ -30,36 +31,15 @@ const popularRWD = function () {
 //   })
 // );
 
-productAll.forEach((product) =>
-  product.addEventListener("click", function (e) {
-    e.stopPropagation();
-    console.log("clicked product");
-    location.href = "./productdetail.html";
-  })
-);
-
-window.addEventListener("resize", function () {
-  let nowStatus = status;
-  // if (window.innerWidth > 768)
-  if (window.innerWidth > 768) {
-    status = true;
-  } else status = false;
-
-  if (nowStatus !== status) {
-    console.log("change");
-    // popularRWD();
-  }
-});
-
-changeHeartAll.forEach((changeHeart) =>
-  changeHeart.addEventListener("click", function (e) {
-    e.stopPropagation();
-    this.querySelectorAll("i").forEach((i) => {
-      if (i.classList.contains("hidden")) i.classList.remove("hidden");
-      else if (!i.classList.contains("hidden")) i.classList.add("hidden");
-    });
-  })
-);
+// changeHeartAll.forEach((changeHeart) =>
+//   changeHeart.addEventListener("click", function (e) {
+//     e.stopPropagation();
+//     this.querySelectorAll("i").forEach((i) => {
+//       if (i.classList.contains("hidden")) i.classList.remove("hidden");
+//       else if (!i.classList.contains("hidden")) i.classList.add("hidden");
+//     });
+//   })
+// );
 
 // popularRWD();
 
@@ -83,18 +63,14 @@ let app1 = Vue.createApp({
       // slick_start: false,
     };
   },
-  destroyed() {
-    window.removeEventListener("resize", this.myEventHandler);
-  },
+
   created() {
     // this.show_hot_function();
     this.getdata_product_list();
-    this.getdata_jo_list_end();
+    // this.getdata_jo_list_end();
     this.product_slick();
-    this.jolist_slick();
+    // this.jolist_slick();
     // this.popular_slick();
-
-    window.addEventListener("resize", this.myEventHandler);
   },
   methods: {
     getdata_product_list() {
@@ -179,25 +155,6 @@ let app1 = Vue.createApp({
         ],
       });
     },
-    jolist_slick() {
-      $(".jo-list").slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              arrows: false,
-            },
-          },
-        ],
-      });
-    },
 
     changeHeart(e) {
       e.stopPropagation();
@@ -212,25 +169,6 @@ let app1 = Vue.createApp({
       location.href = "./productdetail.html";
     },
 
-    popularSlick(e) {
-      this.$nextTick(function () {
-        if (window.innerWidth <= 768) {
-          $(".popular-country__list").slick({
-            infinite: true,
-            slidesToShow: 2.1,
-            slidesToScroll: 2,
-          });
-        }
-      });
-    },
-
-    popularMouse(index) {
-      this.current_hover = index;
-    },
-    myEventHandler(e) {
-      if (window.innerWidth <= 768) this.popularRWD = true;
-      else this.popularRWD = false;
-    },
     // getdata_jo_list_new() {
     //   this.jo_list_new = [];
     //   let _this = this;

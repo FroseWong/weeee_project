@@ -119,13 +119,17 @@
               />
 
               <datalist id="useweeee">
-                <option value="欣賞台南生態水之美">欣賞台南生態水之美</option>
+                <option v-for="(p,i) in sightseeingList" :value="p.ProductName">
+                  {{p.ProductName}}
+                </option>
+
+                <!-- <option value="欣賞台南生態水之美">欣賞台南生態水之美</option>
                 <option value="在台南與大自然擁抱">在台南與大自然擁抱</option>
                 <option value="金門二日遊">金門二日遊</option>
                 <option value="屏東｜墾丁三天兩夜豪華度假旅程">
                   屏東｜墾丁三天兩夜豪華度假旅程
                 </option>
-                <option value="新北｜蔚藍海岸之旅">新北｜蔚藍海岸之旅</option>
+                <option value="新北｜蔚藍海岸之旅">新北｜蔚藍海岸之旅</option> -->
               </datalist>
             </div>
           </div>
@@ -137,6 +141,7 @@
       </div>
       @@include('layout/footer.html')
     </div>
+    <script src="./vender/vue/vue.global.prod.js"></script>
     <script src="./js/jo_new.js"></script>
   </body>
 </html>

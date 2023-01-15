@@ -30,17 +30,22 @@
             </div>
             <div class="jo-leader__top__right">
               <span class="jo-start-date"
-                ><i class="fa-solid fa-calendar-days"></i><span class="date_and_time">2022/12/17 星期六
-                10:00</span></span
+                ><i class="fa-solid fa-calendar-days"></i
+                ><span class="date_and_time"
+                  >2022/12/17 星期六 10:00</span
+                ></span
               >
               <span class="jo-location"
-                ><i class="fa-solid fa-location-dot"></i><span class="location">桃園市</span></span
+                ><i class="fa-solid fa-location-dot"></i
+                ><span class="location">桃園市</span></span
               >
               <span class="jo-detailaddress"
-                ><i class="fa-solid fa-map-location-dot"></i><span class="detailAddress">桃園高鐵站</span></span
+                ><i class="fa-solid fa-map-location-dot"></i
+                ><span class="detailAddress">桃園高鐵站</span></span
               >
               <span class="jo-number"
-                ><i class="fa-solid fa-person"></i><span class="number">3</span>人</span
+                ><i class="fa-solid fa-person"></i
+                ><span class="number">3</span>人</span
               >
             </div>
           </div>
@@ -52,51 +57,94 @@
               <div class="contact-detail">
                 <span class="contact-title">聯絡方式</span>
                 <br />
-                <span class="contact"
-                  >LINE ID：XXXX <br />
-                  Email：TTTTT@gmail.com</span
-                >
+                <span class="contact"></span>
               </div>
             </div>
           </div>
         </div>
+        <div id="app">
+          <h3 class="useweeee__title">我們的行程</h3>
 
-        <h3 class="useweeee__title">我們的行程</h3>
-
-        <div class="useweeee">
-          <a href="./productdetail.html" class="product-card-row">
-            <div class="product-card-row__left"></div>
-            <div class="product-card-row__right">
-              <div class="product-name">
-                桃園青埔 | Xpark 都會型水生公園門票
+          <div class="useweeee">
+            <a class="product-card-row">
+              <div class="product-card-row__left">
+                <div class="product-card-row__location">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p class="p__location">桃園</p>
+                </div>
+                <div class="product-card-row__left__pic">
+                  <div class="product-card-row__picsrc"></div>
+                </div>
               </div>
-              <div class="product-tag">水族館</div>
-              <div class="product__text">
-                Xpark 於 2022 年初推行大型企劃『Xbook~流向我們的
-                物語』,透過五官享受海底之書的魅力!加碼推出兒童節限定「Xpark
-                童樂套票」
-              </div>
+              <div class="product-card-row__right">
+                <div
+                  class="change-heart"
+                  ref="changeHeart"
+                  @click="changeHeart"
+                >
+                  <i class="fa-regular fa-heart" ref="hollow"></i>
+                  <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+                </div>
+                <div class="product-name">
+                  桃園青埔 | Xpark 都會型水生公園門票
+                </div>
+                <div class="product-tag">水族館</div>
+                <div class="product__text">
+                  Xpark 於 2022 年初推行大型企劃『Xbook~流向我們的
+                  物語』,透過五官享受海底之書的魅力!加碼推出兒童節限定「Xpark
+                  童樂套票」
+                </div>
 
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>
+                <span class="gray"
+                  ><i class="fa-solid fa-star"></i>4.4(44325) |
+                  <span class="product-bought">590K+</span>個已訂購
+                </span>
+                <span class="price"
+                  >TWD <span class="product-price">550</span>元</span
+                >
+              </div>
+            </a>
+          </div>
         </div>
-
-       <a href="./jo_detail.html" class="yellowBtn sendjoBtn">發布揪團</a>
-       <a href="./jo_new.html" class="yellowBtn backtoeditBtn" >返回編輯</a>
-      
+        <a href="./jo_detail.html" class="yellowBtn sendjoBtn">發布揪團</a>
+        <a href="./jo_new.html" class="yellowBtn backtoeditBtn">返回編輯</a>
       </div>
       @@include('layout/footer.html')
-
-      </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script>
+      // let app1 =Vue.createApp({
+      //   data(){
+      //     return {
+      //       name: 'Frose'
+      //     }
+      //   },
+      //   created(){
+
+      //   }, methods:{
+      //     changeHeart(e) {
+      //             // console.log("hi");
+      //             // console.log(this.$refs.hollow);
+      //             e.stopPropagation();
+      //             let a = e.target;
+      //             let b = e.target.nextElementSibling
+      //               ? e.target.nextElementSibling
+      //               : e.target.previousElementSibling;
+      //             a.classList.add("hidden");
+      //             b.classList.remove("hidden");
+      //             // a.classList.add("hidden");
+      //             // b.nextElementSibling.remove("hidden");
+      //             // console.log(e.target.closest("div"));
+      //             // console.log(e.target.closest("div").queryselectorAll("i"));
+      //             // this.$refs.hollow.classList.add("hidden");
+      //           },
+      //   }
+      // })
+
+      // app1.mount('.jo_preview');
+    </script>
     <script src="./js/jo_preview.js"></script>
   </body>
 </html>

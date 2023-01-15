@@ -5,7 +5,7 @@ include("Connection.php");
 
 
 $sql = 
-"SELECT p.ProductName, p.ProductPrice, p.ProductText, p.Location, p.ProductSecondType, i.ProductImgPath 
+"SELECT p.ProductName, p.ProductPrice, p.ProductText, p.Location,p.ProductType ,p.ProductSecondType, i.ProductImgPath 
 FROM Product p
 join ProductImg i 
 on p.ProductID =  i.ProductID

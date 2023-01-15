@@ -108,10 +108,6 @@
               <h2>TWD {{ProductDetail.price}}</h2>
               <i class="fa-heart" :class=`fa-${faHeart}` @click="heart_click">
               </i>
-              <!-- <button class="field1_btn1">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span>立即確認</span>
-                        </button> -->
               <button type="button" class="field1-btn1" data-bs-toggle="modal" data-bs-target="#peopleModal">
                 <i class="fa-solid fa-bolt"></i>
                 <span>立即確認</span>
@@ -142,7 +138,7 @@
               <!-- <i class="fa-regular fa-heart" @click="heart_click"></i> -->
               <div class="productdetail-small">
                 <div class="flex-container">
-                  <div class="flex-child">
+                  <div class="flex-child" @click="ajax_heart">
                     <div id="heart-like"></div>
                     <div id="heart-unlike"></div>
                   </div>
@@ -196,7 +192,7 @@
                 <p>{{ProductDetail.Text}}</p>
               </div>
               <div v-for="Img in Imgs" class="productdetail-img">
-                <p>{{Img.Content}}</p>
+                <p>►{{Img.Content}}</p>
                 <img :src="Img.src" alt="" />
               </div>
             </div>
@@ -228,7 +224,7 @@
                 </div>
                 <div class="productreview-star">
                   <span class="star-color">{{ProductDetail.stars}}</span>
-                  <span>{{ProductDetail.comments}}則旅客評價</span>
+                  <span>{{ProductDetail.comments}}</span>
                 </div>
               </div>
             </div>

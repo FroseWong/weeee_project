@@ -277,6 +277,10 @@
       margin-right: 15px;
       border-radius: 5px;
     }
+
+    @include m {
+      margin-bottom: 70px;
+    }
   }
 
   .useweeee {
@@ -287,6 +291,10 @@
     align-items: center;
     margin-bottom: 35px;
     border-radius: 10px;
+
+    @include m {
+      height: 260px;
+    }
   }
 
   .saysomething__title {
