@@ -25,12 +25,13 @@
     }
   }
   @include m {
+    margin-left: 33px;
     flex-direction: column;
     width: 350px;
     height: auto;
     box-sizing: border-box;
     overflow: hidden;
-    margin-bottom: 50px;
+  
   }
 
   .change-heart {
@@ -56,7 +57,7 @@
   }
   .product-card-row__left {
     background-size: cover;
-    width: 270px;
+    width: 350px;
     height: 250px;
     overflow: hidden;
     position: relative;
@@ -79,7 +80,7 @@
       }
     }
     @include m {
-      width: 330px;
+      width: 350px;
       // width: auto;
       height: 155px;
       box-sizing: border-box;
@@ -119,18 +120,27 @@
 
     .price {
       float: right;
+      @include m {
+        padding-left: 220px;
+        font-size: 18px;
+      }
     }
 
     .product-name {
-      margin-bottom: 20px;
+      margin-bottom: 32px;
+      font-weight: bold;
+      font-size: 25px;
 
       @include m {
         font-weight: bold;
-        margin-bottom: 5px;
+        font-size: 25px;
       }
     }
     .product__text {
+      margin-top: 30px;
       margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: bold;
       @include m {
         display: none;
       }
@@ -152,6 +162,7 @@
     @include m {
       // margin-top: 30px;
       order: -1;
+      margin-bottom: 23px;
     }
   }
 }
