@@ -56,6 +56,7 @@ let app1 = Vue.createApp({
           dataType: "json",
           success: function (response) {
             response.forEach((element) => {
+                element.JoStartDate = element.JoStartDate.substr(0,16)
               _this.jo_list_hot.push(element);
             });
             _this.$nextTick(function () {
