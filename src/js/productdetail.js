@@ -209,9 +209,17 @@ createApp({
     },
     // ---------------橘心---------------
     heart_click() {
-      this.faHeart == "solid"
-        ? (this.faHeart = "regular")
-        : (this.faHeart = "solid");
+      // this.faHeart == "solid"
+      //   ? (this.faHeart = "regular")
+      //   : (this.faHeart = "solid");
+      this.ajax_heart();
+      if (this.faHeart == "solid") {
+        this.faHeart = "regular";
+        Swal.fire("已取消收藏");
+      } else {
+        this.faHeart = "solid";
+        Swal.fire("已加入收藏");
+      }
     },
     // ---------------Totop---------------
     scroll_totop() {
@@ -372,7 +380,6 @@ createApp({
     },
     // ---------------超過4825時隱藏---------------
     display_scroll() {
-
       let fieldStyle = this.$refs.field1.style;
       let browserWidth = window.innerWidth;
       document.addEventListener("scroll", function () {
@@ -437,7 +444,7 @@ createApp({
       sessionStorage.setItem("點數", this.modal_points);
       let data = sessionStorage.getItem("日期");
       console.log(data);
-      window.location.href = "./payment.html";
+      // window.location.href = "./payment.html";
     },
     cle_check() {
       this.field1Show = false;
@@ -465,8 +472,8 @@ createApp({
       let num = 3;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
-      if(num==null){
-        num=1;
+      if (num == null) {
+        num = 1;
       }
       $.ajax({
         method: "POST",
@@ -478,17 +485,17 @@ createApp({
         success: function (response) {
           // console.log(response);
           response.forEach((e) => {
-            let arr1= [
+            let arr1 = [
               {
-                Content:e.ProductImgContent1,
+                Content: e.ProductImgContent1,
                 src: e.ProductImgPath1,
               },
               {
-                Content:e.ProductImgContent2,
+                Content: e.ProductImgContent2,
                 src: e.ProductImgPath2,
               },
               {
-                Content:e.ProductImgContent3,
+                Content: e.ProductImgContent3,
                 src: e.ProductImgPath3,
               },
             ];
@@ -499,14 +506,14 @@ createApp({
               name: e.ProductName,
               Text: e.ProductText,
               address: e.Location,
-              comments:'好吃、好玩、又划算!',     
+              comments: "好吃、好玩、又划算!",
               time: 100,
             };
-            _this.modalTotal=e.ProductPrice;
+            _this.modalTotal = e.ProductPrice;
             _this.Imgs = arr1;
             _this.ProductDetail = obj2;
-            console.log(arr1);
-            console.log(obj2);
+            // console.log(arr1);
+            // console.log(obj2);
           });
           _this.$nextTick(function () {
             _this.productdetail_slideshow();
@@ -531,6 +538,9 @@ createApp({
         dataType: "json",
         success: function (response) {
           console.log(response);
+          if(response==false){
+            console.log(87);
+          }
         },
         error: function (exception) {
           alert("發生錯誤: " + exception.status);
@@ -551,23 +561,19 @@ createApp({
         dataType: "json",
         success: function (response) {
           // console.log(response);
-          if(response==0)
-          {
-            console.log('值為0');
-            _this.$refs.heartshow.classList.remove('liked');
-          }
-          else if(response==1)
-          {
-            console.log('值為1');
-            _this.$refs.heartshow.classList.add('liked');
+          if (response == 0) {
+            // console.log('值為0');
+            _this.$refs.heartshow.classList.remove("liked");
+            _this.faHeart = "regular";
+          } else if (response == 1) {
+            _this.$refs.heartshow.classList.add("liked");
+            _this.faHeart = "solid";
           }
         },
         error: function (exception) {
           alert("發生錯誤: " + exception.status);
         },
       });
-      console.log(this.$refs.heartshow.classList);
-      
     },
   },
   computed: {
