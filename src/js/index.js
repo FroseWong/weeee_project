@@ -122,8 +122,8 @@ let app1 = Vue.createApp({
             else if (product.ProductType === "viewpointticket")
               that.viewpointticketList.push(product);
           });
-          that.$nextTick(function () {
-            that.product_slick();
+          that?.$nextTick(function () {
+            that?.product_slick();
           });
           // console.log(that.sightseeingList);
         },

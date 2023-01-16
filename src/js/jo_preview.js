@@ -103,6 +103,7 @@ let app = Vue.createApp({
       img: "",
       sightseeingList: [],
       targettravel: "",
+      targettravelID: "",
     };
   },
   created() {
@@ -113,7 +114,9 @@ let app = Vue.createApp({
     this.joLocation = joLocation;
     this.joDetailAddress = joDetailAddress;
     this.joAttend = joAttend;
-    console.log(this.joAttend);
+    this.joStartDate = joStartDate;
+    this.joStartTime = joStartTime;
+    this.img = img;
     this.getdata_product_list();
   },
   mounted() {},
@@ -145,9 +148,7 @@ let app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/Product.php",
-        data: {
-          // type: "hot",
-        },
+        data: {},
 
         dataType: "json",
         success: function (response) {
@@ -160,6 +161,8 @@ let app = Vue.createApp({
           that.sightseeingList.forEach((s) => {
             if (that.useweeee === s.ProductName) that.targettravel = s;
           });
+          that.targettravelID = that.targettravel.ProductID;
+          // console.log(that.targettravelID);
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
@@ -173,12 +176,22 @@ let app = Vue.createApp({
         method: "POST",
         url: "./php/jo_preview.php",
         data: {
-          try: "try!",
+          joTitle: this.joTitle,
+          joContent: this.joContent,
+          joContact: this.joContact,
+          joLocation: this.joLocation,
+          joDetailAddress: this.joDetailAddress,
+          joAttend: this.joAttend,
+          joStartDate: this.joStartDate,
+          joStartTime: this.joStartTime,
+          targettravelID: this.targettravelID,
+          img: this.img,
         },
 
         dataType: "json",
         success: function (response) {
           console.log(response);
+          // console.log("123");
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
