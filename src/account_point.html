@@ -112,8 +112,8 @@
                             </tr>
                         </thead>
                         
-                        <tbody>
-                            <tr>
+                        <tbody id="tbody">
+                            <!-- <tr>
                                 <td>OR3456</td>
                                 <td>-20</td>
                                 <td>2022-11-19</td>
@@ -130,7 +130,7 @@
                                 <td>-20</td>
                                 <td>2022-11-19</td>
                                 <td>新竹北埔三日遊</i></td>                              
-                            </tr>         
+                            </tr>          -->
                         </tbody>
                     </table>
                 </div>
@@ -157,6 +157,29 @@
             "ordering": false
         });
     });
+
+    //一進到頁面，就發請求去資料庫取點數資料
+    $.ajax({
+        method: "GET",
+        url: "php/query_account_point.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          //印到HTML上
+          let tbody = document.getElementById("tbody");
+          for (let i = 0; i < response.length; i++) {
+            let point_content = `
+              <tr>
+                <td>${response[i].OrderNumber}</td>
+                <td>${response[i].PointsChange}</td>
+                <td>${response[i].OrderDate}</td>
+                <td>${response[i].ProductName}</i></td>                             
+              </tr>
+      `;
+            tbody.insertAdjacentHTML("beforeend", point_content);
+          }
+        },
+      });
     </script>
   </body>
 </html>
