@@ -76,6 +76,11 @@
   color: $orange;
 }
 
+// #produ {
+//   width: 1000px;
+//   margin: 0 auto;
+// }
+
 .blueBtn {
   @include btn($blue, $white, 10px);
   transition: all 0.3s;

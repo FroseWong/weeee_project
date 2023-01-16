@@ -129,7 +129,7 @@
             <nav class="page1">
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
-                  <a
+                  <a  
                     class="productlist_new__page-link productlist_new__page-link--current"
                     href="#"
                     >1</a
@@ -385,7 +385,10 @@
             method: "POST",
             url: "./php/Product.php",
             data:{
-              path:CID.pathname
+              path:CID.pathname,
+              // page: 
+              // document.addEventListener
+
             },          
             dataType: "json",
             success: function (response) {
