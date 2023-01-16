@@ -10,6 +10,8 @@ $joAttend = $_POST['joAttend'];
 $joStartDate = $_POST['joStartDate'];
 $joStartTime = $_POST['joStartTime'];
 $targettravelID = $_POST['targettravelID'];
+$img = $_POST['img'];
+$imgName = $_POST['imgName'];
 
 $MemberID = 1;
 $JoUseWeee = 1;
@@ -22,12 +24,31 @@ $JoNumber = 'asd1234';
 // $sql = "INSERT INTO weeee.Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoUseWeeee,ProductID,JoContact,JodetailedAddressed,JoNumber,JoImg)
 // values($joTitle,$joContent,$MemberID,NOW(),$joStartDate.' '.$joStartTime,1,$targettravelID,$joContact,$joDetailAddress,$JoNumber,$JoImg)";
 
-$sql = "INSERT into Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoStatus,JoUseWeeee,ProductID,JoContact,Location,JodetailedAddressed,JoNumber,JoImg,JoAttend)
-values('$joTitle','$joContact','$MemberID',NOW(),'$joStartDate.' '.$joStartTime',1,1,'$targettravelID','$joContact','$joLocation','$joDetailAddress','$JoNumber','$JoImg','$joAttend')";
+// $sql = "INSERT into Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoStatus,JoUseWeeee,ProductID,JoContact,Location,JodetailedAddressed,JoNumber,JoImg,JoAttend)
+// values('$joTitle','$joContact','$MemberID',NOW(),'$joStartDate.' '.$joStartTime',1,1,'$targettravelID','$joContact','$joLocation','$joDetailAddress','$JoNumber','$JoImg','$joAttend')";
 
-$statement = $pdo->prepare( $sql );
-$statement->execute(); 
+// $statement = $pdo->prepare( $sql );
+// $statement->execute(); 
 
-echo json_encode($targettravelID);
+// testing
+
+$output_file = $imgName;
+
+
+ // Convert base64 string to an image
+ $ifp = fopen($output_file, "wb"); 
+ $data = explode(',', $img);
+ fwrite($ifp, base64_decode($data[1])); 
+ fclose($ifp); 
+
+ // Save image to a folder
+ $folder = "../img/jo/";
+ $filepath = $folder.$output_file;
+ if(!file_exists($folder)) {
+     mkdir($folder, 0777, true);
+ }
+ rename($output_file,$filepath);
+
+echo json_encode($imgName);
 
 ?>
