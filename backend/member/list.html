@@ -195,6 +195,7 @@
                   <input type="text" placeholder="會員編號" class="member_number filter" id="memberNumber"/>
                   <input type="text" placeholder="使用者名稱" class="user_name filter" id="username"/>
                   <select class="form_select" name="member_status" id="memberStatus">
+                    <option value="">請選擇</option>
                     <option value="1">正常</option>
                     <option value="0">凍結中</option>
                   </select>
@@ -242,11 +243,13 @@
 
                     <tbody>
                       <tr v-for="(member, index) in memberList" :key="index">
-                        <td>{{member.memberNumber}}</td>
-                        <td>{{member.memberName}}</td>
-                        <td>{{member.joinDate}}</td>
-                        <td>{{member.status}}</td>
-                        <td><a href="#">凍結<i class="fas fa-ban" style="margin-left: 10px"></i></a></td>
+                        <td>{{member.MemberNumber}}</td>
+                        <td>{{member.Username}}</td>
+                        <td>{{member.MemCreateDate}}</td>
+                        <td v-if="member.MemStatus == 1">正常</td>
+                        <td v-else>凍結中</td>
+                        <td v-if="member.MemStatus == 1"><a v-bind:href= "'../php/memberStatusToggle.php?memberNumber='+ member.MemberNumber">凍結<i class="fas fa-ban" style="margin-left: 10px"></i></a></td>
+                        <td v-if="member.MemStatus == 0"><a v-bind:href= "'../php/memberStatusToggle.php?memberNumber='+ member.MemberNumber">恢復<i class="fas fa-check" style="margin-left: 10px"></i></a></td>
                       </tr>
                     </tbody>
                     
@@ -329,93 +332,26 @@
     <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="../vendor/vue/vue.global.js"></script>
+    <!-- 加入vue -->
+    <script src="../vendor/vue/vue.global.js"></script> 
     <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+
+    <!-- 加入sweet alert -->
+    <script src="../plugin/sweetAlert/sweetalert2.all.min.js"></script>
 
     <script>
       let dataTable;
-      let memberList = [
-        {
-          memberNumber: "ME1034",
-          memberName: "Emily0101",
-          joinDate: "2022/04/02",
-          status: "正常",
-        },
-        {
-          memberNumber: "ME0253",
-          memberName: "ShihChing647",
-          joinDate: "2022/01/01",
-          status: "凍結中",
-        },
-        {
-          memberNumber: "ME1034",
-          memberName: "Emily0101",
-          joinDate: "2022/04/02",
-          status: "正常",
-        },
-        {
-          memberNumber: "ME0253",
-          memberName: "ShihChing647",
-          joinDate: "2022/01/01",
-          status: "凍結中",
-        },
-        {
-          memberNumber: "ME1034",
-          memberName: "Emily0101",
-          joinDate: "2022/04/02",
-          status: "正常",
-        },
-        {
-          memberNumber: "ME0253",
-          memberName: "ShihChing647",
-          joinDate: "2022/01/01",
-          status: "凍結中",
-        },
-        {
-          memberNumber: "ME1034",
-          memberName: "Emily0101",
-          joinDate: "2022/04/02",
-          status: "正常",
-        },
-        {
-          memberNumber: "ME0253",
-          memberName: "ShihChing647",
-          joinDate: "2022/01/01",
-          status: "凍結中",
-        },
-        {
-          memberNumber: "ME1034",
-          memberName: "Emily0101",
-          joinDate: "2022/04/02",
-          status: "正常",
-        },
-        {
-          memberNumber: "ME0253",
-          memberName: "ShihChing647",
-          joinDate: "2022/01/01",
-          status: "凍結中",
-        },
-        {
-          memberNumber: "ME1034",
-          memberName: "Emily0101",
-          joinDate: "2022/04/02",
-          status: "正常",
-        },
-        {
-          memberNumber: "ME0253",
-          memberName: "ShihChing647",
-          joinDate: "2022/01/01",
-          status: "凍結中",
-        },
-      ];
+      let memberList; 
+
       //一進到此頁面，發請求去資料庫要所有會員資料
       $.ajax({
         method: "GET",
         url: "../php/query_member.php",
+        async: false, //開啟同步化功能，讓response先回來，再走下面的初始化vue
         data: {},
         dataType: "json",
         success: function (response) {
+            console.log(response);
             memberList = response;
         },
       });
@@ -452,13 +388,30 @@
                 memberStatus: document.getElementById("memberStatus").value,
             },
             url: "../php/query_member.php",
+            async: false,
             method: "GET",
+            dataType: "json",
             success: function(response){
                 vm.$data.memberList = response;
             }
         })
+        
         return; //serach()這個方法結束了
       }
+      let url = window.location.href;
+      if(url.indexOf("update") >= 0){
+        sweetAlert();
+      }
+      function sweetAlert() {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '修改成功',
+            showConfirmButton: false,
+            timer: 2000
+        });
+      }
+
     </script>
   </body>
 </html>
