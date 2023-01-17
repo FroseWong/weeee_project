@@ -58,6 +58,7 @@ let {
   joStartTime,
   useweeee,
   img,
+  imgName,
 } = JSON.parse(sessionStorage.getItem("joNew"));
 
 // console.log(joTitle);
@@ -104,6 +105,7 @@ let app = Vue.createApp({
       sightseeingList: [],
       targettravel: "",
       targettravelID: "",
+      imgName: "",
     };
   },
   created() {
@@ -117,6 +119,7 @@ let app = Vue.createApp({
     this.joStartDate = joStartDate;
     this.joStartTime = joStartTime;
     this.img = img;
+    this.imgName = imgName;
     this.getdata_product_list();
   },
   mounted() {},
@@ -186,6 +189,7 @@ let app = Vue.createApp({
           joStartTime: this.joStartTime,
           targettravelID: this.targettravelID,
           img: this.img,
+          imgName: this.imgName,
         },
 
         dataType: "json",
