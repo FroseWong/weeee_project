@@ -1,7 +1,7 @@
 <header id="header">
     <div class="header_wrapper">
 
-        <div class="header_top container"  @click="counter++">
+        <div class="header_top container" @click="counter++">
 
             <ul class="header_top_left">
                 <li>
@@ -23,56 +23,86 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                         <div class="shoppingcart-num hidden" ref="shoppingcartNum">{{counter}}</div>
                     </a>
-
+                    <!-- <header-shoppingcart-vue></header-shoppingcart-vue> -->
+                    <!-- vue -->
                     <div class="header_product_group">
-                        <div class="product_item">
-                            <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
-                                    alt=""></a>
-                            <div class="product-name">
-                                <a href="">
-                                    <h6>有得逛有得買，就在桃園</h6>
-                                </a>
+
+                        <div class="empty_cart" ref="empty_cart" v-show="emptyCart">
+                            <img src="img/otherpage/empty-cart.png" alt="" />
+                            <h6>您的購物車是空的</h6>
+                            <a href="index.html">跟著Weeee! 一起探索世界</a>
+                          </div>
+
+                        <div class="product_contain">
+
+                            <div class="product_item">
+                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
+                                <div class="product-name">
+                                    <a href="">
+                                        <h6>有得逛有得買，就在桃園</h6>
+                                    </a>
+                                </div>
+                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
+                                            class="fa-solid fa-trash"></i></button></div>
+                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                <div class="product-price">
+                                    <h6>TWD 3,475</h6>
+                                </div>
                             </div>
-                            <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                            <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                            <div class="product-price">
-                                <h6>TWD 3,475</h6>
+
+                            <div class="product_item">
+                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
+                                <div class="product-name">
+                                    <a href="">
+                                        <h6>有得逛有得買，就在桃園</h6>
+                                    </a>
+                                </div>
+                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
+                                            class="fa-solid fa-trash"></i></button></div>
+                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                <div class="product-price">
+                                    <h6>TWD 3,475</h6>
+                                </div>
+                            </div>
+                            <div class="product_item">
+                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
+                                <div class="product-name">
+                                    <a href="">
+                                        <h6>有得逛有得買，就在桃園</h6>
+                                    </a>
+                                </div>
+                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
+                                            class="fa-solid fa-trash"></i></button></div>
+                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                <div class="product-price">
+                                    <h6>TWD 3,475</h6>
+                                </div>
+                            </div>
+                            <div class="product_item">
+                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
+                                <div class="product-name">
+                                    <a href="">
+                                        <h6>有得逛有得買，就在桃園</h6>
+                                    </a>
+                                </div>
+                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
+                                            class="fa-solid fa-trash"></i></button></div>
+                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
+                                <div class="product-price">
+                                    <h6>TWD 3,475</h6>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="product_item">
-                            <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
-                                    alt=""></a>
-                            <div class="product-name">
-                                <a href="">
-                                    <h6>有得逛有得買，就在桃園</h6>
-                                </a>
-                            </div>
-                            <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                            <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                            <div class="product-price">
-                                <h6>TWD 3,475</h6>
-                            </div>
-                        </div>
-
-                        <div class="product_item">
-                            <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
-                                    alt=""></a>
-                            <div class="product-name">
-                                <a href="">
-                                    <h6>有得逛有得買，就在桃園</h6>
-                                </a>
-                            </div>
-                            <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                            <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                            <div class="product-price">
-                                <h6>TWD 3,475</h6>
-                            </div>
-                        </div>
                         <div class="gotocart">
                             <a href="shoppingcart.html">查看購物車</a>
                         </div>
                     </div>
+                    <!-- vue -->
 
                 </li>
                 <li>
@@ -152,8 +182,7 @@
                     </ol>
                 </li>
                 <li>
-                    <a href="productlist_experience.html" class="header_modal_show"> <i
-                            class="fa-solid fa-gavel"></i>
+                    <a href="productlist_experience.html" class="header_modal_show"> <i class="fa-solid fa-gavel"></i>
                         <h6>體驗活動</h6>
                     </a>
                     <div class="submenu">
@@ -234,6 +263,7 @@
 </header>
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script>
+
 
     $(".header_modal_show").on("click", function (e) {
         if ($(window).width() < 768) {
