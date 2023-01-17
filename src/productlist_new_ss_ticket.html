@@ -100,16 +100,16 @@
               </ul>
             </div>
             <a
-              href="#"
               class="product-card-row"
               v-for="product in cardlist"
               :key="index"
-              @click="jump_page"
+              :href="'./productdetail.html?id=' + product.ProductID"
               v-if="dataget"
             >
               <div
                 class="product-card-row__left"
                 v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
+                
               ></div>
               <div class="product-card-row__right">
                 <div class="product-name">{{product.ProductName}}</div>
@@ -408,7 +408,7 @@
                 if(element.ProductText.length <= 80){
                   a.push(element)
                 }else{
-                  element.ProductText = element.ProductText.substr(0,80) + "......"
+                  element.ProductText = element.ProductText.substr(0,80) + "．．．．．．"
                   a.push(element)
                 }
               });

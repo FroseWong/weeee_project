@@ -1,69 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    [v-cloak] {
-      display: none;
-    }
-  </style>
-  <title>Document</title>
-</head>
-
-<body>
-  @@include('layout/header.html')
-  <div class="wrapper productlist_new" id="app">
-    <div v-cloak>
+  <body>
+    @@include('layout/header.html')
+    <div class="wrapper productlist_new" id="app">
       <div class="black_bg" @click="openSelectbar"></div>
       <div class="productlist_new__main">
         <div class="productlist_new__select container">
           <div class="container productlist_new__bar">
             <div class="rwd_bar">
               <ul>
-                <li class="productlist_new__category_btn" @click="openSelectbar">
+                <li
+                  class="productlist_new__category_btn"
+                  @click="openSelectbar"
+                >
                   行程
                 </li>
-                <li class="productlist_new__destination_btn" @click="openSelectbar">
+                <li
+                  class="productlist_new__destination_btn"
+                  @click="openSelectbar"
+                >
                   目的
                 </li>
                 <li class="productlist_new__price_btn" @click="openSelectbar">
                   價格
                 </li>
                 <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
-                    排序
-                  </li> -->
+                  排序
+                </li> -->
               </ul>
             </div>
-            <!--------行程篩選--------->
+
             <div class="productlist_new__category">
               <h4>行程分類</h4>
               <ul>
-                <li v-for="(category,index) in categorys" @click="filterCategory">
+                <li
+                  v-for="(category,index) in categorys"
+                  @click="filterCategory"
+                >
                   <input type="checkbox" :id="`category${index+1}` " />
+
                   {{category}}
                 </li>
               </ul>
             </div>
-            <!--------城市篩選--------->
             <div class="productlist_new__destination">
               <h4>目的地</h4>
-              <span @click="open_city" class="productlist_new__open">台灣
+              <span @click="open_city" class="productlist_new__open"
+                >台灣
                 <i class="fa-solid fa-circle-chevron-down"></i>
               </span>
               <ul class="productlist_new__city productlist_new__block">
-                <li v-for="(AllCity,index) in AllCitys" v-if="cityshow" @click="filterCity">
-                  <input type="checkbox" :id="`AllCity${index+1}`" />&emsp;{{AllCity}}
+                <li
+                  v-for="(AllCity,index) in AllCitys"
+                  v-if="cityshow"
+                  @click="filterCity"
+                >
+                  <input
+                    type="checkbox"
+                    :id="`AllCity${index+1}`"
+                  />&emsp;{{AllCity}}
                 </li>
               </ul>
             </div>
-            <!--------價格篩選--------->
             <div class="productlist_new__price">
               <h4>價格</h4>
               <ul>
@@ -74,10 +92,10 @@
               </ul>
             </div>
           </div>
-          <!--------排序--------->
           <div class="productlist_new_card_list container">
             <div class="productlist_new__sort">
               <h5>25個項目</h5>
+
               <ul>
                 <li>排序｜</li>
                 <li @click="filterOrder">熱門程度</li>
@@ -86,22 +104,40 @@
                 <li @click="filterScore">最高評價</li>
               </ul>
             </div>
-            <!--------商品卡--------->
-            <a class="product-card-row" :href=`./productdetail.html?id=${product.cardid}` v-for="product in cardlist"
-              :key="index" v-if="dataget">
-              <div class="product-card-row__left" v-bind:style="{ backgroundImage: 'url(' + product.src + ')' }"></div>
+            <a
+              class="product-card-row"
+              v-for="product in cardlist"
+              :key="index"
+              :href="'./productdetail.html?id=' + product.ProductID"
+              v-if="dataget"
+            >
+              <div
+                class="product-card-row__left"
+                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
+                
+              ></div>
               <div class="product-card-row__right">
-                <div class="product-name">{{product.title}}</div>
-                <div class="product-tag">{{product.label}}</div>
-                <div class="product__text">{{product.content}}</div>
-                <span class="price">TWD <span class="product-price">{{product.price}}</span>元</span>
+                <div class="product-name">{{product.ProductName}}</div>
+                <div class="product-tag">{{product.ProductSecondType}}</div>
+                <div class="product__text">{{product.ProductText}}</div>
+
+                <span class="gray"
+                ><i class="fa-solid fa-star"></i>4.4({{product.ProductScoredPeople}}) |
+                <span class="product-bought">{{product.ProductPurchased}}</span>個已訂購
+              </span>
+                <span class="price"
+                  >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
+                >
               </div>
             </a>
-            <!--------分頁--------->
             <nav>
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link productlist_new__page-link--current" href="#">1</a>
+                  <a
+                    class="productlist_new__page-link productlist_new__page-link--current"
+                    href="#"
+                    >1</a
+                  >
                 </li>
                 <li class="productlist_new__page-item">
                   <a class="productlist_new__page-link" href="#">2</a>
@@ -111,17 +147,15 @@
                 </li>
               </ul>
             </nav>
-
           </div>
         </div>
       </div>
       @@include('layout/footer.html')
     </div>
-  </div>
+    <script src="./vue/vue.global.prod.js"></script>
+    <!-- <script src="./js/productlist_08.js"></script> -->
 
-  <script src="./vue/vue.global.prod.js"></script>
-  <script src="./js/productlist_08.js"></script>
-  <!-- <script>
+    <script>
       const { createApp } = Vue;
 
       createApp({
@@ -129,183 +163,198 @@
           return {
             cardlist: [
               {
-                src: "./img/otherpage/ha_4_1.jpg",
-                title: "義大利麵 手作體驗 ",
-                label: "手作體驗",
-                content: "大家一起歡樂來參加義大利麵手作體驗",
-                score: 4.2,
+                src: "./img/otherpage/ar_9_1.jpg",
+                title: "新北美術館 ",
+                label: "美術館",
+                content:
+                  "新北舉辦美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.5,
                 scorepeople: "(2300)",
                 order: 1000,
-                price: 350,
-                city: "台北",
+                price: 550,
+                city: "新北",
                 cardid: 1,
                 vif: true,
               },
               {
-                src: "./img/otherpage/fa_5_1.jpg",
-                title: "觀光農場 採水果體驗",
-                label: "觀光農場",
-                content: "大家一起歡樂來參加觀光農場 採水果體驗",
-                score: 4.3,
-                scorepeople: "(2300)",
-                order: 50,
-                price: 600,
-                city: "新北",
-                cardid: 2,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/on_6_1.jpg",
-                title: "水上活動 玩水體驗",
-                label: "水上活動",
-                content: "大家一起歡樂來參加水上活動 玩水體驗",
+                src: "./img/otherpage/ar_10_1.jpg",
+                title: "基隆美術館",
+                label: "美術館",
+                content:
+                  "這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。",
                 score: 4.8,
                 scorepeople: "(2300)",
-                order: 350,
-                price: 490,
-                city: "基隆",
-                cardid: 3,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/ex_7_1.jpg",
-                title: "極限運動 滑翔翼",
-                label: "極限運動",
-                content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 3.5,
-                scorepeople: "(2300)",
-                order: 1750,
-                price: 500,
-                city: "基隆",
-                cardid: 4,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/ha_4_1.jpg",
-                title: "義大利麵 手作體驗 ",
-                label: "手作體驗",
-                content: "大家一起歡樂來參加義大利麵手作體驗",
-                score: 3.6,
-                scorepeople: "(2300)",
-                order: 1000,
-                price: 350,
-                city: "台北",
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/ex_7_1.jpg",
-                title: "極限運動 滑翔翼",
-                label: "極限運動",
-                content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.0,
-                scorepeople: "(2300)",
-                order: 1750,
-                price: 500,
-                city: "基隆",
-                cardid: 4,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/fa_5_1.jpg",
-                title: "觀光農場 採水果體驗",
-                label: "觀光農場",
-                content: "大家一起歡樂來參加觀光農場 採水果體驗",
-                score: 4.9,
-                scorepeople: "(2300)",
                 order: 50,
-                price: 600,
-                city: "新北",
+                price: 550,
+                city: "基隆",
                 cardid: 2,
                 vif: true,
               },
               {
-                src: "./img/otherpage/on_6_1.jpg",
-                title: "水上活動 玩水體驗",
-                label: "玩水體驗",
-                content: "大家一起歡樂來參加水上活動 玩水體驗",
-                score: 4.2,
+                src: "./img/otherpage/th_6_1.jpg",
+                title: "動漫主題樂園",
+                label: "主題樂園",
+                content:
+                  "台北首家以動漫人氣冠軍「動畫間諜扮演」為主題的兒童成長樂園。",
+                score: 3.8,
                 scorepeople: "(2300)",
                 order: 350,
-                price: 490,
-                city: "基隆",
+                price: 550,
+                city: "新北",
                 cardid: 3,
+                vif: true,
               },
               {
-                src: "./img/otherpage/ex_7_1.jpg",
-                title: "極限運動 滑翔翼",
-                label: "極限運動",
-                content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.0,
+                src: "./img/otherpage/aq_8_1.jpg",
+                title: "基隆海洋水族館",
+                label: "水族館",
+                content:
+                  "新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。",
+                score: 3.9,
                 scorepeople: "(2300)",
                 order: 1750,
-                price: 500,
-                city: "基隆",
+                price: 450,
+                city: "台北",
                 cardid: 4,
                 vif: true,
               },
               {
-                src: "./img/otherpage/ha_4_1.jpg",
-                title: "義大利麵 手作體驗 ",
-                label: "手作體驗",
-                content: "大家一起歡樂來參加義大利麵手作體驗",
-                score: 4.5,
-                scorepeople: "(2300)",
-                order: 1000,
-                price: 350,
-                city: "台北",
-                vif: true,
-              },
-              {
-                src: "./img/sightseeing/fa_20_2.jpg",
-                title: "嘉義港煙火 朋友行程",
-                label: "朋友行程",
+                src: "./img/otherpage/aq_7_2.jpg",
+                title: "海洋水族館",
+                label: "水族館",
                 content:
-                  "嘉義港舉辦煙火晚會，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
-                score: 4.4,
+                  "新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。",
+                score: 2.5,
                 scorepeople: "(2300)",
                 order: 150,
-                price: 3450,
-                city: "嘉義",
-                cardid: 10,
+                price: 450,
+                city: "台北",
+                cardid: 5,
                 vif: true,
               },
               {
-                src: "./img/otherpage/ex_7_1.jpg",
-                title: "極限運動 滑翔翼",
-                label: "極限運動",
-                content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.7,
+                src: "./img/otherpage/mu_11_1.jpg",
+                title: "兒童卡通博物館",
+                label: "博物館",
+                content:
+                  "博物館的蒐藏以藝術為主要收藏方向，總計展出約四千多件藏品，約整體蒐藏的三分之一。",
+                score: 4.3,
                 scorepeople: "(2300)",
-                order: 1750,
-                price: 500,
-                city: "基隆",
-                cardid: 4,
+                order: 150,
+                price: 550,
+                city: "台北",
+                cardid: 6,
                 vif: true,
               },
               {
-                src: "./img/otherpage/fa_5_1.jpg",
-                title: "觀光農場 採水果體驗",
-                label: "觀光農場",
-                content: "大家一起歡樂來參加觀光農場 採水果體驗",
-                score: 4.2,
+                src: "./img/otherpage/ar_9_1.jpg",
+                title: "新北美術館 ",
+                label: "美術館",
+                content:
+                  "新北舉辦美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 1000,
+                price: 550,
+                city: "新北",
+                cardid: 1,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/ar_10_1.jpg",
+                title: "基隆美術館",
+                label: "美術館",
+                content:
+                  "這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。",
+                score: 4.8,
                 scorepeople: "(2300)",
                 order: 50,
-                price: 600,
-                city: "新北",
+                price: 550,
+                city: "基隆",
                 cardid: 2,
                 vif: true,
               },
               {
-                
-                title: "極限運動 滑翔翼",
-                label: "極限運動",
-                content: "大家一起歡樂來參加極限運動 滑翔翼",
-                score: 4.0,
+                src: "./img/otherpage/th_6_1.jpg",
+                title: "動漫主題樂園",
+                label: "主題樂園",
+                content:
+                  "台北首家以動漫人氣冠軍「動畫間諜扮演」為主題的兒童成長樂園。",
+                score: 4.9,
+                scorepeople: "(2300)",
+                order: 350,
+                price: 550,
+                city: "新北",
+                cardid: 3,
+              },
+              {
+                src: "./img/otherpage/aq_8_1.jpg",
+                title: "基隆海洋水族館",
+                label: "水族館",
+                content:
+                  "新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。",
+                score: 4.2,
                 scorepeople: "(2300)",
                 order: 1750,
-                price: 500,
-                city: "基隆",
+                price: 450,
+                city: "台北",
                 cardid: 4,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/aq_7_2.jpg",
+                title: "海洋水族館",
+                label: "水族館",
+                content:
+                  "新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間融合，加以忠實的重現。",
+                score: 4.5,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 450,
+                city: "台北",
+                cardid: 5,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/mu_11_1.jpg",
+                title: "兒童卡通博物館",
+                label: "博物館",
+                content:
+                  "博物館的蒐藏以藝術為主要收藏方向，總計展出約四千多件藏品，約整體蒐藏的三分之一。",
+                score: 4.9,
+                scorepeople: "(2300)",
+                order: 150,
+                price: 550,
+                city: "台北",
+                cardid: 6,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/ar_9_1.jpg",
+                title: "新北美術館 ",
+                label: "美術館",
+                content:
+                  "新北舉辦美術館，誠摯歡迎您攜伴來參加此一年一度的盛大慶典。。",
+                score: 4.1,
+                scorepeople: "(2300)",
+                order: 1000,
+                price: 550,
+                city: "新北",
+                cardid: 1,
+                vif: true,
+              },
+              {
+                src: "./img/otherpage/ar_10_1.jpg",
+                title: "基隆美術館",
+                label: "美術館",
+                content:
+                  "這美術館也是全國最大的美術館，以「種活藝術種子」為理念，致力推廣雕塑藝術及兒童藝術教育。",
+                score: 4.2,
+                scorepeople: "(2300)",
+                order: 50,
+                price: 550,
+                city: "基隆",
+                cardid: 2,
                 vif: true,
               },
             ],
@@ -336,58 +385,57 @@
             cityshow: false,
             pricelist: [],
             categorylist: [],
-            dataget: true,
+            citylist: [],
+            dataget: false,
           };
         },
         created() {
           window.addEventListener("resize", this.resize_adjust, true);
           this.getdata();
-          
-          
         },
 
         methods: {
-          getdata(){
-            var CID = (new URL(location.href));
+          getdata() {
+            var CID = new URL(location.href);
             console.log(CID.pathname);
             this.cardlist = [];
-            console.log(this.cardlist)
+            console.log(this.cardlist);
             let a = this.cardlist;
-            $.ajax({            
-            method: "POST",
-            url: "./php/Product_08.php",
-            data:{
-              path:CID.pathname
-            },          
-            dataType: "json",
-            success: function (response) {
-              response.forEach(element => {
-                if(element.ProductText.length <= 80){
-                  a.push(element)
-                }else{
-                  element.ProductText = element.ProductText.substr(0,80) + "......"
-                  a.push(element)
-                }
-              });             
-            },
-            error: function(exception) {
+            $.ajax({
+              method: "POST",
+              url: "./php/Product_jerry.php",
+              data: {
+                path: CID.pathname,
+              },
+              dataType: "json",
+              success: function (response) {
+                response.forEach((element) => {
+                  if (element.ProductText.length <= 80) {
+                    a.push(element);
+                  } else {
+                    element.ProductText =
+                      element.ProductText.substr(0, 80) + "．．．．．．";
+                    a.push(element);
+                  }
+                });
+                console.log(a);
+              },
+              error: function (exception) {
                 alert("數據載入失敗: " + exception.status);
-            }
-          });
+              },
+            });
             this.cardlist = a;
             console.log(this.cardlist);
             this.showproduct();
-
-            
-            
           },
-          showproduct(){
+          showproduct() {
             this.dataget = false;
             this.dataget = true;
+            console.log("aaa");
           },
           open_city(e) {
             this.cityshow = !this.cityshow;
-            
+
             let path = e.path[0].childNodes[1].classList;
             if (path.contains("fa-circle-chevron-down")) {
               path.remove("fa-circle-chevron-down");
@@ -411,7 +459,6 @@
                 }
               });
             }
-            
           },
           filterSort_bottom_to_top(e) {
             let arr = this.cardlist;
@@ -437,7 +484,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return  +b.ProductPrice - +a.ProductPrice;
+                return +b.ProductPrice - +a.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -457,7 +504,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +b.order - +a.order ;
+                return +b.order - +a.order;
               };
               arr.sort(sorter);
             };
@@ -477,7 +524,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +b.score - +a.score ;
+                return +b.score - +a.score;
               };
               arr.sort(sorter);
             };
@@ -510,7 +557,7 @@
           },
           filterCategory(e) {
             e.target.querySelector("input").click();
-            console.log(this.productlist) ;
+            console.log(this.productlist);
             // for (let i = 0; i < this.cardlist.length; i++){
             //   this.cardlist[i].vif=false;
             // }
@@ -648,17 +695,13 @@
               black_bg.classList.remove("on_watch");
             }
           },
-          jump_page(e) {
-            window.location.assign("productdetail.html?`${e}`");
+          jump_page() {
+            window.location.assign("productdetail.html");
           },
         },
 
-        mounted() {
-          
-          
-        },
+        mounted() {},
       }).mount("#app");
-    </script> -->
-</body>
-
+    </script>
+  </body>
 </html>
