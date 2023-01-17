@@ -17,17 +17,18 @@
                     <h3>重設密碼</h3>
 
                     <form class="resetpwd_form" action="#" method="post">
-                        <div class="password">
-                            <input type="text"  name="password" placeholder="請輸入密碼"/>
-                            <i class="fa-regular fa-eye"></i>
-                            <br>
-                        </div>
-                        <div class="passwordag">
+                      <div class="password">
+                         
+                        <input type="password" required name="password" placeholder="請輸入密碼" id="openPasswords"/>
+                        <i class="fa-regular fa-eye" id="checkEye"></i>
+                        <br>
+                    </div>
+                    <div class="passwordag">
 
-                            <input type="text"  name="passwordag" placeholder="請再次輸入密碼"/>
-                            <i class="fa-regular fa-eye"></i>
-                            <br>
-                        </div>
+                      <input type="password" required name="password" placeholder="請再次輸入密碼" id="openPasswordag"/>
+                      <i class="fa-regular fa-eye" id="checkEyeag"></i>
+                        <br>
+                    </div>
                         <input class="submit" type="submit" value="送出"/>
                     </form>
                        
@@ -99,6 +100,6 @@
             
        
 </div>
-
+<script src="./js/sign_up.js"></script>
 </body>
 </html>
