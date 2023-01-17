@@ -195,6 +195,8 @@ let app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           console.log(response);
+          // const id = response.id
+          // location.href="xxxx.html?id=" + id
           // console.log("123");
         },
         error: function (exception) {
