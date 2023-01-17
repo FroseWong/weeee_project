@@ -55,6 +55,7 @@
     }
   }
   .product-card-row__left {
+    background-size: cover;
     width: 270px;
     height: 250px;
     overflow: hidden;
@@ -78,9 +79,8 @@
       }
     }
     @include m {
-      width: 330px;
-      // width: auto;
-      height: 155px;
+      width: 350px;
+      height: 255px;
       box-sizing: border-box;
       border-radius: 10px;
       margin-bottom: 15px;
@@ -121,6 +121,7 @@
     }
 
     .product-name {
+      font-size: 40px;
       margin-bottom: 20px;
 
       @include m {
