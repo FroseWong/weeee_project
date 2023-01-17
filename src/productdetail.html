@@ -29,7 +29,8 @@
       <!-- <input id="datetimepicker" type="text"> -->
       <!---------------bs-modal--------------->
       <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        @click="field1_showbtn">
+        @click="field1_showbtn"
+        ref="modal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -70,7 +71,9 @@
             </div>
             <div class="modal-footer">
               <div class="productdetail-modal-footer">
-                <button type="button" class="productdetail-modal-secondary">
+                <button type="button" class="productdetail-modal-secondary"
+                @click="ajax_ShoppingCart"
+                >
                   加入購物車
                 </button>
                 <button type="button" class="productdetail-modal-primary" @click="modal_checkout">

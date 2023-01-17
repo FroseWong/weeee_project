@@ -195,7 +195,6 @@ createApp({
       productReview: 0,
     };
   },
-  // ---------------aa---------------
   methods: {
     // ---------------開闔商品說明---------------
     open() {
@@ -212,13 +211,18 @@ createApp({
       // this.faHeart == "solid"
       //   ? (this.faHeart = "regular")
       //   : (this.faHeart = "solid");
+
       this.ajax_heart();
       if (this.faHeart == "solid") {
         this.faHeart = "regular";
+        _this.$refs.heartshow.classList.remove("liked");
         Swal.fire("已取消收藏");
+        console.log('取消');
       } else {
         this.faHeart = "solid";
+        _this.$refs.heartshow.classList.add("liked");
         Swal.fire("已加入收藏");
+        console.log('收藏');
       }
     },
     // ---------------Totop---------------
@@ -443,26 +447,31 @@ createApp({
       sessionStorage.setItem("總金額", this.modal_pricetotal);
       sessionStorage.setItem("點數", this.modal_points);
       let data = sessionStorage.getItem("日期");
-      console.log(data);
+      // console.log(data);
       // window.location.href = "./payment.html";
     },
+    // ---------------消失底下btn---------------
     cle_check() {
       this.field1Show = false;
     },
+    // ---------------出現底下btn---------------
     field1_showbtn() {
       this.field1Show = true;
     },
+    // ---------------視窗寬度變動---------------
     winSize_watch() {
+      _this = this;
       window.addEventListener("resize", function () {
         this.winSize = window.innerWidth;
-
+        // _this.ajax_heart_show();
+       console.log(this.winSize);
         if (this.winSize <= 768) {
           this.winsizeBoolean = false;
-          console.log(this.winsizeBoolean);
+         
         }
         if (this.winSize >= 768) {
           this.winsizeBoolean = true;
-          console.log(this.winsizeBoolean);
+          
         }
       });
     },
@@ -483,44 +492,49 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
-          response.forEach((e) => {
-            let arr1 = [
-              {
-                Content: e.ProductImgContent1,
-                src: e.ProductImgPath1,
-              },
-              {
-                Content: e.ProductImgContent2,
-                src: e.ProductImgPath2,
-              },
-              {
-                Content: e.ProductImgContent3,
-                src: e.ProductImgPath3,
-              },
-            ];
-            obj2 = {
-              type: e.ProductType,
-              city: e.Location,
-              price: e.ProductPrice,
-              name: e.ProductName,
-              Text: e.ProductText,
-              address: e.Location,
-              comments: "好吃、好玩、又划算!",
-              time: 100,
-            };
-            _this.modalTotal = e.ProductPrice;
-            _this.Imgs = arr1;
-            _this.ProductDetail = obj2;
-            // console.log(arr1);
-            // console.log(obj2);
-          });
-          _this.$nextTick(function () {
-            _this.productdetail_slideshow();
-          });
+          console.log(response);
+          if (response.length !== 0) {
+            response.forEach((e) => {
+              let arr1 = [
+                {
+                  Content: e.ProductImgContent1,
+                  src: e.ProductImgPath1,
+                },
+                {
+                  Content: e.ProductImgContent2,
+                  src: e.ProductImgPath2,
+                },
+                {
+                  Content: e.ProductImgContent3,
+                  src: e.ProductImgPath3,
+                },
+              ];
+              obj2 = {
+                type: e.ProductType,
+                city: e.Location,
+                price: e.ProductPrice,
+                name: e.ProductName,
+                Text: e.ProductText,
+                address: e.Location,
+                comments: "好吃、好玩、又划算!",
+                time: 100,
+              };
+              _this.modalTotal = e.ProductPrice;
+              _this.Imgs = arr1;
+              _this.ProductDetail = obj2;
+              // console.log(arr1);
+              console.log(obj2);
+            });
+            _this.$nextTick(function () {
+              _this.productdetail_slideshow();
+            });
+          } else {
+            window.location.href = "./index.html";
+            console.log("空");
+          }
         },
         error: function (exception) {
-          alert("發生錯誤: " + exception.status);
+          // alert("發生錯誤: " + exception.status);
         },
       });
     },
@@ -537,13 +551,17 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
-          if(response==false){
-            console.log(87);
+          if (response == false) {
+            // console.log('值為0');
+            // _this.$refs.heartshow.classList.remove("liked");
+            _this.faHeart = "regular";
+          } else if (response == true) {
+            // _this.$refs.heartshow.classList.add("liked");
+            _this.faHeart = "solid";
           }
         },
         error: function (exception) {
-          alert("發生錯誤: " + exception.status);
+          // alert("發生錯誤: " + exception.status);
         },
       });
     },
@@ -571,9 +589,40 @@ createApp({
           }
         },
         error: function (exception) {
-          alert("發生錯誤: " + exception.status);
+          // alert("發生錯誤: " + exception.status);
         },
       });
+    },
+    ajax_ShoppingCart() {
+      _this = this;
+      let num;
+      let people=_this.modalPeople;
+      let total=_this.modal_pricetotal;
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      if (num == null) {
+        num = 1;
+      }
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailShoppingCart.php",
+        data: {
+          MID: 1,
+          PID: num,
+          QTY:people,
+          TAL:total
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          
+        },
+        error: function (exception) {
+          // alert("發生錯誤: " + exception.status);
+        },
+      });
+      // _this.$refs.modal.classList.remove('show');
+      Swal.fire("已加入購物車<3");
     },
   },
   computed: {

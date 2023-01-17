@@ -100,27 +100,26 @@
               </ul>
             </div>
             <a
-              href="#"
               class="product-card-row"
               v-for="product in cardlist"
               :key="index"
-              @click="jump_page"
+              :href="'./productdetail.html?id=' + product.ProductID"
               v-if="dataget"
             >
               <div
                 class="product-card-row__left"
-                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath + ')' }"
+                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath1 + ')' }"
               ></div>
               <div class="product-card-row__right">
                 <div class="product-name">{{product.ProductName}}</div>
                 <div class="product-tag">{{product.ProductSecondType}}</div>
                 <div class="product__text">{{product.ProductText}}</div>
 
-                <!-- <span class="gray"
-                  ><i class="fa-solid fa-star"></i
-                  >{{card.score}}{{card.scorepeople}} |
-                  <span class="product-bought">{{card.order}}</span>個已訂購
-                </span> -->
+
+                <span class="gray"
+                ><i class="fa-solid fa-star"></i>4.4({{product.ProductScoredPeople}}) |
+                <span class="product-bought">{{product.ProductPurchased}}</span>個已訂購
+              </span>
                 <span class="price"
                   >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
                 >
@@ -390,7 +389,14 @@
             dataType: "json",
             success: function (response) {
               response.forEach(element => {
-                a.push(element)
+                if(element.ProductText.length <= 80){
+                  a.push(element)
+                }else{
+                  element.ProductText = element.ProductText.substr(0,80) + "．．．．．．"
+                  a.push(element)
+                }
+               
+               
               });
               console.log(a)
              
@@ -485,7 +491,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +b.order - +a.order ;
+                return +b.ProductPurchased - +a.ProductPurchased ;
               };
               arr.sort(sorter);
             };
