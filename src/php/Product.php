@@ -5,7 +5,7 @@ include("connection.php");
 
 
 $sql = 
-"SELECT p.ProductID,p.ProductName, p.ProductPrice, p.ProductText, p.Location,p.ProductType ,p.ProductSecondType, i.ProductImgPath 
+"SELECT p.ProductID,p.ProductName, p.ProductPrice, p.ProductText, p.Location,p.ProductType ,p.ProductSecondType, p.ProductPurchased,p.ProductScoredPeople,i.ProductImgPath1 
 FROM Product p
 join ProductImg i 
 on p.ProductID =  i.ProductID
@@ -37,6 +37,7 @@ $data = $statement->fetchAll();
 
 //回傳json
 
+// echo json_encode($data);
 echo json_encode($data);
 
 

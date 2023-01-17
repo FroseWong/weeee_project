@@ -100,6 +100,7 @@ let app1 = Vue.createApp({
     getdata_product_list() {
       // this.jo_list_hot = [];
       let that = this;
+   
       $.ajax({
         method: "POST",
         url: "./php/Product.php",
