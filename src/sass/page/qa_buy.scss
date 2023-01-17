@@ -194,6 +194,7 @@
       right: 0;
       top: 0;
       bottom: 0;
+      z-index: 20;
       background-color: rgba($color: $black, $alpha: 0.5);
     }
   }
@@ -223,7 +224,8 @@
         width: 250px;
         @include m {
           width: 380px;
-          position: relative;
+          position: absolute;
+          z-index: 21;
         }
         div {
           
