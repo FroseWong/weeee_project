@@ -158,264 +158,264 @@
 //       }
 //     }
 //   }
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0 80px 0;
-    @include m{
-      display: flex;
-      padding-right: 250px;
-      margin: 0px 0 0px 0;
-    }
-    li {
-      background-color: $white;
-      width: 35px;
-    }
-    .page-link--current {
-      background-color: $blue;
-      display: block;
-    }
-    .page-item {
-      border: 1px solid $gray;
-      text-align: center;
-      line-height: 30px;
-      display: block;
-      a {
-        font-weight: bold;
-        font-size: 14px;
-        display: block;
-      }
-    }
-    .page-link {
-      font-size: $pc_h6;
-      text-decoration: none;
-      &:visited,
-      &:active,
-      &:link,
-      &hover {
-        color: $black;
-      }
-    }
-    .about2__main {
-      background-color: #f4f4f4;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .about_title {
-      margin-top: 125px;
-      h1 {
-        font-size: 32px;
-        color: $blue;
-        display: inline;
-      }
-      h2 {
-        font-size: 32px;
-        display: inline;
-      }
-    }
-    .about__barcard {
-      display: flex;
-      max-width: 1100px;
-      margin-top: 75px;
-    }
-    .about__bar {
-      display: flex;
-      flex-direction: column;
-      width: 250px;
-      div {
-        margin-bottom: 50px;
-        background-color: #fff;
-      }
-      li {
-        font-size: 16px;
-        width: 250px;
-        height: 60px;
-        text-align: center;
-        line-height: 60px;
-        color: #747774;
-        cursor: pointer;
-        &:hover {
-          background-color: $blue;
-          color: $white;
-        }
-      }
-      h4 {
-        font-weight: bold;
-        font-size: 16px;
-        text-align: center;
-        line-height: 60px;
-        border-bottom: 1px solid $gray;
-      }
-    }
-  }
+  // .pagination {
+  //   display: flex;
+  //   justify-content: center;
+  //   margin: 40px 0 80px 0;
+  //   @include m{
+  //     display: flex;
+  //     padding-right: 250px;
+  //     margin: 0px 0 0px 0;
+  //   }
+  //   li {
+  //     background-color: $white;
+  //     width: 35px;
+  //   }
+  //   .page-link--current {
+  //     background-color: $blue;
+  //     display: block;
+  //   }
+  //   .page-item {
+  //     border: 1px solid $gray;
+  //     text-align: center;
+  //     line-height: 30px;
+  //     display: block;
+  //     a {
+  //       font-weight: bold;
+  //       font-size: 14px;
+  //       display: block;
+  //     }
+  //   }
+  //   .page-link {
+  //     font-size: $pc_h6;
+  //     text-decoration: none;
+  //     &:visited,
+  //     &:active,
+  //     &:link,
+  //     &hover {
+  //       color: $black;
+  //     }
+  //   }
+  //   .about2__main {
+  //     background-color: #f4f4f4;
+  //     width: 100%;
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     align-items: center;
+  //   }
+  //   .about_title {
+  //     margin-top: 125px;
+  //     h1 {
+  //       font-size: 32px;
+  //       color: $blue;
+  //       display: inline;
+  //     }
+  //     h2 {
+  //       font-size: 32px;
+  //       display: inline;
+  //     }
+  //   }
+  //   .about__barcard {
+  //     display: flex;
+  //     max-width: 1100px;
+  //     margin-top: 75px;
+  //   }
+  //   .about__bar {
+  //     display: flex;
+  //     flex-direction: column;
+  //     width: 250px;
+  //     div {
+  //       margin-bottom: 50px;
+  //       background-color: #fff;
+  //     }
+  //     li {
+  //       font-size: 16px;
+  //       width: 250px;
+  //       height: 60px;
+  //       text-align: center;
+  //       line-height: 60px;
+  //       color: #747774;
+  //       cursor: pointer;
+  //       &:hover {
+  //         background-color: $blue;
+  //         color: $white;
+  //       }
+  //     }
+  //     h4 {
+  //       font-weight: bold;
+  //       font-size: 16px;
+  //       text-align: center;
+  //       line-height: 60px;
+  //       border-bottom: 1px solid $gray;
+  //     }
+  //   }
+  // }
 
 
 
-  .product-card-row-list {
-    display: flex;
-    flex-direction: column;
-  }
+  // .product-card-row-list {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
   
-  .product-card-row {
-    width: 810px;
-    height: 250px;
-    // background-color: gray;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    color: $black;
-    // outline: 1px solid $gray;
-    background-color: $white;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    &:hover .product-card-row__left__pic {
-      transform: scale(1.2);
+  // .product-card-row {
+  //   width: 810px;
+  //   height: 250px;
+  //   // background-color: gray;
+  //   display: flex;
+  //   justify-content: flex-start;
+  //   align-items: flex-start;
+  //   color: $black;
+  //   // outline: 1px solid $gray;
+  //   background-color: $white;
+  //   border-radius: 10px;
+  //   overflow: hidden;
+  //   position: relative;
+  //   cursor: pointer;
+  //   &:hover .product-card-row__left__pic {
+  //     transform: scale(1.2);
   
-      @include m {
-        transform: scale(1);
-      }
-    }
-    @include m {
-      flex-direction: column;
-      width: 350px;
-      height: auto;
-      box-sizing: border-box;
-      overflow: hidden;
-      margin-bottom: 50px;
-    }
+  //     @include m {
+  //       transform: scale(1);
+  //     }
+  //   }
+  //   @include m {
+  //     flex-direction: column;
+  //     width: 350px;
+  //     height: auto;
+  //     box-sizing: border-box;
+  //     overflow: hidden;
+  //     margin-bottom: 50px;
+  //   }
   
-    .change-heart {
-      height: 30px;
-      width: 30px;
-      // background-color: red;
-      color: $l_gray;
-      position: absolute;
-      cursor: pointer;
-      top: 28px;
-      right: 10px;
-      z-index: 15;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  //   .change-heart {
+  //     height: 30px;
+  //     width: 30px;
+  //     // background-color: red;
+  //     color: $l_gray;
+  //     position: absolute;
+  //     cursor: pointer;
+  //     top: 28px;
+  //     right: 10px;
+  //     z-index: 15;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
   
-      @include m {
-        // display: none;
-        color: $white;
-        top: 10px;
-        right: 10px;
-      }
-    }
-    .product-card-row__left {
-      background-size: cover;
-      width: 270px;
-      height: 250px;
-      overflow: hidden;
-      position: relative;
-      // background-color: aqua;
-      // background-image: url("../img/jo/jo_aquarium.jpg");
-      // background-size: cover;
-      // border-radius: 10px;
-      .product-card-row__location {
-        display: none;
-        @include m {
-          // display: block;
-          position: absolute;
-          color: $white;
-          display: flex;
-          width: 70px;
-          justify-content: space-around;
-          align-items: center;
-          top: 10px;
-          left: 10px;
-        }
-      }
-      @include m {
-        width: 350px;
-        // width: auto;
-        height: 255px;
-        box-sizing: border-box;
-        border-radius: 10px;
-        margin-bottom: 15px;
-      }
+  //     @include m {
+  //       // display: none;
+  //       color: $white;
+  //       top: 10px;
+  //       right: 10px;
+  //     }
+  //   }
+  //   .product-card-row__left {
+  //     background-size: cover;
+  //     width: 270px;
+  //     height: 250px;
+  //     overflow: hidden;
+  //     position: relative;
+  //     // background-color: aqua;
+  //     // background-image: url("../img/jo/jo_aquarium.jpg");
+  //     // background-size: cover;
+  //     // border-radius: 10px;
+  //     .product-card-row__location {
+  //       display: none;
+  //       @include m {
+  //         // display: block;
+  //         position: absolute;
+  //         color: $white;
+  //         display: flex;
+  //         width: 70px;
+  //         justify-content: space-around;
+  //         align-items: center;
+  //         top: 10px;
+  //         left: 10px;
+  //       }
+  //     }
+  //     @include m {
+  //       width: 350px;
+  //       // width: auto;
+  //       height: 255px;
+  //       box-sizing: border-box;
+  //       border-radius: 10px;
+  //       margin-bottom: 15px;
+  //     }
   
-      .product-card-row__left__pic {
-        width: 100%;
-        height: 100%;
-        transition: all 0.3s;
-        box-sizing: border-box;
+  //     .product-card-row__left__pic {
+  //       width: 100%;
+  //       height: 100%;
+  //       transition: all 0.3s;
+  //       box-sizing: border-box;
   
-        .product-card-row__picsrc {
-          width: 100%;
-          height: 100%;
-          background-image: url("../img/jo/jo_aquarium.jpg");
-          background-size: cover;
-          box-sizing: border-box;
-        }
-      }
-    }
-    .product-card-row__right {
-      width: 540px;
-      height: 250px;
-      padding: 30px 25px 0px;
-      box-sizing: border-box;
+  //       .product-card-row__picsrc {
+  //         width: 100%;
+  //         height: 100%;
+  //         background-image: url("../img/jo/jo_aquarium.jpg");
+  //         background-size: cover;
+  //         box-sizing: border-box;
+  //       }
+  //     }
+  //   }
+  //   .product-card-row__right {
+  //     width: 540px;
+  //     height: 250px;
+  //     padding: 30px 25px 0px;
+  //     box-sizing: border-box;
   
-      @include m {
-        width: auto;
-        // padding: 30px 25px 30px;
-        height: auto;
-        padding: 0 10px 10px;
-        display: flex;
-        flex-direction: column;
-      }
+  //     @include m {
+  //       width: auto;
+  //       // padding: 30px 25px 30px;
+  //       height: auto;
+  //       padding: 0 10px 10px;
+  //       display: flex;
+  //       flex-direction: column;
+  //     }
   
-      .price {
-        font-size: 22px;
-        padding-right: 25px;
-        float: right;
-      }
+  //     .price {
+  //       font-size: 22px;
+  //       padding-right: 25px;
+  //       float: right;
+  //     }
   
-      .product-name {
-        font-size: 35px;
-        margin-bottom: 20px;
+  //     .product-name {
+  //       font-size: 35px;
+  //       margin-bottom: 20px;
   
-        @include m {
-          font-size: 30px;
-          font-weight: bold;
-          margin-bottom: 5px;
-        }
-      }
-      .product__text {
-        margin-top: 35px;
-        /* margin-bottom: 15px; */
-        font-size: 20px;
-        @include m {
-          display: none;
-        }
-      }
-    }
-    .fa-star {
-      color: $yellow;
-      margin-right: 5px;
-    }
+  //       @include m {
+  //         font-size: 30px;
+  //         font-weight: bold;
+  //         margin-bottom: 5px;
+  //       }
+  //     }
+  //     .product__text {
+  //       margin-top: 35px;
+  //       /* margin-bottom: 15px; */
+  //       font-size: 20px;
+  //       @include m {
+  //         display: none;
+  //       }
+  //     }
+  //   }
+  //   .fa-star {
+  //     color: $yellow;
+  //     margin-right: 5px;
+  //   }
   
-    .product-tag {
-      // width: 300px;
-      // display: block;
-      // width: 60px;
-      // height: 30px;
-      width: 80px;
-      box-sizing: border-box;
-      margin-bottom: 10px;
+  //   .product-tag {
+  //     // width: 300px;
+  //     // display: block;
+  //     // width: 60px;
+  //     // height: 30px;
+  //     width: 80px;
+  //     box-sizing: border-box;
+  //     margin-bottom: 10px;
   
-      @include m {
-        // margin-top: 30px;
-        order: -1;
-      }
-    }
-  }
+  //     @include m {
+  //       // margin-top: 30px;
+  //       order: -1;
+  //     }
+  //   }
+  // }
   
