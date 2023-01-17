@@ -41,7 +41,7 @@
 
   width: 370px;
   height: 400px;
-
+  user-select:none;
 
 
   padding-top: 3px;
@@ -66,6 +66,7 @@
 }
 
 .email input {
+  user-select:none;
   width: 242px;
   height: 52px;
   margin-bottom: 10px;
@@ -77,6 +78,7 @@
 }
 
 .password input {
+  user-select:none;
   width: 242px;
   height: 52px;
   margin-bottom: 10px;
@@ -88,6 +90,7 @@
 }
 
 .passwordag input {
+  user-select:none;
   width: 242px;
   height: 52px;
   margin-bottom: 10px;
