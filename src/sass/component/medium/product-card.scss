@@ -1,5 +1,7 @@
 .product-list {
   // 1280斷點
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   position: relative;
   @include m {
