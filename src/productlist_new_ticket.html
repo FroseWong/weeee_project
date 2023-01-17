@@ -117,7 +117,7 @@
 
 
                 <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4({{product.ProductScoredPeople}}) |
+                ><i class="fa-solid fa-star"></i>{{product.score}}({{product.ProductScoredPeople}}) |
                 <span class="product-bought">{{product.ProductPurchased}}</span>個已訂購
               </span>
                 <span class="price"
@@ -389,12 +389,12 @@
             dataType: "json",
             success: function (response) {
               response.forEach(element => {
-                if(element.ProductText.length <= 80){
-                  a.push(element)
-                }else{
+                if(element.ProductText.length >= 80){
                   element.ProductText = element.ProductText.substr(0,80) + "．．．．．．"
-                  a.push(element)
-                }
+                };
+                element.score = element.score.substr(0,3);
+                
+                a.push(element)
                
                
               });
@@ -491,7 +491,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +b.ProductPurchased - +a.ProductPurchased ;
+                return +b.ProductPurchased - +a.ProductPurchased;
               };
               arr.sort(sorter);
             };
