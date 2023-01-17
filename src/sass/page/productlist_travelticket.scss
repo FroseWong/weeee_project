@@ -240,6 +240,7 @@
         .product-card-row{
           margin-top: 30px;
           @include m{
+            margin-left: 30px;
             margin-top: 10px;
           }
           .product-tag{
