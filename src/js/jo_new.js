@@ -19,7 +19,9 @@ const joAddImg = document.querySelector(".jo_new__addimg");
 let reader = {
   result: "",
 };
+let imgName = "";
 let imgstored = "";
+let trans;
 // console.log(joAddImg);
 
 init();
@@ -37,6 +39,7 @@ if (sessionStorage.getItem("joNew")) {
     joStartTime,
     useweeee,
     img,
+    imgName,
   } = JSON.parse(sessionStorage.getItem("joNew"));
 
   joTitleInput.value = joTitle;
@@ -49,6 +52,8 @@ if (sessionStorage.getItem("joNew")) {
   joStartTimeInput.value = joStartTime;
   useweeeeInput.value = useweeee;
   imgstored = img;
+  trans = imgName;
+
   if (img) {
     let li_html = `
   <div class="img-space">
@@ -62,6 +67,8 @@ if (sessionStorage.getItem("joNew")) {
     deleteInit();
   }
 }
+
+if (trans) imgName = trans;
 
 // testBtn.addEventListener("click", function () {
 //   //   let joNew = JSON.parse(sessionStorage.getItem("joNew"));
@@ -82,6 +89,7 @@ function init() {
   });
 
   imgFile.addEventListener("change", function (e) {
+    imgName = this.files[0].name;
     reader = new FileReader(); // 用來讀取檔案
     reader.readAsDataURL(this.files[0]); // 讀取檔案
     reader.addEventListener("load", function () {
@@ -107,6 +115,7 @@ function init() {
 
   joAddImg.addEventListener("drop", function (e) {
     e.preventDefault();
+    imgName = e.dataTransfer.files[0].name;
     let reader = new FileReader(); // 用來讀取檔案
     reader.readAsDataURL(e.dataTransfer.files[0]); // 讀取檔案
     reader.addEventListener("load", function () {
@@ -195,6 +204,7 @@ previewBtn.addEventListener("click", function () {
           joStartTime: joStartTimeInput.value,
           useweeee: useweeeeInput.value,
           img: imgstored,
+          imgName,
         })
       );
     }

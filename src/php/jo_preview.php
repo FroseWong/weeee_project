@@ -30,11 +30,14 @@ values('$joTitle','$joContact','$MemberID',NOW(),'$joStartDate.' '.$joStartTime'
 $statement = $pdo->prepare( $sql );
 $statement->execute(); 
 
-// testing
-
 $output_file = $imgName;
 
 // last_insert_ID
+$sql1 = "SELECT LAST_INSERT_ID()";
+$statement = $pdo->prepare( $sql1 );
+$statement->execute(); 
+
+$data1 = $statement->fetchAll();
 
  // Convert base64 string to an image
  $ifp = fopen($output_file, "wb"); 
@@ -50,7 +53,7 @@ $output_file = $imgName;
  }
  rename($output_file,$filepath);
 
-echo json_encode($imgName);
+echo json_encode($data1);
 
 // echo 'id';
 

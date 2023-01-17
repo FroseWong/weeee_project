@@ -195,9 +195,9 @@ let app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           console.log(response);
-          // const id = response.id
-          // location.href="xxxx.html?id=" + id
-          // console.log("123");
+          // const id = response[0]["0"];
+          // console.log(id);
+          // location.href = "jo_detail.html?id=" + id;
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);

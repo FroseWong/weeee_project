@@ -50,7 +50,7 @@
           </div>
           <div class="jo-leader__bottom">
             <div class="jo-leader__bottom__left">
-              <button class="contact-leader yellowBtn">我想聯絡團主</button>
+              <button class="contact-leader yellowBtn" @click="contactLeader">我想聯絡團主</button>
             </div>
             <div class="jo-leader__bottom__right">
               <div class="contact-detail">
@@ -65,7 +65,7 @@
           </div>
         </div> 
 
-        <h3 class="useweeee__title">我們的行程</h3>
+        <!-- <h3 class="useweeee__title">我們的行程</h3>
 
          <div class="useweeee">
           <a href="./productdetail.html" class="product-card-row">
@@ -90,7 +90,53 @@
               >
             </div>
           </a>
-        </div> 
+        </div>  -->
+
+        <template v-if="useweeee">
+          <h3 class="useweeee__title">我們的行程</h3>
+
+          <div class="useweeee">
+            <a class="product-card-row">
+              <div class="product-card-row__left">
+                <div class="product-card-row__location">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p class="p__location">桃園</p>
+                </div>
+                <div class="product-card-row__left__pic">
+                  <div class="product-card-row__picsrc"></div>
+                </div>
+              </div>
+              <div class="product-card-row__right">
+                <div
+                  class="change-heart"
+                  ref="changeHeart"
+                  @click="changeHeart"
+                >
+                  <i class="fa-regular fa-heart" ref="hollow"></i>
+                  <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+                </div>
+                <div class="product-name">
+                  桃園青埔 | Xpark 都會型水生公園門票
+                </div>
+                <div class="product-tag">
+                  情侶行程
+                </div>
+                <div class="product__text">該去的旅遊還是要去</div>
+
+                <span class="gray"
+                  ><i class="fa-solid fa-star"></i>4.4(44325) |
+                  <span class="product-bought">590K+</span>個已訂購
+                </span>
+                <span class="price"
+                  >TWD
+                  <span class="product-price">
+                    123</span
+                  >元</span
+                >
+              </div>
+            </a>
+          </div>
+        </template>
 
         <h3 class="saysomething__title">有什麼想跟團主說的嗎?</h3>
          <textarea
@@ -100,10 +146,11 @@
           cols="30"
           rows="5"
           placeholder="留下你的留言"
+          ref="saysomething__content"
         ></textarea> 
-         <button class="saysomething__send yellowBtn">送出留言</button> 
+         <button class="saysomething__send yellowBtn" @click="saysomething">送出留言</button> 
 
-         <div class="jo__comment__list">
+         <div class="jo__comment__list" ref="jo__comment__list">
           <div class="jo__comment">
             <div class="jo__comment__left">
               挖!!!這看起來好好玩喔~我也想參加，已寄email給團主，希望可以一起去玩
@@ -141,6 +188,7 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.prod.js"></script>
     <script src="./js/jo_detail.js"></script>
 
   </body>

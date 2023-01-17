@@ -18,7 +18,7 @@ window.my_component = {
       <div class="product-card__top__pic">
         <div
           class="product-card__top__picsrc p1"
-          :style="{ backgroundImage: 'url(' + p.ProductImgPath+ ')' }"
+          :style="{ backgroundImage: 'url(' + p.ProductImgPath1+ ')' }"
         ></div>
       </div>
     </div>
