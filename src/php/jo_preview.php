@@ -21,8 +21,8 @@ $JoNumber = 'asd1234';
 // $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
 
 
-$sql = "INSERT INTO weeee.Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoUseWeeee,ProductID,JoContact,JodetailedAddressed,JoNumber,JoImg)
-values($joTitle,$joContent,$MemberID,NOW(),$joStartDate.' '.$joStartTime,1,$targettravelID,$joContact,$joDetailAddress,$JoNumber,$JoImg)";
+// $sql = "INSERT INTO weeee.Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoUseWeeee,ProductID,JoContact,JodetailedAddressed,JoNumber,JoImg)
+// values($joTitle,$joContent,$MemberID,NOW(),$joStartDate.' '.$joStartTime,1,$targettravelID,$joContact,$joDetailAddress,$JoNumber,$JoImg)";
 
 $sql = "INSERT into Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoStatus,JoUseWeeee,ProductID,JoContact,Location,JodetailedAddressed,JoNumber,JoImg,JoAttend)
 values('$joTitle','$joContact','$MemberID',NOW(),'$joStartDate.' '.$joStartTime',1,1,'$targettravelID','$joContact','$joLocation','$joDetailAddress','$JoNumber','$JoImg','$joAttend')";

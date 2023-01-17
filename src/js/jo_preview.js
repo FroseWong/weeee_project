@@ -126,7 +126,7 @@ let app = Vue.createApp({
   updated() {
     document.querySelector(
       ".product-card-row__picsrc"
-    ).style.backgroundImage = `url('${this.targettravel.ProductImgPath}')`;
+    ).style.backgroundImage = `url('${this.targettravel.ProductImgPath1}')`;
   },
   methods: {
     changeHeart(e) {

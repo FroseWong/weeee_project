@@ -100,7 +100,7 @@ let app1 = Vue.createApp({
     getdata_product_list() {
       // this.jo_list_hot = [];
       let that = this;
-   
+
       $.ajax({
         method: "POST",
         url: "./php/Product.php",
@@ -123,6 +123,7 @@ let app1 = Vue.createApp({
             else if (product.ProductType === "viewpointticket")
               that.viewpointticketList.push(product);
           });
+
           that?.$nextTick(function () {
             that?.product_slick();
           });
