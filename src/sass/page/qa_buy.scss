@@ -337,11 +337,11 @@
           ul {
             display: flex;
             flex-wrap: wrap;
-            justify-content: start;
+            justify-content: flex-start;
             @include m {
               display: flex;
               flex-wrap: wrap;
-              justify-content: start;
+              justify-content: flex-start;
             }
             li {
               width: 50%;
