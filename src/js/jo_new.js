@@ -16,10 +16,14 @@ const previewBtn = document.querySelector(".previewBtn");
 // const imgFile = document.querySelector(".img-file__input");
 // const boxBtn = document.querySelector(".box");
 const joAddImg = document.querySelector(".jo_new__addimg");
+
+// const imgFile = document.querySelector(".img-file__input");
+// const boxBtn = document.querySelector(".box");
 let reader = {
   result: "",
 };
 let imgstored = "";
+let imgName = "";
 // console.log(joAddImg);
 
 init();
@@ -84,8 +88,9 @@ function init() {
   imgFile.addEventListener("change", function (e) {
     reader = new FileReader(); // 用來讀取檔案
     reader.readAsDataURL(this.files[0]); // 讀取檔案
+    imgName = this.files[0].name;
     reader.addEventListener("load", function () {
-      // console.log(reader.result);
+      // console.log(reader.fileName);
       let li_html = `
       <div class="img-space">
                   <img src="${reader.result}" class="preview">
@@ -105,11 +110,14 @@ function init() {
   });
 
   joAddImg.addEventListener("drop", function (e) {
+    // reader.result = imgstored = "";
     e.preventDefault();
-    let reader = new FileReader(); // 用來讀取檔案
+    reader = new FileReader(); // 用來讀取檔案
     reader.readAsDataURL(e.dataTransfer.files[0]); // 讀取檔案
+
     reader.addEventListener("load", function () {
-      // console.log(reader.result);
+      // reader.fileName = e.dataTransfer.files[0];
+
       let li_html = `
       <div class="img-space">
                   <img src="${reader.result}" class="preview">
@@ -119,8 +127,12 @@ function init() {
         </div>`;
 
       joAddImg.innerHTML = li_html;
+      // imgstored = reader.result ;
       deleteInit();
     });
+
+    imgName = e.dataTransfer.files[0].name;
+    // console.log(imgName);
   });
 }
 
@@ -131,7 +143,35 @@ function deleteInit() {
     let backStr = ` <a href="#" class="box"><i class="fa-solid fa-file-image"></i></a>
         <input type="file" class="img-file__input" />`;
     joAddImg.innerHTML = backStr;
-    init();
+    // init();
+
+    //trying
+    const imgFile = document.querySelector(".img-file__input");
+    const boxBtn = document.querySelector(".box");
+
+    boxBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      imgFile.click();
+    });
+
+    imgFile.addEventListener("change", function (e) {
+      reader = new FileReader(); // 用來讀取檔案
+      reader.readAsDataURL(this.files[0]); // 讀取檔案
+      imgName = this.files[0].name;
+      reader.addEventListener("load", function () {
+        // console.log(reader.fileName);
+        let li_html = `
+        <div class="img-space">
+                    <img src="${reader.result}" class="preview">
+                    <div class="delete">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          </div>`;
+
+        joAddImg.innerHTML = li_html;
+        deleteInit();
+      });
+    });
   });
 }
 
@@ -162,23 +202,26 @@ previewBtn.addEventListener("click", function () {
     // useweeeeInput.value !== "" &&
     (reader.result !== "" || imgstored !== "")
   ) {
-    if (reader.result) {
-      sessionStorage.setItem(
-        "joNew",
-        JSON.stringify({
-          joTitle: joTitleInput.value,
-          joContent: joContentInput.value,
-          joContact: joContactInput.value,
-          joLocation: joLocationInput.value,
-          joDetailAddress: joDetailAddressInput.value,
-          joAttend: joAttendInput.value,
-          joStartDate: joStartDateInput.value,
-          joStartTime: joStartTimeInput.value,
-          useweeee: useweeeeInput.value,
-          img: reader.result,
-        })
-      );
-    } else if (imgstored) {
+    imgstored = reader.result;
+    // if (reader.result) {
+    //   sessionStorage.setItem(
+    //     "joNew",
+    //     JSON.stringify({
+    //       joTitle: joTitleInput.value,
+    //       joContent: joContentInput.value,
+    //       joContact: joContactInput.value,
+    //       joLocation: joLocationInput.value,
+    //       joDetailAddress: joDetailAddressInput.value,
+    //       joAttend: joAttendInput.value,
+    //       joStartDate: joStartDateInput.value,
+    //       joStartTime: joStartTimeInput.value,
+    //       useweeee: useweeeeInput.value,
+    //       img: reader.result,
+    //       imgName,
+    //     })
+    //   );
+    // } else
+    if (imgstored) {
       sessionStorage.setItem(
         "joNew",
         JSON.stringify({
@@ -192,6 +235,7 @@ previewBtn.addEventListener("click", function () {
           joStartTime: joStartTimeInput.value,
           useweeee: useweeeeInput.value,
           img: imgstored,
+          imgName,
         })
       );
     }

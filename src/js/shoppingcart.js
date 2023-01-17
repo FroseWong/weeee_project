@@ -1,6 +1,7 @@
 const { createApp } = Vue;
 // ---------------aa---------------
-createApp({
+
+const App = {
   data() {
     return {
       productList: [
@@ -49,6 +50,7 @@ createApp({
       },
     };
   },
+
   // ---------------bb---------------
   methods: {
     getModalPoints(price) {
@@ -192,7 +194,7 @@ createApp({
     },
   },
   computed: {
-    emptyCart(){
+    emptyCart() {
       let cartCount = this.productList.length;
       if (cartCount < 1) {
         return true;
@@ -250,8 +252,11 @@ createApp({
       });
     },
   },
-  mounted() {
+  mounted() {},
+};
 
-  },
-}).mount("#app");
+app = Vue.createApp(App);
+app.component("product-slide-vue", window.my_component);
+
+app.mount("#app");
 // ---------------cc---------------

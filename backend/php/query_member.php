@@ -1,19 +1,51 @@
 <?php
-$memberID = "1"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
 
 //DB連線資訊
 include("connection.php");
 
 //建立SQL語法
-if($memberNumber == 0 && $username ==  )
-$sql = "SELECT  MemberNumber, Username, MemCreateDate, MemStatus
-from Member
-WHERE ";
+$sql = [];
+if (isset($_GET['memberNumber'])) {
+    //1. 取得請求參數
+    $memberNumber = $_GET['memberNumber'];
+    $username = $_GET['username'];
+    $memberStatus = $_GET['memberStatus'];
+
+    //2.組裝SQL
+    // $sql = "SELECT  MemberNumber, Username, MemCreateDate, MemStatus from Member";
+    // $criteria = "";
+    // if (strlen($memberNumber) != 0){
+    //     if (strlen($criteria) != 0){
+    //         $criteria = $criteria . " AND";
+    //     }else{
+    //         $criteria = $criteria . " WHERE";
+    //     }
+    //     $criteria = $criteria . " MemberNumber = ". $memberNumber;
+    // }
+
+    $sql = "SELECT  MemberNumber, Username, MemCreateDate, MemStatus from Member WHERE 1 = 1";
+    $criteria = "";
+    if (strlen($memberNumber) != 0){
+        $criteria = $criteria . " AND MemberNumber = '". $memberNumber."'";
+    }
+    if (strlen($username) != 0){
+        $criteria = $criteria . " AND Username = '". $username."'";
+    }
+    if (strlen($memberStatus) != 0){
+        $criteria = $criteria . " AND MemStatus = '". $memberStatus."'";
+    }
+   
+    $sql = $sql . $criteria . ";";
+
+} 
+else {
+    $sql = "SELECT  MemberNumber, Username, MemCreateDate, MemStatus from Member;";
+}
+
 
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
 $statement = $pdo->prepare($sql);
-$statement->bindValue(1, $memberID);
 $statement->execute(); //執行
 
 //抓出全部且依照順序封裝成一個二維陣列

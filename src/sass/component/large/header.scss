@@ -79,7 +79,7 @@ header {
       align-items: center;
 
       // 新增內容 頭
-      .shoppingcart {
+      .header_shoppingcart {
         position: relative;
 
         .shoppingcart-num {
@@ -437,8 +437,9 @@ header {
     }
   }
 
+  // ------------------------cart---------------------------------
   .header_product_group {
-    width: 280px;
+    width: 300px;
     box-shadow: 0 2px 20px rgb(0 0 0 / 15%);
     border-radius: 10px;
     position: fixed;
@@ -447,16 +448,38 @@ header {
     margin-top: 15px;
     margin-left: -250px;
     display: none;
+    word-break: break-all;
+
+    @include m {
+      border-radius: 0;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+
+      height: 100%;
+    }
+
+    .product_contain {
+      // max-width: 280px;
+      max-height: 300px;
+      overflow-y: auto;
+      // position: fixed;
+      @include m{
+        max-height: 600px;
+      }
+    }
+
     .empty_cart {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin: 10px;
-      // display: none;
+      display: none;
 
       img {
-        width: 10%;
+        width: 30%;
         margin: 20px;
 
         @include m {
@@ -497,12 +520,9 @@ header {
         flex-wrap: wrap;
       }
 
-
       .product-image {
         display: block;
         padding-right: 15px;
-
-
 
         img {
           object-fit: cover;
@@ -514,12 +534,11 @@ header {
       }
 
       .product-name {
-
-        width: 60%;
+        width: 55%;
         padding: 0 15px;
 
         @include m {
-          width: 45%;
+          width: 55%;
         }
 
         a {
@@ -530,6 +549,24 @@ header {
           h6 {
             font-weight: bold;
             color: $black;
+            font-size: 14px;
+          }
+        }
+
+      }
+
+      .delete {
+        width: 5%;
+
+        .cart_delete {
+          border: none;
+          background-color: transparent;
+          font-size: $pc_h6;
+          color: #666;
+          padding: 0 15px;
+          cursor: pointer;
+
+          i {
             font-size: 14px;
           }
         }
@@ -548,12 +585,14 @@ header {
         i {
           font-size: 14px;
           margin-right: 5px;
+          pointer-events: none;
         }
 
         @include m {
           width: 100%;
           text-align: left;
-          padding-left: 180px;
+          padding-left: 100px;
+          margin: 0;
 
         }
       }
@@ -564,55 +603,41 @@ header {
         color: $blue;
         font-weight: bold;
         text-align: left;
-       margin-left: 90px;
+        margin-left: 90px;
 
         @include m {
           width: 100%;
           padding: 10px 0;
+          margin: 0;
+          padding-left: 100px;
 
         }
       }
 
-      .edit_delete {
-        width: 25%;
-        text-align: right;
-
-        @include m {
-          width: 100%;
-        }
-
-        .cart_edit,
-        .cart_delete {
-          border: none;
-          background-color: transparent;
-          font-size: $pc_h6;
-          color: #666;
-          padding: 0 15px;
-          cursor: pointer;
-
-          &:hover {
-            color: $black;
-          }
-
-          @include m {
-            padding-right: 0;
-          }
-        }
-      }
     }
-    .gotocart{
+
+    .gotocart {
       padding: 20px;
-margin-left: 140px;
-      a{
+      border-top: 2px solid #eaeaea;
+
+      a {
+        margin-left: 165px;
         display: block;
         width: 100px;
-        height: 50px;
+        height: 40px;
         background-color: $blue;
         color: #fff;
         border-radius: 10px;
-        line-height: 50px;
-        text-align: center;        
+        line-height: 40px;
+        text-align: center;
+        font-size: 14px;
+
+        &:hover {
+          background-color: $orange;
+        }
       }
     }
+
+    // ------------------------cart---------------------------------
   }
 }
