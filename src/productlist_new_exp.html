@@ -362,7 +362,12 @@
             dataType: "json",
             success: function (response) {
               response.forEach(element => {
-                a.push(element)
+                if(element.ProductText.length <= 80){
+                  a.push(element)
+                }else{
+                  element.ProductText = element.ProductText.substr(0,80) + "......"
+                  a.push(element)
+                }
               });             
             },
             error: function(exception) {
