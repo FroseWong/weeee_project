@@ -589,13 +589,13 @@
             if (target_class.contains("productlist_new__category_btn")) {
               if (cate_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 black_bg.classList.remove("on_watch");
                 body.classList.remove("stop_scroll");
               } else {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 cate_bar.classList.add("open");
                 black_bg.classList.add("on_watch");
@@ -606,13 +606,13 @@
               console.log("aaa");
               if (dest_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 black_bg.classList.remove("on_watch");
                 body.classList.remove("stop_scroll");
               } else {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 dest_bar.classList.add("open");
                 black_bg.classList.add("on_watch");
@@ -623,13 +623,13 @@
               console.log("aaa");
               if (price_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 black_bg.classList.remove("on_watch");
                 body.classList.remove("stop_scroll");
               } else {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 price_bar.classList.add("open");
                 black_bg.classList.add("on_watch");
@@ -640,13 +640,13 @@
               console.log("aaa");
               if (sort_bar.classList.contains("open")) {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 black_bg.classList.remove("on_watch");
                 body.classList.remove("stop_scroll");
               } else {
                 bar_arr.forEach((element) => {
-                  element.classList.remove("open");
+                  element?.classList.remove("open");
                 });
                 sort_bar.classList.add("open");
                 black_bg.classList.add("on_watch");
@@ -655,7 +655,7 @@
             }
             if (target_class.contains("black_bg")) {
               bar_arr.forEach((element) => {
-                element.classList.remove("open");
+                element?.classList.remove("open");
               });
               black_bg.classList.remove("on_watch");
               body.classList.remove("stop_scroll");
@@ -677,7 +677,7 @@
               let black_bg = document.querySelector(".black_bg");
               let bar_arr = [cate_bar, dest_bar, price_bar, sort_bar];
               bar_arr.forEach((element) => {
-                element.classList.remove("open");
+                element?.classList.remove("open");
               });
               black_bg.classList.remove("on_watch");
             }
