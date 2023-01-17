@@ -443,15 +443,18 @@ createApp({
       sessionStorage.setItem("總金額", this.modal_pricetotal);
       sessionStorage.setItem("點數", this.modal_points);
       let data = sessionStorage.getItem("日期");
-      console.log(data);
+      // console.log(data);
       // window.location.href = "./payment.html";
     },
+    // ---------------消失底下btn---------------
     cle_check() {
       this.field1Show = false;
     },
+    // ---------------出現底下btn---------------
     field1_showbtn() {
       this.field1Show = true;
     },
+    // ---------------視窗寬度變動---------------
     winSize_watch() {
       window.addEventListener("resize", function () {
         this.winSize = window.innerWidth;
@@ -520,7 +523,7 @@ createApp({
           });
         },
         error: function (exception) {
-          alert("發生錯誤: " + exception.status);
+          // alert("發生錯誤: " + exception.status);
         },
       });
     },
@@ -537,13 +540,12 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
           if(response==false){
             console.log(87);
           }
         },
         error: function (exception) {
-          alert("發生錯誤: " + exception.status);
+          // alert("發生錯誤: " + exception.status);
         },
       });
     },
@@ -571,7 +573,7 @@ createApp({
           }
         },
         error: function (exception) {
-          alert("發生錯誤: " + exception.status);
+          // alert("發生錯誤: " + exception.status);
         },
       });
     },
