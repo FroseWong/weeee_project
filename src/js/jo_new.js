@@ -16,7 +16,7 @@ const previewBtn = document.querySelector(".previewBtn");
 // const imgFile = document.querySelector(".img-file__input");
 // const boxBtn = document.querySelector(".box");
 const joAddImg = document.querySelector(".jo_new__addimg");
-// console.log("hi");
+
 // const imgFile = document.querySelector(".img-file__input");
 // const boxBtn = document.querySelector(".box");
 let reader = {
@@ -145,8 +145,33 @@ function deleteInit() {
     joAddImg.innerHTML = backStr;
     // init();
 
-    // trying
-    init();
+    //trying
+    const imgFile = document.querySelector(".img-file__input");
+    const boxBtn = document.querySelector(".box");
+
+    boxBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      imgFile.click();
+    });
+
+    imgFile.addEventListener("change", function (e) {
+      reader = new FileReader(); // 用來讀取檔案
+      reader.readAsDataURL(this.files[0]); // 讀取檔案
+      imgName = this.files[0].name;
+      reader.addEventListener("load", function () {
+        // console.log(reader.fileName);
+        let li_html = `
+        <div class="img-space">
+                    <img src="${reader.result}" class="preview">
+                    <div class="delete">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          </div>`;
+
+        joAddImg.innerHTML = li_html;
+        deleteInit();
+      });
+    });
   });
 }
 
