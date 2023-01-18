@@ -411,7 +411,7 @@
               success: function (response) {
                 response.forEach((element) => {
                   if(element.ProductText.length >= 80){
-                  element.ProductText = element.ProductText.substr(0,80) + "．．．．．．"
+                  element.ProductText = element.ProductText.substr(0,80) + "……"
                 };
                 element.score = element.score.substr(0,3);
                 
