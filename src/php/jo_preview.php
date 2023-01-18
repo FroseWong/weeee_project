@@ -25,7 +25,7 @@ $JoNumber = 'asd1234';
 // values($joTitle,$joContent,$MemberID,NOW(),$joStartDate.' '.$joStartTime,1,$targettravelID,$joContact,$joDetailAddress,$JoNumber,$JoImg)";
 
 $sql = "INSERT into Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoStatus,JoUseWeeee,ProductID,JoContact,Location,JodetailedAddressed,JoNumber,JoImg,JoAttend)
-values('$joTitle','$joContact','$MemberID',NOW(),'$joStartDate.' '.$joStartTime',1,1,'$targettravelID','$joContact','$joLocation','$joDetailAddress','$JoNumber','$JoImg','$joAttend')";
+values('$joTitle','$joContent','$MemberID',NOW(),'$joStartDate.' '.$joStartTime',1,1,'$targettravelID','$joContact','$joLocation','$joDetailAddress','$JoNumber','$JoImg','$joAttend')";
 
 $statement = $pdo->prepare( $sql );
 $statement->execute(); 
