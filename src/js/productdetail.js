@@ -607,8 +607,8 @@ createApp({
         method: "POST",
         url: "php/ProductDetailShoppingCart.php",
         data: {
-          MID: 1,
-          PID: num,
+          MID:2,
+          PID:num,
           QTY:people,
           TAL:total
         },

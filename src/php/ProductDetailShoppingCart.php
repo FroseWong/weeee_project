@@ -23,7 +23,7 @@ foreach ($dataif as $key => $value) {
 // -----------如果使用者沒加過購物車---------------
 if ($tempif == 0) {
     // $sqlzero = "INSERT INTO Favor (MemberID,ProductID,FavorStatus)VALUES ('{$MID}','{$PID}',1)";
-    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity)VALUES ('{$MID}','{$PID}','{$TAL}','{$QTY}')";
+    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity)VALUES ('{$PID}','{$MID}','{$TAL}','{$NEWQTY}')";
     // INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity)VALUES (41,1,10000,10);
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
