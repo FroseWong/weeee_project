@@ -31,6 +31,8 @@
       href="../vendor/datatables/dataTables.bootstrap4.min.css"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="../vendor/jquery-ui-1.13.2/jquery-ui.css">
     <link rel="stylesheet" href="../css/style.css" />
   </head>
 
@@ -192,9 +194,23 @@
               <h1 class="h3 mb-2 text-gray-800">會員查詢</h1>
               <div class="row">
                 <div class="col-12">
-                  <input type="text" placeholder="會員編號" class="member_number filter" id="memberNumber"/>
-                  <input type="text" placeholder="使用者名稱" class="user_name filter" id="username"/>
-                  <select class="form_select" name="member_status" id="memberStatus">
+                  <input
+                    type="text"
+                    placeholder="會員編號"
+                    class="member_number filter"
+                    id="memberNumber"
+                  />
+                  <input
+                    type="text"
+                    placeholder="使用者名稱"
+                    class="user_name filter"
+                    id="username"
+                  />
+                  <select
+                    class="form_select"
+                    name="member_status"
+                    id="memberStatus"
+                  >
                     <option value="">請選擇</option>
                     <option value="1">正常</option>
                     <option value="0">凍結中</option>
@@ -209,16 +225,22 @@
                     id="from"
                     name="from"
                     placeholder="加入日期"
-                    class="hasDatepicker date_select"
+                    class="date_select"
                   />
                   ～
                   <input
                     type="text"
                     id="to"
                     name="to"
-                    class="hasDatepicker filter"
+                    class="filter"
                   />
-                  <button type="button" class="btn btn-warning submit_button" onclick="search();">搜尋</button>
+                  <button
+                    type="button"
+                    class="btn btn-warning submit_button"
+                    onclick="search();"
+                  >
+                    搜尋
+                  </button>
                 </div>
               </div>
             </form>
@@ -230,7 +252,12 @@
               </div>
               <div class="card-body">
                 <div class="table-responsive" id="app">
-                  <table class="table table-bordered" id="dataTable" width="100%"cellspacing="0">
+                  <table
+                    class="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
                     <thead>
                       <tr>
                         <th>會員編號</th>
@@ -248,11 +275,14 @@
                         <td>{{member.MemCreateDate}}</td>
                         <td v-if="member.MemStatus == 1">正常</td>
                         <td v-else>凍結中</td>
-                        <td v-if="member.MemStatus == 1"><a v-bind:href= "'../php/memberStatusToggle.php?memberNumber='+ member.MemberNumber">凍結<i class="fas fa-ban" style="margin-left: 10px"></i></a></td>
-                        <td v-if="member.MemStatus == 0"><a v-bind:href= "'../php/memberStatusToggle.php?memberNumber='+ member.MemberNumber">恢復<i class="fas fa-check" style="margin-left: 10px"></i></a></td>
+                        <td v-if="member.MemStatus == 1">
+                          <a href="javascript: void(0);" v-on:click.prevent="toggleStatus(member.MemberNumber)">凍結<i class="fas fa-ban" style="margin-left: 10px"></i></a>
+                        </td>
+                        <td v-if="member.MemStatus == 0">
+                          <a href="javascript: void(0);" v-on:click.prevent="toggleStatus(member.MemberNumber)">恢復<i class="fas fa-check" style="margin-left: 10px"></i></a>
+                        </td>
                       </tr>
                     </tbody>
-                    
                   </table>
                 </div>
               </div>
@@ -333,15 +363,70 @@
     <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- 加入vue -->
-    <script src="../vendor/vue/vue.global.js"></script> 
+    <script src="../vendor/vue/vue.global.js"></script>
     <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
 
     <!-- 加入sweet alert -->
-    <script src="../plugin/sweetAlert/sweetalert2.all.min.js"></script>
+    <script src="../vendor/sweetAlert/sweetalert2.all.min.js"></script>
+
+    <!-- 加入date picker -->
+    <script src="../vendor/jquery-ui-1.13.2/jquery-ui.js"></script>
+
 
     <script>
+        //日曆
+        $( function() {
+          // default date
+          let today = new Date();
+          let tomorrow = new Date();
+          tomorrow.setDate(today.getDate() + 1);
+          $("#from").val(today.toISOString().split('T')[0]);
+          $("#to").val(tomorrow.toISOString().split('T')[0]);
+
+          var dateFormat = "yy-mm-dd"; // 指定日期字串轉給js看的日期的格式
+
+          var from = $( "#from" )
+              .datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: "yy-mm-dd",
+                maxDate: today
+              })
+              .on( "change", function() { // 註冊開始日期change事件
+                to.datepicker( "option", "minDate", getDate( this ) ); // 讓to小於from的日期都不能選
+                
+              });
+              
+          var to = $( "#to" )
+            .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            dateFormat: "yy-mm-dd",
+            maxDate: today
+            })
+            .on( "change", function() { // 註冊結束日期change事件
+            from.datepicker( "option", "maxDate", getDate( this ) ); // 讓from大於to的日期都不能選
+            });
+       
+          function getDate( element ) {
+            var date;
+            try {
+              console.log(element.value); // 字串
+              date = $.datepicker.parseDate( dateFormat, element.value );
+              console.log(date); 
+            } catch( error ) {
+              console.log("格式錯誤");
+              date = null;
+            }
+            return date;
+          }
+        } );
+
+        
       let dataTable;
-      let memberList; 
+      let memberList;
 
       //一進到此頁面，發請求去資料庫要所有會員資料
       $.ajax({
@@ -351,8 +436,8 @@
         data: {},
         dataType: "json",
         success: function (response) {
-            console.log(response);
-            memberList = response;
+          console.log(response);
+          memberList = response;
         },
       });
 
@@ -362,6 +447,20 @@
           return {
             memberList: memberList,
           };
+        },
+        methods: {
+            toggleStatus: function(memberNumber){
+               
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "修改成功",
+                    showConfirmButton: false,
+                    timer: 1000,
+                }).then(function(){
+                    window.location.href = "../php/memberStatusToggle.php?memberNumber=" + memberNumber;
+                });
+            }
         },
         mounted() {
           // 掛載完成後，初始化DataTable
@@ -382,36 +481,25 @@
 
       function search() {
         $.ajax({
-            data: {
-                memberNumber: document.getElementById("memberNumber").value,
-                username: document.getElementById("username").value,
-                memberStatus: document.getElementById("memberStatus").value,
-            },
-            url: "../php/query_member.php",
-            async: false,
-            method: "GET",
-            dataType: "json",
-            success: function(response){
-                vm.$data.memberList = response;
-            }
-        })
-        
+          data: {
+            memberNumber: document.getElementById("memberNumber").value,
+            username: document.getElementById("username").value,
+            memberStatus: document.getElementById("memberStatus").value,
+            from: document.getElementById("from").value,
+            to: document.getElementById("to").value
+          },
+          url: "../php/query_member.php",
+          async: false,
+          method: "GET",
+          dataType: "json",
+          success: function (response) {
+            vm.$data.memberList = response;
+          },
+        });
+
         return; //serach()這個方法結束了
       }
-      let url = window.location.href;
-      if(url.indexOf("update") >= 0){
-        sweetAlert();
-      }
-      function sweetAlert() {
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: '修改成功',
-            showConfirmButton: false,
-            timer: 2000
-        });
-      }
-
+     
     </script>
   </body>
 </html>
