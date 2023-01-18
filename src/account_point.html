@@ -85,7 +85,7 @@
             <div class="w_point">
               <h5>目前可使用點數</h5>
               <img src="./img/weeeepoints/yellow.svg" alt="">
-              <h5 class="point_count">50</h5>
+              <h5 class="point_count" id="count"></h5>
             </div>
 
             <div class="points">
@@ -101,36 +101,18 @@
               <hr>
               <h5>點數紀錄</h5>
             <div class="point_record">
-                <div class="table-responsive">
-                    <table class="table row-border stripe hover" id="dataTable" width="100%" cellspacing="0">
+                <div class="table-responsive" >
+                    <table class="table row-border stripe hover" id="dataTable" width="100%" cellspacing="0" >
                         <thead>
                             <tr class="table-head">
                                 <th>訂單編號</th>
-                                <th>點數</th>
-                                <th>日期</th>  
-                                <th>商品內容</th>                           
+                                <th>日期</th>
+                                <th>總金額</th>  
+                                <th>點數</th>                      
                             </tr>
                         </thead>
                         
                         <tbody id="tbody">
-                            <!-- <tr>
-                                <td>OR3456</td>
-                                <td>-20</td>
-                                <td>2022-11-19</td>
-                                <td>新竹北埔三日遊</i></td>                             
-                            </tr>
-                            <tr>
-                                <td>OR3456</td>
-                                <td>-20</td>
-                                <td>2022-11-19</td>
-                                <td>新竹北埔三日遊</i></td>                                 
-                            </tr>                
-                            <tr>
-                                <td>OR3456</td>
-                                <td>-20</td>
-                                <td>2022-11-19</td>
-                                <td>新竹北埔三日遊</i></td>                              
-                            </tr>          -->
                         </tbody>
                     </table>
                 </div>
@@ -167,17 +149,20 @@
         success: function (response) {
           //印到HTML上
           let tbody = document.getElementById("tbody");
+          let sum = 0;
           for (let i = 0; i < response.length; i++) {
             let point_content = `
               <tr>
                 <td>${response[i].OrderNumber}</td>
-                <td>${response[i].PointsChange}</td>
                 <td>${response[i].OrderDate}</td>
-                <td>${response[i].ProductName}</i></td>                             
+                <td>${response[i].TotalPrice}</td> 
+                <td>${response[i].PointsChange}</td>            
               </tr>
       `;
             tbody.insertAdjacentHTML("beforeend", point_content);
+            sum = sum + response[i].PointsChange;
           }
+          document.getElementById("count").innerHTML = sum;
         },
       });
     </script>
