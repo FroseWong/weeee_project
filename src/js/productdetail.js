@@ -624,6 +624,65 @@ createApp({
       // _this.$refs.modal.classList.remove('show');
       Swal.fire("已加入購物車<3");
     },
+    ajax_Comment() {
+      _this = this;
+      let num = 3;
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      if (num == null) {
+        num = 1;
+      }
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailComment.php",
+        data: {
+          pid: num,
+          mid:1,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log(response.ProductCommentText);
+          arrcom=[];
+          objcom={};
+          response.forEach(function(item){
+            console.log(item);
+            if(item.ProductCommentScore==1)
+            {
+              item.ProductCommentScore='⭐'
+            }
+            else if(item.ProductCommentScore==2)
+            {
+              item.ProductCommentScore='⭐⭐'
+            }
+            else if(item.ProductCommentScore==3)
+            {
+              item.ProductCommentScore='⭐⭐⭐'
+            }
+            else if(item.ProductCommentScore==4)
+            {
+              item.ProductCommentScore='⭐⭐⭐⭐'
+            }
+            else if(item.ProductCommentScore==5)
+            {
+              item.ProductCommentScore='⭐⭐⭐⭐⭐'
+            }
+            
+            objcom={
+              pic:item.MemberImg,
+              name:item.FullName,
+              star:item.ProductCommentScore,
+              comment:item.ProductCommentText,
+            }
+            arrcom.push(objcom);
+          })
+          _this.messages=arrcom;
+
+        },
+        error: function (exception) {
+          // alert("發生錯誤: " + exception.status);
+        },
+      });
+    },
   },
   computed: {
     // ---------------總金額---------------
@@ -644,5 +703,6 @@ createApp({
     // this.winSize_watch();
     this.ajax_post();
     this.ajax_heart_show();
+    this.ajax_Comment();
   },
 }).mount("#app");
