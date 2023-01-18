@@ -15,5 +15,5 @@ $statement -> bindValue(1, $memberNumber);
 $statement -> execute();
 
 //頁面導回HTML
-header("Location: ../member/list.html?update=1");
+header("Location: ../member/list.html");
 ?>
