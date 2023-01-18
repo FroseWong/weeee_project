@@ -10,6 +10,8 @@ if (isset($_GET['memberNumber'])) {
     $memberNumber = $_GET['memberNumber'];
     $username = $_GET['username'];
     $memberStatus = $_GET['memberStatus'];
+    $from = $_GET['from'];
+    $to = $_GET['to'];
 
     //2.組裝SQL
     // $sql = "SELECT  MemberNumber, Username, MemCreateDate, MemStatus from Member";
@@ -33,8 +35,11 @@ if (isset($_GET['memberNumber'])) {
     }
     if (strlen($memberStatus) != 0){
         $criteria = $criteria . " AND MemStatus = '". $memberStatus."'";
-    }
-   
+    } 
+    if (strlen($from) != 0 && strlen($to) != 0){
+        $criteria = $criteria . " AND MemCreateDate BETWEEN '". $from ."' and '". $to ."'";
+    } 
+
     $sql = $sql . $criteria . ";";
 
 } 
