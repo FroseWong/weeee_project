@@ -96,7 +96,28 @@ const app = Vue.createApp({
     return {
       test: "123",
       useweeee: "1",
+      id: "",
+      JoDetailedAddressed: "",
+      JoImg: "",
+      JoStartDate: "",
+      JoStartTime: "",
+      JoTitle: "",
+      Location: "",
+      MemberID: "",
+      MemberImg: "",
+      week: "",
+      JoContent: "",
+      JoAttend: "",
+      JoContact: "",
+      JoUseWeeee: "",
+      JoProductID: "",
+      JoContent: "",
+      JoCommentArr: [],
     };
+  },
+  mounted() {
+    this.getjoid();
+    this.getdata_jo_list();
   },
   methods: {
     contactLeader() {
@@ -139,6 +160,60 @@ const app = Vue.createApp({
           behavior: "smooth",
         });
       }
+    },
+    getjoid() {
+      let urlParams = new URLSearchParams(window.location.search);
+      this.id = urlParams.get("id");
+    },
+    getdata_jo_list() {
+      // this.jo_list_end = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/jo_detail.php",
+        data: {
+          // type: "end",
+          id: this.id,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          // console.log(response.length);
+          console.log(response[0]);
+          that.JoTitle = response[0].JoTitle;
+          that.JoImg = response[0].JoImg;
+          that.JoContent = response[0].JoContent;
+          that.JoStartDate = response[0].JoStartDate.split(" ")[0]
+            .split("-")
+            .join("/");
+          that.JoStartTime = response[0].JoStartDate.split(" ")[1].slice(0, 5);
+          that.Location = response[0].Location;
+          that.JoDetailedAddressed = response[0].JoDetailedAddressed;
+          that.JoAttend = response[0].JoAttend;
+          that.JoContact = response[0].JoContact;
+          that.JoUseWeeee = response[0].JoUseWeeee;
+          that.JoProductID = response[0].ProductID;
+          that.JoContent = response[0].JoContent;
+          console.log(that.JoProductID);
+          // for (let i = 0; i < response.length; i++) {
+          //   let content = {
+          //     JoCommentContent: response[i].JoCommentContent,
+          //     MemberImg: response[i].MemberImg,
+          //     FullName: response[i].FullName,
+          //     JoCommentTime: response[i].JoCommentTime.split("-").join("/"),
+          //   };
+
+          //   that.JoCommentArr.push(content);
+          // }
+          // console.log(that.JoCommentArr);
+          // response.forEach((element) => {
+          //   that.jo_list_end.push(element);
+          // });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
     },
   },
 });

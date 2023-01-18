@@ -1,58 +1,82 @@
 const { createApp } = Vue;
 // ---------------aa---------------
-
 const App = {
   data() {
     return {
       productList: [
-        {
-          url: "",
-          img: "img/sightseeing/fr_28_1.jpg",
-          date: "2022-12-28",
-          name: "有得逛有得買，就在桃園",
-          price: 50,
-          num: 2,
-          select: true,
-          editable: false,
-        },
-        {
-          url: "",
-          img: "img/sightseeing/fr_27_1.jpg",
-          date: "2022-12-29",
-          name: "新北的山，新北的海，水啦",
-          price: 400,
-          num: 5,
-          select: true,
-          editable: false,
-        },
-        {
-          url: "",
-          img: "img/sightseeing/fr_3_1.jpg",
-          date: "2022-12-30",
-          name: "金門二日遊",
-          price: 30,
-          num: 6,
-          select: true,
-          editable: false,
-        },
+        // {
+        //   url: "",
+        //   img: "img/sightseeing/fr_28_1.jpg",
+        //   date: "2022-12-28",
+        //   name: "有得逛有得買，就在桃園",
+        //   price: 50,
+        //   num: 2,
+        //   select: true,
+        //   editable: false,
+        // },
+        // {
+        //   url: "",
+        //   img: "img/sightseeing/fr_27_1.jpg",
+        //   date: "2022-12-29",
+        //   name: "新北的山，新北的海，水啦",
+        //   price: 400,
+        //   num: 5,
+        //   select: true,
+        //   editable: false,
+        // },
+        // {
+        //   url: "",
+        //   img: "img/sightseeing/fr_3_1.jpg",
+        //   date: "2022-12-30",
+        //   name: "金門二日遊",
+        //   price: 30,
+        //   num: 6,
+        //   select: true,
+        //   editable: false,
+        // },
       ],
 
       tempProd: {
         info: {
-          url: "",
-          img: "",
           date: "",
-          name: "",
-          price: 0,
-          num: 0,
+          productPrice: 0,
+          quantity: 0,
         },
         index: 0,
       },
     };
   },
+  created() {
+    this.getdata_productList();
+  },
 
   // ---------------bb---------------
   methods: {
+    getdata_productList() {
+      // this.jo_list_hot = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/shoppingcart.php",
+        data: {
+          // type: "hot",
+        },
+        dataType: "json",
+        success: function (response) {
+          response.forEach((productList) => {
+            console.log(productList);
+            that.productList.push(productList);
+          });
+          // that?.$nextTick(function () {
+          //   that?.product_slick();
+          // });
+        },
+        error: function (exception) {
+          console.log(123);
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
     getModalPoints(price) {
       return Math.floor(price / 100);
     },
@@ -65,15 +89,14 @@ const App = {
         return !product.select;
       });
     },
-    //全选与取消全选
+    //全選與取消全選
     selectProduct: function (isSelect) {
-      //遍历productList，全部取反
+      //productList跑回圈，全部取反
       for (var i = 0, len = this.productList.length; i < len; i++) {
-        //让productList[i].select不管为true还是false都取!isSelect，如现在未全选，那么isSelect就为false，!isSelect就为true，所以点击让商品的select都变为true
+        //讓productList[i].select不管為true還是false都取!isSelect，如現在未全選，那么isSelect就為false，!isSelect就為true，所以點擊讓商品的select都變為true
         this.productList[i].select = !isSelect;
       }
     },
-
     // ---------------日曆---------------
     setDatetimepicker(date) {
       jQuery("#datetimepicker").datetimepicker({
@@ -89,16 +112,18 @@ const App = {
     },
     // ---------------人數加減---------------
     peopleMinus() {
-      if (this.tempProd.info.num <= 1) {
-        this.tempProd.info.num = 1;
+      console.log("ttt");
+      if (this.tempProd.info.quantity <= 1) {
+        this.tempProd.info.quantity = 1;
       } else {
-        this.tempProd.info.num--;
+        this.tempProd.info.quantity--;
       }
     },
     peoplePlus() {
-      this.tempProd.info.num++;
+      console.log("ttt");
+      this.tempProd.info.quantity++;
     },
-    // ---------------結帳寫入cookie---------------
+    // ---------------結帳寫入sessionstorage---------------
     checkout() {
       //let time = document.getElementById("datetimepicker").value;
       let selectProduct = [];
@@ -117,7 +142,7 @@ const App = {
       this.tempProd.index = index;
       console.log(
         "update temp prod to " +
-          this.tempProd.info.name +
+          this.tempProd.info.productName +
           " index " +
           this.tempProd.index
       );
@@ -146,37 +171,7 @@ const App = {
       }
       return newDate;
     },
-    editProd(index) {
-      console.log(
-        "Change " +
-          index +
-          " editable status to " +
-          !this.productList[index].editable
-      );
-      this.productList[index].editable = !this.productList[index].editable;
-      let time = document.getElementById("datetimepicker").value;
-      let date = "";
-      // this.productList[index].date = date;
-      if (time == "") {
-        let OldToday = new Date();
-        date = OldToday.toISOString().split("T")[0];
-      } else {
-        let oldDate = new String(time);
-        newDate =
-          oldDate[6] +
-          oldDate[7] +
-          oldDate[8] +
-          oldDate[9] +
-          "-" +
-          oldDate[3] +
-          oldDate[4] +
-          "-" +
-          oldDate[0] +
-          oldDate[1];
-        this.productList[index].date = newDate;
-      }
-      this.setDatetimepicker(new Date());
-    },
+
     // ---------------千分位---------------
     displayTWD(price) {
       return `TWD ${price.toLocaleString("en-US")}`;
@@ -186,14 +181,25 @@ const App = {
     },
     updateEditedProd() {
       console.log("start updating exisiting prod");
-      this.productList[this.tempProd.index].price = this.tempProd.info.price;
-      this.productList[this.tempProd.index].num = this.tempProd.info.num;
+      this.productList[this.tempProd.index].productPrice =
+        this.tempProd.info.productPrice;
+      this.productList[this.tempProd.index].quantity =
+        this.tempProd.info.quantity;
       let date = this.getWeeeeDate();
       console.log(date);
       this.productList[this.tempProd.index].date = date;
     },
   },
   computed: {
+    // changeDisabled() {
+    //   for (let i = 0; i < this.productList.length; i++) {
+    //     if (this.productList[i].select) {
+    //       return false;
+    //     }else {
+    //       return true;
+    //     }
+    //   }
+    // },
     emptyCart() {
       let cartCount = this.productList.length;
       if (cartCount < 1) {
@@ -211,42 +217,32 @@ const App = {
         return true;
       }
     },
-    editIndex() {
-      let index = 0; // fake index of first render
-      for (let i = 0; i < this.productList.length; i++) {
-        if (this.productList[i].editable) {
-          index = i;
-        }
-      }
-      return index;
-    },
     getTotal() {
-      // 获取productList中select为true的数据
+      // 取productList中select為true
       var prodList = this.productList.filter(function (val) {
         return val.select;
       });
-      // 设置一个值用来存储总价
+      // 設置一個值用来儲存總價
       var totalPrice = 0;
       for (let i = 0; i < prodList.length; i++) {
-        // 将每个商品的总价加在一起
-        totalPrice += prodList[i].num * prodList[i].price;
+        // 將每個商品的總價加在一起
+        totalPrice += prodList[i].quantity * prodList[i].productPrice;
       }
       return {
-        // 被选中的物品数量就是proList.length
+        // 被選中的物品數量就是proList.length
         totalNum: prodList.length,
-        // 总价就是totalPrice
+        // 總價就是totalPrice
         totalPrice: totalPrice,
         totalPoints: Math.floor(totalPrice / 100),
       };
     },
-
-    //检测是否全选
+    //檢測是否全選
     isSelectAll: function () {
-      //如果长度为0，直接返回false
+      //如果長度為0，直接返回false
       if (this.productList.length === 0) {
         return false;
       }
-      //如果productList中每一条数据的select都为true，返回true，否则返回false;
+      //如果productList中每一條數據的select都為true，返回true，否則返回false;
       return this.productList.every(function (val) {
         return val.select;
       });
@@ -260,3 +256,45 @@ app.component("product-slide-vue", window.my_component);
 
 app.mount("#app");
 // ---------------cc---------------
+
+// editProd(index) {
+//   console.log(
+//     "Change " +
+//       index +
+//       " editable status to " +
+//       !this.productList[index].editable
+//   );
+//   this.productList[index].editable = !this.productList[index].editable;
+//   let time = document.getElementById("datetimepicker").value;
+//   let date = "";
+//   // this.productList[index].date = date;
+//   if (time == "") {
+//     let OldToday = new Date();
+//     date = OldToday.toISOString().split("T")[0];
+//   } else {
+//     let oldDate = new String(time);
+//     newDate =
+//       oldDate[6] +
+//       oldDate[7] +
+//       oldDate[8] +
+//       oldDate[9] +
+//       "-" +
+//       oldDate[3] +
+//       oldDate[4] +
+//       "-" +
+//       oldDate[0] +
+//       oldDate[1];
+//     this.productList[index].date = newDate;
+//   }
+//   this.setDatetimepicker(new Date());
+// },
+
+// editIndex() {
+//   let index = 0; // fake index of first render
+//   for (let i = 0; i < this.productList.length; i++) {
+//     if (this.productList[i].editable) {
+//       index = i;
+//     }
+//   }
+//   return index;
+// },

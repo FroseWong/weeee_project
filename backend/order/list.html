@@ -151,19 +151,18 @@
                                 ～
                                 <input type="text" id="to" name="to" class="hasDatepicker filter">
                             
-                                <input type="text" placeholder="訂單編號" class="order_number filter">
+                                <input type="text" placeholder="訂單編號" class="order_number filter" id="orderNumber">
                             </div>
                         </div>
 
                         <div class="row row_bottom">
                             <div class="col-12">
-                                <!-- <input type="text" placeholder="訂購商品名稱" class="product_name filter"> -->
-                                <input type="text" placeholder="訂購人會員編號" class="member filter">
-                                <select class="form_select" name="order_ststus" id="order_ststus">
-                                    <option value="unpaid">未付款</option>
-                                    <option value="paid">已付款</option>
+                                <input type="text" placeholder="訂購人會員編號" class="member filter" id="memberNumber">
+                                <select class="form_select" name="orderStatus" id="orderStatus">
+                                    <option value="0">未付款</option>
+                                    <option value="1">已付款</option>
                                 </select>
-                                <button type="button" class="btn btn-warning submit_button">搜尋</button>
+                                <button type="button" class="btn btn-warning submit_button" onclick="search()">搜尋</button>
                             </div>
                         </div>
                     </form>
@@ -175,12 +174,11 @@
                             <h6 class="m-0 font-weight-bold list_style">訂單列表</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="app">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>訂單編號</th>
-                                            <!-- <th>訂購商品名稱</th> -->
                                             <th>訂購人會員編號</th>
                                             <th>狀態</th>
                                             <th>訂單成立日期</th>
@@ -189,47 +187,13 @@
                                     </thead>
                                     
                                     <tbody>
-                                        <tr>
-                                            <td>WSA2046</td>
-                                            <!-- <td>北埔一日遊</td> -->
-                                            <td>ME1204</td>
-                                            <td>已付款</td>
-                                            <td>2011/04/25</td>
+                                        <tr v-for="(order, index) in orderList">
+                                            <td>{{order.orderNumber}}</td>
+                                            <td>{{order.memberNumber}}</td>
+                                            <td>{{order.orderStatus}}</td>
+                                            <td>{{order.orderDate}}</td>
                                             <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>WSA2047</td>
-                                            <!-- <td>屏東海生館門票</td> -->
-                                            <td>ME1631</td>
-                                            <td>未付款</td>
-                                            <td>2011/07/25</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>WSA2048</td>
-                                            <!-- <td>北北基週遊券72小時</td> -->
-                                            <td>ME1276</td>
-                                            <td>已付款</td>
-                                            <td>2009/01/12</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>WSA2049</td>
-                                            <!-- <td>故宮南院門票</td> -->
-                                            <td>ME3687</td>
-                                            <td>已付款</td>
-                                            <td>2012/03/29</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>WSA2050</td>
-                                            <!-- <td>手作金工項鍊</td> -->
-                                            <td>ME1211</td>
-                                            <td>未付款</td>
-                                            <td>2008/11/28</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                       
+                                        </tr>                                   
                                     </tbody> 
                                 </table>
                             </div>
@@ -297,9 +261,82 @@
      <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
      <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
  
-     <!-- Page level custom scripts -->
-     <script src="../js/demo/datatables-demo.js"></script>
+     <!-- 加入vue -->
+    <script src="../vendor/vue/vue.global.js"></script> 
+    <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
 
 </body>
+    <script>
+        let dataTable;
+        let orderList = [
+        {
+            orderNumber: "OR0001",
+            memberNumber: "ME0001",
+            date: "2022/10/01",
+            status: "未付款",
+        },
+        {
+            orderNumber: "OR0002",
+            memberNumber: "ME0001",
+            date: "2023/01/01",
+            status: "已付款",
+        },
+        {
+            orderNumber: "OR0003",
+            memberNumber: "ME0002",
+            date: "2023/01/14",
+            status: "未付款",
+        },
+        ];
+        //一進到此頁面，發請求去資料庫要所有訂單資料
+      $.ajax({
+        method: "GET",
+        url: "../php/query_order.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+            orderList = response;
+        },
+      });
 
+      const RootComponent = {
+        data() {
+          // 用vue把下列資料顯示在html上
+          return {
+            orderList: orderList,
+          };
+        },
+        mounted() {
+          // 掛載完成後，初始化DataTable
+          dataTable = $("#dataTable").DataTable();
+        },
+        beforeUpdate() {
+          // 更新資料之前，將舊的DataTable毀掉
+          dataTable.destroy();
+        },
+        updated() {
+          // 新的資料更新完後，再重新初始化DataTable
+          dataTable = $("#dataTable").DataTable();
+        },
+      };
+
+      var app = Vue.createApp(RootComponent);
+      var vm = app.mount("#app"); //如果想操控這個vue，都需要透過vm
+
+      function search() {
+        $.ajax({
+            data: {
+                orderNumber: document.getElementById("orderrNumber").value,
+                memberNumber: document.getElementById("memberNumber").value,
+                orderStatus: document.getElementById("orderStatus").value
+            },
+            url: "../php/query_order.php",
+            method: "GET",
+            success: function(response){
+                vm.$data.orderList = response;
+            }
+        })
+        return; //serach()這個方法結束了
+      }
+    </script>
 </html>
