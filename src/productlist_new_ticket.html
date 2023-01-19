@@ -52,8 +52,11 @@
                   v-for="(category,index) in categorys"
                   @click="filterCategory"
                 >
-                  <input type="checkbox" :id="`category${index+1}` " />
-
+                  <input
+                    type="checkbox"
+                    :value="category"
+                    v-model="checked.select_secondType"
+                  />
                   {{category}}
                 </li>
               </ul>
@@ -73,7 +76,9 @@
                   <input
                     type="checkbox"
                     :id="`AllCity${index+1}`"
-                  />&emsp;{{AllCity}}
+                    :value="AllCity"
+                    v-model="checked.select_city"
+                  />{{AllCity}}
                 </li>
               </ul>
             </div>
@@ -81,7 +86,12 @@
               <h4>價格</h4>
               <ul>
                 <li v-for="(price,index) in prices" @click="filterPrice">
-                  <input type="checkbox" :id="`price${index+1}`" />
+                  <input
+                    type="checkbox"
+                    :id="`price${index+1}`"
+                    :value="price"
+                    v-model="checked.select_price"
+                  />
                   {{price}}
                 </li>
               </ul>
@@ -101,7 +111,7 @@
             </div>
             <a
               class="product-card-row"
-              v-for="product in cardlist"
+              v-for="product in computedList"
               :key="index"
               :href="'./productdetail.html?id=' + product.ProductID"
               v-if="dataget"
@@ -115,13 +125,17 @@
                 <div class="product-tag">{{product.ProductSecondType}}</div>
                 <div class="product__text">{{product.ProductText}}</div>
 
-
                 <span class="gray"
-                ><i class="fa-solid fa-star"></i>{{product.score}}({{product.ProductScoredPeople}}) |
-                <span class="product-bought">{{product.ProductPurchased}}</span>個已訂購
-              </span>
+                  ><i class="fa-solid fa-star"></i
+                  >{{product.score}}({{product.ProductScoredPeople}}) |
+                  <span class="product-bought"
+                    >{{product.ProductPurchased}}</span
+                  >個已訂購
+                </span>
                 <span class="price"
-                  >TWD <span class="product-price">{{product.ProductPrice}}</span>元</span
+                  >TWD
+                  <span class="product-price">{{product.ProductPrice}}</span
+                  >元</span
                 >
               </div>
             </a>
@@ -148,202 +162,29 @@
       @@include('layout/footer.html')
     </div>
 
-    <script src="./vue/vue.global.prod.js"></script>
-    <script>
+    <script src="./vue/vue.global.js"></script>
+    <script src="./js/productlist.js"></script>
+    <!-- <script>
       const { createApp } = Vue;
 
       createApp({
         data() {
           return {
-            cardlist: [
-              {
-                src: "./img/otherpage/cl_8_1.jpg",
-                title: "經典暢遊卡 ",
-                label: "經典暢遊卡",
-                content: "漫遊台北城的最來旅行台北的最佳體驗。",
-                score: 4.4,
-                scorepeople: "(2300)",
-                order: 1000,
-                price: 650,
-                city: "北北基",
-                cardid: 1,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/un_2_1.jpg",
-                title: "無限暢遊卡二日遊",
-                label: "無限暢遊卡",
-                content: "只要一張無限暢遊卡，就能暢遊北北基的熱門景點",
-                score: 4.4,
-                scorepeople: "(2300)",
-                order: 50,
-                price: 500,
-                city: "北北基",
-                cardid: 2,
-              },
-              {
-                src: "./img/otherpage/un_7_1.jpg",
-                title: "無限暢遊卡三日遊",
-                label: "無限暢遊卡",
-                content: "只要一張無限暢遊卡，就能暢遊北北基的熱門景點",
-                score: 4.3,
-                scorepeople: "(2300)",
-                order: 350,
-                price: 850,
-                city: "北北基",
-                cardid: 3,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_5_1.jpg",
-                title: "交通暢遊卡二日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 4.1,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 600,
-                city: "北北基",
-                cardid: 5,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_6_3.jpg",
-                title: "交通暢遊卡三日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 4.2,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 850,
-                city: "北北基",
-                cardid: 6,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_6_3.jpg",
-                title: "交通暢遊卡三日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 3.8,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 850,
-                city: "北北基",
-                cardid: 6,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_5_1.jpg",
-                title: "交通暢遊卡二日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 3.5,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 600,
-                city: "北北基",
-                cardid: 5,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/cl_8_1.jpg",
-                title: "經典暢遊卡 ",
-                label: "經典暢遊卡",
-                content: "漫遊台北城的最來旅行台北的最佳體驗。",
-                score: 3.9,
-                scorepeople: "(2300)",
-                order: 1000,
-                price: 650,
-                city: "北北基",
-                cardid: 1,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/un_2_1.jpg",
-                title: "無限暢遊卡二日遊",
-                label: "無限暢遊卡",
-                content: "只要一張無限暢遊卡，就能暢遊北北基的熱門景點",
-                score: 4.6,
-                scorepeople: "(2300)",
-                order: 50,
-                price: 500,
-                city: "北北基",
-                cardid: 2,
-              },
-              {
-                src: "./img/otherpage/un_7_1.jpg",
-                title: "無限暢遊卡三日遊",
-                label: "無限暢遊卡",
-                content: "只要一張無限暢遊卡，就能暢遊北北基的熱門景點",
-                score: 4.9,
-                scorepeople: "(2300)",
-                order: 350,
-                price: 850,
-                city: "北北基",
-                cardid: 3,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/vi_3_1.jpg",
-                title: "景點暢遊卡二日遊",
-                label: "景點暢遊卡",
-                content: "讓旅遊比你想的更輕鬆無負擔,內含北北基景點門票。",
-                score: 5,
-                scorepeople: "(2300)",
-                order: 1750,
-                price: 600,
-                city: "北北基",
-                cardid: 4,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_5_1.jpg",
-                title: "交通暢遊卡二日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 4.2,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 600,
-                city: "北北基",
-                cardid: 5,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/tr_6_3.jpg",
-                title: "交通暢遊卡三日遊",
-                label: "交通暢遊卡",
-                content: "可在效期內不限次數搭乘台北捷運。",
-                score: 3,
-                scorepeople: "(2300)",
-                order: 150,
-                price: 850,
-                city: "北北基",
-                cardid: 6,
-                vif: true,
-              },
-              {
-                src: "./img/otherpage/cl_8_1.jpg",
-                title: "經典暢遊卡 ",
-                label: "經典暢遊卡",
-                content: "漫遊台北城的最來旅行台北的最佳體驗。",
-                score: 4.1,
-                scorepeople: "(2300)",
-                order: 1000,
-                price: 650,
-                city: "北北基",
-                cardid: 1,
-                vif: true,
-              },
-            ],
+            cardlist: [],
+            checked: {
+              select_secondType: [],
+              select_city: [],
+              select_price: [],
+            },
+
             prices: [
               "TWD 499 以下",
-              "TWD 500~799",
-              "TWD 800~999",
-              "TWD 1000 以上",
+              "TWD 500~999",
+              "TWD 1000~1499",
+              "TWD 1500~1999",
+              "TWD 2000以上",
             ],
-            categorys: ["無限暢遊卡", "景點暢遊卡", "交通暢遊卡", "經典暢遊卡"],
+            categorys: ["主題樂園", "水族館", "博物館", "美術館"],
             AllCitys: [
               "基隆",
               "台北",
@@ -359,69 +200,154 @@
               "台南",
               "高雄",
               "屏東",
+              "台東",
+              "花蓮",
+              "宜蘭",
+              "澎湖",
             ],
+            citylistnew:[],
             cityshow: false,
-            pricelist: [],
-            categorylist: [],
-            dataget: false,
+            dataget: true,
           };
         },
         created() {
           window.addEventListener("resize", this.resize_adjust, true);
           this.getdata();
-          
-          
+        },
+        computed: {
+          computedList() {
+            let newcardlist1 = [];
+            let newcardlist2 = [];
+            let newcardlist3 = [];
+            if (this.checked.select_secondType.length == 0) {
+              newcardlist1 = this.cardlist;
+            } else {
+              newcardlist1 = this.filters(
+                this.cardlist,
+                this.checked.select_secondType
+              );
+            }
+            if (this.checked.select_city.length == 0) {
+              newcardlist2 = newcardlist1;
+            } else {
+              newcardlist2 = this.filters(
+                newcardlist1,
+                this.checked.select_city
+              );
+            }
+            if (this.checked.select_price.length == 0) {
+              newcardlist3 = newcardlist2;
+            } else {
+              newcardlist3 = this.filters(
+                newcardlist2,
+                this.checked.select_price
+              );
+            }
+            console.log(newcardlist3);
+            let citys = new Set();
+            let pricestag = new Set();
+            let type = new Set();
+            newcardlist3.forEach(element => {
+              citys.add(element.Location)
+              pricestag.add(element.priceTag)
+              type.add(element.ProductSecondType)
+            });
+            this.AllCitys = citys;
+            this.prices = pricestag;
+            this.categorys = type;
+            return newcardlist3;
+          },
         },
 
         methods: {
-          getdata(){
-            var CID = (new URL(location.href));
-            console.log(CID.pathname);
-            this.cardlist = [];
-            console.log(this.cardlist)
-            let a = this.cardlist;
-            $.ajax({            
-            method: "POST",
-            url: "./php/Product_jerry.php",
-            data:{
-              path:CID.pathname
-            },          
-            dataType: "json",
-            success: function (response) {
-              response.forEach(element => {
-                if(element.ProductText.length >= 80){
-                  element.ProductText = element.ProductText.substr(0,80) + "……"
-                };
-                element.score = element.score.substr(0,3);
-                
-                a.push(element)
-               
-               
-              });
-              console.log(a)
-             
-            },
-            error: function(exception) {
-                alert("數據載入失敗: " + exception.status);
+          filters(list, select) {
+            const result = new Set();
+            const set = new Set(select);
+            if (select == this.checked.select_city) {
+              for (card of list) {
+                if (set.has(card.Location)) {
+                  result.add(card);
+                }
+              }
+            } else if (select == this.checked.select_secondType) {
+              for (card of list) {
+                if (set.has(card.ProductSecondType)) {
+                  result.add(card);
+                }
+              }
+            } else if (select == this.checked.select_price) {
+              for (card of list) {
+                if (set.has(card.priceTag)) {
+                  result.add(card);
+                }
+              }
             }
-            
-
-          });
-            this.cardlist = a;
-            console.log(this.cardlist);
-            this.showproduct();
-
-            
-            
+            return Array.from(result);
           },
-          showproduct(){
-            this.dataget = false;
-            this.dataget = true;
-            console.log("aaa") 
+          getdata() {
+            var CID = new URL(location.href);
+            // console.log(CID.pathname);
+            const city = new Set();
+            const catagory = new Set();
+            let _this = this;
+            this.AllCitys = [];
+            this.categorys = [];
+
+            $.ajax({
+              method: "POST",
+              url: "./php/Product_jerry.php",
+              data: {
+                path: CID.pathname,
+              },
+              dataType: "json",
+              success: function (response) {
+                response.forEach((element) => {
+                  if (element.ProductText.length >= 80) {
+                    element.ProductText =
+                      element.ProductText.substr(0, 80) + "……";
+                  }                  
+                  switch (true) {
+                    case element.ProductPrice > 1999:
+                      element.priceTag = "TWD 2000以上";
+                      break;
+                    case element.ProductPrice > 1499:
+                      element.priceTag = "TWD 1500~1999";
+                      break;
+                    case element.ProductPrice > 999:
+                      element.priceTag = "TWD 1000~1499";
+                      break;
+                    case element.ProductPrice > 499:
+                      element.priceTag = "TWD 500~999";
+                      break;
+                    case element.ProductPrice <= 499:
+                      element.priceTag = "TWD 499 以下";
+                      break;
+                  }
+                  element.score = element.score.substr(0, 3);
+                  catagory.add(element.ProductSecondType);
+                  city.add(element.Location);
+                  _this.cardlist.push(element);
+                });
+              },
+              error: function (exception) {
+                alert("數據載入失敗: " + exception.status);
+              },
+            });
+            // console.log(city);
+            // console.log(Array.from(city));
+            // city.forEach(element => {
+            //   console.log(element)
+            // });
+            this.AllCitys = city;
+            this.categorys = catagory;
           },
+          selectfunction() {
+            this.cardlist;
+          },
+          showproduct() {},
           open_city(e) {
             this.cityshow = !this.cityshow;
-            
+
             let path = e.path[0].childNodes[1].classList;
             if (path.contains("fa-circle-chevron-down")) {
               path.remove("fa-circle-chevron-down");
@@ -432,6 +358,7 @@
             }
           },
           filterCity(e) {
+            e.target.querySelector("input").click();
             let city = e.path[0].childNodes[0];
             let text = e.path[0].textContent;
             if (city.checked == false) {
@@ -445,7 +372,6 @@
                 }
               });
             }
-            
           },
           filterSort_bottom_to_top(e) {
             let arr = this.cardlist;
@@ -471,7 +397,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return  +b.ProductPrice - +a.ProductPrice;
+                return +b.ProductPrice - +a.ProductPrice;
               };
               arr.sort(sorter);
             };
@@ -511,7 +437,7 @@
             let arr = this.cardlist;
             const eitherSort = (arr = []) => {
               const sorter = (a, b) => {
-                return +b.score - +a.score ;
+                return +b.score - +a.score;
               };
               arr.sort(sorter);
             };
@@ -528,23 +454,24 @@
             epath.color = "#fff";
           },
           filterPrice(e) {
+            e.target.querySelector("input").click();
             let price = e.path[0].childNodes[0];
             let text = e.path[0].textContent;
-            if (price.checked == false) {
-              price.checked = true;
-              this.pricelist.push(e.path[0].textContent);
-            } else if (price.checked == true) {
-              price.checked = false;
-              this.pricelist.forEach((e, index) => {
-                if (e == text) {
-                  this.pricelist.splice(index, 1);
-                }
-              });
-            }
+            // if (price.checked == false) {
+            //   price.checked = true;
+            //   this.pricelist.push(e.path[0].textContent);
+            // } else if (price.checked == true) {
+            //   price.checked = false;
+            //   this.pricelist.forEach((e, index) => {
+            //     if (e == text) {
+            //       this.pricelist.splice(index, 1);
+            //     }
+            //   });
+            // }
           },
           filterCategory(e) {
             e.target.querySelector("input").click();
-            console.log(this.productlist) ;
+
             // for (let i = 0; i < this.cardlist.length; i++){
             //   this.cardlist[i].vif=false;
             // }
@@ -687,11 +614,8 @@
           },
         },
 
-        mounted() {
-          
-          
-        },
+        mounted() {},
       }).mount("#app");
-    </script>
+    </script> -->
   </body>
 </html>
