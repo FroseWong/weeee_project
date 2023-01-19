@@ -2,7 +2,8 @@ const { createApp } = Vue;
 // ---------------aa---------------
 const App = {
   data() {
-    return {
+    return { currentI:'',
+    currentII:'',
       productList: [
         // {
         //   url: "",
@@ -53,26 +54,24 @@ const App = {
   // ---------------bb---------------
   methods: {
     getdata_productList() {
-      // this.jo_list_hot = [];
       let that = this;
       $.ajax({
         method: "POST",
-        url: "./php/shoppingcart.php",
+        url: "./php/ShoppingCart.php",
         data: {
           // type: "hot",
         },
         dataType: "json",
         success: function (response) {
+          // console.log(response);
           response.forEach((productList) => {
-            console.log(productList);
+            // console.log(productList);
+            productList.select = true;
             that.productList.push(productList);
           });
-          // that?.$nextTick(function () {
-          //   that?.product_slick();
-          // });
         },
         error: function (exception) {
-          console.log(123);
+          // console.log(123);
           alert("數據載入失敗: " + exception.status);
         },
       });
@@ -83,6 +82,24 @@ const App = {
 
     btnClose(index) {
       this.productList.splice(index, 1);
+      this.currentI = index;
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/CartRemove.php",
+        data: {
+          CID: that.productList[that.currentI].cartID,
+        },
+        dataType: "text",
+        success: function (response) {
+          //移除商品成功
+          alert(response);
+          location.reload();
+        },
+        error: function (exception) {
+          alert("移除商品失敗: " + exception.status);
+        },
+      });
     },
     closeSelect() {
       this.productList = this.productList.filter(function (product) {
@@ -92,7 +109,7 @@ const App = {
     //全選與取消全選
     selectProduct: function (isSelect) {
       //productList跑回圈，全部取反
-      for (var i = 0, len = this.productList.length; i < len; i++) {
+      for (var i = 0; i < this.productList.length; i++) {
         //讓productList[i].select不管為true還是false都取!isSelect，如現在未全選，那么isSelect就為false，!isSelect就為true，所以點擊讓商品的select都變為true
         this.productList[i].select = !isSelect;
       }
@@ -112,7 +129,6 @@ const App = {
     },
     // ---------------人數加減---------------
     peopleMinus() {
-      console.log("ttt");
       if (this.tempProd.info.quantity <= 1) {
         this.tempProd.info.quantity = 1;
       } else {
@@ -120,7 +136,6 @@ const App = {
       }
     },
     peoplePlus() {
-      console.log("ttt");
       this.tempProd.info.quantity++;
     },
     // ---------------結帳寫入sessionstorage---------------
@@ -138,6 +153,8 @@ const App = {
     },
     updateTempProd(index) {
       let editedProd = this.productList[index];
+      // console.log(index);
+      this.currentI = index;
       this.tempProd.info = JSON.parse(JSON.stringify(editedProd));
       this.tempProd.index = index;
       console.log(
@@ -188,6 +205,28 @@ const App = {
       let date = this.getWeeeeDate();
       console.log(date);
       this.productList[this.tempProd.index].date = date;
+      let that = this;
+      
+      $.ajax({            
+        method: "POST",
+        url: "./php/CartUpdate.php",
+        data:{ 
+            CID: that.productList[that.currentI].cartID,
+            Quantity: that.productList[that.tempProd.index].quantity,
+            Date: that.productList[that.tempProd.index].date,
+            // CID: 1,
+            // Quantity: 6,
+            // Date: '2025-01-01',
+        },
+        dataType: "text",
+        success: function (response) {
+            alert("修改成功");
+        },
+        error: function(exception) {
+            alert("發生錯誤: " + exception.status);
+            // console.log(that);
+        }
+    });
     },
   },
   computed: {
@@ -209,7 +248,7 @@ const App = {
       }
     },
     notEmptyCart() {
-      console.log(this.productList);
+      // console.log(this.productList);
       let cartCount = this.productList.length;
       if (cartCount < 1) {
         return false;
@@ -248,7 +287,10 @@ const App = {
       });
     },
   },
-  mounted() {},
+  updated(){
+  },
+  mounted() { 
+  },
 };
 
 app = Vue.createApp(App);
