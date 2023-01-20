@@ -16,25 +16,25 @@
         <div class="sign_upbg">
             <div class="container sign_up">
                 <div class="sur">
-                    <h3>註冊</h3>
+                    <h3>註冊{{test}}</h3>
                 
-                    <form class="surform" action="sign_up.php" method="post">
+                    <form class="surform" action="./php/sign_up.php" method="post">
 
                         <div class="email">
                             <i class='fa-regular fa-envelope'></i>
-                            <input type="text" required name="account" placeholder="請輸入電子信箱">
+                            <input type="email" required name="Username" placeholder="請輸入電子信箱">
                           </div>
                           
                         <div class="password">
                          
-                            <input type="password" required name="password" placeholder="請輸入密碼" id="openPasswords"/>
-                            <i class="fa-regular fa-eye" id="checkEye"></i>
+                            <input type="password" required name="password" placeholder="請輸入密碼" ref="passwordInput" id="openPasswords"/>
+                            <i class="fa-regular fa-eye" id="checkEye" ref="checkEye" @click="openandcloseEyes"></i>
                             <br>
                         </div>
                         <div class="passwordag">
 
                           <input type="password" required name="password" placeholder="請再次輸入密碼" id="openPasswordag"/>
-                          <i class="fa-regular fa-eye" id="checkEyeag"></i>
+                          <i class="fa-regular fa-eye" id="checkEyeag" @click="openandcloseEyes"></i>
                             <br>
                         </div>
                         
@@ -119,8 +119,9 @@
             </div>
           </footer>
             
-<script src="./js/sign_up.js"></script>
 </div>
+<script src="./vender/vue/vue.global.prod.js"></script>
+<script src="./js/sign_up.js"></script>
 
 </body>
 </html>

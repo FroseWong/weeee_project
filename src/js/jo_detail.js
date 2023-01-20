@@ -72,7 +72,7 @@
 //   ${saysomething__content.value}
 // </div>
 // <div class="jo__comment__right">
-//   <div class="mamber-img"></div>
+//   <div class="member-img"></div>
 //   <div class="member-name">Emily</div>
 //   <div class="member-leavetime">2022/12/11</div>
 // </div>
@@ -113,11 +113,23 @@ const app = Vue.createApp({
       JoProductID: "",
       JoContent: "",
       JoCommentArr: [],
+      FullName: "",
+      product: "",
+      currentMemberID: "",
+      currentComment: "",
+      currentJoCommentTime: "",
+      currentFullName: "",
+      // fakeImg: "./img/sightseeing/fa_201_1.jpg",
     };
+  },
+  updated() {
+    // this.getdata_product_list();
   },
   mounted() {
     this.getjoid();
     this.getdata_jo_list();
+    this.getdata_jo_comment();
+    this.getdata_product_list();
   },
   methods: {
     contactLeader() {
@@ -142,22 +154,82 @@ const app = Vue.createApp({
     saysomething() {
       // console.log(this.$refs.saysomething__content.value);
       if (this.$refs.saysomething__content.value !== "") {
-        let str = `<div class="jo__comment">
-        <div class="jo__comment__left">
-          ${this.$refs.saysomething__content.value}
-        </div>
-        <div class="jo__comment__right">
-          <div class="mamber-img"></div>
-          <div class="member-name">Emily</div>
-          <div class="member-leavetime">2022/12/11</div>
-        </div>
-        </div>`;
+        const date = new Date();
+        let that = this;
+        $.ajax({
+          method: "POST",
+          url: "./php/jo_detail_addcomment.php",
+          data: {
+            memberid: 1,
+            joID: that.id,
+            comment: that.$refs.saysomething__content.value,
+            JoCommentTime: `${date.getFullYear()}-${
+              date.getMonth() + 1
+            }-${date.getDate()}`,
+          },
+          dataType: "json",
+          success: function (response) {
+            // console.log(response);
+            that.currentFullName = response[0].FullName;
+            // console.log(that.currentFullName);
+            // console.log(this.data.split("&"));
+            for (let i = 0; i < this.data.split("&").length; i++) {
+              if (this.data.split("&")[i].includes("memberid")) {
+                // console.log(this.data.split("&")[i]);
+                // console.log(this.data.split("&")[i].indexOf("="));
 
-        this.$refs.jo__comment__list.insertAdjacentHTML("beforeend", str);
-        this.$refs.saysomething__content.value = "";
-        let joCommentAll = document.querySelectorAll(".jo__comment");
-        joCommentAll[joCommentAll.length - 1].scrollIntoView({
-          behavior: "smooth",
+                that.currentMemberID = this.data
+                  .split("&")
+                  [i].slice(this.data.split("&")[i].indexOf("=") + 1);
+                // console.log(that.currentMemberID);
+              } else if (this.data.split("&")[i].includes("JoCommentTime")) {
+                // console.log(this.data.split("&")[i]);
+                // console.log(this.data.split("&")[i].indexOf("="));
+                let timeArr = this.data
+                  .split("&")
+                  [i].slice(this.data.split("&")[i].indexOf("=") + 1)
+                  .split("-");
+                // console.log(timeArr);
+                for (let i = 0; i < timeArr.length; i++) {
+                  if (timeArr[i].length < 2) timeArr[i] = `0${timeArr[i]}`;
+                }
+                // console.log(timeArr);
+                that.currentJoCommentTime = timeArr.join("/");
+                // console.log(that.currentJoCommentTime);
+                // that.currentMemberID = this.data
+                //   .split("&")
+                //   [i].slice(this.data.split("&")[i].indexOf("=") + 1);
+                // console.log(that.currentMemberID);
+              }
+            }
+            // console.log(response[0].MemberImg);
+            let bgi = `${response[0].MemberImg}`;
+            let str = `<div class="jo__comment">
+            <div class="jo__comment__left">
+              ${that.$refs.saysomething__content.value}
+            </div>
+            <div class="jo__comment__right">
+              <div class="member-img"></div>
+              <div class="member-name">${that.currentFullName}</div>
+              <div class="member-leavetime">${that.currentJoCommentTime}</div>
+            </div>
+            </div>`;
+
+            that.$refs.jo__comment__list.insertAdjacentHTML("beforeend", str);
+            that.$refs.saysomething__content.value = "";
+            const memberImgAll = document.querySelectorAll(".member-img");
+            // console.log(memberImgAll.length);
+            memberImgAll[
+              memberImgAll.length - 1
+            ].style.backgroundImage = `url('${bgi}')`;
+            let joCommentAll = document.querySelectorAll(".jo__comment");
+            joCommentAll[joCommentAll.length - 1].scrollIntoView({
+              behavior: "smooth",
+            });
+          },
+          error: function (exception) {
+            alert("數據載入失敗: " + exception.status);
+          },
         });
       }
     },
@@ -179,7 +251,7 @@ const app = Vue.createApp({
         success: function (response) {
           // console.log(response);
           // console.log(response.length);
-          console.log(response[0]);
+          // console.log(response[0]);
           that.JoTitle = response[0].JoTitle;
           that.JoImg = response[0].JoImg;
           that.JoContent = response[0].JoContent;
@@ -194,7 +266,11 @@ const app = Vue.createApp({
           that.JoUseWeeee = response[0].JoUseWeeee;
           that.JoProductID = response[0].ProductID;
           that.JoContent = response[0].JoContent;
-          console.log(that.JoProductID);
+          that.FullName = response[0].FullName;
+          that.week = response[0].week;
+          that.MemberImg = response[0].MemberImg;
+          // console.log(that.product);
+
           // for (let i = 0; i < response.length; i++) {
           //   let content = {
           //     JoCommentContent: response[i].JoCommentContent,
@@ -203,12 +279,86 @@ const app = Vue.createApp({
           //     JoCommentTime: response[i].JoCommentTime.split("-").join("/"),
           //   };
 
-          //   that.JoCommentArr.push(content);
+          // that.JoCommentArr.push(content);
           // }
           // console.log(that.JoCommentArr);
           // response.forEach((element) => {
           //   that.jo_list_end.push(element);
           // });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    getdata_jo_comment() {
+      // this.jo_list_end = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/jo_detail_showcomment.php",
+        data: {
+          // type: "end",
+          id: this.id,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("response", response);
+          // console.log(response.length);
+          for (let i = 0; i < response.length; i++) {
+            let currentComment = {
+              FullName: response[i].FullName,
+              JoCommentContent: response[i].JoCommentContent,
+              JoCommentTime: response[i].JoCommentTime.split("-").join("/"),
+              MemberImg: response[i].MemberImg,
+            };
+            // console.log(currentComment);
+            that.JoCommentArr.push(currentComment);
+            // console.log(that.JoCommentArr);
+          }
+          // console.log(that.JoCommentArr);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+
+    getdata_product_list() {
+      // this.jo_list_hot = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/Product.php",
+        data: {
+          // id: that.JoProductID,
+        },
+
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          // console.log(that.JoProductID);
+          response.forEach((p) => {
+            // console.log(p);
+            if (p.ProductID === that.JoProductID) that.product = p;
+          });
+          console.log(that.product);
+          if (that.product.ProductText?.length >= 80) {
+            that.product.ProductText =
+              that.product.ProductText.slice(0, 80) + "……";
+          }
+          // console.log(response);
+          //   response.forEach((product) => {
+          //     if (product.ProductType === "sightseeing")
+          //       that.sightseeingList.push(product);
+          //   });
+          //   // console.log(that.sightseeingList);
+          //   that.sightseeingList.forEach((s) => {
+          //     if (that.useweeee === s.ProductName) that.targettravel = s;
+          //   });
+          //   that.targettravelID = that.targettravel.ProductID;
+          //   // console.log(that.targettravelID);
+          //
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
