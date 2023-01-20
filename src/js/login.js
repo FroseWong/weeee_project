@@ -1,45 +1,34 @@
-const AM_I_LOGIN = sessionStorage.getItem("MemberID");
-if (AM_I_LOGIN) {
-  location.replace("../index.html");
-}
-// ################################################################
+function doSubmit() {
+    if (document.getElementById('Username').value == '') {
+        alert("請填寫[帳號]");
+        return false;
+    }
+    if (document.getElementById('Password').value == '') {
+        alert("請填寫[密碼]");
+        return false;
+    }        
 
-//                  登入、sessionStorage.setItem
-// ################################################################
-(() => {
-  // 取欄位值
-  
-  // 1. 綁定 id="login_btn" 登入功能
-  document.getElementById("login_btn").addEventListener("click", () => {
-
-    const Username = document.querySelector('#Username').value; // 信箱 輸入欄
-    const Password = document.querySelector('#Password').value; // 密碼 輸入欄
-    //const errMsg = document.querySelector("#error"); // 錯誤訊息欄
- 
-
-    fetch("../php/login.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        Username: Username.value,
-        Password: Password.value,
-        
-      }),
-      
-    })
-   
-      .then((resp) => resp.json()) // 取得後
-      .then((body) => {
-        errMsg.textContent = "";
-        const { successful, message } = body;
-        if (successful) {
-          // true 就送 SESSION 到 使用者Cookie
-          const { MemberID} = body;
-          sessionStorage.setItem("MemberID", MemberID);
-        } else {
-          // 失敗將收到的錯誤訊息寫進 HTML
-          //errMsg.textContent = message;
+    //AJAX送出表單內容
+    $.ajax({            
+        method: "POST",
+        url: "../php/login.php",
+        data:{ 
+            Username: $("#Username").val(),
+            Password: $("#Password").val()
+        },
+        dataType: "text",
+        success: function (response) {
+            if(response == 'Y'){
+                //登入成功->導回產品頁
+                alert('登入成功');
+                location.href = 'index.html';
+            }else{
+                alert('帳號或密碼錯誤');
+            }                
+        },
+        error: function(exception) {
+            alert("發生錯誤: " + exception.status);
         }
-      });
-  });
-})();
+    });
+}
+

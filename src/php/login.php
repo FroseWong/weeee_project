@@ -1,47 +1,38 @@
 <?php
-include("./connection.php");
-$member = json_decode(file_get_contents("php://input"), true);
+    include("../php/connection.php");	
 
-// 判斷有沒有接收到資料
-if ($member == null) {
-  $member["message"] = "無會員資訊";
-  $member["successful"] = false;
-  echo json_encode($member);
-  return;
-}
+    //建立SQL
+    $sql = "SELECT * FROM weeee.Member WHERE  Username = ? and `Password` = ?";
 
-// -----------------------------------------------------
-$sql = "
-    select *
-    from Weeee.Member where 
-    Username = :Username and Password = :Password;
-  ";
-// -----------------------------------------------------
+    //給值
+    $statement = getPDO()->prepare($sql);
+    $statement->bindValue(1, $_POST["Username"]);
+    $statement->bindValue(2, $_POST["Password"]);
+    $statement->execute();
+    $data = $statement->fetchAll();
 
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(":Username", $member["Username"]); // 信箱
-$stmt->bindValue(":Password", $member["Password"]); // 密碼
-$stmt->execute();
+    $memberID = "";
+    $memberName = "";
+    foreach($data as $index => $row){
+        $memberID = $row["MemberID"];
+        $memberName = $row["Username"];
+    }
 
-$members = $stmt->fetchAll();
-// 取得資料 != 0
-if (count($members) != 0) {
-  $member = $members[0];
-  $member["successful"] = true;
-  session_start();
-  if ($_SESSION != null) {
-    session_regenerate_id();
-  }
-  $_SESSION["loggedin"] = true;
-  $_SESSION["member"] = (object) $member;
-  echo json_encode([
-    "successful" => true,
-    "MemberID" => $member["MemberID"],
-  ]);
-} else {
-  $resp_body = (object) [
-    "successful" => false,
-    "message" => "信箱或密碼錯誤"
-  ];
-  echo json_encode($resp_body);
-}
+    //判斷是否有會員資料?
+    if($memberID != "" && $memberName != ""){
+
+        include("../php/Member.php");        
+    
+        //將會員資訊寫入session
+        setMemberInfo($memberID, $memberName);
+
+        //登入成功        
+        echo "Y"; 
+
+    }else{
+
+        //登入失敗
+        echo "N"; 
+        
+    }
+?>
