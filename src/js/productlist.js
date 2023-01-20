@@ -86,9 +86,9 @@ createApp({
         pricestag.add(element.priceTag)
         type.add(element.ProductSecondType)
       });
-      this.AllCitys = citys;
-      this.prices = pricestag;
-      this.categorys = type;
+    //   this.AllCitys = citys;
+    //   this.prices = pricestag;
+    //   this.categorys = type;
       return newcardlist3;
     },
   },
@@ -158,9 +158,7 @@ createApp({
                 break;
             }
             element.score = element.score.substr(0, 3);
-            catagory.add(element.ProductSecondType);
-            city.add(element.Location);
-            _this.cardlist.push(element);
+            
           });
         },
         error: function (exception) {
