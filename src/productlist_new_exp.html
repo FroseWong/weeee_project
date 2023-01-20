@@ -129,11 +129,13 @@
               </div>
             </div>
             <div class="product-card-row__right">
-              <div class="change-heart" ref="changeHeart" @click="changeHeart">
-                <i class="fa-regular fa-heart" ref="hollow"></i>
-                <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+              <div class="change-heart" ref="changeHeart" >
+                <i class="fa-regular fa-heart" ref="hollow"
+                @click="changeHeart"></i>
+                <i class="fa-solid fa-heart orange hidden" ref="solid"
+                @click="changeHeart"></i>
               </div>
-              <div class="product-name">{{product.Location}}{{product.ProductName}}</div>
+              <div class="product-name">{{product.Location}}｜{{product.ProductName}}</div>
               <div class="product-tag">{{product.ProductSecondType}}</div>
               <div class="product__text">{{product.ProductText}}</div>
           
