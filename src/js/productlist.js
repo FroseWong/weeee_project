@@ -1,4 +1,3 @@
-
 const { createApp } = Vue;
 
 createApp({
@@ -39,7 +38,7 @@ createApp({
         "宜蘭",
         "澎湖",
       ],
-      citylistnew:[],
+      citylistnew: [],
       cityshow: false,
       dataget: true,
     };
@@ -64,31 +63,25 @@ createApp({
       if (this.checked.select_city.length == 0) {
         newcardlist2 = newcardlist1;
       } else {
-        newcardlist2 = this.filters(
-          newcardlist1,
-          this.checked.select_city
-        );
+        newcardlist2 = this.filters(newcardlist1, this.checked.select_city);
       }
       if (this.checked.select_price.length == 0) {
         newcardlist3 = newcardlist2;
       } else {
-        newcardlist3 = this.filters(
-          newcardlist2,
-          this.checked.select_price
-        );
+        newcardlist3 = this.filters(newcardlist2, this.checked.select_price);
       }
       console.log(newcardlist3);
       let citys = new Set();
       let pricestag = new Set();
       let type = new Set();
-      newcardlist3.forEach(element => {
-        citys.add(element.Location)
-        pricestag.add(element.priceTag)
-        type.add(element.ProductSecondType)
+      newcardlist3.forEach((element) => {
+        citys.add(element.Location);
+        pricestag.add(element.priceTag);
+        type.add(element.ProductSecondType);
       });
-      this.AllCitys = citys;
-      this.prices = pricestag;
-      this.categorys = type;
+      //   this.AllCitys = citys;
+      //   this.prices = pricestag;
+      //   this.categorys = type;
       return newcardlist3;
     },
   },
@@ -137,9 +130,8 @@ createApp({
         success: function (response) {
           response.forEach((element) => {
             if (element.ProductText.length >= 80) {
-              element.ProductText =
-                element.ProductText.substr(0, 80) + "……";
-            }                  
+              element.ProductText = element.ProductText.substr(0, 80) + "……";
+            }
             switch (true) {
               case element.ProductPrice > 1999:
                 element.priceTag = "TWD 2000以上";
@@ -179,6 +171,16 @@ createApp({
       this.cardlist;
     },
     showproduct() {},
+    changeHeart(e) {
+      e.stopPropagation();
+      console.log(e.target);
+      // let a = e.target;
+      // let b = e.target.nextElementSibling
+      //   ? e.target.nextElementSibling
+      //   : e.target.previousElementSibling;
+      // a.classList.add("hidden");
+      // b.classList.remove("hidden");
+    },
     open_city(e) {
       this.cityshow = !this.cityshow;
 
@@ -339,9 +341,7 @@ createApp({
       );
       target_class = e.target.classList;
       let cate_bar = document.querySelector(".productlist_new__category");
-      let dest_bar = document.querySelector(
-        ".productlist_new__destination"
-      );
+      let dest_bar = document.querySelector(".productlist_new__destination");
       let price_bar = document.querySelector(".productlist_new__price");
       let sort_bar = document.querySelector(".productlist_new__sort");
       let black_bg = document.querySelector(".black_bg");
@@ -427,12 +427,8 @@ createApp({
       }
       if (screen.width > 768) {
         document.querySelector("body").classList.remove("stop_scroll");
-        let cate_bar = document.querySelector(
-          ".productlist_new__category"
-        );
-        let dest_bar = document.querySelector(
-          ".productlist_new__destination"
-        );
+        let cate_bar = document.querySelector(".productlist_new__category");
+        let dest_bar = document.querySelector(".productlist_new__destination");
         let price_bar = document.querySelector(".productlist_new__price");
         let sort_bar = document.querySelector(".productlist_new__sort");
         let black_bg = document.querySelector(".black_bg");
