@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+
+   <link rel="stylesheet" href="./css/style.css">
     <title>登入</title>
 </head>
 <body>
@@ -16,19 +17,19 @@
                 <div class="log">
                     <h3>登入</h3>
                 
-                    <form class="loginform" action="#" method="post">
+                    <form class="loginform"  method="post">
 
                         <div class="email">
                             <i class='fa-regular fa-envelope'></i>
-                            <input type="text" name="account" placeholder="請輸入電子信箱">
+                            <input type="text" id="Username" name="Username" placeholder="請輸入電子信箱" />
                           </div>
                           <div class="password">
                          
-                            <input type="password" required name="password" placeholder="請輸入密碼" id="openPasswords"/>
+                            <input type="password" required id="Password" name="Password"  placeholder="請輸入密碼" id="openPasswords"/>
                             <i class="fa-regular fa-eye" id="checkEye"></i>
                             <br>
                         </div>
-                        <input class="submit" type="submit" value="登入" href="/dist/account_setting.html"/>
+                        <input id="login_btn" class="submit" type="submit"  value="登入" />
                         
                     </form>
                     <div class="logincheckbox">
@@ -111,6 +112,52 @@
             
        
 </div>
-  <script src="./js/sign_up.js"></script>
+ <!-- <script>
+  const AM_I_LOGIN = sessionStorage.getItem("MemberID");
+if (AM_I_LOGIN) {
+  location.replace("../index.html");
+}
+
+
+//                  登入、sessionStorage.setItem
+
+(() => {
+  // 取欄位值
+  let Username = document.querySelector('#Username').value; // 信箱 輸入欄
+  let Password = document.querySelector('#Password').value; // 密碼 輸入欄
+ 
+  console.log(Username);
+  console.log(Password);
+
+  document.getElementById("login_btn").addEventListener("click", () => {
+    fetch("../php/login.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        Username: Username.value,
+        Password: Password.value,
+        
+      }),
+      
+    })
+   
+      .then((resp) => resp.json()) // 取得後
+      .then((body) => {
+        errMsg.textContent = "";
+        const { successful, message } = body;
+        if (successful) {
+          // true 就送 SESSION 到 使用者Cookie
+          const { MemberID} = body;
+          sessionStorage.setItem("MemberID", MemberID);
+        } else {
+          // 失敗將收到的錯誤訊息寫進 HTML
+          //errMsg.textContent = message;
+        }
+      });
+  });
+})();
+ </script> -->
+
+ <script src="./js/login.js"></script>
 </body>
 </html>
