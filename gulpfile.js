@@ -38,6 +38,11 @@ function jsmini() {
   return src("src/js/*.js").pipe(uglify()).pipe(dest("dist/js"));
 }
 
+// js regular
+function jsregular() {
+  return src("src/js/*.js").pipe(dest("dist/js"));
+}
+
 // js es6 -> es5
 function babel5() {
   return src("src/js/*.js")
@@ -52,6 +57,7 @@ function babel5() {
 
 exports.es5 = babel5;
 exports.js = jsmini;
+exports.jsr = jsregular;
 
 // sass complier
 // 沒壓縮css
@@ -156,7 +162,8 @@ function watchfile() {
     ["src/sass/*.scss", "src/sass/**/*.scss", "src/sass/**/**/*.scss"],
     sassStyle
   );
-  watch("src/js/*.js", jsmini);
+  // watch("src/js/*.js", jsmini);
+  watch("src/js/*.js", jsregular);
   watch(["src/img/*.*", "src/img/**/*.*"], img);
   watch(["src/vue/*.js"], movevue);
   watch(["src/vue/**/*.*"], moveVender);
@@ -176,7 +183,7 @@ function browser(done) {
     ["src/sass/*.scss", "src/sass/**/*.scss", "src/sass/**/**/*.scss"],
     sassStyle
   ).on("change", reload);
-  watch("src/js/*.js", jsmini).on("change", reload);
+  watch("src/js/*.js", jsregular).on("change", reload);
   watch(["src/img/*.*", "src/img/**/*.*"], img).on("change", reload);
   watch(["src/vue/*.js"], movevue).on("change", reload);
   watch(["src/php/*.php"], php).on("change", reload);
@@ -186,7 +193,7 @@ function browser(done) {
 
 //開發用
 exports.default = series(
-  parallel(html, layout, movevue, moveVender, sassStyle, jsmini, img, php),
+  parallel(html, layout, movevue, moveVender, sassStyle, jsregular, img, php),
   browser
 );
 

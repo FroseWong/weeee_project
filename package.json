@@ -6,7 +6,8 @@
   "scripts": {
     "安裝所有套件": "npm i",
     "上線用": "gulp package",
-    "開發用": "gulp"
+    "開發用": "gulp",
+    "刪除dist": "gulp c"
   },
   "repository": {
     "type": "git",
