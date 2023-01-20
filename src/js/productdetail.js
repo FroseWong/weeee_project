@@ -448,7 +448,7 @@ createApp({
       sessionStorage.setItem("點數", this.modal_points);
       let data = sessionStorage.getItem("日期");
       // console.log(data);
-      // window.location.href = "./payment.html";
+      window.location.href = "./payment.html";
     },
     // ---------------消失底下btn---------------
     cle_check() {
@@ -553,10 +553,8 @@ createApp({
         success: function (response) {
           if (response == false) {
             // console.log('值為0');
-            // _this.$refs.heartshow.classList.remove("liked");
             _this.faHeart = "regular";
           } else if (response == true) {
-            // _this.$refs.heartshow.classList.add("liked");
             _this.faHeart = "solid";
           }
         },
@@ -578,9 +576,7 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
           if (response == 0) {
-            // console.log('值為0');
             _this.$refs.heartshow.classList.remove("liked");
             _this.faHeart = "regular";
           } else if (response == 1) {
@@ -614,15 +610,31 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
-          
+          // console.log(response);  
         },
         error: function (exception) {
           // alert("發生錯誤: " + exception.status);
         },
       });
-      // _this.$refs.modal.classList.remove('show');
-      Swal.fire("已加入購物車<3");
+      $("#peopleModal").modal('hide');
+      // Swal.fire("已加入購物車<3");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: '已成功加入購物車 ♥'
+      })
+
     },
     ajax_Comment() {
       _this = this;
@@ -641,7 +653,6 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response.ProductCommentText);
           arrcom=[];
           objcom={};
           response.forEach(function(item){

@@ -1,6 +1,5 @@
 <?php
 require_once('connection.php');
-// -----------判斷有無加過收藏---------------
 
 $MID = $_POST['MID'];
 $PID = $_POST['PID'];
