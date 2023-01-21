@@ -1,9 +1,9 @@
 "use strict";
 
-const heartAll = document.querySelectorAll(".fa-heart");
+// const heartAll = document.querySelectorAll(".fa-heart");
 const productAll = document.querySelectorAll(".product-card");
 const popularCountryAll = document.querySelectorAll(".popular-country");
-const changeHeartAll = document.querySelectorAll(".change-heart");
+// const changeHeartAll = document.querySelectorAll(".change-heart");
 let status = true;
 const mouseenterFu = function () {
   popularCountryAll.forEach((a) => a.classList.remove("active"));
@@ -30,13 +30,13 @@ const popularRWD = function () {
 //   })
 // );
 
-productAll.forEach((product) =>
-  product.addEventListener("click", function (e) {
-    e.stopPropagation();
-    console.log("clicked product");
-    location.href = "./productdetail.html";
-  })
-);
+// productAll.forEach((product) =>
+//   product.addEventListener("click", function (e) {
+//     e.stopPropagation();
+//     console.log("clicked product");
+//     location.href = "./productdetail.html";
+//   })
+// );
 
 window.addEventListener("resize", function () {
   let nowStatus = status;
@@ -51,15 +51,15 @@ window.addEventListener("resize", function () {
   }
 });
 
-changeHeartAll.forEach((changeHeart) =>
-  changeHeart.addEventListener("click", function (e) {
-    e.stopPropagation();
-    this.querySelectorAll("i").forEach((i) => {
-      if (i.classList.contains("hidden")) i.classList.remove("hidden");
-      else if (!i.classList.contains("hidden")) i.classList.add("hidden");
-    });
-  })
-);
+// changeHeartAll.forEach((changeHeart) =>
+//   changeHeart.addEventListener("click", function (e) {
+//     e.stopPropagation();
+//     this.querySelectorAll("i").forEach((i) => {
+//       if (i.classList.contains("hidden")) i.classList.remove("hidden");
+//       else if (!i.classList.contains("hidden")) i.classList.add("hidden");
+//     });
+//   })
+// );
 
 // popularRWD();
 
@@ -110,9 +110,20 @@ let app1 = Vue.createApp({
 
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].ProductPurchased >= 1000)
+              response[i].ProductPurchased = `${Math.trunc(
+                response[i].ProductPurchased / 1000
+              )}K+`;
+          }
+          // console.log(response);
           response.forEach((product) => {
-            // console.log(product);
+            console.log(product);
+            // if (product.ProductPurchased >= 1000) {
+            //   product.ProductPurchased = `${product.ProductPurchased / 1000}K+`;
+            //   console.log(product.ProductPurchased);
+            // }
+
             that.productList.push(product);
             if (product.ProductType === "sightseeing")
               that.sightseeingList.push(product);
@@ -126,6 +137,7 @@ let app1 = Vue.createApp({
 
           that?.$nextTick(function () {
             that?.product_slick();
+            that.renderHeart();
           });
           // console.log(that.sightseeingList);
         },
@@ -149,6 +161,8 @@ let app1 = Vue.createApp({
           response.forEach((element) => {
             that.jo_list_end.push(element);
           });
+
+          // console.log("jolist", that.jo_list_end);
           // console.log(that.jo_list_end);
           // _this.$nextTick(function () {
           //   _this.jo_list_slick_end();
@@ -210,8 +224,9 @@ let app1 = Vue.createApp({
       a.classList.add("hidden");
       b.classList.remove("hidden");
     },
-    gotoproductDetail(e) {
-      location.href = "./productdetail.html";
+    gotoproductDetail(id) {
+      // e.preventDefault();
+      location.href = `./productdetail.html?id=${id}`;
     },
 
     popularSlick(e) {
@@ -223,6 +238,16 @@ let app1 = Vue.createApp({
             slidesToScroll: 2,
           });
         }
+      });
+    },
+    renderHeart() {
+      const changeHeartAll = document.querySelectorAll(".change-heart");
+      console.log(changeHeartAll);
+      changeHeartAll.forEach((c) => {
+        c.childNodes.forEach((i) => {
+          if (i.classList.contains("hidden")) i.classList.remove("hidden");
+          else i.classList.add("hidden");
+        });
       });
     },
 
@@ -356,6 +381,7 @@ let app1 = Vue.createApp({
     // this.popularSlick();
   },
 });
+app1.component("header-shoppingcart-vue", window.header_component);
 app1.mount(".index");
 
 $(document).ready(function () {

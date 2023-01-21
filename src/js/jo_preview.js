@@ -106,6 +106,7 @@ let app = Vue.createApp({
       targettravel: "",
       targettravelID: "",
       imgName: "",
+      JoUseWeeee: "",
     };
   },
   created() {
@@ -156,15 +157,22 @@ let app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log(response);
+
+          // 取得所有觀光行程商品放到array中
           response.forEach((product) => {
             if (product.ProductType === "sightseeing")
               that.sightseeingList.push(product);
           });
           // console.log(that.sightseeingList);
+
+          // 一一比對使用者所選的商品是哪個
           that.sightseeingList.forEach((s) => {
             if (that.useweeee === s.ProductName) that.targettravel = s;
           });
-          that.targettravelID = that.targettravel.ProductID;
+
+          // 確認that.targettravel是否存在，如果存在給1，不存在給0
+          that.JoUseWeeee = that.targettravel ? 1 : 0;
+
           // console.log(that.targettravelID);
         },
         error: function (exception) {
@@ -187,6 +195,7 @@ let app = Vue.createApp({
           joAttend: this.joAttend,
           joStartDate: this.joStartDate,
           joStartTime: this.joStartTime,
+          JoUseWeeee: this.JoUseWeeee,
           targettravelID: this.targettravelID,
           img: this.img,
           imgName: this.imgName,
