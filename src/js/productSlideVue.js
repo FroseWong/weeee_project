@@ -37,7 +37,6 @@ window.my_component = {
 </div>`,
   data() {
     return {
-      test: "test",
       productList: [],
       sightseeingList: [],
       experienceList: [],

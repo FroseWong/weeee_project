@@ -99,7 +99,7 @@
           </div>
           <div class="productlist_new_card_list container">
             <div class="productlist_new__sort">
-              <h5>25個項目</h5>
+              <h5>{{this.computedList.length}}個項目</h5>
 
               <ul>
                 <li>排序｜</li>
@@ -110,35 +110,45 @@
               </ul>
             </div>
             <a
-              class="product-card-row"
-              v-for="product in computedList"
-              :key="index"
-              :href="'./productdetail.html?id=' + product.ProductID"
-              v-if="dataget"
-            >
-              <div
-                class="product-card-row__left"
-                v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath1 + ')' }"
-              ></div>
-              <div class="product-card-row__right">
-                <div class="product-name">{{product.ProductName}}</div>
-                <div class="product-tag">{{product.ProductSecondType}}</div>
-                <div class="product__text">{{product.ProductText}}</div>
-
-                <span class="gray"
-                  ><i class="fa-solid fa-star"></i
-                  >{{product.score}}({{product.ProductScoredPeople}}) |
-                  <span class="product-bought"
-                    >{{product.ProductPurchased}}</span
-                  >個已訂購
-                </span>
-                <span class="price"
-                  >TWD
-                  <span class="product-price">{{product.ProductPrice}}</span
-                  >元</span
-                >
+            class="product-card-row"
+            v-for="product in computedList"
+            :key="index"
+            :href="'./productdetail.html?id=' + product.ProductID"
+            v-if="dataget"
+          >
+            <div class="product-card-row__left">
+              <div class="product-card-row__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="p__location">{{product.Location}}</p>
               </div>
-            </a>
+              <div class="product-card-row__left__pic">
+                <div
+                  class="product-card-row__picsrc"
+                  v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath1 + ')' }"
+                ></div>
+              </div>
+            </div>
+            <div class="product-card-row__right">
+              <div class="change-heart" ref="changeHeart" >
+                <i class="fa-regular fa-heart" ref="hollow"
+                @click="changeHeart"></i>
+                <i class="fa-solid fa-heart orange hidden" ref="solid"
+                @click="changeHeart"></i>
+              </div>
+              <div class="product-name">{{product.Location}}｜{{product.ProductName}}</div>
+              <div class="product-tag">{{product.ProductSecondType}}</div>
+              <div class="product__text">{{product.ProductText}}</div>
+          
+              <span class="gray"
+                ><i class="fa-solid fa-star"></i
+                >{{product.score}}({{product.ProductScoredPeople}}) |
+                <span class="product-bought">{{product.ProductPurchased}}+</span>個已訂購
+              </span>
+              <span class="price"
+                >TWD <span class="product-price"> {{product.ProductPrice}}</span>元</span
+              >
+            </div>
+          </a>
             <nav>
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">

@@ -262,7 +262,7 @@ let app = Vue.createApp({
             if (product.ProductType === "sightseeing")
               that.sightseeingList.push(product);
           });
-          console.log(that.sightseeingList);
+          // console.log(that.sightseeingList);
 
           // console.log(that.sightseeingList);
         },
