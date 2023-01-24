@@ -1,9 +1,14 @@
 <?php
 require_once('connection.php');
 // -----------判斷有無加過收藏---------------
-include("Member.php");        
+include("Member.php");
 getMemberID();
-$MID=$_SESSION["MemberID"];
+if (empty($_SESSION["MemberID"])) {
+    echo json_encode("NotFound");
+    return;
+}
+$MID = $_SESSION["MemberID"];
+
 // $MID = $_POST['MID'];
 $PID = $_POST['PID'];
 
@@ -49,4 +54,3 @@ if ($tempif == 1) {
     }
     echo json_encode(!$tempsel);
 }
-?>

@@ -222,18 +222,18 @@
             <div class="product-review" ref="Review">
               <h3>旅客評價</h3>
               <div class="product-review-group">
-                <div class="product-review-score">
+                <!-- <div class="product-review-score">
                   <p>4.6</p>
-                </div>
+                </div> -->
                 <div class="productreview-star">
                   <span class="star-color">{{ProductDetail.stars}}</span>
-                  <span>{{ProductDetail.comments}}</span>
+                  <!-- <span>{{ProductDetail.comments}}</span> -->
                 </div>
               </div>
             </div>
             <div class="productdetail-message" v-for="message in messages">
               <!-- <span>{{message.pic}}</span> -->
-              <img src=message.pic alt="">
+              <img :src=message.pic alt="">
               <span>{{message.name}}</span>
               <div class="productdetail-message-text">
                 <p>{{message.star}}</p>

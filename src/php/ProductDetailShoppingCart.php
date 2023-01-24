@@ -5,6 +5,10 @@ require_once('connection.php');
 
 include("Member.php");        
 getMemberID();
+if (empty($_SESSION["MemberID"])) {
+    echo json_encode('NotFound');
+    return;
+}
 $MID=$_SESSION["MemberID"];
 // $MID = $_POST['MID'];
 $PID = $_POST['PID'];
