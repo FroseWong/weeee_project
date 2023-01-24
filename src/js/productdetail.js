@@ -546,7 +546,8 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeart.php",
         data: {
-          MID: 1,
+          // MID: 1,
+
           PID: num,
         },
         dataType: "json",
@@ -571,7 +572,7 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeartShow.php",
         data: {
-          MID: 1,
+          // MID:2,
           PID: num,
         },
         dataType: "json",
@@ -579,9 +580,11 @@ createApp({
           if (response == 0) {
             _this.$refs.heartshow.classList.remove("liked");
             _this.faHeart = "regular";
+            console.log('0');
           } else if (response == 1) {
             _this.$refs.heartshow.classList.add("liked");
             _this.faHeart = "solid";
+            console.log('1');
           }
         },
         error: function (exception) {
@@ -603,7 +606,7 @@ createApp({
         method: "POST",
         url: "php/ProductDetailShoppingCart.php",
         data: {
-          MID:2,
+          // MID:2,
           PID:num,
           QTY:people,
           TAL:total
@@ -649,14 +652,14 @@ createApp({
         url: "php/ProductDetailComment.php",
         data: {
           pid: num,
-          mid:1,
+          // mid:1,
         },
         dataType: "json",
         success: function (response) {
           arrcom=[];
           objcom={};
           response.forEach(function(item){
-            console.log(item);
+            // console.log(item);
             if(item.ProductCommentScore==1)
             {
               item.ProductCommentScore='⭐'

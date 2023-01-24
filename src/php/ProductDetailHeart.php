@@ -1,8 +1,10 @@
 <?php
 require_once('connection.php');
 // -----------判斷有無加過收藏---------------
-
-$MID = $_POST['MID'];
+include("Member.php");        
+getMemberID();
+$MID=$_SESSION["MemberID"];
+// $MID = $_POST['MID'];
 $PID = $_POST['PID'];
 
 $sqlif = "SELECT count(ProductID) From Favor  where MemberID='{$MID}' and ProductID='{$PID}'";

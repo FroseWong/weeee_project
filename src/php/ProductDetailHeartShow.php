@@ -1,9 +1,13 @@
 <?php
 require_once('connection.php');
 
-$MID = $_POST['MID'];
-$PID = $_POST['PID'];
 
+include("Member.php");        
+getMemberID();
+$MID=$_SESSION["MemberID"];
+
+// $MID = $_POST['MID'];
+$PID = $_POST['PID'];
 $sqlif = "SELECT FavorStatus From Favor  where MemberID='{$MID}' and ProductID='{$PID}'";
 
 $statementif = $pdo->prepare($sqlif);

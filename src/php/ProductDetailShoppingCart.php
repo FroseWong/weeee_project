@@ -2,7 +2,11 @@
 require_once('connection.php');
 // -----------判斷有無加過購物車---------------
 
-$MID = $_POST['MID'];
+
+include("Member.php");        
+getMemberID();
+$MID=$_SESSION["MemberID"];
+// $MID = $_POST['MID'];
 $PID = $_POST['PID'];
 $NEWTAL = $_POST['TAL'];
 $NEWQTY = $_POST['QTY'];
