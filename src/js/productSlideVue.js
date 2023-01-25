@@ -26,8 +26,8 @@ window.my_component = {
       <span class="product-tag">{{p.ProductSecondType}}</span>
       <h6 class="product-name">{{p.ProductName}}</h6>
       <span class="gray"
-        ><i class="fa-solid fa-star"></i>4.4(44325) |
-        <span class="product-bought">590K+</span>個已訂購
+        ><i class="fa-solid fa-star"></i>4.4({{p.ProductScoredPeople}}) |
+        <span class="product-bought">{{p.ProductPurchased}}</span>個已訂購
       </span>
       <span class="price"
         >TWD <span class="product-price">{{p.ProductPrice}}</span>元</span
@@ -59,6 +59,12 @@ window.my_component = {
         dataType: "json",
         success: function (response) {
           console.log(response);
+          for (let i = 0; i < response.length; i++) {
+            if (response[i].ProductPurchased >= 1000)
+              response[i].ProductPurchased = `${Math.trunc(
+                response[i].ProductPurchased / 1000
+              )}K+`;
+          }
           response.forEach((product) => {
             // console.log(product);
             that.productList.push(product);
