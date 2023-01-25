@@ -90,7 +90,7 @@
         <ol class="breadcrumb">
           <li><a href="./index.html">首頁</a></li>
           <li><a href="./productlist_travel.html">觀光行程</a></li>
-          <li>桃園｜Weeeepark 海洋公園門票</li>
+          <li>{{ProductDetail.name}}</li>
         </ol>
       </div>
       <!---------------輪播--------------->
@@ -219,15 +219,15 @@
                 :referrerpolicy="googleMap.referrerpolicy"></iframe>
             </div>
             <!-- ---------------旅客評價--------------- -->
-            <div class="product-review" ref="Review">
+            <div class="product-review" ref="Review" >
               <h3>旅客評價</h3>
               <div class="product-review-group">
-                <!-- <div class="product-review-score">
-                  <p>4.6</p>
-                </div> -->
+                <div class="product-review-score">
+                  <p>4.0</p>       
+                </div>
                 <div class="productreview-star">
-                  <span class="star-color">{{ProductDetail.stars}}</span>
-                  <!-- <span>{{ProductDetail.comments}}</span> -->
+                  <p>★★★★</p>
+                  <span>{{commentlength}}則旅客評價</span>
                 </div>
               </div>
             </div>
@@ -237,6 +237,7 @@
               <span>{{message.name}}</span>
               <div class="productdetail-message-text">
                 <p>{{message.star}}</p>
+                <span>{{message.time}}</span>
                 <h5>{{message.comment}}</h5>
               </div>
             </div>

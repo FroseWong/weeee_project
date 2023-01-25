@@ -2,11 +2,11 @@
 
 require_once('connection.php');
 
-include("Member.php");
-getMemberID();
-if (empty($_SESSION["MemberID"])) {
-    return;
-}
+// include("Member.php");
+// getMemberID();
+// if (empty($_SESSION["MemberID"])) {
+//     return;
+// }
 // $MID = $_SESSION["MemberID"];
 // $MID = $_POST["mid"];
 $PID = $_POST["pid"];
