@@ -25,11 +25,11 @@
                           </div>
                           <div class="password">
                          
-                            <input type="password" required id="Password" name="Password"  placeholder="請輸入密碼" id="openPasswords"/>
+                            <input type="password" required id="password" name="Password"  placeholder="請輸入密碼" id="openPasswords"/>
                             <i class="fa-regular fa-eye" id="checkEye"></i>
                             <br>
                         </div>
-                        <input id="login_btn" class="submit" type="submit"  value="登入" onclick="return doSubmit();">
+                        <input  class="submit" type="button"  value="登入" onclick="return doSubmit();">
                         
                     </form>
                     <div class="logincheckbox">
@@ -115,5 +115,36 @@
 
 
  <script src="./js/login.js"></script>
+ <script>
+  function doSubmit() {
+      if (document.getElementById('Username').value == '') {
+          alert("請填寫[帳號]");
+          return false;
+      }
+      if (document.getElementById('password').value == '') {
+          alert("請填寫[密碼]");
+          return false;
+      }        
+    
+      //AJAX送出表單內容
+      $.ajax({            
+          method: "POST",
+          url: "./php/login.php",
+          data:{ 
+              Username: $("#Username").val(),
+              password: $("#password").val()
+          },
+          dataType: "text",
+          success: function (response) {
+              //加入成功->導回登入頁
+              alert(response);
+              location.href = './index.html';               
+          },
+          error: function(exception) {
+              alert("發生錯誤: " + exception.status);
+          }
+      });
+    }
+</script>
 </body>
 </html>

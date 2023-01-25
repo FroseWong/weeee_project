@@ -561,11 +561,15 @@
     background-color: #f4f4f4;
     font-size: 14px;
   }
+  img{
+    width: 30px;
+    border-radius: 10px;
+  }
 
   .productdetail-message-text {
     margin-left: 40px;
     p {
-      font-size: $pc_h3;
+      font-size: 7px;
       color: $yellow;
     }
     h5 {

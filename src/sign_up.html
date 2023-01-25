@@ -12,33 +12,33 @@
 </head>
 <body>
     @@include('layout/header.html')
-    <div class="wapper sign_up" id="app"> 
+    <div class="wapper sign_up" > 
         <div class="sign_upbg">
             <div class="container sign_up">
                 <div class="sur">
-                    <h3>註冊{{test}}</h3>
+                    <h3>註冊</h3>
                 
-                    <form class="surform" action="./php/sign_up.php" method="post">
+                    <form class="surform" action="#" method="post">
 
                         <div class="email">
                             <i class='fa-regular fa-envelope'></i>
-                            <input type="email" required name="Username" placeholder="請輸入電子信箱">
+                            <input type="email" required name="Username" id="Username" placeholder="請輸入電子信箱">
                           </div>
                           
                         <div class="password">
                          
-                            <input type="password" required name="password" placeholder="請輸入密碼" ref="passwordInput" id="openPasswords"/>
+                            <input type="password" required name="password" id="password" placeholder="請輸入密碼" ref="passwordInput" id="openPasswords"/>
                             <i class="fa-regular fa-eye" id="checkEye" ref="checkEye" @click="openandcloseEyes"></i>
                             <br>
                         </div>
                         <div class="passwordag">
 
-                          <input type="password" required name="password" placeholder="請再次輸入密碼" id="openPasswordag"/>
+                          <input type="password"required  name="passwordag" id="passwordag" placeholder="請再次輸入密碼" id="openPasswordag"/>
                           <i class="fa-regular fa-eye" id="checkEyeag" @click="openandcloseEyes"></i>
                             <br>
                         </div>
                         
-                        <input class="submit" type="submit" value="註冊"/>
+                        <input class="submit" type="button" value="註冊" onclick="return doSubmit();"/> 
                        
                         
                     </form>
@@ -120,6 +120,37 @@
           </footer>
             
 </div>
+<script>
+  function doSubmit() {
+      if (document.getElementById('Username').value == '') {
+          alert("請填寫[帳號]");
+          return false;
+      }
+      if (document.getElementById('password').value == '') {
+          alert("請填寫[密碼]");
+          return false;
+      }        
+    
+      //AJAX送出表單內容
+      $.ajax({            
+          method: "POST",
+          url: "./php/sign_up.php",
+          data:{ 
+              Username: $("#Username").val(),
+              password: $("#password").val()
+          },
+          dataType: "text",
+          success: function (response) {
+              //加入成功->導回登入頁
+              alert(response);
+              // location.href = 'Login.html';               
+          },
+          error: function(exception) {
+              alert("發生錯誤: " + exception.status);
+          }
+      });
+    }
+</script>
 <script src="./vender/vue/vue.global.prod.js"></script>
 <script src="./js/sign_up.js"></script>
 
