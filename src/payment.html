@@ -10,6 +10,11 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+        [v-cloak] {
+          display: none;
+        }
+      </style>
 </head>
 
 <body style="background-color:#f5f5f5;">
@@ -53,17 +58,17 @@
                         <div class="list_row">
                             <div class="list_row_col">
                                 <label for="">名字<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="例：品元">
+                                <input type="text" placeholder="例：品元" v-model="memberInfo.firstName">
                             </div>
                             <div class="list_row_col">
                                 <label for="">姓氏<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="例：陳">
+                                <input type="text" placeholder="例：陳" v-model="memberInfo.lastName">
                             </div>
                         </div>
                         <div class="list_row">
                             <div class="list_row_col">
                                 <label for="">國家/地區<span class="text-danger">*</span></label>
-                                <select name="" id="" placeholder="請選擇">
+                                <select name="" id="" placeholder="請選擇" v-model="memberInfo.country">
                                     <option value="" disabled="disabled">請選擇</option>
                                     <option value="">台灣</option>
                                     <option value="">日本</option>
@@ -75,19 +80,19 @@
                             </div>
                             <div class="list_row_col">
                                 <label for="">聯絡電話<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="請輸入聯絡電話">
+                                <input type="text" placeholder="請輸入聯絡電話" v-model="memberInfo.phone">
                             </div>
                         </div>
 
                         <div class="list_row">
                             <div class="list_row_col">
                                 <label for="">電子郵件信箱<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="請輸入常用電子郵件信箱" v-model="email">
+                                <input type="text" placeholder="請輸入常用電子郵件信箱" v-model="memberInfo.username">
                             </div>
                         </div>
                         <div class="list_row">
                             <div class="checkall"><label for="userInfo"><input type="checkbox" name="checkall"
-                                        id="userInfo">同會員資料</label></div>
+                                        id="userInfo" v-model="checked" @click="getMemberInfo">同會員資料</label></div>
                         </div>
                         <div class="list_row">
                             <a href="" class="blueBtn">繼續</a>
@@ -98,10 +103,12 @@
                 <!-- payment_points -->
                 <div class="payment_item">
                     <div class="payment_item_wp">
-                        <input type="checkbox" name="checkall" id="useWeeee">
+                        <input type="checkbox" name="checkall" id="useWeeee" @click="getPoints" v-model="checked2"
+                            :disabled="disabled">
                         <label for="useWeeee">
-                            <h5>我要使用 Weeee! Points</h5>
+                            <h5>我要使用 Weeee! Points</h5><span v-show="hidden">Weeee! Points 不足，無法折抵</span>
                         </label>
+         
                     </div>
                     <div class="payment_item_list">
 
@@ -109,8 +116,8 @@
                             <ul>
                                 <h6 style="font-weight: bold;">Weeee! Points
                                     <img src="img/weeeepoints/yellow.svg" alt="">
-                                    <span style="color: #f9cf00;">440</span> 折抵 <span style="color:#4484ce">TWD
-                                        440</span>
+                                    <span style="color: #f9cf00;">{{ weeee.totalPoints }}</span> 折抵 <span
+                                        style="color:#4484ce">{{ displayTWD( weeee.totalPoints) }}</span>
                                 </h6>
                                 <br>
                                 注意事項<br>
@@ -174,7 +181,7 @@
                             </div>
                             <div class="list_row_col">
                                 <label for="">寄送信箱</label>
-                                <input type="text" v-model="email" disabled="disabled"
+                                <input type="text" v-model="memberInfo.username" disabled="disabled"
                                     style="background-color: #f4f4f4;">
                             </div>
                         </div>
@@ -190,7 +197,7 @@
                         </div>
                         <div class="list_row">
                             <ul>
-                                <li v-for="(product, index) in productList">{{ product.name }}</li>
+                                <li v-for="(product, index) in productList">{{ product.productName }}</li>
                                 <!-- <li>新北的山，新北的海，水啦</li> -->
                                 <!-- <li>金門二日遊</li> -->
                             </ul>
@@ -209,16 +216,17 @@
                     <div class="payment_item_list defaultHide">
                         <div class="product_group">
                             <div class="product_item" v-for="(product, index) in productList">
-                                <a href="" class="product-image"><img v-bind:src="product.img" alt=""></a>
+                                <a href="" class="product-image"><img v-bind:src="product.productImgPath2" alt=""></a>
                                 <div class="product-name">
                                     <a href="">
-                                        <h6>{{ product.name }}</h6>
+                                        <h6>{{ product.productName }}</h6>
                                     </a>
                                 </div>
                                 <div class="date"><i class="fa-regular fa-calendar-days"></i>{{ product.date }}</div>
-                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x {{ product.num }}</div>
+                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x {{ product.quantity }}
+                                </div>
                                 <div class="product-price">
-                                    <h6>{{ displayTWD(product.num * product.price) }}</h6>
+                                    <h6>{{ displayTWD(product.quantity * product.productPrice) }}</h6>
                                 </div>
                             </div>
 
@@ -250,32 +258,36 @@
                                 </div>
                             </div> -->
                         </div>
+
+                        <div class="payment_list">
+                            <ul class="payment_list_row">
+                                <li>小計</li>
+                                <li>
+                                    <h6>{{ displayTWD(getTotal.totalPrice) }}</h6>
+                                </li>
+                            </ul>
+                            <ul class="payment_list_row">
+                                <li>Weeee! Points 折抵</li>
+                                <li>
+                                    <h6>-{{ displayTWD( weeee.totalPoints) }}</h6>
+                                </li>
+                            </ul>
+                            <ul class="payment_list_row">
+                                <li>支付金額</li>
+                                <li>
+                                    <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice - weeee.totalPoints)
+                                        }}</h5>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>訂單完成後回饋</li>
+                                <li><span class="points_yellow">
+                                        <img src="img/weeeepoints/yellow.svg" alt="">{{ Math.floor((getTotal.totalPrice
+                                        - weeee.totalPoints) / 100) }}</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="payment_list defaultHide">
-                        <ul class="payment_list_row">
-                            <li>小計</li>
-                            <li>
-                                <h6>TWD 2,100</h6>
-                            </li>
-                        </ul>
-                        <ul class="payment_list_row">
-                            <li>Weeee! Points 折抵</li>
-                            <li>
-                                <h6>-TWD 420</h6>
-                            </li>
-                        </ul>
-                        <ul class="payment_list_row">
-                            <li>支付金額</li>
-                            <li>
-                                <h5 style="color: #4484ce;">TWD 1,680</h5>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>訂單完成後回饋</li>
-                            <li><span class="points_yellow">
-                                    <img src="img/otherpage/Weeee!Points_yellow.svg" alt="">36</li>
-                        </ul>
-                    </div>
+
                 </div>
 
                 <!-- payment_confirm -->
@@ -286,17 +298,18 @@
                             <div>
                                 <span> {{ getTotal.totalNum }} 件商品合計</span>
                                 <span>
-                                    <h4>{{ displayTWD(getTotal.totalPrice) }}</h4>
+                                    <h4>{{ displayTWD(getTotal.totalPrice - weeee.totalPoints) }}</h4>
                                 </span>
                             </div>
                             <div>
-                                <span>您可獲得 Weeee! Points</span>
+                                <span>您可獲得 Weeee! Points </span>
                                 <span class="points_yellow">
-                                    <img src="img/weeeepoints/yellow.svg" alt="">{{ getTotal.totalPoints }}
+                                    <img src="img/weeeepoints/yellow.svg" alt="">{{ Math.floor((getTotal.totalPrice -
+                                    weeee.totalPoints) / 100) }}
                                 </span>
                             </div>
                         </div>
-                        <a href="payment_complete.html" class="blueBtn">確認付款</a>
+                        <a href="javascript:;" class="blueBtn" @click="pay">確認付款</a>
                     </div>
                 </div>
             </section>
@@ -348,7 +361,7 @@
             });
         });
 
-        console.log($('.rotate').position());
+        // console.log($('.rotate').position());
 
 
     </script>

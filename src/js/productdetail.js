@@ -91,32 +91,28 @@ createApp({
       ],
       messages: [
         {
-          pic: "😹",
-          name: "品元",
+          // pic: "😹",
+          name: "使用者",
           star: "★★★★★",
-          comment:
-            "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
+          comment: "登入查看留言<3",
         },
         {
-          pic: "👦",
-          name: "品源",
-          star: "★★★",
-          comment:
-            "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
-        },
-        {
-          pic: "🙋‍♀️",
-          name: "元元",
-          star: "★★★★",
-          comment:
-            "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
-        },
-        {
-          pic: "🐵",
-          name: "品品",
+          // pic: "👦",
+          name: "使用者",
           star: "★★★★★",
-          comment:
-            "活潑有朝氣的水族館因為海洋生物種類很多，而且很多地方的魚類/海豹/企鵝都感覺比一般動物園還有朝氣，有感受到很活潑，不會只有一兩隻，也沒有一直在睡覺😂很多都超級療癒！整體設計的動線跟視覺都蠻好的，看大型水族箱時都覺得蠻有臨場感😆 但假日人真的超多就是惹😂大部分不需要排隊所以有些地方有點擠",
+          comment: "登入查看留言<3",
+        },
+        {
+          // pic: "🙋‍♀️",
+          name: "使用者",
+          star: "★★★★★",
+          comment: "登入查看留言<3",
+        },
+        {
+          // pic: "🐵",
+          name: "使用者",
+          star: "★★★★★",
+          comment: "登入查看留言<3",
         },
       ],
       googleMap: {
@@ -144,19 +140,16 @@ createApp({
         {
           Content:
             "► 冬の水族館戀愛物語：告白金句拿鐵，療癒的海豹拉花與暖呼呼的飲品溫暖你的心",
-          // src: "./img/sightseeing/fa_19_1.jpg",
           src: "",
         },
         {
           Content:
             "► 復刻未來．AI 海洋名畫特展展覽內容：『Microplastic Globe_化身水晶球的未來海洋』",
-          // src: "./img/sightseeing/fa_19_2.jpg",
           src: "",
         },
         {
           Content:
             "► WeeeePark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界",
-          // src: "./img/sightseeing/fa_19_3.jpg",
           src: "",
         },
       ],
@@ -193,6 +186,7 @@ createApp({
       productdetailNotice: 0,
       productdetailAddress: 0,
       productReview: 0,
+      commentlength:0,
     };
   },
   methods: {
@@ -208,21 +202,15 @@ createApp({
     },
     // ---------------橘心---------------
     heart_click() {
-      // this.faHeart == "solid"
-      //   ? (this.faHeart = "regular")
-      //   : (this.faHeart = "solid");
-
       this.ajax_heart();
       if (this.faHeart == "solid") {
         this.faHeart = "regular";
         _this.$refs.heartshow.classList.remove("liked");
         Swal.fire("已取消收藏");
-        console.log('取消');
       } else {
         this.faHeart = "solid";
         _this.$refs.heartshow.classList.add("liked");
         Swal.fire("已加入收藏");
-        console.log('收藏');
       }
     },
     // ---------------Totop---------------
@@ -446,9 +434,10 @@ createApp({
       sessionStorage.setItem("日期", newDate);
       sessionStorage.setItem("總金額", this.modal_pricetotal);
       sessionStorage.setItem("點數", this.modal_points);
+      sessionStorage.setItem("商品編號", this.ProductDetail.productNumber);
       let data = sessionStorage.getItem("日期");
       // console.log(data);
-      // window.location.href = "./payment.html";
+      window.location.href = "./payment.html";
     },
     // ---------------消失底下btn---------------
     cle_check() {
@@ -464,14 +453,12 @@ createApp({
       window.addEventListener("resize", function () {
         this.winSize = window.innerWidth;
         // _this.ajax_heart_show();
-       console.log(this.winSize);
+        console.log(this.winSize);
         if (this.winSize <= 768) {
           this.winsizeBoolean = false;
-         
         }
         if (this.winSize >= 768) {
           this.winsizeBoolean = true;
-          
         }
       });
     },
@@ -518,19 +505,18 @@ createApp({
                 address: e.Location,
                 comments: "好吃、好玩、又划算!",
                 time: 100,
+                productNumber: e.ProductNumber,
               };
               _this.modalTotal = e.ProductPrice;
               _this.Imgs = arr1;
               _this.ProductDetail = obj2;
-              // console.log(arr1);
-              console.log(obj2);
             });
             _this.$nextTick(function () {
               _this.productdetail_slideshow();
             });
           } else {
+            alert("找不到相關商品");
             window.location.href = "./index.html";
-            console.log("空");
           }
         },
         error: function (exception) {
@@ -546,23 +532,22 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeart.php",
         data: {
-          MID: 1,
           PID: num,
         },
         dataType: "json",
         success: function (response) {
+          // console.log(response);
           if (response == false) {
-            // console.log('值為0');
-            // _this.$refs.heartshow.classList.remove("liked");
             _this.faHeart = "regular";
           } else if (response == true) {
-            // _this.$refs.heartshow.classList.add("liked");
             _this.faHeart = "solid";
+          } else {
+            _this.faHeart = "regular";
+            alert("請先登入再收藏");
+            window.location.href = "./login.html";
           }
         },
-        error: function (exception) {
-          // alert("發生錯誤: " + exception.status);
-        },
+        error: function (exception) {},
       });
     },
     ajax_heart_show() {
@@ -573,14 +558,11 @@ createApp({
         method: "POST",
         url: "php/ProductDetailHeartShow.php",
         data: {
-          MID: 1,
           PID: num,
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
           if (response == 0) {
-            // console.log('值為0');
             _this.$refs.heartshow.classList.remove("liked");
             _this.faHeart = "regular";
           } else if (response == 1) {
@@ -588,41 +570,52 @@ createApp({
             _this.faHeart = "solid";
           }
         },
-        error: function (exception) {
-          // alert("發生錯誤: " + exception.status);
-        },
+        error: function (exception) {},
       });
     },
     ajax_ShoppingCart() {
       _this = this;
       let num;
-      let people=_this.modalPeople;
-      let total=_this.modal_pricetotal;
+      let people = _this.modalPeople;
+      let total = _this.modal_pricetotal;
+      let productNumber = _this.ProductDetail.productNumber;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
-      if (num == null) {
-        num = 1;
-      }
       $.ajax({
         method: "POST",
         url: "php/ProductDetailShoppingCart.php",
         data: {
-          MID:2,
-          PID:num,
-          QTY:people,
-          TAL:total
+          PID: num,
+          QTY: people,
+          TAL: total,
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
-          
+          console.log(response);
+
+          if (response == "NotFound") {
+            alert("請先登入再加入購物車");
+            window.location.href = "./login.html";
+          }
         },
-        error: function (exception) {
-          // alert("發生錯誤: " + exception.status);
+        error: function (exception) {},
+      });
+      $("#peopleModal").modal("hide");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
       });
-      // _this.$refs.modal.classList.remove('show');
-      Swal.fire("已加入購物車<3");
+      Toast.fire({
+        icon: "success",
+        title: "已成功加入購物車 ♥",
+      });
     },
     ajax_Comment() {
       _this = this;
@@ -637,50 +630,39 @@ createApp({
         url: "php/ProductDetailComment.php",
         data: {
           pid: num,
-          mid:1,
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response.ProductCommentText);
-          arrcom=[];
-          objcom={};
-          response.forEach(function(item){
-            console.log(item);
-            if(item.ProductCommentScore==1)
-            {
-              item.ProductCommentScore='⭐'
+          arrcom = [];
+          objcom = {};
+          console.log(response);
+          response.forEach(function (item) {
+            if (item.ProductCommentScore == 1) {
+              item.ProductCommentScore = "★";
+            } else if (item.ProductCommentScore == 2) {
+              item.ProductCommentScore = "★★";
+            } else if (item.ProductCommentScore == 3) {
+              item.ProductCommentScore = "★★★";
+            } else if (item.ProductCommentScore == 4) {
+              item.ProductCommentScore = "★★★★";
+            } else if (item.ProductCommentScore == 5) {
+              item.ProductCommentScore = "★★★★★";
             }
-            else if(item.ProductCommentScore==2)
-            {
-              item.ProductCommentScore='⭐⭐'
-            }
-            else if(item.ProductCommentScore==3)
-            {
-              item.ProductCommentScore='⭐⭐⭐'
-            }
-            else if(item.ProductCommentScore==4)
-            {
-              item.ProductCommentScore='⭐⭐⭐⭐'
-            }
-            else if(item.ProductCommentScore==5)
-            {
-              item.ProductCommentScore='⭐⭐⭐⭐⭐'
-            }
-            
-            objcom={
-              pic:item.MemberImg,
-              name:item.FullName,
-              star:item.ProductCommentScore,
-              comment:item.ProductCommentText,
-            }
+            var time_str = item.ProductCommentTime;
+            var t = time_str.substr(0, 10);
+            objcom = {
+              pic: item.MemberImg,
+              name: item.FullName,
+              star: item.ProductCommentScore,
+              comment: item.ProductCommentText,
+              time: t,
+            };
             arrcom.push(objcom);
-          })
-          _this.messages=arrcom;
-
+          });
+          _this.messages = arrcom;
+          _this.commentlength=response.length;
         },
-        error: function (exception) {
-          // alert("發生錯誤: " + exception.status);
-        },
+        error: function (exception) {},
       });
     },
   },

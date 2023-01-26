@@ -11,13 +11,13 @@ join productimg i
 on p.productID = i.productID
 join cart c
 on p.productID = c.productID
-where memberID = 6;
+where memberID = ?;
 ";
 
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
 $statement = $pdo->prepare($sql);
-// $statement->bindValue(1, $memberID);
+$statement->bindValue(1, $memberID);
 $statement->execute(); //執行
 
 //抓出全部且依照順序封裝成一個二維陣列

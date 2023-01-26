@@ -2,7 +2,16 @@
 require_once('connection.php');
 // -----------判斷有無加過購物車---------------
 
-$MID = $_POST['MID'];
+
+include("Member.php");
+setMemberInfo(6, "ning");
+getMemberID();
+if (empty($_SESSION["MemberID"])) {
+    echo json_encode('NotFound');
+    return;
+}
+$MID=$_SESSION["MemberID"];
+// $MID = $_POST['MID'];
 $PID = $_POST['PID'];
 $NEWTAL = $_POST['TAL'];
 $NEWQTY = $_POST['QTY'];
@@ -21,7 +30,7 @@ foreach ($dataif as $key => $value) {
 // echo ($tempif);
 // -----------如果使用者沒加過購物車---------------
 if ($tempif == 0) {
-    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}')";
+    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,CartStartDay)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}',now())";
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
 }

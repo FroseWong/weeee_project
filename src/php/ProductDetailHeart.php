@@ -1,8 +1,15 @@
 <?php
 require_once('connection.php');
 // -----------判斷有無加過收藏---------------
+include("Member.php");
+getMemberID();
+if (empty($_SESSION["MemberID"])) {
+    echo json_encode("NotFound");
+    return;
+}
+$MID = $_SESSION["MemberID"];
 
-$MID = $_POST['MID'];
+// $MID = $_POST['MID'];
 $PID = $_POST['PID'];
 
 $sqlif = "SELECT count(ProductID) From Favor  where MemberID='{$MID}' and ProductID='{$PID}'";
@@ -47,4 +54,3 @@ if ($tempif == 1) {
     }
     echo json_encode(!$tempsel);
 }
-?>

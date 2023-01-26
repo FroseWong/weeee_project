@@ -25,7 +25,9 @@
   </head>
 
   <body>
+    <!-- <header-shoppingcart-vue></header-shoppingcart-vue> -->
     @@include('layout/header.html')
+
     <div class="wrapper index">
       <div class="topbanner">
         <div class="container topbanner__text">
@@ -35,48 +37,62 @@
       </div>
 
       <div class="container index__container">
-        <h2 class="ttoc">您可能有興趣的行程</h2>
+        <template v-if="memberInterestList.length">
+          <h2 class="ttoc">您可能有興趣的行程</h2>
 
-        <!-- @@include('layout/productSlide.html') -->
+          <!-- @@include('layout/productSlide.html') -->
 
-        <div class="product-list">
-          <a
-            class="product-card"
-            v-for="(p,i) in sightseeingList"
-            :key="i"
-            @click="gotoproductDetail"
-          >
-            <div class="change-heart" ref="changeHeart" @click="changeHeart">
-              <i class="fa-regular fa-heart" ref="hollow"></i>
-              <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">{{p.Location}}</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div
-                  class="product-card__top__picsrc p1"
-                  :style="{ backgroundImage: 'url(' + p.ProductImgPath1+ ')' }"
-                ></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">{{p.ProductSecondType}}</span>
-              <h6 class="product-name">{{p.ProductName}}</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD
-                <span class="product-price">{{p.ProductPrice}}</span>元</span
+          <div class="product-list interest">
+            <a
+              class="product-card"
+              v-for="(p,i) in memberInterestList"
+              :key="i"
+            >
+              <div
+                class="change-heart"
+                :class="{'clicked':favorProductList.includes(p.ProductID) }"
+                @click="clickHeart(p.ProductID,$event)"
               >
-            </div>
-          </a>
+                <i class="fa-regular fa-heart" ref="hollow"></i>
+                <i class="fa-solid fa-heart orange" ref="solid"></i>
+              </div>
+              <div class="product-card__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="p__location">{{p.Location}}</p>
+              </div>
 
-          <!-- <a class="product-card">
+              <div
+                class="product-card__top"
+                @click="gotoproductDetail(p.ProductID)"
+              >
+                <div class="product-card__top__pic">
+                  <div
+                    class="product-card__top__picsrc"
+                    :style="{ backgroundImage: 'url(' + p.ProductImgPath1+ ')' }"
+                  ></div>
+                </div>
+              </div>
+
+              <div
+                class="product-card__bottom"
+                @click="gotoproductDetail(p.ProductID)"
+              >
+                <span class="product-tag">{{p.ProductSecondType}}</span>
+                <h6 class="product-name">{{p.ProductName}}</h6>
+                <span class="gray"
+                  ><i class="fa-solid fa-star"></i
+                  >4.4({{p.ProductScoredPeople}}) |
+                  <span class="product-bought">{{p.ProductPurchased }}</span
+                  >個已訂購
+                </span>
+                <span class="price"
+                  >TWD
+                  <span class="product-price">{{p.ProductPrice}}</span>元</span
+                >
+              </div>
+            </a>
+
+            <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -103,7 +119,7 @@
             </div>
           </a> -->
 
-          <!-- <a class="product-card">
+            <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -130,7 +146,7 @@
             </div>
           </a> -->
 
-          <!-- <a class="product-card">
+            <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -156,7 +172,7 @@
               >
             </div>
           </a> -->
-          <!--  
+            <!--  
           <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
@@ -183,7 +199,7 @@
               >
             </div>
           </a>-->
-          <!-- 
+            <!-- 
           <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
@@ -210,14 +226,14 @@
               >
             </div>
           </a>
-          -->
-        </div>
+          --></div>
+        </template>
         <h2 class="ttoc">即將出團</h2>
         <div class="jo-list">
           <a
-            href="./jo_detail.html"
             class="jo-card"
             v-for="(jo,i) in jo_list_end"
+            :href="'./jo_detail.html?id=' + jo.JoID"
           >
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
@@ -231,7 +247,10 @@
                 ></div>
               </div>
             </div>
-            <div class="jo-card__bottom">
+            <div
+              class="jo-card__bottom"
+              :href="'./jo_detail.html?id=' + jo.JoID"
+            >
               <h6 class="jo-name">{{jo.JoTitle}}</h6>
               <span class="gray jo__detailaddress"
                 >{{jo.JoDetailedAddressed}}</span
@@ -245,7 +264,7 @@
             </div>
           </a>
 
-          <a href="./jo_detail.html" class="jo-card">
+          <!-- <a href="./jo_detail.html" class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">台中</p>
@@ -265,9 +284,9 @@
                 <span class="left-time">剩餘1天</span></span
               >
             </div>
-          </a>
+          </a> -->
 
-          <a href="./jo_detail.html" class="jo-card">
+          <!-- <a href="./jo_detail.html" class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">台北</p>
@@ -287,8 +306,9 @@
                 <span class="left-time">剩餘1天</span></span
               >
             </div>
-          </a>
-          <a href="./jo_detail.html" class="jo-card">
+          </a> -->
+
+          <!-- <a href="./jo_detail.html" class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">台北</p>
@@ -308,9 +328,9 @@
                 <span class="left-time">剩餘1天</span></span
               >
             </div>
-          </a>
+          </a> -->
 
-          <a href="./jo_detail.html" class="jo-card">
+          <!-- <a href="./jo_detail.html" class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">台中</p>
@@ -330,9 +350,9 @@
                 <span class="left-time">剩餘1天</span></span
               >
             </div>
-          </a>
+          </a> -->
 
-          <a href="./jo_detail.html" class="jo-card">
+          <!-- <a href="./jo_detail.html" class="jo-card">
             <div class="jo-card__top__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="jo__location">台北</p>
@@ -352,7 +372,7 @@
                 <span class="left-time">剩餘1天</span></span
               >
             </div>
-          </a>
+          </a> -->
         </div>
 
         <h2 class="ttoc">探索熱門城市</h2>
@@ -443,21 +463,24 @@
 
         <h2 class="ttoc">Top 10 熱門商品</h2>
         <div class="product-list">
-          <a
-            class="product-card"
-            v-for="(p,i) in sightseeingList"
-            :key="i"
-            @click="gotoproductDetail"
-          >
-            <div class="change-heart" ref="changeHeart" @click="changeHeart">
+          <a class="product-card" v-for="(p,i) in top10List" :key="i">
+            <div
+              class="change-heart"
+              :class="{'clicked':favorProductList.includes(p.ProductID) }"
+              @click="clickHeart(p.ProductID,$event)"
+            >
               <i class="fa-regular fa-heart" ref="hollow"></i>
-              <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+              <i class="fa-solid fa-heart orange" ref="solid"></i>
             </div>
             <div class="product-card__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="p__location">{{p.Location}}</p>
             </div>
-            <div class="product-card__top">
+
+            <div
+              class="product-card__top"
+              @click="gotoproductDetail(p.ProductID)"
+            >
               <div class="product-card__top__pic">
                 <div
                   class="product-card__top__picsrc p1"
@@ -465,12 +488,18 @@
                 ></div>
               </div>
             </div>
-            <div class="product-card__bottom">
+
+            <div
+              class="product-card__bottom"
+              @click="gotoproductDetail(p.ProductID)"
+            >
               <span class="product-tag">{{p.ProductSecondType}}</span>
               <h6 class="product-name">{{p.ProductName}}</h6>
               <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
+                ><i class="fa-solid fa-star"></i>4.4({{p.ProductScoredPeople}})
+                |
+                <span class="product-bought">{{p.ProductPurchased}}</span
+                >個已訂購
               </span>
               <span class="price"
                 >TWD
@@ -478,7 +507,7 @@
               >
             </div>
           </a>
-          <a class="product-card">
+          <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -503,9 +532,9 @@
                 >TWD <span class="product-price">550</span>元</span
               >
             </div>
-          </a>
+          </a> -->
 
-          <a class="product-card">
+          <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -530,9 +559,9 @@
                 >TWD <span class="product-price">400</span>元</span
               >
             </div>
-          </a>
+          </a> -->
 
-          <a class="product-card">
+          <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -557,8 +586,8 @@
                 >TWD <span class="product-price">550</span>元</span
               >
             </div>
-          </a>
-          <a class="product-card">
+          </a> -->
+          <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -583,9 +612,9 @@
                 >TWD <span class="product-price">550</span>元</span
               >
             </div>
-          </a>
+          </a> -->
 
-          <a class="product-card">
+          <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -610,9 +639,9 @@
                 >TWD <span class="product-price">400</span>元</span
               >
             </div>
-          </a>
+          </a> -->
 
-          <a class="product-card">
+          <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -637,26 +666,28 @@
                 >TWD <span class="product-price">550</span>元</span
               >
             </div>
-          </a>
+          </a> -->
         </div>
 
         <h2 class="ttoc">在尋找主題樂園的相關商品嗎？ 👇👇</h2>
         <div class="product-list">
-          <a
-            class="product-card"
-            v-for="(p,i) in viewpointticketList"
-            :key="i"
-            @click="gotoproductDetail"
-          >
-            <div class="change-heart" ref="changeHeart" @click="changeHeart">
+          <a class="product-card" v-for="(p,i) in themeList" :key="i">
+            <div
+              class="change-heart"
+              :class="{'clicked':favorProductList.includes(p.ProductID) }"
+              @click="clickHeart(p.ProductID,$event)"
+            >
               <i class="fa-regular fa-heart" ref="hollow"></i>
-              <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+              <i class="fa-solid fa-heart orange" ref="solid"></i>
             </div>
             <div class="product-card__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="p__location">{{p.Location}}</p>
             </div>
-            <div class="product-card__top">
+            <div
+              class="product-card__top"
+              @click="gotoproductDetail(p.ProductID)"
+            >
               <div class="product-card__top__pic">
                 <div
                   class="product-card__top__picsrc p1"
@@ -664,7 +695,10 @@
                 ></div>
               </div>
             </div>
-            <div class="product-card__bottom">
+            <div
+              class="product-card__bottom"
+              @click="gotoproductDetail(p.ProductID)"
+            >
               <span class="product-tag">{{p.ProductSecondType}}</span>
               <h6 class="product-name">{{p.ProductName}}</h6>
               <span class="gray"
@@ -840,21 +874,23 @@
         </div>
         <h2 class="ttoc">精選特色體驗就在這👇👇</h2>
         <div class="product-list">
-          <a
-            class="product-card"
-            v-for="(p,i) in productList"
-            :key="i"
-            @click="gotoproductDetail"
-          >
-            <div class="change-heart" ref="changeHeart" @click="changeHeart">
+          <a class="product-card" v-for="(p,i) in productList" :key="i">
+            <div
+              class="change-heart"
+              :class="{'clicked':favorProductList.includes(p.ProductID) }"
+              @click="clickHeart(p.ProductID,$event)"
+            >
               <i class="fa-regular fa-heart" ref="hollow"></i>
-              <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+              <i class="fa-solid fa-heart orange" ref="solid"></i>
             </div>
             <div class="product-card__location">
               <i class="fa-solid fa-location-dot"></i>
               <p class="p__location">{{p.Location}}</p>
             </div>
-            <div class="product-card__top">
+            <div
+              class="product-card__top"
+              @click="gotoproductDetail(p.ProductID)"
+            >
               <div class="product-card__top__pic">
                 <div
                   class="product-card__top__picsrc p1"
@@ -862,12 +898,17 @@
                 ></div>
               </div>
             </div>
-            <div class="product-card__bottom">
+            <div
+              class="product-card__bottom"
+              @click="gotoproductDetail(p.ProductID)"
+            >
               <span class="product-tag">{{p.ProductSecondType}}</span>
               <h6 class="product-name">{{p.ProductName}}</h6>
               <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
+                ><i class="fa-solid fa-star"></i>4.4({{p.ProductScoredPeople}})
+                |
+                <span class="product-bought">{{p.ProductPurchased}}</span
+                >個已訂購
               </span>
               <span class="price"
                 >TWD
@@ -1021,78 +1062,82 @@
       <div class="lazybag">
         <h4 class="lazybag__title">國內旅遊懶人包</h4>
         <div class="lazybag__list">
-          <a href="./productlist_travel.html">台北景點</a>
-          <a href="./productlist_travel.html">桃園景點 </a>
-          <a href="./productlist_travel.html">新竹景點</a>
-          <a href="./productlist_travel.html">苗栗景點</a>
-          <a href="./productlist_travel.html">台中景點</a>
-          <a href="./productlist_travel.html">彰化景點</a>
-          <a href="./productlist_travel.html">南投景點</a>
-          <a href="./productlist_travel.html">雲林景點</a>
-          <a href="./productlist_travel.html">嘉義景點</a>
-          <a href="./productlist_travel.html">台南景點</a>
-          <a href="./productlist_travel.html">高雄景點</a>
-          <a href="./productlist_travel.html">墾丁景點</a>
-          <a href="./productlist_travel.html">宜蘭景點</a>
-          <a href="./productlist_travel.html">花蓮景點</a>
-          <a href="./productlist_travel.html">台東景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=keelung">基隆景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=taipei">台北景點 </a>
+          <a href=".productlist_travel.html?msort=vp&local=newtaipei"
+            >新北景點</a
+          >
+          <a href=".productlist_travel.html?msort=vp&local=taoyuan">桃園景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=hsinchu">新竹景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=miaoli">苗栗景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=taichung"
+            >台中景點</a
+          >
+          <a href=".productlist_travel.html?msort=vp&local=changhua"
+            >彰化景點</a
+          >
+          <a href=".productlist_travel.html?msort=vp&local=nantou">南投景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=yunlin">雲林景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=chiayi">嘉義景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=tainan">台南景點</a>
+          <a href=".productlist_travel.html?msort=vp&local=kaohsiung"
+            >高雄景點</a
+          >
+          <a href=".productlist_travel.html?msort=vp&local=pingtung"
+            >屏東景點</a
+          >
         </div>
       </div>
 
       <div class="easydin">
         <h4 class="easydin__title">旅遊交通輕鬆訂</h4>
         <div class="easydin__list">
-          <a href="./productlist_travelticket.html">台北交通</a>
-          <a href="./productlist_travelticket.html">桃園交通 </a>
-          <a href="./productlist_travelticket.html">新竹交通</a>
-          <a href="./productlist_travelticket.html">苗栗交通</a>
-          <a href="./productlist_travelticket.html">台中交通</a>
-          <a href="./productlist_travelticket.html">彰化交通</a>
-          <a href="./productlist_travelticket.html">南投交通</a>
-          <a href="./productlist_travelticket.html">雲林交通</a>
-          <a href="./productlist_travelticket.html">嘉義交通</a>
-          <a href="./productlist_travelticket.html">台南交通</a>
-          <a href="./productlist_travelticket.html">高雄交通</a>
-          <a href="./productlist_travelticket.html">墾丁交通</a>
-          <a href="./productlist_travelticket.html">宜蘭交通</a>
-          <a href="./productlist_travelticket.html">花蓮交通</a>
-          <a href="./productlist_travelticket.html">台東交通</a>
+          <a href="./productlist_travel.html?msort=tt&local=taipei">基隆交通</a>
+          <a href="./productlist_travel.html?msort=tt&local=taipei"
+            >台北交通
+          </a>
+          <a href="./productlist_travel.html?msort=tt&local=newtaipei"
+            >新北交通</a
+          >
+          <a href="./productlist_travel.html?msort=tt&local=taoyuan"
+            >桃園交通</a
+          >
+          <a href="./productlist_travel.html?msort=tt&local=hsinchu"
+            >新竹交通</a
+          >
+          <a href="./productlist_travel.html?msort=tt&local=miaoli">苗栗交通</a>
+          <a href="./productlist_travel.html?msort=tt&local=taichung"
+            >台中交通</a
+          >
+          <a href="./productlist_travel.html?msort=tt&local=changhua"
+            >彰化交通</a
+          >
+          <a href="./productlist_travel.html?msort=tt&local=nantou">南投交通</a>
+          <a href="./productlist_travel.html?msort=tt&local=yunlin">雲林交通</a>
+          <a href="./productlist_travel.html?msort=tt&local=chiayi">嘉義交通</a>
+          <a href="./productlist_travel.html?msort=tt&local=tainan">台南交通</a>
+          <a href="./productlist_travel.html?msort=tt&local=kaohsiung"
+            >高雄交通</a
+          >
+          <a href="./productlist_travel.html?msort=tt&local=pingtung"
+            >屏東交通</a
+          >
         </div>
       </div>
     </div>
     @@include('layout/footer.html')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="./vender/vue/vue.global.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <!-- <script src="./js/slick_slider.js"></script> -->
 
-    <script>
-      // const app = Vue.createApp({
-      //   data() {
-      //     return {
-      //       counter: 0,
-      //     };
-      //   },
-      //   watch: {
-      //     counter(value) {
-      //       if (value > 0) this.showcartNum();
-      //     },
-      //   },
-      //   methods: {
-      //     showcartNum() {
-      //       const num = this.$refs.shoppingcartNum;
-      //       // console.log(num);
-      //       num.classList.remove("hidden");
-      //     },
-      //   },
-      // });
-
-      // app.mount("#header");
-    </script>
+    <script src="./js/header.js"></script>
+    <script src="./js/headerShoppingcartVue.js"></script>
     <script src="./js/index.js"></script>
     <!-- <script src="./js/productSlideVue.js"></script> -->
+    <script></script>
   </body>
 </html>

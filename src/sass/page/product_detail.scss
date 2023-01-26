@@ -43,7 +43,7 @@
       .xdsoft_prev {
         order: 3;
         margin-left: 185px;
-        @include m{
+        @include m {
           margin-left: 50px;
         }
       }
@@ -150,7 +150,7 @@
     border-radius: 5px;
   }
   .productdetail-modal-secondary {
-    background-color: $blue;    
+    background-color: $blue;
     margin-right: 25px;
   }
   .productdetail-modal-primary {
@@ -522,6 +522,7 @@
   h3 {
     font-weight: bold;
     font-size: $pc_h4;
+    padding-bottom: 15px;
   }
   .product-review-group {
     display: flex;
@@ -540,12 +541,12 @@
         line-height: 65px;
       }
     }
-    .product-review-star {
+    .productreview-star {
       display: flex;
       flex-direction: column;
-      .star-color {
+      p {
         color: $yellow;
-        font-size: $pc_h3;
+        font-size: $pc_h1;
       }
     }
   }
@@ -555,23 +556,31 @@
 .productdetail-message {
   margin: 30px 0 50px 0;
   span {
-    font-size: $pc_h4;
+    font-size: $pc_h5;
   }
   h5 {
     background-color: #f4f4f4;
     font-size: 14px;
   }
+  img {
+    width: 30px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
 
   .productdetail-message-text {
-    margin-left: 40px;
+    margin-left: 50px;
     p {
-      font-size: $pc_h3;
+      font-size: 25px;
       color: $yellow;
+      padding-right: 25px;
+      // display: inline-block;
     }
     h5 {
       padding: 30px;
       border-radius: 10px;
-      @include m{
+      font-size: 15px;
+      @include m {
         padding: 15px;
       }
     }
@@ -582,7 +591,7 @@
   display: flex;
   justify-content: center;
   // width: 100%;
-  div{
+  div {
     width: 1000px;
   }
   a {
@@ -604,7 +613,6 @@
 
 // ---------------上方輪播---------------
 .productdetail-slideshow {
-
   .mySlidesFlex {
     z-index: 100;
     img {
@@ -615,10 +623,10 @@
       }
     }
   }
-  .slick-prev{
+  .slick-prev {
     left: -40px;
   }
-  .slick-next{
+  .slick-next {
     right: -25px;
   }
   .slick-prev:before {
@@ -631,7 +639,6 @@
   }
 }
 
-
 // ---------------愛心---------------
 .productdetail-small {
   .flex-container {
@@ -643,7 +650,7 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .flex-child {
     outline: none;
     cursor: pointer;
@@ -681,7 +688,7 @@
   height: 100px;
   position: absolute;
   right: 0;
-  @include m{
+  @include m {
     display: none;
   }
   .flex-container {

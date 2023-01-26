@@ -94,7 +94,7 @@ header {
           display: flex;
           justify-content: center;
           align-items: center;
-
+          cursor: pointer;
           &.hidden {
             display: none;
           }
@@ -152,7 +152,7 @@ header {
         border-right: none;
       }
 
-      &>li {
+      & > li {
         text-align: center;
         padding: 5px 0;
         position: relative;
@@ -327,7 +327,15 @@ header {
       }
     }
   }
-
+  .member_img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+    // background-color: red;
+  }
   .user_menu {
     display: none;
     position: fixed;
@@ -368,8 +376,10 @@ header {
           .user_icon {
             height: 50px;
             width: 50px;
-            background-color: #eee;
+            // background-color: #eee;
             border-radius: 50%;
+            background-size: cover;
+            background-position: center center;
           }
 
           .user_name {
@@ -465,7 +475,7 @@ header {
       max-height: 300px;
       overflow-y: auto;
       // position: fixed;
-      @include m{
+      @include m {
         max-height: 600px;
       }
     }
@@ -530,7 +540,6 @@ header {
           height: 50px;
           border-radius: 5px;
         }
-
       }
 
       .product-name {
@@ -552,7 +561,6 @@ header {
             font-size: 14px;
           }
         }
-
       }
 
       .delete {
@@ -570,7 +578,6 @@ header {
             font-size: 14px;
           }
         }
-
       }
 
       .date,
@@ -593,7 +600,6 @@ header {
           text-align: left;
           padding-left: 100px;
           margin: 0;
-
         }
       }
 
@@ -610,10 +616,8 @@ header {
           padding: 10px 0;
           margin: 0;
           padding-left: 100px;
-
         }
       }
-
     }
 
     .gotocart {

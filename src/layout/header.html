@@ -1,310 +1,446 @@
 <header id="header">
-    <div class="header_wrapper">
+  <div class="header_wrapper">
+    <div class="header_top container">
+      <ul class="header_top_left">
+        <li>
+          <a href="index.html"><img src="img/otherpage/Weeee!.svg" alt="" /></a>
+        </li>
+        <li>
+          <input
+            type="text"
+            placeholder="輸入目的地、景點、體驗行程或活動名稱...
+              "
+            maxlength="50"
+          />
+        </li>
+        <span>
+          <button class="header_search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </span>
+      </ul>
+      <ul class="header_top_right">
+        <li>
+          <button class="header_search_m">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </li>
+        <li>
+          <a class="header_shoppingcart" @click="shoppingcart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <div class="shoppingcart-num hidden" ref="shoppingcartNum">
+              {{headercounter}}
+            </div>
+          </a>
 
-        <div class="header_top container" @click="counter++">
+          <!-- <div class="header_product_group">
+            <div class="empty_cart" ref="empty_cart" v-show="emptyCart">
+              <img src="img/otherpage/empty-cart.png" alt="" />
+              <h6>您的購物車是空的</h6>
+              <a href="index.html">跟著Weeee! 一起探索世界</a>
+            </div>
 
-            <ul class="header_top_left">
+            <div class="product_contain">
+              <div class="product_item">
+                <a href="" class="product-image"
+                  ><img src="img/sightseeing/fr_28_1.jpg" alt=""
+                /></a>
+                <div class="product-name">
+                  <a href="">
+                    <h6>有得逛有得買，就在桃園</h6>
+                  </a>
+                </div>
+                <div class="delete">
+                  <button class="cart_delete" @click="btnClose(index)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+                <div class="date">
+                  <i class="fa-regular fa-calendar-days"></i>2022-12-30
+                </div>
+                <div class="quantity">
+                  <i class="fa-solid fa-person"></i>人數 x 2
+                </div>
+                <div class="product-price">
+                  <h6>TWD 3,475</h6>
+                </div>
+              </div>
+
+              <div class="product_item">
+                <a href="" class="product-image"
+                  ><img src="img/sightseeing/fr_28_1.jpg" alt=""
+                /></a>
+                <div class="product-name">
+                  <a href="">
+                    <h6>有得逛有得買，就在桃園</h6>
+                  </a>
+                </div>
+                <div class="delete">
+                  <button class="cart_delete" @click="btnClose(index)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+                <div class="date">
+                  <i class="fa-regular fa-calendar-days"></i>2022-12-30
+                </div>
+                <div class="quantity">
+                  <i class="fa-solid fa-person"></i>人數 x 2
+                </div>
+                <div class="product-price">
+                  <h6>TWD 3,475</h6>
+                </div>
+              </div>
+              <div class="product_item">
+                <a href="" class="product-image"
+                  ><img src="img/sightseeing/fr_28_1.jpg" alt=""
+                /></a>
+                <div class="product-name">
+                  <a href="">
+                    <h6>有得逛有得買，就在桃園</h6>
+                  </a>
+                </div>
+                <div class="delete">
+                  <button class="cart_delete" @click="btnClose(index)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+                <div class="date">
+                  <i class="fa-regular fa-calendar-days"></i>2022-12-30
+                </div>
+                <div class="quantity">
+                  <i class="fa-solid fa-person"></i>人數 x 2
+                </div>
+                <div class="product-price">
+                  <h6>TWD 3,475</h6>
+                </div>
+              </div>
+              <div class="product_item">
+                <a href="" class="product-image"
+                  ><img src="img/sightseeing/fr_28_1.jpg" alt=""
+                /></a>
+                <div class="product-name">
+                  <a href="">
+                    <h6>有得逛有得買，就在桃園</h6>
+                  </a>
+                </div>
+                <div class="delete">
+                  <button class="cart_delete" @click="btnClose(index)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+                <div class="date">
+                  <i class="fa-regular fa-calendar-days"></i>2022-12-30
+                </div>
+                <div class="quantity">
+                  <i class="fa-solid fa-person"></i>人數 x 2
+                </div>
+                <div class="product-price">
+                  <h6>TWD 3,475</h6>
+                </div>
+              </div>
+            </div>
+
+            <div class="gotocart">
+              <a href="shoppingcart.html">查看購物車</a>
+            </div>
+          </div> -->
+        </li>
+        <li>
+          <template v-if="memberID">
+            <!-- <i class="fa-solid fa-user"> </i> -->
+            <div
+              class="member_img"
+              :style="{ backgroundImage: 'url(' + headerMemberImg+ ')' }"
+            ></div>
+            <div class="user_menu">
+              <div class="user_setting">
+                <a href="account_setting.html">
+                  <div class="user_info">
+                    <div
+                      class="user_icon"
+                      :style="{ backgroundImage: 'url(' + headerMemberImg+ ')' }"
+                    ></div>
+                    <div class="user_name">{{headerFullName}}</div>
+                  </div>
+                  <i class="fa-solid fa-gear"></i>
+                </a>
+              </div>
+              <ol>
                 <li>
-                    <a href="index.html"><img src="img/otherpage/Weeee!.svg" alt=""></a>
+                  <a href="account_order.html">
+                    <div><i class="fa-regular fa-rectangle-list"></i></div>
+                    <h6>訂單管理</h6>
+                  </a>
                 </li>
                 <li>
-                    <input type="text" placeholder="輸入目的地、景點、體驗行程或活動名稱...
-              " maxlength="50">
-                </li><span>
-                    <button class="header_search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </span>
-            </ul>
-            <ul class="header_top_right">
-                <li>
-                    <button class="header_search_m"><i class="fa-solid fa-magnifying-glass"></i></button>
+                  <a href="account_jo.html">
+                    <div><i class="fa-solid fa-child-reaching"></i></div>
+                    <h6>我的揪團</h6>
+                  </a>
                 </li>
                 <li>
-                    <a class="header_shoppingcart" href="javascript:;">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <div class="shoppingcart-num hidden" ref="shoppingcartNum">{{counter}}</div>
-                    </a>
-                    <!-- <header-shoppingcart-vue></header-shoppingcart-vue> -->
-                    <!-- vue -->
-                    <div class="header_product_group">
-
-                        <div class="empty_cart" ref="empty_cart" v-show="emptyCart">
-                            <img src="img/otherpage/empty-cart.png" alt="" />
-                            <h6>您的購物車是空的</h6>
-                            <a href="index.html">跟著Weeee! 一起探索世界</a>
-                          </div>
-
-                        <div class="product_contain">
-
-                            <div class="product_item">
-                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
-                                <div class="product-name">
-                                    <a href="">
-                                        <h6>有得逛有得買，就在桃園</h6>
-                                    </a>
-                                </div>
-                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
-                                            class="fa-solid fa-trash"></i></button></div>
-                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                                <div class="product-price">
-                                    <h6>TWD 3,475</h6>
-                                </div>
-                            </div>
-
-                            <div class="product_item">
-                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
-                                <div class="product-name">
-                                    <a href="">
-                                        <h6>有得逛有得買，就在桃園</h6>
-                                    </a>
-                                </div>
-                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
-                                            class="fa-solid fa-trash"></i></button></div>
-                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                                <div class="product-price">
-                                    <h6>TWD 3,475</h6>
-                                </div>
-                            </div>
-                            <div class="product_item">
-                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
-                                <div class="product-name">
-                                    <a href="">
-                                        <h6>有得逛有得買，就在桃園</h6>
-                                    </a>
-                                </div>
-                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
-                                            class="fa-solid fa-trash"></i></button></div>
-                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                                <div class="product-price">
-                                    <h6>TWD 3,475</h6>
-                                </div>
-                            </div>
-                            <div class="product_item">
-                                <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
-                                <div class="product-name">
-                                    <a href="">
-                                        <h6>有得逛有得買，就在桃園</h6>
-                                    </a>
-                                </div>
-                                <div class="delete"><button class="cart_delete" @click="btnClose(index)"><i
-                                            class="fa-solid fa-trash"></i></button></div>
-                                <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                                <div class="product-price">
-                                    <h6>TWD 3,475</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="gotocart">
-                            <a href="shoppingcart.html">查看購物車</a>
-                        </div>
-                    </div>
-                    <!-- vue -->
-
+                  <a href="account_favor.html">
+                    <div><i class="fa-solid fa-heart"></i></div>
+                    <h6>我的收藏</h6>
+                  </a>
                 </li>
                 <li>
-                    <i class="fa-solid fa-user">
-                    </i>
-                    <div class="user_menu">
-                        <div class="user_setting">
-                            <a href="account_setting.html">
-                                <div class="user_info">
-                                    <div class="user_icon"></div>
-                                    <div class="user_name">寧寶</div>
-                                </div>
-                                <i class="fa-solid fa-gear"></i>
-                            </a>
-                        </div>
-                        <ol>
-                            <li>
-                                <a href="account_order.html">
-                                    <div><i class="fa-regular fa-rectangle-list"></i></div>
-                                    <h6>訂單管理</h6>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="account_jo.html">
-                                    <div> <i class="fa-solid fa-child-reaching"></i></div>
-                                    <h6>我的揪團</h6>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="account_favor.html">
-
-                                    <div> <i class="fa-solid fa-heart"></i></div>
-                                    <h6>我的收藏</h6>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="account_point.html">
-
-                                    <div> <img src="img/weeeepoints/yellow.svg" alt=""></div>
-                                    <h6>Weeee! Point</h6>
-                                </a>
-                            </li>
-                        </ol>
-                        <div class="user_logout">
-                            <a href="login.html">登出</a>
-                        </div>
-                    </div>
-
+                  <a href="account_point.html">
+                    <div><img src="img/weeeepoints/yellow.svg" alt="" /></div>
+                    <h6>Weeee! Point</h6>
+                  </a>
                 </li>
-            </ul>
-        </div>
+              </ol>
+              <div class="user_logout">
+                <a href="login.html">登出</a>
+              </div>
+            </div>
+          </template>
+          <template v-else
+            ><i class="fa-solid fa-user" @click="gotologin"> </i
+          ></template>
+        </li>
+      </ul>
     </div>
+  </div>
 
-
-    <div class="header_wrapper">
-
-        <div class="header_bottom container">
-
-            <ul>
-                <li>
-                    <a href="productlist_travel.html" class="header_modal_show"><i class="fa-solid fa-mountain"></i>
-                        <h6>觀光行程</h6>
-                    </a>
-                    <div class="submenu">
-                        <div class="submenu_title">觀光行程</div>
-                        <div class="submenu_list"><a href="productlist_travel.html">所有觀光行程</a></div>
-                        <div class="submenu_list"><a href="">朋友行程</a></div>
-                        <div class="submenu_list"><a href="">家庭行程</a></div>
-                        <div class="submenu_list"><a href="">情侶行程</a></div>
-                        <div class="submenu_list"><a href="">寵物行程</a></div>
-                    </div>
-                    <ol>
-                        <li><a href="">朋友行程</a></li>
-                        <li><a href="">家庭行程</a></li>
-                        <li><a href="">情侶行程</a></li>
-                        <li><a href="">寵物行程</a></li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="productlist_experience.html" class="header_modal_show"> <i class="fa-solid fa-gavel"></i>
-                        <h6>體驗活動</h6>
-                    </a>
-                    <div class="submenu">
-                        <div class="submenu_title">體驗活動</div>
-                        <div class="submenu_list"><a href="productlist_experience.html">所有體驗活動</a></div>
-                        <div class="submenu_list"><a href="">手作體驗</a></div>
-                        <div class="submenu_list"><a href="">水上活動</a></div>
-                        <div class="submenu_list"><a href="">觀光農場</a></div>
-                        <div class="submenu_list"><a href="">極限運動</a></div>
-                    </div>
-                    <ol>
-                        <li><a href="">手作體驗</a></li>
-                        <li><a href="">水上活動</a></li>
-                        <li><a href="">觀光農場</a></li>
-                        <li><a href="">極限運動</a></li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="productlist_travelticket.html" class="header_modal_show"> <i
-                            class="fa-solid fa-train-subway"></i>
-                        <h6>交通票卡</h6>
-                    </a>
-                    <div class="submenu">
-                        <div class="submenu_title">交通票卡</div>
-                        <div class="submenu_list"><a href="productlist_travelticket.html">所有交通票卡</a></div>
-                        <div class="submenu_list"><a href="">無限暢遊卡</a></div>
-                        <div class="submenu_list"><a href="">景點暢遊卡</a></div>
-                        <div class="submenu_list"><a href="">交通暢遊卡</a></div>
-                        <div class="submenu_list"><a href="">經典暢遊卡</a></div>
-                    </div>
-                    <ol>
-                        <li><a href="">無限暢遊卡</a></li>
-                        <li><a href="">景點暢遊卡</a></li>
-                        <li><a href="">交通暢遊卡</a></li>
-                        <li><a href="">經典暢遊卡</a></li>
-                    </ol>
-                </li>
-                <li>
-                    <a href="productlist_sightseeingticket.html" class="header_modal_show"> <i
-                            class="fa-solid fa-ticket"></i>
-                        <h6>景點門票</h6>
-                    </a>
-                    <div class="submenu">
-                        <div class="submenu_title">景點門票</div>
-                        <div class="submenu_list"><a href="productlist_sightseeingticket.html">所有景點門票</a></div>
-                        <div class="submenu_list"><a href="">主題樂園</a></div>
-                        <div class="submenu_list"><a href="">水族館</a></div>
-                        <div class="submenu_list"><a href="">博物館</a></div>
-                        <div class="submenu_list"><a href="">美術館</a></div>
-                    </div>
-                    <ol>
-                        <li><a href="">主題樂園</a></li>
-                        <li><a href="">水族館</a></li>
-                        <li><a href="">博物館</a></li>
-                        <li><a href="">美術館</a></li>
-                    </ol>
-
-                </li>
-                <li>
-                    <a href="jo_index.html"> <i class="fa-solid fa-child-reaching"></i>
-                        <h6>揪遊趣！</h6>
-                    </a>
-                </li>
-        </div>
+  <div class="header_wrapper">
+    <div class="header_bottom container">
+      <ul>
+        <li>
+          <a href="productlist_travel.html" class="header_modal_show"
+            ><i class="fa-solid fa-mountain"></i>
+            <h6>觀光行程</h6>
+          </a>
+          <div class="submenu">
+            <div class="submenu_title">觀光行程</div>
+            <div class="submenu_list">
+              <a href="productlist_travel.html">所有觀光行程</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ss&ssort=fr">朋友行程</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ss&ssort=fa">家庭行程</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ss&ssort=co">情侶行程</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ss&ssort=pe">寵物行程</a>
+            </div>
+          </div>
+          <ol>
+            <li>
+              <a href="./productlist_travel.html?msort=ss&ssort=fr">朋友行程</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=ss&ssort=fa">家庭行程</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=ss&ssort=co">情侶行程</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=ss&ssort=pe">寵物行程</a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="productlist_experience.html" class="header_modal_show">
+            <i class="fa-solid fa-gavel"></i>
+            <h6>體驗活動</h6>
+          </a>
+          <div class="submenu">
+            <div class="submenu_title">體驗活動</div>
+            <div class="submenu_list">
+              <a href="productlist_experience.html">所有體驗活動</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ep&ssort=hm">手作體驗</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ep&ssort=ow">水上活動</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ep&ssort=fa">觀光農場</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=ep&ssort=et">極限運動</a>
+            </div>
+          </div>
+          <ol>
+            <li>
+              <a href="./productlist_travel.html?msort=ep&ssort=hm">手作體驗</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=ep&ssort=ow">水上活動</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=ep&ssort=fa">觀光農場</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=ep&ssort=et">極限運動</a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="productlist_travelticket.html" class="header_modal_show">
+            <i class="fa-solid fa-train-subway"></i>
+            <h6>交通票卡</h6>
+          </a>
+          <div class="submenu">
+            <div class="submenu_title">交通票卡</div>
+            <div class="submenu_list">
+              <a href="productlist_travelticket.html">所有交通票卡</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=tt&ssort=un"
+                >無限暢遊卡</a
+              >
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=tt&ssort=vp"
+                >景點暢遊卡</a
+              >
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=tt&ssort=tr"
+                >交通暢遊卡</a
+              >
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=tt&ssort=cl"
+                >經典暢遊卡</a
+              >
+            </div>
+          </div>
+          <ol>
+            <li>
+              <a href="./productlist_travel.html?msort=tt&ssort=un"
+                >無限暢遊卡</a
+              >
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=tt&ssort=vp"
+                >景點暢遊卡</a
+              >
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=tt&ssort=tr"
+                >交通暢遊卡</a
+              >
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=tt&ssort=cl"
+                >經典暢遊卡</a
+              >
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a
+            href="productlist_sightseeingticket.html"
+            class="header_modal_show"
+          >
+            <i class="fa-solid fa-ticket"></i>
+            <h6>景點門票</h6>
+          </a>
+          <div class="submenu">
+            <div class="submenu_title">景點門票</div>
+            <div class="submenu_list">
+              <a href="productlist_sightseeingticket.html">所有景點門票</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=vp&ssort=th">主題樂園</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=vp&ssort=aq">水族館</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=vp&ssort=mu">博物館</a>
+            </div>
+            <div class="submenu_list">
+              <a href="./productlist_travel.html?msort=vp&ssort=ar">美術館</a>
+            </div>
+          </div>
+          <ol>
+            <li>
+              <a href="./productlist_travel.html?msort=vp&ssort=th">主題樂園</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=vp&ssort=aq">水族館</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=vp&ssort=mu">博物館</a>
+            </li>
+            <li>
+              <a href="./productlist_travel.html?msort=vp&ssort=ar">美術館</a>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="jo_index.html">
+            <i class="fa-solid fa-child-reaching"></i>
+            <h6>揪遊趣！</h6>
+          </a>
+        </li>
+      </ul>
     </div>
-    </div>
-    <div class="header_overlay"></div>
+  </div>
 
-    <div class="search_modal">
+  <div class="header_overlay"></div>
 
-        <input id="search_m" type="text" placeholder="輸入目的地、景點、體驗行程或活動名稱...
-      " maxlength="50"><button class="header_search"><i class="fa-solid fa-magnifying-glass"></i></button>
-
-    </div>
-
-
-
+  <div class="search_modal">
+    <input
+      id="search_m"
+      type="text"
+      placeholder="輸入目的地、景點、體驗行程或活動名稱...
+      "
+      maxlength="50"
+    /><button class="header_search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
 </header>
-<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+
 <script>
+  $(".header_modal_show").on("click", function (e) {
+    if ($(window).width() < 768) {
+      event.preventDefault(e);
+      $(this).next(".submenu").addClass("active");
+      $(".header_overlay").addClass("active");
+    } else {
+      $(".submenu").removeClass("active");
+    }
+  });
 
+  $(".header_search_m").on("click", function () {
+    // console.log($(".search_modal"));
+    $(".search_modal").css("display", "block");
+    $(".header_overlay").addClass("active");
+    $("#search_m").focus();
+  });
 
-    $(".header_modal_show").on("click", function (e) {
-        if ($(window).width() < 768) {
-            event.preventDefault(e);
-            $(this).next(".submenu").addClass("active");
-            $(".header_overlay").addClass("active");
-        } else {
-            $(".submenu").removeClass("active");
-        }
-    });
+  $(".fa-user").on("click", function () {
+    $(".user_menu").css("display", "block");
+    $(".header_overlay").addClass("active");
+  });
 
+  $(".header_shoppingcart").on("click", function () {
+    $(".header_product_group").css("display", "block");
+    $(".header_overlay").addClass("active");
+  });
 
-    $(".header_search_m").on("click", function () {
-        // console.log($(".search_modal"));
-        $(".search_modal").css("display", "block");
-        $(".header_overlay").addClass("active");
-        $("#search_m").focus();
-    });
+  $(".user_menu").css("display", "none");
 
-    $(".fa-user").on("click", function () {
-        $(".user_menu").css("display", "block");
-        $(".header_overlay").addClass("active");
-
-    });
-
-    $(".header_shoppingcart").on("click", function () {
-        $(".header_product_group").css("display", "block");
-        $(".header_overlay").addClass("active");
-
-    });
-
-
+  // Function for close the Modal
+  $(".header_overlay").on("click", function () {
+    $(".header_overlay").removeClass("active");
+    $(".submenu").removeClass("active");
+    $(".search_modal").css("display", "none");
     $(".user_menu").css("display", "none");
-
-
-    // Function for close the Modal
-    $(".header_overlay").on("click", function () {
-        $(".header_overlay").removeClass("active");
-        $(".submenu").removeClass("active");
-        $(".search_modal").css("display", "none");
-        $(".user_menu").css("display", "none");
-        $(".header_product_group").css("display", "none");
-    });
-</script>
+    $(".header_product_group").css("display", "none");
+  });
+</script> -->
