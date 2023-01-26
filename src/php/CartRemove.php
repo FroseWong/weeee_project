@@ -6,7 +6,7 @@
     $CID = $_POST["CID"];
 
     //建立SQL
-    $sql = "DELETE from cart WHERE cartID = ?";
+    $sql = "delete from cart where cartID = ?";
     
     //執行
     $statement = $pdo->prepare($sql);
@@ -15,5 +15,5 @@
     $statement->bindValue(1 , $CID); 
     $statement->execute();
 
-    echo "商品已移除!";
+    echo "商品已移除!".$CID;
 ?>
