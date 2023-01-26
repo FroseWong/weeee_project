@@ -122,7 +122,10 @@ favorProductList: [], // Frose
   },
 
   methods: {
-    ChangeCurrpage(e) {},
+    ChangeCurrpage(e) {
+      let num = Number(e.target.text)
+      this.pagenum = num;
+    },
     filters(list, select) {
       const result = new Set();
       const set = new Set(select);
@@ -207,16 +210,16 @@ favorProductList: [], // Frose
       this.cardlist;
     },
     showproduct() {},
-    changeHeart(e) {
-      e.stopPropagation();
-      console.log(e.target);
-      // let a = e.target;
-      // let b = e.target.nextElementSibling
-      //   ? e.target.nextElementSibling
-      //   : e.target.previousElementSibling;
-      // a.classList.add("hidden");
-      // b.classList.remove("hidden");
-    },
+    // changeHeart(e) {
+    //   e.stopPropagation();
+    //   console.log(e.target);
+    //   // let a = e.target;
+    //   // let b = e.target.nextElementSibling
+    //   //   ? e.target.nextElementSibling
+    //   //   : e.target.previousElementSibling;
+    //   // a.classList.add("hidden");
+    //   // b.classList.remove("hidden");
+    // },
     open_city(e) {
       this.cityshow = !this.cityshow;
 

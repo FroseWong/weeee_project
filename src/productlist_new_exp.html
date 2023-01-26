@@ -111,10 +111,10 @@
             </div>
             <a
               class="product-card-row"
-              v-for="(product,index) in computedList2"
+              v-for="product in computedList2"
               :key="index"
-              :href="'./productdetail.html?id=' + product.ProductID"
-              
+              @click="gotoproductDetail(product.ProductID)"
+             
             >
               <div class="product-card-row__left">
                 <div class="product-card-row__location">
@@ -129,14 +129,19 @@
                 </div>
               </div>
               <div class="product-card-row__right">
-                <div class="change-heart" ref="changeHeart">
+                <div
+                  class="change-heart"
+                  ref="changeHeart"
+                  @click="clickHeart(product.ProductID,$event)"
+                  :class="{'clicked':favorProductList.includes(product.ProductID) }"
+                >
                   <i
                     class="fa-regular fa-heart"
                     ref="hollow"
                     @click="changeHeart"
                   ></i>
                   <i
-                    class="fa-solid fa-heart orange hidden"
+                    class="fa-solid fa-heart orange"
                     ref="solid"
                     @click="changeHeart"
                   ></i>
@@ -161,7 +166,6 @@
                 >
               </div>
             </a>
-
             <nav>
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
@@ -193,6 +197,7 @@
     </div>
     <script src="./vender/jquery/jquery.js"></script>
     <script src="./vender/vue/vue.global.js"></script>
+    <script src="./js/header.js"></script>
     <script src="./js/productlist.js"></script>
     <!-- <script>
       const { createApp } = Vue;
