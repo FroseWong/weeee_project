@@ -355,7 +355,7 @@ let app1 = Vue.createApp({
               // that.clickHeart();
             });
           }
-          console.log(that.memberInterestList);
+          // console.log(that.memberInterestList);
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);

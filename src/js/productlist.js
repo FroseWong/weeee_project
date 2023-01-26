@@ -119,6 +119,10 @@ favorProductList: [], // Frose
       let num = Number(e.target.text)
       this.pagenum = num;
     },
+  },
+
+  methods: {
+    ChangeCurrpage(e) {},
     filters(list, select) {
       const result = new Set();
       const set = new Set(select);
