@@ -47,6 +47,24 @@
     justify-content: center;
     align-items: center;
 
+    .fa-regular {
+      display: block;
+    }
+
+    .fa-solid {
+      display: none;
+    }
+
+    &.clicked {
+      .fa-regular {
+        display: none;
+      }
+
+      .fa-solid {
+        display: block;
+      }
+    }
+
     @include m {
       // display: none;
       color: $white;

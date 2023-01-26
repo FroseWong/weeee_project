@@ -3,7 +3,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      currpage:1,
+      currpage: 1,
       cardlist: [],
       checked: {
         select_secondType: [],
@@ -47,8 +47,7 @@ createApp({
   created() {
     window.addEventListener("resize", this.resize_adjust, true);
     this.getdata();
-    console.log("aaa")
-
+    console.log("aaa");
   },
   computed: {
     computedList() {
@@ -87,16 +86,13 @@ createApp({
       //   this.categorys = type;
       return newcardlist3;
     },
-    totalpage(){
-      return  Math.ceil(this.computedList.length/5)
-    }
-  },
-  
-  methods: {
-
-    ChangeCurrpage(e){
-      
+    totalpage() {
+      return Math.ceil(this.computedList.length / 5);
     },
+  },
+
+  methods: {
+    ChangeCurrpage(e) {},
     filters(list, select) {
       const result = new Set();
       const set = new Set(select);
@@ -454,7 +450,5 @@ createApp({
     },
   },
 
-  mounted() {
-    
-  },
+  mounted() {},
 }).mount("#app");
