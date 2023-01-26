@@ -592,7 +592,6 @@ createApp({
         dataType: "json",
         success: function (response) {
           console.log(response);
-
           if (response == "NotFound") {
             alert("請先登入再加入購物車");
             window.location.href = "./login.html";
@@ -600,22 +599,7 @@ createApp({
         },
         error: function (exception) {},
       });
-      $("#peopleModal").modal("hide");
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: false,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "已成功加入購物車 ♥",
-      });
+      this.cartswal();
     },
     ajax_Comment() {
       _this = this;
@@ -665,6 +649,25 @@ createApp({
         error: function (exception) {},
       });
     },
+    cartswal(){
+      $("#peopleModal").modal("hide");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: false,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "已成功加入購物車 ♥",
+      });
+      header.get_member_information();
+    }
   },
   computed: {
     // ---------------總金額---------------
