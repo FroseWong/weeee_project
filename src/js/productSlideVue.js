@@ -54,12 +54,21 @@ window.my_component = {
       viewpointticketList: [],
       top10List: [],
       favorProductList: [],
+      memberID: "",
     };
   },
   created() {
     this.getdata_product_list();
     this?.product_slick();
   },
+  mounted() {
+    // this.memberID = header.memberID;
+  },
+  beforeUpdate() {
+    this.memberID = header.memberID;
+    this.renderHeart();
+  },
+  updated() {},
   methods: {
     getdata_product_list() {
       // this.jo_list_hot = [];
@@ -150,6 +159,7 @@ window.my_component = {
       b.classList.remove("hidden");
     },
     clickHeart(pid, e) {
+      console.log("R");
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
