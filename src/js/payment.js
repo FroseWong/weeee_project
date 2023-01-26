@@ -1,44 +1,171 @@
 const app = Vue.createApp({
   data() {
     return {
-      email: "",
+      memberInfo: {
+        firstName: "",
+        lastName: "",
+        country: "",
+        phone: "",
+        username: "",
+        totalPoints: 0,
+      },
       productList: [],
+      weeee: {
+        totalPoints: 0,
+      },
+      tempWeeee: {},
+      checked: false,
+      checked2: false,
+      disabled: true,
+      hidden: true,
     };
   },
   methods: {
+    checkPoints() {
+      console.log(this.productList.cartId);
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/UsePoints.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          response.forEach((totalPoints) => {
+            that.tempWeeee = totalPoints;
+            if (that.tempWeeee.totalPoints > 0) {
+              that.disabled = false;
+              that.hidden = false;
+            }
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    getPoints() {
+      if (!this.checked2) {
+        let that = this;
+        $.ajax({
+          method: "POST",
+          url: "./php/UsePoints.php",
+          data: {},
+          dataType: "json",
+          success: function (response) {
+            response.forEach((totalPoints) => {
+              that.tempWeeee = totalPoints;
+              if (that.tempWeeee.totalPoints > that.getTotal.totalPrice * 0.2) {
+                that.weeee.totalPoints = that.getTotal.totalPrice * 0.2;
+              } else {
+                that.weeee = totalPoints;
+              }
+            });
+          },
+          error: function (exception) {
+            // console.log(123);
+            alert("數據載入失敗: " + exception.status);
+          },
+        });
+      } else {
+        this.weeee.totalPoints = 0;
+      }
+    },
+    getMemberInfo() {
+      // let memberInfo = document.getElementById('userInfo');
+      if (!this.checked) {
+        let that = this;
+        $.ajax({
+          method: "POST",
+          url: "./php/MemberInfo.php",
+          data: {},
+          dataType: "json",
+          success: function (response) {
+            console.log(response);
+            response.forEach((memberInfo) => {
+              that.memberInfo = memberInfo;
+            });
+          },
+          error: function (exception) {
+            alert("數據載入失敗: " + exception.status);
+          },
+        });
+      }
+    },
     displayTWD(price) {
-        return `TWD ${price.toLocaleString('en-US')}`;
-      },
-      getCheckoutData(){
-        this.productList = JSON.parse(sessionStorage.getItem('checkout_data'));
-        console.log(this.productList);
-        // this.productList.push(productList);
-    }
+      return `TWD ${price.toLocaleString("en-US")}`;
+    },
+    getCheckoutData() {
+      this.productList = JSON.parse(sessionStorage.getItem("checkout_data"));
+      // this.productList.push(productList);
+
+      var totalPrice = 0;
+      for (let i = 0; i < this.productList.length; i++) {
+        // 將每個商品的總價加在一起
+        totalPrice +=
+          this.productList[i].quantity * this.productList[i].productPrice;
+        // console.log(totalPrice)
+      }
+      return {
+        // 被選中的物品數量就是proList.length
+        totalNum: this.productList.length,
+        // 總價就是totalPrice
+        totalPrice: totalPrice,
+        totalPoints: Math.floor(totalPrice / 100),
+      };
+    },
+    pay() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/CartCheckout.php",
+        data: {
+          CID: that.productList.cartId,
+          total: that.getTotal.totalPrice,
+          totalPrice: that.getTotal.totalPrice - that.weeee.totalPoints,
+          addPoints: Math.floor((that.getTotal.totalPrice
+            - that.weeee.totalPoints) / 100),
+          discountPoints: that.weeee.totalPoints,
+          // offsetPoints: 
+        },
+        dataType: "text",
+        success: function (response) {
+          //購買完成
+          alert(response);
+          location.href = "./payment_complete.html";
+        },
+        error: function (exception) {
+          alert("購買失敗: " + exception.status);
+        },
+      });
+    },
   },
   computed: {
     getTotal() {
-        // 获取productList中select为true的数据
-        var prodList = this.productList.filter(function (val) {
-          return val.select;
-        });
-        // 设置一个值用来存储总价
-        var totalPrice = 0;
-        for (let i = 0; i < prodList.length; i++) {
-          // 将每个商品的总价加在一起
-          totalPrice += prodList[i].num * prodList[i].price;
-        }
-        return {
-          // 被选中的物品数量就是proList.length
-          totalNum: prodList.length,
-          // 总价就是totalPrice
-          totalPrice: totalPrice,
-          totalPoints: Math.floor(totalPrice / 100),
-        };
-      },
-
+      // 取productList中select為true
+      // var prodList = this.productList.filter(function (val) {
+      //   return val.select;
+      // });
+      // 設置一個值用来儲存總價
+      var totalPrice = 0;
+      for (let i = 0; i < this.productList.length; i++) {
+        // 將每個商品的總價加在一起
+        totalPrice +=
+          this.productList[i].quantity * this.productList[i].productPrice;
+      }
+      return {
+        // 被選中的物品數量就是proList.length
+        totalNum: this.productList.length,
+        // 總價就是totalPrice
+        totalPrice: totalPrice,
+        totalPoints: Math.floor(totalPrice / 100),
+      };
+    },
   },
   mounted() {
     this.getCheckoutData();
+    // this.getPoints();
+    this.checkPoints();
   },
 });
 app.mount("#app");

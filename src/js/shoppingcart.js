@@ -2,8 +2,8 @@ const { createApp } = Vue;
 // ---------------aa---------------
 const App = {
   data() {
-    return { currentI:'',
-    currentII:'',
+    return {
+      currentI: "",
       productList: [
         // {
         //   url: "",
@@ -54,6 +54,7 @@ const App = {
   // ---------------bb---------------
   methods: {
     getdata_productList() {
+      // console.log(this.productList);
       let that = this;
       $.ajax({
         method: "POST",
@@ -63,7 +64,7 @@ const App = {
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
+          console.log(response);
           response.forEach((productList) => {
             // console.log(productList);
             productList.select = true;
@@ -81,14 +82,12 @@ const App = {
     },
 
     btnClose(index) {
-      this.productList.splice(index, 1);
-      this.currentI = index;
       let that = this;
       $.ajax({
         method: "POST",
         url: "./php/CartRemove.php",
         data: {
-          CID: that.productList[that.currentI].cartID,
+          CID: that.productList[index].cartID,
         },
         dataType: "text",
         success: function (response) {
@@ -100,17 +99,43 @@ const App = {
           alert("移除商品失敗: " + exception.status);
         },
       });
+      // this.productList.splice(index, 0);
+      console.log(index);
+      console.log(this.productList[index]);
+      console.log(this.productList[index].cartID);
     },
     closeSelect() {
-      this.productList = this.productList.filter(function (product) {
-        return !product.select;
-      });
+      // console.log("ttt");
+      for (i = 0; i < this.productList.length; i++) {
+        if (this.productList[i].select == true) {
+          let that = this;
+          $.ajax({
+            method: "POST",
+            url: "./php/CartRemove.php",
+            data: {
+              CID: that.productList[i].cartID,
+            },
+            dataType: "text",
+            success: function (response) {
+              //移除商品成功
+            },
+            error: function (exception) {
+              alert("移除商品失敗: " + exception.status);
+            },
+          });
+        }
+      }
+      alert("移除商品成功");
+      location.reload();
+      // this.productList = this.productList.filter(function (product) {
+      //   return !product.select;
+      // });
     },
     //全選與取消全選
     selectProduct: function (isSelect) {
-      //productList跑回圈，全部取反
+      //productList跑迴圈，全部取反
       for (var i = 0; i < this.productList.length; i++) {
-        //讓productList[i].select不管為true還是false都取!isSelect，如現在未全選，那么isSelect就為false，!isSelect就為true，所以點擊讓商品的select都變為true
+        //讓productList[i].select不管為true還是false都取!isSelect，如現在未全選，那麼isSelect就為false，!isSelect就為true，所以點擊讓商品的select都變為true
         this.productList[i].select = !isSelect;
       }
     },
@@ -140,16 +165,28 @@ const App = {
     },
     // ---------------結帳寫入sessionstorage---------------
     checkout() {
-      //let time = document.getElementById("datetimepicker").value;
-      let selectProduct = [];
+      // console.log('ttt');
+      let selected = 0;
       for (let i = 0; i < this.productList.length; i++) {
-        let prod = this.productList[i];
-        if (prod.select) {
-          selectProduct.push(prod);
+        if (this.productList[i].select) {
+          selected++;
         }
       }
-      sessionStorage.setItem("checkout_data", JSON.stringify(selectProduct));
-      location.href = "./payment.html";
+      console.log(selected);
+      if (selected <= 0) {
+        alert("請選擇商品");
+      } else {
+        let selectProduct = [];
+        for (let i = 0; i < this.productList.length; i++) {
+          let prod = this.productList[i];
+          if (prod.select) {
+            selectProduct.push(prod);
+          }
+        }
+        sessionStorage.setItem("checkout_data", JSON.stringify(selectProduct));
+        location.href = "./payment.html";
+      }
+      //let time = document.getElementById("datetimepicker").value;
     },
     updateTempProd(index) {
       let editedProd = this.productList[index];
@@ -206,27 +243,27 @@ const App = {
       console.log(date);
       this.productList[this.tempProd.index].date = date;
       let that = this;
-      
-      $.ajax({            
+
+      $.ajax({
         method: "POST",
         url: "./php/CartUpdate.php",
-        data:{ 
-            CID: that.productList[that.currentI].cartID,
-            Quantity: that.productList[that.tempProd.index].quantity,
-            Date: that.productList[that.tempProd.index].date,
-            // CID: 1,
-            // Quantity: 6,
-            // Date: '2025-01-01',
+        data: {
+          CID: that.productList[that.currentI].cartID,
+          Quantity: that.productList[that.tempProd.index].quantity,
+          Date: that.productList[that.tempProd.index].date,
+          // CID: 1,
+          // Quantity: 6,
+          // Date: '2025-01-01',
         },
         dataType: "text",
         success: function (response) {
-            alert("修改成功");
+          alert("修改成功");
         },
-        error: function(exception) {
-            alert("發生錯誤: " + exception.status);
-            // console.log(that);
-        }
-    });
+        error: function (exception) {
+          alert("發生錯誤: " + exception.status);
+          // console.log(that);
+        },
+      });
     },
   },
   computed: {
@@ -287,10 +324,8 @@ const App = {
       });
     },
   },
-  updated(){
-  },
-  mounted() { 
-  },
+  updated() {},
+  mounted() {},
 };
 
 app = Vue.createApp(App);

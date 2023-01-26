@@ -91,32 +91,28 @@ createApp({
       ],
       messages: [
         {
-          pic: "😹",
-          name: "品元",
+          // pic: "😹",
+          name: "使用者",
           star: "★★★★★",
-          comment:
-            "登入查看留言<3",
+          comment: "登入查看留言<3",
         },
         {
-          pic: "👦",
-          name: "品源",
-          star: "★★★",
-          comment:
-            "登入查看留言<3",
-        },
-        {
-          pic: "🙋‍♀️",
-          name: "元元",
-          star: "★★★★",
-          comment:
-            "登入查看留言<3",
-        },
-        {
-          pic: "🐵",
-          name: "品品",
+          // pic: "👦",
+          name: "使用者",
           star: "★★★★★",
-          comment:
-            "登入查看留言<3",
+          comment: "登入查看留言<3",
+        },
+        {
+          // pic: "🙋‍♀️",
+          name: "使用者",
+          star: "★★★★★",
+          comment: "登入查看留言<3",
+        },
+        {
+          // pic: "🐵",
+          name: "使用者",
+          star: "★★★★★",
+          comment: "登入查看留言<3",
         },
       ],
       googleMap: {
@@ -190,6 +186,7 @@ createApp({
       productdetailNotice: 0,
       productdetailAddress: 0,
       productReview: 0,
+      commentlength:0,
     };
   },
   methods: {
@@ -456,14 +453,12 @@ createApp({
       window.addEventListener("resize", function () {
         this.winSize = window.innerWidth;
         // _this.ajax_heart_show();
-       console.log(this.winSize);
+        console.log(this.winSize);
         if (this.winSize <= 768) {
           this.winsizeBoolean = false;
-         
         }
         if (this.winSize >= 768) {
           this.winsizeBoolean = true;
-          
         }
       });
     },
@@ -510,12 +505,11 @@ createApp({
                 address: e.Location,
                 comments: "好吃、好玩、又划算!",
                 time: 100,
-                productNumber:e.ProductNumber
+                productNumber: e.ProductNumber,
               };
               _this.modalTotal = e.ProductPrice;
               _this.Imgs = arr1;
               _this.ProductDetail = obj2;
-
             });
             _this.$nextTick(function () {
               _this.productdetail_slideshow();
@@ -547,17 +541,13 @@ createApp({
             _this.faHeart = "regular";
           } else if (response == true) {
             _this.faHeart = "solid";
-          }
-          else{
+          } else {
             _this.faHeart = "regular";
+            alert("請先登入再收藏");
             window.location.href = "./login.html";
-            alert('請先登入再收藏');
           }
-
         },
-        error: function (exception) {
-
-        },
+        error: function (exception) {},
       });
     },
     ajax_heart_show() {
@@ -580,58 +570,52 @@ createApp({
             _this.faHeart = "solid";
           }
         },
-        error: function (exception) {
-        },
+        error: function (exception) {},
       });
     },
     ajax_ShoppingCart() {
       _this = this;
       let num;
-      let people=_this.modalPeople;
-      let total=_this.modal_pricetotal;
-      let productNumber=_this.ProductDetail.productNumber
+      let people = _this.modalPeople;
+      let total = _this.modal_pricetotal;
+      let productNumber = _this.ProductDetail.productNumber;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
-      document.cookie = `ProductCookie =[{商品編號:${productNumber}},{數量:${people}},{總金額:${total}}]`;
-      console.log(document.cookie);
       $.ajax({
         method: "POST",
         url: "php/ProductDetailShoppingCart.php",
         data: {
-          PID:num,
-          QTY:people,
-          TAL:total
+          PID: num,
+          QTY: people,
+          TAL: total,
         },
         dataType: "json",
         success: function (response) {
           console.log(response);
-          if(response=="NotFound")
-          {
-            alert("未登入，但加入成功");
-            // window.location.href = "./login.html";
+
+          if (response == "NotFound") {
+            alert("請先登入再加入購物車");
+            window.location.href = "./login.html";
           }
         },
-        error: function (exception) {
-        },
+        error: function (exception) {},
       });
-      $("#peopleModal").modal('hide');
+      $("#peopleModal").modal("hide");
       const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: "top-end",
         showConfirmButton: false,
         timer: 1000,
         timerProgressBar: false,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
       Toast.fire({
-        icon: 'success',
-        title: '已成功加入購物車 ♥'
-      })
-
+        icon: "success",
+        title: "已成功加入購物車 ♥",
+      });
     },
     ajax_Comment() {
       _this = this;
@@ -649,43 +633,36 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          arrcom=[];
-          objcom={};
-          response.forEach(function(item){
-            if(item.ProductCommentScore==1)
-            {
-              item.ProductCommentScore='⭐'
+          arrcom = [];
+          objcom = {};
+          console.log(response);
+          response.forEach(function (item) {
+            if (item.ProductCommentScore == 1) {
+              item.ProductCommentScore = "★";
+            } else if (item.ProductCommentScore == 2) {
+              item.ProductCommentScore = "★★";
+            } else if (item.ProductCommentScore == 3) {
+              item.ProductCommentScore = "★★★";
+            } else if (item.ProductCommentScore == 4) {
+              item.ProductCommentScore = "★★★★";
+            } else if (item.ProductCommentScore == 5) {
+              item.ProductCommentScore = "★★★★★";
             }
-            else if(item.ProductCommentScore==2)
-            {
-              item.ProductCommentScore='⭐⭐'
-            }
-            else if(item.ProductCommentScore==3)
-            {
-              item.ProductCommentScore='⭐⭐⭐'
-            }
-            else if(item.ProductCommentScore==4)
-            {
-              item.ProductCommentScore='⭐⭐⭐⭐'
-            }
-            else if(item.ProductCommentScore==5)
-            {
-              item.ProductCommentScore='⭐⭐⭐⭐⭐'
-            }
-            
-            objcom={
-              pic:item.MemberImg,
-              name:item.FullName,
-              star:item.ProductCommentScore,
-              comment:item.ProductCommentText,
-            }
+            var time_str = item.ProductCommentTime;
+            var t = time_str.substr(0, 10);
+            objcom = {
+              pic: item.MemberImg,
+              name: item.FullName,
+              star: item.ProductCommentScore,
+              comment: item.ProductCommentText,
+              time: t,
+            };
             arrcom.push(objcom);
-          })
-          _this.messages=arrcom;
-
+          });
+          _this.messages = arrcom;
+          _this.commentlength=response.length;
         },
-        error: function (exception) {
-        },
+        error: function (exception) {},
       });
     },
   },
