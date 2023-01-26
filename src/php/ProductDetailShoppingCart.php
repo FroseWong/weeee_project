@@ -3,7 +3,8 @@ require_once('connection.php');
 // -----------判斷有無加過購物車---------------
 
 
-include("Member.php");        
+include("Member.php");
+setMemberInfo(6, "ning");
 getMemberID();
 if (empty($_SESSION["MemberID"])) {
     echo json_encode('NotFound');
