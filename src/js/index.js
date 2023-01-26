@@ -71,9 +71,13 @@ let app1 = Vue.createApp({
       experienceList: [],
       transticketList: [],
       viewpointticketList: [],
+      themeList: [],
       jo_list_end: [],
       current_hover: 1,
       popularRWD: false,
+      memberID: "",
+      top10List: [],
+      favorProductList: [],
       // show_lightbox: false,
       // show_select_bar: false,
       // jo_list_hot: [],
@@ -87,12 +91,14 @@ let app1 = Vue.createApp({
     window.removeEventListener("resize", this.myEventHandler);
   },
   created() {
+    this.memberID = header.memberID;
     // this.show_hot_function();
     this.getdata_product_list();
+    // this.getdata_product_list_top10();
     this.getdata_jo_list_end();
     this.product_slick();
     this.jolist_slick();
-    // this.popular_slick();
+    // this.popularSlick();
 
     window.addEventListener("resize", this.myEventHandler);
   },
@@ -103,6 +109,7 @@ let app1 = Vue.createApp({
 
       $.ajax({
         method: "POST",
+        // async: false,
         url: "./php/Product.php",
         data: {
           // type: "hot",
@@ -110,19 +117,27 @@ let app1 = Vue.createApp({
 
         dataType: "json",
         success: function (response) {
-          for (let i = 0; i < response.length; i++) {
-            if (response[i].ProductPurchased >= 1000)
-              response[i].ProductPurchased = `${Math.trunc(
-                response[i].ProductPurchased / 1000
-              )}K+`;
-          }
+          // console.log(response);
+          let top10slice = response.slice();
+          // console.log(top10slice);
+          top10slice.sort((a, b) => b.ProductPurchased - a.ProductPurchased);
+          // console.log(top10slice);
+          // top10slice.forEach((p) => console.log(p.ProductPurchased));
+          top10slice = top10slice.slice(0, 10);
+          top10slice.forEach((t) => that.top10List.push(t));
+          // console.log(that.top10List);
+          // for (let i = 0; i < response.length; i++) {
+          //   if (response[i].ProductPurchased >= 1000)
+          //     response[i].ProductPurchased = `${Math.trunc(
+          //       response[i].ProductPurchased / 1000
+          //     )}K+`;
+          // }
           // console.log(response);
           response.forEach((product) => {
-            console.log(product);
-            // if (product.ProductPurchased >= 1000) {
-            //   product.ProductPurchased = `${product.ProductPurchased / 1000}K+`;
-            //   console.log(product.ProductPurchased);
-            // }
+            // console.log(product);
+            if (product.ProductPurchased >= 1000) {
+              product.ProductPurchased = `${product.ProductPurchased / 1000}K+`;
+            }
 
             that.productList.push(product);
             if (product.ProductType === "sightseeing")
@@ -133,11 +148,14 @@ let app1 = Vue.createApp({
               that.transticketList.push(product);
             else if (product.ProductType === "viewpointticket")
               that.viewpointticketList.push(product);
-          });
 
+            if (product.ProductSecondType === "主題樂園")
+              that.themeList.push(product);
+          });
+          // console.log(that.themeList);
           that?.$nextTick(function () {
             that?.product_slick();
-            that.renderHeart();
+            // that.clickHeart();
           });
           // console.log(that.sightseeingList);
         },
@@ -146,6 +164,40 @@ let app1 = Vue.createApp({
         },
       });
     },
+    // getdata_product_list_top10() {
+    //   // this.jo_list_hot = [];
+    //   let that = this;
+
+    //   $.ajax({
+    //     method: "POST",
+    //     url: "./php/top10.php",
+    //     data: {
+    //       // type: "hot",
+    //     },
+
+    //     dataType: "json",
+    //     success: function (response) {
+    //       for (let i = 0; i < response.length; i++) {
+    //         if (response[i].ProductPurchased >= 1000)
+    //           response[i].ProductPurchased = `${Math.trunc(
+    //             response[i].ProductPurchased / 1000
+    //           )}K+`;
+    //       }
+    //       // console.log(response);
+    //       response.forEach((product) => that.top10List.push(product));
+
+    //       that?.$nextTick(function () {
+    //         // that?.product_slick();
+    //         that.renderHeart();
+    //       });
+    //       // console.log(that.sightseeingList);
+    //     },
+    //     error: function (exception) {
+    //       alert("數據載入失敗: " + exception.status);
+    //     },
+    //   });
+    // },
+
     getdata_jo_list_end() {
       // this.jo_list_end = [];
       let that = this;
@@ -216,13 +268,16 @@ let app1 = Vue.createApp({
     },
 
     changeHeart(e) {
-      e.stopPropagation();
-      let a = e.target;
-      let b = e.target.nextElementSibling
-        ? e.target.nextElementSibling
-        : e.target.previousElementSibling;
-      a.classList.add("hidden");
-      b.classList.remove("hidden");
+      if (this.memberID) {
+        e.stopPropagation();
+        // console.log(e.target.closest(".change-heart"));
+        let a = e.target;
+        let b = e.target.nextElementSibling
+          ? e.target.nextElementSibling
+          : e.target.previousElementSibling;
+        a.classList.add("hidden");
+        b.classList.remove("hidden");
+      }
     },
     gotoproductDetail(id) {
       // e.preventDefault();
@@ -241,13 +296,54 @@ let app1 = Vue.createApp({
       });
     },
     renderHeart() {
-      const changeHeartAll = document.querySelectorAll(".change-heart");
-      console.log(changeHeartAll);
-      changeHeartAll.forEach((c) => {
-        c.childNodes.forEach((i) => {
-          if (i.classList.contains("hidden")) i.classList.remove("hidden");
-          else i.classList.add("hidden");
-        });
+      // this.jo_list_end = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_renderHeart.php",
+        data: {
+          memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("renderHeart", response);
+          console.log(response);
+          response.forEach((p) => that.favorProductList.push(p.ProductID));
+
+          console.log(that.favorProductList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+
+    clickHeart(pid, e) {
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(pid, e);
+      // 如果已登入，給予click之後更換愛心的事件
+      if (this.memberID) {
+        e.target.closest(".change-heart").classList.toggle("clicked");
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
+
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_clickHeart.php",
+        data: {
+          memberID: that.memberID,
+          pid,
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
       });
     },
 
@@ -376,7 +472,12 @@ let app1 = Vue.createApp({
     //   body.classList.remove("stop_scroll");
     // },
   },
-  mounted() {},
+  mounted() {
+    // header.memberID = this.memberID
+
+    this.renderHeart();
+    // this.heartInit();
+  },
   updated() {
     // this.popularSlick();
   },
