@@ -37,57 +37,62 @@
       </div>
 
       <div class="container index__container">
-        <h2 class="ttoc">您可能有興趣的行程</h2>
+        <template v-if="memberInterestList.length">
+          <h2 class="ttoc">您可能有興趣的行程</h2>
 
-        <!-- @@include('layout/productSlide.html') -->
+          <!-- @@include('layout/productSlide.html') -->
 
-        <div class="product-list">
-          <a class="product-card" v-for="(p,i) in sightseeingList" :key="i">
-            <div
-              class="change-heart"
-              :class="{'clicked':favorProductList.includes(p.ProductID) }"
-              @click="clickHeart(p.ProductID,$event)"
+          <div class="product-list interest">
+            <a
+              class="product-card"
+              v-for="(p,i) in memberInterestList"
+              :key="i"
             >
-              <i class="fa-regular fa-heart" ref="hollow"></i>
-              <i class="fa-solid fa-heart orange" ref="solid"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">{{p.Location}}</p>
-            </div>
-
-            <div
-              class="product-card__top"
-              @click="gotoproductDetail(p.ProductID)"
-            >
-              <div class="product-card__top__pic">
-                <div
-                  class="product-card__top__picsrc"
-                  :style="{ backgroundImage: 'url(' + p.ProductImgPath1+ ')' }"
-                ></div>
-              </div>
-            </div>
-
-            <div
-              class="product-card__bottom"
-              @click="gotoproductDetail(p.ProductID)"
-            >
-              <span class="product-tag">{{p.ProductSecondType}}</span>
-              <h6 class="product-name">{{p.ProductName}}</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4({{p.ProductScoredPeople}})
-                |
-                <span class="product-bought">{{p.ProductPurchased }}</span
-                >個已訂購
-              </span>
-              <span class="price"
-                >TWD
-                <span class="product-price">{{p.ProductPrice}}</span>元</span
+              <div
+                class="change-heart"
+                :class="{'clicked':favorProductList.includes(p.ProductID) }"
+                @click="clickHeart(p.ProductID,$event)"
               >
-            </div>
-          </a>
+                <i class="fa-regular fa-heart" ref="hollow"></i>
+                <i class="fa-solid fa-heart orange" ref="solid"></i>
+              </div>
+              <div class="product-card__location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="p__location">{{p.Location}}</p>
+              </div>
 
-          <!-- <a class="product-card">
+              <div
+                class="product-card__top"
+                @click="gotoproductDetail(p.ProductID)"
+              >
+                <div class="product-card__top__pic">
+                  <div
+                    class="product-card__top__picsrc"
+                    :style="{ backgroundImage: 'url(' + p.ProductImgPath1+ ')' }"
+                  ></div>
+                </div>
+              </div>
+
+              <div
+                class="product-card__bottom"
+                @click="gotoproductDetail(p.ProductID)"
+              >
+                <span class="product-tag">{{p.ProductSecondType}}</span>
+                <h6 class="product-name">{{p.ProductName}}</h6>
+                <span class="gray"
+                  ><i class="fa-solid fa-star"></i
+                  >4.4({{p.ProductScoredPeople}}) |
+                  <span class="product-bought">{{p.ProductPurchased }}</span
+                  >個已訂購
+                </span>
+                <span class="price"
+                  >TWD
+                  <span class="product-price">{{p.ProductPrice}}</span>元</span
+                >
+              </div>
+            </a>
+
+            <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -114,7 +119,7 @@
             </div>
           </a> -->
 
-          <!-- <a class="product-card">
+            <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -141,7 +146,7 @@
             </div>
           </a> -->
 
-          <!-- <a class="product-card">
+            <!-- <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
               <i class="fa-solid fa-heart orange hidden"></i>
@@ -167,7 +172,7 @@
               >
             </div>
           </a> -->
-          <!--  
+            <!--  
           <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
@@ -194,7 +199,7 @@
               >
             </div>
           </a>-->
-          <!-- 
+            <!-- 
           <a class="product-card">
             <div class="change-heart">
               <i class="fa-regular fa-heart"></i>
@@ -221,8 +226,8 @@
               >
             </div>
           </a>
-          -->
-        </div>
+          --></div>
+        </template>
         <h2 class="ttoc">即將出團</h2>
         <div class="jo-list">
           <a

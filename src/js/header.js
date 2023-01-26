@@ -3,9 +3,9 @@ let header;
 const apph = Vue.createApp({
   data() {
     return {
-      headercounter: 0,
+      headercounter: 0, // 購物車數量
       test: "123",
-      memberID: 6,
+      memberID: 6, //將抓到的memberID存到這
       headerFullName: "",
       headerMemberImg: "",
     };
@@ -57,7 +57,7 @@ const apph = Vue.createApp({
           // _this.$nextTick(function () {
           //   _this.jo_list_slick_end();
           // });
-          that.$nextTick(function () {});
+          // that.$nextTick(function () {});
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);

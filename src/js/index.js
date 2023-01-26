@@ -78,6 +78,7 @@ let app1 = Vue.createApp({
       memberID: "",
       top10List: [],
       favorProductList: [],
+      memberInterestList: [],
       // show_lightbox: false,
       // show_select_bar: false,
       // jo_list_hot: [],
@@ -99,7 +100,7 @@ let app1 = Vue.createApp({
     this.product_slick();
     this.jolist_slick();
     // this.popularSlick();
-
+    if (this.memberID) this.memberInterest();
     window.addEventListener("resize", this.myEventHandler);
   },
   methods: {
@@ -266,6 +267,25 @@ let app1 = Vue.createApp({
         ],
       });
     },
+    interest_slick() {
+      $(".product-list.interest").slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              arrows: false,
+            },
+          },
+        ],
+      });
+    },
 
     changeHeart(e) {
       if (this.memberID) {
@@ -307,10 +327,35 @@ let app1 = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log("renderHeart", response);
-          console.log(response);
+          // console.log(response);
           response.forEach((p) => that.favorProductList.push(p.ProductID));
 
-          console.log(that.favorProductList);
+          // console.log(that.favorProductList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    memberInterest() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_memberInterest.php",
+        data: {
+          memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          if (response !== "nothing") {
+            // console.log("memberInterest", response);
+            response.forEach((i) => that.memberInterestList.push(i));
+            that?.$nextTick(function () {
+              that?.interest_slick();
+              // that.clickHeart();
+            });
+          }
+          console.log(that.memberInterestList);
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
