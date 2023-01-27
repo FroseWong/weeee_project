@@ -190,10 +190,12 @@ createApp({
       this.pagenum = num;
     },
     plus_minus(e){
-      if(e.target.classList.contains("minus")){
+      let currnum = this.pagenum 
+      let total = this.totalpage.length
+      if(e.target.classList.contains("minus") && currnum > 1){
         this.pagenum = this.pagenum - 1
       }else
-      if(e.target.classList.contains("plus")){
+      if(e.target.classList.contains("plus") && currnum < total){
         this.pagenum = this.pagenum + 1
       }
     },
