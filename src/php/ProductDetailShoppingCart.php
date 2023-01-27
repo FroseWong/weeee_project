@@ -4,7 +4,7 @@ require_once('connection.php');
 
 
 include("Member.php");
-setMemberInfo(6, "ning");
+// setMemberInfo(6, "ning");
 getMemberID();
 if (empty($_SESSION["MemberID"])) {
     echo json_encode('NotFound');
