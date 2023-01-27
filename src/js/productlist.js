@@ -48,6 +48,7 @@ createApp({
     };
   },
   created() {
+    this.get_member_information();
     window.addEventListener("resize", this.resize_adjust, true);
     this.getdata();
     console.log("aaa");
@@ -189,14 +190,13 @@ createApp({
       let num = Number(e.target.text);
       this.pagenum = num;
     },
-    plus_minus(e){
-      let currnum = this.pagenum 
-      let total = this.totalpage.length
-      if(e.target.classList.contains("minus") && currnum > 1){
-        this.pagenum = this.pagenum - 1
-      }else
-      if(e.target.classList.contains("plus") && currnum < total){
-        this.pagenum = this.pagenum + 1
+    plus_minus(e) {
+      let currnum = this.pagenum;
+      let total = this.totalpage.length;
+      if (e.target.classList.contains("minus") && currnum > 1) {
+        this.pagenum = this.pagenum - 1;
+      } else if (e.target.classList.contains("plus") && currnum < total) {
+        this.pagenum = this.pagenum + 1;
       }
     },
     filters(list, select) {
@@ -611,10 +611,39 @@ createApp({
       // e.preventDefault();
       location.href = `./productdetail.html?id=${id}`;
     },
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          // console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          // that.headercounter = response[0].COUNT;
+          that.memberID = response[0].MemberID;
+          // that.headerFullName = response[0].FullName;
+          // that.headerMemberImg = response[0].MemberImg;
+          // that.headercounter = response[0]["count(*)"] ?? 0;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.renderHeart();
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
   },
 
   mounted() {
-    this.renderHeart();
+    // this.renderHeart();
     this.find_ssort();
   },
 }).mount("#app");

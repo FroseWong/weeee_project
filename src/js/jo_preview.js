@@ -115,6 +115,7 @@ let app = Vue.createApp({
     };
   },
   created() {
+    this.get_member_information();
     this.useweeee = useweeee;
     this.joTitle = joTitle;
     this.joContent = joContent;
@@ -126,7 +127,7 @@ let app = Vue.createApp({
     this.joStartTime = joStartTime;
     this.img = img;
     this.imgName = imgName;
-    this.memberID = header.memberID; // Frose
+    // this.memberID = header.memberID; // Frose
 
     this.getdata_product_list();
   },
@@ -134,7 +135,6 @@ let app = Vue.createApp({
     $(".contact-leader").on("click", function () {
       $(".contact-detail").toggle(1000);
     });
-    this.renderHeart();
   },
   updated() {
     document.querySelector(
@@ -191,6 +191,37 @@ let app = Vue.createApp({
           that.JoUseWeeee = that.targettravel ? 1 : 0;
 
           // console.log(that.targettravelID);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          // that.headercounter = response[0].COUNT;
+          that.memberID = response[0].MemberID;
+          that.headerFullName = response[0].FullName;
+          that.headerMemberImg = response[0].MemberImg;
+          that.headercounter = response[0]["count(*)"] ?? 0;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.renderHeart();
+            // if (that.memberID) that.memberInterest();
+            // if (that.memberID) that.renderHeart();
+          });
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
