@@ -1,6 +1,6 @@
 <?php
 include("connection.php");
-$path = $_POST["path"];
+$msort = $_POST["msort"];
 // echo $path;
 
 
@@ -22,18 +22,18 @@ $sql =
 
 $statement =  $pdo->prepare($sql);
 
-if($path == "/weeee_project/dist/productlist_new_travel.html"){
+if($msort == "ss"){
     $statement->bindValue(1, "sightseeing");
 }
 else
-if($path == "/weeee_project/dist/productlist_new_ticket.html"){
+if($msort == "tt"){
     $statement->bindValue(1, "transticket");
 }
 else
-if($path == "/weeee_project/dist/productlist_new_exp.html"){
+if($msort == "ep"){
     $statement->bindValue(1, "experience");
  }
-elseif($path == "/weeee_project/dist/productlist_new_ss_ticket.html"){
+elseif($msort == "vp"){
     $statement->bindValue(1, "viewpointticket");
 }
 

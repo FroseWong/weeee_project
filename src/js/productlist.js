@@ -3,9 +3,9 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      pagenum : 1,
-      start:0,
-      end:5,
+      pagenum: 1,
+      start: 0,
+      end: 5,
       cardlist: [],
       checked: {
         select_secondType: [],
@@ -44,7 +44,7 @@ createApp({
       citylistnew: [],
       cityshow: false,
       memberID: "", // Frose
-favorProductList: [], // Frose
+      favorProductList: [], // Frose
     };
   },
   created() {
@@ -92,39 +92,110 @@ favorProductList: [], // Frose
       //   this.categorys = type;
       return newcardlist3;
     },
-    computedList2(){
-      return this.computedList.slice(this.start,this.end)
+    computedList2() {
+      return this.computedList.slice(this.start, this.end);
     },
     totalpage() {
-      let arr=[]
+      let arr = [];
       let totalpage = Math.ceil(this.computedList.length / 5);
-      for (i=0;i<totalpage;i++){
-        arr.push(i+1)
+      for (i = 0; i < totalpage; i++) {
+        arr.push(i + 1);
       }
       return arr;
     },
   },
-  watch:{
-    totalpage:function(newValue,oldValue){
-      this.pagenum = 1
+  watch: {
+    totalpage: function (newValue, oldValue) {
+      this.pagenum = 1;
     },
-    pagenum:function(newValue,oldValue){
-      this.start = (newValue-1)*5
-      this.end = (newValue*5)
-      console.log(oldValue,newValue)
+    pagenum: function (newValue, oldValue) {
+      this.start = (newValue - 1) * 5;
+      this.end = newValue * 5;
+      console.log(oldValue, newValue);
     },
   },
   methods: {
-    ChangeCurrpage(e) {      
-      let num = Number(e.target.text)
-      this.pagenum = num;
+    find_ssort() {
+      let urlParams = new URLSearchParams(window.location.search);
+      let msort = urlParams.get("msort");
+      let ssort = urlParams.get("ssort");
+      console.log(ssort);
+      if (msort == "ss") {
+        switch (true) {
+          case ssort == "fr":
+            this.checked.select_secondType.push("朋友行程");
+            break;
+          case ssort == "fa":
+            this.checked.select_secondType.push("家庭行程");
+            break;
+          case ssort == "co":
+            this.checked.select_secondType.push("情侶行程");
+            break;
+          case ssort == "pe":
+            this.checked.select_secondType.push("寵物行程");
+            break;
+        }
+      }
+      if (msort == "ep") {
+        switch (true) {
+          case ssort == "hm":
+            this.checked.select_secondType.push("手作體驗");
+            break;
+          case ssort == "ow":
+            this.checked.select_secondType.push("水上活動");
+            break;
+          case ssort == "fa":
+            this.checked.select_secondType.push("觀光農場");
+            break;
+          case ssort == "et":
+            this.checked.select_secondType.push("極限運動");
+            break;
+        }
+      }
+      if (msort == "tt") {
+        switch (true) {
+          case ssort == "un":
+            this.checked.select_secondType.push("無限暢遊卡");
+            break;
+          case ssort == "vp":
+            this.checked.select_secondType.push("景點暢遊卡");
+            break;
+          case ssort == "tr":
+            this.checked.select_secondType.push("交通暢遊卡");
+            break;
+          case ssort == "cl":
+            this.checked.select_secondType.push("經典暢遊卡");
+            break;
+        }
+      }
+      if (msort == "vp") {
+        switch (true) {
+          case ssort == "th":
+            this.checked.select_secondType.push("主題樂園");
+            break;
+          case ssort == "aq":
+            this.checked.select_secondType.push("水族館");
+            break;
+          case ssort == "mu":
+            this.checked.select_secondType.push("博物館");
+            break;
+          case ssort == "ar":
+            this.checked.select_secondType.push("美術館");
+            break;
+        }
+      }
     },
-  },
-
-  methods: {
     ChangeCurrpage(e) {
-      let num = Number(e.target.text)
+      let num = Number(e.target.text);
       this.pagenum = num;
+    },
+    plus_minus(e){
+      if(e.target.classList.contains("minus")){
+        this.pagenum = this.pagenum - 1
+      }else
+      if(e.target.classList.contains("plus")){
+        this.pagenum = this.pagenum + 1
+      }
     },
     filters(list, select) {
       const result = new Set();
@@ -151,8 +222,8 @@ favorProductList: [], // Frose
       return Array.from(result);
     },
     getdata() {
-      var CID = new URL(location.href);
-      // console.log(CID.pathname);
+      let urlParams = new URLSearchParams(window.location.search);
+      let msort = urlParams.get("msort");
       const city = new Set();
       const catagory = new Set();
       let _this = this;
@@ -163,7 +234,7 @@ favorProductList: [], // Frose
         method: "POST",
         url: "./php/Product_jerry.php",
         data: {
-          path: CID.pathname,
+          msort: msort,
         },
         dataType: "json",
         success: function (response) {
@@ -540,5 +611,6 @@ favorProductList: [], // Frose
 
   mounted() {
     this.renderHeart();
+    this.find_ssort();
   },
 }).mount("#app");
