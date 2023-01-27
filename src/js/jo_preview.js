@@ -127,13 +127,21 @@ let app = Vue.createApp({
     this.img = img;
     this.imgName = imgName;
     this.memberID = header.memberID; // Frose
+
     this.getdata_product_list();
   },
-  mounted() {},
+  mounted() {
+    $(".contact-leader").on("click", function () {
+      $(".contact-detail").toggle(1000);
+    });
+    this.renderHeart();
+  },
   updated() {
     document.querySelector(
       ".product-card-row__picsrc"
     ).style.backgroundImage = `url('${this.targettravel.ProductImgPath1}')`;
+    this.headerFullName = header.headerFullName;
+    this.headerMemberImg = header.headerMemberImg;
   },
   methods: {
     changeHeart(e) {
@@ -285,15 +293,13 @@ let app = Vue.createApp({
       }
     },
   },
-  mounted() {
-    $(".contact-leader").on("click", function () {
-      $(".contact-detail").toggle(1000);
-    });
-    this.renderHeart();
+  beforeUpdate() {
+    // this.headerFullName = header.headerFullName;
+    // this.headerMemberImg = header.headerMemberImg;
   },
   updated() {
-    this.headerFullName = header.headerFullName;
-    this.headerMemberImg = header.headerMemberImg;
+    // this.headerFullName = header.headerFullName;
+    // this.headerMemberImg = header.headerMemberImg;
   },
 });
 

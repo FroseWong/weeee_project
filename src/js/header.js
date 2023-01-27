@@ -22,7 +22,7 @@ const apph = Vue.createApp({
       num.classList.remove("hidden");
     },
     shoppingcart() {
-      console.log(this.memberID);
+      // console.log(this.memberID);
       if (this.memberID) location.href = `./shoppingcart.html`;
       else {
         alert("請先完成登入");

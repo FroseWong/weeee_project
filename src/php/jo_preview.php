@@ -17,6 +17,15 @@ $imgName = $_POST['imgName'];
 $MemberID = 1;
 // $JoUseWeee = 1;
 $JoImg = './img/jo/'.$imgName;
+
+$sql0 = "SELECT MAX(JoID) FROM weeee.Jo;";
+$statement0 = $pdo->prepare($sql0);
+$statement0->execute(); 
+$data0 = $statement->fetchAll();
+
+echo json_encode($data0);
+
+
 $JoNumber = 'asd1234';
 // $img = $_POST['img'];
 // $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
@@ -75,7 +84,7 @@ $data1 = $statement->fetchAll();
 }
 rename($output_file,$filepath);
 
-echo json_encode($data1);
+// echo json_encode($data1);
 
 // echo 'id';
 
