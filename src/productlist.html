@@ -12,12 +12,19 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Document</title>
+    <title>搜尋頁面</title>
+    <style>
+        [v-cloak] {
+          display: none;
+        }
+      </style>
   </head>
 
   <body>
+
     @@include('layout/header.html')
     <div class="wrapper productlist_new" id="app">
+        <div v-cloak>
       <div class="black_bg" @click="openSelectbar"></div>
       <div class="productlist_new__main">
         <div class="productlist_new__select container">
@@ -46,10 +53,9 @@
             </div>
 
             <div class="productlist_new__category">
-              <h4>分類</h4>
+              <h4>行程分類</h4>
               <ul>
                 <li
-                class="ssort_list"
                   v-for="(category,index) in categorys"
                   @click="filterCategory"
                 >
@@ -170,7 +176,10 @@
             <nav>
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link" href="#">&lt;</a>
+                  <a class="productlist_new__page-link minus" 
+                  href="#"
+                  
+                  @click="plus_minus">&lt;</a>
                 </li>
                 <li class="productlist_new__page-item"
                 v-for="(item,index) in totalpage"
@@ -187,7 +196,10 @@
                     </a>
                 </li>
                 <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link" href="#">&gt;</a>
+                  <a class="productlist_new__page-link plus" 
+                  href="#"
+                  
+                  @click="plus_minus">&gt;</a>
                 </li>
               </ul>
             </nav>
@@ -195,6 +207,8 @@
         </div>
       </div>
       @@include('layout/footer.html')
+    
+    </div>
     </div>
     <script src="./vender/jquery/jquery.js"></script>
     <script src="./vender/vue/vue.global.js"></script>
