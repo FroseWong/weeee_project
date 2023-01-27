@@ -200,6 +200,9 @@
       margin-right: 15px;
       border-radius: 5px;
     }
+    @include m {
+      margin-bottom: 40px;
+    }
   }
 
   .useweeee {

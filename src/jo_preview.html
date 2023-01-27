@@ -25,8 +25,11 @@
         <div class="jo-leader">
           <div class="jo-leader__top">
             <div class="jo-leader__top__left">
-              <div class="jo-leader-img"></div>
-              <div class="jo-leader-name">寧寶</div>
+              <div
+                class="jo-leader-img"
+                :style="{ backgroundImage: 'url(' + headerMemberImg+ ')' }"
+              ></div>
+              <div class="jo-leader-name">{{headerFullName}}</div>
             </div>
             <div class="jo-leader__top__right">
               <span class="jo-start-date"
@@ -51,7 +54,9 @@
           </div>
           <div class="jo-leader__bottom">
             <div class="jo-leader__bottom__left">
-              <button class="contact-leader yellowBtn">我想聯絡團主</button>
+              <button class="contact-leader yellowBtn" @click="contactLeader">
+                我想聯絡團主
+              </button>
             </div>
             <div class="jo-leader__bottom__right">
               <div class="contact-detail">
@@ -67,7 +72,10 @@
             <h3 class="useweeee__title">我們的行程</h3>
 
             <div class="useweeee">
-              <a class="product-card-row">
+              <a
+                class="product-card-row"
+                @click="gotoproductDetail(targettravel.ProductID)"
+              >
                 <div class="product-card-row__left">
                   <div class="product-card-row__location">
                     <i class="fa-solid fa-location-dot"></i>
@@ -81,22 +89,32 @@
                   <div
                     class="change-heart"
                     ref="changeHeart"
-                    @click="changeHeart"
+                    :class="{'clicked':favorProductList.includes(targettravel.ProductID) }"
+                    @click="clickHeart(targettravel.ProductID,$event)"
                   >
                     <i class="fa-regular fa-heart" ref="hollow"></i>
-                    <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+                    <i class="fa-solid fa-heart orange" ref="solid"></i>
                   </div>
                   <div class="product-name">
-                    {{targettravel.Location}}青埔 | Xpark 都會型水生公園門票
+                    {{targettravel.Location}} {{targettravel.ProductName}}
                   </div>
                   <div class="product-tag">
                     {{targettravel.ProductSecondType}}
                   </div>
-                  <div class="product__text">{{targettravel.ProductText}}</div>
+                  <div class="product__text">
+                    {{targettravel.ProductText?.length >= 80 ?
+                    targettravel.ProductText.slice(0,80) + '……' :
+                    targettravel.ProductText}}
+                  </div>
 
                   <span class="gray"
-                    ><i class="fa-solid fa-star"></i>4.4(44325) |
-                    <span class="product-bought">590K+</span>個已訂購
+                    ><i class="fa-solid fa-star"></i
+                    >4.4({{targettravel.ProductScoredPeople}}) |
+                    <span class="product-bought"
+                      >{{Number(targettravel.ProductPurchased) >= 1000 ?
+                      Math.trunc(Number(targettravel.ProductPurchased)/1000) +
+                      'K+': targettravel.ProductPurchased}}</span
+                    >個已訂購
                   </span>
                   <span class="price"
                     >TWD
@@ -119,7 +137,8 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="./vender/vue/vue.global.js"></script>
+    <script src="./js/header.js"></script>
     <script src="./js/jo_preview.js"></script>
   </body>
 </html>
