@@ -5,7 +5,7 @@ $memberID = "6"; //TODO 先寫死，到時候登入功能做好，可從 php ses
 include("connection.php");
 
 //建立SQL語法
-$sql = "select p.productName, p.productPrice, i.productImgPath2, c.quantity, c.date, c.cartID
+$sql = "select p.productName, p.productPrice, i.productImgPath2, c.quantity, c.date, c.cartID, p.productID
 from product p
 join productimg i
 on p.productID = i.productID
