@@ -5,7 +5,7 @@ const apph = Vue.createApp({
     return {
       headercounter: 0, // 購物車數量
       test: "123",
-      memberID: 0, //將抓到的memberID存到這
+      memberID: 6, //將抓到的memberID存到這
       headerFullName: "",
       headerMemberImg: "",
     };
