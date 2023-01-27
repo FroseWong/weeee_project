@@ -1,17 +1,5 @@
 <?php
 
-    //清除Session
-    function clearSession(){
-
-        //先判斷session是否存在
-        if(!isset($_SESSION)){
-            session_start(); 
-        }
-
-        session_unset();
-        session_destroy();
-
-    }
 
     //--------------------------------------後台專用--------------------------------------
 
