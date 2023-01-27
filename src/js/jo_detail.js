@@ -103,7 +103,6 @@ const app = Vue.createApp({
       JoStartTime: "",
       JoTitle: "",
       Location: "",
-      MemberID: "",
       MemberImg: "",
       week: "",
       JoContent: "",
@@ -127,16 +126,47 @@ const app = Vue.createApp({
     // this.getdata_product_list();
   },
   created() {
-    this.memberID = header.memberID;
+    // this.memberID = header.memberID;
+    this.get_member_information();
   },
   mounted() {
     this.getjoid();
     this.getdata_jo_list();
     this.getdata_jo_comment();
     this.getdata_product_list();
-    this.renderHeart();
   },
   methods: {
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          // that.headercounter = response[0].COUNT;
+          that.memberID = response[0].MemberID;
+          that.currentFullName = response[0].FullName;
+          that.headerMemberImg = response[0].MemberImg;
+          that.headercounter = response[0]["count(*)"] ?? 0;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.renderHeart();
+            // if (that.memberID) that.memberInterest();
+            // if (that.memberID) that.renderHeart();
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
     contactLeader() {
       if (this.memberID) {
         $(".contact-detail").toggle(1000);
@@ -170,7 +200,7 @@ const app = Vue.createApp({
           method: "POST",
           url: "./php/jo_detail_addcomment.php",
           data: {
-            memberid: 1,
+            memberid: that.memberID,
             joID: that.id,
             comment: that.$refs.saysomething__content.value,
             JoCommentTime: `${date.getFullYear()}-${
