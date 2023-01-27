@@ -1,7 +1,24 @@
 <?php
 include("connection.php");
+// include("CheckLogin.php");
 
-$memberID = $_POST['memberID'];
+// CheckMemberID();
+// if (empty($_SESSION["MemberID"])) {
+//     echo json_encode("NotFound");
+//     return;
+// } else {
+// 	// $MID = $_SESSION["MemberID"];
+// 	$memberID = $_SESSION["MemberID"];
+// }
+include("Member.php");
+getMemberID();
+if (empty($_SESSION["MemberID"])) {
+    echo json_encode("NotFound");
+    return;
+}
+$memberID = $_SESSION["MemberID"];
+
+// $memberID = $_POST['memberID'];
 
 $sql = "SELECT * FROM 
 		( SELECT m.MemberID, m.FullName, m.MemberImg 

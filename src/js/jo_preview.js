@@ -181,7 +181,10 @@ let app = Vue.createApp({
 
           // 一一比對使用者所選的商品是哪個
           that.sightseeingList.forEach((s) => {
-            if (that.useweeee === s.ProductName) that.targettravel = s;
+            if (that.useweeee === s.ProductName) {
+              that.targettravel = s;
+              that.targettravelID = s.ProductID;
+            }
           });
 
           // 確認that.targettravel是否存在，如果存在給1，不存在給0

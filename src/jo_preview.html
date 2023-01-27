@@ -82,7 +82,10 @@
                     <p class="p__location">{{targettravel.Location}}</p>
                   </div>
                   <div class="product-card-row__left__pic">
-                    <div class="product-card-row__picsrc"></div>
+                    <div
+                      class="product-card-row__picsrc"
+                      :style="{ backgroundImage: 'url(' + targettravel.ProductImgPath1+ ')' }"
+                    ></div>
                   </div>
                 </div>
                 <div class="product-card-row__right">

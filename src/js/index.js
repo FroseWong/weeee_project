@@ -92,7 +92,8 @@ let app1 = Vue.createApp({
     window.removeEventListener("resize", this.myEventHandler);
   },
   created() {
-    this.memberID = header.memberID;
+    this.get_member_information();
+    // this.memberID = header?.memberID;
     // this.show_hot_function();
     this.getdata_product_list();
     // this.getdata_product_list_top10();
@@ -100,7 +101,7 @@ let app1 = Vue.createApp({
     this.product_slick();
     this.jolist_slick();
     // this.popularSlick();
-    if (this.memberID) this.memberInterest();
+    // if (this.memberID) this.memberInterest();
     window.addEventListener("resize", this.myEventHandler);
   },
   methods: {
@@ -159,6 +160,36 @@ let app1 = Vue.createApp({
             // that.clickHeart();
           });
           // console.log(that.sightseeingList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          // that.headercounter = response[0].COUNT;
+          that.memberID = response[0].MemberID;
+          that.headerFullName = response[0].FullName;
+          that.headerMemberImg = response[0].MemberImg;
+          that.headercounter = response[0]["count(*)"] ?? 0;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.memberInterest();
+            if (that.memberID) that.renderHeart();
+          });
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
@@ -519,11 +550,23 @@ let app1 = Vue.createApp({
   },
   mounted() {
     // header.memberID = this.memberID
-
-    this.renderHeart();
+    // this.memberID = header?.memberID;
+    // if (this.memberID) this.memberInterest();
+    // if (this.memberID) this.renderHeart();
     // this.heartInit();
   },
+  beforeUpdate() {
+    // this.memberID = header?.memberID;
+    // if (this.memberID) this.memberInterest();
+    // if (this.memberID) this.renderHeart();
+    // this.memberID = header?.memberID;
+    // if (this.memberID) this.memberInterest();
+    // this.renderHeart();
+  },
   updated() {
+    // this.memberID = header?.memberID;
+    // if (this.memberID) this.memberInterest();
+    // if (this.memberID) this.renderHeart();
     // this.popularSlick();
   },
 });

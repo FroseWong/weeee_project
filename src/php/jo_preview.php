@@ -27,12 +27,7 @@ $maxID = $data0[0]["MAX(JoID)"];
 
 
 $JoNumber = 'asd1234';
-// $img = $_POST['img'];
-// $json = '{"a":1,"b":2,"c":3,"d":4,"e":5}';
 
-// echo $JoUseWeeee;
-// $sql = "INSERT INTO weeee.Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoUseWeeee,ProductID,JoContact,JodetailedAddressed,JoNumber,JoImg)
-// values($joTitle,$joContent,$MemberID,NOW(),$joStartDate.' '.$joStartTime,1,$targettravelID,$joContact,$joDetailAddress,$JoNumber,$JoImg)";
 if($JoUseWeeee==1)
         {
             $sql = "INSERT into Jo (JoTitle,JoContent,MemberID,JoPostDate,JoStartDate,JoStatus,JoUseWeeee,ProductID,JoContact,Location,JodetailedAddressed,JoNumber,JoImg,JoAttend)
@@ -84,7 +79,7 @@ $data1 = $statement->fetchAll();
 }
 rename($output_file,$filepath);
 
-// echo json_encode($data1);
+echo json_encode($data1);
 
 // echo 'id';
 
