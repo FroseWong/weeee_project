@@ -267,15 +267,6 @@ const App = {
     },
   },
   computed: {
-    // changeDisabled() {
-    //   for (let i = 0; i < this.productList.length; i++) {
-    //     if (this.productList[i].select) {
-    //       return false;
-    //     }else {
-    //       return true;
-    //     }
-    //   }
-    // },
     emptyCart() {
       let cartCount = this.productList.length;
       if (cartCount < 1) {

@@ -115,18 +115,36 @@ const app = Vue.createApp({
       };
     },
     pay() {
+      let productCartIDList = [];
+      let productDateList = [];
+      let productIDList = [];
+      let productQuantityList = [];
+      // console.log(this.productList);
+
+      for (i = 0; i < this.productList.length; i++) {
+        productCartIDList.push(this.productList[i].cartID);
+        productDateList.push(this.productList[i].date);
+        productIDList.push(this.productList[i].productID)
+        productQuantityList.push(this.productList[i].quantity)
+      }
+      // console.log(this.productList);
+      // console.log(productDateList);
+      // console.log(productIDList);
+      // console.log(productQuantityList);
       let that = this;
       $.ajax({
         method: "POST",
         url: "./php/CartCheckout.php",
         data: {
-          CID: that.productList.cartId,
-          total: that.getTotal.totalPrice,
+          CID: productCartIDList,
+          // subTotal: that.getTotal.totalPrice,
           totalPrice: that.getTotal.totalPrice - that.weeee.totalPoints,
-          addPoints: Math.floor((that.getTotal.totalPrice
-            - that.weeee.totalPoints) / 100),
+          addPoints: Math.floor(
+            (that.getTotal.totalPrice - that.weeee.totalPoints) / 100
+          ),
           discountPoints: that.weeee.totalPoints,
-          // offsetPoints: 
+          productDateList,productIDList,productQuantityList
+          // offsetPoints:
         },
         dataType: "text",
         success: function (response) {
