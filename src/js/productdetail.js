@@ -170,8 +170,8 @@ createApp({
       //觀光行程
       noticeLists4: [
         "費用包含:  入園門票，行程體驗券",
-        
-        "不包含:  餐飲，個人消費，交通費，其他未提及消費"
+
+        "不包含:  餐飲，個人消費，交通費，其他未提及消費",
       ],
       Imgs: [
         {
@@ -199,7 +199,7 @@ createApp({
         address: "",
         comments: 0,
         time: 100,
-        ProductDetail_breadcrumb:"",
+        ProductDetail_breadcrumb: "",
         // type: "觀光行程",
         // city: "桃園",
         // price: 550,
@@ -225,6 +225,8 @@ createApp({
       productdetailAddress: 0,
       productReview: 0,
       commentlength: 0,
+      comments: [1, 2, 3, 4],
+      commentID: "",
     };
   },
   methods: {
@@ -548,16 +550,16 @@ createApp({
               };
               if (e.ProductType == "viewpointticket") {
                 _this.noticeLists = _this.noticeLists1;
-                _this.ProductDetail_breadcrumb="景點門票";
+                _this.ProductDetail_breadcrumb = "景點門票";
               } else if (e.ProductType == "transticket") {
                 _this.noticeLists = _this.noticeLists2;
-                _this.ProductDetail_breadcrumb="交通票卡";
+                _this.ProductDetail_breadcrumb = "交通票卡";
               } else if (e.ProductType == "experience") {
                 _this.noticeLists = _this.noticeLists3;
-                _this.ProductDetail_breadcrumb="體驗活動";
+                _this.ProductDetail_breadcrumb = "體驗活動";
               } else if (e.ProductType == "sightseeing") {
                 _this.noticeLists = _this.noticeLists4;
-                _this.ProductDetail_breadcrumb="觀光行程";
+                _this.ProductDetail_breadcrumb = "觀光行程";
               }
 
               _this.modalTotal = e.ProductPrice;
@@ -567,6 +569,7 @@ createApp({
             });
             _this.$nextTick(function () {
               _this.productdetail_slideshow();
+              _this.commentfun();
             });
           } else {
             alert("找不到相關商品");
@@ -658,16 +661,23 @@ createApp({
     ajax_Comment() {
       _this = this;
       let num = 3;
+      let comment = 0;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
+      _this.commentID = num;
+      comment = urlParams.get("comment");
       if (num == null) {
         num = 1;
+      }
+      if (comment == null) {
+        comment = 1;
       }
       $.ajax({
         method: "POST",
         url: "php/ProductDetailComment.php",
         data: {
           pid: num,
+          comment: comment,
         },
         dataType: "json",
         success: function (response) {
@@ -698,7 +708,8 @@ createApp({
             arrcom.push(objcom);
           });
           _this.messages = arrcom;
-          _this.commentlength = response.length;
+          // _this.commentlength = response.length;
+          _this.commentlength = 10;
         },
         error: function (exception) {},
       });
@@ -721,6 +732,19 @@ createApp({
         title: "已成功加入購物車 ♥",
       });
       header.get_member_information();
+    },
+    commentfun() {
+      let comment = 0;
+      let urlParams = new URLSearchParams(window.location.search);
+      comment = urlParams.get("comment");
+      if (comment == 1 || comment == 2 || comment == 3 || comment == 4) {
+        let pv = this.$refs.Review.offsetTop;
+        window.scrollTo({
+          top: pv-100,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
     },
   },
   computed: {

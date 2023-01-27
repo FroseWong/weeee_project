@@ -64,37 +64,6 @@
             </div>
         </div>
         @@include('layout/footer.html')
-        <script src="./vender/vue/vue.global.prod.js"></script>
-        <script>
-            const { createApp } = Vue
-
-            createApp({
-                data() {
-                    return {
-                        message: 'Hello Vue!'
-                    }
-                },
-                methods: {
-                    function_pro() {
-                        window.location.href = "./productdetail.html";
-                    },
-                    function_exe() {
-                        window.location.href = "./productlist_new_exp.html";
-                    },
-                    function_ssticket() {
-                        window.location.href = "./productlist_new_ss_ticket.html";
-                    },
-                    function_ticket() {
-                        window.location.href = "./productlist_new_ticket.html";
-                    },
-                    function_travel() {
-                        window.location.href = "./productlist_new_travel.html";
-                    }
-                },
-                mounted() {
-                },
-            }).mount('#app')
-        </script>
     </div>
 </body>
 

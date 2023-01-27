@@ -322,6 +322,7 @@
                   <h5>{{message.comment}}</h5>
                 </div>
               </div>
+              <a :href=`productdetail.html?id=${commentID}&comment=${comment}`  v-for="comment in comments">{{comment}}</a>
             </div>
           </div>
         </div>
