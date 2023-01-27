@@ -11,10 +11,13 @@
             placeholder="輸入目的地、景點、體驗行程或活動名稱...
               "
             maxlength="50"
+            @keyup.enter="jump_searched"
+            v-model="keyword"
           />
         </li>
         <span>
-          <button class="header_search">
+          <button class="header_search"
+          @click="jump_searched">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </span>

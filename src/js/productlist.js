@@ -226,6 +226,7 @@ createApp({
     getdata() {
       let urlParams = new URLSearchParams(window.location.search);
       let msort = urlParams.get("msort");
+      let key = urlParams.get("key");
       const city = new Set();
       const catagory = new Set();
       let _this = this;
@@ -237,6 +238,7 @@ createApp({
         url: "./php/Product_jerry.php",
         data: {
           msort: msort,
+          key: key,
         },
         dataType: "json",
         success: function (response) {
