@@ -3,7 +3,9 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      currpage: 1,
+      pagenum : 1,
+      start:0,
+      end:5,
       cardlist: [],
       checked: {
         select_secondType: [],
@@ -41,19 +43,22 @@ createApp({
       ],
       citylistnew: [],
       cityshow: false,
-      dataget: true,
+      memberID: "", // Frose
+favorProductList: [], // Frose
     };
   },
   created() {
     window.addEventListener("resize", this.resize_adjust, true);
     this.getdata();
     console.log("aaa");
+    this.memberID = header.memberID; // Frose
   },
   computed: {
     computedList() {
       let newcardlist1 = [];
       let newcardlist2 = [];
       let newcardlist3 = [];
+      let newcardlist4 = [];
       if (this.checked.select_secondType.length == 0) {
         newcardlist1 = this.cardlist;
       } else {
@@ -81,18 +86,46 @@ createApp({
         pricestag.add(element.priceTag);
         type.add(element.ProductSecondType);
       });
+      // newcardlist4 = newcardlist3.slice(this.start,this.end)
       //   this.AllCitys = citys;
       //   this.prices = pricestag;
       //   this.categorys = type;
       return newcardlist3;
     },
+    computedList2(){
+      return this.computedList.slice(this.start,this.end)
+    },
     totalpage() {
-      return Math.ceil(this.computedList.length / 5);
+      let arr=[]
+      let totalpage = Math.ceil(this.computedList.length / 5);
+      for (i=0;i<totalpage;i++){
+        arr.push(i+1)
+      }
+      return arr;
+    },
+  },
+  watch:{
+    totalpage:function(newValue,oldValue){
+      this.pagenum = 1
+    },
+    pagenum:function(newValue,oldValue){
+      this.start = (newValue-1)*5
+      this.end = (newValue*5)
+      console.log(oldValue,newValue)
+    },
+  },
+  methods: {
+    ChangeCurrpage(e) {      
+      let num = Number(e.target.text)
+      this.pagenum = num;
     },
   },
 
   methods: {
-    ChangeCurrpage(e) {},
+    ChangeCurrpage(e) {
+      let num = Number(e.target.text)
+      this.pagenum = num;
+    },
     filters(list, select) {
       const result = new Set();
       const set = new Set(select);
@@ -177,16 +210,16 @@ createApp({
       this.cardlist;
     },
     showproduct() {},
-    changeHeart(e) {
-      e.stopPropagation();
-      console.log(e.target);
-      // let a = e.target;
-      // let b = e.target.nextElementSibling
-      //   ? e.target.nextElementSibling
-      //   : e.target.previousElementSibling;
-      // a.classList.add("hidden");
-      // b.classList.remove("hidden");
-    },
+    // changeHeart(e) {
+    //   e.stopPropagation();
+    //   console.log(e.target);
+    //   // let a = e.target;
+    //   // let b = e.target.nextElementSibling
+    //   //   ? e.target.nextElementSibling
+    //   //   : e.target.previousElementSibling;
+    //   // a.classList.add("hidden");
+    //   // b.classList.remove("hidden");
+    // },
     open_city(e) {
       this.cityshow = !this.cityshow;
 
@@ -445,10 +478,67 @@ createApp({
         black_bg.classList.remove("on_watch");
       }
     },
-    jump_page() {
-      window.location.assign("productdetail.html");
+    // 以下Frose
+    clickHeart(pid, e) {
+      e.stopPropagation();
+      // console.log(e);
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(pid, e);
+      // 如果已登入，給予click之後更換愛心的事件
+      if (this.memberID) {
+        e.target.closest(".change-heart").classList.toggle("clicked");
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
+
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_clickHeart.php",
+        data: {
+          memberID: that.memberID,
+          pid,
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    renderHeart() {
+      // this.jo_list_end = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_renderHeart.php",
+        data: {
+          memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("renderHeart", response);
+          // console.log(response);
+          response.forEach((p) => that.favorProductList.push(p.ProductID));
+
+          // console.log(that.favorProductList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    gotoproductDetail(id) {
+      // e.preventDefault();
+      location.href = `./productdetail.html?id=${id}`;
     },
   },
 
-  mounted() {},
+  mounted() {
+    this.renderHeart();
+  },
 }).mount("#app");

@@ -111,10 +111,10 @@
             </div>
             <a
               class="product-card-row"
-              v-for="product in computedList"
+              v-for="product in computedList2"
               :key="index"
-              :href="'./productdetail.html?id=' + product.ProductID"
-              v-if="dataget"
+              @click="gotoproductDetail(product.ProductID)"
+             
             >
               <div class="product-card-row__left">
                 <div class="product-card-row__location">
@@ -129,14 +129,19 @@
                 </div>
               </div>
               <div class="product-card-row__right">
-                <div class="change-heart" ref="changeHeart">
+                <div
+                  class="change-heart"
+                  ref="changeHeart"
+                  @click="clickHeart(product.ProductID,$event)"
+                  :class="{'clicked':favorProductList.includes(product.ProductID) }"
+                >
                   <i
                     class="fa-regular fa-heart"
                     ref="hollow"
                     @click="changeHeart"
                   ></i>
                   <i
-                    class="fa-solid fa-heart orange hidden"
+                    class="fa-solid fa-heart orange"
                     ref="solid"
                     @click="changeHeart"
                   ></i>
@@ -161,21 +166,27 @@
                 >
               </div>
             </a>
-
             <nav>
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link" href="#">prev</a>
+                  <a class="productlist_new__page-link" href="#">&lt;</a>
                 </li>
-                <li class="productlist_new__page-item">
+                <li class="productlist_new__page-item"
+                v-for="(item,index) in totalpage"
+                :class="{current:pagenum == item}"
+                
+                    >
                   <a
-                    class="productlist_new__page-link productlist_new__page-link--current"
+                    class="productlist_new__page-link "
                     href="#"
-                    >1</a
-                  >
+                    :value="item"
+                    @click="ChangeCurrpage"
+                    >{{item}}
+                    
+                    </a>
                 </li>
                 <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link" href="#">next</a>
+                  <a class="productlist_new__page-link" href="#">&gt;</a>
                 </li>
               </ul>
             </nav>
@@ -186,6 +197,7 @@
     </div>
     <script src="./vender/jquery/jquery.js"></script>
     <script src="./vender/vue/vue.global.js"></script>
+    <script src="./js/header.js"></script>
     <script src="./js/productlist.js"></script>
     <!-- <script>
       const { createApp } = Vue;

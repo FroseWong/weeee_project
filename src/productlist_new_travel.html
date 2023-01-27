@@ -111,10 +111,10 @@
             </div>
             <a
               class="product-card-row"
-              v-for="product in computedList"
+              v-for="product in computedList2"
               :key="index"
               @click="gotoproductDetail(product.ProductID)"
-              v-if="dataget"
+             
             >
               <div class="product-card-row__left">
                 <div class="product-card-row__location">
@@ -169,17 +169,24 @@
             <nav>
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
+                  <a class="productlist_new__page-link" href="#">&lt;</a>
+                </li>
+                <li class="productlist_new__page-item"
+                v-for="(item,index) in totalpage"
+                :class="{current:pagenum == item}"
+                
+                    >
                   <a
-                    class="productlist_new__page-link productlist_new__page-link--current"
+                    class="productlist_new__page-link "
                     href="#"
-                    >1</a
-                  >
+                    :value="item"
+                    @click="ChangeCurrpage"
+                    >{{item}}
+                    
+                    </a>
                 </li>
                 <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link" href="#">2</a>
-                </li>
-                <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link" href="#">3</a>
+                  <a class="productlist_new__page-link" href="#">&gt;</a>
                 </li>
               </ul>
             </nav>
