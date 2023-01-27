@@ -119,21 +119,31 @@ const app = Vue.createApp({
       currentComment: "",
       currentJoCommentTime: "",
       currentFullName: "",
-      // fakeImg: "./img/sightseeing/fa_201_1.jpg",
+      memberID: "", // Frose
+      favorProductList: [], // Frose
     };
   },
   updated() {
     // this.getdata_product_list();
+  },
+  created() {
+    this.memberID = header.memberID;
   },
   mounted() {
     this.getjoid();
     this.getdata_jo_list();
     this.getdata_jo_comment();
     this.getdata_product_list();
+    this.renderHeart();
   },
   methods: {
     contactLeader() {
-      $(".contact-detail").toggle(1000);
+      if (this.memberID) {
+        $(".contact-detail").toggle(1000);
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
     },
     changeHeart(e) {
       // console.log("hi");
@@ -364,6 +374,63 @@ const app = Vue.createApp({
           alert("數據載入失敗: " + exception.status);
         },
       });
+    },
+    clickHeart(pid, e) {
+      e.stopPropagation();
+      // console.log(e);
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(pid, e);
+      // 如果已登入，給予click之後更換愛心的事件
+      if (this.memberID) {
+        e.target.closest(".change-heart").classList.toggle("clicked");
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
+
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_clickHeart.php",
+        data: {
+          memberID: that.memberID,
+          pid,
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    renderHeart() {
+      // this.jo_list_end = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_renderHeart.php",
+        data: {
+          memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("renderHeart", response);
+          // console.log(response);
+          response.forEach((p) => that.favorProductList.push(p.ProductID));
+
+          // console.log(that.favorProductList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    gotoproductDetail(id) {
+      // e.preventDefault();
+      location.href = `./productdetail.html?id=${id}`;
     },
   },
 });

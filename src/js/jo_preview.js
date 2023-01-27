@@ -92,6 +92,7 @@ if (img) {
 let app = Vue.createApp({
   data() {
     return {
+      test: "123",
       joTitle: "",
       joContent: "",
       joContact: "",
@@ -107,6 +108,10 @@ let app = Vue.createApp({
       targettravelID: "",
       imgName: "",
       JoUseWeeee: "",
+      headerFullName: "",
+      headerMemberImg: "",
+      memberID: "", // Frose
+      favorProductList: [], // Frose
     };
   },
   created() {
@@ -121,6 +126,7 @@ let app = Vue.createApp({
     this.joStartTime = joStartTime;
     this.img = img;
     this.imgName = imgName;
+    this.memberID = header.memberID; // Frose
     this.getdata_product_list();
   },
   mounted() {},
@@ -133,13 +139,13 @@ let app = Vue.createApp({
     changeHeart(e) {
       // console.log("hi");
       // console.log(this.$refs.hollow);
-      e.stopPropagation();
-      let a = e.target;
-      let b = e.target.nextElementSibling
-        ? e.target.nextElementSibling
-        : e.target.previousElementSibling;
-      a.classList.add("hidden");
-      b.classList.remove("hidden");
+      // e.stopPropagation();
+      // let a = e.target;
+      // let b = e.target.nextElementSibling
+      //   ? e.target.nextElementSibling
+      //   : e.target.previousElementSibling;
+      // a.classList.add("hidden");
+      // b.classList.remove("hidden");
       // a.classList.add("hidden");
       // b.nextElementSibling.remove("hidden");
       // console.log(e.target.closest("div"));
@@ -213,11 +219,81 @@ let app = Vue.createApp({
         },
       });
     },
+    clickHeart(pid, e) {
+      e.stopPropagation();
+      // console.log(e);
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(pid, e);
+      // 如果已登入，給予click之後更換愛心的事件
+      if (this.memberID) {
+        e.target.closest(".change-heart").classList.toggle("clicked");
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
+
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_clickHeart.php",
+        data: {
+          memberID: that.memberID,
+          pid,
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    renderHeart() {
+      // this.jo_list_end = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_renderHeart.php",
+        data: {
+          memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("renderHeart", response);
+          // console.log(response);
+          response.forEach((p) => that.favorProductList.push(p.ProductID));
+
+          // console.log(that.favorProductList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    gotoproductDetail(id) {
+      // e.preventDefault();
+      location.href = `./productdetail.html?id=${id}`;
+    },
+    contactLeader() {
+      if (this.memberID) {
+        $(".contact-detail").toggle(1000);
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
+    },
   },
   mounted() {
     $(".contact-leader").on("click", function () {
       $(".contact-detail").toggle(1000);
     });
+    this.renderHeart();
+  },
+  updated() {
+    this.headerFullName = header.headerFullName;
+    this.headerMemberImg = header.headerMemberImg;
   },
 });
 

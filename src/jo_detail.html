@@ -96,7 +96,10 @@
           <h3 class="useweeee__title">我們的行程</h3>
 
           <div class="useweeee">
-            <a class="product-card-row">
+            <a
+              class="product-card-row"
+              @click="gotoproductDetail(product.ProductID)"
+            >
               <div class="product-card-row__left">
                 <div class="product-card-row__location">
                   <i class="fa-solid fa-location-dot"></i>
@@ -114,10 +117,11 @@
                 <div
                   class="change-heart"
                   ref="changeHeart"
-                  @click="changeHeart"
+                  :class="{'clicked':favorProductList.includes(product.ProductID) }"
+                  @click="clickHeart(product.ProductID,$event)"
                 >
                   <i class="fa-regular fa-heart" ref="hollow"></i>
-                  <i class="fa-solid fa-heart orange hidden" ref="solid"></i>
+                  <i class="fa-solid fa-heart orange" ref="solid"></i>
                 </div>
                 <div class="product-name">
                   {{product.Location}}{{product.ProductName}}
@@ -126,8 +130,13 @@
                 <div class="product__text">{{product.ProductText}}</div>
 
                 <span class="gray"
-                  ><i class="fa-solid fa-star"></i>4.4(44325) |
-                  <span class="product-bought">590K+</span>個已訂購
+                  ><i class="fa-solid fa-star"></i
+                  >4.4({{product.ProductScoredPeople}}) |
+                  <span class="product-bought"
+                    >{{Number(product.ProductPurchased) >= 1000 ?
+                    Math.trunc(Number(product.ProductPurchased)/1000) + 'K+':
+                    product.ProductPurchased}}</span
+                  >個已訂購
                 </span>
                 <span class="price"
                   >TWD <span class="product-price"> 123</span>元</span
@@ -190,6 +199,7 @@
     <!-- </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="./js/header.js"></script>
     <script src="./js/jo_detail.js"></script>
   </body>
 </html>
