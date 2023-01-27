@@ -3,7 +3,7 @@ include("connection.php");
 $msort = $_POST["msort"];
 $key = $_POST["key"];
 // echo $path;
-if(isset($_POST["key"])){
+if(!$key == "" ){
     $sql = 
     "SELECT * from (
         SELECT p.ProductID,p.ProductName, p.ProductPrice, p.ProductText, p.Location, p.ProductSecondType, i.ProductImgPath1 ,p.ProductPurchased, p.ProductScoredPeople
