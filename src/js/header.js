@@ -8,6 +8,7 @@ const apph = Vue.createApp({
       memberID: 0, //將抓到的memberID存到這
       headerFullName: "",
       headerMemberImg: "",
+      keyword:"",
     };
   },
   watch: {
@@ -19,6 +20,14 @@ const apph = Vue.createApp({
     header = this;
   },
   methods: {
+    jump_searched(){
+      let keyword = this.keyword
+      if(keyword.length>0){
+        let url = "./productlist.html" + "?msort=all&key=" + keyword;
+          window.location.assign(url);
+      }
+
+    },
     showcartNum() {
       const num = this.$refs.shoppingcartNum;
       //   console.log(num);
