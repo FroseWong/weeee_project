@@ -1,4 +1,8 @@
 // console.log("this is header");
+
+// import jquery from "../vender/jquery/jquery.js";
+// import Vue from "../vender/vue/vue.global.js";
+
 let header;
 const apph = Vue.createApp({
   data() {

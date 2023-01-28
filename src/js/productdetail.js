@@ -416,21 +416,21 @@ const app = Vue.createApp({
       // sessionStorage.setItem("單價", this.modalTotal);
       let productImgPath1 = this.Imgs[0].src;
       let productName = this.ProductDetail.name;
-      let orderDate = newDate;
-      let orderNumber = this.modalPeople;
+      let cartStartDay = newDate;
+      let quantity = this.modalPeople;
       let productPrice = this.modalTotal;
       let productID = this.ProductDetail.productID;
-      let productList = [
+      let checkout_data = [
         {
           productID: productID,
           productImgPath1: productImgPath1,
           productName: productName,
-          orderDate: orderDate,
-          orderNumber: orderNumber,
+          cartStartDay: cartStartDay,
+          quantity: quantity,
           productPrice: productPrice,
         },
       ];
-      sessionStorage.setItem("productList", JSON.stringify(productList));
+      sessionStorage.setItem("checkout_data", JSON.stringify(checkout_data));
       // let test=sessionStorage.getItem("productList");
       // console.log(JSON.parse(test));
       window.location.href = "./payment.html";

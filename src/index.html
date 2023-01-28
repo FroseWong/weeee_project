@@ -42,7 +42,7 @@
 
           <!-- @@include('layout/productSlide.html') -->
 
-          <div class="product-list interest">
+          <div class="product-list interest-list">
             <a
               class="product-card"
               v-for="(p,i) in memberInterestList"
@@ -82,7 +82,10 @@
                 <span class="gray"
                   ><i class="fa-solid fa-star"></i
                   >4.4({{p.ProductScoredPeople}}) |
-                  <span class="product-bought">{{p.ProductPurchased }}</span
+                  <span class="product-bought"
+                    >{{Number(p.ProductPurchased) >= 1000 ?
+                    Math.trunc(Number(p.ProductPurchased) / 1000) + "K+"
+                    :Number(p.ProductPurchased) }}</span
                   >個已訂購
                 </span>
                 <span class="price"
@@ -91,142 +94,7 @@
                 >
               </div>
             </a>
-
-            <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a> -->
-
-            <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a> -->
-
-            <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">桃園</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p1"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">有得逛有得買，就在桃園</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a> -->
-            <!--  
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a>-->
-            <!-- 
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>
-          --></div>
+          </div>
         </template>
         <h2 class="ttoc">即將出團</h2>
         <div class="jo-list">
@@ -268,116 +136,6 @@
               >
             </div>
           </a>
-
-          <!-- <a href="./jo_detail.html" class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台中</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j2"></div>
-              </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">突然決定玩桌遊</h6>
-              <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-              <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m2"></span
-                ><span class="member-name">吳筠萍</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a href="./jo_detail.html" class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j3"></div>
-              </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-              <span class="gray jo__detailaddress">饒河夜市</span>
-              <span class="gray jo-time">星期三,一月 18日 19:00</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m3"></span
-                ><span class="member-name">劉品吉</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a href="./jo_detail.html" class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j1"></div>
-              </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">南京復興站吃晚餐</h6>
-              <span class="gray jo__detailaddress">南京復興站</span>
-              <span class="gray jo-time">星期五,十二月 2日 17:50</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m1"></span
-                ><span class="member-name">王小明</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a href="./jo_detail.html" class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台中</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j2"></div>
-              </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">突然決定玩桌遊</h6>
-              <span class="gray jo__detailaddress">快樂小屋桌遊</span>
-              <span class="gray jo-time">星期一,十二月 5日 12:40</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m2"></span
-                ><span class="member-name">吳筠萍</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a href="./jo_detail.html" class="jo-card">
-            <div class="jo-card__top__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="jo__location">台北</p>
-            </div>
-            <div class="jo-card__top">
-              <div class="jo-card__top__pic">
-                <div class="jo-card__top__pic__src j3"></div>
-              </div>
-            </div>
-            <div class="jo-card__bottom">
-              <h6 class="jo-name">饒河夜市逛逛吃吃</h6>
-              <span class="gray jo__detailaddress">饒河夜市</span>
-              <span class="gray jo-time">星期三,一月 18日 19:00</span>
-              <span class="jo-card__bottom__message"
-                ><span class="member-pic m3"></span
-                ><span class="member-name">劉品吉</span>
-                <span class="left-time">剩餘1天</span></span
-              >
-            </div>
-          </a> -->
         </div>
 
         <h2 class="ttoc">探索熱門城市</h2>
@@ -424,14 +182,10 @@
               <h3 class="caption">台中</h3>
             </a>
             <div class="popular-country__bottom">
-              <a
-                href="./productlist.html?msort=tt&local=台中"
-                class="travel"
+              <a href="./productlist.html?msort=tt&local=台中" class="travel"
                 >交通 & 旅遊必備</a
               >
-              <a
-                href="./productlist.html?msort=vp&local=台中"
-                class="ticket"
+              <a href="./productlist.html?msort=vp&local=台中" class="ticket"
                 >熱門票券</a
               >
               <a href="./productlist.html?msort=ep&local=台中" class="local"
@@ -458,14 +212,10 @@
               <h3 class="caption">彰化</h3>
             </a>
             <div class="popular-country__bottom">
-              <a
-                href="./productlist.html?msort=tt&local=彰化"
-                class="travel"
+              <a href="./productlist.html?msort=tt&local=彰化" class="travel"
                 >交通 & 旅遊必備</a
               >
-              <a
-                href="./productlist.html?msort=vp&local=彰化"
-                class="ticket"
+              <a href="./productlist.html?msort=vp&local=彰化" class="ticket"
                 >熱門票券</a
               >
               <a href="./productlist.html?msort=ep&local=彰化" class="local"
@@ -514,24 +264,24 @@
             @mouseenter="popularMouse(5)"
           >
             <a
-              href="./productlist.html?msort=ss&local=基隆"
+              href="./productlist.html?msort=ss&local=台南"
               class="popular-country__link"
             >
               <div class="overlap"></div>
-              <h3 class="caption">基隆</h3>
+              <h3 class="caption">台南</h3>
             </a>
             <div class="popular-country__bottom">
-              <a href="./productlist.html?msort=tt&local=基隆" class="travel"
+              <a href="./productlist.html?msort=tt&local=台南" class="travel"
                 >交通 & 旅遊必備</a
               >
-              <a href="./productlist.html?msort=vp&local=基隆" class="ticket"
+              <a href="./productlist.html?msort=vp&local=台南" class="ticket"
                 >熱門票券</a
               >
-              <a href="./productlist.html?msort=ep&local=基隆" class="local"
+              <a href="./productlist.html?msort=ep&local=台南" class="local"
                 >更多在地體驗</a
               >
               <span
-                href="./productlist.html?msort=ss&local=基隆"
+                href="./productlist.html?msort=ss&local=台南"
                 class="number__items"
                 >{{popularNumber[0]}} 個相關項目</span
               >
@@ -540,7 +290,7 @@
         </div>
 
         <h2 class="ttoc">Top 10 熱門商品</h2>
-        <div class="product-list">
+        <div class="product-list top10-list">
           <a class="product-card" v-for="(p,i) in top10List" :key="i">
             <div
               class="change-heart"
@@ -576,7 +326,10 @@
               <span class="gray"
                 ><i class="fa-solid fa-star"></i>4.4({{p.ProductScoredPeople}})
                 |
-                <span class="product-bought">{{p.ProductPurchased}}</span
+                <span class="product-bought"
+                  >{{Number(p.ProductPurchased) >= 1000 ?
+                  Math.trunc(Number(p.ProductPurchased) / 1000) + "K+"
+                  :Number(p.ProductPurchased) }}</span
                 >個已訂購
               </span>
               <span class="price"
@@ -585,170 +338,10 @@
               >
             </div>
           </a>
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">桃園</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p1"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">有得逛有得買，就在桃園</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a> -->
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">桃園</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p1"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">有得逛有得買，就在桃園</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a> -->
-
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a> -->
         </div>
 
         <h2 class="ttoc">在尋找主題樂園的相關商品嗎？ 👇👇</h2>
-        <div class="product-list">
+        <div class="product-list theme-list">
           <a class="product-card" v-for="(p,i) in themeList" :key="i">
             <div
               class="change-heart"
@@ -781,7 +374,11 @@
               <h6 class="product-name">{{p.ProductName}}</h6>
               <span class="gray"
                 ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
+                <span class="product-bought"
+                  >{{Number(p.ProductPurchased) >= 1000 ?
+                  Math.trunc(Number(p.ProductPurchased) / 1000) + "K+"
+                  :Number(p.ProductPurchased) }}</span
+                >個已訂購
               </span>
               <span class="price"
                 >TWD
@@ -789,170 +386,11 @@
               >
             </div>
           </a>
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">桃園</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p1"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">有得逛有得買，就在桃園</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">桃園</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p1"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">有得逛有得買，就在桃園</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>-->
         </div>
+
         <h2 class="ttoc">精選特色體驗就在這👇👇</h2>
-        <div class="product-list">
-          <a class="product-card" v-for="(p,i) in productList" :key="i">
+        <div class="product-list experience-list">
+          <a class="product-card" v-for="(p,i) in experienceList" :key="i">
             <div
               class="change-heart"
               :class="{'clicked':favorProductList.includes(p.ProductID) }"
@@ -985,7 +423,10 @@
               <span class="gray"
                 ><i class="fa-solid fa-star"></i>4.4({{p.ProductScoredPeople}})
                 |
-                <span class="product-bought">{{p.ProductPurchased}}</span
+                <span class="product-bought"
+                  >{{Number(p.ProductPurchased) >= 1000 ?
+                  Math.trunc(Number(p.ProductPurchased) / 1000) + "K+"
+                  :Number(p.ProductPurchased) }}</span
                 >個已訂購
               </span>
               <span class="price"
@@ -994,141 +435,6 @@
               >
             </div>
           </a>
-
-          <!-- <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">桃園</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p1"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">有得逛有得買，就在桃園</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">新北</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p2"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">新北的山，新北的海，水啦</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">400</span>元</span
-              >
-            </div>
-          </a>
-
-          <a class="product-card">
-            <div class="change-heart">
-              <i class="fa-regular fa-heart"></i>
-              <i class="fa-solid fa-heart orange hidden"></i>
-            </div>
-            <div class="product-card__location">
-              <i class="fa-solid fa-location-dot"></i>
-              <p class="p__location">金門</p>
-            </div>
-            <div class="product-card__top">
-              <div class="product-card__top__pic">
-                <div class="product-card__top__picsrc p3"></div>
-              </div>
-            </div>
-            <div class="product-card__bottom">
-              <span class="product-tag">朋友行程</span>
-              <h6 class="product-name">金門二日遊</h6>
-              <span class="gray"
-                ><i class="fa-solid fa-star"></i>4.4(44325) |
-                <span class="product-bought">590K+</span>個已訂購
-              </span>
-              <span class="price"
-                >TWD <span class="product-price">550</span>元</span
-              >
-            </div>
-          </a> -->
         </div>
       </div>
       <div class="bottombanner">
@@ -1142,28 +448,18 @@
         <div class="lazybag__list">
           <a href="./productlist.html?msort=vp&local=基隆">基隆景點</a>
           <a href="./productlist.html?msort=vp&local=台北">台北景點 </a>
-          <a href="./productlist.html?msort=vp&local=新北"
-            >新北景點</a
-          >
+          <a href="./productlist.html?msort=vp&local=新北">新北景點</a>
           <a href="./productlist.html?msort=vp&local=桃園">桃園景點</a>
           <a href="./productlist.html?msort=vp&local=新竹">新竹景點</a>
           <a href="./productlist.html?msort=vp&local=苗栗">苗栗景點</a>
-          <a href="./productlist.html?msort=vp&local=台中"
-            >台中景點</a
-          >
-          <a href="./productlist.html?msort=vp&local=彰化"
-            >彰化景點</a
-          >
+          <a href="./productlist.html?msort=vp&local=台中">台中景點</a>
+          <a href="./productlist.html?msort=vp&local=彰化">彰化景點</a>
           <a href="./productlist.html?msort=vp&local=南投">南投景點</a>
           <a href="./productlist.html?msort=vp&local=雲林">雲林景點</a>
           <a href="./productlist.html?msort=vp&local=嘉義">嘉義景點</a>
           <a href="./productlist.html?msort=vp&local=台南">台南景點</a>
-          <a href="./productlist.html?msort=vp&local=高雄"
-            >高雄景點</a
-          >
-          <a href="./productlist.html?msort=vp&local=屏東"
-            >屏東景點</a
-          >
+          <a href="./productlist.html?msort=vp&local=高雄">高雄景點</a>
+          <a href="./productlist.html?msort=vp&local=屏東">屏東景點</a>
         </div>
       </div>
 
@@ -1171,47 +467,31 @@
         <h4 class="easydin__title">旅遊交通輕鬆訂</h4>
         <div class="easydin__list">
           <a href="./productlist.html?msort=tt&local=基隆">基隆交通</a>
-          <a href="./productlist.html?msort=tt&local=台北"
-            >台北交通
-          </a>
-          <a href="./productlist.html?msort=tt&local=新北"
-            >新北交通</a
-          >
-          <a href="./productlist.html?msort=tt&local=桃園"
-            >桃園交通</a
-          >
-          <a href="./productlist.html?msort=tt&local=新竹"
-            >新竹交通</a
-          >
+          <a href="./productlist.html?msort=tt&local=台北">台北交通 </a>
+          <a href="./productlist.html?msort=tt&local=新北">新北交通</a>
+          <a href="./productlist.html?msort=tt&local=桃園">桃園交通</a>
+          <a href="./productlist.html?msort=tt&local=新竹">新竹交通</a>
           <a href="./productlist.html?msort=tt&local=苗栗">苗栗交通</a>
-          <a href="./productlist.html?msort=tt&local=台中"
-            >台中交通</a
-          >
-          <a href="./productlist.html?msort=tt&local=彰化"
-            >彰化交通</a
-          >
+          <a href="./productlist.html?msort=tt&local=台中">台中交通</a>
+          <a href="./productlist.html?msort=tt&local=彰化">彰化交通</a>
           <a href="./productlist.html?msort=tt&local=南投">南投交通</a>
           <a href="./productlist.html?msort=tt&local=雲林">雲林交通</a>
           <a href="./productlist.html?msort=tt&local=嘉義">嘉義交通</a>
           <a href="./productlist.html?msort=tt&local=台南">台南交通</a>
-          <a href="./productlist.html?msort=tt&local=高雄"
-            >高雄交通</a
-          >
-          <a href="./productlist.html?msort=tt&local=屏東"
-            >屏東交通</a
-          >
+          <a href="./productlist.html?msort=tt&local=高雄">高雄交通</a>
+          <a href="./productlist.html?msort=tt&local=屏東">屏東交通</a>
         </div>
       </div>
     </div>
     @@include('layout/footer.html')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="./vender/vue/vue.global.js"></script>
+
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <!-- <script src="./js/slick_slider.js"></script> -->
-
     <script src="./js/header.js"></script>
     <script src="./js/headerShoppingcartVue.js"></script>
     <script src="./js/index.js"></script>

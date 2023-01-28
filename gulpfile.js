@@ -76,23 +76,44 @@ function sassStyle() {
 
 // 有壓縮
 function sassStyleMini() {
-  return src("src/sass/*.scss")
-    .pipe(sourcemaps.init())
-    .pipe(sass.sync().on("error", sass.logError)) // sass ->css
-    .pipe(sourcemaps.write())
-    .pipe(cleanCSS()) // minify css
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
-    .pipe(
-      rename({
-        extname: ".min.css",
-      })
-    )
-    .pipe(dest("dist/css"));
+  return (
+    src("src/sass/*.scss")
+      .pipe(sourcemaps.init())
+      .pipe(sass.sync().on("error", sass.logError)) // sass ->css
+      .pipe(sourcemaps.write())
+      .pipe(cleanCSS()) // minify css
+      .pipe(
+        autoprefixer({
+          cascade: false,
+        })
+      )
+      // .pipe(
+      //   rename({
+      //     extname: ".min.css",
+      //   })
+      // )
+      .pipe(dest("dist/css"))
+  );
 }
+
+// function sassStyleMini() {
+//   return src("src/sass/*.scss")
+//     .pipe(sourcemaps.init())
+//     .pipe(sass.sync().on("error", sass.logError)) // sass ->css
+//     .pipe(sourcemaps.write())
+//     .pipe(cleanCSS()) // minify css
+//     .pipe(
+//       autoprefixer({
+//         cascade: false,
+//       })
+//     )
+//     .pipe(
+//       rename({
+//         extname: ".min.css",
+//       })
+//     )
+//     .pipe(dest("dist/css"));
+// }
 
 exports.style = sassStyle;
 exports.styleMini = sassStyleMini;
@@ -143,13 +164,13 @@ function img() {
 
 //圖片壓縮
 function imgmini() {
-  return src(["src/img/**/**/*.*", "src/img/*.*"])
+  return src("src/img/**/*.*")
     .pipe(
       imagemin([
         imagemin.mozjpeg({ quality: 80, progressive: true }), // 壓縮品質      quality越低 -> 壓縮越大 -> 品質越差
       ])
     )
-    .pipe(dest("dist/img/mini/"));
+    .pipe(dest("dist/img"));
 }
 
 exports.minifyimg = imgmini;
@@ -198,4 +219,17 @@ exports.default = series(
 );
 
 // 打包上線用
-exports.package = series(clear, parallel(html, sassStyleMini, babel5, imgmini));
+exports.package = series(
+  clear,
+  parallel(
+    html,
+    layout,
+    movevue,
+    moveVender,
+    sassStyleMini,
+    jsmini,
+    babel5,
+    imgmini,
+    php
+  )
+);

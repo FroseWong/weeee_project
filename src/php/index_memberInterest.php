@@ -32,7 +32,7 @@ if($intereStr!==''){
     $sql1 = "SELECT * FROM Product p
     join ProductImg i 
     on p.ProductID =  i.ProductID
-    WHERE $intereStr ";
+    WHERE $intereStr  limit 6 ";
     
     $statement1 = $pdo->prepare( $sql1 );
     $statement1->execute(); 
