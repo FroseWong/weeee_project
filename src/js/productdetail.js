@@ -1,5 +1,4 @@
-const { createApp } = Vue;
-createApp({
+const app= Vue.createApp({
   data() {
     return {
       operate: "收起商品說明 ",
@@ -768,4 +767,6 @@ createApp({
     this.ajax_heart_show();
     this.ajax_Comment();
   },
-}).mount("#app");
+});
+app.mount("#app");
+app.component("product-slide-vue", window.my_component);
