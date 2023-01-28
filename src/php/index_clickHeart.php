@@ -19,7 +19,7 @@
         $sqlzero = "INSERT INTO Favor (MemberID,ProductID,FavorStatus)VALUES ('{$memberID}','{$pid}',1)";
         $statement = $pdo->prepare($sqlzero);
         $statement->execute();
-        echo json_encode(!$tempif);
+        echo json_encode('yo');
     }
 
 // -----------如果使用者有加過收藏---------------
@@ -44,11 +44,13 @@ if ($tempif === 1) {
         $statement = $pdo->prepare($sqlone);
         $statement->execute();
     }
-    echo json_encode(!$tempsel);
+    echo json_encode('yo');
+
     // echo json_encode($datasel[0]['FavorStatus']);
 
 }
 
+// echo json_encode('yo');
 
 
 // echo json_encode($dataif[0]['0']);
