@@ -52,7 +52,7 @@ createApp({
     window.addEventListener("resize", this.resize_adjust, true);
     this.getdata();
     console.log("aaa");
-    this.memberID = header.memberID; // Frose
+    // this.memberID = header.memberID; // Frose
   },
   computed: {
     computedList() {
@@ -285,16 +285,6 @@ createApp({
       this.cardlist;
     },
     showproduct() {},
-    // changeHeart(e) {
-    //   e.stopPropagation();
-    //   console.log(e.target);
-    //   // let a = e.target;
-    //   // let b = e.target.nextElementSibling
-    //   //   ? e.target.nextElementSibling
-    //   //   : e.target.previousElementSibling;
-    //   // a.classList.add("hidden");
-    //   // b.classList.remove("hidden");
-    // },
     open_city(e) {
       this.cityshow = !this.cityshow;
 
