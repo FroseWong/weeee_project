@@ -16,8 +16,7 @@
           />
         </li>
         <span>
-          <button class="header_search"
-          @click="jump_searched">
+          <button class="header_search" @click="jump_searched">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </span>
@@ -195,7 +194,7 @@
                 </li>
               </ol>
               <div class="user_logout">
-                <a href="login.html">登出</a>
+                <a @click="logout">登出</a>
               </div>
             </div>
           </template>

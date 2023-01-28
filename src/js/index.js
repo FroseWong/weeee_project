@@ -73,12 +73,13 @@ let app1 = Vue.createApp({
       viewpointticketList: [],
       themeList: [],
       jo_list_end: [],
-      current_hover: 1,
+      current_hover: 0,
       popularRWD: false,
       memberID: "",
       top10List: [],
       favorProductList: [],
       memberInterestList: [],
+      popularNumber: [],
       // show_lightbox: false,
       // show_select_bar: false,
       // jo_list_hot: [],
@@ -93,16 +94,20 @@ let app1 = Vue.createApp({
   },
   created() {
     this.get_member_information();
+    this.getPopularNumber();
     // this.memberID = header?.memberID;
     // this.show_hot_function();
     this.getdata_product_list();
     // this.getdata_product_list_top10();
     this.getdata_jo_list_end();
-    this.product_slick();
-    this.jolist_slick();
+    // this.product_slick();
+    // this.jolist_slick();
     // this.popularSlick();
     // if (this.memberID) this.memberInterest();
     window.addEventListener("resize", this.myEventHandler);
+  },
+  updated() {
+    // this.jolist_slick();
   },
   methods: {
     getdata_product_list() {
@@ -123,18 +128,8 @@ let app1 = Vue.createApp({
           let top10slice = response.slice();
           // console.log(top10slice);
           top10slice.sort((a, b) => b.ProductPurchased - a.ProductPurchased);
-          // console.log(top10slice);
-          // top10slice.forEach((p) => console.log(p.ProductPurchased));
           top10slice = top10slice.slice(0, 10);
           top10slice.forEach((t) => that.top10List.push(t));
-          // console.log(that.top10List);
-          // for (let i = 0; i < response.length; i++) {
-          //   if (response[i].ProductPurchased >= 1000)
-          //     response[i].ProductPurchased = `${Math.trunc(
-          //       response[i].ProductPurchased / 1000
-          //     )}K+`;
-          // }
-          // console.log(response);
           response.forEach((product) => {
             // console.log(product);
             if (product.ProductPurchased >= 1000) {
@@ -154,10 +149,8 @@ let app1 = Vue.createApp({
             if (product.ProductSecondType === "主題樂園")
               that.themeList.push(product);
           });
-          // console.log(that.themeList);
-          that?.$nextTick(function () {
-            that?.product_slick();
-            // that.clickHeart();
+          that.$nextTick(function () {
+            that.product_slick();
           });
           // console.log(that.sightseeingList);
         },
@@ -177,7 +170,7 @@ let app1 = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          console.log(response);
+          // console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           // that.headercounter = response[0].COUNT;
@@ -336,15 +329,13 @@ let app1 = Vue.createApp({
     },
 
     popularSlick(e) {
-      this.$nextTick(function () {
-        if (window.innerWidth <= 768) {
-          $(".popular-country__list").slick({
-            infinite: true,
-            slidesToShow: 2.1,
-            slidesToScroll: 2,
-          });
-        }
-      });
+      if (window.innerWidth <= 768) {
+        $(".popular-country__list").slick({
+          infinite: true,
+          slidesToShow: 2.1,
+          slidesToScroll: 2,
+        });
+      }
     },
     renderHeart() {
       // this.jo_list_end = [];
@@ -362,6 +353,24 @@ let app1 = Vue.createApp({
           response.forEach((p) => that.favorProductList.push(p.ProductID));
 
           // console.log(that.favorProductList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    getPopularNumber() {
+      // this.jo_list_end = [];
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_getpopular-number.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          that.popularNumber = response;
+          console.log(that.popularNumber);
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
@@ -554,6 +563,7 @@ let app1 = Vue.createApp({
     // if (this.memberID) this.memberInterest();
     // if (this.memberID) this.renderHeart();
     // this.heartInit();
+    // this.popularSlick();
   },
   beforeUpdate() {
     // this.memberID = header?.memberID;
@@ -568,6 +578,7 @@ let app1 = Vue.createApp({
     // if (this.memberID) this.memberInterest();
     // if (this.memberID) this.renderHeart();
     // this.popularSlick();
+    this.popularSlick();
   },
 });
 app1.component("header-shoppingcart-vue", window.header_component);

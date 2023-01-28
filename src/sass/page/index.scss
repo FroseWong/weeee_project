@@ -184,6 +184,12 @@
       &.active {
         width: 360px;
         height: 270px;
+
+        @include m {
+          width: 150px;
+          height: 150px;
+        }
+
         .caption {
           top: 150px;
           left: 0px;
