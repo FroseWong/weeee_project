@@ -121,8 +121,6 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Emily</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -144,40 +142,27 @@
 
                     <!-- Page Heading -->
                     <form action="">
-                        <h1 class="h3 mb-2 text-gray-800 ">檢視訂單WSA2046</h1>
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="from" class="form_label">訂單成立日期</label>
-                                <br>
-                                <input type="text" id="from" name="from" class=" filter readonly" readonly="readonly">
-                            </div>
-                            <div class="col-3">
-                                <label for="from" class="form_label">發票號碼</label>
-                                <br>
-                                <input type="text" id="from" name="from" class=" filter readonly" readonly="readonly">
-                            </div>
-                        </div>
-
+                        <h1 class="h3 mb-2 text-gray-800 ">檢視訂單</h1>
                         <div class="row row_bottom">
                             <div class="col-3">
-                                <label for="to" class="form_label">訂單付款日</label>
+                                <label for="from" class="form_label" >訂單成立日期</label>
                                 <br>
-                                <input type="text" class="paydate filter readonly" readonly="readonly" >
+                                <input type="text" id="orderDate"  class=" filter readonly" readonly="readonly">
                             </div>
                             <div class="col-3">                              
                                 <label for="amount" class="form_label">訂單總金額</label>
                                 <br>
-                                <input type="text" class="amount filter readonly" readonly="readonly">
+                                <input type="text" id="totalPrice" class="amount filter readonly" readonly="readonly" >
                             </div>
                             <div class="col-3">
-                                <label for="member_name" class="form_label">會員姓名</label>
+                                <label for="member_name"  class="form_label">訂購人會員編號</label>
                                 <br>
-                                <input type="text" class="member_name filter readonly" readonly="readonly">
+                                <input type="text" id="memberNumber" class="member_name filter readonly" readonly="readonly">
                             </div>
-                            <div class="cpl-3">
-                                <label for="phone" class="form_label">連絡電話</label>
+                            <div class="col-3">
+                                <label for="phone" class="form_label">訂購人Email</label>
                                 <br>
-                                <input type="number" name="phone" class="phone filter readonly" readonly="readonly">
+                                <input type="text" id="username" class="phone filter readonly" readonly="readonly">
                             </div>
                         </div>
                     </form>
@@ -197,29 +182,8 @@
                                             <th>小計</th>                                      
                                         </tr>
                                     </thead>
-                                    
-                                    <tbody>
-                                        <tr>
-                                            <td>EX_1234</td>
-                                            <td>青埔xpark水生公園一日遊</td>
-                                            <td>3</td>   
-                                            <td>300</td> 
-                                            <td>900</td>                                
-                                        </tr>
-                                        <tr>
-                                            <td>FB_9834</td>
-                                            <td>新竹客家庄一日遊</td>
-                                            <td>1</td>  
-                                            <td>800</td> 
-                                            <td>800</td>                                  
-                                        </tr>                
-                                        <tr>
-                                            <td>XE_3498</td>
-                                            <td>屏東海生館門票</td>
-                                            <td>2</td>  
-                                            <td>500</td>  
-                                            <td>1000</td>                                     
-                                        </tr>         
+                                    <tbody id="tbody">
+                                           
                                     </tbody>
                                 </table>
                             </div>
@@ -285,8 +249,42 @@
      <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
      <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
  
-     <!-- Page level custom scripts -->
-     <script src="../js/demo/datatables-demo.js"></script>
+    
 </body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderID = urlParams.get('orderID');
+    //一進到頁面，就發請求去資料庫取訂單基本資料
+    $.ajax({
+        method: "GET",
+        url: "../php/detail_order.php",
+        data: {
+            orderID: orderID
+        },
+        dataType: "json",
+        success: function(response){
+            $("#orderDate").val(response.OrderDate);
+            $("#totalPrice").val(response.TotalPrice);
+            $("#memberNumber").val(response.MemberNumber);
+            $("#username").val(response.username);
 
+            let tbody = document.getElementById("tbody");
+            for(let i =0; i < response.OrderDetailList.length; i++){
+                let detail_order =`
+                    <tr>
+                        <td>${response.OrderDetailList[i].ProductNumber}</td>
+                        <td>${response.OrderDetailList[i].ProductName}</td>
+                        <td>${response.OrderDetailList[i].Quantity}</td>   
+                        <td>${response.OrderDetailList[i].ProductPrice}</td> 
+                        <td>${response.OrderDetailList[i].SubPrice}</td>                                
+                    </tr>      
+                `;
+                tbody.insertAdjacentHTML("beforeend", detail_order);
+            }
+            $("#dataTable").DataTable();
+        },
+    });
+
+
+</script>
 </html>
