@@ -17,7 +17,7 @@
 <body style="background-color:#f5f5f5;">
 
     @@include('layout/header.html')
-    <div class="cart_wrapper wrapper">
+    <div class="cart_wrapper wrapper" id="app">
         <div class="container">
             <div class="cart_breadcrumb hb">
                 <ol>
@@ -36,7 +36,7 @@
                         <p>
                         <h5>訂購完成</h5>
                         </p>
-                        <p>憑證及訂單明細將寄至：happy123@gmail.com</p>
+                        <p>憑證及訂單明細將寄至：{{ orderNumber }}</p>
                     </span>
                 </div>
 
@@ -47,11 +47,29 @@
                         </div> -->
                         <div class="payment_item_list">
                             <div class="payment_item_header hasBorder">
-                                <h5>訂單編號#1212121212</h5>
+                                <h5>訂單編號{{ orderNumber }}</h5>
                             </div>
                             <!-- payment_complete start-->
                             <div class="product_group">
-                                <div class="product_item">
+                                <div class="product_item" v-for="(product, index) in productList">
+                                    <a href="" class="product-image"><img v-bind:src="product.productImgPath1"
+                                            alt=""></a>
+                                    <div class="product-name">
+                                        <a href="">
+                                            <h6>{{ product.productName }}</h6>
+                                        </a>
+                                    </div>
+                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>{{ product.startDate }}
+                                    </div>
+
+                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x {{ product.quantity }}
+                                    </div>
+                                    <div class="product-price">
+                                        <h6>{{ displayTWD(product.quantity * product.productPrice) }}</h6>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="product_item">
                                     <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
                                             alt=""></a>
                                     <div class="product-name">
@@ -79,47 +97,34 @@
                                     <div class="product-price">
                                         <h6>TWD 3,475</h6>
                                     </div>
-                                </div>
-
-                                <div class="product_item">
-                                    <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg"
-                                            alt=""></a>
-                                    <div class="product-name">
-                                        <a href="">
-                                            <h6>有得逛有得買，就在桃園</h6>
-                                        </a>
-                                    </div>
-                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>2022-12-30</div>
-                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x 2</div>
-                                    <div class="product-price">
-                                        <h6>TWD 3,475</h6>
-                                    </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="payment_list">
                             <ul>
                                 <li>小計</li>
                                 <li>
-                                    <h6>TWD 2,100</h6>
+                                    <h6>{{ displayTWD(getTotal.totalPrice) }}</h6>
                                 </li>
                             </ul>
                             <ul>
                                 <li>Weeee! Points 折抵</li>
                                 <li>
-                                    <h6>-TWD 420</h6>
+                                    <h6>-{{ displayTWD( weeee.totalPoints) }}</h6>
                                 </li>
                             </ul>
                             <ul>
                                 <li>付款金額</li>
                                 <li>
-                                    <h5 style="color: #4484ce;">TWD 1,680</h5>
+                                    <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice - weeee.totalPoints)
+                                        }}</h5>
                                 </li>
                             </ul>
                             <ul>
                                 <li>訂單完成後回饋</li>
                                 <li><span class="points_yellow">
-                                        <img src="img/weeeepoints/yellow.svg" alt="">36</li>
+                                        <img src="img/weeeepoints/yellow.svg" alt="">{{ Math.floor((getTotal.totalPrice
+                                        - weeee.totalPoints) / 100) }}</li>
                             </ul>
                         </div>
                         <div class="payment_list_points">
@@ -204,6 +209,10 @@
         </div>
     </div>
     @@include('layout/footer.html')
+    <script src="./vender/vue/vue.global.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="./js/payment_complete.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
