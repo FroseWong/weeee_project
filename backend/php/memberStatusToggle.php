@@ -5,7 +5,7 @@ include("connection.php");
 $memberNumber = $_GET['memberNumber'];
 
 //建立SQL
-$sql = "Update Member
+$sql = "UPDATE Member
 SET MemStatus = (CASE MemStatus WHEN 1 THEN 0 WHEN 0 THEN 1 END)
 WHERE MemberNumber = ?";
 
