@@ -10,8 +10,7 @@ require_once('connection.php');
 // $MID = $_SESSION["MemberID"];
 // $MID = $_POST["mid"];
 
-
-
+// -----------每頁顯示、取得商品ID--------------
 $PageNum = (string)3;
 $comment = $_POST["comment"] == 1 ? $_POST["comment"] = 0 : ($_POST["comment"]-1)*3;
 $PID = $_POST["pid"];

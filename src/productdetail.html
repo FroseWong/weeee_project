@@ -26,7 +26,6 @@
   @@include('layout/header.html')
   <div class="wrapper" id="app">
     <div v-cloak>
-      <!-- <input id="datetimepicker" type="text"> -->
       <!---------------bs-modal--------------->
       <div class="modal fade" id="peopleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         @click="field1_showbtn">
@@ -62,7 +61,7 @@
                 <div>
                   <p>Weeee!Points</p>
                   <div class="productdetail-modal-points">
-                    <img src="./img/weeeepoints/yellow.svg" alt="" />
+                    <img src="./img/weeeepoints/yellow.svg" alt="SryNotFuond" />
                     <p>{{modal_points}}</p>
                   </div>
                 </div>
@@ -95,7 +94,7 @@
         <div class="productdetail-slideshow">
           <a href="#" v-for="Img in Imgs">
             <div class="mySlidesFlex">
-              <img :src="Img.src" alt="" />
+              <img :src="Img.src" alt="SryNotFuond" />
             </div>
           </a>
         </div>
@@ -135,7 +134,6 @@
           <div class="productdetail-container">
             <div class="productdetail-title">
               <h1>{{ProductDetail.city}}｜{{ProductDetail.name}}</h1>
-              <!-- <i class="fa-regular fa-heart" @click="heart_click"></i> -->
               <div class="productdetail-small">
                 <div class="flex-container">
                   <div class="flex-child" @click="ajax_heart" ref="heartshow">
@@ -175,7 +173,6 @@
                   手刀報名好運來，喜迎好運順整年!!
                 </li>
                 <li>手刀報名好運來，喜迎好運順整年!!</li>
-                <li>體驗泰國按摩產業 17 年豐富經驗的專業團隊技術</li>
                 <li>
                   在您購買之後，本票券享有長達180天的有效期。讓您彈性選擇期間內任何日期來使用。
                 </li>
@@ -192,9 +189,9 @@
                 <h3 class="pd_h3">商品說明</h3>
                 <p>{{ProductDetail.Text}}</p>
               </div>
-              <div v-for="Img in Imgs" class="productdetail-img">
+              <div v-for="Img in Imgs" class="productdetail-img" alt="SryNotFuond">
                 <p>►{{Img.Content}}</p>
-                <img :src="Img.src" alt="" />
+                <img :src="Img.src" alt="SryNotFuond" />
               </div>
             </div>
             <!---------------購買須知--------------->
@@ -230,8 +227,7 @@
               </div>
             </div>
             <div class="productdetail-message" v-for="message in messages">
-              <!-- <span>{{message.pic}}</span> -->
-              <img :src="message.pic" alt="" />
+              <img :src="message.pic" alt="SryNotFuond" />
               <span>{{message.name}}</span>
               <div class="productdetail-message-text">
                 <p>{{message.star}}</p>

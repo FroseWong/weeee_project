@@ -1,7 +1,9 @@
 const app= Vue.createApp({
   data() {
     return {
+      // 開關說明
       operate: "收起商品說明 ",
+      // 右方四選項
       fieldDatas: [
         {
           title: "商品說明",
@@ -20,100 +22,34 @@ const app= Vue.createApp({
           fieldID: "f4",
         },
       ],
-      cards: [
-        {
-          src: "./img/otherpage/fa_19_1.jpg",
-          label: "情侶行程",
-          title: "新北 | Weeee渡假村門票",
-          score: 4.5,
-          scoreNum: "(2336)",
-          order: "95K+",
-          price: 576,
-          city: "新北",
-          url: "background-image:url('./img/otherpage/ar_10_1.jpg')",
-        },
-        {
-          src: "./img/otherpage/fa_20_1.jpg",
-          label: "朋友行程",
-          title: "台中 | Weeee渡假村門票",
-          score: 4.3,
-          scoreNum: "(3315)",
-          order: "55K+",
-          price: 1920,
-          city: "台中",
-          url: "background-image:url('./img/otherpage/fr_14_2.jpg')",
-        },
-        {
-          src: "./img/otherpage/fa_19_2.jpg",
-          label: "家庭行程",
-          title: "台南 | Weeee渡假村門票",
-          score: 4.5,
-          scoreNum: "(2577)",
-          order: "45K+",
-          price: 1024,
-          city: "台南",
-          url: "background-image:url('./img/otherpage/ar_9_2.jpg')",
-        },
-        {
-          src: "./img/otherpage/fa_20_2.jpg",
-          label: "寵物行程",
-          title: "高雄 | Weeee渡假村門票",
-          score: 4.3,
-          scoreNum: "(3508)",
-          order: "54K+",
-          price: 768,
-          city: "高雄",
-          url: "background-image:url('./img/sightseeing/fa_19_3.jpg')",
-        },
-        {
-          src: "./img/otherpage/fa_19_3.jpg",
-          label: "寵物行程",
-          title: "新竹 | Weeee渡假村門票",
-          score: 4.6,
-          scoreNum: "(6511)",
-          order: "54K+",
-          price: 1080,
-          city: "新竹",
-          url: "background-image:url('./img/otherpage/ex_7_1.jpg')",
-        },
-        {
-          src: "./img/otherpage/fa_20_3.jpg",
-          label: "寵物行程",
-          title: "花蓮 | Weeee渡假村門票",
-          score: 4.7,
-          scoreNum: "(7714)",
-          order: "54K+",
-          price: 1440,
-          city: "花蓮",
-          url: "background-image:url('./img/otherpage/pe_15_1.jpg')",
-        },
-      ],
+      // 預設評論
       messages: [
         {
-          // pic: "😹",
+          pic: "👦",
           name: "使用者",
           star: "★★★★★",
           comment: "登入查看留言<3",
         },
         {
-          // pic: "👦",
+          pic: "👦",
           name: "使用者",
           star: "★★★★★",
           comment: "登入查看留言<3",
         },
         {
-          // pic: "🙋‍♀️",
+          pic: "👦",
           name: "使用者",
           star: "★★★★★",
           comment: "登入查看留言<3",
         },
         {
-          // pic: "🐵",
+          pic: "👦",
           name: "使用者",
           star: "★★★★★",
           comment: "登入查看留言<3",
         },
       ],
+      // 地圖
       googleMap: {
         src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.2338948479887!2d121.5426387215347!3d25.052129362458672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823c18fcb9855%3A0x784fb0d91b7fc01f!2zVGliYU1lIOWFqOaWueS9jeaVuOS9jeihjOmKt-WvpuaIsOmkiuaIkOePrSjlj7DljJcp!5e0!3m2!1szh-TW!2stw!4v1671903363935!5m2!1szh-TW!2stw",
         width: 600,
@@ -158,7 +94,6 @@ const app= Vue.createApp({
         "年齡 65歲以上（憑證件）",
         "愛心票適用者：（若需購買，請於現場購票）",
         "持有身心障礙手冊者，及陪同者1人 (憑證件)",
-
         "免費適用者：",
         "居民 (憑證件)",
         "每月一號 (憑證件)",
@@ -172,6 +107,7 @@ const app= Vue.createApp({
 
         "不包含:  餐飲，個人消費，交通費，其他未提及消費",
       ],
+      // 下方三圖片
       Imgs: [
         {
           Content:
@@ -198,17 +134,7 @@ const app= Vue.createApp({
         address: "",
         comments: 0,
         time: 100,
-        ProductDetail_breadcrumb: "",
-        // type: "觀光行程",
-        // city: "桃園",
-        // price: 550,
-        // name: "Weeeepark 海洋公園門票",
-        // Text: "Weeeepark為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出360°具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Weeeepark是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。",
-        // shortname: "WeeeePark",
-        // address: "320台灣桃園市中壢區春德路105號",
-        // comments: 6430,
-        // stars: "★★★★",
-        // time: 2,
+        
       },
       modalPeople: 1,
       modalTotal: 0,
@@ -226,6 +152,7 @@ const app= Vue.createApp({
       commentlength: 0,
       comments: [1, 2, 3, 4],
       commentID: "",
+      ProductDetail_breadcrumb: "",
     };
   },
   methods: {
@@ -448,7 +375,7 @@ const app= Vue.createApp({
     pelple_plus() {
       this.modalPeople++;
     },
-    // ---------------結帳寫入cookie---------------
+    // ---------------結帳寫入sessionStorage---------------
     modal_checkout() {
       // let time = document.getElementById("datetimepicker").value;
       let time = this.$refs.timePicker.value;
@@ -469,13 +396,22 @@ const app= Vue.createApp({
           "-" +
           oldDate[0] +
           oldDate[1];
-      }
-      sessionStorage.setItem("日期", newDate);
-      sessionStorage.setItem("總金額", this.modal_pricetotal);
-      sessionStorage.setItem("點數", this.modal_points);
-      sessionStorage.setItem("商品編號", this.ProductDetail.productNumber);
-      let data = sessionStorage.getItem("日期");
-      // console.log(data);
+        }
+      //   sessionStorage.setItem("圖片", this.Imgs[0].src);
+      // sessionStorage.setItem("商品名稱", this.ProductDetail.name);
+      // sessionStorage.setItem("日期", newDate);
+      // sessionStorage.setItem("人數", this.modalPeople);
+      // sessionStorage.setItem("單價", this.modalTotal);
+      let productImgPath1=this.Imgs[0].src;
+      let productName=this.ProductDetail.name;
+      let orderDate=newDate;
+      let orderNumber=this.modalPeople;
+      let productPrice=this.modalTotal;
+
+     let productList=[{productImgPath1:productImgPath1,productName:productName,orderDate:orderDate,orderNumber:orderNumber,productPrice:productPrice}];
+     sessionStorage.setItem("productList", JSON.stringify(productList));
+      // let test=sessionStorage.getItem("productList");
+      // console.log(JSON.parse(test));
       window.location.href = "./payment.html";
     },
     // ---------------消失底下btn---------------
@@ -543,7 +479,6 @@ const app= Vue.createApp({
                 name: e.ProductName,
                 Text: e.ProductText,
                 address: e.Location,
-                comments: "好吃、好玩、又划算!",
                 time: 100,
                 productNumber: e.ProductNumber,
               };
@@ -580,6 +515,7 @@ const app= Vue.createApp({
         },
       });
     },
+    // ---------------加入收藏---------------
     ajax_heart() {
       _this = this;
       let urlParams = new URLSearchParams(window.location.search);
@@ -606,6 +542,7 @@ const app= Vue.createApp({
         error: function (exception) {},
       });
     },
+    // ---------------HeartShow---------------
     ajax_heart_show() {
       _this = this;
       let urlParams = new URLSearchParams(window.location.search);
@@ -629,6 +566,7 @@ const app= Vue.createApp({
         error: function (exception) {},
       });
     },
+    // ---------------加入購物車---------------
     ajax_ShoppingCart() {
       _this = this;
       let num;
@@ -657,6 +595,7 @@ const app= Vue.createApp({
       });
       this.cartswal();
     },
+    // ---------------評論---------------
     ajax_Comment() {
       _this = this;
       let num = 3;
@@ -713,6 +652,7 @@ const app= Vue.createApp({
         error: function (exception) {},
       });
     },
+    // ---------------點擊購物車後觸發---------------
     cartswal() {
       $("#peopleModal").modal("hide");
       const Toast = Swal.mixin({
@@ -732,6 +672,7 @@ const app= Vue.createApp({
       });
       header.get_member_information();
     },
+    // ---------------點擊分頁後觸發---------------
     commentfun() {
       let comment = 0;
       let urlParams = new URLSearchParams(window.location.search);
