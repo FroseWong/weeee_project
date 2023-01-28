@@ -95,15 +95,8 @@ let app1 = Vue.createApp({
   created() {
     this.get_member_information();
     this.getPopularNumber();
-    // this.memberID = header?.memberID;
-    // this.show_hot_function();
     this.getdata_product_list();
-    // this.getdata_product_list_top10();
     this.getdata_jo_list_end();
-    // this.product_slick();
-    // this.jolist_slick();
-    // this.popularSlick();
-    // if (this.memberID) this.memberInterest();
     window.addEventListener("resize", this.myEventHandler);
   },
   updated() {
@@ -404,6 +397,7 @@ let app1 = Vue.createApp({
     },
 
     clickHeart(pid, e) {
+      console.log(this.memberID);
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
@@ -427,7 +421,7 @@ let app1 = Vue.createApp({
           console.log(response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },

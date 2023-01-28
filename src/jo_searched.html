@@ -113,7 +113,9 @@
             </a>
 
           </div>
-          <a id="jo_button" href="./jo_new.html">
+          <a id="jo_button" 
+          href="#"
+          @click="jump_jo_new">
             <img src="./img/jo/jo_create.gif" alt="" />
             <h5>發起揪團</h5>
           </a>
@@ -125,13 +127,14 @@
 
       @@include('layout/footer.html')
     </div>
-    <script src="./js/header.js"></script>
+    
     <script src="./vender/vue/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
+    <script src="./js/header.js"></script>
     <script src="./js/jo_searched.js"></script>
   </body>
 </html>

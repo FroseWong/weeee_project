@@ -30,13 +30,15 @@ let app1 = Vue.createApp({
         "其他",
       ],
       location_selected: "全部地區",
+      memberID: "",
     };
   },
   created() {
+    this.get_member_information();
     window.addEventListener("scroll", this.btn_show);
-    // this.change_location_selected();
     this.show__function();
-    // this.getdata_jo_list_hot();
+    // this.memberID = header.memberID;
+   
   },
   methods: {
     jump_jo_detail(e) {
@@ -147,9 +149,10 @@ let app1 = Vue.createApp({
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
               slidesToScroll: 1,
               infinite: true,
+              arrows:false,
             },
           },
         ],
@@ -165,9 +168,10 @@ let app1 = Vue.createApp({
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
               slidesToScroll: 1,
               infinite: true,
+              arrows:false,
             },
           },
         ],
@@ -183,9 +187,10 @@ let app1 = Vue.createApp({
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
               slidesToScroll: 1,
               infinite: true,
+              arrows:false,
             },
           },
         ],
@@ -210,6 +215,43 @@ let app1 = Vue.createApp({
           window.location.assign(url);
         }
       }
+    },
+    jump_jo_new(){
+      if(this.memberID) {
+        location.href = "./jo_new.html";
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
+    },
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          // console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          // that.headercounter = response[0].COUNT;
+          that.memberID = response[0].MemberID;
+          // that.headerFullName = response[0].FullName;
+          // that.headerMemberImg = response[0].MemberImg;
+          // that.headercounter = response[0]["count(*)"] ?? 0;
+
+          // that?.$nextTick(function () {
+          //   if (that.memberID) that.renderHeart();
+          // });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
     },
     scrollToTop() {
       window.scrollTo({
