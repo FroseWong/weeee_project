@@ -120,8 +120,6 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Emily</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -140,7 +138,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1 class="h3 mb-2 text-gray-800 ">檢視揪團JO5630</h1>
+                    <h1 class="h3 mb-2 text-gray-800 ">檢視揪團 <Span id="which"></Span></h1>
                     <!-- Page Heading -->
                     
                     <div class="card shadow mb-4">
@@ -148,51 +146,63 @@
                             <h6 class="m-0 font-weight-bold list_style">揪團基本資料</h6>
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="" id="information">
                                 <div class="row">
                                     <div class="col-3">
                                         <label for="from" class="form_label">揪團名稱</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="joTitle"  class=" filter readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">
-                                        <label for="from" class="form_label">揪團編號</label>
+                                        <label for="from"  class="form_label">揪團編號</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="joNumber" class=" filter readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">
                                         <label for="from" class="form_label">團主ID</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter  readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="memberID" class=" filter  readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">
                                         <label for="from" class="form_label">團主聯絡方式</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="joContact" class=" filter readonly readonly_height" readonly="readonly">
                                     </div> 
                                 </div>
         
-                                <div class="row row_bottom">
+                                <div class="row ">
                                     <div class="col-3">
                                         <label for="to" class="form_label" >揪團縣市</label>
                                         <br>
-                                        <input type="text" class="paydate filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="location" class="paydate filter readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">                              
                                         <label for="amount" class="form_label">詳細地點</label>
                                         <br>
-                                        <input type="text" class="amount filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="joDetailedAddressed" class="amount filter readonly readonly_height" readonly="readonly">
+                                    </div>
+                                    <div class="col-3">                              
+                                        <label for="amount" class="form_label">揪團時間</label>
+                                        <br>
+                                        <input type="text" id="joStartDate" class="amount filter readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">
                                         <label for="from" class="form_label">揪團說明</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter readonly" readonly="readonly" style="height: 90px">
+                                        <input type="text" id="joContent"  class=" filter readonly" readonly="readonly" >
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="from" class="form_label">貼文狀態</label>
+                                        <br>
+                                        <input type="text" id="joStatus"  class=" filter readonly" readonly="readonly">
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;">下架貼文</button>
+                    <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;" onclick="toggleStatus()">調整貼文狀態</button>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold list_style">留言管理</h6>
@@ -203,7 +213,7 @@
                                     <thead>
                                         <tr>
                                             <th>留言ID</th>
-                                            <th>會員ID</th>
+                                            <th>留言人會員ID</th>
                                             <th>內容</th>
                                             <th>狀態</th>
                                             <th>發布日期</th>
@@ -211,105 +221,14 @@
                                         </tr>
                                     </thead>
                                     
-                                    <tbody>
-                                        <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>顯示中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-eye-slash"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>顯示中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-eye-slash"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>顯示中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-eye-slash"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>顯示中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-eye-slash"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>顯示中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-eye-slash"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>隱藏中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-check"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>隱藏中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-check"></i></td>
-                                        </tr> <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>隱藏中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-check"></i></td>
-                                        </tr> <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>隱藏中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-check"></i></td>
-                                        </tr> <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>隱藏中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-check"></i></td>
-                                        </tr> <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>隱藏中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-check"></i></td>
-                                        </tr> <tr>
-                                            <td>CO4031</td>
-                                            <td>ME3820</td>
-                                            <td>這個團看起來好好玩喔~最近也想去台中玩欸，希望可以跟上這個團!!</td>
-                                            <td>隱藏中</td>
-                                            <td>2011/04/25</td>
-                                            <td><i class="fas fa-check"></i></td>
-                                        </tr>
+                                    <tbody id="tbody">
                                     </tbody> 
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-warning submit_button save_update">儲存更新</button>
+              
             </div>
             <!-- End of Main Content -->
 
@@ -367,14 +286,97 @@
      <!-- Page level plugins -->
      <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
      <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+     <!-- 加入sweet alert -->
+     <script src="../vendor/sweetAlert/sweetalert2.all.min.js"></script>
+
      <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable({
-                paging: false, // 拿掉一頁顯示幾個篩選結果
-                "searching": false, // 拿掉搜尋bar
-                "info": false // 拿掉左下角共幾個結果的資訊
-            });
+        // $(document).ready(function () {
+        //     $('#dataTable').DataTable({
+        //         paging: false, // 拿掉一頁顯示幾個篩選結果
+        //         "searching": false, // 拿掉搜尋bar
+        //         "info": false // 拿掉左下角共幾個結果的資訊
+        //     });
+        // });
+        const urlParams = new URLSearchParams(window.location.search);
+        const joID = urlParams.get('joID');
+        //一進到頁面，就發請求去資料庫取揪團基本資料
+        $.ajax({
+            method: "GET",
+            url: "../php/detail_jo.php",
+            data: {
+                joID: joID
+            },
+            dataType: "json",
+            success: function (response) {
+            //印到HTML上
+                // response = 
+                // {
+                //     JoTitle: "揪團吃合菜",
+                //     JoNumber: "JO0001",
+                //     MemberID: "1",
+                //     JoContact: "LINE:111",
+                //     Location: "台北",
+                //     JoDetailedAddressed: "饒河街夜市",
+                //     JoContent:"嗚嗚嗚好好吃",
+                //     JoStartDate: "2023-02-10 21:00",
+                //     JoCommentList: [
+                //         {
+                //             JoCommentID: "1",
+                //             MemberID: "1",
+                //             JoCommentContent: "好想參加這團",
+                //             JoCommentStatus: 1,
+                //             JoCommentTime: "2022-01-01"
+                //         },
+                //         {
+                //             JoCommentID: "2",
+                //             MemberID: "1",
+                //             JoCommentContent: "好想參加這團",
+                //             JoCommentStatus: 1,
+                //             JoCommentTime: "2022-01-01"
+                //         }
+                //     ]
+                // }
+                $("#joTitle").val(response.JoTitle);
+                $("#joNumber").val(response.JoNumber);
+                $("#memberID").val(response.MemberID);
+                $("#joContact").val(response.JoContact);
+                $("#location").val(response.Location);
+                $("#joDetailedAddressed").val(response.JoDetailedAddressed);
+                $("#joContent").val(response.JoContent);
+                $("#joStartDate").val(response.JoStartDate);
+                $("#joStatus").val(response.JoStatus == 1 ? "顯示中": "隱藏中");
+
+                let tbody = document.getElementById("tbody");
+                for (let i = 0; i < response.JoCommentList.length; i++) {
+                    let detail_jo = `
+                        <tr>
+                            <td>${response.JoCommentList[i].JoCommentID}</td>
+                            <td>${response.JoCommentList[i].MemberID}</td>
+                            <td>${response.JoCommentList[i].JoCommentContent}</td>
+                            <td>${response.JoCommentList[i].JoCommentStatus == 1 ? "顯示中": "隱藏中" }</td>
+                            <td>${response.JoCommentList[i].JoCommentTime}</td>
+                            <td><i class="fas fa-eye-slash"></i></td>
+                        </tr>
+            `;
+                tbody.insertAdjacentHTML("beforeend", detail_jo);
+            }
+            $("#dataTable").DataTable();
+            },
         });
+
+        function toggleStatus(){
+            Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "修改成功",
+                    showConfirmButton: false,
+                    timer: 1000,
+                }).then(function(){
+                    window.location.href = "../php/joStatusToggle.php?joID=" + joID;
+                });
+        }
+
      </script>
 </body>
 
