@@ -6,7 +6,7 @@ include("connection.php");
 
 //建立SQL語法
 // $sql = "SELECT * FROM Order WHERE MemberID = ?";
-$sql = "SELECT Jo.JoTitle, Jo.Location, Jo.JoDetailedAddressed, Jo.JoStartDate
+$sql = "SELECT Jo.JoTitle, Jo.Location, Jo.JoDetailedAddressed, Jo.JoStartDate, Jo.JoID
 from Jo 
 WHERE MemberID = ?;";
 
