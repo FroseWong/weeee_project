@@ -143,13 +143,13 @@ function img() {
 
 //圖片壓縮
 function imgmini() {
-  return src(["src/img/**/**/*.*", "src/img/*.*"])
+  return src("src/img/**/*.*")
     .pipe(
       imagemin([
         imagemin.mozjpeg({ quality: 80, progressive: true }), // 壓縮品質      quality越低 -> 壓縮越大 -> 品質越差
       ])
     )
-    .pipe(dest("dist/img/mini/"));
+    .pipe(dest("dist/img"));
 }
 
 exports.minifyimg = imgmini;
@@ -198,4 +198,17 @@ exports.default = series(
 );
 
 // 打包上線用
-exports.package = series(clear, parallel(html, sassStyleMini, babel5, imgmini));
+exports.package = series(
+  clear,
+  parallel(
+    html,
+    layout,
+    movevue,
+    moveVender,
+    sassStyleMini,
+    jsmini,
+    babel5,
+    imgmini,
+    php
+  )
+);
