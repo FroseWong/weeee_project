@@ -58,6 +58,7 @@ window.my_component = {
     };
   },
   created() {
+    this.get_member_information();
     this.getdata_product_list();
     this?.product_slick();
   },
@@ -65,11 +66,43 @@ window.my_component = {
     // this.memberID = header.memberID;
   },
   beforeUpdate() {
-    this.memberID = header.memberID;
-    this.renderHeart();
+    // this.memberID = header.memberID;
+    // this.renderHeart();
   },
   updated() {},
   methods: {
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          // that.headercounter = response[0].COUNT;
+          that.memberID = response[0].MemberID;
+          console.log(that.memberID);
+          // that.headerFullName = response[0].FullName;
+          // that.headerMemberImg = response[0].MemberImg;
+          // that.headercounter = response[0]["count(*)"] ?? 0;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.renderHeart();
+            // if (that.memberID) that.memberInterest();
+            // if (that.memberID) that.renderHeart();
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
     getdata_product_list() {
       // this.jo_list_hot = [];
       let that = this;
@@ -148,16 +181,6 @@ window.my_component = {
         ],
       });
     },
-
-    changeHeart(e) {
-      e.stopPropagation();
-      let a = e.target;
-      let b = e.target.nextElementSibling
-        ? e.target.nextElementSibling
-        : e.target.previousElementSibling;
-      a.classList.add("hidden");
-      b.classList.remove("hidden");
-    },
     clickHeart(pid, e) {
       console.log("R");
       // console.log(e.target.closest(".change-heart"));
@@ -190,6 +213,37 @@ window.my_component = {
     gotoproductDetail(id) {
       // e.preventDefault();
       location.href = `./productdetail.html?id=${id}`;
+    },
+    clickHeart(pid, e) {
+      e.stopPropagation();
+      // console.log(e);
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(e.target.closest(".change-heart"));
+      // console.log(pid, e);
+      // 如果已登入，給予click之後更換愛心的事件
+      if (this.memberID) {
+        e.target.closest(".change-heart").classList.toggle("clicked");
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
+      }
+
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/index_clickHeart.php",
+        data: {
+          memberID: that.memberID,
+          pid,
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
     },
     renderHeart() {
       // this.jo_list_end = [];

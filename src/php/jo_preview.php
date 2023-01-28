@@ -24,9 +24,10 @@ $statement0->execute();
 $data0 = $statement0->fetchAll();
 
 $maxID = $data0[0]["MAX(JoID)"];
+$JoNumber = 'JO'.str_pad($maxID+1,5,"0",STR_PAD_LEFT); 
 
 
-$JoNumber = 'asd1234';
+// $JoNumber = 'asd1234';
 
 if($JoUseWeeee==1)
         {

@@ -1,5 +1,5 @@
 <?php
-$memberID = "6"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
+$memberID = $_POST["memberID"]; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
 
 //DB連線資訊
 include("connection.php");
