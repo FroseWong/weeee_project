@@ -1,11 +1,10 @@
-const app = Vue.createApp({
+const { createApp } = Vue;
+const App = {
   data() {
     return {
       memberID: 0, //將抓到的memberID存到這
       productList: [],
-      weeee: {
-        totalPoints: 0,
-      },
+      orderInfo:{}
     };
   },
   created() {
@@ -30,6 +29,7 @@ const app = Vue.createApp({
 
           that?.$nextTick(function () {
             if (that.memberID) that.getdata_productList();
+            if (that.memberID) that.getdata_orderInfo();
           });
         },
         error: function (exception) {
@@ -60,9 +60,31 @@ const app = Vue.createApp({
           },
         });
       },
-
+      getdata_orderInfo() {
+        // console.log(this.productList);
+        let that = this;
+        $.ajax({
+          method: "POST",
+          url: "./php/OrderInfo.php",
+          data: {
+            memberID: that.memberID,
+          },
+          dataType: "json",
+          success: function (response) {
+            console.log(response);
+            response.forEach((orderInfo) => {
+              // console.log(productList);
+              that.orderInfo = orderInfo;
+            });
+          },
+          error: function (exception) {
+            console.log(123);
+            alert("數據載入失敗: " + exception.status);
+          },
+        });
+      },
     displayTWD(price) {
-      return `TWD ${price.toLocaleString("en-US")}`;
+      return `TWD ${price?.toLocaleString("en-US")}`;
     },
   },
   computed: {
@@ -88,5 +110,8 @@ const app = Vue.createApp({
     },
   },
   mounted() {},
-});
+};
+app = Vue.createApp(App);
+app.component("product-slide-vue", window.my_component);
+
 app.mount("#app");
