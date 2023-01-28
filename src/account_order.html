@@ -105,7 +105,9 @@
       </div>
       @@include('layout/footer.html')
     </div>
-
+    <script src="vender/jquery/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="js/header.js"></script>
     <script>
 
       //會員一進到此頁面，就發送請求到後端取他的訂單資料
@@ -127,7 +129,7 @@
                   <div class="product_name">${response[i].ProductName}</div>
                   <div class="product_type">${response[i].ProductSecondType}</div>
                   <div class="product__description">
-                    ${response[i].ProductText}
+                    ${response[i].ProductText.length > 50 ? response[i].ProductText.substr(0, 50) + "..." : response[i].ProductText}
                   </div>
                   <div class="card_bottom">
                     <div class="comment">

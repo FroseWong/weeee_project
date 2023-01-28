@@ -107,7 +107,8 @@
       @@include('layout/footer.html')
     </div>
     <script src="vender/jquery/jquery.min.js"></script>
-    
+    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="js/header.js"></script>
     <script>
 
       //控制資料顯示在HTML上
@@ -161,7 +162,7 @@
                 
                   <div class="product_type">${response[i].ProductSecondType}</div>
                   <div class="product__description">
-                    ${response[i].ProductText}
+                    ${response[i].ProductText.length > 50 ? response[i].ProductText.substr(0, 50) + "..." : response[i].ProductText}
                   </div>
                   <div class="card_bottom">
                     <div class="comment">
