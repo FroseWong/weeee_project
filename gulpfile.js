@@ -76,23 +76,44 @@ function sassStyle() {
 
 // 有壓縮
 function sassStyleMini() {
-  return src("src/sass/*.scss")
-    .pipe(sourcemaps.init())
-    .pipe(sass.sync().on("error", sass.logError)) // sass ->css
-    .pipe(sourcemaps.write())
-    .pipe(cleanCSS()) // minify css
-    .pipe(
-      autoprefixer({
-        cascade: false,
-      })
-    )
-    .pipe(
-      rename({
-        extname: ".min.css",
-      })
-    )
-    .pipe(dest("dist/css"));
+  return (
+    src("src/sass/*.scss")
+      .pipe(sourcemaps.init())
+      .pipe(sass.sync().on("error", sass.logError)) // sass ->css
+      .pipe(sourcemaps.write())
+      .pipe(cleanCSS()) // minify css
+      .pipe(
+        autoprefixer({
+          cascade: false,
+        })
+      )
+      // .pipe(
+      //   rename({
+      //     extname: ".min.css",
+      //   })
+      // )
+      .pipe(dest("dist/css"))
+  );
 }
+
+// function sassStyleMini() {
+//   return src("src/sass/*.scss")
+//     .pipe(sourcemaps.init())
+//     .pipe(sass.sync().on("error", sass.logError)) // sass ->css
+//     .pipe(sourcemaps.write())
+//     .pipe(cleanCSS()) // minify css
+//     .pipe(
+//       autoprefixer({
+//         cascade: false,
+//       })
+//     )
+//     .pipe(
+//       rename({
+//         extname: ".min.css",
+//       })
+//     )
+//     .pipe(dest("dist/css"));
+// }
 
 exports.style = sassStyle;
 exports.styleMini = sassStyleMini;
