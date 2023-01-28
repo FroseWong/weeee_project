@@ -1,7 +1,7 @@
 <?php
     include("connection.php"); 
 
-    $memberID = "6"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
+    $memberID = $_POST["memberID"]; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
     
     $CID = $_POST["CID"];
     $totalPrice = $_POST["totalPrice"];
@@ -20,7 +20,9 @@
     insertPlusPointRecord($pdo, $addPoints, $OID);
     insertMinusPointRecord($pdo, $discountPoints, $OID);
     updateMember($pdo, $offsetPoints, $memberID);
-    // deleteCart($pdo, $CID, $str);
+    deleteCart($pdo, $CID, $str);
+
+    echo "購買完成!";
 
 
     // //---------------------------以 下 是 自 定 義 Function-------------------------
@@ -34,7 +36,7 @@
         // echo json_encode($try);
         // $sql = "UPDATE cart set status = '2' where $str";
         // $sql = "update cart set status = 2 where CartID = 3 OR CartID = 4;";
-        $sql = "update cart set status = 2 where $str;";
+        $sql = "delete from cart where $str;";
     
         $statement = $pdo->prepare( $sql );
         $statement->execute(); 
@@ -45,9 +47,9 @@
 
     //訂單明細存入
     function insertOrderDetail($pdo, $productIDList, $productQuantityList, $productDateList, $OID){
-        echo json_encode($productDateList);
+        // echo json_encode($productDateList);
         for($i=0;$i<count($productIDList);$i++){
-            $sql = "insert into orderdetail ( orderid, productid, quantity, date) values ( ?, '$productIDList[$i]', '$productQuantityList[$i]', '$productDateList[$i]')";
+            $sql = "insert into orderdetail ( orderid, productid, quantity, startdate, orderdate) values ( ?, '$productIDList[$i]', '$productQuantityList[$i]', '$productDateList[$i]', Now())";
     
             $statement = $pdo->prepare( $sql );
             $statement->bindValue(1, $OID);

@@ -3,6 +3,7 @@ const { createApp } = Vue;
 const App = {
   data() {
     return {
+      memberID: 0, //將抓到的memberID存到這
       currentI: "",
       productList: [
         // {
@@ -48,19 +49,45 @@ const App = {
     };
   },
   created() {
-    this.getdata_productList();
+    this.get_member_information();
+    // this.getdata_productList();
   },
 
   // ---------------bb---------------
   methods: {
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          that.memberID = response[0].MemberID;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.getdata_productList();
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
     getdata_productList() {
       // console.log(this.productList);
       let that = this;
       $.ajax({
         method: "POST",
-        url: "./php/ShoppingCart.php",
+        url: "./php/Cart.php",
         data: {
-          // type: "hot",
+          memberID: that.memberID,
         },
         dataType: "json",
         success: function (response) {
@@ -316,7 +343,8 @@ const App = {
     },
   },
   updated() {},
-  mounted() {},
+  mounted() {
+  },
 };
 
 app = Vue.createApp(App);

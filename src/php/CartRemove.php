@@ -15,5 +15,5 @@
     $statement->bindValue(1 , $CID); 
     $statement->execute();
 
-    echo "商品已移除!".$CID;
+    echo "商品已移除!";
 ?>

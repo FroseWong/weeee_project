@@ -1,6 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
+      memberID: 0, //將抓到的memberID存到這
       memberInfo: {
         firstName: "",
         lastName: "",
@@ -20,14 +21,45 @@ const app = Vue.createApp({
       hidden: true,
     };
   },
+  created() {
+    this.get_member_information();
+  },
   methods: {
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          that.memberID = response[0].MemberID;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.getCheckoutData();
+            if (that.memberID) that.checkPoints();
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
     checkPoints() {
       console.log(this.productList.cartId);
       let that = this;
       $.ajax({
         method: "POST",
         url: "./php/UsePoints.php",
-        data: {},
+        data: {
+          memberID: that.memberID,
+        },
         dataType: "json",
         success: function (response) {
           console.log(response);
@@ -50,7 +82,9 @@ const app = Vue.createApp({
         $.ajax({
           method: "POST",
           url: "./php/UsePoints.php",
-          data: {},
+          data: {
+            memberID: that.memberID,
+          },
           dataType: "json",
           success: function (response) {
             response.forEach((totalPoints) => {
@@ -78,7 +112,9 @@ const app = Vue.createApp({
         $.ajax({
           method: "POST",
           url: "./php/MemberInfo.php",
-          data: {},
+          data: {
+            memberID: that.memberID,
+          },
           dataType: "json",
           success: function (response) {
             console.log(response);
@@ -98,6 +134,7 @@ const app = Vue.createApp({
     getCheckoutData() {
       this.productList = JSON.parse(sessionStorage.getItem("checkout_data"));
       // this.productList.push(productList);
+      console.log(this.productList);
 
       var totalPrice = 0;
       for (let i = 0; i < this.productList.length; i++) {
@@ -123,9 +160,9 @@ const app = Vue.createApp({
 
       for (i = 0; i < this.productList.length; i++) {
         productCartIDList.push(this.productList[i].cartID);
-        productDateList.push(this.productList[i].date);
-        productIDList.push(this.productList[i].productID)
-        productQuantityList.push(this.productList[i].quantity)
+        productDateList.push(this.productList[i].cartStartDay);
+        productIDList.push(this.productList[i].productID);
+        productQuantityList.push(this.productList[i].quantity);
       }
       // console.log(this.productList);
       // console.log(productDateList);
@@ -136,6 +173,7 @@ const app = Vue.createApp({
         method: "POST",
         url: "./php/CartCheckout.php",
         data: {
+          memberID: that.memberID,
           CID: productCartIDList,
           // subTotal: that.getTotal.totalPrice,
           totalPrice: that.getTotal.totalPrice - that.weeee.totalPoints,
@@ -143,7 +181,9 @@ const app = Vue.createApp({
             (that.getTotal.totalPrice - that.weeee.totalPoints) / 100
           ),
           discountPoints: that.weeee.totalPoints,
-          productDateList,productIDList,productQuantityList
+          productDateList,
+          productIDList,
+          productQuantityList,
           // offsetPoints:
         },
         dataType: "text",
@@ -180,10 +220,6 @@ const app = Vue.createApp({
       };
     },
   },
-  mounted() {
-    this.getCheckoutData();
-    // this.getPoints();
-    this.checkPoints();
-  },
+  mounted() {},
 });
 app.mount("#app");
