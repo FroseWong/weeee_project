@@ -11,8 +11,8 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./vender/datatables/datatables.min.css">
-
-    <link rel="stylesheet" href="./vender/datatables/dataTables.bootstrap4.css">
+<!-- 
+    <link rel="stylesheet" href="./vender/datatables/dataTables.bootstrap4.css"> -->
   </head>
   <body>
     @@include('layout/header.html')
@@ -125,19 +125,16 @@
       @@include('layout/footer.html')
     </div>
   
-    <script src="/vender/jquery/jquery.min.js"></script>
-    <script src="/vender/datatables/jquery.dataTables.min.js"></script>
-    <script src="/vender/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vender/jquery/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="js/header.js"></script>
+    <script src="./vender/datatables/jquery.dataTables.min.js"></script>
+    <script src="./vender/datatables/dataTables.bootstrap4.min.js"></script>
 
     <script>
     // Call the dataTables jQuery plugin
     $(document).ready(function() {
-        $('#dataTable').DataTable({
-            paging: false, // 拿掉一頁顯示幾個篩選結果
-            "searching": false, // 拿掉搜尋bar
-            "info": false, // 拿掉左下角共幾個結果的資訊
-            "ordering": false
-        });
+       
     });
 
     //一進到頁面，就發請求去資料庫取點數資料
@@ -163,6 +160,12 @@
             sum = sum + response[i].PointsChange;
           }
           document.getElementById("count").innerHTML = sum;
+          $('#dataTable').DataTable({
+            paging: false, // 拿掉一頁顯示幾個篩選結果
+            "searching": false, // 拿掉搜尋bar
+            "info": false, // 拿掉左下角共幾個結果的資訊
+            "ordering": false
+        });
         },
       });
     </script>
