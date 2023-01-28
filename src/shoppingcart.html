@@ -55,7 +55,7 @@
               <input type="checkbox" class="check_item" v-model="product.select" />
             </div>
 
-            <a v-bind:href="product.url" class="product-image"><img v-bind:src="product.productImgPath2" alt="" /></a>
+            <a v-bind:href="product.url" class="product-image"><img v-bind:src="product.productImgPath1" alt="" /></a>
 
             <div class="product-name">
               <a v-bind:href="product.url">
@@ -64,7 +64,7 @@
             </div>
 
             <div class="date">
-              <i class="fa-regular fa-calendar-days"></i>{{ product.date }}
+              <i class="fa-regular fa-calendar-days"></i>{{ product.cartStartDay }}
             </div>
             <div class="quantity">
               <i class="fa-solid fa-person"></i>人數 x {{ product.quantity }}

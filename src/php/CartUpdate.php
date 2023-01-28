@@ -6,11 +6,11 @@
     $Date = $_POST["Date"];
     $Quantity = $_POST["Quantity"];
     
-    //返回訊息文字
+    //返回訊息文字 
     // $message = "修改成功!";
 
     //建立SQL
-    $sql = "UPDATE cart set date = ?, quantity = ? WHERE cartID = ?";
+    $sql = "UPDATE cart set cartstartday = ?, quantity = ? WHERE cartID = ?";
     
     //執行
     $statement = $pdo->prepare($sql);
