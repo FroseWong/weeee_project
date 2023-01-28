@@ -52,7 +52,7 @@ createApp({
     window.addEventListener("resize", this.resize_adjust, true);
     this.getdata();
     console.log("aaa");
-    this.memberID = header.memberID; // Frose
+    // this.memberID = header.memberID; // Frose
   },
   computed: {
     computedList() {
@@ -120,7 +120,9 @@ createApp({
       let urlParams = new URLSearchParams(window.location.search);
       let msort = urlParams.get("msort");
       let ssort = urlParams.get("ssort");
+      let local = urlParams.get("local");
       console.log(ssort);
+      console.log(local);
       if (msort == "ss") {
         switch (true) {
           case ssort == "fr":
@@ -184,6 +186,9 @@ createApp({
             this.checked.select_secondType.push("美術館");
             break;
         }
+      }
+      if(local.length>1){
+        this.checked.select_city.push(local)
       }
     },
     ChangeCurrpage(e) {
@@ -285,16 +290,6 @@ createApp({
       this.cardlist;
     },
     showproduct() {},
-    // changeHeart(e) {
-    //   e.stopPropagation();
-    //   console.log(e.target);
-    //   // let a = e.target;
-    //   // let b = e.target.nextElementSibling
-    //   //   ? e.target.nextElementSibling
-    //   //   : e.target.previousElementSibling;
-    //   // a.classList.add("hidden");
-    //   // b.classList.remove("hidden");
-    // },
     open_city(e) {
       this.cityshow = !this.cityshow;
 
