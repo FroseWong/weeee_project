@@ -133,27 +133,28 @@ const App = {
     },
     closeSelect() {
       // console.log("ttt");
+      let productCartIDList = [];
       for (i = 0; i < this.productList.length; i++) {
         if (this.productList[i].select == true) {
+          productCartIDList.push(this.productList[i].cartID);
+        }}
           let that = this;
           $.ajax({
             method: "POST",
-            url: "./php/CartRemove.php",
+            url: "./php/CartRemoveSelect.php",
             data: {
-              CID: that.productList[i].cartID,
+              CID: productCartIDList,
             },
             dataType: "text",
             success: function (response) {
               //移除商品成功
+              alert("移除商品成功");
+              location.reload();
             },
             error: function (exception) {
               alert("移除商品失敗: " + exception.status);
             },
           });
-        }
-      }
-      alert("移除商品成功");
-      location.reload();
       // this.productList = this.productList.filter(function (product) {
       //   return !product.select;
       // });
@@ -268,7 +269,7 @@ const App = {
         this.tempProd.info.quantity;
       let date = this.getWeeeeDate();
       console.log(date);
-      this.productList[this.tempProd.index].date = date;
+      this.productList[this.tempProd.index].cartStartDay = date;
       let that = this;
 
       $.ajax({
@@ -277,7 +278,7 @@ const App = {
         data: {
           CID: that.productList[that.currentI].cartID,
           Quantity: that.productList[that.tempProd.index].quantity,
-          Date: that.productList[that.tempProd.index].date,
+          Date: that.productList[that.tempProd.index].cartStartDay,
           // CID: 1,
           // Quantity: 6,
           // Date: '2025-01-01',
