@@ -330,9 +330,9 @@ const app = Vue.createApp({
         ],
       });
     },
-    // ---------------超過4825時隱藏---------------
+    // ---------------RWD隱藏---------------
     display_scroll() {
-      let fieldStyle = this.$refs.field1.style;
+      let field1Style = this.$refs.field1.style;
       let commentref = this.$refs.commentref.offsetTop;
 
       let browserWidth = window.innerWidth;
@@ -342,9 +342,25 @@ const app = Vue.createApp({
           browserWidth = window.innerWidth;
         });
         if (ScrollPosition > commentref - 500 && browserWidth < 768) {
-          fieldStyle.display = "none";
+          field1Style.display = "none";
         } else {
-          fieldStyle.display = "flex";
+          field1Style.display = "flex";
+        }
+      });
+    },
+    display_scroll2() {
+      let field2Style = this.$refs.field2.style;
+      let commentref = this.$refs.commentref.offsetTop;
+      let browserWidth = window.innerWidth;
+      document.addEventListener("scroll", function () {
+        let ScrollPosition = window.scrollY;
+        window.addEventListener("resize", function () {
+          browserWidth = window.innerWidth;
+        });
+        if (ScrollPosition > commentref - 500 && browserWidth > 768) {
+          field2Style.display = "none";
+        } else {
+          field2Style.display = "flex";
         }
       });
     },
@@ -403,10 +419,10 @@ const app = Vue.createApp({
       let orderDate = newDate;
       let orderNumber = this.modalPeople;
       let productPrice = this.modalTotal;
-      let productID=this.ProductDetail.productID
+      let productID = this.ProductDetail.productID;
       let productList = [
         {
-          productID:productID,
+          productID: productID,
           productImgPath1: productImgPath1,
           productName: productName,
           orderDate: orderDate,
@@ -432,13 +448,14 @@ const app = Vue.createApp({
       _this = this;
       window.addEventListener("resize", function () {
         this.winSize = window.innerWidth;
-        // _this.ajax_heart_show();
-        console.log(this.winSize);
+        // console.log(this.winSize);
         if (this.winSize <= 768) {
-          this.winsizeBoolean = false;
+          console.log(this.winSize);
+          _this.display_scroll();
         }
         if (this.winSize >= 768) {
-          this.winsizeBoolean = true;
+          _this.display_scroll2();
+          console.log(this.winSize);
         }
       });
     },
@@ -510,6 +527,7 @@ const app = Vue.createApp({
               _this.productdetail_slideshow();
               _this.commentfun();
               _this.display_scroll();
+              _this.display_scroll2();
             });
           } else {
             alert("找不到相關商品");
@@ -709,7 +727,7 @@ const app = Vue.createApp({
     this.product_list();
     // this.display_scroll();
     this.time_fun();
-    // this.winSize_watch();
+    this.winSize_watch();
     this.ajax_post();
     this.ajax_heart_show();
     this.ajax_Comment();
