@@ -1,5 +1,13 @@
 .jo_index{
   position: relative;
+  @include m {
+    .product-list,
+    .jo-list {
+      .slick-list {
+        padding: 0 35% 0 0 !important;
+      }
+    }
+  }
   .black_bg{
     position: absolute;
     left: 0;

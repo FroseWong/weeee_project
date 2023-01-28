@@ -149,9 +149,10 @@ let app1 = Vue.createApp({
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
               slidesToScroll: 1,
               infinite: true,
+              arrows:false,
             },
           },
         ],
@@ -167,9 +168,10 @@ let app1 = Vue.createApp({
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
               slidesToScroll: 1,
               infinite: true,
+              arrows:false,
             },
           },
         ],
@@ -185,9 +187,10 @@ let app1 = Vue.createApp({
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1.5,
+              slidesToShow: 1,
               slidesToScroll: 1,
               infinite: true,
+              arrows:false,
             },
           },
         ],

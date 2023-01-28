@@ -19,15 +19,20 @@
         .jo-list{
             flex-wrap: wrap;
             justify-content: flex-start;
+            
     
             @include m{
                 width: 100%;
                 flex-direction: column;
                 margin-bottom: 0;
+                justify-content: center;
             }
             .jo-card{
                 margin: 5px;
                 margin-bottom: 10px;
+                @include m{
+                    
+                }
                 
                 
             }

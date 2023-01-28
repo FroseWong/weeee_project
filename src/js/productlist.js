@@ -120,7 +120,9 @@ createApp({
       let urlParams = new URLSearchParams(window.location.search);
       let msort = urlParams.get("msort");
       let ssort = urlParams.get("ssort");
+      let local = urlParams.get("local");
       console.log(ssort);
+      console.log(local);
       if (msort == "ss") {
         switch (true) {
           case ssort == "fr":
@@ -184,6 +186,9 @@ createApp({
             this.checked.select_secondType.push("美術館");
             break;
         }
+      }
+      if(local.length>1){
+        this.checked.select_city.push(local)
       }
     },
     ChangeCurrpage(e) {
