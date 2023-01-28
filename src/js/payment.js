@@ -151,6 +151,9 @@ const app = Vue.createApp({
         totalPoints: Math.floor(totalPrice / 100),
       };
     },
+    // getBuyData(){
+    //   this.productList = JSON.parse(sessionStorage.getItem("productList"));
+    // },
     pay() {
       let productCartIDList = [];
       let productDateList = [];
@@ -173,6 +176,7 @@ const app = Vue.createApp({
         method: "POST",
         url: "./php/CartCheckout.php",
         data: {
+          email: that.memberInfo.username,
           memberID: that.memberID,
           CID: productCartIDList,
           // subTotal: that.getTotal.totalPrice,
@@ -220,6 +224,8 @@ const app = Vue.createApp({
       };
     },
   },
-  mounted() {},
+  mounted() {
+    // this.getBuyData();
+  },
 });
 app.mount("#app");

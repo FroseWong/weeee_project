@@ -121,8 +121,6 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Emily</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -154,37 +152,23 @@
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品ID</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="productID" class=" filter readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品編號</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="productNumber"  class=" filter readonly readonly_height" readonly="readonly">
                                     </div>
-                                    <div class="col-3">
-                                        <label for="to" class="form_label" >最後更新時間</label>
-                                        <br>
-                                        <input type="text" class="paydate filter readonly readonly_height" readonly="readonly">
-                                    </div>
-                                    <div class="col-3">                              
-                                        <label for="amount" class="form_label">最後更新者</label>
-                                        <br>
-                                        <input type="text" class="amount filter readonly readonly_height" readonly="readonly">
-                                    </div>
-                                </div>
-        
-                                <div class="row row_bottom">
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品名稱</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter">
+                                        <input type="text" id="productName" class=" filter">
                                     </div>
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品單價</label>
                                         <br>
-                                        <input type="text" id="from" name="from" class=" filter">
-                                    </div>
-                                
+                                        <input type="text" id="productPrice" class=" filter">
+                                    </div>                
                                 </div>
                             </form>
                             
@@ -311,12 +295,48 @@
      <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
      <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
      <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable({
-                paging: false, // 拿掉一頁顯示幾個篩選結果
-                "searching": false, // 拿掉搜尋bar
-                "info": false // 拿掉左下角共幾個結果的資訊
-            });
+        // $(document).ready(function () {
+        //     $('#dataTable').DataTable({
+        //         paging: false, // 拿掉一頁顯示幾個篩選結果
+        //         "searching": false, // 拿掉搜尋bar
+        //         "info": false // 拿掉左下角共幾個結果的資訊
+        //     });
+        // });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productID = urlParams.get('productID');
+        //一進到頁面，就發請求去資料庫取揪團基本資料
+        $.ajax({
+            method: "GET",
+            url: "../php/detail_product.php",
+            data: {
+                productID: productID
+            },
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+            //印到HTML上
+                $("#productID").val(response.ProductID);
+                $("#productNumber").val(response.ProductNumber);
+                $("#productName").val(response.ProductName);
+                $("#productPrice").val(response.ProductPrice);
+
+            //     let tbody = document.getElementById("tbody");
+            //     for (let i = 0; i < response.JoCommentList.length; i++) {
+            //         let detail_jo = `
+            //             <tr>
+            //                 <td>${response.JoCommentList[i].JoCommentID}</td>
+            //                 <td>${response.JoCommentList[i].MemberID}</td>
+            //                 <td>${response.JoCommentList[i].JoCommentContent}</td>
+            //                 <td>${response.JoCommentList[i].JoCommentStatus == 1 ? "顯示中": "隱藏中" }</td>
+            //                 <td>${response.JoCommentList[i].JoCommentTime}</td>
+            //                 <td><i class="fas fa-eye-slash"></i></td>
+            //             </tr>
+            // `;
+            //     tbody.insertAdjacentHTML("beforeend", detail_jo);
+            // }
+            $("#dataTable").DataTable();
+            },
         });
      </script>
 </body>

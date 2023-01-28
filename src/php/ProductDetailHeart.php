@@ -1,15 +1,16 @@
 <?php
 require_once('connection.php');
-// -----------判斷有無加過收藏---------------
+// -----------取得會員---------------
 include("Member.php");
 getMemberID();
+// -----------如果沒登入:回傳---------------
 if (empty($_SESSION["MemberID"])) {
     echo json_encode("NotFound");
     return;
 }
+// -----------判斷有無加過收藏---------------
 $MID = $_SESSION["MemberID"];
 
-// $MID = $_POST['MID'];
 $PID = $_POST['PID'];
 
 $sqlif = "SELECT count(ProductID) From Favor  where MemberID='{$MID}' and ProductID='{$PID}'";

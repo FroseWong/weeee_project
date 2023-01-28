@@ -28,12 +28,7 @@
     width: 120px;
 }
 
-.button_bgc:hover{
-    background-color: #F19F4D;
-    color: white;
-}
-
-.button_bgc:focus{
+.button_bgc_focus{
     background-color: #F19F4D;
     color: white;
 }
@@ -47,7 +42,7 @@
 }
 
 .submit_button{
-    width: 100px;
+    width: 125px;
     background-color: #F19F4D;
     margin-left: 20px;
 }

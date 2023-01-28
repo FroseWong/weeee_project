@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/jquery-ui-1.13.2/jquery-ui.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -121,8 +122,6 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Emily</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -147,20 +146,21 @@
                         <h1 class="h3 mb-2 text-gray-800 ">訂單查詢</h1>
                         <div class="row">
                             <div class="col-12">
-                                <input type="text" id="from" name="from" placeholder="訂購日期" class="hasDatepicker date_select">
+                                <input type="text" id="from" name="from" placeholder="訂購日期" class="date_select">
                                 ～
-                                <input type="text" id="to" name="to" class="hasDatepicker filter">
+                                <input type="text" id="to" name="to" class="filter">
                             
-                                <input type="text" placeholder="訂單編號" class="order_number filter" id="orderNumber">
+                                <input type="text" placeholder="訂單編號" class="order_number filter" id="orderNumber" name="orderNumber">
                             </div>
                         </div>
 
                         <div class="row row_bottom">
                             <div class="col-12">
-                                <input type="text" placeholder="訂購人會員編號" class="member filter" id="memberNumber">
+                                <input type="text" placeholder="訂購人會員編號" class="member filter" id="memberNumber" name="memberNumber">
                                 <select class="form_select" name="orderStatus" id="orderStatus">
+                                    <option value="">請選擇</option>
                                     <option value="0">未付款</option>
-                                    <option value="1">已付款</option>
+                                    <option value="1">成功</option>
                                 </select>
                                 <button type="button" class="btn btn-warning submit_button" onclick="search()">搜尋</button>
                             </div>
@@ -187,12 +187,13 @@
                                     </thead>
                                     
                                     <tbody>
-                                        <tr v-for="(order, index) in orderList">
-                                            <td>{{order.orderNumber}}</td>
-                                            <td>{{order.memberNumber}}</td>
-                                            <td>{{order.orderStatus}}</td>
-                                            <td>{{order.orderDate}}</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
+                                        <tr v-for="(order, index) in orderList" :key="index">
+                                            <td>{{order.OrderNumber}}</td>
+                                            <td>{{order.MemberNumber}}</td>
+                                            <td v-if="order.PaymentStatus == 1">成功</td>
+                                            <td v-else>未付款</td>
+                                            <td>{{order.OrderDate}}</td>
+                                            <td><a :href="'./detail.html?orderID=' + order.OrderID">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
                                         </tr>                                   
                                     </tbody> 
                                 </table>
@@ -265,33 +266,72 @@
     <script src="../vendor/vue/vue.global.js"></script> 
     <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
 
+     <!-- 加入sweet alert -->
+     <script src="../vendor/sweetAlert/sweetalert2.all.min.js"></script>
+
+     <!-- 加入date picker -->
+     <script src="../vendor/jquery-ui-1.13.2/jquery-ui.js"></script>
+
 </body>
     <script>
+         //日曆
+         $( function() {
+          // default date
+          let today = new Date();
+          let tomorrow = new Date();
+          tomorrow.setDate(today.getDate() + 1);
+        //   $("#from").val(today.toISOString().split('T')[0]);
+        //   $("#to").val(tomorrow.toISOString().split('T')[0]);
+
+          var dateFormat = "yy-mm-dd"; // 指定日期字串轉給js看的日期的格式
+
+          var from = $( "#from" )
+              .datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: "yy-mm-dd",
+                maxDate: today
+              })
+              .on( "change", function() { // 註冊開始日期change事件
+                to.datepicker( "option", "minDate", getDate( this ) ); // 讓to小於from的日期都不能選
+                
+              });
+              
+          var to = $( "#to" )
+            .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            dateFormat: "yy-mm-dd",
+            maxDate: today
+            })
+            .on( "change", function() { // 註冊結束日期change事件
+            from.datepicker( "option", "maxDate", getDate( this ) ); // 讓from大於to的日期都不能選
+            });
+       
+          function getDate( element ) {
+            var date;
+            try {
+              console.log(element.value); // 字串
+              date = $.datepicker.parseDate( dateFormat, element.value );
+              console.log(date); 
+            } catch( error ) {
+              console.log("格式錯誤");
+              date = null;
+            }
+            return date;
+          }
+        } );
+
         let dataTable;
-        let orderList = [
-        {
-            orderNumber: "OR0001",
-            memberNumber: "ME0001",
-            date: "2022/10/01",
-            status: "未付款",
-        },
-        {
-            orderNumber: "OR0002",
-            memberNumber: "ME0001",
-            date: "2023/01/01",
-            status: "已付款",
-        },
-        {
-            orderNumber: "OR0003",
-            memberNumber: "ME0002",
-            date: "2023/01/14",
-            status: "未付款",
-        },
-        ];
-        //一進到此頁面，發請求去資料庫要所有訂單資料
+        let orderList; 
+
+       // 一進到此頁面，發請求去資料庫要所有訂單資料
       $.ajax({
         method: "GET",
         url: "../php/query_order.php",
+        async: false, //開啟同步化功能，讓response先回來，再走下面的初始化vue
         data: {},
         dataType: "json",
         success: function (response) {
@@ -326,13 +366,18 @@
       function search() {
         $.ajax({
             data: {
-                orderNumber: document.getElementById("orderrNumber").value,
+                orderNumber: document.getElementById("orderNumber").value,
                 memberNumber: document.getElementById("memberNumber").value,
-                orderStatus: document.getElementById("orderStatus").value
+                orderStatus: document.getElementById("orderStatus").value,
+                from: document.getElementById("from").value,
+                to: document.getElementById("to").value
             },
             url: "../php/query_order.php",
+            async: false,
             method: "GET",
+            dataType: "json",
             success: function(response){
+                console.log(response);
                 vm.$data.orderList = response;
             }
         })

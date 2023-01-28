@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        [v-cloak] {
+          display: none;
+        }
+      </style>
 </head>
 
 <body style="background-color:#f5f5f5;">
@@ -36,7 +42,7 @@
                         <p>
                         <h5>訂購完成</h5>
                         </p>
-                        <p>憑證及訂單明細將寄至：{{ orderNumber }}</p>
+                        <p>憑證及訂單明細將寄至：{{ orderInfo.email }}</p>
                     </span>
                 </div>
 
@@ -47,7 +53,7 @@
                         </div> -->
                         <div class="payment_item_list">
                             <div class="payment_item_header hasBorder">
-                                <h5>訂單編號{{ orderNumber }}</h5>
+                                <h5>訂單編號{{ orderInfo.orderNumber }}</h5>
                             </div>
                             <!-- payment_complete start-->
                             <div class="product_group">
@@ -110,13 +116,13 @@
                             <ul>
                                 <li>Weeee! Points 折抵</li>
                                 <li>
-                                    <h6>-{{ displayTWD( weeee.totalPoints) }}</h6>
+                                    <h6>-{{ displayTWD(orderInfo.discount) }}</h6>
                                 </li>
                             </ul>
                             <ul>
                                 <li>付款金額</li>
                                 <li>
-                                    <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice - weeee.totalPoints)
+                                    <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice - orderInfo.discount)
                                         }}</h5>
                                 </li>
                             </ul>
@@ -124,7 +130,7 @@
                                 <li>訂單完成後回饋</li>
                                 <li><span class="points_yellow">
                                         <img src="img/weeeepoints/yellow.svg" alt="">{{ Math.floor((getTotal.totalPrice
-                                        - weeee.totalPoints) / 100) }}</li>
+                                        - orderInfo.discount) / 100) }}</li>
                             </ul>
                         </div>
                         <div class="payment_list_points">
@@ -137,73 +143,7 @@
             <!-- other products start-->
             <section class="most_buy">
                 <h5 class="ttoc">多數旅客還買了以下商品</h5>
-                <div class="product-list">
-                    <a class="product-card">
-                        <i class="fa-regular fa-heart"></i>
-                        <div class="product-card__location">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p class="p__location">桃園</p>
-                        </div>
-                        <div class="product-card__top">
-                            <div class="product-card__top__pic">
-                                <div class="product-card__top__picsrc p1"></div>
-                            </div>
-                        </div>
-                        <div class="product-card__bottom">
-                            <span class="product-tag">朋友行程</span>
-                            <h6 class="product-name">有得逛有得買，就在桃園</h6>
-                            <span class="gray"><i class="fa-solid fa-star"></i>4.4(44325) |
-                                <span class="product-bought">590K+</span>個已訂購
-                            </span>
-                            <span class="price">TWD <span class="product-price">550</span>元</span>
-                        </div>
-                    </a>
-
-                    <a class="product-card">
-                        <i class="fa-regular fa-heart"></i>
-                        <div class="product-card__location">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p class="p__location">新北</p>
-                        </div>
-                        <div class="product-card__top">
-                            <div class="product-card__top__pic">
-                                <div class="product-card__top__picsrc p2"></div>
-                            </div>
-                        </div>
-                        <div class="product-card__bottom">
-                            <span class="product-tag">朋友行程</span>
-                            <h6 class="product-name">新北的山，新北的海，水啦</h6>
-                            <span class="gray"><i class="fa-solid fa-star"></i>4.4(44325) |
-                                <span class="product-bought">590K+</span>個已訂購
-                            </span>
-                            <span class="price">TWD <span class="product-price">400</span>元</span>
-                        </div>
-                    </a>
-
-                    <a class="product-card">
-                        <i class="fa-regular fa-heart"></i>
-                        <div class="product-card__location">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <p class="p__location">金門</p>
-                        </div>
-                        <div class="product-card__top">
-                            <div class="product-card__top__pic">
-                                <div class="product-card__top__picsrc p3"></div>
-                            </div>
-                        </div>
-                        <div class="product-card__bottom">
-                            <span class="product-tag">朋友行程</span>
-                            <h6 class="product-name">金門二日遊</h6>
-                            <span class="gray"><i class="fa-solid fa-star"></i>4.4(44325) |
-                                <span class="product-bought">590K+</span>個已訂購
-                            </span>
-                            <span class="price">TWD <span class="product-price">550</span>元</span>
-                        </div>
-                    </a>
-
-                </div>
-
-
+                <product-slide-vue></product-slide-vue>
             </section>
             <!-- other products end-->
         </div>
@@ -211,55 +151,11 @@
     @@include('layout/footer.html')
     <script src="./vender/vue/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-    <script src="./js/payment_complete.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".product-list").slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1.5,
-                            slidesToScroll: 1,
-                            infinite: true,
-                        },
-                    },
-                ],
-            });
-
-            $(".jo-list").slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1.5,
-                            slidesToScroll: 1,
-                            infinite: true,
-                        },
-                    },
-                ],
-            });
-
-            if (window.innerWidth <= 768) {
-                $(".popular-country__list").slick({
-                    infinite: true,
-                    slidesToShow: 2.1,
-                    slidesToScroll: 2,
-                });
-            }
-        });
-    </script>
+    <script src="./js/productSlideVue.js"></script>
+    <script src="./js/payment_complete.js"></script>
+    <script src="./js/header.js"></script>
 </body>
 
 </html>

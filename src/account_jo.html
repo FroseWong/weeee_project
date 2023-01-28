@@ -126,6 +126,9 @@
 
       @@include('layout/footer.html')
     </div>
+    <script src="vender/jquery/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="js/header.js"></script>
     <script>
       //會員一進到此頁面，就發送請求到後端取他的揪團資料
       $.ajax({
@@ -156,7 +159,7 @@
                       }</div>
                       <div class="gray jo-time">${response[i].JoStartDate}</div>
                       <div class="icons">
-                          <i class="fa-solid fa-pen"></i>
+                          <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
                           <i class="fa-solid fa-trash"></i>
                       </div>
                     </div>
@@ -179,7 +182,7 @@
                         response[i + 1].JoStartDate
                       }</div>
                       <div class="icons">
-                          <i class="fa-solid fa-pen"></i>
+                          <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i + 1].JoID})"></i>
                           <i class="fa-solid fa-trash"></i>
                       </div>
                     </div>
@@ -202,7 +205,7 @@
                       <div class="gray address">${response[i].JoDetailedAddressed}</div>
                       <div class="gray jo-time">${response[i].JoStartDate}</div>
                       <div class="icons">
-                          <i class="fa-solid fa-pen"></i>
+                          <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
                           <i class="fa-solid fa-trash"></i>
                       </div>
                     </div>
@@ -218,6 +221,9 @@
         },
         
       });
+      function edit(joID){
+        location.href="jo_revise.html?id=" + joID;
+      }
     </script>
   </body>
 </html>

@@ -2,7 +2,7 @@
     include("connection.php"); 
 
     $memberID = $_POST["memberID"]; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
-    
+    $email = $_POST["email"];
     $CID = $_POST["CID"];
     $totalPrice = $_POST["totalPrice"];
     $addPoints = $_POST["addPoints"];
@@ -10,7 +10,7 @@
     $offsetPoints = $addPoints - $discountPoints;
     $str = '';
     $lastOID = getMaxOrderID($pdo);
-    $OID = insertOrder($pdo, $memberID, $totalPrice, $lastOID);
+    $OID = insertOrder($pdo, $memberID, $totalPrice, $lastOID, $email, $discountPoints);
     $productDateList = $_POST['productDateList'];
     $productIDList = $_POST['productIDList'];
     $productQuantityList = $_POST['productQuantityList'];
@@ -30,19 +30,21 @@
     //刪除購物車
     function deleteCart($pdo, $CID, $str){
 
-        for($i=0;$i<count($CID);$i++){
-            $str .= $str ? " OR CartID =".$CID[$i]  : "CartID =".$CID[$i] ;
-        }
-        // echo json_encode($try);
-        // $sql = "UPDATE cart set status = '2' where $str";
-        // $sql = "update cart set status = 2 where CartID = 3 OR CartID = 4;";
-        $sql = "delete from cart where $str;";
+        if($CID != null){
+            for($i=0;$i<count($CID);$i++){
+                $str .= $str ? " OR CartID =".$CID[$i]  : "CartID =".$CID[$i] ;
+            }
+            // echo json_encode($try);
+            // $sql = "UPDATE cart set status = '2' where $str";
+            // $sql = "update cart set status = 2 where CartID = 3 OR CartID = 4;";
+            $sql = "delete from cart where $str;";
+        
+            $statement = $pdo->prepare( $sql );
+            $statement->execute(); 
+            $data = $statement->fetchAll();
     
-        $statement = $pdo->prepare( $sql );
-        $statement->execute(); 
-        $data = $statement->fetchAll();
-
-        // echo json_encode($data);
+            // echo json_encode($data);
+        }
     }
 
     //訂單明細存入
@@ -71,17 +73,19 @@
 
 
     //成立訂單
-    function insertOrder($pdo, $memberID, $totalPrice, $lastOID){
+    function insertOrder($pdo, $memberID, $totalPrice, $lastOID, $email, $discountPoints){
 
         $number = str_pad($lastOID, 4,'0',STR_PAD_LEFT);
         $orderNumber = 'OR'.$number;
 
-        $sql = "insert into `order` ( orderdate, memberid, totalprice, ordernumber) values( Now(), ?, ?, ?)";
+        $sql = "insert into `order` ( orderdate, memberid, totalprice, ordernumber, email, discount) values( Now(), ?, ?, ?, ?, ?)";
 
         $statement = $pdo->prepare( $sql );
         $statement->bindValue(1, $memberID);
         $statement->bindValue(2, $totalPrice);
         $statement->bindValue(3, $orderNumber);
+        $statement->bindValue(4, $email);
+        $statement->bindValue(5, $discountPoints);
         $statement->execute(); 
         $data = $statement->fetchAll();
 
