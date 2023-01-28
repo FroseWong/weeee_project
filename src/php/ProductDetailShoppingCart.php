@@ -29,7 +29,7 @@ foreach ($dataif as $key => $value) {
 // echo ($tempif);
 // -----------如果使用者沒加過購物車---------------
 if ($tempif == 0) {
-    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,date)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}',now())";
+    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,cartStartDay)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}',now())";
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
 }

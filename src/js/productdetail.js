@@ -1,4 +1,4 @@
-const app= Vue.createApp({
+const app = Vue.createApp({
   data() {
     return {
       // 開關說明
@@ -134,7 +134,6 @@ const app= Vue.createApp({
         address: "",
         comments: 0,
         time: 100,
-        
       },
       modalPeople: 1,
       modalTotal: 0,
@@ -286,11 +285,6 @@ const app= Vue.createApp({
           pa.borderLeft = "0";
           pn.borderLeft = "0";
         }
-        if (ScrollPosition >= botCardTop - 150) {
-          fixedfield2.display = "none";
-        } else {
-          fixedfield2.display = "flex";
-        }
       });
     },
     // ---------------下方輪播---------------
@@ -339,14 +333,15 @@ const app= Vue.createApp({
     // ---------------超過4825時隱藏---------------
     display_scroll() {
       let fieldStyle = this.$refs.field1.style;
+      let commentref = this.$refs.commentref.offsetTop;
+
       let browserWidth = window.innerWidth;
       document.addEventListener("scroll", function () {
         let ScrollPosition = window.scrollY;
-
         window.addEventListener("resize", function () {
           browserWidth = window.innerWidth;
         });
-        if (ScrollPosition > 4825 && browserWidth < 768) {
+        if (ScrollPosition > commentref - 500 && browserWidth < 768) {
           fieldStyle.display = "none";
         } else {
           fieldStyle.display = "flex";
@@ -361,6 +356,7 @@ const app= Vue.createApp({
         inline: true,
         lang: "ru",
         timepicker: false,
+        minDate: 0,
       });
       $.datetimepicker.setLocale("zh-TW");
     },
@@ -396,20 +392,29 @@ const app= Vue.createApp({
           "-" +
           oldDate[0] +
           oldDate[1];
-        }
+      }
       //   sessionStorage.setItem("圖片", this.Imgs[0].src);
       // sessionStorage.setItem("商品名稱", this.ProductDetail.name);
       // sessionStorage.setItem("日期", newDate);
       // sessionStorage.setItem("人數", this.modalPeople);
       // sessionStorage.setItem("單價", this.modalTotal);
-      let productImgPath1=this.Imgs[0].src;
-      let productName=this.ProductDetail.name;
-      let orderDate=newDate;
-      let orderNumber=this.modalPeople;
-      let productPrice=this.modalTotal;
-
-     let productList=[{productImgPath1:productImgPath1,productName:productName,orderDate:orderDate,orderNumber:orderNumber,productPrice:productPrice}];
-     sessionStorage.setItem("productList", JSON.stringify(productList));
+      let productImgPath1 = this.Imgs[0].src;
+      let productName = this.ProductDetail.name;
+      let orderDate = newDate;
+      let orderNumber = this.modalPeople;
+      let productPrice = this.modalTotal;
+      let productID=this.ProductDetail.productID
+      let productList = [
+        {
+          productID:productID,
+          productImgPath1: productImgPath1,
+          productName: productName,
+          orderDate: orderDate,
+          orderNumber: orderNumber,
+          productPrice: productPrice,
+        },
+      ];
+      sessionStorage.setItem("productList", JSON.stringify(productList));
       // let test=sessionStorage.getItem("productList");
       // console.log(JSON.parse(test));
       window.location.href = "./payment.html";
@@ -480,7 +485,7 @@ const app= Vue.createApp({
                 Text: e.ProductText,
                 address: e.Location,
                 time: 100,
-                productNumber: e.ProductNumber,
+                productID: e.ProductID,
               };
               if (e.ProductType == "viewpointticket") {
                 _this.noticeLists = _this.noticeLists1;
@@ -504,6 +509,7 @@ const app= Vue.createApp({
             _this.$nextTick(function () {
               _this.productdetail_slideshow();
               _this.commentfun();
+              _this.display_scroll();
             });
           } else {
             alert("找不到相關商品");
@@ -680,7 +686,7 @@ const app= Vue.createApp({
       if (comment == 1 || comment == 2 || comment == 3 || comment == 4) {
         let pv = this.$refs.Review.offsetTop;
         window.scrollTo({
-          top: pv-100,
+          top: pv - 100,
           left: 0,
           behavior: "smooth",
         });
@@ -701,7 +707,7 @@ const app= Vue.createApp({
   mounted() {
     this.field_mark();
     this.product_list();
-    this.display_scroll();
+    // this.display_scroll();
     this.time_fun();
     // this.winSize_watch();
     this.ajax_post();
