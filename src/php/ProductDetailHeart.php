@@ -29,6 +29,7 @@ if ($tempif == 0) {
     $sqlzero = "INSERT INTO Favor (MemberID,ProductID,FavorStatus)VALUES ('{$MID}','{$PID}',1)";
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
+    echo json_encode(true);
 }
 // -----------如果使用者有加過收藏---------------
 if ($tempif == 1) {

@@ -124,7 +124,9 @@ createApp({
         loading: "lazy",
         referrerpolicy: "no-referrer-when-downgrade",
       },
-      noticeLists: [
+      noticeLists: [],
+      // 景點門票
+      noticeLists1: [
         "未滿 4 歲的兒童可免費入場，需有家長陪同入場。",
         "下訂時請以「票券使用日」為主，下訂後即無法變更，敬請留意。",
         "訂單一次最高訂購上限為 6 張，每日場次數量為限量販售，售完為止；團體預約請洽 WeeeePark 官網。",
@@ -135,6 +137,41 @@ createApp({
         "請務必於訂購時確認訂購之票種是否正確，資格是否符合。",
         "此商品恕無法使用任何折扣券，敬請見諒。",
         "購票時請主動出示相關證件供售票處工作人員驗證，相關證件說明如下：學生票：本人有效學生證正本(若為應屆畢業生則提供當年度正式入學通知單或註冊單及攜帶身分證)。兒童票、博愛票：身心障礙證明、孕婦健康手冊、國民身分證或政府核發附有照片、身分證字號及出生年、月、日等足以證明身分證件。",
+      ],
+      // 交通票卡
+      noticeLists2: [
+        "僅開放即日起 3 個月內之訂購。",
+        "票券使用範圍請參考官方網站。",
+        " Weeee票券為記名制，訂購作業較為繁複，請於下訂時確實提供所需資訊；若因資料不齊造成出票延誤、或需修改任何資訊，旅客需自行承擔責任並支付手續費，敬請知悉。",
+        "若購買時登記的姓名與護照上記載的姓名不一致，將無法於日本國內的指定地點兌換。下訂時請確認姓名拼音等是否正確。",
+        "兒童的年齡限制以旅客購票當日為準，換票時請出示兒童的護照等證件以證明兒童年齡。",
+        "未滿 6 歲幼兒可不佔位免費搭乘，不需購買周遊券。",
+        "當符合以下的狀況時，未滿 6 歲之幼兒仍需要購買兒童周遊券：",
+        " ① 幼兒單獨使用普通車廂指定座席（普通車指定席）的情況",
+        "② 幼兒獨自旅行的情況",
+        "＊詳情請至官網確認",
+      ],
+      // 體驗活動
+      noticeLists3: [
+        "適用者：",
+        "年滿3歲 ／ 90公分以上兒童",
+        "幼稚園／國小 ／國中學生（憑證件）",
+        "年齡 65歲以上（憑證件）",
+        "愛心票適用者：（若需購買，請於現場購票）",
+        "持有身心障礙手冊者，及陪同者1人 (憑證件)",
+
+        "免費適用者：",
+        "居民 (憑證件)",
+        "每月一號 (憑證件)",
+        "兒童 90公分以下，或未滿3歲 (憑健保卡)",
+        "準新郎、準新娘、攝影工作人員 (拍攝婚紗照,需預約)",
+        "比丘、比丘尼、牧師、神父、修女 (憑證件)",
+      ],
+      //觀光行程
+      noticeLists4: [
+        "費用包含:  入園門票，行程體驗券",
+
+        "不包含:  餐飲，個人消費，交通費，其他未提及消費",
       ],
       Imgs: [
         {
@@ -162,6 +199,7 @@ createApp({
         address: "",
         comments: 0,
         time: 100,
+        ProductDetail_breadcrumb: "",
         // type: "觀光行程",
         // city: "桃園",
         // price: 550,
@@ -186,7 +224,9 @@ createApp({
       productdetailNotice: 0,
       productdetailAddress: 0,
       productReview: 0,
-      commentlength:0,
+      commentlength: 0,
+      comments: [1, 2, 3, 4],
+      commentID: "",
     };
   },
   methods: {
@@ -480,6 +520,7 @@ createApp({
         dataType: "json",
         success: function (response) {
           console.log(response);
+
           if (response.length !== 0) {
             response.forEach((e) => {
               let arr1 = [
@@ -507,12 +548,28 @@ createApp({
                 time: 100,
                 productNumber: e.ProductNumber,
               };
+              if (e.ProductType == "viewpointticket") {
+                _this.noticeLists = _this.noticeLists1;
+                _this.ProductDetail_breadcrumb = "景點門票";
+              } else if (e.ProductType == "transticket") {
+                _this.noticeLists = _this.noticeLists2;
+                _this.ProductDetail_breadcrumb = "交通票卡";
+              } else if (e.ProductType == "experience") {
+                _this.noticeLists = _this.noticeLists3;
+                _this.ProductDetail_breadcrumb = "體驗活動";
+              } else if (e.ProductType == "sightseeing") {
+                _this.noticeLists = _this.noticeLists4;
+                _this.ProductDetail_breadcrumb = "觀光行程";
+              }
+
               _this.modalTotal = e.ProductPrice;
               _this.Imgs = arr1;
               _this.ProductDetail = obj2;
+              console.log(_this.noticeLists1);
             });
             _this.$nextTick(function () {
               _this.productdetail_slideshow();
+              _this.commentfun();
             });
           } else {
             alert("找不到相關商品");
@@ -604,16 +661,23 @@ createApp({
     ajax_Comment() {
       _this = this;
       let num = 3;
+      let comment = 0;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
+      _this.commentID = num;
+      comment = urlParams.get("comment");
       if (num == null) {
         num = 1;
+      }
+      if (comment == null) {
+        comment = 1;
       }
       $.ajax({
         method: "POST",
         url: "php/ProductDetailComment.php",
         data: {
           pid: num,
+          comment: comment,
         },
         dataType: "json",
         success: function (response) {
@@ -622,13 +686,13 @@ createApp({
           console.log(response);
           response.forEach(function (item) {
             if (item.ProductCommentScore == 1) {
-              item.ProductCommentScore = "★";
+              item.ProductCommentScore = "★☆☆☆☆";
             } else if (item.ProductCommentScore == 2) {
-              item.ProductCommentScore = "★★";
+              item.ProductCommentScore = "★★☆☆☆";
             } else if (item.ProductCommentScore == 3) {
-              item.ProductCommentScore = "★★★";
+              item.ProductCommentScore = "★★★☆☆";
             } else if (item.ProductCommentScore == 4) {
-              item.ProductCommentScore = "★★★★";
+              item.ProductCommentScore = "★★★★☆";
             } else if (item.ProductCommentScore == 5) {
               item.ProductCommentScore = "★★★★★";
             }
@@ -644,12 +708,13 @@ createApp({
             arrcom.push(objcom);
           });
           _this.messages = arrcom;
-          _this.commentlength=response.length;
+          // _this.commentlength = response.length;
+          _this.commentlength = 10;
         },
         error: function (exception) {},
       });
     },
-    cartswal(){
+    cartswal() {
       $("#peopleModal").modal("hide");
       const Toast = Swal.mixin({
         toast: true,
@@ -667,7 +732,20 @@ createApp({
         title: "已成功加入購物車 ♥",
       });
       header.get_member_information();
-    }
+    },
+    commentfun() {
+      let comment = 0;
+      let urlParams = new URLSearchParams(window.location.search);
+      comment = urlParams.get("comment");
+      if (comment == 1 || comment == 2 || comment == 3 || comment == 4) {
+        let pv = this.$refs.Review.offsetTop;
+        window.scrollTo({
+          top: pv-100,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    },
   },
   computed: {
     // ---------------總金額---------------

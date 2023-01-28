@@ -120,7 +120,8 @@
                 >
                 <span class="gray jo-time">{{jo.week}}, {{jo.JoStartDate}}</span>
                 <span class="jo-card__bottom__message"
-                  ><span class="member-pic m1"></span
+                  ><span class="member-pic m1"
+                  v-bind:style="{ backgroundImage: 'url(' + jo.MemberImg + ')' }"></span
                   ><span class="member-name">{{jo.FullName}}</span>
                   <span class="left-time">剩餘{{jo.left_days}}天</span></span
                 >
@@ -152,7 +153,8 @@
                 >
                 <span class="gray jo-time">{{jo.week}}, {{jo.JoStartDate}}</span>
                 <span class="jo-card__bottom__message"
-                  ><span class="member-pic m1"></span
+                  ><span class="member-pic m1"
+                  v-bind:style="{ backgroundImage: 'url(' + jo.MemberImg + ')' }"></span
                   ><span class="member-name">{{jo.FullName}}</span>
                   <span class="left-time">剩餘{{jo.left_days}}天</span></span
                 >
@@ -184,10 +186,12 @@
                 >
                 <span class="gray jo-time">{{jo.week}}, {{jo.JoStartDate}}</span>
                 <span class="jo-card__bottom__message"
-                  ><span class="member-pic m1"></span
+                  ><span class="member-pic m1"
+                  v-bind:style="{ backgroundImage: 'url(' + jo.MemberImg + ')' }"></span
                   ><span class="member-name">{{jo.FullName}}</span>
                   <span class="left-time">剩餘{{jo.left_days}}天</span></span
                 >
+                <!-- MemberImg -->
               </div>
             </a>
           </div>
@@ -200,6 +204,7 @@
         @@include('layout/footer.html')
       </div>
     </div>
+    <script src="./js/header.js"></script>
     <script src="./vender/vue/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script

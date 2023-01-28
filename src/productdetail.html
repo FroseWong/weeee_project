@@ -124,7 +124,7 @@
         <div class="breadcrumbList container">
           <ol class="breadcrumb">
             <li><a href="./index.html">首頁</a></li>
-            <li><a href="./productlist_travel.html">觀光行程</a></li>
+            <li><a href="./productlist_travel.html">{{ProductDetail_breadcrumb}}</a></li>
             <li>{{ProductDetail.name}}</li>
           </ol>
         </div>
@@ -322,6 +322,7 @@
                   <h5>{{message.comment}}</h5>
                 </div>
               </div>
+              <a :href=`productdetail.html?id=${commentID}&comment=${comment}`  v-for="comment in comments">{{comment}}</a>
             </div>
           </div>
         </div>
