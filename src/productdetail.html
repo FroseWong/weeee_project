@@ -224,6 +224,12 @@
                   <p>★★★★</p>
                   <span>{{commentlength}}則旅客評價</span>
                 </div>
+                <div>
+                  <button @click="sort(1)">最新日期</button>
+                  <button @click="sort(2)">最舊日期</button>
+                  <button @click="sort(3)">最高至最低</button>
+                  <button @click="sort(4)">最低至最高</button>
+                </div>
               </div>
             </div>
             <div class="productdetail-message" v-for="message in messages">
@@ -235,9 +241,8 @@
                 <h5>{{message.comment}}</h5>
               </div>
             </div>
-            <div class="productdetail-comment" ref="commentref">
-              <a :href=`productdetail.html?id=${commentID}&comment=${comment}`
-              v-for="comment in comments" ref="commentA">{{comment}}</a>
+            <div ref="commentref" class="productdetail-comment">
+              <button v-for="comment in comments" ref="commentA" @click="ajax_Comment(comment)">{{comment}}</button>
             </div>
           </div>
         </div>

@@ -333,37 +333,42 @@ const app = Vue.createApp({
     },
     // ---------------RWD隱藏---------------
     display_scroll() {
-      let field1Style = this.$refs.field1.style;
-      let commentref = this.$refs.commentref.offsetTop;
+      setTimeout(() => {
+        let field1Style = this.$refs.field1.style;
+        let commentref = this.$refs.commentref.offsetTop;
 
-      let browserWidth = window.innerWidth;
-      document.addEventListener("scroll", function () {
-        let ScrollPosition = window.scrollY;
-        window.addEventListener("resize", function () {
-          browserWidth = window.innerWidth;
+        let browserWidth = window.innerWidth;
+        document.addEventListener("scroll", function () {
+          let ScrollPosition = window.scrollY;
+          window.addEventListener("resize", function () {
+            browserWidth = window.innerWidth;
+          });
+          if (ScrollPosition > commentref - 500 && browserWidth < 768) {
+            field1Style.display = "none";
+          } else {
+            field1Style.display = "flex";
+          }
         });
-        if (ScrollPosition > commentref - 500 && browserWidth < 768) {
-          field1Style.display = "none";
-        } else {
-          field1Style.display = "flex";
-        }
-      });
+      }, 700);
     },
+
     display_scroll2() {
-      let field2Style = this.$refs.field2.style;
-      let commentref = this.$refs.commentref.offsetTop;
-      let browserWidth = window.innerWidth;
-      document.addEventListener("scroll", function () {
-        let ScrollPosition = window.scrollY;
-        window.addEventListener("resize", function () {
-          browserWidth = window.innerWidth;
+      setTimeout(() => {
+        let field2Style = this.$refs.field2.style;
+        let commentref = this.$refs.commentref.offsetTop;
+        let browserWidth = window.innerWidth;
+        document.addEventListener("scroll", function () {
+          let ScrollPosition = window.scrollY;
+          window.addEventListener("resize", function () {
+            browserWidth = window.innerWidth;
+          });
+          if (ScrollPosition > commentref - 500 && browserWidth > 768) {
+            field2Style.display = "none";
+          } else {
+            field2Style.display = "flex";
+          }
         });
-        if (ScrollPosition > commentref - 500 && browserWidth > 768) {
-          field2Style.display = "none";
-        } else {
-          field2Style.display = "flex";
-        }
-      });
+      }, 500);
     },
 
     // ---------------日曆---------------
@@ -496,12 +501,12 @@ const app = Vue.createApp({
               _this.modalTotal = e.ProductPrice;
               _this.Imgs = arr1;
               _this.ProductDetail = obj2;
-              console.log(_this.noticeLists1);
+              // console.log(_this.noticeLists1);
             });
             _this.$nextTick(function () {
               _this.productdetail_slideshow();
               _this.ajax_Comment();
-              _this.comment_fun();
+              // _this.comment_fun();
               _this.display_scroll();
               _this.display_scroll2();
             });
@@ -597,23 +602,29 @@ const app = Vue.createApp({
       });
     },
     // ---------------評論---------------
-    ajax_Comment() {
+    ajax_Comment(e) {
       _this = this;
-      let num = 3;
-      let comment = 0;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
+      let typee = typeof e;
+      if (typee == "undefined") {
+        history.replaceState("", "", `productdetail.html?id=${num}`);
+      } else {
+        history.replaceState(
+          "",
+          "",
+          `productdetail.html?id=${num}&comment=${e}`
+        );
+      }
+      this.page_judge();
+      typee == "undefined" ? (e = 1) : e;
       _this.commentID = num;
-      comment = urlParams.get("comment");
-      if (num == null) {
-        num = 1;
-      }
-      if (comment == null) {
-        comment = 1;
-      }
+      num == null ? (num = 1) : (num = num);
+      comment == null ? (comment = 1) : (comment = e);
       $.ajax({
         method: "POST",
         url: "php/ProductDetailComment.php",
+        async: false,
         data: {
           pid: num,
           comment: comment,
@@ -622,7 +633,7 @@ const app = Vue.createApp({
         success: function (response) {
           arrcom = [];
           objcom = {};
-          console.log(response);
+          // console.log(response);
           response.forEach(function (item) {
             if (item.ProductCommentScore == 1) {
               item.ProductCommentScore = "★☆☆☆☆";
@@ -672,7 +683,7 @@ const app = Vue.createApp({
       });
       header.get_member_information();
     },
-    // ---------------點擊分頁後觸發---------------
+    // ---------------點擊分頁後觸發滑動---------------
     comment_fun() {
       let comment = 0;
       let urlParams = new URLSearchParams(window.location.search);
@@ -730,13 +741,17 @@ const app = Vue.createApp({
     page_judge() {
       let urlParams = new URLSearchParams(window.location.search);
       comment = urlParams.get("comment");
-      if(comment==null)
-      {
-        comment=1;
+      if (comment == null) {
+        comment = 1;
       }
       comment = comment - 1;
       let page = this.$refs.commentA;
+      page.forEach(function (e, item) {
+        page[item].classList.remove("commentAct");
+      });
       page[comment].classList.add("commentAct");
+      // console.log(page);
+      this.comment_fun();
     },
     // ---------------評論筆數---------------
     commentNum() {
@@ -750,23 +765,76 @@ const app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "php/ProductDetailNum.php",
-        async:false,
+        async: false,
         data: {
           pid: num,
-          comment: comment,
         },
         dataType: "text",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           toarr = response.split(",");
           console.log(toarr);
           let result = toarr.map(function (x) {
             return parseFloat(x, 10);
           });
-          console.log(result[0]);
-          console.log(result[1]);
+          // console.log(result[0]);
+          // console.log(result[1]);
           _this.commentlength = result[0];
           _this.commentscore = roundToTwo(result[1]);
+        },
+
+        error: function (exception) {},
+      });
+    },
+    sort(e) {
+      let aaa = window.location.href;
+      // console.log(e);
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      comment = urlParams.get("comment");
+      sort = urlParams.get("sort");
+      // window.location.href = `${aaa}&comment=1`;
+      comment == null ? (comment = 1) : (comment = comment);
+      history.replaceState("", "", `${aaa}&sort=${e}`);
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailComment.php",
+        async: false,
+        data: {
+          pid: num,
+          comment: comment,
+          sort: Number(e),
+        },
+        dataType: "json",
+        success: function (response) {
+          arrcom = [];
+          objcom = {};
+          console.log(response);
+          response.forEach(function (item) {
+            if (item.ProductCommentScore == 1) {
+              item.ProductCommentScore = "★☆☆☆☆";
+            } else if (item.ProductCommentScore == 2) {
+              item.ProductCommentScore = "★★☆☆☆";
+            } else if (item.ProductCommentScore == 3) {
+              item.ProductCommentScore = "★★★☆☆";
+            } else if (item.ProductCommentScore == 4) {
+              item.ProductCommentScore = "★★★★☆";
+            } else if (item.ProductCommentScore == 5) {
+              item.ProductCommentScore = "★★★★★";
+            }
+            var time_str = item.ProductCommentTime;
+            var t = time_str.substr(0, 10);
+            objcom = {
+              pic: item.MemberImg,
+              name: item.FullName,
+              star: item.ProductCommentScore,
+              comment: item.ProductCommentText,
+              time: t,
+            };
+            arrcom.push(objcom);
+          });
+          _this.messages = arrcom;
+          // _this.commentlength = response.length;
         },
 
         error: function (exception) {},
