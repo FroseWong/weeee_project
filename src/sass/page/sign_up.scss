@@ -1,183 +1,169 @@
-.sign_upbg {
-  width: 100%;
-  height: 100vh;
-  background-image: url(../img/otherpage/signup01.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.sign_up {
+  .sign_upbg {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/otherpage/signup01.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
-
-  // @include m {
-  //   display: none;
-  // }
-}
-
-
-
-.sur h3 {
-  padding-bottom: 20px;
-  margin-top: 25px;
-  margin-left: 60px;
-
-}
-
-.sur p {
-
-  display: block;
-
-}
-
-.container.sign_up {
-  width: 100%;
-  height: 100%;
-  padding-top: 7%;
-
-  padding-left: 45%;
-
-}
-
-.sur {
-
-
-  width: 370px;
-  height: 400px;
-  user-select:none;
-
-
-  padding-top: 3px;
-
-  border-radius: 20px;
-  background-color: $white;
-
-  @include m {
-    left: 20%;
-    top: 20%;
-    right: 20%;
-    bottom: 20%;
+    // @include m {
+    //   display: none;
+    // }
   }
 
+  .sur h3 {
+    padding-bottom: 20px;
+    margin-top: 25px;
+    margin-left: 60px;
+  }
 
-}
+  .sur p {
+    display: block;
+  }
 
-.sur form {
-  padding-left: 69px;
-  line-height: 2.4;
-  padding-bottom: 10px;
-}
+  .container.sign_up {
+    width: 100%;
+    height: 100%;
+    padding-top: 7%;
 
-.email input {
- 
-  width: 242px;
-  height: 52px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  border: 1px solid $gray;
-  border-radius: 5px;
-  text-indent: 5px;
-  color: $gray;
-}
+    padding-left: 45%;
+  }
 
-.password input {
+  .sur {
+    width: 370px;
+    height: 400px;
+    user-select: none;
 
-  width: 242px;
-  height: 52px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  border: 1px solid $gray;
-  border-radius: 5px;
-  text-indent: 5px;
-  color: $gray;
-}
+    padding-top: 3px;
 
-.passwordag input {
+    border-radius: 20px;
+    background-color: $white;
 
-  width: 242px;
-  height: 52px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  border: 1px solid $gray;
-  border-radius: 5px;
-  text-indent: 5px;
-  color: $gray;
-}
+    @include m {
+      left: 20%;
+      top: 20%;
+      right: 20%;
+      bottom: 20%;
+    }
+  }
 
-.submit {
-  display: block;
-  width: 242px;
-  height: 52px;
-  font-size: 20px;
-  margin-top: 15px;
-  margin-bottom: 8px;
-  background-color: $blue;
-  color: $white;
-  cursor: pointer;
-  outline: none;
+  .sur form {
+    padding-left: 69px;
+    line-height: 2.4;
+    padding-bottom: 10px;
+  }
 
-}
+  .email input {
+    width: 242px;
+    height: 52px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    text-indent: 5px;
+    color: $gray;
+  }
 
-.formbuttom {
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-}
+  .password input {
+    width: 242px;
+    height: 52px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    text-indent: 5px;
+    color: $gray;
+  }
 
-.sign_up_a {
-  display: block;
+  .passwordag input {
+    width: 242px;
+    height: 52px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    text-indent: 5px;
+    color: $gray;
+  }
 
+  .submit {
+    display: block;
+    width: 242px;
+    height: 52px;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    background-color: $blue;
+    color: $white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
 
-  color: $orange;
+  .formbuttom {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
 
-  text-align: center;
-  text-decoration: none;
-}
+  .sign_up_a {
+    display: block;
 
-.email {
-  color: $gray;
-  position: relative;
-  display: inline-block;
-}
+    color: $orange;
 
-.email .fa-regular {
-  /*左邊圖示*/
-  position: absolute;
-  right: 3px;
-  top: calc(50% - 0.7em);
-  font-size: 20px;
-  padding-bottom: 5px;
-  padding-right: 10px;
-  margin: 0 auto;
-}
+    text-align: center;
+    text-decoration: none;
+  }
 
-.password {
-  color: $gray;
-  position: relative;
-  display: inline-block;
-}
+  .email {
+    color: $gray;
+    position: relative;
+    display: inline-block;
+  }
 
-.password .fa-regular {
-  /*左邊圖示*/
-  position: absolute;
-  right: 3px;
-  top: calc(50% - 0.7em);
-  font-size: 20px;
-  padding-bottom: 5px;
-  padding-right: 10px;
-  margin: 0 auto;
-}
+  .email .fa-regular {
+    /*左邊圖示*/
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 0.7em);
+    font-size: 20px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    margin: 0 auto;
+  }
 
-.passwordag {
-  color: $gray;
-  position: relative;
-  display: inline-block;
-}
+  .password {
+    color: $gray;
+    position: relative;
+    display: inline-block;
+  }
 
-.passwordag .fa-regular {
-  /*左邊圖示*/
-  position: absolute;
-  right: 3px;
-  top: calc(50% - 0.7em);
-  font-size: 20px;
-  padding-bottom: 5px;
-  padding-right: 10px;
-  margin: 0 auto;
+  .password .fa-regular {
+    /*左邊圖示*/
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 0.7em);
+    font-size: 20px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    margin: 0 auto;
+  }
+
+  .passwordag {
+    color: $gray;
+    position: relative;
+    display: inline-block;
+  }
+
+  .passwordag .fa-regular {
+    /*左邊圖示*/
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 0.7em);
+    font-size: 20px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    margin: 0 auto;
+  }
 }

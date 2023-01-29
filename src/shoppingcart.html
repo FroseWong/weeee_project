@@ -55,10 +55,9 @@
               <input type="checkbox" class="check_item" v-model="product.select" />
             </div>
 
-            <a v-bind:href="product.url" class="product-image"><img v-bind:src="product.productImgPath1" alt="" /></a>
-
+            <a v-bind:href="'./productdetail.html?id=' + product.productID" class="product-image"><img v-bind:src="product.productImgPath1" alt="" /></a>
             <div class="product-name">
-              <a v-bind:href="product.url">
+              <a v-bind:href="'./productdetail.html?id=' + product.productID">
                 <h6>{{ product.productName }}</h6>
               </a>
             </div>
