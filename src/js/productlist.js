@@ -187,8 +187,8 @@ createApp({
             break;
         }
       }
-      if(local.length>1){
-        this.checked.select_city.push(local)
+      if (local.length > 1) {
+        this.checked.select_city.push(local);
       }
     },
     ChangeCurrpage(e) {
@@ -573,10 +573,10 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },

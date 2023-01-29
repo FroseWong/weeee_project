@@ -31,6 +31,7 @@
     background-size: 2.2%;
     border-radius: 3px;
     background-position: 452px center;
+    height: 30px;
   }
   #useweeee {
     padding: 5px 0;
@@ -67,6 +68,12 @@
     overflow: hidden;
     margin-bottom: 25px;
     box-sizing: border-box;
+
+    @include m {
+      // height: auto;
+      // width: auto;
+    }
+
     .img-space {
       position: relative;
       display: flex;
@@ -119,7 +126,8 @@
       border-radius: 10px;
 
       @include m {
-        width: 100%;
+        // width: 100%;
+        max-width: 330px;
       }
     }
 

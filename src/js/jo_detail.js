@@ -141,6 +141,7 @@ const app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/headerGetmember.php",
+        async: false,
         data: {
           // memberID: that.memberID,
         },
@@ -192,59 +193,59 @@ const app = Vue.createApp({
       // this.$refs.hollow.classList.add("hidden");
     },
     saysomething() {
-      // console.log(this.$refs.saysomething__content.value);
-      if (this.$refs.saysomething__content.value !== "") {
-        const date = new Date();
-        let that = this;
-        $.ajax({
-          method: "POST",
-          url: "./php/jo_detail_addcomment.php",
-          data: {
-            memberid: that.memberID,
-            joID: that.id,
-            comment: that.$refs.saysomething__content.value,
-            JoCommentTime: `${date.getFullYear()}-${
-              date.getMonth() + 1
-            }-${date.getDate()}`,
-          },
-          dataType: "json",
-          success: function (response) {
-            // console.log(response);
-            that.currentFullName = response[0].FullName;
-            // console.log(that.currentFullName);
-            // console.log(this.data.split("&"));
-            for (let i = 0; i < this.data.split("&").length; i++) {
-              if (this.data.split("&")[i].includes("memberid")) {
-                // console.log(this.data.split("&")[i]);
-                // console.log(this.data.split("&")[i].indexOf("="));
+      if (this.memberID) {
+        if (this.$refs.saysomething__content.value !== "") {
+          const date = new Date();
+          let that = this;
+          $.ajax({
+            method: "POST",
+            url: "./php/jo_detail_addcomment.php",
+            data: {
+              memberid: that.memberID,
+              joID: that.id,
+              comment: that.$refs.saysomething__content.value,
+              JoCommentTime: `${date.getFullYear()}-${
+                date.getMonth() + 1
+              }-${date.getDate()}`,
+            },
+            dataType: "json",
+            success: function (response) {
+              // console.log(response);
+              that.currentFullName = response[0].FullName;
+              // console.log(that.currentFullName);
+              // console.log(this.data.split("&"));
+              for (let i = 0; i < this.data.split("&").length; i++) {
+                if (this.data.split("&")[i].includes("memberid")) {
+                  // console.log(this.data.split("&")[i]);
+                  // console.log(this.data.split("&")[i].indexOf("="));
 
-                that.currentMemberID = this.data
-                  .split("&")
-                  [i].slice(this.data.split("&")[i].indexOf("=") + 1);
-                // console.log(that.currentMemberID);
-              } else if (this.data.split("&")[i].includes("JoCommentTime")) {
-                // console.log(this.data.split("&")[i]);
-                // console.log(this.data.split("&")[i].indexOf("="));
-                let timeArr = this.data
-                  .split("&")
-                  [i].slice(this.data.split("&")[i].indexOf("=") + 1)
-                  .split("-");
-                // console.log(timeArr);
-                for (let i = 0; i < timeArr.length; i++) {
-                  if (timeArr[i].length < 2) timeArr[i] = `0${timeArr[i]}`;
+                  that.currentMemberID = this.data
+                    .split("&")
+                    [i].slice(this.data.split("&")[i].indexOf("=") + 1);
+                  // console.log(that.currentMemberID);
+                } else if (this.data.split("&")[i].includes("JoCommentTime")) {
+                  // console.log(this.data.split("&")[i]);
+                  // console.log(this.data.split("&")[i].indexOf("="));
+                  let timeArr = this.data
+                    .split("&")
+                    [i].slice(this.data.split("&")[i].indexOf("=") + 1)
+                    .split("-");
+                  // console.log(timeArr);
+                  for (let i = 0; i < timeArr.length; i++) {
+                    if (timeArr[i].length < 2) timeArr[i] = `0${timeArr[i]}`;
+                  }
+                  // console.log(timeArr);
+                  that.currentJoCommentTime = timeArr.join("/");
+                  // console.log(that.currentJoCommentTime);
+                  // that.currentMemberID = this.data
+                  //   .split("&")
+                  //   [i].slice(this.data.split("&")[i].indexOf("=") + 1);
+                  // console.log(that.currentMemberID);
                 }
-                // console.log(timeArr);
-                that.currentJoCommentTime = timeArr.join("/");
-                // console.log(that.currentJoCommentTime);
-                // that.currentMemberID = this.data
-                //   .split("&")
-                //   [i].slice(this.data.split("&")[i].indexOf("=") + 1);
-                // console.log(that.currentMemberID);
               }
-            }
-            // console.log(response[0].MemberImg);
-            let bgi = `${response[0].MemberImg}`;
-            let str = `<div class="jo__comment">
+              // console.log(response[0].MemberImg);
+              let bgi = `${response[0].MemberImg}`;
+              let str = `<div class="jo__comment">
             <div class="jo__comment__left">
               ${that.$refs.saysomething__content.value}
             </div>
@@ -255,22 +256,26 @@ const app = Vue.createApp({
             </div>
             </div>`;
 
-            that.$refs.jo__comment__list.insertAdjacentHTML("beforeend", str);
-            that.$refs.saysomething__content.value = "";
-            const memberImgAll = document.querySelectorAll(".member-img");
-            // console.log(memberImgAll.length);
-            memberImgAll[
-              memberImgAll.length - 1
-            ].style.backgroundImage = `url('${bgi}')`;
-            let joCommentAll = document.querySelectorAll(".jo__comment");
-            joCommentAll[joCommentAll.length - 1].scrollIntoView({
-              behavior: "smooth",
-            });
-          },
-          error: function (exception) {
-            alert("數據載入失敗: " + exception.status);
-          },
-        });
+              that.$refs.jo__comment__list.insertAdjacentHTML("beforeend", str);
+              that.$refs.saysomething__content.value = "";
+              const memberImgAll = document.querySelectorAll(".member-img");
+              // console.log(memberImgAll.length);
+              memberImgAll[
+                memberImgAll.length - 1
+              ].style.backgroundImage = `url('${bgi}')`;
+              let joCommentAll = document.querySelectorAll(".jo__comment");
+              joCommentAll[joCommentAll.length - 1].scrollIntoView({
+                behavior: "smooth",
+              });
+            },
+            error: function (exception) {
+              alert("數據載入失敗: " + exception.status);
+            },
+          });
+        }
+      } else {
+        alert("請先完成登入");
+        location.href = "./login.html";
       }
     },
     getjoid() {
@@ -283,13 +288,14 @@ const app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/jo_detail.php",
+        async: false,
         data: {
           // type: "end",
           id: this.id,
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
+          console.log(response);
           // console.log(response.length);
           // console.log(response[0]);
           that.JoTitle = response[0].JoTitle;
@@ -370,6 +376,7 @@ const app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/Product.php",
+        async: false,
         data: {
           // id: that.JoProductID,
         },
@@ -429,10 +436,10 @@ const app = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },

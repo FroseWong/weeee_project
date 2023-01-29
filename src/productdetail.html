@@ -237,7 +237,7 @@
             </div>
             <div class="productdetail-comment" ref="commentref">
               <a :href=`productdetail.html?id=${commentID}&comment=${comment}`
-                v-for="comment in comments">{{comment}}</a>
+                v-for="comment in comments" :class="{commentAct:commentActif}">{{comment}}</a>
             </div>
           </div>
         </div>
