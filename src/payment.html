@@ -275,9 +275,9 @@
                     <div class="payment_item_list defaultHide">
                         <div class="product_group">
                             <div class="product_item" v-for="(product, index) in productList">
-                                <a href="" class="product-image"><img v-bind:src="product.productImgPath1" alt=""></a>
+                                <a v-bind:href="'./productdetail.html?id=' + product.productID" class="product-image"><img v-bind:src="product.productImgPath1" alt=""></a>
                                 <div class="product-name">
-                                    <a href="">
+                                    <a v-bind:href="'./productdetail.html?id=' + product.productID">
                                         <h6>{{ product.productName }}</h6>
                                     </a>
                                 </div>
