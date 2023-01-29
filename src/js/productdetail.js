@@ -152,6 +152,7 @@ const app = Vue.createApp({
       comments: [1, 2, 3, 4],
       commentID: "",
       ProductDetail_breadcrumb: "",
+      commentActif: true,
     };
   },
   methods: {
@@ -389,51 +390,25 @@ const app = Vue.createApp({
     },
     // ---------------結帳寫入sessionStorage---------------
     modal_checkout() {
-      // let time = document.getElementById("datetimepicker").value;
-      let time = this.$refs.timePicker.value;
-      let newDate = "";
-      if (time == "") {
-        let OldToday = new Date();
-        newDate = OldToday.toISOString().split("T")[0];
-      } else {
-        let oldDate = new String(time);
-        newDate =
-          oldDate[6] +
-          oldDate[7] +
-          oldDate[8] +
-          oldDate[9] +
-          "-" +
-          oldDate[3] +
-          oldDate[4] +
-          "-" +
-          oldDate[0] +
-          oldDate[1];
-      }
-      //   sessionStorage.setItem("圖片", this.Imgs[0].src);
-      // sessionStorage.setItem("商品名稱", this.ProductDetail.name);
-      // sessionStorage.setItem("日期", newDate);
-      // sessionStorage.setItem("人數", this.modalPeople);
-      // sessionStorage.setItem("單價", this.modalTotal);
-      let productImgPath1 = this.Imgs[0].src;
-      let productName = this.ProductDetail.name;
-      let cartStartDay = newDate;
-      let quantity = this.modalPeople;
-      let productPrice = this.modalTotal;
-      let productID = this.ProductDetail.productID;
-      let checkout_data = [
-        {
-          productID: productID,
-          productImgPath1: productImgPath1,
-          productName: productName,
-          cartStartDay: cartStartDay,
-          quantity: quantity,
-          productPrice: productPrice,
+      _this = this;
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailCheckOut.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          if (response == false) {
+            alert("請先登入再購買");
+            window.location.href = "./login.html";
+          } else if (response == true) {
+            _this.checkoutfun();
+          }
         },
-      ];
-      sessionStorage.setItem("checkout_data", JSON.stringify(checkout_data));
-      // let test=sessionStorage.getItem("productList");
-      // console.log(JSON.parse(test));
-      window.location.href = "./payment.html";
+        error: function (exception) {},
+      });
     },
     // ---------------消失底下btn---------------
     cle_check() {
@@ -709,6 +684,45 @@ const app = Vue.createApp({
           behavior: "smooth",
         });
       }
+    },
+    checkoutfun() {
+      let time = this.$refs.timePicker.value;
+      let newDate = "";
+      if (time == "") {
+        let OldToday = new Date();
+        newDate = OldToday.toISOString().split("T")[0];
+      } else {
+        let oldDate = new String(time);
+        newDate =
+          oldDate[6] +
+          oldDate[7] +
+          oldDate[8] +
+          oldDate[9] +
+          "-" +
+          oldDate[3] +
+          oldDate[4] +
+          "-" +
+          oldDate[0] +
+          oldDate[1];
+      }
+      let productImgPath1 = this.Imgs[0].src;
+      let productName = this.ProductDetail.name;
+      let cartStartDay = newDate;
+      let quantity = this.modalPeople;
+      let productPrice = this.modalTotal;
+      let productID = this.ProductDetail.productID;
+      let checkout_data = [
+        {
+          productID: productID,
+          productImgPath1: productImgPath1,
+          productName: productName,
+          cartStartDay: cartStartDay,
+          quantity: quantity,
+          productPrice: productPrice,
+        },
+      ];
+      sessionStorage.setItem("checkout_data", JSON.stringify(checkout_data));
+      window.location.href = "./payment.html";
     },
   },
   computed: {
