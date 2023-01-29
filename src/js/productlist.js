@@ -4,6 +4,11 @@ createApp({
   data() {
     return {
       pagenum: 1,
+      
+      page_show: {
+        start: 0,
+        end: 5,
+      },
       start: 0,
       end: 5,
       cardlist: [],
@@ -98,21 +103,44 @@ createApp({
     },
     totalpage() {
       let arr = [];
+     
       let totalpage = Math.ceil(this.computedList.length / 5);
       for (i = 0; i < totalpage; i++) {
         arr.push(i + 1);
       }
       return arr;
     },
+    showpage() {
+      if (this.totalpage.length < 5) {
+        return this.totalpage;
+      } else {
+        if (this.page_show.end > this.totalpage.length - 1) {
+          return this.totalpage.slice(
+            this.totalpage.length - 5,
+            this.totalpage.length
+          );
+        } else {
+          return this.totalpage.slice(this.page_show.start, this.page_show.end);
+        }
+      }
+    },
   },
   watch: {
     totalpage: function (newValue, oldValue) {
       this.pagenum = 1;
+     
     },
     pagenum: function (newValue, oldValue) {
       this.start = (newValue - 1) * 5;
       this.end = newValue * 5;
-      console.log(oldValue, newValue);
+
+      if (newValue < 3) {
+        this.page_show.start = 0;
+        this.page_show.end = 5;
+      } else {
+        this.page_show.start = newValue - 3;
+        this.page_show.end = newValue + 2;
+      }
     },
   },
   methods: {
@@ -121,7 +149,7 @@ createApp({
       let msort = urlParams.get("msort");
       let ssort = urlParams.get("ssort");
       let local = urlParams.get("local");
-      if (ssort){
+      if (ssort) {
         if (msort == "ss") {
           switch (true) {
             case ssort == "fr":
@@ -188,8 +216,8 @@ createApp({
         }
       }
 
-      if(local){
-        this.checked.select_city.push(local)
+      if (local) {
+        this.checked.select_city.push(local);
       }
     },
     ChangeCurrpage(e) {
@@ -417,33 +445,6 @@ createApp({
     },
     filterCategory(e) {
       e.target.querySelector("input").click();
-
-      // for (let i = 0; i < this.cardlist.length; i++){
-      //   this.cardlist[i].vif=false;
-      // }
-      // let category = e.composedPath()[0].childNodes[0];
-      // let text = e.composedPath()[0].textContent;
-      // if (category.checked == false) {
-      //   category.checked = true;
-      //   this.categorylist.push(e.path[0].textContent);
-      // } else if (category.checked == true) {
-      //   category.checked = false;
-      //   this.categorylist.forEach((e, index) => {
-      //     if (e == text) {
-      //       this.categorylist.splice(index, 1);
-      //     }
-      //   });
-      // }
-      // for (let i = 0; i < this.cardlist.length; i++) {
-      //   let label = this.cardlist[i].label;
-      //   for (let j = 0; j < this.categorylist.length; j++) {
-      //     let list = this.categorylist[j];
-      //     if (label.trim() == list.trim()) {
-      //       let temp = this.cardlist[i];
-      //       temp.vif=true;
-      //     }
-      //   }
-      // }
     },
     openSelectbar(e) {
       let category_btn = document.querySelector(
