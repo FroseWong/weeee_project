@@ -25,9 +25,10 @@ const apph = Vue.createApp({
   },
   methods: {
     jump_searched() {
-      let keyword = this.keyword;
-      if (keyword.length > 0) {
-        let url = "./productlist.html" + "?msort=all&key=" + keyword;
+      this.keyword = this.keyword.trim();
+      // let keyword = this.keyword.trim();
+      if (this.keyword.length > 0) {
+        let url = "./productlist.html" + "?msort=all&key=" + this.keyword;
         window.location.assign(url);
       }
     },
