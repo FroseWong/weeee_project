@@ -6,14 +6,15 @@ $memberID = getMemberID();
 include("connection.php");
 
 //建立SQL語法
-// $sql = "SELECT * FROM Order WHERE MemberID = ?";
 $sql = 
-"SELECT `Order`.OrderNumber, Product.ProductName, Product.ProductSecondType, Product.ProductText, Product.ProductPrice, Product.Location
+"SELECT `Order`.OrderNumber, Product.ProductName, Product.ProductSecondType, Product.ProductText, Product.ProductPrice, Product.Location, ProductImg.ProductImgPath1
 from `Order` 
 inner join OrderDetail 
 on `Order`.OrderID = OrderDetail.OrderID
 inner join Product
 on OrderDetail.ProductID = Product.ProductID 
+inner join ProductImg
+on Product.ProductID = ProductImg.ProductID
 WHERE MemberID = ?;";
 
 //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料

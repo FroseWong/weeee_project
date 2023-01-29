@@ -122,7 +122,7 @@
           for (let i = 0; i < response.length; i++) {
             let order_content = `
               <div class="order_card">
-                <img src="img/otherpage/ex_7_1.jpg" class="order_card_pic">
+                <img src="${response[i].ProductImgPath1}" class="order_card_pic">
                 <span class="dot"><i class="fas fa-location-dot" style="margin-right: 5px;"></i>${response[i].Location}</span>
                 <div class="text">
                   <div class="order_number">${response[i].OrderNumber}</div>
