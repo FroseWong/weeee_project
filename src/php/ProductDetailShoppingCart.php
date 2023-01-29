@@ -32,6 +32,7 @@ if ($tempif == 0) {
     $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,cartStartDay)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}',now())";
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
+    echo json_encode('ok');
 }
 // -----------如果使用者有加過購物車,先找已加入個數---------------
 if ($tempif == 1) {
@@ -60,4 +61,5 @@ if ($tempif == 1) {
     $sqlone = "UPDATE Cart SET Quantity=$ALLQTY,SubTotal=$ALLTAL WHERE ProductID='{$PID}' AND MemberID='{$MID}'";
     $statement = $pdo->prepare($sqlone);
     $statement->execute();
+    echo json_encode('ok');
 }

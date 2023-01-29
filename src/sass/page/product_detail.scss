@@ -593,13 +593,15 @@
   margin: 50px;
   a{
     margin: 10px;
-    // border: 1px solid $gray;
+    border: 1px solid $l_gray;
     padding: 2px 10px;
     color: $black;
+    font-weight: bold;
   }
 
   .commentAct{
-    border: 1px solid $gray;
+    background-color: $blue;
+    color: $white;
   }
 }
 // ---------------下方輪播卡---------------
@@ -635,7 +637,8 @@
       width: 703px;
       height: 467px;
       @include m {
-        height: 260px;
+        height: 275px;
+        width: 380px;
       }
     }
   }

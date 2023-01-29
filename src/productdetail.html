@@ -61,7 +61,7 @@
                 <div>
                   <p>Weeee!Points</p>
                   <div class="productdetail-modal-points">
-                    <img src="./img/weeeepoints/yellow.svg" alt="SryNotFuond" />
+                    <img src="./img/weeeepoints/yellow.svg" alt=" " />
                     <p>{{modal_points}}</p>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
         <div class="productdetail-slideshow">
           <a href="#" v-for="Img in Imgs">
             <div class="mySlidesFlex">
-              <img :src="Img.src" alt="SryNotFuond" />
+              <img :src="Img.src" alt=" " />
             </div>
           </a>
         </div>
@@ -189,9 +189,9 @@
                 <h3 class="pd_h3">商品說明</h3>
                 <p>{{ProductDetail.Text}}</p>
               </div>
-              <div v-for="Img in Imgs" class="productdetail-img" alt="SryNotFuond">
+              <div v-for="Img in Imgs" class="productdetail-img" alt=" ">
                 <p>►{{Img.Content}}</p>
-                <img :src="Img.src" alt="SryNotFuond" />
+                <img :src="Img.src" alt=" " />
               </div>
             </div>
             <!---------------購買須知--------------->
@@ -218,7 +218,7 @@
               <h3>旅客評價</h3>
               <div class="product-review-group">
                 <div class="product-review-score">
-                  <p>4.0</p>
+                  <p>{{commentscore}}</p>
                 </div>
                 <div class="productreview-star">
                   <p>★★★★</p>
@@ -227,7 +227,7 @@
               </div>
             </div>
             <div class="productdetail-message" v-for="message in messages">
-              <img :src="message.pic" alt="SryNotFuond" />
+              <img :src="message.pic" alt=" " />
               <span>{{message.name}}</span>
               <div class="productdetail-message-text">
                 <p>{{message.star}}</p>
@@ -237,7 +237,7 @@
             </div>
             <div class="productdetail-comment" ref="commentref">
               <a :href=`productdetail.html?id=${commentID}&comment=${comment}`
-                v-for="comment in comments" :class="{commentAct:commentActif}">{{comment}}</a>
+              v-for="comment in comments" ref="commentA">{{comment}}</a>
             </div>
           </div>
         </div>
