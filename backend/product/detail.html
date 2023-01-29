@@ -147,12 +147,12 @@
                             <h6 class="m-0 font-weight-bold list_style">商品基本資料</h6>
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="../php/updateProduct.php" method="post">
                                 <div class="row">
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品ID</label>
                                         <br>
-                                        <input type="text" id="productID" class=" filter readonly readonly_height" readonly="readonly">
+                                        <input type="text" id="productID" name="productID" class=" filter readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品編號</label>
@@ -170,81 +170,79 @@
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品名稱</label>
                                         <br>
-                                        <input type="text" id="productName" class=" filter">
+                                        <input type="text" id="productName" name="productName" class=" filter">
                                     </div>
                                     <div class="col-3">
                                         <label for="from" class="form_label">商品單價</label>
                                         <br>
-                                        <input type="text" id="productPrice" class=" filter">
+                                        <input type="text" id="productPrice" name="productPrice" class=" filter">
                                     </div>                                                    
-                                </div>                              
+                                </div>   
+                                <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;" onclick="toggleStatus()"><span id="update"></span></button>
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold list_style">商品圖片</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <label for="formFileMultiple" class="form-label">上傳圖片</label>
+                                            <input class="form-control" type="file" id="formFileMultiple" multiple style="padding: .180rem .75rem;">
+                                        </div>
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>排序</th>
+                                                        <th>圖片</th>
+                                                        <th>圖片描述</th>  
+                                                        <th>動作</th>                           
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody>
+                                                    <tr>
+                                                        <td><i class="fas fa-bars"></i></td>
+                                                        <td><img src="../img/experience_farm_bug2.jpg" class="product_img"> </td>
+                                                        <td>這是一張農場圖</td>
+                                                        <td><i class="fas fa-trash"></i></td>                            
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="fas fa-bars"></i></td>
+                                                        <td><img src="../img/experience_farm_bug2.jpg" class="product_img"></td>
+                                                        <td>這是一張農場圖</td>
+                                                        <td><i class="fas fa-trash"></i></td>                                  
+                                                    </tr>                
+                                                    <tr>
+                                                        <td><i class="fas fa-bars"></i></td>
+                                                        <td><img src="../img/experience_farm_bug2.jpg" class="product_img"></td>
+                                                        <td>這是一張農場圖</td>
+                                                        <td><i class="fas fa-trash"></i></td>                              
+                                                    </tr>         
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold list_style">商品說明</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <textarea name="product_text" id="product_text" class="form-control" rows="10"></textarea>
+                                    </div>
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold list_style">購買說明</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <textarea name="product_text" id="buy_text" class="form-control" rows="10"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-warning submit_button save_update">儲存更新</button>
                             </form>
-                            
-                        </div>
-                    </div>
-                    <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;" onclick="toggleStatus()"><span id="update"></span></button>
-
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold list_style">商品圖片</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label for="formFileMultiple" class="form-label">上傳圖片</label>
-                                <input class="form-control" type="file" id="formFileMultiple" multiple style="padding: .180rem .75rem;">
-                            </div>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>排序</th>
-                                            <th>圖片</th>
-                                            <th>圖片描述</th>  
-                                            <th>動作</th>                           
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                        <tr>
-                                            <td><i class="fas fa-bars"></i></td>
-                                            <td><img src="../img/experience_farm_bug2.jpg" class="product_img"> </td>
-                                            <td>這是一張農場圖</td>
-                                            <td><i class="fas fa-trash"></i></td>                            
-                                        </tr>
-                                        <tr>
-                                            <td><i class="fas fa-bars"></i></td>
-                                            <td><img src="../img/experience_farm_bug2.jpg" class="product_img"></td>
-                                            <td>這是一張農場圖</td>
-                                            <td><i class="fas fa-trash"></i></td>                                  
-                                        </tr>                
-                                        <tr>
-                                            <td><i class="fas fa-bars"></i></td>
-                                            <td><img src="../img/experience_farm_bug2.jpg" class="product_img"></td>
-                                            <td>這是一張農場圖</td>
-                                            <td><i class="fas fa-trash"></i></td>                              
-                                        </tr>         
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold list_style">商品說明</h6>
-                        </div>
-                        <div class="card-body">
-                            <textarea name="product_text" id="product_text" class="form-control" rows="10"></textarea>
-                        </div>
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold list_style">購買說明</h6>
-                        </div>
-                        <div class="card-body">
-                            <textarea name="product_text" id="buy_text" class="form-control" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-warning submit_button save_update">儲存更新</button>
             </div>
             <!-- End of Main Content -->
 
