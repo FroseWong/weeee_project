@@ -126,6 +126,7 @@
 
       @@include('layout/footer.html')
     </div>
+    <script src="./vender/sweetAlert/sweetalert2.all.min.js"></script>
     <script src="vender/jquery/jquery.min.js"></script>
     <script src="./vender/vue/vue.global.prod.js"></script>
     <script src="js/header.js"></script>
@@ -160,7 +161,7 @@
                       <div class="gray jo-time">${response[i].JoStartDate}</div>
                       <div class="icons">
                           <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
-                          <i class="fa-solid fa-trash"></i>
+                          <i class="fa-solid fa-trash" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})" ></i>
                       </div>
                     </div>
                   </a>
@@ -183,7 +184,7 @@
                       }</div>
                       <div class="icons">
                           <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i + 1].JoID})"></i>
-                          <i class="fa-solid fa-trash"></i>
+                          <i class="fa-solid fa-trash" style="cursor: pointer" onclick="deleteJo(${response[i + 1].JoID})"></i>
                       </div>
                     </div>
                   </a>
@@ -206,7 +207,7 @@
                       <div class="gray jo-time">${response[i].JoStartDate}</div>
                       <div class="icons">
                           <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
-                          <i class="fa-solid fa-trash"></i>
+                          <i class="fa-solid fa-trash" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})"></i>
                       </div>
                     </div>
                   </a>
@@ -223,6 +224,17 @@
       });
       function edit(joID){
         location.href="jo_revise.html?id=" + joID;
+      }
+      function deleteJo(joID){
+        Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "刪除成功",
+                    showConfirmButton: false,
+                    timer: 1000,
+                }).then(function(){
+                  location.href="./php/delete_account_jo.php?joID=" + joID;
+                })
       }
     </script>
   </body>

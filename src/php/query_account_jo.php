@@ -1,5 +1,6 @@
 <?php
-$memberID = "2"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
+include("./Member.php");        
+$memberID = getMemberID();
 
 //DB連線資訊
 include("connection.php");

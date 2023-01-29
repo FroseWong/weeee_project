@@ -13,7 +13,7 @@ $statement = $pdo->prepare($sql);
 $statement->bindValue(1, $memberID);
 $statement->execute(); //執行
 
-//抓出該會員資烙(只會有一組資料)，所以使用fetch()
+//抓出該會員資格(只會有一組資料)，所以使用fetch()
 $data = $statement->fetch();
 
 //將二維陣列取出顯示其值
