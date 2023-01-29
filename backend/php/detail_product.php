@@ -7,7 +7,7 @@ $productID = $_GET['productID'];
 include("connection.php");
 
 //建立SQL語法
-$sql = "SELECT ProductID, ProductNumber, ProductName, ProductPrice
+$sql = "SELECT ProductID, ProductNumber, ProductName, ProductPrice, ProductStatus
 from Product
 where ProductID = ?;";
 
