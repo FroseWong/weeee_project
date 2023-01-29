@@ -42,6 +42,10 @@ const app = Vue.createApp({
           that.memberID = response[0].MemberID;
 
           that?.$nextTick(function () {
+            if (!that.memberID) {
+              alert("請先完成登入");
+              location.href = "login.html";
+            };
             if (that.memberID) that.getCheckoutData();
             if (that.memberID) that.checkPoints();
           });
