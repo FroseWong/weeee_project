@@ -1,5 +1,6 @@
 <?php
-$memberNumber = "ME0001"; //TODO 先寫死，到時候登入功能做好，可從 php session取得會員編號
+include("./Member.php");        
+$memberID = getMemberID();
 $lastName = $_POST["lastName"];
 $firstName = $_POST["firstName"];
 $sex = $_POST["sex"];
@@ -22,7 +23,7 @@ $extreme = isset($_POST["extreme"]) ? 1 : 0;
 include("connection.php");
 
 //建立SQL
-$sql = "UPDATE Weeee.Member SET LastName = ?, FirstName = ?, Sex = ?, EnglishLastName = ?, EnglishFirstName = ?, Passport = ?, Country = ?, Phone = ?,  Birthdate = ?, Friend = ?, Family = ?, Couple = ?, Pet = ?, Handmade = ?, Onwater = ?, Farm = ?, Extreme = ?  WHERE MemberNumber = ?";
+$sql = "UPDATE Member SET LastName = ?, FirstName = ?, Sex = ?, EnglishLastName = ?, EnglishFirstName = ?, Passport = ?, Country = ?, Phone = ?,  Birthdate = ?, Friend = ?, Family = ?, Couple = ?, Pet = ?, Handmade = ?, Onwater = ?, Farm = ?, Extreme = ?  WHERE MemberID = ?";
 
 //執行
 $statement = $pdo->prepare($sql);
@@ -43,7 +44,7 @@ $statement -> bindValue(14, $handmade);
 $statement -> bindValue(15, $onwater);
 $statement -> bindValue(16, $farm);
 $statement -> bindValue(17, $extreme);
-$statement -> bindValue(18, $memberNumber);
+$statement -> bindValue(18, $memberID);
 $statement -> execute();
 
 //頁面導回HTML
