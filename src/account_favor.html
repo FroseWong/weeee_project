@@ -106,8 +106,10 @@
       </div>
       @@include('layout/footer.html')
     </div>
+    <script src="./vender/sweetAlert/sweetalert2.all.min.js"></script>
     <script src="vender/jquery/jquery.min.js"></script>
-    
+    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="js/header.js"></script>
     <script>
 
       //控制資料顯示在HTML上
@@ -156,12 +158,12 @@
                 <div class="text">
                   <div class="product_name">
                     ${response[i].ProductName}
-                      <i class="fas fa-trash trashCan"></i>
+                      <i class="fas fa-trash trashCan" style="cursor: pointer" onclick="deleteFavor(${response[i].FavorID})"></i>
                   </div>
                 
                   <div class="product_type">${response[i].ProductSecondType}</div>
                   <div class="product__description">
-                    ${response[i].ProductText}
+                    ${response[i].ProductText.length > 50 ? response[i].ProductText.substr(0, 50) + "..." : response[i].ProductText}
                   </div>
                   <div class="card_bottom">
                     <div class="comment">
@@ -175,7 +177,21 @@
         content.insertAdjacentHTML("beforeend", favor_content);
       }
         }
-      })
+      });
+
+      //按了垃圾桶後，刪除他的收藏資料
+      function deleteFavor(favorID){
+        Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "刪除成功",
+                    showConfirmButton: false,
+                    timer: 1000,
+                }).then(function(){
+                  location.href="./php/delete_account_favor.php?favorID=" + favorID;
+                })
+    }
+        
     </script>
   </body>
 </html>

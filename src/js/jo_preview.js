@@ -132,9 +132,9 @@ let app = Vue.createApp({
     this.getdata_product_list();
   },
   mounted() {
-    $(".contact-leader").on("click", function () {
-      $(".contact-detail").toggle(1000);
-    });
+    // $(".contact-leader").on("click", function () {
+    //   $(".contact-detail").toggle(1000);
+    // });
   },
   updated() {
     document.querySelector(
@@ -166,6 +166,7 @@ let app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/Product.php",
+        async: false,
         data: {},
 
         dataType: "json",
@@ -247,6 +248,7 @@ let app = Vue.createApp({
           targettravelID: this.targettravelID,
           img: this.img,
           imgName: this.imgName,
+          memberID: that.memberID,
         },
 
         dataType: "json",
@@ -279,16 +281,17 @@ let app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/index_clickHeart.php",
+        async: false,
         data: {
           memberID: that.memberID,
           pid,
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },

@@ -42,6 +42,10 @@ const app = Vue.createApp({
           that.memberID = response[0].MemberID;
 
           that?.$nextTick(function () {
+            if (!that.memberID) {
+              alert("請先完成登入");
+              location.href = "login.html";
+            };
             if (that.memberID) that.getCheckoutData();
             if (that.memberID) that.checkPoints();
           });
@@ -151,6 +155,9 @@ const app = Vue.createApp({
         totalPoints: Math.floor(totalPrice / 100),
       };
     },
+    // getBuyData(){
+    //   this.productList = JSON.parse(sessionStorage.getItem("productList"));
+    // },
     pay() {
       let productCartIDList = [];
       let productDateList = [];
@@ -173,6 +180,7 @@ const app = Vue.createApp({
         method: "POST",
         url: "./php/CartCheckout.php",
         data: {
+          email: that.memberInfo.username,
           memberID: that.memberID,
           CID: productCartIDList,
           // subTotal: that.getTotal.totalPrice,
@@ -220,6 +228,8 @@ const app = Vue.createApp({
       };
     },
   },
-  mounted() {},
+  mounted() {
+    // this.getBuyData();
+  },
 });
 app.mount("#app");

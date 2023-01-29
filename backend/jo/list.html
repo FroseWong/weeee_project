@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendor/jquery-ui-1.13.2/jquery-ui.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -120,8 +121,6 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Emily</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -146,23 +145,24 @@
                         <h1 class="h3 mb-2 text-gray-800 ">揪團查詢</h1>
                         <div class="row">
                             <div class="col-12">
-                                <input type="text" id="from" name="from" placeholder="發布日期" class="hasDatepicker date_select">
+                                <input type="text" id="from" name="from" placeholder="揪團日期" class="date_select">
                                 ～
-                                <input type="text" id="to" name="to" class="hasDatepicker filter">
+                                <input type="text" id="to" name="to" class="filter">
                             
-                                <input type="text" placeholder="揪團編號" class="order_number filter">
+                                <input type="text" placeholder="揪團編號" class="order_number filter" id="joNumber">
                             </div>
                         </div>
 
                         <div class="row row_bottom">
                             <div class="col-12">
-                                <input type="text" placeholder="揪團名稱" class="member filter">
-                                <input type="text" placeholder="團主使用者名稱" class="product_name filter">
-                                <select class="form_select" name="orderStatus" id="orderStatus">
-                                    <option value="unpaid">揪團中</option>
-                                    <option value="paid">已過期</option>
+                                <input type="text" placeholder="揪團名稱" class="member filter" id="joTitle">
+                                <input type="text" placeholder="團主會員編號" class="product_name filter" id="memberNumber">
+                                <select class="form_select" name="joStatus" id="joStatus">
+                                    <option value="">請選擇</option>
+                                    <option value="1">顯示中</option>
+                                    <option value="0">隱藏中</option>
                                 </select>
-                                <button type="button" class="btn btn-warning submit_button">搜尋</button>
+                                <button type="button" class="btn btn-warning submit_button" onclick="search()">搜尋</button>
                             </div>
                         </div>
                     </form>
@@ -174,155 +174,28 @@
                             <h6 class="m-0 font-weight-bold list_style">揪團列表</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="app">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>揪團編號</th>
                                             <th>揪團名稱</th>
-                                            <th>團主使用者名稱</th>
+                                            <th>團主會員編號</th>
                                             <th>狀態</th>
-                                            <th>發布日期</th>
+                                            <th>揪團日期</th>
                                             <th>動作</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                        <tr>
-                                            <td>JO5630</td>
-                                            <td>好想去Xpark吃魚魚</td>
-                                            <td>Emily0101</td>
-                                            <td>揪團中</td>
-                                            <td>2011/04/25</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5631</td>
-                                            <td>好想玩桌遊</td>
-                                            <td>shihching647</td>
-                                            <td>揪團中</td>
-                                            <td>2011/07/25</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5632</td>
-                                            <td>無聊中年男子約吃飯</td>
-                                            <td>Emily0101</td>
-                                            <td>揪團中</td>
-                                            <td>2009/01/12</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5633</td>
-                                            <td>一起來玩狼人殺</td>
-                                            <td>Emily0101</td>
-                                            <td>揪團中</td>
-                                            <td>2012/03/29</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5634</td>
-                                            <td>陪我吃合菜</td>
-                                            <td>Emily0101</td>
-                                            <td>揪團中</td>
-                                            <td>2008/11/28</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5635</td>
-                                            <td>喵喵喵好想抓魚魚</td>
-                                            <td>shihching647</td>
-                                            <td>揪團中</td>
-                                            <td>2009/01/12</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5636</td>
-                                            <td>想去淡水玩</td>
-                                            <td>shihching647</td>
-                                            <td>揪團中</td>
-                                            <td>2012/03/29</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5637</td>
-                                            <td>約看納美人</td>
-                                            <td>shihching647</td>
-                                            <td>揪團中</td>
-                                            <td>2008/11/28</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5638</td>
-                                            <td>想看蜘蛛人</td>
-                                            <td>claire810306</td>
-                                            <td>揪團中</td>
-                                            <td>2009/01/12</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5639</td>
-                                            <td>華泰凹列買買買</td>
-                                            <td>claire810306</td>
-                                            <td>揪團中</td>
-                                            <td>2012/03/29</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5640</td>
-                                            <td>去看落羽松</td>
-                                            <td>claire810306</td>
-                                            <td>已結束</td>
-                                            <td>2008/11/28</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5641</td>
-                                            <td>我想去泛舟和浮潛</td>
-                                            <td>claire810306</td>
-                                            <td>已結束</td>
-                                            <td>2009/01/12</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5642</td>
-                                            <td>宜蘭開車一日遊</td>
-                                            <td>jerry990202</td>
-                                            <td>已結束</td>
-                                            <td>2012/03/29</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5643</td>
-                                            <td>保證不無聊的陪睡覺</td>
-                                            <td>jerry990202</td>
-                                            <td>已結束</td>
-                                            <td>2008/11/28</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5644</td>
-                                            <td>啾啾想要去動物園玩</td>
-                                            <td>jerry990202</td>
-                                            <td>已結束</td>
-                                            <td>2009/01/12</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5645</td>
-                                            <td>日本看櫻花</td>
-                                            <td>jerry990202</td>
-                                            <td>已結束</td>
-                                            <td>2012/03/29</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>JO5646</td>
-                                            <td>吃慶城街海南雞飯</td>
-                                            <td>jerry990202</td>
-                                            <td>已結束</td>
-                                            <td>2008/11/28</td>
-                                            <td><a href="detail.html">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
+                                        <tr v-for="(jo, index) in joList" :key="index">
+                                            <td>{{jo.JoNumber}}</td>
+                                            <td>{{jo.JoTitle}}</td>
+                                            <td>{{jo.MemberNumber}}</td>
+                                            <td v-if="jo.JoStatus == 1">顯示中</td>
+                                            <td v-else>隱藏中</td>
+                                            <td>{{jo.JoStartDate}}</td>
+                                            <td><a :href="'./detail.html?joID=' + jo.JoID">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
                                         </tr>
                                        
                                     </tbody> 
@@ -392,9 +265,128 @@
      <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
      <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
  
-     <!-- Page level custom scripts -->
-     <script src="../js/demo/datatables-demo.js"></script>
+     <!-- 加入vue -->
+     <script src="../vendor/vue/vue.global.js"></script> 
+     <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+
+     <!-- 加入sweet alert -->
+     <script src="../vendor/sweetAlert/sweetalert2.all.min.js"></script>
+
+     <!-- 加入date picker -->
+     <script src="../vendor/jquery-ui-1.13.2/jquery-ui.js"></script>
  
+     <script>
+        //日曆
+        $( function() {
+          // default date
+          let today = new Date();
+          let tomorrow = new Date();
+          tomorrow.setDate(today.getDate() + 1);
+        //   $("#from").val(today.toISOString().split('T')[0]);
+        //   $("#to").val(tomorrow.toISOString().split('T')[0]);
+
+          var dateFormat = "yy-mm-dd"; // 指定日期字串轉給js看的日期的格式
+
+          var from = $( "#from" )
+              .datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: "yy-mm-dd",
+                maxDate: today
+              })
+              .on( "change", function() { // 註冊開始日期change事件
+                to.datepicker( "option", "minDate", getDate( this ) ); // 讓to小於from的日期都不能選
+                
+              });
+              
+          var to = $( "#to" )
+            .datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 1,
+            dateFormat: "yy-mm-dd",
+            maxDate: today
+            })
+            .on( "change", function() { // 註冊結束日期change事件
+            from.datepicker( "option", "maxDate", getDate( this ) ); // 讓from大於to的日期都不能選
+            });
+       
+          function getDate( element ) {
+            var date;
+            try {
+              console.log(element.value); // 字串
+              date = $.datepicker.parseDate( dateFormat, element.value );
+              console.log(date); 
+            } catch( error ) {
+              console.log("格式錯誤");
+              date = null;
+            }
+            return date;
+          }
+        } );
+
+        let dataTable;
+        let joList; 
+
+       // 一進到此頁面，發請求去資料庫要所有訂單資料
+      $.ajax({
+        method: "GET",
+        url: "../php/query_jo.php",
+        async: false, //開啟同步化功能，讓response先回來，再走下面的初始化vue
+        data: {},
+        dataType: "json",
+        success: function (response) {
+            joList = response;
+        },
+      });
+
+      const RootComponent = {
+        data() {
+          // 用vue把下列資料顯示在html上
+          return {
+            joList: joList,
+          };
+        },
+        mounted() {
+          // 掛載完成後，初始化DataTable
+          dataTable = $("#dataTable").DataTable();
+        },
+        beforeUpdate() {
+          // 更新資料之前，將舊的DataTable毀掉
+          dataTable.destroy();
+        },
+        updated() {
+          // 新的資料更新完後，再重新初始化DataTable
+          dataTable = $("#dataTable").DataTable();
+        },
+      };
+
+      var app = Vue.createApp(RootComponent);
+      var vm = app.mount("#app"); //如果想操控這個vue，都需要透過vm
+
+      function search() {
+        $.ajax({
+            data: {
+                joNumber: document.getElementById("joNumber").value,
+                memberNumber: document.getElementById("memberNumber").value,
+                joTitle: document.getElementById("joTitle").value,
+                joStatus: document.getElementById("joStatus").value,
+                from: document.getElementById("from").value,
+                to: document.getElementById("to").value
+            },
+            url: "../php/query_jo.php",
+            async: false,
+            method: "GET",
+            dataType: "json",
+            success: function(response){
+                console.log(response);
+                vm.$data.joList = response;
+            }
+        })
+        return; //serach()這個方法結束了
+      }
+     </script>
 </body>
 
 </html>

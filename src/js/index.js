@@ -1,15 +1,18 @@
 "use strict";
-
+// let status = true;
 // const heartAll = document.querySelectorAll(".fa-heart");
 const productAll = document.querySelectorAll(".product-card");
 const popularCountryAll = document.querySelectorAll(".popular-country");
 // const changeHeartAll = document.querySelectorAll(".change-heart");
 let status = true;
+
+// 滑鼠靠近時，新增active的class
 const mouseenterFu = function () {
   popularCountryAll.forEach((a) => a.classList.remove("active"));
   this.classList.add("active");
 };
 
+// 確認popular是否RWD的情況
 const popularRWD = function () {
   if (window.innerWidth > 768) {
     popularCountryAll.forEach((p) => {
@@ -46,8 +49,7 @@ window.addEventListener("resize", function () {
   } else status = false;
 
   if (nowStatus !== status) {
-    console.log("change");
-    // popularRWD();
+    popularRWD();
   }
 });
 
@@ -61,7 +63,7 @@ window.addEventListener("resize", function () {
 //   })
 // );
 
-// popularRWD();
+popularRWD();
 
 let app1 = Vue.createApp({
   data() {
@@ -74,7 +76,7 @@ let app1 = Vue.createApp({
       themeList: [],
       jo_list_end: [],
       current_hover: 0,
-      popularRWD: false,
+      popularRWD: window.innerWidth <= 768 ? true : false,
       memberID: "",
       top10List: [],
       favorProductList: [],
@@ -93,23 +95,28 @@ let app1 = Vue.createApp({
     window.removeEventListener("resize", this.myEventHandler);
   },
   created() {
+    // this.getdata_jo_list_end();
+    // this.getdata_product_list();
     this.get_member_information();
+    this.show_list();
+
     this.getPopularNumber();
-    // this.memberID = header?.memberID;
-    // this.show_hot_function();
-    this.getdata_product_list();
-    // this.getdata_product_list_top10();
-    this.getdata_jo_list_end();
-    // this.product_slick();
-    // this.jolist_slick();
-    // this.popularSlick();
-    // if (this.memberID) this.memberInterest();
+
     window.addEventListener("resize", this.myEventHandler);
   },
   updated() {
     // this.jolist_slick();
   },
   methods: {
+    show_list() {
+      this.getdata_theme_product_list();
+      this.getdata_top10_product_list();
+      this.getdata_experience_product_list();
+      this.getdata_jo_list_end();
+
+      // this.getdata_product_list();
+    },
+    /*
     getdata_product_list() {
       // this.jo_list_hot = [];
       let that = this;
@@ -124,14 +131,11 @@ let app1 = Vue.createApp({
 
         dataType: "json",
         success: function (response) {
-          // console.log(response);
           let top10slice = response.slice();
-          // console.log(top10slice);
           top10slice.sort((a, b) => b.ProductPurchased - a.ProductPurchased);
           top10slice = top10slice.slice(0, 10);
           top10slice.forEach((t) => that.top10List.push(t));
           response.forEach((product) => {
-            // console.log(product);
             if (product.ProductPurchased >= 1000) {
               product.ProductPurchased = `${product.ProductPurchased / 1000}K+`;
             }
@@ -149,9 +153,100 @@ let app1 = Vue.createApp({
             if (product.ProductSecondType === "主題樂園")
               that.themeList.push(product);
           });
+
           that.$nextTick(function () {
             that.product_slick();
           });
+
+          // setTimeout(that.product_slick, 1000);
+
+          // that.$nextTick(function () {
+          //   that.product_slick();
+          // });
+
+          // console.log(that.sightseeingList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    */
+    getdata_theme_product_list() {
+      // this.jo_list_hot = [];
+      let that = this;
+
+      $.ajax({
+        method: "POST",
+        async: false,
+        url: "./php/index_product.php",
+        data: {
+          type: "theme",
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+          response.forEach((t) => that.themeList.push(t));
+
+          that.$nextTick(function () {
+            that.theme_slick();
+          });
+
+          // console.log(that.sightseeingList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    getdata_top10_product_list() {
+      // this.jo_list_hot = [];
+      let that = this;
+
+      $.ajax({
+        method: "POST",
+        async: false,
+        url: "./php/index_product.php",
+        data: {
+          type: "top10",
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log(response);
+
+          response.forEach((t) => that.top10List.push(t));
+
+          that.$nextTick(function () {
+            that.top10_slick();
+          });
+
+          // console.log(that.sightseeingList);
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    getdata_experience_product_list() {
+      // this.jo_list_hot = [];
+      let that = this;
+
+      $.ajax({
+        method: "POST",
+        async: false,
+        url: "./php/index_product.php",
+        data: {
+          type: "experience",
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          response.forEach((t) => that.experienceList.push(t));
+          console.log(that.experienceList);
+          that.$nextTick(function () {
+            that.experience_slick();
+          });
+
           // console.log(that.sightseeingList);
         },
         error: function (exception) {
@@ -224,11 +319,13 @@ let app1 = Vue.createApp({
     // },
 
     getdata_jo_list_end() {
+      this.jo_list_end = [];
       // this.jo_list_end = [];
       let that = this;
       $.ajax({
         method: "POST",
         url: "./php/jo_frose.php",
+        async: false,
         data: {
           type: "end",
         },
@@ -239,11 +336,6 @@ let app1 = Vue.createApp({
             that.jo_list_end.push(element);
           });
 
-          // console.log("jolist", that.jo_list_end);
-          // console.log(that.jo_list_end);
-          // _this.$nextTick(function () {
-          //   _this.jo_list_slick_end();
-          // });
           that.$nextTick(function () {
             that.jolist_slick();
           });
@@ -254,7 +346,26 @@ let app1 = Vue.createApp({
       });
     },
     product_slick() {
-      $(".product-list").slick({
+      $(".product-list")?.slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              arrows: false,
+            },
+          },
+        ],
+      });
+    },
+    theme_slick() {
+      $(".theme-list")?.slick({
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -273,7 +384,7 @@ let app1 = Vue.createApp({
       });
     },
     jolist_slick() {
-      $(".jo-list").slick({
+      $(".jo-list")?.slick({
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -292,7 +403,45 @@ let app1 = Vue.createApp({
       });
     },
     interest_slick() {
-      $(".product-list.interest").slick({
+      $(".interest-list")?.slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              arrows: false,
+            },
+          },
+        ],
+      });
+    },
+    top10_slick() {
+      $(".top10-list")?.slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              arrows: false,
+            },
+          },
+        ],
+      });
+    },
+    experience_slick() {
+      $(".experience-list")?.slick({
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -330,19 +479,22 @@ let app1 = Vue.createApp({
 
     popularSlick(e) {
       if (window.innerWidth <= 768) {
-        $(".popular-country__list").slick({
+        status = false;
+        $(".popular-country__list")?.slick({
           infinite: true,
           slidesToShow: 2.1,
           slidesToScroll: 2,
         });
       }
     },
+
     renderHeart() {
       // this.jo_list_end = [];
       let that = this;
       $.ajax({
         method: "POST",
         url: "./php/index_renderHeart.php",
+        async: false,
         data: {
           memberID: that.memberID,
         },
@@ -365,12 +517,13 @@ let app1 = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/index_getpopular-number.php",
+        async: false,
         data: {},
         dataType: "json",
         success: function (response) {
           // console.log(response);
           that.popularNumber = response;
-          console.log(that.popularNumber);
+          // console.log(that.popularNumber);
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
@@ -404,6 +557,7 @@ let app1 = Vue.createApp({
     },
 
     clickHeart(pid, e) {
+      console.log(this.memberID);
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
@@ -424,10 +578,10 @@ let app1 = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },
@@ -564,6 +718,7 @@ let app1 = Vue.createApp({
     // if (this.memberID) this.renderHeart();
     // this.heartInit();
     // this.popularSlick();
+    this?.popularSlick();
   },
   beforeUpdate() {
     // this.memberID = header?.memberID;
@@ -578,50 +733,13 @@ let app1 = Vue.createApp({
     // if (this.memberID) this.memberInterest();
     // if (this.memberID) this.renderHeart();
     // this.popularSlick();
-    this.popularSlick();
   },
 });
 app1.component("header-shoppingcart-vue", window.header_component);
 app1.mount(".index");
 
 $(document).ready(function () {
-  // $(".product-list").slick({
-  //   infinite: true,
-  //   slidesToShow: 3,
-  //   slidesToScroll: 3,
-
-  //   responsive: [
-  //     {
-  //       breakpoint: 768,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //         infinite: true,
-  //         arrows: false,
-  //       },
-  //     },
-  //   ],
-  // });
-
-  // $(".jo-list").slick({
-  //   infinite: true,
-  //   slidesToShow: 3,
-  //   slidesToScroll: 3,
-
-  //   responsive: [
-  //     {
-  //       breakpoint: 768,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1,
-  //         infinite: true,
-  //         arrows: false,
-  //       },
-  //     },
-  //   ],
-  // });
-
-  let status = true;
+  // let status = true;
   let currentStatus = status;
   addEventListener("resize", (event) => {
     if (window.innerWidth <= 768) status = false;

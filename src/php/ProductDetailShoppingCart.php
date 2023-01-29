@@ -1,11 +1,10 @@
 <?php
 require_once('connection.php');
-// -----------判斷有無加過購物車---------------
 
-
+// -----------取得會員---------------
 include("Member.php");
-// setMemberInfo(6, "ning");
 getMemberID();
+// -----------如果沒登入:回傳---------------
 if (empty($_SESSION["MemberID"])) {
     echo json_encode('NotFound');
     return;
@@ -30,7 +29,7 @@ foreach ($dataif as $key => $value) {
 // echo ($tempif);
 // -----------如果使用者沒加過購物車---------------
 if ($tempif == 0) {
-    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,date)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}',now())";
+    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,cartStartDay)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}',now())";
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
 }

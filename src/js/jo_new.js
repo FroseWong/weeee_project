@@ -236,12 +236,16 @@ previewBtn.addEventListener("click", function () {
 let app = Vue.createApp({
   data() {
     return {
+      memberID: 0,
       test: "123",
       sightseeingList: [],
     };
   },
   created() {
     this.getdata_product_list();
+  },
+  mounted() {
+    this.get_member_information();
   },
   methods: {
     getdata_product_list() {
@@ -267,7 +271,33 @@ let app = Vue.createApp({
           // console.log(that.sightseeingList);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          that.memberID = response[0].MemberID; // 可在data中設memberID，存下抓到的memberID
+          that.headerFullName = response[0].FullName; // 可在data中設使用者fullname變數，存下抓到的使用者fullname
+          that.headerMemberImg = response[0].MemberImg; // 可在data中設使用者MemberImg變數，存下抓到的使用者MemberImg
+
+          that?.$nextTick(function () {
+            if (!that.memberID) {
+              alert("請先完成登入");
+              location.href = "login.html";
+            }
+            // 放取得到memberID之後，要拿memberID做什麼
+          });
+        },
+        error: function (exception) {
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },

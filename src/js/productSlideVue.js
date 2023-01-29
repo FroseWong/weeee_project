@@ -238,10 +238,10 @@ window.my_component = {
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },

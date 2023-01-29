@@ -120,8 +120,6 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Emily</span>
-                                <img class="img-profile rounded-circle"
-                                    src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -147,22 +145,23 @@
                         <button type="button" class="btn btn-warning new_product" data-toggle="modal" data-target="#newProductModal" >新增商品</button>
                         <div class="row">
                             <div class="col-12">
-                                <input type="text" placeholder="商品名稱" class="product_name filter">
-                                <input type="text" placeholder="商品編號" class="member filter">
-                                <select class="form_select" name="orderStatus" id="orderStatus">
-                                    <option value="using">上架中</option>
-                                    <option value="unuse">已下架</option>
+                                <input type="text" placeholder="商品編號" class="member filter" name="productNumber" id="productNumber">
+                                <input type="text" placeholder="商品名稱" class="product_name filter" name="productName" id="productName">
+                                <select class="form_select" name="productStatus" id="productStatus">
+                                    <option value="">請選擇</option>
+                                    <option value="1">上架中</option>
+                                    <option value="0">已下架</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="row row_bottom">
                             <div class="col-12">
-                                <button type="button" class="filter button_bgc">觀光行程</button>
-                                <button type="button" class="filter button_bgc">體驗活動</button>
-                                <button type="button" class="filter button_bgc">交通票卡</button>
-                                <button type="button" class="filter button_bgc">景點門票</button>
-                                <button type="button" class="btn btn-warning submit_button">搜尋</button>
+                                <button type="button" class="filter button_bgc" id="sightseeing" onclick="toggleProductType(this);">觀光行程</button>
+                                <button type="button" class="filter button_bgc" id="experience" onclick="toggleProductType(this);">體驗活動</button>
+                                <button type="button" class="filter button_bgc" id="transticket" onclick="toggleProductType(this);">交通票卡</button>
+                                <button type="button" class="filter button_bgc" id="viewpointticket" onclick="toggleProductType(this);">景點門票</button>
+                                <button type="button" class="btn btn-warning submit_button" onclick="search();">搜尋</button>
                             </div>
                         </div>
                     </form>
@@ -173,13 +172,13 @@
                             <h6 class="m-0 font-weight-bold list_style">商品列表</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="app">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>商品編號</th>
                                             <th>商品名稱</th>
-                                            <th>最後更新日期</th>
+                                            <th>類別</th>
                                             <th>狀態</th>
                                             <th>動作</th>
                                            
@@ -187,76 +186,17 @@
                                     </thead>
                                     
                                     <tbody>
-                                        <tr>
-                                            <td>PR0001</td>
-                                            <td>北埔一日遊</td>
-                                            <td>2011/04/25</td>
-                                            <td>上架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
+                                        <tr v-for="(product, index) in productList" :key="index">
+                                            <td>{{product.ProductNumber}}</td>
+                                            <td>{{product.ProductName}}</td>
+                                            <td v-if="product.ProductType == 'experience'">體驗活動</td>
+                                            <td v-else-if="product.ProductType == 'sightseeing'">觀光行程</td>
+                                            <td v-else-if="product.ProductType == 'viewpointticket'">景點門票</td>
+                                            <td v-else-if="product.ProductType == 'transticket'">交通票卡</td>
+                                            <td v-if="product.ProductStatus == 1">上架中</td>
+                                            <td v-else>下架中</td>
+                                            <td><a :href="'./detail.html?productID=' + product.ProductID">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
                                             </td> 
-                                        </tr>
-                                        <tr>
-                                            <td>PR0002</td>
-                                            <td>故宮南院門票</td>
-                                            <td>2011/11/20</td>
-                                            <td>上架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
-                                            </td> 
-                                          
-                                        </tr>
-                                        <tr>
-                                            <td>PR0003</td>
-                                            <td>Xpark水生公園</td>
-                                            <td>2013/04/25</td>
-                                            <td>上架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
-                                            </td> 
-                                          
-                                        </tr>
-                                        <tr>
-                                            <td>PR0004</td>
-                                            <td>安平古堡門票</td>
-                                            <td>2020/05/25</td>
-                                            <td>下架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
-                                            </td> 
-                                        
-                                        </tr>
-                                        <tr>
-                                            <td>PR0005</td>
-                                            <td>秀姑巒溪泛舟</td>
-                                            <td>2016/10/21</td>
-                                            <td>下架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
-                                            </td> 
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td>PR0006</td>
-                                            <td>熱情墾丁兩日遊</td>
-                                            <td>2011/04/25</td>
-                                            <td>下架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
-                                            </td> 
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td>PR0007</td>
-                                            <td>花蓮太魯閣三日健行</td>
-                                            <td>2011/04/25</td>
-                                            <td>上架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
-                                            </td> 
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td>PR0008</td>
-                                            <td>屏東大鵬灣跳傘</td>
-                                            <td>2019/01/04</td>
-                                            <td>上架中</td>
-                                            <td><a href="detail.html">編輯<i class="fas fa-pen" style="margin-left: 10px; cursor: pointer;"></i></a>
-                                            </td> 
-                                           
                                         </tr>
                                     </tbody>
                                 </table>
@@ -392,7 +332,111 @@
  
      <!-- Page level custom scripts -->
      <script src="../js/demo/datatables-demo.js"></script>
- 
+
+     <!-- 加入vue -->
+     <script src="../vendor/vue/vue.global.js"></script>
+     <!-- <script src="./vendors/vue/vue.global.prod.js"></script> -->
+
+     <!-- 加入sweet alert -->
+     <script src="../vendor/sweetAlert/sweetalert2.all.min.js"></script>
+    
+     <!-- 加入date picker -->
+     <script src="../vendor/jquery-ui-1.13.2/jquery-ui.js"></script>
+
+    <script>
+    let queryProductTypeList = [];
+    function toggleProductType(e){
+        $(e).toggleClass("button_bgc_focus");
+        if(queryProductTypeList.includes($(e).attr("id"))){
+            var index = queryProductTypeList.indexOf($(e).attr("id"));
+            queryProductTypeList.splice(index, 1);
+        }else{
+            queryProductTypeList.push($(e).attr("id"));
+        }
+        console.log(queryProductTypeList);
+    }
+    
+    
+      let dataTable;
+      let productList;
+      
+      //一進到此頁面，發請求去資料庫要所有會員資料
+      $.ajax({
+        method: "GET",
+        url: "../php/query_product.php",
+        async: false, //開啟同步化功能，讓response先回來，再走下面的初始化vue
+        data: {},
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          productList = response;
+        },
+      });
+
+      const RootComponent = {
+        data() {
+          // 用vue把下列資料顯示在html上
+          return {
+            productList: productList,
+          };
+        },
+        // methods: {
+        //     toggleStatus: function(memberNumber){
+               
+        //         Swal.fire({
+        //             position: "center",
+        //             icon: "success",
+        //             title: "修改成功",
+        //             showConfirmButton: false,
+        //             timer: 1000,
+        //         }).then(function(){
+        //             window.location.href = "../php/memberStatusToggle.php?memberNumber=" + memberNumber;
+        //         });
+        //     }
+        // },
+        mounted() {
+          // 掛載完成後，初始化DataTable
+          dataTable = $("#dataTable").DataTable();
+        },
+        beforeUpdate() {
+          // 更新資料之前，將舊的DataTable毀掉
+          dataTable.destroy();
+        },
+        updated() {
+          // 新的資料更新完後，再重新初始化DataTable
+          dataTable = $("#dataTable").DataTable();
+        },
+      };
+
+      var app = Vue.createApp(RootComponent);
+      var vm = app.mount("#app"); //如果想操控這個vue，都需要透過vm
+
+      function search() {
+        $.ajax({
+          data: {
+            productName: document.getElementById("productName").value,
+            productNumber: document.getElementById("productNumber").value,
+            productStatus: document.getElementById("productStatus").value,
+            productType: queryProductTypeList
+          },
+          url: "../php/query_product.php",
+          async: false,
+          method: "GET",
+          dataType: "json",
+          success: function (response) {
+            console.log(123);
+            vm.$data.productList = response;
+          },
+          error: function(err) {
+            console.log(err);
+          }
+        });
+
+        return; //serach()這個方法結束了
+      }
+    </script>
+
+
 
 </body>
 

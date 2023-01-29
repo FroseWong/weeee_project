@@ -14,7 +14,7 @@ if($JoUseWeeee==1) $targettravelID = $_POST['targettravelID'];
 $img = $_POST['img'];
 $imgName = $_POST['imgName'];
 
-$MemberID = 1;
+$MemberID = $_POST['memberID'];
 // $JoUseWeee = 1;
 $JoImg = './img/jo/'.$imgName;
 
