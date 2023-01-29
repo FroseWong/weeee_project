@@ -6,10 +6,12 @@ $memberID = getMemberID();
 include("connection.php");
 
 //建立SQL語法
-$sql = "SELECT  Product.Location, Product.ProductName, Product.ProductSecondType, Product.ProductText, Product.ProductPrice, Favor.FavorID
+$sql = "SELECT  Product.Location, Product.ProductName, Product.ProductSecondType, Product.ProductText, Product.ProductPrice, Favor.FavorID, ProductImg.ProductImgPath1
 from Favor
 inner join Product
 on Favor.ProductID = Product.ProductID 
+inner join ProductImg
+on Product.ProductID = ProductImg.ProductID
 WHERE MemberID = ? and FavorStatus = 1;";
 
 
