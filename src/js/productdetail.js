@@ -149,10 +149,10 @@ const app = Vue.createApp({
       productdetailAddress: 0,
       productReview: 0,
       commentlength: 0,
+      commentscore: 0,
       comments: [1, 2, 3, 4],
       commentID: "",
       ProductDetail_breadcrumb: "",
-      commentActif: true,
     };
   },
   methods: {
@@ -388,7 +388,7 @@ const app = Vue.createApp({
     pelple_plus() {
       this.modalPeople++;
     },
-    // ---------------結帳寫入sessionStorage---------------
+    // ---------------結帳判斷登入---------------
     modal_checkout() {
       _this = this;
       let urlParams = new URLSearchParams(window.location.search);
@@ -404,7 +404,7 @@ const app = Vue.createApp({
             alert("請先登入再購買");
             window.location.href = "./login.html";
           } else if (response == true) {
-            _this.checkoutfun();
+            _this.checkout_fun();
           }
         },
         error: function (exception) {},
@@ -425,12 +425,12 @@ const app = Vue.createApp({
         this.winSize = window.innerWidth;
         // console.log(this.winSize);
         if (this.winSize <= 768) {
-          console.log(this.winSize);
+          // console.log(this.winSize);
           _this.display_scroll();
         }
         if (this.winSize >= 768) {
           _this.display_scroll2();
-          console.log(this.winSize);
+          // console.log(this.winSize);
         }
       });
     },
@@ -500,7 +500,8 @@ const app = Vue.createApp({
             });
             _this.$nextTick(function () {
               _this.productdetail_slideshow();
-              _this.commentfun();
+              _this.ajax_Comment();
+              _this.comment_fun();
               _this.display_scroll();
               _this.display_scroll2();
             });
@@ -588,11 +589,12 @@ const app = Vue.createApp({
           if (response == "NotFound") {
             alert("請先登入再加入購物車");
             window.location.href = "./login.html";
+          } else if (response == "ok") {
+            _this.cart_swal();
           }
         },
         error: function (exception) {},
       });
-      this.cartswal();
     },
     // ---------------評論---------------
     ajax_Comment() {
@@ -646,13 +648,12 @@ const app = Vue.createApp({
           });
           _this.messages = arrcom;
           // _this.commentlength = response.length;
-          _this.commentlength = 10;
         },
         error: function (exception) {},
       });
     },
     // ---------------點擊購物車後觸發---------------
-    cartswal() {
+    cart_swal() {
       $("#peopleModal").modal("hide");
       const Toast = Swal.mixin({
         toast: true,
@@ -672,7 +673,7 @@ const app = Vue.createApp({
       header.get_member_information();
     },
     // ---------------點擊分頁後觸發---------------
-    commentfun() {
+    comment_fun() {
       let comment = 0;
       let urlParams = new URLSearchParams(window.location.search);
       comment = urlParams.get("comment");
@@ -685,7 +686,8 @@ const app = Vue.createApp({
         });
       }
     },
-    checkoutfun() {
+    // ---------------結帳寫入sessionstorage---------------
+    checkout_fun() {
       let time = this.$refs.timePicker.value;
       let newDate = "";
       if (time == "") {
@@ -724,6 +726,52 @@ const app = Vue.createApp({
       sessionStorage.setItem("checkout_data", JSON.stringify(checkout_data));
       window.location.href = "./payment.html";
     },
+    // ---------------判斷分頁---------------
+    page_judge() {
+      let urlParams = new URLSearchParams(window.location.search);
+      comment = urlParams.get("comment");
+      if(comment==null)
+      {
+        comment=1;
+      }
+      comment = comment - 1;
+      let page = this.$refs.commentA;
+      page[comment].classList.add("commentAct");
+    },
+    // ---------------評論筆數---------------
+    commentNum() {
+      _this = this;
+      let num = 0;
+      let urlParams = new URLSearchParams(window.location.search);
+      num = urlParams.get("id");
+      function roundToTwo(num) {
+        return +(Math.round(num + "e+1") + "e-1");
+      }
+      $.ajax({
+        method: "POST",
+        url: "php/ProductDetailNum.php",
+        async:false,
+        data: {
+          pid: num,
+          comment: comment,
+        },
+        dataType: "text",
+        success: function (response) {
+          console.log(response);
+          toarr = response.split(",");
+          console.log(toarr);
+          let result = toarr.map(function (x) {
+            return parseFloat(x, 10);
+          });
+          console.log(result[0]);
+          console.log(result[1]);
+          _this.commentlength = result[0];
+          _this.commentscore = roundToTwo(result[1]);
+        },
+
+        error: function (exception) {},
+      });
+    },
   },
   computed: {
     // ---------------總金額---------------
@@ -737,14 +785,14 @@ const app = Vue.createApp({
     },
   },
   mounted() {
-    this.field_mark();
-    this.product_list();
-    // this.display_scroll();
-    this.time_fun();
-    this.winSize_watch();
     this.ajax_post();
     this.ajax_heart_show();
-    this.ajax_Comment();
+    this.page_judge();
+    this.field_mark();
+    this.product_list();
+    this.time_fun();
+    this.winSize_watch();
+    this.commentNum();
   },
 });
 app.mount("#app");
