@@ -160,6 +160,14 @@
                                         <input type="text" id="productNumber"  class=" filter readonly readonly_height" readonly="readonly">
                                     </div>
                                     <div class="col-3">
+                                        <label for="from" class="form_label">商品狀態</label>
+                                        <br>
+                                        <input type="text" id="productStatus"  class=" filter readonly readonly_height" readonly="readonly">
+                                    </div> 
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3">
                                         <label for="from" class="form_label">商品名稱</label>
                                         <br>
                                         <input type="text" id="productName" class=" filter">
@@ -168,13 +176,13 @@
                                         <label for="from" class="form_label">商品單價</label>
                                         <br>
                                         <input type="text" id="productPrice" class=" filter">
-                                    </div>                
-                                </div>
+                                    </div>                                                    
+                                </div>                              
                             </form>
                             
                         </div>
                     </div>
-                    <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;">下架商品</button>
+                    <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;" onclick="toggleStatus()"><span id="update"></span></button>
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -294,6 +302,10 @@
      <!-- Page level plugins -->
      <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
      <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+     
+     <!-- 加入sweet alert -->
+     <script src="../vendor/sweetAlert/sweetalert2.all.min.js"></script>
+     
      <script>
         // $(document).ready(function () {
         //     $('#dataTable').DataTable({
@@ -320,6 +332,7 @@
                 $("#productNumber").val(response.ProductNumber);
                 $("#productName").val(response.ProductName);
                 $("#productPrice").val(response.ProductPrice);
+                $("#productStatus").val(response.ProductStatus == 1?"上架中": "下架中");
 
             //     let tbody = document.getElementById("tbody");
             //     for (let i = 0; i < response.JoCommentList.length; i++) {
@@ -336,8 +349,28 @@
             //     tbody.insertAdjacentHTML("beforeend", detail_jo);
             // }
             $("#dataTable").DataTable();
+            let update = document.getElementById("update");
+            let productStatus = document.getElementById("productStatus").value;
+            if(productStatus == "上架中"){
+                $("#update").html("下架商品");
+            }else{
+                $("#update").html("上架商品");
+            }
             },
         });
+
+        function toggleStatus(){
+            Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "修改成功",
+                    showConfirmButton: false,
+                    timer: 1000,
+                }).then(function(){
+                    window.location.href = "../php/productStatusToggle.php?productID=" + productID;
+                });
+        }
+       
      </script>
 </body>
 
