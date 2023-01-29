@@ -212,9 +212,34 @@ let app = Vue.createApp({
   created() {
     this.getdata_product_list();
     this.getjoid();
-    this.getinfo();
   },
   methods: {
+    get_member_information() {
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/headerGetmember.php",
+        data: {
+          // memberID: that.memberID,
+        },
+        dataType: "json",
+        success: function (response) {
+          // console.log("success");
+          // console.log(response);
+          // console.log(this.data);
+          // console.log(response[0]);
+          // that.headercounter = response[0].COUNT;
+          that.memberID = response[0].MemberID;
+
+          that?.$nextTick(function () {
+            if (that.memberID) that.getinfo();
+          });
+        },
+        error: function (exception) {
+          alert("數據載入失敗: " + exception.status);
+        },
+      });
+    },
     getdata_product_list() {
       // this.jo_list_hot = [];
       let that = this;
@@ -252,6 +277,7 @@ let app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/jo_revise_getinfo.php",
+        async: false,
         data: {
           memberID: header.memberID,
           jid: that.jid,
@@ -259,6 +285,7 @@ let app = Vue.createApp({
 
         dataType: "json",
         success: function (response) {
+          // console.log(response);
           //   console.log(response[0]);
           //   console.log(that.sightseeingList);
           joAttendInput.value = response[0].JoAttend;
@@ -297,6 +324,7 @@ let app = Vue.createApp({
     },
   },
   mounted() {
+    this.get_member_information();
     // console.log(this.jid);
     weeee = this;
   },
