@@ -121,73 +121,74 @@ createApp({
       let msort = urlParams.get("msort");
       let ssort = urlParams.get("ssort");
       let local = urlParams.get("local");
-      console.log(ssort);
-      console.log(local);
-      if (msort == "ss") {
-        switch (true) {
-          case ssort == "fr":
-            this.checked.select_secondType.push("朋友行程");
-            break;
-          case ssort == "fa":
-            this.checked.select_secondType.push("家庭行程");
-            break;
-          case ssort == "co":
-            this.checked.select_secondType.push("情侶行程");
-            break;
-          case ssort == "pe":
-            this.checked.select_secondType.push("寵物行程");
-            break;
+      if (ssort){
+        if (msort == "ss") {
+          switch (true) {
+            case ssort == "fr":
+              this.checked.select_secondType.push("朋友行程");
+              break;
+            case ssort == "fa":
+              this.checked.select_secondType.push("家庭行程");
+              break;
+            case ssort == "co":
+              this.checked.select_secondType.push("情侶行程");
+              break;
+            case ssort == "pe":
+              this.checked.select_secondType.push("寵物行程");
+              break;
+          }
+        }
+        if (msort == "ep") {
+          switch (true) {
+            case ssort == "hm":
+              this.checked.select_secondType.push("手作體驗");
+              break;
+            case ssort == "ow":
+              this.checked.select_secondType.push("水上活動");
+              break;
+            case ssort == "fa":
+              this.checked.select_secondType.push("觀光農場");
+              break;
+            case ssort == "et":
+              this.checked.select_secondType.push("極限運動");
+              break;
+          }
+        }
+        if (msort == "tt") {
+          switch (true) {
+            case ssort == "un":
+              this.checked.select_secondType.push("無限暢遊卡");
+              break;
+            case ssort == "vp":
+              this.checked.select_secondType.push("景點暢遊卡");
+              break;
+            case ssort == "tr":
+              this.checked.select_secondType.push("交通暢遊卡");
+              break;
+            case ssort == "cl":
+              this.checked.select_secondType.push("經典暢遊卡");
+              break;
+          }
+        }
+        if (msort == "vp") {
+          switch (true) {
+            case ssort == "th":
+              this.checked.select_secondType.push("主題樂園");
+              break;
+            case ssort == "aq":
+              this.checked.select_secondType.push("水族館");
+              break;
+            case ssort == "mu":
+              this.checked.select_secondType.push("博物館");
+              break;
+            case ssort == "ar":
+              this.checked.select_secondType.push("美術館");
+              break;
+          }
         }
       }
-      if (msort == "ep") {
-        switch (true) {
-          case ssort == "hm":
-            this.checked.select_secondType.push("手作體驗");
-            break;
-          case ssort == "ow":
-            this.checked.select_secondType.push("水上活動");
-            break;
-          case ssort == "fa":
-            this.checked.select_secondType.push("觀光農場");
-            break;
-          case ssort == "et":
-            this.checked.select_secondType.push("極限運動");
-            break;
-        }
-      }
-      if (msort == "tt") {
-        switch (true) {
-          case ssort == "un":
-            this.checked.select_secondType.push("無限暢遊卡");
-            break;
-          case ssort == "vp":
-            this.checked.select_secondType.push("景點暢遊卡");
-            break;
-          case ssort == "tr":
-            this.checked.select_secondType.push("交通暢遊卡");
-            break;
-          case ssort == "cl":
-            this.checked.select_secondType.push("經典暢遊卡");
-            break;
-        }
-      }
-      if (msort == "vp") {
-        switch (true) {
-          case ssort == "th":
-            this.checked.select_secondType.push("主題樂園");
-            break;
-          case ssort == "aq":
-            this.checked.select_secondType.push("水族館");
-            break;
-          case ssort == "mu":
-            this.checked.select_secondType.push("博物館");
-            break;
-          case ssort == "ar":
-            this.checked.select_secondType.push("美術館");
-            break;
-        }
-      }
-      if(local.length>1){
+
+      if(local){
         this.checked.select_city.push(local)
       }
     },
@@ -573,7 +574,7 @@ createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);

@@ -35,10 +35,10 @@ $sql =
 "SELECT * from (
     SELECT p.ProductID,p.ProductName, p.ProductPrice, p.ProductText, p.Location, p.ProductSecondType, i.ProductImgPath1 ,p.ProductPurchased, p.ProductScoredPeople
     FROM Product p
-    join ProductImg i 
+    left join ProductImg i 
     on p.ProductID =  i.ProductID
     where p.ProductStatus = 1 and p.ProductType = ?  ) a
-    join(
+    left join(
     select ProductID, avg(ProductCommentScore) as score
     from ProductComment 
     group by ProductID) b
