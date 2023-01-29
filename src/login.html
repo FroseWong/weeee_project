@@ -48,7 +48,7 @@
                 class="submit"
                 type="button"
                 value="登入"
-                onclick="return doSubmit();"
+                onclick="doSubmit()"
               />
             </form>
             <div class="logincheckbox">
@@ -133,6 +133,9 @@
       </footer> -->
     </div>
 
+    <script src="./vender/vue/vue.global.js"></script>
+    <script src="./vender/jquery/jquery.min.js"></script>
+    <script src="./js/header.js"></script>
     <script src="./js/login.js"></script>
     <script>
       function doSubmit() {
@@ -165,8 +168,5 @@
         });
       }
     </script>
-    <script src="./vender/vue/vue.global.js"></script>
-    <script src="./vender/jquery/jquery.min.js"></script>
-    <script src="./js/header.js"></script>
   </body>
 </html>

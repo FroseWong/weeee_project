@@ -285,7 +285,7 @@ let app = Vue.createApp({
 
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           //   console.log(response[0]);
           //   console.log(that.sightseeingList);
           joAttendInput.value = response[0].JoAttend;
