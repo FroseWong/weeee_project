@@ -213,6 +213,8 @@ CREATE TABLE `Member` (
   `Onwater` tinyint DEFAULT NULL,
   `Farm` tinyint DEFAULT NULL,
   `Extreme` tinyint DEFAULT NULL,
+  `code` mediumint DEFAULT NULL,
+  `status` text,
   PRIMARY KEY (`MemberID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -223,7 +225,7 @@ CREATE TABLE `Member` (
 
 LOCK TABLES `Member` WRITE;
 /*!40000 ALTER TABLE `Member` DISABLE KEYS */;
-INSERT INTO `Member` VALUES (1,'jerry@gmail.com','jerry','品元','陳','陳品元','Pin-Yuan','Chen','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/jo_leader1.jpg','ME0001',0,'315438771','汐止國',0,0,1,0,0,0,0,1),(2,'hans@gmail.com','hans','瀚頤','蔡','蔡瀚頤','Han-Yi','Tsai','0976234986','1990-12-04','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0002',1,'12345','新加坡',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'frose@gmail.com','frose','勝傑','張','張勝傑','frose','Chang','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0003',0,'315438771','汐止國',1,0,1,0,0,1,0,1),(4,'jimmy@gmail.com','jimmy','源俊','初','初源俊','jimmy','Chu','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'emily@gmail.com','emily','奕璇','陳','陳奕璇','emily','Chen','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'ning@gmail.com','ning','子寧','郭','郭子寧','ning','Kuo','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'sally@gmail.com','sally','秀宣','戴','戴秀宣','sally','Dai','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0007',NULL,'','',0,0,0,0,0,0,0,0);
+INSERT INTO `Member` VALUES (1,'jerry@gmail.com','jerry','品元','陳','陳品元','Pin-Yuan','Chen','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/jo_leader1.jpg','ME0001',0,'315438771','汐止國',0,0,1,0,0,0,0,1,NULL,NULL),(2,'hans@gmail.com','hans','瀚頤','蔡','蔡瀚頤','Han-Yi','Tsai','0976234986','1990-12-04','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0002',1,'12345','新加坡',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'frose@gmail.com','frose','勝傑','張','張勝傑','frose','Chang','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0003',0,'315438771','汐止國',1,0,1,0,0,1,0,1,NULL,NULL),(4,'jimmy@gmail.com','jimmy','源俊','初','初源俊','jimmy','Chu','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'emily@gmail.com','emily','奕璇','陳','陳奕璇','emily','Chen','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'ning@gmail.com','ning','子寧','郭','郭子寧','ning','Kuo','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'sally@gmail.com','sally','秀宣','戴','戴秀宣','sally','Dai','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0007',NULL,'','',0,0,0,0,0,0,0,0,NULL,NULL);
 /*!40000 ALTER TABLE `Member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-30 20:34:43
+-- Dump completed on 2023-01-31  1:31:32

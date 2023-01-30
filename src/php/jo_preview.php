@@ -67,18 +67,18 @@ $data1 = $statement->fetchAll();
  rename($output_file,$filepath);
 
  // Convert base64 string to an image
- $ifp = fopen($output_file, "wb"); 
- $data = explode(',', $img); // $img是base64
- fwrite($ifp, base64_decode($data[1])); 
- fclose($ifp); 
+//  $ifp = fopen($output_file, "wb"); 
+//  $data = explode(',', $img); // $img是base64
+//  fwrite($ifp, base64_decode($data[1])); 
+//  fclose($ifp); 
 
  //存圖片在src
- $folder = "../../src/img/jo/";
- $filepath = $folder.$output_file;
- if(!file_exists($folder)) {
-    mkdir($folder, 0777, true);
-}
-rename($output_file,$filepath);
+//  $folder = "../../src/img/jo/";
+//  $filepath = $folder.$output_file;
+//  if(!file_exists($folder)) {
+//     mkdir($folder, 0777, true);
+// }
+// rename($output_file,$filepath);
 
 echo json_encode($data1);
 
