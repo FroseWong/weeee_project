@@ -26,7 +26,7 @@
           <div class="left_bar">
             <div class="img_block">
               <div class="mem_img" id="mem_img"></div>
-              <h5>陳品元元</h5>
+              <h5 id="fullName"></h5>
             </div>
             <div class="page_list">
               <ul>
@@ -224,6 +224,8 @@
       </div>
     </div>
     <script src="vender/jquery/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="js/header.js"></script>
     <script>
       
       //會員一進到此頁面，就發送請求到後端取資料
@@ -254,8 +256,9 @@
                 farm: response.Farm ? true : false,
                 extreme: response.Extreme ? true : false
               },
-              image: "img/jo/jo_member4.jpg" 
+             
             }
+            $("#fullName").html(person.lastName + person.firstName);
             $("#lastName").val(person.lastName);
             $("#firstName").val(person.firstName);
             $("#sex").val(person.sex);
@@ -267,7 +270,7 @@
             $("#username").val(person.username);
             $("#birthDate").val(person.birthDate);
             $("#friend").attr("checked", person.interest.friend);
-            $("family").attr("checked", person.interest.family);
+            $("#family").attr("checked", person.interest.family);
             $("#couple").attr("checked", person.interest.couple);
             $("#pet").attr("checked", person.interest.pet);
             $("#handmade").attr("checked", person.interest.handmade);
