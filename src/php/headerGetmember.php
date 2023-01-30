@@ -39,13 +39,26 @@ $sql =  "SELECT * FROM
 	FROM Member m 
 	WHERE m.MemberID = $memberID) m
 	LEFT JOIN
-	(SELECT count(*) ,ca.memberid
-	FROM cart ca
-	join product p
-	on ca.productID = p.productID
+	(SELECT count(*) ,ca.MemberID
+	FROM Cart ca
+	join Product p
+	on ca.ProductID = p.ProductID
 	where p.ProductStatus = 1
-	GROUP BY memberid) c
-	ON m.memberid = c.memberid";
+	GROUP BY MemberID) c
+	ON m.MemberID = c.MemberID";
+
+// $sql =  "SELECT * FROM 
+// 	( SELECT m.MemberID, m.FullName, m.MemberImg 
+// 	FROM Member m 
+// 	WHERE m.MemberID = 3) m
+// 	LEFT JOIN
+// 	(SELECT count(*) ,ca.MemberID
+// 	FROM Cart ca
+// 	join Product p
+// 	on ca.ProductID = p.ProductID
+// 	where p.ProductStatus = 1
+// 	GROUP BY MemberID) c
+// 	ON m.MemberID = c.MemberID";
 
 
 $statement = $pdo->prepare($sql);
@@ -55,6 +68,7 @@ $data = $statement->fetchAll();
 
 // echo json_encode($_SESSION["MemberID"]);
 echo json_encode($data);
+
 
 // echo json_encode($memberID);
 

@@ -133,7 +133,6 @@ const app = Vue.createApp({
     this.getjoid();
     this.getdata_jo_list();
     this.getdata_jo_comment();
-    this.getdata_product_list();
   },
   methods: {
     get_member_information() {
@@ -309,12 +308,17 @@ const app = Vue.createApp({
           that.JoDetailedAddressed = response[0].JoDetailedAddressed;
           that.JoAttend = response[0].JoAttend;
           that.JoContact = response[0].JoContact;
-          that.JoUseWeeee = response[0].JoUseWeeee;
+          that.JoUseWeeee =
+            response[0].JoUseWeeee === "0" ? false : response[0].JoUseWeeee;
           that.JoProductID = response[0].ProductID;
           that.JoContent = response[0].JoContent;
           that.FullName = response[0].FullName;
           that.week = response[0].week;
           that.MemberImg = response[0].MemberImg;
+
+          that?.$nextTick(function () {
+            that?.getdata_product_list();
+          });
           // console.log(that.product);
 
           // for (let i = 0; i < response.length; i++) {

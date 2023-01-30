@@ -19,59 +19,59 @@
   <body>
     @@include('layout/header.html')
     <div class="wrapper jo_detail">
-      <d v-cloak>
-      <div class="container jo_container">
-        <h1 class="nb jo__title">{{JoTitle}}</h1>
-        <!-- <div class="jo__img"></div> -->
-        <div class="jo_new__addimg">
-          <div class="img-space">
-            <img :src="JoImg" class="preview" />
-          </div>
-        </div>
-        <div class="jo__content">{{JoContent}}</div>
-        <div class="jo-leader">
-          <div class="jo-leader__top">
-            <div class="jo-leader__top__left">
-              <div
-                class="jo-leader-img"
-                :style="{ backgroundImage: 'url(' + MemberImg+ ')' }"
-              ></div>
-              <div class="jo-leader-name">{{FullName}}</div>
-            </div>
-            <div class="jo-leader__top__right">
-              <span class="jo-start-date"
-                ><i class="fa-solid fa-calendar-days"></i>{{JoStartDate}}
-                {{week}} {{JoStartTime}}</span
-              >
-              <span class="jo-location"
-                ><i class="fa-solid fa-location-dot"></i>{{Location}}</span
-              >
-              <span class="jo-detailaddress"
-                ><i class="fa-solid fa-map-location-dot"></i
-                >{{JoDetailedAddressed}}</span
-              >
-              <span class="jo-number"
-                ><i class="fa-solid fa-person"></i>{{JoAttend}}人</span
-              >
+      <div v-cloak>
+        <div class="container jo_container">
+          <h1 class="nb jo__title">{{JoTitle}}</h1>
+          <!-- <div class="jo__img"></div> -->
+          <div class="jo_new__addimg">
+            <div class="img-space">
+              <img :src="JoImg" class="preview" />
             </div>
           </div>
-          <div class="jo-leader__bottom">
-            <div class="jo-leader__bottom__left">
-              <button class="contact-leader yellowBtn" @click="contactLeader">
-                我想聯絡團主
-              </button>
+          <div class="jo__content">{{JoContent}}</div>
+          <div class="jo-leader">
+            <div class="jo-leader__top">
+              <div class="jo-leader__top__left">
+                <div
+                  class="jo-leader-img"
+                  :style="{ backgroundImage: 'url(' + MemberImg+ ')' }"
+                ></div>
+                <div class="jo-leader-name">{{FullName}}</div>
+              </div>
+              <div class="jo-leader__top__right">
+                <span class="jo-start-date"
+                  ><i class="fa-solid fa-calendar-days"></i>{{JoStartDate}}
+                  {{week}} {{JoStartTime}}</span
+                >
+                <span class="jo-location"
+                  ><i class="fa-solid fa-location-dot"></i>{{Location}}</span
+                >
+                <span class="jo-detailaddress"
+                  ><i class="fa-solid fa-map-location-dot"></i
+                  >{{JoDetailedAddressed}}</span
+                >
+                <span class="jo-number"
+                  ><i class="fa-solid fa-person"></i>{{JoAttend}}人</span
+                >
+              </div>
             </div>
-            <div class="jo-leader__bottom__right">
-              <div class="contact-detail">
-                <span class="contact-title">聯絡方式</span>
-                <br />
-                <span>{{JoContact}}</span>
+            <div class="jo-leader__bottom">
+              <div class="jo-leader__bottom__left">
+                <button class="contact-leader yellowBtn" @click="contactLeader">
+                  我想聯絡團主
+                </button>
+              </div>
+              <div class="jo-leader__bottom__right">
+                <div class="contact-detail">
+                  <span class="contact-title">聯絡方式</span>
+                  <br />
+                  <span>{{JoContact}}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- <h3 class="useweeee__title">我們的行程</h3>
+          <!-- <h3 class="useweeee__title">我們的行程</h3>
 
          <div class="useweeee">
           <a href="./productdetail.html" class="product-card-row">
@@ -98,87 +98,87 @@
           </a>
         </div>  -->
 
-        <template v-if="JoUseWeeee">
-          <h3 class="useweeee__title">我們的行程</h3>
+          <template v-if="JoUseWeeee">
+            <h3 class="useweeee__title">我們的行程</h3>
 
-          <div class="useweeee">
-            <a
-              class="product-card-row"
-              @click="gotoproductDetail(product.ProductID)"
-            >
-              <div class="product-card-row__left">
-                <div class="product-card-row__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="p__location">{{product.Location}}</p>
+            <div class="useweeee">
+              <a
+                class="product-card-row"
+                @click="gotoproductDetail(product.ProductID)"
+              >
+                <div class="product-card-row__left">
+                  <div class="product-card-row__location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="p__location">{{product.Location}}</p>
+                  </div>
+                  <div class="product-card-row__left__pic">
+                    <div
+                      v-if="product.ProductImgPath1"
+                      class="product-card-row__picsrc"
+                      :style="{ backgroundImage: 'url(' + product.ProductImgPath1+ ')' }"
+                    ></div>
+                  </div>
                 </div>
-                <div class="product-card-row__left__pic">
+                <div class="product-card-row__right">
                   <div
-                    v-if="product.ProductImgPath1"
-                    class="product-card-row__picsrc"
-                    :style="{ backgroundImage: 'url(' + product.ProductImgPath1+ ')' }"
-                  ></div>
+                    class="change-heart"
+                    ref="changeHeart"
+                    :class="{'clicked':favorProductList.includes(product.ProductID) }"
+                    @click="clickHeart(product.ProductID,$event)"
+                  >
+                    <i class="fa-regular fa-heart" ref="hollow"></i>
+                    <i class="fa-solid fa-heart orange" ref="solid"></i>
+                  </div>
+                  <div class="product-name">
+                    {{product.Location}}{{product.ProductName}}
+                  </div>
+                  <div class="product-tag">{{product.ProductSecondType}}</div>
+                  <div class="product__text">{{product.ProductText}}</div>
+
+                  <span class="gray"
+                    ><i class="fa-solid fa-star"></i
+                    >4.4({{product.ProductScoredPeople}}) |
+                    <span class="product-bought"
+                      >{{Number(product.ProductPurchased) >= 1000 ?
+                      Math.trunc(Number(product.ProductPurchased)/1000) + 'K+':
+                      product.ProductPurchased}}</span
+                    >個已訂購
+                  </span>
+                  <span class="price"
+                    >TWD <span class="product-price"> 123</span>元</span
+                  >
                 </div>
-              </div>
-              <div class="product-card-row__right">
+              </a>
+            </div>
+          </template>
+
+          <h3 class="saysomething__title">有什麼想跟團主說的嗎?</h3>
+          <textarea
+            class="saysomething__content"
+            name="content"
+            id="content"
+            cols="30"
+            rows="5"
+            placeholder="留下你的留言"
+            ref="saysomething__content"
+          ></textarea>
+          <button class="saysomething__send yellowBtn" @click="saysomething">
+            送出留言
+          </button>
+
+          <div class="jo__comment__list" ref="jo__comment__list">
+            <div class="jo__comment" v-for="(jc,i) in JoCommentArr" :key="i">
+              <div class="jo__comment__left">{{jc.JoCommentContent}}</div>
+              <div class="jo__comment__right">
                 <div
-                  class="change-heart"
-                  ref="changeHeart"
-                  :class="{'clicked':favorProductList.includes(product.ProductID) }"
-                  @click="clickHeart(product.ProductID,$event)"
-                >
-                  <i class="fa-regular fa-heart" ref="hollow"></i>
-                  <i class="fa-solid fa-heart orange" ref="solid"></i>
-                </div>
-                <div class="product-name">
-                  {{product.Location}}{{product.ProductName}}
-                </div>
-                <div class="product-tag">{{product.ProductSecondType}}</div>
-                <div class="product__text">{{product.ProductText}}</div>
-
-                <span class="gray"
-                  ><i class="fa-solid fa-star"></i
-                  >4.4({{product.ProductScoredPeople}}) |
-                  <span class="product-bought"
-                    >{{Number(product.ProductPurchased) >= 1000 ?
-                    Math.trunc(Number(product.ProductPurchased)/1000) + 'K+':
-                    product.ProductPurchased}}</span
-                  >個已訂購
-                </span>
-                <span class="price"
-                  >TWD <span class="product-price"> 123</span>元</span
-                >
+                  class="member-img"
+                  :style="{ backgroundImage: 'url(' + jc.MemberImg+ ')' }"
+                ></div>
+                <div class="member-name">{{jc.FullName}}</div>
+                <div class="member-leavetime">{{jc.JoCommentTime}}</div>
               </div>
-            </a>
-          </div>
-        </template>
-
-        <h3 class="saysomething__title">有什麼想跟團主說的嗎?</h3>
-        <textarea
-          class="saysomething__content"
-          name="content"
-          id="content"
-          cols="30"
-          rows="5"
-          placeholder="留下你的留言"
-          ref="saysomething__content"
-        ></textarea>
-        <button class="saysomething__send yellowBtn" @click="saysomething">
-          送出留言
-        </button>
-
-        <div class="jo__comment__list" ref="jo__comment__list">
-          <div class="jo__comment" v-for="(jc,i) in JoCommentArr" :key="i">
-            <div class="jo__comment__left">{{jc.JoCommentContent}}</div>
-            <div class="jo__comment__right">
-              <div
-                class="member-img"
-                :style="{ backgroundImage: 'url(' + jc.MemberImg+ ')' }"
-              ></div>
-              <div class="member-name">{{jc.FullName}}</div>
-              <div class="member-leavetime">{{jc.JoCommentTime}}</div>
             </div>
-          </div>
-          <!-- <div class="jo__comment">
+            <!-- <div class="jo__comment">
             <div class="jo__comment__left">
               挖!!!這看起來好好玩喔~我也想參加，已寄email給團主，希望可以一起去玩
             </div>
@@ -188,7 +188,7 @@
               <div class="member-leavetime">2022/12/11</div>
             </div>
           </div> -->
-          <!-- <div class="jo__comment">
+            <!-- <div class="jo__comment">
             <div class="jo__comment__left">
               挖!!!這看起來好好玩喔~我也想參加，已寄email給團主，希望可以一起去玩
             </div>
@@ -198,14 +198,14 @@
               <div class="member-leavetime">2022/12/11</div>
             </div>
           </div> -->
+          </div>
         </div>
+        @@include('layout/footer.html')
       </div>
-      @@include('layout/footer.html')
-    </div>
     </div>
     <!-- </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="./vender/vue/vue.global.prod.js"></script>
+    <script src="./vender/vue/vue.global.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/jo_detail.js"></script>
   </body>

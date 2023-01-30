@@ -59,10 +59,11 @@ const apph = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           // that.headercounter = response[0].COUNT;
+          console.log(response);
+
           that.memberID = response[0].MemberID;
           that.headerFullName = response[0].FullName;
           that.headerMemberImg = response[0].MemberImg;
