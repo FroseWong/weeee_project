@@ -136,7 +136,7 @@ const apph = Vue.createApp({
         dataType: "json",
         success: function (response) {
           alert("您已成功登出");
-          location.href = "../dist/index.html";
+          location.href = "./index.html";
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
