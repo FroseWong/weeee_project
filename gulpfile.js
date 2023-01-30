@@ -14,13 +14,13 @@ const reload = browserSync.reload;
 
 //搬家語法
 function move() {
-  return src("src/index.html").pipe(dest("dist"));
+  return src("src/index.html").pipe(dest("frontend"));
 }
 exports.m = move;
 
 // 清除舊檔案
 function clear() {
-  return src("dist", { read: false, allowEmpty: true }) //不去讀檔案結構，增加刪除效率  / allowEmpty : 允許刪除空的檔案
+  return src("frontend", { read: false, allowEmpty: true }) //不去讀檔案結構，增加刪除效率  / allowEmpty : 允許刪除空的檔案
     .pipe(clean({ force: true })); //強制刪除檔案
 }
 
@@ -28,19 +28,19 @@ exports.c = clear;
 
 //  css minify
 function cssminify() {
-  return src("src/css/style.css").pipe(cleanCSS()).pipe(dest("dist/css"));
+  return src("src/css/style.css").pipe(cleanCSS()).pipe(dest("frontend/css"));
 }
 
 exports.cssm = cssminify;
 
 // js minify
 function jsmini() {
-  return src("src/js/*.js").pipe(uglify()).pipe(dest("dist/js"));
+  return src("src/js/*.js").pipe(uglify()).pipe(dest("frontend/js"));
 }
 
 // js regular
 function jsregular() {
-  return src("src/js/*.js").pipe(dest("dist/js"));
+  return src("src/js/*.js").pipe(dest("frontend/js"));
 }
 
 // js es6 -> es5
@@ -52,7 +52,7 @@ function babel5() {
       })
     )
     .pipe(uglify())
-    .pipe(dest("dist/js"));
+    .pipe(dest("frontend/js"));
 }
 
 exports.es5 = babel5;
@@ -71,7 +71,7 @@ function sassStyle() {
         cascade: false,
       })
     )
-    .pipe(dest("dist/css"));
+    .pipe(dest("frontend/css"));
 }
 
 // 有壓縮
@@ -92,7 +92,7 @@ function sassStyleMini() {
       //     extname: ".min.css",
       //   })
       // )
-      .pipe(dest("dist/css"))
+      .pipe(dest("frontend/css"))
   );
 }
 
@@ -112,7 +112,7 @@ function sassStyleMini() {
 //         extname: ".min.css",
 //       })
 //     )
-//     .pipe(dest("dist/css"));
+//     .pipe(dest("frontend/css"));
 // }
 
 exports.style = sassStyle;
@@ -127,14 +127,14 @@ function html() {
         basepath: "@file",
       })
     )
-    .pipe(dest("dist/"));
+    .pipe(dest("frontend/"));
 }
 
 exports.template = html;
 
 // php
 function php() {
-  return src("src/php/*.php").pipe(dest("dist/php/"));
+  return src("src/php/*.php").pipe(dest("frontend/php/"));
 }
 
 // layout template
@@ -146,20 +146,20 @@ function layout() {
         basepath: "@file",
       })
     )
-    .pipe(dest("dist/layout"));
+    .pipe(dest("frontend/layout"));
 }
 
 function movevue() {
-  return src("src/vue/*.js").pipe(dest("dist/vue"));
+  return src("src/vue/*.js").pipe(dest("frontend/vue"));
 }
 
 function moveVender() {
-  return src("src/vender/**/*.*").pipe(dest("dist/vender"));
+  return src("src/vender/**/*.*").pipe(dest("frontend/vender"));
 }
 
 // 打包圖片
 function img() {
-  return src("src/img/**/*.*").pipe(dest("dist/img"));
+  return src("src/img/**/*.*").pipe(dest("frontend/img"));
 }
 
 //圖片壓縮
@@ -170,7 +170,7 @@ function imgmini() {
         imagemin.mozjpeg({ quality: 80, progressive: true }), // 壓縮品質      quality越低 -> 壓縮越大 -> 品質越差
       ])
     )
-    .pipe(dest("dist/img"));
+    .pipe(dest("frontend/img"));
 }
 
 exports.minifyimg = imgmini;
@@ -194,7 +194,7 @@ function watchfile() {
 function browser(done) {
   // browserSync.init({
   //   server: {
-  //     baseDir: "./dist",
+  //     baseDir: "./frontend",
   //     index: "index.html",
   //   },
   //   port: 3000,
@@ -227,9 +227,8 @@ exports.package = series(
     movevue,
     moveVender,
     sassStyleMini,
-    jsregular,
-    // jsmini,
-    // babel5,
+    jsmini,
+    babel5,
     imgmini,
     php
   )
