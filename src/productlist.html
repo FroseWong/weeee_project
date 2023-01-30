@@ -119,7 +119,7 @@
             <a
               class="product-card-row"
               v-for="product in computedList2"
-              :key="index"
+              
               @click="gotoproductDetail(product.ProductID)"
              
             >
@@ -138,19 +138,19 @@
               <div class="product-card-row__right">
                 <div
                   class="change-heart"
-                  ref="changeHeart"
+                 
                   @click="clickHeart(product.ProductID,$event)"
                   :class="{'clicked':favorProductList.includes(product.ProductID) }"
                 >
                   <i
                     class="fa-regular fa-heart"
                     ref="hollow"
-                    @click="changeHeart"
+                    
                   ></i>
                   <i
                     class="fa-solid fa-heart orange"
                     ref="solid"
-                    @click="changeHeart"
+                    
                   ></i>
                 </div>
                 <div class="product-name">

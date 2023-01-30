@@ -157,14 +157,28 @@
             password: $("#password").val(),
           },
           dataType: "text",
+
           success: function (response) {
-            //加入成功->導回登入頁
-            alert(response);
-            location.href = "./index.html";
-          },
-          error: function (exception) {
-            alert("發生錯誤: " + exception.status);
-          },
+                    console.log(response);//列印服務端返回的資料(除錯用)
+                    if (response==1) {
+                        alert("登入成功");
+                        location.href = "./index.html";
+                        
+                    }else{
+                        alert("登入失敗");
+                        location.reload(true);
+                        
+                    }
+                  },
+          // success: function (response) {
+          //   //加入成功->導回登入頁
+          //   alert(response);
+          //   location.href = "./index.html";
+          // },
+          // error: function (exception) {
+          //   alert("發生錯誤: " + exception.status);
+          //   location.href="login.html";
+          // },
         });
       }
     </script>

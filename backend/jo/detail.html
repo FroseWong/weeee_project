@@ -202,7 +202,7 @@
                             </form>
                         </div>
                     </div>
-                    <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;" onclick="toggleStatus()">調整貼文狀態</button>
+                    <button class="btn btn-warning submit_button save_update" style="margin-bottom: 20px;" onclick="toggleStatus()"><span id="update"></span></button>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold list_style">留言管理</h6>
@@ -362,6 +362,13 @@
                 tbody.insertAdjacentHTML("beforeend", detail_jo);
             }
             $("#dataTable").DataTable();
+            let update = document.getElementById("update");
+            let joStatus = document.getElementById("joStatus").value;
+            if(joStatus == "顯示中"){
+                $("#update").html("隱藏揪團");
+            }else{
+                $("#update").html("顯示揪團");
+            }
             },
         });
 

@@ -81,6 +81,10 @@
 //   margin: 0 auto;
 // }
 
+[v-cloak] {
+  display: none;
+}
+
 .blueBtn {
   @include btn($blue, $white, 10px);
   transition: all 0.3s;
