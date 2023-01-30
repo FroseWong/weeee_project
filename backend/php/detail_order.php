@@ -24,7 +24,7 @@ $data = $statement->fetch();
 
 
 //建立SQL語法
-$sql = "SELECT Product.ProductNumber, Product.ProductName, OrderDetail.Quantity, Product.ProductPrice, OrderDetail.SubPrice
+$sql = "SELECT Product.ProductNumber, Product.ProductName, OrderDetail.Quantity, Product.ProductPrice
 from Product
 inner join OrderDetail
 on Product.ProductID = OrderDetail.ProductID
