@@ -93,70 +93,72 @@
     <div class="cart_wrapper wrapper" id="app">
         <div class="container">
             <section class="payment">
-                <div class="cart_breadcrumb hb">
-                    <ol>
-                        <li>購物車</li>
-                        <li style="font-weight:bold; color: black">填寫資料與付款</li>
-                        <li>訂購完成</li>
-                    </ol>
-                </div>
-
-                <!-- payment_list -->
-                <div class="payment_item">
-                    <div class="payment_item_header hasBorder">
-                        <i class="fa fa-angle-right expand-icon rotate"></i>
-                        <h5>訂購人資料</h5>
+                <form action="#" method="get" id="form">
+                    <div class="cart_breadcrumb hb">
+                        <ol>
+                            <li>購物車</li>
+                            <li style="font-weight:bold; color: black">填寫資料與付款</li>
+                            <li>訂購完成</li>
+                        </ol>
                     </div>
-                    <div class="payment_item_list">
-                        <div class="list_row">
-                            <div class="list_row_col">
-                                <label for="">名字<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="例：品元" v-model="memberInfo.firstName">
-                            </div>
-                            <div class="list_row_col">
-                                <label for="">姓氏<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="例：陳" v-model="memberInfo.lastName">
-                            </div>
+
+                    <!-- payment_list -->
+                    <div class="payment_item">
+                        <div class="payment_item_header hasBorder">
+                            <i class="fa fa-angle-right expand-icon rotate"></i>
+                            <h5>訂購人資料</h5>
                         </div>
-                        <div class="list_row">
-                            <div class="list_row_col">
-                                <label for="">國家/地區<span class="text-danger">*</span></label>
-                                <input list="countrys" name="country" id="country" v-model="memberInfo.country" />
-                                <datalist id="countrys">
-                                    <option value="台灣"></option>
-                                    <option value="中國"></option>
-                                    <option value="日本"></option>
-                                    <option value="韓國"></option>
-                                    <option value="越南"></option>
-                                    <option value="美國"></option>
-                                    <option value="加拿大"></option>
-                                    <option value="俄羅斯"></option>
-                                    <option value="馬來西亞"></option>
-                                    <option value="新加坡"></option>
-                                    <option value="印度尼西亞"></option>
-                                    <option value="菲律賓"></option>
-                                    <option value="泰國"></option>
-                                    <option value="澳大利亞"></option>
-                                    <option value="紐西蘭"></option>
-                                    <option value="緬甸"></option>
-                                    <option value="印度"></option>
-                                    <option value="法國"></option>
-                                    <option value="英國"></option>
-                                    <option value="西班牙"></option>
-                                    <option value="葡萄牙"></option>
-                                    <option value="比利時"></option>
-                                    <option value="荷蘭"></option>
-                                    <option value="德國"></option>
-                                    <option value="義大利"></option>
-                                    <option value="波蘭"></option>
-                                    <option value="挪威"></option>
-                                    <option value="瑞典"></option>
-                                    <option value="芬蘭"></option>
-                                    <option value="烏克蘭"></option>
-                                    <option value="立陶宛"></option>
-                                    <option value="愛沙尼亞"></option>
-                                </datalist>
-                                <!-- <select name="" id="" placeholder="請選擇" v-model="memberInfo.country">
+                        <div class="payment_item_list">
+                            <div class="list_row">
+                                <div class="list_row_col">
+                                    <label for="">名字<span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="例：品元" v-model="memberInfo.firstName" required>
+                                </div>
+                                <div class="list_row_col">
+                                    <label for="">姓氏<span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="例：陳" v-model="memberInfo.lastName" required>
+                                </div>
+                            </div>
+                            <div class="list_row">
+                                <div class="list_row_col">
+                                    <label for="">國家/地區<span class="text-danger">*</span></label>
+                                    <input list="countrys" name="country" id="country" v-model="memberInfo.country"
+                                        required />
+                                    <datalist id="countrys">
+                                        <option value="台灣"></option>
+                                        <option value="中國"></option>
+                                        <option value="日本"></option>
+                                        <option value="韓國"></option>
+                                        <option value="越南"></option>
+                                        <option value="美國"></option>
+                                        <option value="加拿大"></option>
+                                        <option value="俄羅斯"></option>
+                                        <option value="馬來西亞"></option>
+                                        <option value="新加坡"></option>
+                                        <option value="印度尼西亞"></option>
+                                        <option value="菲律賓"></option>
+                                        <option value="泰國"></option>
+                                        <option value="澳大利亞"></option>
+                                        <option value="紐西蘭"></option>
+                                        <option value="緬甸"></option>
+                                        <option value="印度"></option>
+                                        <option value="法國"></option>
+                                        <option value="英國"></option>
+                                        <option value="西班牙"></option>
+                                        <option value="葡萄牙"></option>
+                                        <option value="比利時"></option>
+                                        <option value="荷蘭"></option>
+                                        <option value="德國"></option>
+                                        <option value="義大利"></option>
+                                        <option value="波蘭"></option>
+                                        <option value="挪威"></option>
+                                        <option value="瑞典"></option>
+                                        <option value="芬蘭"></option>
+                                        <option value="烏克蘭"></option>
+                                        <option value="立陶宛"></option>
+                                        <option value="愛沙尼亞"></option>
+                                    </datalist>
+                                    <!-- <select name="" id="" placeholder="請選擇" v-model="memberInfo.country">
                                     <option value="" disabled="disabled">請選擇</option>
                                     <option value="台灣">台灣</option>
                                     <option value="日本">日本</option>
@@ -164,162 +166,182 @@
                                     <option value="美國">美國</option>
                                     <option value="英國">英國</option>
                                 </select> -->
-                            </div>
-                            <div class="list_row_col">
-                                <label for="">聯絡電話<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="請輸入聯絡電話" v-model="memberInfo.phone">
-                            </div>
-                        </div>
-
-                        <div class="list_row">
-                            <div class="list_row_col">
-                                <label for="">電子郵件信箱<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="請輸入常用電子郵件信箱" v-model="memberInfo.username">
-                            </div>
-                        </div>
-                        <div class="list_row">
-                            <div class="checkall"><label for="userInfo"><input type="checkbox" name="checkall"
-                                        id="userInfo" v-model="checked" @click="getMemberInfo">同會員資料</label></div>
-                        </div>
-                        <div class="list_row">
-                            <a href="" class="blueBtn">繼續</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- payment_points -->
-                <div class="payment_item">
-                    <div class="payment_item_wp">
-                        <input type="checkbox" name="checkall" id="useWeeee" @click="getPoints" v-model="checked2"
-                            :disabled="disabled">
-                        <label for="useWeeee">
-                            <h5>我要使用 Weeee! Points</h5><span v-show="hidden">Weeee! Points 不足，無法折抵</span>
-                        </label>
-
-                    </div>
-                    <div class="payment_item_list">
-
-                        <div class="list_row">
-                            <ul>
-                                <h6 style="font-weight: bold;">Weeee! Points
-                                    <img src="img/weeeepoints/yellow.svg" alt="">
-                                    <span style="color: #f9cf00;">{{ weeee.totalPoints }}</span> 折抵 <span
-                                        style="color:#4484ce">{{ displayTWD( weeee.totalPoints) }}</span>
-                                </h6>
-                                <br>
-                                注意事項<br>
-                                常態性可折抵訂單價格的 20%，實際折抵金額依結帳頁面顯示為準
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- payment_creditcard -->
-                <div class="payment_item">
-                    <div class="payment_item_header">
-                        <i class="fa fa-angle-right expand-icon"></i>
-                        <h5>信用卡/簽帳金融卡付款</h5>
-                        <span>
-                            <img src="img/creditcard/visa.svg" alt="" />
-                            <img src="img/creditcard/mastercard.svg" alt="" />
-                            <img src="img/creditcard/jcb.svg" alt="" />
-                            <img src="img/creditcard/ae.svg" alt="" />
-                        </span>
-                    </div>
-                    <div class="payment_item_list defaultHide">
-                        <div class="list_row">
-                            <div class="list_row_col">
-                                <label for="">信用卡號碼<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="oooo oooo oooo oooo">
-                            </div>
-                            <div class="list_row_col">
-                                <label for="">有效期限<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="MM / YY">
-                            </div>
-                            <div class="list_row_col">
-                                <label for="">背面末3碼<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="CVC/CVV">
-                            </div>
-                        </div>
-                        <div class="list_row">
-                            <div class="list_row_col" style="color: #666;">
-                                請注意本平台不會向您收取任何平台交易手續費，但你下單時使用的信用卡可能會向您收取相關手續費，
-                                請參考其相關服務政策和規定，並向你所選的交易服務商取得更多資訊。
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- payment_invoice -->
-                <div class="payment_item">
-                    <div class="payment_item_header">
-                        <i class="fa fa-angle-right expand-icon"></i>
-                        <h5>電子發票、收據
-                        </h5>
-                    </div>
-                    <div class="payment_item_list defaultHide">
-                        <div class="list_row">
-                            <div class="list_row_col">
-                                <label for="">旅行業代收轉付電子收據</label>
-                                <select name="" class="taxId" id="taxId" placeholder="請選擇">
-                                    <option value="1">寄至訂購人E-mail</option>
-                                    <option value="2">開立統編/抬頭</option>
-                                </select>
-                            </div>
-                            <div class="list_row_col">
-                                <label for="">寄送信箱</label>
-                                <input type="text" v-model="memberInfo.username" disabled="disabled"
-                                    style="background-color: #f4f4f4;">
-                            </div>
-                        </div>
-                        <div class="list_row keyTaxId">
-                            <div class="list_row_col">
-                                <label for="">統一編號<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="請輸入統一編號">
-                            </div>
-                            <div class="list_row_col">
-                                <label for="">抬頭(買受人)<span class="text-danger">*</span></label>
-                                <input type="text" placeholder="請輸入公司名稱(抬頭)">
-                            </div>
-                        </div>
-                        <div class="list_row">
-                            <ul>
-                                <li v-for="(product, index) in productList">{{ product.productName }}</li>
-                                <!-- <li>新北的山，新北的海，水啦</li> -->
-                                <!-- <li>金門二日遊</li> -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- payment_list -->
-
-                <div class="payment_item">
-                    <div class="payment_item_header">
-                        <i class="fa fa-angle-right expand-icon"></i>
-                        <h5>付款明細
-                        </h5>
-                    </div>
-                    <div class="payment_item_list defaultHide">
-                        <div class="product_group">
-                            <div class="product_item" v-for="(product, index) in productList">
-                                <a v-bind:href="'./productdetail.html?id=' + product.productID"
-                                    class="product-image"><img v-bind:src="product.productImgPath1" alt=""></a>
-                                <div class="product-name">
-                                    <a v-bind:href="'./productdetail.html?id=' + product.productID">
-                                        <h6>{{ product.productName }}</h6>
-                                    </a>
                                 </div>
-                                <div class="date"><i class="fa-regular fa-calendar-days"></i>{{ product.cartStartDay }}
-                                </div>
-                                <div class="quantity"><i class="fa-solid fa-person"></i>人數 x {{ product.quantity }}
-                                </div>
-                                <div class="product-price">
-                                    <h6>{{ displayTWD(product.quantity * product.productPrice) }}</h6>
+                                <div class="list_row_col">
+                                    <label for="">聯絡電話<span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="例：0912345678" v-model="memberInfo.phone" required
+                                        maxlength="10" pattern="^09\d{8}$" onkeyup="value=value.replace(/[^\d]/g,'') ">
                                 </div>
                             </div>
 
-                            <!-- <div class="product_item">
+                            <div class="list_row">
+                                <div class="list_row_col">
+                                    <label for="">電子郵件信箱<span class="text-danger">*</span></label>
+                                    <input type="email" placeholder="請輸入電子郵件信箱" v-model="memberInfo.username" required>
+                                </div>
+                            </div>
+                            <div class="list_row">
+                                <div class="checkall"><label for="userInfo"><input type="checkbox" name="checkall"
+                                            id="userInfo" v-model="checked" @click="getMemberInfo">同會員資料</label></div>
+                            </div>
+                            <div class="list_row">
+                                <!-- <button type="submit" class="blueBtn">繼續</button> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- payment_points -->
+                    <div class="payment_item">
+                        <div class="payment_item_wp">
+                            <input type="checkbox" name="checkall" id="useWeeee" @click="getPoints" v-model="checked2"
+                                :disabled="disabled">
+                            <label for="useWeeee">
+                                <h5>我要使用 Weeee! Points</h5><span v-show="hidden">Weeee! Points 不足，無法折抵</span>
+                            </label>
+
+                        </div>
+                        <div class="payment_item_list">
+
+                            <div class="list_row">
+                                <ul>
+                                    <h6 style="font-weight: bold;">Weeee! Points
+                                        <img src="img/weeeepoints/yellow.svg" alt="">
+                                        <span style="color: #f9cf00;">{{ weeee.totalPoints }}</span> 折抵 <span
+                                            style="color:#4484ce">{{ displayTWD( weeee.totalPoints) }}</span>
+                                    </h6>
+                                    <br>
+                                    注意事項<br>
+                                    常態性可折抵訂單價格的 20%，實際折抵金額依結帳頁面顯示為準
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- payment_creditcard -->
+                    <div class="payment_item">
+                        <div class="payment_item_header">
+                            <i class="fa fa-angle-right expand-icon"></i>
+                            <h5>信用卡/簽帳金融卡付款</h5>
+                            <span>
+                                <img src="img/creditcard/visa.svg" alt="" />
+                                <img src="img/creditcard/mastercard.svg" alt="" />
+                                <img src="img/creditcard/jcb.svg" alt="" />
+                                <img src="img/creditcard/ae.svg" alt="" />
+                            </span>
+                        </div>
+                        <div class="payment_item_list defaultHide">
+                            <div class="list_row">
+                                <div class="list_row_col">
+                                    <label for="">信用卡號碼<span class="text-danger">*</span></label>
+                                    <div class="card_wrapper"
+                                        style="width: 210px; height: 45px; outline: 1px solid #e1e1e1; border-radius: 4px; padding-left: 10px;">
+                                        <input type="text" class="card" placeholder="oooo"
+                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                            @input="creditcard($event)">
+                                        <input type="text" class="card" placeholder="oooo"
+                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                            @input="creditcard($event)">
+                                        <input type="text" class="card" placeholder="oooo"
+                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                            @input="creditcard($event)">
+                                        <input type="text" class="card" id="lastCard" placeholder="oooo"
+                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                            @input="creditcard($event)">
+                                    </div>
+                                    <!-- <p style="font-size: 12px; color: red;"v-if="card_data">*您輸入的卡號有誤，請再次核對！</p> -->
+
+                                </div>
+                                <div class="list_row_col">
+                                    <label for="">有效期限<span class="text-danger">*</span></label>
+                                    <input id="expiration" type="text" placeholder="MM / YY" required pattern="\d{2}/\d{2}" maxlength="5" @keyup="validDate($event)">
+                                </div>
+                                <div class="list_row_col">
+                                    <label for="">背面末3碼<span class="text-danger">*</span></label>
+                                    <input type="text" class="cvc" placeholder="CVC/CVV" required pattern="\d{3}"
+                                        maxlength="3" onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                </div>
+                            </div>
+                            <div class="list_row">
+                                <div class="list_row_col" style="color: #666;">
+                                    請注意本平台不會向您收取任何平台交易手續費，但你下單時使用的信用卡可能會向您收取相關手續費，
+                                    請參考其相關服務政策和規定，並向你所選的交易服務商取得更多資訊。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- payment_invoice -->
+                    <div class="payment_item">
+                        <div class="payment_item_header">
+                            <i class="fa fa-angle-right expand-icon"></i>
+                            <h5>電子發票、收據
+                            </h5>
+                        </div>
+                        <div class="payment_item_list defaultHide">
+                            <div class="list_row">
+                                <div class="list_row_col">
+                                    <label for="">旅行業代收轉付電子收據</label>
+                                    <select name="" class="taxId" id="taxId" placeholder="請選擇"
+                                        @change="onChange($event)">
+                                        <option value='1'>寄至訂購人E-mail</option>
+                                        <option value='2'>開立統編/抬頭</option>
+                                    </select>
+                                </div>
+                                <div class="list_row_col">
+                                    <label for="">寄送信箱</label>
+                                    <input type="text" v-model="memberInfo.username" disabled="disabled"
+                                        style="background-color: #f4f4f4;">
+                                </div>
+                            </div>
+                            <div class="list_row keyTaxId" v-if="keyTaxId">
+                                <div class="list_row_col">
+                                    <label for="">統一編號<span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="請輸入統一編號" required maxlength="8" pattern="\d{8}">
+                                </div>
+                                <div class="list_row_col">
+                                    <label for="">抬頭(買受人)<span class="text-danger">*</span></label>
+                                    <input type="text" placeholder="請輸入公司名稱(抬頭)" required>
+                                </div>
+                            </div>
+                            <div class="list_row">
+                                <ul>
+                                    <li v-for="(product, index) in productList">{{ product.productName }}</li>
+                                    <!-- <li>新北的山，新北的海，水啦</li> -->
+                                    <!-- <li>金門二日遊</li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- payment_list -->
+
+                    <div class="payment_item">
+                        <div class="payment_item_header">
+                            <i class="fa fa-angle-right expand-icon"></i>
+                            <h5>付款明細
+                            </h5>
+                        </div>
+                        <div class="payment_item_list defaultHide">
+                            <div class="product_group">
+                                <div class="product_item" v-for="(product, index) in productList">
+                                    <a v-bind:href="'./productdetail.html?id=' + product.productID"
+                                        class="product-image"><img v-bind:src="product.productImgPath1" alt=""></a>
+                                    <div class="product-name">
+                                        <a v-bind:href="'./productdetail.html?id=' + product.productID">
+                                            <h6>{{ product.productName }}</h6>
+                                        </a>
+                                    </div>
+                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>{{ product.cartStartDay
+                                        }}
+                                    </div>
+                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x {{ product.quantity }}
+                                    </div>
+                                    <div class="product-price">
+                                        <h6>{{ displayTWD(product.quantity * product.productPrice) }}</h6>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="product_item">
                                 <a href="" class="product-image"><img src="img/sightseeing/fr_28_1.jpg" alt=""></a>
                                 <div class="product-name">
                                     <a href="">
@@ -346,61 +368,65 @@
                                     <h6>TWD 3,475</h6>
                                 </div>
                             </div> -->
+                            </div>
+
+                            <div class="payment_list">
+                                <ul class="payment_list_row">
+                                    <li>小計</li>
+                                    <li>
+                                        <h6>{{ displayTWD(getTotal.totalPrice) }}</h6>
+                                    </li>
+                                </ul>
+                                <ul class="payment_list_row">
+                                    <li>Weeee! Points 折抵</li>
+                                    <li>
+                                        <h6>-{{ displayTWD( weeee.totalPoints) }}</h6>
+                                    </li>
+                                </ul>
+                                <ul class="payment_list_row">
+                                    <li>支付金額</li>
+                                    <li>
+                                        <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice -
+                                            weeee.totalPoints)
+                                            }}</h5>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>訂單完成後回饋</li>
+                                    <li><span class="points_yellow">
+                                            <img src="img/weeeepoints/yellow.svg" alt="">{{
+                                            Math.floor((getTotal.totalPrice
+                                            - weeee.totalPoints) / 100) }}</li>
+                                </ul>
+                            </div>
                         </div>
 
-                        <div class="payment_list">
-                            <ul class="payment_list_row">
-                                <li>小計</li>
-                                <li>
-                                    <h6>{{ displayTWD(getTotal.totalPrice) }}</h6>
-                                </li>
-                            </ul>
-                            <ul class="payment_list_row">
-                                <li>Weeee! Points 折抵</li>
-                                <li>
-                                    <h6>-{{ displayTWD( weeee.totalPoints) }}</h6>
-                                </li>
-                            </ul>
-                            <ul class="payment_list_row">
-                                <li>支付金額</li>
-                                <li>
-                                    <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice - weeee.totalPoints)
-                                        }}</h5>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>訂單完成後回饋</li>
-                                <li><span class="points_yellow">
+                    </div>
+
+                    <!-- payment_confirm -->
+
+                    <div class="payment_item">
+                        <div class="cart_footer_right">
+                            <div class="cart_total">
+                                <div>
+                                    <span> {{ getTotal.totalNum }} 件商品合計</span>
+                                    <span>
+                                        <h4>{{ displayTWD(getTotal.totalPrice - weeee.totalPoints) }}</h4>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span>您可獲得 Weeee! Points </span>
+                                    <span class="points_yellow">
                                         <img src="img/weeeepoints/yellow.svg" alt="">{{ Math.floor((getTotal.totalPrice
-                                        - weeee.totalPoints) / 100) }}</li>
-                            </ul>
+                                        -
+                                        weeee.totalPoints) / 100) }}
+                                    </span>
+                                </div>
+                            </div>
+                            <button type="submit" class="blueBtn">確認付款</button>
                         </div>
                     </div>
-
-                </div>
-
-                <!-- payment_confirm -->
-
-                <div class="payment_item">
-                    <div class="cart_footer_right">
-                        <div class="cart_total">
-                            <div>
-                                <span> {{ getTotal.totalNum }} 件商品合計</span>
-                                <span>
-                                    <h4>{{ displayTWD(getTotal.totalPrice - weeee.totalPoints) }}</h4>
-                                </span>
-                            </div>
-                            <div>
-                                <span>您可獲得 Weeee! Points </span>
-                                <span class="points_yellow">
-                                    <img src="img/weeeepoints/yellow.svg" alt="">{{ Math.floor((getTotal.totalPrice -
-                                    weeee.totalPoints) / 100) }}
-                                </span>
-                            </div>
-                        </div>
-                        <a href="javascript:;" class="blueBtn" @click="pay">確認付款</a>
-                    </div>
-                </div>
+                </form>
             </section>
         </div>
     </div>
@@ -415,12 +441,13 @@
     </footer>
     <script src="./vender/vue/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script src="./vender/is.min.js"></script>
     <script src="./js/payment.js"></script>
     <script src="./js/header.js"></script>
 
     <script>
         $(".defaultHide").hide();
-        $(".keyTaxId").hide();
+        // $(".keyTaxId").hide();
         $(".payment_item_wp").next(".payment_item_list").hide();
         $(document).ready(function () {
             $(".payment_item_header").click(function () {
@@ -431,15 +458,15 @@
             });
 
 
-            $(".taxId").change(function () {
-                // foo is the id of the other select box 
-                // console.log('ttt');
-                if ($(this).val() != "1") {
-                    $(".keyTaxId").toggle();
-                } else {
-                    $(".keyTaxId").toggle();
-                }
-            });
+            // $(".taxId").change(function () {
+            //     // foo is the id of the other select box 
+            //     // console.log('ttt');
+            //     if ($(this).val() != "1") {
+            //         $(".keyTaxId").toggle();
+            //     } else {
+            //         $(".keyTaxId").toggle();
+            //     }
+            // });
 
             $("#useWeeee").change(function () {
 
