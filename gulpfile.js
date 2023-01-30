@@ -227,8 +227,9 @@ exports.package = series(
     movevue,
     moveVender,
     sassStyleMini,
-    jsmini,
-    babel5,
+    jsregular,
+    // jsmini,
+    // babel5,
     imgmini,
     php
   )
