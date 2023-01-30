@@ -221,7 +221,10 @@
                   <p>{{commentscore}}</p>
                 </div>
                 <div class="productreview-star">
-                  <p>★★★★</p>
+                  <div class="productreview-star-num">
+                    <i v-for="i in commentscorestar" class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                  </div>
                   <span>{{commentlength}}則旅客評價</span>
                 </div>
                 <div class="productreview-btn">
@@ -233,7 +236,10 @@
               <img :src="message.pic" alt=" " />
               <span>{{message.name}}</span>
               <div class="productdetail-message-text">
-                <p>{{message.star}}</p>
+                <div class="productdetail-message-text-star">
+                  <i v-for="i in message.star" class="fa-solid fa-star"></i>
+                  <i v-for="s in message.nostar" class="fa-regular fa-star"></i>
+                </div>
                 <span>{{message.time}}</span>
                 <h5>{{message.comment}}</h5>
               </div>

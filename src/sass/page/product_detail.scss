@@ -548,6 +548,14 @@
         color: $yellow;
         font-size: $pc_h3;
       }
+      .productreview-star-num {
+        display: flex;
+        flex-direction: row;
+      }
+      i {
+        color: $yellow;
+        margin-right: 3px;
+      }
     }
   }
 }
@@ -584,6 +592,10 @@
         padding: 15px;
       }
     }
+    .productdetail-message-text-star{
+      color: $yellow;
+    }
+
   }
 }
 .productdetail-comment {
@@ -597,23 +609,23 @@
     background-color: $white;
     font-weight: bold;
     padding: 5px 10px;
-    border: .9px solid $l_gray;
+    border: 0.9px solid $l_gray;
   }
   .commentAct {
     background-color: $blue;
     color: $white;
   }
 }
-.productreview-btn{
+.productreview-btn {
   margin-left: 50px;
-  button{
+  button {
     margin: 5px;
     font-weight: bold;
     background-color: $white;
     color: $black;
-    border: .9px solid $l_gray;
+    border: 0.9px solid $l_gray;
   }
-  .commentBtn{
+  .commentBtn {
     background-color: $orange;
     color: $white;
   }
