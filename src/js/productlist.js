@@ -4,7 +4,7 @@ createApp({
   data() {
     return {
       pagenum: 1,
-      
+
       page_show: {
         start: 0,
         end: 5,
@@ -103,9 +103,9 @@ createApp({
     },
     totalpage() {
       let arr = [];
-     
+
       let totalpage = Math.ceil(this.computedList.length / 5);
-      for (i = 0; i < totalpage; i++) {
+      for (let i = 0; i < totalpage; i++) {
         arr.push(i + 1);
       }
       return arr;
@@ -128,7 +128,6 @@ createApp({
   watch: {
     totalpage: function (newValue, oldValue) {
       this.pagenum = 1;
-     
     },
     pagenum: function (newValue, oldValue) {
       this.start = (newValue - 1) * 5;
