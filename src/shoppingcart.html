@@ -43,7 +43,7 @@
           <h5>購物車</h5>
         </div>
         <div class="product_group">
-          <div class="empty_cart" ref="empty_cart" v-show="emptyCart">
+          <div class="empty_cart" ref="empty_cart" v-if="emptyCart">
             <img src="img/otherpage/empty-cart.png" alt="" />
             <h6>您的購物車是空的</h6>
             <a href="index.html">跟著Weeee! 一起探索世界</a>
