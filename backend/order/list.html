@@ -157,11 +157,6 @@
                         <div class="row row_bottom">
                             <div class="col-12">
                                 <input type="text" placeholder="訂購人會員編號" class="member filter" id="memberNumber" name="memberNumber">
-                                <select class="form_select" name="orderStatus" id="orderStatus">
-                                    <option value="">請選擇</option>
-                                    <option value="0">未付款</option>
-                                    <option value="1">成功</option>
-                                </select>
                                 <button type="button" class="btn btn-warning submit_button" onclick="search()">搜尋</button>
                             </div>
                         </div>
@@ -180,7 +175,6 @@
                                         <tr>
                                             <th>訂單編號</th>
                                             <th>訂購人會員編號</th>
-                                            <th>狀態</th>
                                             <th>訂單成立日期</th>
                                             <th>動作</th>
                                         </tr>
@@ -190,8 +184,6 @@
                                         <tr v-for="(order, index) in orderList" :key="index">
                                             <td>{{order.OrderNumber}}</td>
                                             <td>{{order.MemberNumber}}</td>
-                                            <td v-if="order.PaymentStatus == 1">成功</td>
-                                            <td v-else>未付款</td>
                                             <td>{{order.OrderDate}}</td>
                                             <td><a :href="'./detail.html?orderID=' + order.OrderID">查看<i class="fas fa-eye" style="margin-left: 10px"></i></a></td>
                                         </tr>                                   
@@ -368,7 +360,6 @@
             data: {
                 orderNumber: document.getElementById("orderNumber").value,
                 memberNumber: document.getElementById("memberNumber").value,
-                orderStatus: document.getElementById("orderStatus").value,
                 from: document.getElementById("from").value,
                 to: document.getElementById("to").value
             },

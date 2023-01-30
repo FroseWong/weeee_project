@@ -179,7 +179,7 @@
                                             <th>商品內容</th>
                                             <th>數量</th>
                                             <th>單價</th>
-                                            <th>小計</th>                                      
+                                                                             
                                         </tr>
                                     </thead>
                                     <tbody id="tbody">
@@ -275,8 +275,7 @@
                         <td>${response.OrderDetailList[i].ProductNumber}</td>
                         <td>${response.OrderDetailList[i].ProductName}</td>
                         <td>${response.OrderDetailList[i].Quantity}</td>   
-                        <td>${response.OrderDetailList[i].ProductPrice}</td> 
-                        <td>${response.OrderDetailList[i].SubPrice}</td>                                
+                        <td>${response.OrderDetailList[i].ProductPrice}</td>                               
                     </tr>      
                 `;
                 tbody.insertAdjacentHTML("beforeend", detail_order);

@@ -9,11 +9,10 @@ if (isset($_GET['memberNumber'])) { //分辨你是不是按了搜尋
     //1. 取得請求參數
     $orderNumber = $_GET['orderNumber'];
     $memberNumber = $_GET['memberNumber'];
-    $orderStatus = $_GET['orderStatus'];
     $from = $_GET['from'];
     $to = $_GET['to'];
 
-    $sql = "SELECT  MemberNumber, OrderDate, PaymentStatus, OrderNumber, OrderID 
+    $sql = "SELECT  MemberNumber, OrderDate, OrderNumber, OrderID 
     from `Order` 
     join Member
     on `Order`.MemberID = Member.MemberID 
@@ -25,9 +24,6 @@ if (isset($_GET['memberNumber'])) { //分辨你是不是按了搜尋
     if (strlen($orderNumber) != 0){
         $criteria = $criteria . " AND OrderNumber = '". $orderNumber."'";
     }
-    if (strlen($orderStatus) != 0){
-        $criteria = $criteria . " AND PaymentStatus = '". $orderStatus."'";
-    } 
     if (strlen($from) != 0 && strlen($to) != 0){
         $criteria = $criteria . " AND OrderDate BETWEEN '". $from ."' and '". $to ."'";
     } 
@@ -36,7 +32,7 @@ if (isset($_GET['memberNumber'])) { //分辨你是不是按了搜尋
 
 } 
 else {
-    $sql = "SELECT  MemberNumber, OrderDate, PaymentStatus, OrderNumber, OrderID  
+    $sql = "SELECT  MemberNumber, OrderDate, OrderNumber, OrderID  
     from `Order`
     join Member
     on `Order`.MemberID = Member.MemberID;";
