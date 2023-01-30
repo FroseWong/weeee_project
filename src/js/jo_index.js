@@ -10,7 +10,7 @@ let app1 = Vue.createApp({
       show_jo: true,
       slick_start: false,
       AllCitys: [
-        "全部地區",
+        "全部",
         "基隆",
         "台北",
         "新北",
@@ -29,7 +29,7 @@ let app1 = Vue.createApp({
         "花蓮",
         "其他",
       ],
-      location_selected: "全部地區",
+      location_selected: "全部",
       memberID: "",
     };
   },
@@ -202,11 +202,11 @@ let app1 = Vue.createApp({
       console.log(searchedbox_value);
       if (
         searchedbox_value.length > 0 ||
-        this.location_selected != "全部地區"
+        this.location_selected != "全部"
       ) {
         let loc = this.location_selected;
         let key = this.keyword;
-        if (loc == "全部地區") {
+        if (loc == "全部") {
           loc = "%";
           let url = "jo_searched.html" + "?loc=" + loc + "&key=" + key;
           window.location.assign(url);
