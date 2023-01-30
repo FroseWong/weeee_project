@@ -121,7 +121,7 @@
           let content = document.getElementById("content");
           for (let i = 0; i < response.length; i++) {
             let order_content = `
-              <div class="order_card">
+              <div class="order_card" style="cursor: pointer" onclick="linkTo(${response[i].ProductID})">
                 <img src="${response[i].ProductImgPath1}" class="order_card_pic">
                 <span class="dot"><i class="fas fa-location-dot" style="margin-right: 5px;"></i>${response[i].Location}</span>
                 <div class="text">
@@ -148,7 +148,10 @@
           }
         },
       });
-
+            //整張商品卡片的連結，按了會連到商品詳細頁
+            function linkTo(productID){
+              location.href="productdetail.html?id=" + productID;
+            }
     </script>
   </body>
 </html>

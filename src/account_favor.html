@@ -150,34 +150,36 @@
         dataType: "json",
         success: function(response){
           let content = document.getElementById("content");
-      for (let i = 0; i < response.length; i++) {
-        let favor_content = `
-        <div class="favor_card">
-              <img src="${response[i].ProductImgPath1}" class="favor_card_pic">
-              <span class="dot"><i class="fas fa-location-dot" style="margin-right: 5px;"></i>${response[i].Location}</span>
-                <div class="text">
-                  <div class="product_name">
-                    ${response[i].ProductName}
-                      <i class="fas fa-trash trashCan" style="cursor: pointer" onclick="deleteFavor(${response[i].FavorID})"></i>
+          for (let i = 0; i < response.length; i++) {
+            let favor_content = `
+            
+              <div class="favor_card" onclick="linkTo(${response[i].ProductID})" style="cursor: pointer">
+                    <img src="${response[i].ProductImgPath1}" class="favor_card_pic">
+                    <span class="dot"><i class="fas fa-location-dot" style="margin-right: 5px;"></i>${response[i].Location}</span>
+                      <div class="text">
+                        <div class="product_name">
+                          ${response[i].ProductName}
+                            <i class="fas fa-trash trashCan" style="cursor: pointer" onclick="deleteFavor(${response[i].FavorID})"></i>
+                        </div>
+                      
+                        <div class="product_type">${response[i].ProductSecondType}</div>
+                        <div class="product__description">
+                          ${response[i].ProductText.length > 50 ? response[i].ProductText.substr(0, 50) + "..." : response[i].ProductText}
+                        </div>
+                        <div class="card_bottom">
+                          <div class="comment">
+                          <i class="fa-solid fa-star"></i> <span style="color: gray; font-size: 14px;">4.4(44325) | 590K+個已訂購</span>
+                        </div>
+                        <div class="price">TWD ${response[i].ProductPrice}元</div>
+                        </div>
+                      </div>
                   </div>
-                
-                  <div class="product_type">${response[i].ProductSecondType}</div>
-                  <div class="product__description">
-                    ${response[i].ProductText.length > 50 ? response[i].ProductText.substr(0, 50) + "..." : response[i].ProductText}
-                  </div>
-                  <div class="card_bottom">
-                    <div class="comment">
-                    <i class="fa-solid fa-star"></i> <span style="color: gray; font-size: 14px;">4.4(44325) | 590K+個已訂購</span>
-                  </div>
-                  <div class="price">TWD ${response[i].ProductPrice}元</div>
-                  </div>
-                </div>
-            </div>
-        `;
-        content.insertAdjacentHTML("beforeend", favor_content);
-        //顯示會員全名在左側
-        $("#fullName").html(response[i].LastName + response[i].FirstName);
-      }
+               
+            `;
+            content.insertAdjacentHTML("beforeend", favor_content);
+            //顯示會員全名在左側
+            $("#fullName").html(response[i].LastName + response[i].FirstName);
+          }
         }
       });
 
@@ -193,6 +195,10 @@
                   location.href="./php/delete_account_favor.php?favorID=" + favorID;
                 })
     }
+      //整張商品卡片的連結，按了會連到商品詳細頁
+      function linkTo(productID){
+        location.href="productdetail.html?id=" + productID;
+      }
         
     </script>
   </body>
