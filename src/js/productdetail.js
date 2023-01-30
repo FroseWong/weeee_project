@@ -150,7 +150,7 @@ const app = Vue.createApp({
       productReview: 0,
       commentlength: 0,
       commentscore: 0,
-      comments: [1, 2, 3, 4],
+      comments: [1,2,3,4],
       commentID: "",
       ProductDetail_breadcrumb: "",
       sorts: [
@@ -159,6 +159,8 @@ const app = Vue.createApp({
         { num: 3, text: "最高" },
         { num: 4, text: "最低" },
       ],
+      commentscorestar:0,
+      tempstar:[],
     };
   },
   methods: {
@@ -641,17 +643,7 @@ const app = Vue.createApp({
           objcom = {};
           // console.log(response);
           response.forEach(function (item) {
-            if (item.ProductCommentScore == 1) {
-              item.ProductCommentScore = "★☆☆☆☆";
-            } else if (item.ProductCommentScore == 2) {
-              item.ProductCommentScore = "★★☆☆☆";
-            } else if (item.ProductCommentScore == 3) {
-              item.ProductCommentScore = "★★★☆☆";
-            } else if (item.ProductCommentScore == 4) {
-              item.ProductCommentScore = "★★★★☆";
-            } else if (item.ProductCommentScore == 5) {
-              item.ProductCommentScore = "★★★★★";
-            }
+
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -660,11 +652,13 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
+              nostar:5-item.ProductCommentScore,
             };
             arrcom.push(objcom);
           });
           _this.messages = arrcom;
-          // _this.commentlength = response.length;
+          console.log(_this.messages);
+         
         },
         error: function (exception) {},
       });
@@ -783,10 +777,20 @@ const app = Vue.createApp({
           let result = toarr.map(function (x) {
             return parseFloat(x, 10);
           });
-          // console.log(result[0]);
+          console.log(result[0]);
           // console.log(result[1]);
+          let newresult = Math.ceil(result[0] / 3);
+          console.log(newresult);
+          let arrtemp = [];
+          for (i = 0; i < newresult; i++) {
+            console.log(i + 1);
+            arrtemp.push(i + 1);
+          }
+          console.log(arrtemp);
+          _this.comments = arrtemp;
           _this.commentlength = result[0];
           _this.commentscore = roundToTwo(result[1]);
+          _this.commentscorestar=parseInt(_this.commentscore);
         },
 
         error: function (exception) {},
@@ -817,17 +821,6 @@ const app = Vue.createApp({
           objcom = {};
           console.log(response);
           response.forEach(function (item) {
-            if (item.ProductCommentScore == 1) {
-              item.ProductCommentScore = "★☆☆☆☆";
-            } else if (item.ProductCommentScore == 2) {
-              item.ProductCommentScore = "★★☆☆☆";
-            } else if (item.ProductCommentScore == 3) {
-              item.ProductCommentScore = "★★★☆☆";
-            } else if (item.ProductCommentScore == 4) {
-              item.ProductCommentScore = "★★★★☆";
-            } else if (item.ProductCommentScore == 5) {
-              item.ProductCommentScore = "★★★★★";
-            }
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -836,6 +829,7 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
+              nostar:5-item.ProductCommentScore,
             };
             arrcom.push(objcom);
           });

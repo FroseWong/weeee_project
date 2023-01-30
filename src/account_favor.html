@@ -80,27 +80,6 @@
           </div>
           <div class="content" id="content">
             <h4 style="margin-bottom: 30px">我的收藏</h4>
-            <!-- <div class="favor_card">
-              <img src="img/otherpage/ex_7_1.jpg" class="favor_card_pic">
-              <span class="dot"><i class="fas fa-location-dot" style="margin-right: 5px;"></i>桃園</span>
-                <div class="text">
-                  <div class="product_name">
-                    桃園青埔 | Xpark 都會型水生公園門票
-                      <i class="fas fa-trash trashCan" ></i>
-                  </div>
-                
-                  <div class="product_type">水族館</div>
-                  <div class="product__description">
-                    Xpark 於 2022 年初推行大型企劃『Xbook~流向我們的
-                    物語』,透過五官享受海底之書的魅力!加碼推出兒童節限定「Xpark
-                    童樂套票」
-                  </div>
-                  <div class="card_bottom">
-                      <i class="fa-solid fa-star"></i> <span style="color: gray; font-size: 14px;">4.4(44325) | 590K+個已訂購</span>
-                      <div class="price">TWD 550元</div>
-                  </div>
-                </div>
-            </div> -->
           </div>
         </div>
       </div>
@@ -111,36 +90,6 @@
     <script src="./vender/vue/vue.global.prod.js"></script>
     <script src="js/header.js"></script>
     <script>
-
-      //控制資料顯示在HTML上
-      // let favor_management = [
-      //   {
-      //     productNumber: "PR0001",
-      //     productName: "新竹北埔綠世界門票",
-      //     productType: "水族館",
-      //     productText:
-      //       "Xpark 於 2022 年初推行大型企劃『Xbook~流向我們的物語』,透過五官享受海底之書的魅力!加碼推出兒童節限定「Xpark童樂套票」",
-      //     productCommentScore: 4.4,
-      //     commentCount: 44345,
-      //     quantity: 590,
-      //     price: 550,
-      //     image: "img/jo/jo_member4.jpg",
-      //     location: "新竹"
-      //   },
-      //   {
-      //     productNumber: "PR0002",
-      //     productName: "新埔老家看喵喵",
-      //     productType: "水族館",
-      //     productText:
-      //       "Xpark 於 2022 年初推行大型企劃『Xbook~流向我們的物語』,透過五官享受海底之書的魅力!加碼推出兒童節限定「Xpark童樂套票」",
-      //     productCommentScore: 4.4,
-      //     commentCount: 44345,
-      //     quantity: 590,
-      //     price: 2000,
-      //     image: "img/jo/jo_leader1.jpg",
-      //     location: "新竹"
-      //   },
-      // ];
       
       //會員一進到此頁面，就發送請求到後端取他的收藏資料
       $.ajax({
@@ -159,7 +108,7 @@
                       <div class="text">
                         <div class="product_name">
                           ${response[i].ProductName}
-                            <i class="fas fa-trash trashCan" style="cursor: pointer" onclick="deleteFavor(${response[i].FavorID})"></i>
+                            <i class="fas fa-trash trashCan" id="trashCan_${response[i].ProductID}" style="cursor: pointer" onclick="deleteFavor(${response[i].FavorID})"></i>
                         </div>
                       
                         <div class="product_type">${response[i].ProductSecondType}</div>
@@ -177,8 +126,13 @@
                
             `;
             content.insertAdjacentHTML("beforeend", favor_content);
+
             //顯示會員全名在左側
             $("#fullName").html(response[i].LastName + response[i].FirstName);
+            //停止垃圾桶冒泡
+            document.getElementById("trashCan_"+ response[i].ProductID).addEventListener("click", function(e){
+              e.stopPropagation();
+            })
           }
         }
       });
@@ -199,6 +153,7 @@
       function linkTo(productID){
         location.href="productdetail.html?id=" + productID;
       }
+      
         
     </script>
   </body>
