@@ -29,7 +29,7 @@
           <div class="left_bar">
             <div class="img_block">
               <div class="mem_img"></div>
-              <h5>陳品元元</h5>
+              <h5 id="fullName"></h5>
             </div>
             <div class="page_list">
               <ul>
@@ -158,6 +158,9 @@
       `;
             tbody.insertAdjacentHTML("beforeend", point_content);
             sum = sum + response[i].PointsChange;
+            
+            //顯示會員全名在左側
+            $("#fullName").html(response[i].LastName + response[i].FirstName);
           }
           document.getElementById("count").innerHTML = sum;
           $('#dataTable').DataTable({
@@ -166,6 +169,7 @@
             "info": false, // 拿掉左下角共幾個結果的資訊
             "ordering": false
         });
+        
         },
       });
     </script>

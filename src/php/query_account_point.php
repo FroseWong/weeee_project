@@ -6,11 +6,13 @@ $memberID = getMemberID();
 include("connection.php");
 
 //建立SQL語法
-$sql = "SELECT Order.OrderNumber, PointRecord.PointsChange, Order.OrderDate, Order.TotalPrice
+$sql = "SELECT `Order`.OrderNumber, PointRecord.PointsChange, `Order`.OrderDate, `Order`.TotalPrice, `Member`.FirstName, `Member`.LastName
 from PointRecord
 inner join `Order`
-on PointRecord.OrderID = Order.OrderID
-WHERE MemberID = ?";
+on PointRecord.OrderID = `Order`.OrderID
+inner join `Member`
+on `Member`.MemberID = `Order`.MemberID
+WHERE `Member`.MemberID = ?";
 
 
 
