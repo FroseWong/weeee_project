@@ -597,9 +597,24 @@
     background-color: $white;
     font-weight: bold;
     padding: 5px 10px;
+    border: .9px solid $l_gray;
   }
   .commentAct {
     background-color: $blue;
+    color: $white;
+  }
+}
+.productreview-btn{
+  margin-left: 50px;
+  button{
+    margin: 5px;
+    font-weight: bold;
+    background-color: $white;
+    color: $black;
+    border: .9px solid $l_gray;
+  }
+  .commentBtn{
+    background-color: $orange;
     color: $white;
   }
 }

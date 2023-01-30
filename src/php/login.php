@@ -18,7 +18,7 @@
 include("./connection.php");
 
     //建立SQL
-    $sql = "SELECT * FROM weeee.Member WHERE  Username = ? and Password = ?";
+    $sql = "SELECT * FROM Member WHERE  Username = ? and Password = ?";
 
     //給值
     $statement = $pdo->prepare($sql);

@@ -9,11 +9,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     @@include('layout/header.html')
     <div class="wrapper jo_detail">
+      <d v-cloak>
       <div class="container jo_container">
         <h1 class="nb jo__title">{{JoTitle}}</h1>
         <!-- <div class="jo__img"></div> -->
@@ -195,6 +201,7 @@
         </div>
       </div>
       @@include('layout/footer.html')
+    </div>
     </div>
     <!-- </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
