@@ -14,7 +14,7 @@ $MID=$_SESSION["MemberID"];
 $PID = $_POST['PID'];
 $NEWTAL = $_POST['TAL'];
 $NEWQTY = $_POST['QTY'];
-
+$DATE=$_POST['DATE'];
 $sqlif = "SELECT count(ProductID) From Cart  where MemberID='{$MID}' and ProductID='{$PID}'";
 
 $statementif = $pdo->prepare($sqlif);
@@ -29,7 +29,7 @@ foreach ($dataif as $key => $value) {
 // echo ($tempif);
 // -----------如果使用者沒加過購物車---------------
 if ($tempif == 0) {
-    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,cartStartDay)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}',now())";
+    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,cartStartDay)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}','$DATE')";
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
     echo json_encode('ok');

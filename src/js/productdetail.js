@@ -150,17 +150,20 @@ const app = Vue.createApp({
       productReview: 0,
       commentlength: 0,
       commentscore: 0,
-      comments: [1,2,3,4],
+      comments: [1, 2, 3, 4],
       commentID: "",
       ProductDetail_breadcrumb: "",
       sorts: [
-        { num: 1, text: "最新" },
-        { num: 2, text: "最舊" },
-        { num: 3, text: "最高" },
-        { num: 4, text: "最低" },
+        { num: 1, text: "最新日期" },
+        { num: 2, text: "最舊日期" },
+        { num: 3, text: "最高至最低分" },
+        { num: 4, text: "最低至最高分" },
       ],
-      commentscorestar:0,
-      tempstar:[],
+      commentscorestar1: 0,
+      commentscorestar2: true,
+      commentscorestar3: 0,
+      tempstar: [],
+      sortnum: 1,
     };
   },
   methods: {
@@ -175,15 +178,12 @@ const app = Vue.createApp({
         : (this.faAngle = "down");
     },
     // ---------------橘心---------------
-    heart_click() {
-      this.ajax_heart();
-      if (this.faHeart == "solid") {
+    heart_click(e) {
+      if (e == false) {
         this.faHeart = "regular";
-        _this.$refs.heartshow.classList.remove("liked");
         Swal.fire("已取消收藏");
       } else {
         this.faHeart = "solid";
-        _this.$refs.heartshow.classList.add("liked");
         Swal.fire("已加入收藏");
       }
     },
@@ -436,14 +436,17 @@ const app = Vue.createApp({
       _this = this;
       window.addEventListener("resize", function () {
         this.winSize = window.innerWidth;
-        // console.log(this.winSize);
         if (this.winSize <= 768) {
-          // console.log(this.winSize);
           _this.display_scroll();
+          // console.log(this.winSize);
         }
         if (this.winSize >= 768) {
           _this.display_scroll2();
+
           // console.log(this.winSize);
+        }
+        if (this.winSize >= 400 && this.winSize <= 600) {
+          _this.ajax_heart_show();
         }
       });
     },
@@ -464,7 +467,7 @@ const app = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
 
           if (response.length !== 0) {
             response.forEach((e) => {
@@ -543,13 +546,16 @@ const app = Vue.createApp({
         success: function (response) {
           // console.log(response);
           if (response == false) {
-            _this.faHeart = "regular";
+            _this.heart_click(response);
           } else if (response == true) {
-            _this.faHeart = "solid";
+            _this.heart_click(response);
           } else {
-            _this.faHeart = "regular";
+            // _this.faHeart = "regular";
             alert("請先登入再收藏");
             window.location.href = "./login.html";
+            setTimeout(() => {
+              _this.$refs.heartshow.classList.remove("liked");
+            }, 1000);
           }
         },
         error: function (exception) {},
@@ -582,10 +588,30 @@ const app = Vue.createApp({
     // ---------------加入購物車---------------
     ajax_ShoppingCart() {
       _this = this;
+      let time = this.$refs.timePicker.value;
+      let newDate = "";
+      if (time == "") {
+        let OldToday = new Date(+new Date()+8*3600*1000);
+        newDate = OldToday.toISOString().split("T")[0];
+        console.log(OldToday);
+      } else {
+        let oldDate = new String(time);
+        newDate =
+          oldDate[6] +
+          oldDate[7] +
+          oldDate[8] +
+          oldDate[9] +
+          "-" +
+          oldDate[3] +
+          oldDate[4] +
+          "-" +
+          oldDate[0] +
+          oldDate[1];
+      }
+      console.log(newDate);
       let num;
       let people = _this.modalPeople;
       let total = _this.modal_pricetotal;
-      let productNumber = _this.ProductDetail.productNumber;
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
       $.ajax({
@@ -595,10 +621,11 @@ const app = Vue.createApp({
           PID: num,
           QTY: people,
           TAL: total,
+          DATE:newDate,
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           if (response == "NotFound") {
             alert("請先登入再加入購物車");
             window.location.href = "./login.html";
@@ -643,7 +670,6 @@ const app = Vue.createApp({
           objcom = {};
           // console.log(response);
           response.forEach(function (item) {
-
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -652,13 +678,12 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar:5-item.ProductCommentScore,
+              nostar: 5 - item.ProductCommentScore,
             };
             arrcom.push(objcom);
           });
           _this.messages = arrcom;
-          console.log(_this.messages);
-         
+          _this.sortfun(_this.sortnum);
         },
         error: function (exception) {},
       });
@@ -702,7 +727,7 @@ const app = Vue.createApp({
       let time = this.$refs.timePicker.value;
       let newDate = "";
       if (time == "") {
-        let OldToday = new Date();
+        let OldToday = new Date(+new Date()+8*3600*1000);
         newDate = OldToday.toISOString().split("T")[0];
       } else {
         let oldDate = new String(time);
@@ -773,39 +798,60 @@ const app = Vue.createApp({
         success: function (response) {
           // console.log(response);
           toarr = response.split(",");
-          console.log(toarr);
           let result = toarr.map(function (x) {
             return parseFloat(x, 10);
           });
-          console.log(result[0]);
+          // console.log(result[0]);
           // console.log(result[1]);
           let newresult = Math.ceil(result[0] / 3);
-          console.log(newresult);
           let arrtemp = [];
           for (i = 0; i < newresult; i++) {
-            console.log(i + 1);
             arrtemp.push(i + 1);
           }
-          console.log(arrtemp);
           _this.comments = arrtemp;
           _this.commentlength = result[0];
+          // 分數後一位小數點
           _this.commentscore = roundToTwo(result[1]);
-          _this.commentscorestar=parseInt(_this.commentscore);
+          // 實星
+          _this.commentscorestar1 = parseInt(_this.commentscore);
+          // 半星
+          if (_this.commentscore % 1 == 0) {
+            _this.commentscorestar2 = false;
+          }
+          // 空星
+          let what = 5 - _this.commentscore;
+          if (what >= 1 && what < 2) {
+            _this.commentscorestar3 = 1;
+          }
+          if (what >= 2 && what < 3) {
+            _this.commentscorestar3 = 2;
+          }
+          if (what >= 3 && what < 4) {
+            _this.commentscorestar3 = 3;
+          }
+          if (what >= 4 && what < 5) {
+            _this.commentscorestar3 = 4;
+          }
+          if (what == 5) {
+            _this.commentscorestar3 = 5;
+          }
+          if (what < 1) {
+            _this.commentscorestar3 = 0;
+          }
         },
 
         error: function (exception) {},
       });
     },
+    // ---------------評論排序---------------
     sortfun(e) {
-      let aaa = window.location.href;
-      // console.log(e);
+      this.sortnum = Number(e);
       let urlParams = new URLSearchParams(window.location.search);
       num = urlParams.get("id");
       comment = urlParams.get("comment");
-      sort = urlParams.get("sort");
-      // window.location.href = `${aaa}&comment=1`;
+      // sort = urlParams.get("sort");
       comment == null ? (comment = 1) : (comment = comment);
-      // history.replaceState("", "", `${aaa}&sort=${e}`);
+
       $.ajax({
         method: "POST",
         url: "php/ProductDetailComment.php",
@@ -819,7 +865,7 @@ const app = Vue.createApp({
         success: function (response) {
           arrcom = [];
           objcom = {};
-          console.log(response);
+          // console.log(response);
           response.forEach(function (item) {
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
@@ -829,7 +875,7 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar:5-item.ProductCommentScore,
+              nostar: 5 - item.ProductCommentScore,
             };
             arrcom.push(objcom);
           });
@@ -839,6 +885,23 @@ const app = Vue.createApp({
 
         error: function (exception) {},
       });
+    },
+    // ---------------評論按鈕---------------
+    comment_color(e) {
+      if (e.path[0].classList.contains("productreview-btn") == true) {
+        return;
+      }
+      let temp = e.path[1].children;
+      for (i = 0; i < temp.length; i++) {
+        e.path[1].children[i].style.backgroundColor = "#ffffff";
+        e.path[1].children[i].style.color = "#000000";
+      }
+      e.path[0].style.backgroundColor = "#f19f4d";
+      e.path[0].style.color = "#ffffff";
+    },
+    comment_onebtn() {
+      this.$refs.sortA[0].style.backgroundColor = "#f19f4d";
+      this.$refs.sortA[0].style.color = "#ffffff";
     },
   },
   computed: {
@@ -861,6 +924,7 @@ const app = Vue.createApp({
     this.time_fun();
     this.winSize_watch();
     this.commentNum();
+    _this.comment_onebtn();
   },
 });
 app.mount("#app");
