@@ -258,7 +258,10 @@
               width: 100%;
               // padding-top: 10px;
               line-height: 60px;
+              
+              
             }
+            
           }
           h4 {
             padding: 10px 0;
@@ -306,8 +309,16 @@
             li{
               display: flex;
               padding-left: 20%;
+              @include m{
+                padding-left: 33%;
+                
+               }
               input{
                 margin-right: 10px;
+                @include m{
+                  margin: auto 0;
+                  margin-right: 10px;
+                }
               }
             }
           }
@@ -346,7 +357,7 @@
             li {
               width: 50%;
               @include m {
-                width: 50%;
+                width: 33%;
                 line-height: 60px;
               }
             }
@@ -354,11 +365,21 @@
         }
         .productlist_new__category{
           ul{
+            @include m{
+              // display: flex;
+              // flex-direction: column;
+              // justify-content: center;
+            }
             li{
              display: flex;
              padding-left: 30%;
+             @include m{
+             padding-left: 37%;
+             }
              input{
+              margin: auto 0;
               margin-right: 10px;
+
             }
             }
           }
@@ -372,6 +393,7 @@
       
         @include m {
           margin-left: 0;
+          justify-content: center;
         }
         .productlist_new__sort{
           width: 100%;
@@ -391,11 +413,19 @@
             display: flex;
             li{
               margin: 5px 10px;
+              
               padding: 0px 5px;
               color: $gray;
               border-radius: 10px;
               cursor: pointer;
-              
+              @include m{
+                margin-left: 3px;
+                margin-right: 3px;
+                padding: 0px;
+                padding-left: 2px;
+                padding-right: 2px;
+                border-radius: 0;
+              }
             }
           }
 
@@ -409,6 +439,10 @@
         }
         .product-card-row{
           margin-top: 30px;
+          @include m{
+            margin: 0 auto;
+            margin-top: 10px;
+          }
           .product-tag{
             
             width: 100px;

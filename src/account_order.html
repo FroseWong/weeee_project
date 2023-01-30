@@ -26,7 +26,7 @@
           <div class="left_bar">
             <div class="img_block">
               <div class="mem_img"></div>
-              <h5>陳品元元</h5>
+              <h5 id="fullName"></h5>
             </div>
             <div class="page_list">
               <ul>
@@ -121,7 +121,7 @@
           let content = document.getElementById("content");
           for (let i = 0; i < response.length; i++) {
             let order_content = `
-              <div class="order_card">
+              <div class="order_card" style="cursor: pointer" onclick="linkTo(${response[i].ProductID})">
                 <img src="${response[i].ProductImgPath1}" class="order_card_pic">
                 <span class="dot"><i class="fas fa-location-dot" style="margin-right: 5px;"></i>${response[i].Location}</span>
                 <div class="text">
@@ -142,10 +142,16 @@
             </div>
       `;
             content.insertAdjacentHTML("beforeend", order_content);
+
+            //顯示會員全名在左側
+            $("#fullName").html(response[i].LastName + response[i].FirstName);
           }
         },
       });
-
+            //整張商品卡片的連結，按了會連到商品詳細頁
+            function linkTo(productID){
+              location.href="productdetail.html?id=" + productID;
+            }
     </script>
   </body>
 </html>

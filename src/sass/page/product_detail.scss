@@ -546,7 +546,7 @@
       flex-direction: column;
       p {
         color: $yellow;
-        font-size: $pc_h1;
+        font-size: $pc_h3;
       }
     }
   }
@@ -586,20 +586,19 @@
     }
   }
 }
-.productdetail-comment{
+.productdetail-comment {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 50px;
-  a{
-    margin: 10px;
-    border: 1px solid $l_gray;
-    padding: 2px 10px;
-    color: $black;
-    font-weight: bold;
-  }
 
-  .commentAct{
+  button {
+    margin: 5px;
+    background-color: $white;
+    font-weight: bold;
+    padding: 5px 10px;
+  }
+  .commentAct {
     background-color: $blue;
     color: $white;
   }

@@ -26,7 +26,7 @@
           <div class="left_bar">
             <div class="img_block">
               <div class="mem_img"></div>
-              <h5>陳品元元</h5>
+              <h5 id="fullName"></h5>
             </div>
             <div class="page_list">
               <ul>
@@ -177,6 +177,8 @@
             }
 
             content.insertAdjacentHTML("beforeend", jo_content);
+            //顯示會員全名在左側
+            $("#fullName").html(response[i].LastName + response[i].FirstName);
           }
           // $("#count").html(response.length); //jquery寫法
           document.getElementById("count").innerHTML = response.length; //js寫法

@@ -173,7 +173,8 @@
                 >
               </div>
             </a>
-            <nav>
+            <nav
+            >
               <ul class="productlist_new__pagination">
                 <li class="productlist_new__page-item">
                   <a class="productlist_new__page-link minus" 
@@ -182,7 +183,7 @@
                   @click="plus_minus">&lt;</a>
                 </li>
                 <li class="productlist_new__page-item"
-                v-for="(item,index) in totalpage"
+                v-for="(item,index) in showpage"
                 :class="{current:pagenum == item}"
                 
                     >
