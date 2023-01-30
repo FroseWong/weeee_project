@@ -43,12 +43,12 @@ include("./connection.php");
         setMemberInfo($memberID, $memberName);
 
         //登入成功        
-        echo "登入成功"; 
+        echo "1"; 
 
     }else{
 
         //登入失敗
-        echo "登入失敗"; 
-        
+        echo "0"; 
+       
     }
 ?>
