@@ -12,13 +12,13 @@ include("connection.php");
 // }
 include("Member.php");
 
-getMemberID();
-if (empty($_SESSION["MemberID"])) {
+$memberID=getMemberID();
+if ($memberID === "") {
     echo json_encode("NotFound");
     return;
 }
 
-$memberID = $_SESSION["MemberID"];
+// $memberID = $_SESSION["MemberID"];
 
 // $memberID = $_POST['memberID'];
 
@@ -53,8 +53,8 @@ $statement->execute();
 
 $data = $statement->fetchAll();
 
+// echo json_encode($_SESSION["MemberID"]);
 echo json_encode($data);
-// echo json_encode($data);
 
 // echo json_encode($memberID);
 

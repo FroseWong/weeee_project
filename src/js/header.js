@@ -59,7 +59,7 @@ const apph = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          // console.log(response);
+          console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           // that.headercounter = response[0].COUNT;
