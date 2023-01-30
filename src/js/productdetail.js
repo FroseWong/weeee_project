@@ -153,6 +153,12 @@ const app = Vue.createApp({
       comments: [1, 2, 3, 4],
       commentID: "",
       ProductDetail_breadcrumb: "",
+      sorts: [
+        { num: 1, text: "最新" },
+        { num: 2, text: "最舊" },
+        { num: 3, text: "最高" },
+        { num: 4, text: "最低" },
+      ],
     };
   },
   methods: {
@@ -786,7 +792,7 @@ const app = Vue.createApp({
         error: function (exception) {},
       });
     },
-    sort(e) {
+    sortfun(e) {
       let aaa = window.location.href;
       // console.log(e);
       let urlParams = new URLSearchParams(window.location.search);
@@ -795,7 +801,7 @@ const app = Vue.createApp({
       sort = urlParams.get("sort");
       // window.location.href = `${aaa}&comment=1`;
       comment == null ? (comment = 1) : (comment = comment);
-      history.replaceState("", "", `${aaa}&sort=${e}`);
+      // history.replaceState("", "", `${aaa}&sort=${e}`);
       $.ajax({
         method: "POST",
         url: "php/ProductDetailComment.php",

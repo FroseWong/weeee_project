@@ -8,7 +8,11 @@ require_once('connection.php');
 if (empty($_POST["sort"])) {
     $_POST["sort"] = 1;
 }
+if (empty($_POST["comment"])) {
+    $_POST["comment"] = 1;
+}
 $sort = $_POST["sort"];
+
 
 
 // -----------每頁顯示、取得商品ID--------------

@@ -224,11 +224,8 @@
                   <p>★★★★</p>
                   <span>{{commentlength}}則旅客評價</span>
                 </div>
-                <div>
-                  <button @click="sort(1)">最新日期</button>
-                  <button @click="sort(2)">最舊日期</button>
-                  <button @click="sort(3)">最高至最低</button>
-                  <button @click="sort(4)">最低至最高</button>
+                <div class="productreview-btn">
+                  <button v-for="sort in sorts" @click="sortfun(sort.num)" ref="sortA">{{sort.text}}</button>
                 </div>
               </div>
             </div>
