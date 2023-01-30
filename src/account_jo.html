@@ -106,7 +106,7 @@
             if (i + 1 < response.length) {
               jo_content = `
               <div class="jo_row">
-                <a class="jo_card">
+                <a class="jo_card" onclick="linkTo(${response[i].JoID})" style="cursor: pointer;">
                     <div class="jo_card__top">
                       <img src="${response[i].JoImg}" class="jo_card_pic">
                     </div>
@@ -121,13 +121,13 @@
                       }</div>
                       <div class="gray jo-time">${response[i].JoStartDate}</div>
                       <div class="icons">
-                          <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
-                          <i class="fa-solid fa-trash" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})" ></i>
+                          <i class="fa-solid fa-pen" id="edit_${response[i].JoID}" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
+                          <i class="fa-solid fa-trash" id="trashCan_${response[i].JoID}" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})" ></i>
                       </div>
                     </div>
                   </a>
 
-                  <a class="jo_card">
+                  <a class="jo_card" onclick="linkTo(${response[i + 1].JoID})" style="cursor: pointer;">
                     <div class="jo_card__top">
                       <img src="${response[i + 1].JoImg}" class="jo_card_pic">
                     </div>
@@ -144,8 +144,8 @@
                         response[i + 1].JoStartDate
                       }</div>
                       <div class="icons">
-                          <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i + 1].JoID})"></i>
-                          <i class="fa-solid fa-trash" style="cursor: pointer" onclick="deleteJo(${response[i + 1].JoID})"></i>
+                          <i class="fa-solid fa-pen" id="edit_${response[i + 1].JoID}" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i + 1].JoID})"></i>
+                          <i class="fa-solid fa-trash" id="trashCan_${response[i + 1].JoID}" style="cursor: pointer" onclick="deleteJo(${response[i + 1].JoID})"></i>
                       </div>
                     </div>
                   </a>
@@ -154,7 +154,7 @@
             } else {
               jo_content = `
               <div class="jo_row">
-                <a class="jo_card">
+                <a class="jo_card" onclick="linkTo(${response[i].JoID})" style="cursor: pointer;">
                     <div class="jo_card__top">
                       <img src="${response[i].JoImg}" class="jo_card_pic">
                     </div>
@@ -167,8 +167,8 @@
                       <div class="gray address">${response[i].JoDetailedAddressed}</div>
                       <div class="gray jo-time">${response[i].JoStartDate}</div>
                       <div class="icons">
-                          <i class="fa-solid fa-pen" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
-                          <i class="fa-solid fa-trash" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})"></i>
+                          <i class="fa-solid fa-pen" id="edit_${response[i].JoID}" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
+                          <i class="fa-solid fa-trash" id="trashCan_${response[i].JoID}" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})"></i>
                       </div>
                     </div>
                   </a>
@@ -177,17 +177,34 @@
             }
 
             content.insertAdjacentHTML("beforeend", jo_content);
+
             //顯示會員全名在左側
             $("#fullName").html(response[i].LastName + response[i].FirstName);
+            //停止編輯筆冒泡
+            document.getElementById("trashCan_"+ response[i].JoID).addEventListener("click", function(e){
+              e.stopPropagation();
+            })
+            document.getElementById("trashCan_"+ response[i + 1].JoID).addEventListener("click", function(e){
+              e.stopPropagation();
+            })
+            document.getElementById("edit_"+ response[i].JoID).addEventListener("click", function(e){
+              e.stopPropagation();
+            })
+            document.getElementById("edit_"+ response[i + 1].JoID).addEventListener("click", function(e){
+              e.stopPropagation();
+            })
           }
           // $("#count").html(response.length); //jquery寫法
           document.getElementById("count").innerHTML = response.length; //js寫法
         },
         
       });
+
+      //編輯揪團
       function edit(joID){
         location.href="jo_revise.html?id=" + joID;
       }
+      //刪除揪團
       function deleteJo(joID){
         Swal.fire({
                     position: "center",
@@ -198,6 +215,10 @@
                 }).then(function(){
                   location.href="./php/delete_account_jo.php?joID=" + joID;
                 })
+      }
+      //整張揪團卡片的連結，按了會連到揪團頁
+      function linkTo(joID){
+        location.href="jo_detail.html?id=" + joID;
       }
     </script>
   </body>
