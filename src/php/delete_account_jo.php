@@ -22,11 +22,6 @@ $statement = $pdo->prepare($sql);
 $statement->bindValue(1, $joID);
 $statement->execute(); //執行
 
-//抓出全部且依照順序封裝成一個二維陣列
-$data = $statement->fetchAll();
-
-//將二維陣列取出顯示其值
-echo json_encode($data);
 
 //頁面導回HTML
 header("Location: ../account_jo.html");
