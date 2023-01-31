@@ -805,7 +805,7 @@
                   dataType: "json",
                   success: function (response) {
                     $("#mem_img").attr("src", response.MemberImg);
-                    $("#fullName").attr("src", response.LastName + response.FirstName);
+                    $("#fullName").html(response.LastName + response.FirstName);
                     let url = window.location.href;
                     $("#originalUrl").val(url.substring(url.lastIndexOf("/") + 1));
                   }

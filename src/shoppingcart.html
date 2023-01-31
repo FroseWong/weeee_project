@@ -28,7 +28,7 @@
 
 <body style="background-color: #f5f5f5">
   @@include('layout/header.html')
-  <div class="cart_wrapper wrapper" id="app">
+  <div class="cart_wrapper wrapper" id="app" v-cloak>
     <div class="container">
       <div class="cart_breadcrumb hb">
         <ol>
@@ -55,22 +55,23 @@
               <input type="checkbox" class="check_item" v-model="product.select" />
             </div>
 
-            <a v-bind:href="'./productdetail.html?id=' + product.productID" class="product-image"><img v-bind:src="product.productImgPath1" alt="" /></a>
+            <a v-bind:href="'./productdetail.html?id=' + product.ProductID" class="product-image"><img
+                v-bind:src="product.ProductImgPath1" alt="" /></a>
             <div class="product-name">
-              <a v-bind:href="'./productdetail.html?id=' + product.productID">
-                <h6>{{ product.productName }}</h6>
+              <a v-bind:href="'./productdetail.html?id=' + product.ProductID">
+                <h6>{{ product.ProductName }}</h6>
               </a>
             </div>
 
             <div class="date">
-              <i class="fa-regular fa-calendar-days"></i>{{ product.cartStartDay }}
+              <i class="fa-regular fa-calendar-days"></i>{{ product.CartStartDay }}
             </div>
             <div class="quantity">
-              <i class="fa-solid fa-person"></i>人數 x {{ product.quantity }}
+              <i class="fa-solid fa-person"></i>人數 x {{ product.Quantity }}
             </div>
 
             <div class="product-price">
-              <h6>{{ displayTWD(product.quantity * product.productPrice) }}</h6>
+              <h6>{{ displayTWD(product.Quantity * product.ProductPrice) }}</h6>
             </div>
             <div class="edit_delete">
               <button class="cart_edit" type="button" class="editProd" data-bs-toggle="modal"
@@ -236,12 +237,18 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="./vender/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="./js/productSlideVue.js"></script>
   <script src="./js/shoppingcart.js"></script>
   <script src="./js/header.js"></script>
 
   <script>
-    $(document).ready(function () {
+    window.onpageshow = function (event) {
+      if (event.persisted) {
+        window.location.reload()
+      }
+    };
+    // $(document).ready(function () {
 
       // ==================delete================================
       // $(".cart_delete").click(function () {
@@ -259,7 +266,7 @@
       //     event.preventDefault(e);
       //     $("input.check_item:checked").closest(".product_item").remove();
       // })
-    });
+    // });
   </script>
 </body>
 
