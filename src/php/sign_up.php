@@ -3,7 +3,7 @@
 
 
        //---------------------------------------------------
-       include("./connection.php");
+       include("connection.php");
       
        $sql = "INSERT INTO Member(Username,Password, MemStatus, MemCreateDate) VALUES (?,?,1,NOW())";
 
