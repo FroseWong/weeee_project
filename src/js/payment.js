@@ -176,7 +176,7 @@ const app = Vue.createApp({
       for (let i = 0; i < cards.length; i++) {
         cards[i].addEventListener("keydown", function (e) {
           //console.log(e.which);   //數字48-57
-          if ((e.which >= 48 && e.which <= 57) || e.which == 8) {
+          if ((e.which >= 48 && e.which <= 57) || e.which == 8 || e.which == 9) {
             //console.log(e.target.value.length);  //e.target事件觸發的元素
             if (e.target.value.length == 0 && e.which == 8) {
               // console.log("ttt");
