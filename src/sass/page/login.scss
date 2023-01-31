@@ -91,75 +91,101 @@
     }
   }
 
-  .email {
-    position: relative;
-
-    .fa-envelope {
-      position: absolute;
-      top: 20px;
-      right: 75px;
-
-      @include m {
-        right: 40px;
-      }
-    }
-    input {
-      width: 242px;
-      height: 52px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      border: 1px solid $gray;
-      border-radius: 5px;
-      text-indent: 5px;
-      color: $gray;
-    }
+  .email input {
+    width: 242px;
+    height: 52px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    text-indent: 5px;
+    color: $gray;
   }
 
-  //   .email input {
-  //     width: 242px;
-  //     height: 52px;
-  //     margin-bottom: 10px;
-  //     font-size: 14px;
-  //     border: 1px solid $gray;
-  //     border-radius: 5px;
-  //     text-indent: 5px;
-  //     color: $gray;
-  //   }
+  .password input {
+    width: 242px;
+    height: 52px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    text-indent: 5px;
+    color: $gray;
+  }
+
+  .passwordag input {
+    width: 242px;
+    height: 52px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    text-indent: 5px;
+    color: $gray;
+  }
+
+  .submit {
+    display: block;
+    width: 242px;
+    height: 52px;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    background-color: $blue;
+    color: $white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+
+  .formbuttom {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+
+  .sign_up_a {
+    display: block;
+
+    color: $orange;
+
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .email {
+    color: $gray;
+    position: relative;
+    display: inline-block;
+  }
+
+  .email .fa-regular {
+    /*左邊圖示*/
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 0.7em);
+    font-size: 20px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    margin: 0 auto;
+  }
 
   .password {
+    color: $gray;
     position: relative;
-
-    .fa-eye {
-      position: absolute;
-      top: 20px;
-      right: 75px;
-
-      @include m {
-        right: 40px;
-      }
-    }
-    input {
-      width: 242px;
-      height: 52px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      border: 1px solid $gray;
-      border-radius: 5px;
-      text-indent: 5px;
-      color: $gray;
-    }
+    display: inline-block;
   }
 
-  //   .password input {
-  //     width: 242px;
-  //     height: 52px;
-  //     margin-bottom: 10px;
-  //     font-size: 14px;
-  //     border: 1px solid $gray;
-  //     border-radius: 5px;
-  //     text-indent: 5px;
-  //     color: $gray;
-  //   }
+  .password .fa-regular {
+    /*左邊圖示*/
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 0.7em);
+    font-size: 20px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    margin: 0 auto;
+  }
 
   .submit {
     display: block;
