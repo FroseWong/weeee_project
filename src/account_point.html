@@ -657,7 +657,7 @@
               </tr>
       `;
             tbody.insertAdjacentHTML("beforeend", point_content);
-            sum = sum + response[i].PointsChange + 500;
+            sum = sum + parseInt(response[i].PointsChange);
             
           }
           document.getElementById("count").innerHTML = sum;
