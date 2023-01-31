@@ -534,12 +534,15 @@ let app1 = Vue.createApp({
       let that = this;
       $.ajax({
         method: "POST",
+        async: false,
         url: "./php/index_memberInterest.php",
         data: {
           memberID: that.memberID,
         },
         dataType: "json",
         success: function (response) {
+          // console.log(this.data);
+          // console.log(response);
           if (response !== "nothing") {
             // console.log("memberInterest", response);
             response.forEach((i) => that.memberInterestList.push(i));

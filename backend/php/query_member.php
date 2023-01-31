@@ -1,5 +1,6 @@
 <?php
-
+//確認是否登入
+include("checkLogin.php");
 //DB連線資訊
 include("connection.php");
 

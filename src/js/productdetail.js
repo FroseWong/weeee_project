@@ -50,15 +50,24 @@ const app = Vue.createApp({
         },
       ],
       // 地圖
-      googleMap: {
-        src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.2338948479887!2d121.5426387215347!3d25.052129362458672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346823c18fcb9855%3A0x784fb0d91b7fc01f!2zVGliYU1lIOWFqOaWueS9jeaVuOS9jeihjOmKt-WvpuaIsOmkiuaIkOePrSjlj7DljJcp!5e0!3m2!1szh-TW!2stw!4v1671903363935!5m2!1szh-TW!2stw",
-        width: 600,
-        height: 450,
-        style: "border:0;",
-        allowfullscreen: "",
-        loading: "lazy",
-        referrerpolicy: "no-referrer-when-downgrade",
-      },
+      googleMap: ``,
+      googleMap1: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115641.9423246046!2d121.46325447841886!3d25.074404507505236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aba4c7b541bd%3A0x64bb871eceec226d!2z6Ie65YyX5biC5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675161165992!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap2: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7295.116120200392!2d120.68612064999999!3d23.905285099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3469321f9f2c156d%3A0x3f0a65672ed2ae4b!2z5Y2X5oqV57ij5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159650166!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap3: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233474.13378524987!2d121.54827277268583!3d23.88843640774047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34689fd3acc6d975%3A0x6d731cb7d9f51362!2z6Iqx6JOu57ij5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159676234!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap4: `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d117109.66028413878!2d120.30289754481107!3d23.472116923503282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5ZiJ576p5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159694212!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap5: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.8584078886997!2d120.18299001440326!3d22.99223362323215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e767255b8c6c7%3A0x33d1b3608ecbd5d2!2zNzA45Y-w5Y2X5biC5a6J5bmz5Y2A5Y-w5Y2X5biC5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159711195!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap6: `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d116477.91319988207!2d120.60702710922936!3d24.17401972071896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5Y-w5Lit5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159729587!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap7: `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d7358.662082968747!2d121.14305762270635!3d22.75309278430702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5Y-w5p2x5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159751401!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap8: `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d115993.09901182125!2d121.7020180703436!3d24.699939060370937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5a6c6Jit5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159766129!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap9: `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3681.223528353943!2d120.4860036143975!3d22.68272133463709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5bGP5p2x5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159783658!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap10: `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d116642.34096033627!2d120.39195970546945!3d23.993193681926506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5b2w5YyW5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159797320!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap11: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1807.821023829719!2d121.46347696347655!3d25.012276300000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a81ed5976a5b%3A0xb834c6cfda4289ad!2z5paw5YyX5biC5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159827312!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap12: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.1982114728444!2d121.29887961444241!3d24.99337994607379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f04c6c50adb%3A0xbfb45e5968b03888!2z5qGD5ZyS5biC5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159845224!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap13: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116118.55945140038!2d120.68890306250003!3d24.564854999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3469ac0eac6a59f1%3A0x837962129d708aac!2z6IuX5qCX57ij5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159866410!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap14: `<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d28650.7948758799!2d119.91854644891778!3d26.152749363652987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z6YCj5rGf5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159952731!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap15: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3632.4000998744973!2d118.31458552695314!3d24.436900300000023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3414a30726fe3741%3A0x9f9d143a4d54380!2z6YeR6ZaA57ij5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159968055!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap16: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.348799341344!2d120.52413901441676!3d23.69923509664715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346eb7e22185096b%3A0x4df53d0711ed3803!2z6Zuy5p6X57ij5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675159981219!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+      googleMap17: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.8931062977103!2d120.30987381439643!3d22.62046653691383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e049b9f1760a5%3A0x344465d114abb19!2z6auY6ZuE5biC5pS_5bqcIOWbm-e2reihjOaUv-S4reW_gw!5e0!3m2!1szh-TW!2stw!4v1675160038572!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
       noticeLists: [],
       // 景點門票
       noticeLists1: [
@@ -520,6 +529,7 @@ const app = Vue.createApp({
               // _this.comment_fun();
               _this.display_scroll();
               _this.display_scroll2();
+              _this.google_fun();
             });
           } else {
             alert("找不到相關商品");
@@ -591,7 +601,7 @@ const app = Vue.createApp({
       let time = this.$refs.timePicker.value;
       let newDate = "";
       if (time == "") {
-        let OldToday = new Date(+new Date()+8*3600*1000);
+        let OldToday = new Date(+new Date() + 8 * 3600 * 1000);
         newDate = OldToday.toISOString().split("T")[0];
         console.log(OldToday);
       } else {
@@ -621,7 +631,7 @@ const app = Vue.createApp({
           PID: num,
           QTY: people,
           TAL: total,
-          DATE:newDate,
+          DATE: newDate,
         },
         dataType: "json",
         success: function (response) {
@@ -727,7 +737,7 @@ const app = Vue.createApp({
       let time = this.$refs.timePicker.value;
       let newDate = "";
       if (time == "") {
-        let OldToday = new Date(+new Date()+8*3600*1000);
+        let OldToday = new Date(+new Date() + 8 * 3600 * 1000);
         newDate = OldToday.toISOString().split("T")[0];
       } else {
         let oldDate = new String(time);
@@ -888,7 +898,6 @@ const app = Vue.createApp({
     },
     // ---------------評論按鈕---------------
     comment_color(e) {
-
       let temp = e.target.parentNode.childNodes;
       for (i = 1; i <= 4; i++) {
         temp[i].style.backgroundColor = "#ffffff";
@@ -899,11 +908,66 @@ const app = Vue.createApp({
       e.target.style.color = "#ffffff";
       console.log(e.target);
 
-      document.getElementsByClassName('productreview-btn')[0].style.backgroundColor = "#ffffff";
+      document.getElementsByClassName(
+        "productreview-btn"
+      )[0].style.backgroundColor = "#ffffff";
     },
     comment_onebtn() {
       this.$refs.sortA[0].style.backgroundColor = "#f19f4d";
       this.$refs.sortA[0].style.color = "#ffffff";
+    },
+    google_fun() {
+      if (this.ProductDetail.address == "台北") {
+        this.googleMap = this.googleMap1;
+      }
+      if (this.ProductDetail.address == "南投") {
+        this.googleMap = this.googleMap2;
+      }
+      if (this.ProductDetail.address == "花蓮") {
+        this.googleMap = this.googleMap3;
+      }
+      if (this.ProductDetail.address == "嘉義") {
+        this.googleMap = this.googleMap4;
+      }
+      if (this.ProductDetail.address == "台南") {
+        this.googleMap = this.googleMap5;
+      }
+      if (this.ProductDetail.address == "台中") {
+        this.googleMap = this.googleMap6;
+      }
+      if (this.ProductDetail.address == "台東") {
+        this.googleMap = this.googleMap7;
+      }
+      if (this.ProductDetail.address == "宜蘭") {
+        this.googleMap = this.googleMap8;
+      }
+      if (this.ProductDetail.address == "屏東") {
+        this.googleMap = this.googleMap9;
+      }
+      if (this.ProductDetail.address == "彰化") {
+        this.googleMap = this.googleMap10;
+      }
+      if (this.ProductDetail.address == "新北") {
+        this.googleMap = this.googleMap11;
+      }
+      if (this.ProductDetail.address == "桃園") {
+        this.googleMap = this.googleMap12;
+      }
+      if (this.ProductDetail.address == "苗栗") {
+        this.googleMap = this.googleMap13;
+      }
+      if (this.ProductDetail.address == "連江") {
+        this.googleMap = this.googleMap14;
+      }
+      if (this.ProductDetail.address == "金門") {
+        this.googleMap = this.googleMap15;
+      }
+      if (this.ProductDetail.address == "雲林") {
+        this.googleMap = this.googleMap16;
+      }
+      if (this.ProductDetail.address == "高雄") {
+        this.googleMap = this.googleMap17;
+      }
     },
   },
   computed: {
@@ -926,7 +990,7 @@ const app = Vue.createApp({
     this.time_fun();
     this.winSize_watch();
     this.commentNum();
-    _this.comment_onebtn();
+    this.comment_onebtn();
   },
 });
 app.mount("#app");

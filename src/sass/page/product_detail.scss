@@ -360,9 +360,10 @@
   i {
     font-size: $pc_h6;
     margin-right: 10px;
+    color: $gray;
   }
   h5 {
-    color: $blue;
+    color: $gray;
     display: inline;
     font-size: 14px;
   }
@@ -381,6 +382,16 @@
       font-size: 14px;
     }
   }
+  .productdetail-content-num {
+    margin-top: 15px;
+    i {
+      color: $yellow;
+    }
+    h5 {
+      color: $blue;
+      margin-right: 10px;
+    }
+  }
 }
 // ---------------行程時間---------------
 .productdetail-time {
@@ -395,7 +406,10 @@
   display: flex;
   div {
     margin-right: 100px;
-    i,
+    i {
+      color: $gray;
+      margin-right: 15px;
+    }
     span {
       margin-right: 10px;
       font-size: 15px;
@@ -528,18 +542,16 @@
     display: flex;
     align-items: flex-end;
     @include m {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
- 
-        
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
-    .product-review-small-group{
+    .product-review-small-group {
       display: flex;
       @include m {
         display: flex;
         flex-direction: row;
-    }
+      }
     }
     .product-review-score {
       background-color: $blue;
@@ -548,7 +560,7 @@
       border-radius: 10px;
       display: inline-block;
       margin-right: 30px;
-     
+
       p {
         font-size: $pc_h3;
         text-align: center;
@@ -574,7 +586,7 @@
         margin-right: 3px;
         font-size: 20px;
       }
-      span{
+      span {
         font-size: 20px;
       }
     }
@@ -615,12 +627,11 @@
         padding: 15px;
       }
     }
-    .productdetail-message-text-star{
+    .productdetail-message-text-star {
       color: $yellow;
     }
-
   }
-  .productdetail-message-bgc{
+  .productdetail-message-bgc {
     width: 50px;
     height: 50px;
     background-size: cover;
@@ -658,7 +669,7 @@
     color: $black;
     border: 0.9px solid $l_gray;
   }
-  .nicebtn{
+  .nicebtn {
     background-color: $blue;
     color: $white;
   }

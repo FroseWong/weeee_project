@@ -9,7 +9,7 @@ const footerInput = document.querySelector(".footer-mail");
 emailRule =
   /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
 
-footerCheck.addEventListener("click", function () {
+footerCheck?.addEventListener("click", function () {
   const mail = footerInput.value;
 
   if (mail.search(emailRule) != -1) {
