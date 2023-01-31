@@ -1,7 +1,5 @@
-//明暗碼切換
-
-const checkEye = document.getElementById("checkEye");
-const openPasswords =  document.getElementById("openPasswords");
+var checkEye = document.getElementById("checkEye");
+var openPasswords =  document.getElementById("password");
 checkEye.addEventListener("click", function(e){
   if(e.target.classList.contains('fa-eye')){
     e.target.classList.remove('fa-eye');
@@ -14,7 +12,7 @@ checkEye.addEventListener("click", function(e){
   }
 });
 var checkEyeag = document.getElementById("checkEyeag");
-var openPasswordag =  document.getElementById("openPasswordag");
+var openPasswordag =  document.getElementById("passwordag");
 checkEyeag.addEventListener("click", function(e){
   if(e.target.classList.contains('fa-eye')){
     e.target.classList.remove('fa-eye');
@@ -26,44 +24,3 @@ checkEyeag.addEventListener("click", function(e){
     e.target.classList.add('fa-eye')
   }
 });
-
-
-
-
-// const app = Vue.createApp({
-//   data(){
-//     return {
-     
-//     }
-//   },
-//   methods:{
-    
-//     openandcloseEyes(e){
-//       // console.log(e.target);
-//       console.log(this.$refs.passwordInput.value);
-//       if(e.target.classList.contains('fa-eye')){
-//         e.target.classList.remove('fa-eye');
-//         e.target.classList.add('fa-eye-slash');
-//         e.target.previousElementSibling.setAttribute('type','text')
-//       }
-//       else{
-//         e.target.previousElementSibling.setAttribute('type','password');
-//         e.target.classList.remove('fa-eye-slash');
-//         e.target.classList.add('fa-eye')
-//     }
-//     },
-
-
-
-   
-//   }, 
-//   mounted(){
-
-//   },
-//   updated(){},
-// });
-
-// app.mount('#app');
-
-    
-    
