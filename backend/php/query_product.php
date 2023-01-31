@@ -1,5 +1,6 @@
 <?php
-
+//確認是否登入
+include("checkLogin.php");
 //DB連線資訊
 include("connection.php");
 
@@ -12,7 +13,6 @@ if (isset($_GET['productNumber'])) { //分辨你是不是按了搜尋
     $productStatus = $_GET['productStatus'];
     $productType = isset($_GET['productType']) ? $_GET['productType'] : []; // ['experience','sightseeing']
 
-  
 
     $sql = "SELECT  ProductNumber, ProductName, ProductStatus, ProductType, ProductID
     from Product 
