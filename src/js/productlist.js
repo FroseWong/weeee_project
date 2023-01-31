@@ -56,7 +56,6 @@ createApp({
     this.get_member_information();
     window.addEventListener("resize", this.resize_adjust, true);
     this.getdata();
-    console.log("aaa");
     // this.memberID = header.memberID; // Frose
   },
   computed: {
@@ -83,7 +82,7 @@ createApp({
       } else {
         newcardlist3 = this.filters(newcardlist2, this.checked.select_price);
       }
-      console.log(newcardlist3);
+      
       let citys = new Set();
       let pricestag = new Set();
       let type = new Set();
@@ -320,8 +319,12 @@ createApp({
     showproduct() {},
     open_city(e) {
       this.cityshow = !this.cityshow;
-
-      let path = e.path[0].childNodes[1].classList;
+      let path
+      if(e.target.classList.contains("fa-solid")){
+      path = e.target.classList
+      }else{
+      path = e.path[0].childNodes[1].classList;
+      }
       if (path.contains("fa-circle-chevron-down")) {
         path.remove("fa-circle-chevron-down");
         path.add("fa-circle-chevron-up");
@@ -331,20 +334,8 @@ createApp({
       }
     },
     filterCity(e) {
-      e.target.querySelector("input").click();
-      let city = e.path[0].childNodes[0];
-      let text = e.path[0].textContent;
-      if (city.checked == false) {
-        city.checked = true;
-        this.citylist.push(e.path[0].textContent);
-      } else if (city.checked == true) {
-        city.checked = false;
-        this.citylist.forEach((e, index) => {
-          if (e == text) {
-            this.citylist.splice(index, 1);
-          }
-        });
-      }
+      e.target.querySelector("input")?.click();
+     
     },
     filterSort_bottom_to_top(e) {
       let arr = this.cardlist;
@@ -427,7 +418,7 @@ createApp({
       epath.color = "#fff";
     },
     filterPrice(e) {
-      e.target.querySelector("input").click();
+      e.target.querySelector("input")?.click();
       let price = e.path[0].childNodes[0];
       let text = e.path[0].textContent;
       // if (price.checked == false) {
@@ -443,7 +434,7 @@ createApp({
       // }
     },
     filterCategory(e) {
-      e.target.querySelector("input").click();
+      e.target.querySelector("input")?.click();
     },
     openSelectbar(e) {
       let category_btn = document.querySelector(
