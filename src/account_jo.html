@@ -686,15 +686,18 @@
             document.getElementById("trashCan_"+ response[i].JoID).addEventListener("click", function(e){
               e.stopPropagation();
             })
-            document.getElementById("trashCan_"+ response[i + 1].JoID).addEventListener("click", function(e){
-              e.stopPropagation();
-            })
             document.getElementById("edit_"+ response[i].JoID).addEventListener("click", function(e){
               e.stopPropagation();
             })
-            document.getElementById("edit_"+ response[i + 1].JoID).addEventListener("click", function(e){
-              e.stopPropagation();
-            })
+            
+            if (response[i + 1]) {
+              document.getElementById("trashCan_"+ response[i + 1].JoID).addEventListener("click", function(e){
+                e.stopPropagation();
+              });
+              document.getElementById("edit_"+ response[i + 1].JoID).addEventListener("click", function(e){
+                e.stopPropagation();
+              });
+            }
           }
           // $("#count").html(response.length); //jquery寫法
           document.getElementById("count").innerHTML = response.length; //js寫法
