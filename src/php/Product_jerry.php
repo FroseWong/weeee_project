@@ -11,10 +11,14 @@ if(!$key == "" ){
         join ProductImg i 
         on p.ProductID =  i.ProductID
         where p.ProductStatus = 1 
-        and p.ProductName like ?
-        or p.Location like ?
-        or p.ProductSecondType like ?
-        or p.ProductText like ?  ) a
+        and 
+            (
+            p.ProductName like ?
+            or p.Location like ?
+            or p.ProductSecondType like ?
+            or p.ProductText like ? 
+            ) 
+        ) a
         join(
         select ProductID, avg(ProductCommentScore) as score
         from ProductComment 

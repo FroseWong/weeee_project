@@ -78,7 +78,7 @@ let app1 = Vue.createApp({
       let urlParams = new URLSearchParams(window.location.search);
       let loc = urlParams.get("loc");
       if (loc == "%") {
-        this.location_selected = "全部地區";
+        this.location_selected = "全部";
       } else {
         this.location_selected = loc;
       }
