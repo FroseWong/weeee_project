@@ -73,10 +73,11 @@ const App = {
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-              swal({
+              Swal.fire({
                 icon: "warning",
                 title: "請先完成登入",
                 timer: 2000,
+                showConfirmButton: false
               });
               // alert("請先完成登入");
               setTimeout(() => {
@@ -131,10 +132,11 @@ const App = {
         success: function (response) {
           //移除商品成功
           // alert(response);
-          swal({
+          Swal.fire({
             icon: "success",
             title: "商品已移除！",
             timer: 2000,
+            showConfirmButton: false
           });
           setTimeout(() => {
             location.reload();
@@ -166,10 +168,11 @@ const App = {
             success: function (response) {
               //移除商品成功
               // alert("移除商品成功");
-              swal({
+              Swal.fire({
                 icon: "success",
                 title: "商品已移除！",
                 timer: 2000,
+                showConfirmButton: false
               });
               setTimeout(() => {
                 location.reload();
@@ -228,10 +231,11 @@ const App = {
       }
       // console.log(selected);
       if (selected <= 0) {
-        swal({
+        Swal.fire({
           icon: "warning",
           title: "請選擇商品",
           timer: 2000,
+          showConfirmButton: false
         });
       } else {
         let selectProduct = [];
@@ -316,10 +320,11 @@ const App = {
         dataType: "text",
         success: function (response) {
           // alert("修改成功");
-          swal({
+          Swal.fire({
             icon: "success",
             title: "修改成功",
             timer: 2000,
+            showConfirmButton: false
           });
         },
         error: function (exception) {
