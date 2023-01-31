@@ -44,7 +44,7 @@ const app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          console.log(response);
+          // console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           that.memberID = response[0].MemberID;
@@ -80,7 +80,7 @@ const app = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           response.forEach((TotalPoints) => {
             that.tempWeeee = TotalPoints;
             if (that.tempWeeee.TotalPoints > 0) {
@@ -135,7 +135,7 @@ const app = Vue.createApp({
           },
           dataType: "json",
           success: function (response) {
-            console.log(response);
+            // console.log(response);
             response.forEach((memberInfo) => {
               that.memberInfo = memberInfo;
             });
@@ -152,9 +152,9 @@ const app = Vue.createApp({
     getCheckoutData() {
       this.productList = JSON.parse(sessionStorage.getItem("checkout_data"));
       // this.productList.push(productList);
-      console.log(this.productList);
+      // console.log(this.productList);
 
-      var totalPrice = 0;
+      let totalPrice = 0;
       for (let i = 0; i < this.productList.length; i++) {
         // 將每個商品的總價加在一起
         totalPrice +=
@@ -202,9 +202,9 @@ const app = Vue.createApp({
       }
     },
     validDate(e){
-      var inputChar = String.fromCharCode(e.keyCode);
-      var code = e.keyCode;
-      var allowedKeys = [8];
+      let inputChar = String.fromCharCode(e.keyCode);
+      let code = e.keyCode;
+      let allowedKeys = [8];
       if (allowedKeys.indexOf(code) !== -1) {
         return;
       }
@@ -246,7 +246,7 @@ const app = Vue.createApp({
           send_data = false;
         }
         //信用卡日期驗證
-        var expiration = document.getElementById('expiration').value;
+        let expiration = document.getElementById('expiration').value;
         if (expiration.length < 5){
           send_data = false;
           // alert("信用卡效期有誤，請輸入正確日期(月/年)");
@@ -257,17 +257,17 @@ const app = Vue.createApp({
           });
         }
         else if (expiration.length == 5) {
-          var expiry = expiration.split('/');
-          var month = parseInt(expiry[0]);
-          var year = parseInt(expiry[1]);
+          let expiry = expiration.split('/');
+          let month = parseInt(expiry[0]);
+          let year = parseInt(expiry[1]);
       
           if (year < 100) {
             year += 2000;
           }
       
-          var currentTime = new Date();
-          var currentMonth = currentTime.getMonth() + 1;
-          var currentYear = currentTime.getFullYear();
+          let currentTime = new Date();
+          let currentMonth = currentTime.getMonth() + 1;
+          let currentYear = currentTime.getFullYear();
       
           if (year < currentYear || (year == currentYear && month < currentMonth)) {
             send_data = false;
@@ -280,13 +280,13 @@ const app = Vue.createApp({
           }
         }
         //信用卡末3碼驗證
-        var cvc = document.getElementById('cvc').value;
+        let cvc = document.getElementById('cvc').value;
         if (cvc.length < 3){
           send_data = false;
           // alert("您輸入的末三碼有誤，請再次核對！");
           swal({
             icon: "warning",
-            title: "您輸入的末三碼有誤，請再次核對！",
+            title: "信用卡末三碼有誤，請再次核對！",
             timer: 2000,
           });
         }
@@ -355,11 +355,11 @@ const app = Vue.createApp({
   computed: {
     getTotal() {
       // 取productList中select為true
-      // var prodList = this.productList.filter(function (val) {
+      // let prodList = this.productList.filter(function (val) {
       //   return val.select;
       // });
       // 設置一個值用来儲存總價
-      var totalPrice = 0;
+      let totalPrice = 0;
       for (let i = 0; i < this.productList.length; i++) {
         // 將每個商品的總價加在一起
         totalPrice +=
