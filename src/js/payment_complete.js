@@ -102,7 +102,7 @@ const App = {
       for (let i = 0; i < this.productList.length; i++) {
         // 將每個商品的總價加在一起
         totalPrice +=
-          this.productList[i].quantity * this.productList[i].productPrice;
+          this.productList[i].Quantity * this.productList[i].ProductPrice;
       }
       return {
         // 被選中的物品數量就是proList.length
