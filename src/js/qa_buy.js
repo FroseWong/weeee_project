@@ -154,10 +154,10 @@ let app1 = Vue.createApp({
           h_position = h.offsetTop;
           i_position = i.offsetTop;
           j_position = j.offsetTop;
-          console.log([f_position,g_position,h_position,i_position,j_position])
+         
           let arr = [f_list,g_list,h_list,i_list,j_list]
           ScrollPosition = window.scrollY;
-          console.log(ScrollPosition);
+         
           if (ScrollPosition + 136 >= f_position){
             arr.forEach(element => {
               element.classList.remove("on")
