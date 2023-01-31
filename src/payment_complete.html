@@ -23,7 +23,7 @@
 <body style="background-color:#f5f5f5;">
 
     @@include('layout/header.html')
-    <div class="cart_wrapper wrapper" id="app">
+    <div class="cart_wrapper wrapper" id="app" v-cloak>
         <div class="container">
             <div class="cart_breadcrumb hb">
                 <ol>
@@ -42,7 +42,7 @@
                         <p>
                         <h5>訂購完成</h5>
                         </p>
-                        <p>憑證及訂單明細將寄至：{{ orderInfo.email }}</p>
+                        <p>憑證及訂單明細將寄至：{{ orderInfo.Email }}</p>
                     </span>
                 </div>
 
@@ -53,25 +53,25 @@
                         </div> -->
                         <div class="payment_item_list">
                             <div class="payment_item_header hasBorder">
-                                <h5>訂單編號{{ orderInfo.orderNumber }}</h5>
+                                <h5>訂單編號{{ orderInfo.OrderNumber }}</h5>
                             </div>
                             <!-- payment_complete start-->
                             <div class="product_group">
                                 <div class="product_item" v-for="(product, index) in productList">
-                                    <a v-bind:href="'./productdetail.html?id=' + product.productID" class="product-image"><img v-bind:src="product.productImgPath1"
+                                    <a v-bind:href="'./productdetail.html?id=' + product.ProductID" class="product-image"><img v-bind:src="product.ProductImgPath1"
                                             alt=""></a>
                                     <div class="product-name">
-                                        <a v-bind:href="'./productdetail.html?id=' + product.productID">
-                                            <h6>{{ product.productName }}</h6>
+                                        <a v-bind:href="'./productdetail.html?id=' + product.ProductID">
+                                            <h6>{{ product.ProductName }}</h6>
                                         </a>
                                     </div>
-                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>{{ product.startDate }}
+                                    <div class="date"><i class="fa-regular fa-calendar-days"></i>{{ product.StartDate }}
                                     </div>
 
-                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x {{ product.quantity }}
+                                    <div class="quantity"><i class="fa-solid fa-person"></i>人數 x {{ product.Quantity }}
                                     </div>
                                     <div class="product-price">
-                                        <h6>{{ displayTWD(product.quantity * product.productPrice) }}</h6>
+                                        <h6>{{ displayTWD(product.Quantity * product.ProductPrice) }}</h6>
                                     </div>
                                 </div>
 
@@ -116,13 +116,13 @@
                             <ul>
                                 <li>Weeee! Points 折抵</li>
                                 <li>
-                                    <h6>-{{ displayTWD(orderInfo.discount) }}</h6>
+                                    <h6>-{{ displayTWD(orderInfo.Discount) }}</h6>
                                 </li>
                             </ul>
                             <ul>
                                 <li>付款金額</li>
                                 <li>
-                                    <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice - orderInfo.discount)
+                                    <h5 style="color: #4484ce;">{{ displayTWD(getTotal.totalPrice - orderInfo.Discount)
                                         }}</h5>
                                 </li>
                             </ul>
@@ -130,7 +130,7 @@
                                 <li>訂單完成後回饋</li>
                                 <li><span class="points_yellow">
                                         <img src="img/weeeepoints/yellow.svg" alt="">{{ Math.floor((getTotal.totalPrice
-                                        - orderInfo.discount) / 100) }}</li>
+                                        - orderInfo.Discount) / 100) }}</li>
                             </ul>
                         </div>
                         <div class="payment_list_points">

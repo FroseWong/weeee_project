@@ -10,7 +10,7 @@
     // $message = "修改成功!";
 
     //建立SQL
-    $sql = "UPDATE cart set cartstartday = ?, quantity = ? WHERE cartID = ?";
+    $sql = "UPDATE Cart set CartStartDay = ?, Quantity = ? WHERE CartID = ?";
     
     //執行
     $statement = $pdo->prepare($sql);

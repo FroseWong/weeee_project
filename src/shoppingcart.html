@@ -156,25 +156,25 @@
                 </div>
                 <div class="productdetail-modal-mid">
                   <p>人數</p>
-                  <p>TWD {{tempProd.info.productPrice}}/每人</p>
+                  <p>TWD {{tempProd.info.ProductPrice}}/每人</p>
                   <div>
                     <i class="fa-solid fa-circle-minus" @click="peopleMinus"></i>
-                    <p>{{tempProd.info.quantity}}</p>
+                    <p>{{tempProd.info.Quantity}}</p>
                     <i class="fa-solid fa-circle-plus" @click="peoplePlus"></i>
                   </div>
                 </div>
                 <div class="productdetail-modal-bot">
                   <div>
                     <p>總金額</p>
-                    <p>TWD {{tempProd.info.quantity * tempProd.info.productPrice}}</p>
+                    <p>TWD {{tempProd.info.Quantity * tempProd.info.ProductPrice}}</p>
                   </div>
                   <div>
                     <p>Weeee!Points</p>
                     <div class="productdetail-modal-points">
                       <img src="./img/weeeepoints/yellow.svg" alt="" />
                       <p>
-                        {{getModalPoints(tempProd.info.quantity *
-                        tempProd.info.productPrice)}}
+                        {{getModalPoints(tempProd.info.Quantity *
+                        tempProd.info.ProductPrice)}}
                       </p>
                     </div>
                   </div>

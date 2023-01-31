@@ -10,24 +10,24 @@ getPurchaseProduct($pdo, $OID);
 
 //取得目前orderID最大值
 function getMaxOrderID($pdo, $memberID){
-    $sql = "SELECT MAX(orderid) FROM `order` where memberID = ?";
+    $sql = "SELECT MAX(OrderID) FROM `Order` where MemberID = ?";
     $statement = $pdo->prepare($sql);
     $statement->bindValue(1, $memberID);
     $statement->execute(); 
     $data = $statement->fetchAll();
      
-    return $data[0]["MAX(orderid)"];
+    return $data[0]["MAX(OrderID)"];
 }
 
 //取得訂單商品資訊
 function getPurchaseProduct($pdo, $OID){
-    $sql = "select p.productName, p.productPrice, i.productImgPath1, od.quantity, od.startDate, p.productID
-    from product p
-    join productimg i
-    on p.productID = i.productID
-    join orderdetail od
-    on p.productID = od.productID
-    where orderID = ?";
+    $sql = "select p.ProductName, p.ProductPrice, i.ProductImgPath1, od.Quantity, od.StartDate, p.ProductID
+    from Product p
+    join ProductImg i
+    on p.ProductID = i.ProductID
+    join OrderDetail od
+    on p.ProductID = od.ProductID
+    where OrderID = ?";
     
     //執行並查詢，會回傳查詢結果的物件，必須使用fetch、fetchAll...等方式取得資料
     $statement = $pdo->prepare($sql);

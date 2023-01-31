@@ -5,8 +5,8 @@ $memberID = $_POST["memberID"]; //TODO 先寫死，到時候登入功能做好�
 include("connection.php");
 
 //建立SQL語法
-$sql = "select totalPoints
-from member where memberID = ?;
+$sql = "select TotalPoints
+from Member where MemberID = ?;
 ";
 
 

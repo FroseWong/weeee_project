@@ -9,20 +9,20 @@ getPurchaseInfo($pdo, $OID);
 
 //取得目前orderID最大值
 function getMaxOrderID($pdo, $memberID){
-    $sql = "SELECT MAX(orderid) FROM `order` where memberID = ?";
+    $sql = "SELECT MAX(OrderID) FROM `Order` where MemberID = ?";
     $statement = $pdo->prepare($sql);
     $statement->bindValue(1, $memberID);
     $statement->execute(); 
     $data = $statement->fetchAll();
      
-    return $data[0]["MAX(orderid)"];
+    return $data[0]["MAX(OrderID)"];
 }
 
 //取得訂購人email、訂單號碼及折抵點數
 function getPurchaseInfo($pdo, $OID){
-    $sql = "select email, orderNumber, discount
-    from `order`
-    where orderid = ?";
+    $sql = "select Email, OrderNumber, Discount
+    from `Order`
+    where OrderID = ?";
     $statement = $pdo->prepare($sql);
     $statement->bindValue(1, $OID);
     $statement->execute(); //執行

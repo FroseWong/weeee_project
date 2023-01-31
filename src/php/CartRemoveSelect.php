@@ -9,7 +9,7 @@
     for($i=0;$i<count($CID);$i++){
         $str .= $str ? " OR CartID =".$CID[$i]  : "CartID =".$CID[$i] ;
     }
-    $sql = "delete from cart where $str";
+    $sql = "delete from Cart where $str";
     
     //執行
     $statement = $pdo->prepare($sql);
