@@ -34,18 +34,19 @@ if ($memberID === "") {
 
 // update
 
-$sql =  "SELECT * FROM 
+$sql =  "SELECT  m.MemberID, m.FullName, m.MemberImg, 
+c.count FROM 
 	( SELECT m.MemberID, m.FullName, m.MemberImg 
 	FROM Member m 
 	WHERE m.MemberID = $memberID) m
 	LEFT JOIN
-	(SELECT count(*) ,ca.MemberID
+	(SELECT count(*) as count ,ca.MemberID
 	FROM Cart ca
 	join Product p
 	on ca.ProductID = p.ProductID
 	where p.ProductStatus = 1
 	GROUP BY MemberID) c
-	ON m.MemberID = c.MemberID";
+	ON m.MemberID = c.MemberID;";
 
 // $sql =  "SELECT * FROM 
 // 	( SELECT m.MemberID, m.FullName, m.MemberImg 

@@ -279,7 +279,7 @@ let app = Vue.createApp({
       $.ajax({
         method: "POST",
         url: "./php/jo_revise_getinfo.php",
-        async: false,
+        // async: false,
         data: {
           memberID: that.memberID,
           jid: that.jid,
@@ -287,7 +287,7 @@ let app = Vue.createApp({
 
         dataType: "json",
         success: function (response) {
-          // console.log(response);
+          console.log(response);
           //   console.log(response[0]);
           //   console.log(that.sightseeingList);
           joAttendInput.value = response[0].JoAttend;
@@ -301,10 +301,14 @@ let app = Vue.createApp({
           that.JoImg = imgstored = response[0].JoImg;
           imgName = that.JoImg.split("/")[that.JoImg.split("/").length - 1]; //從圖片路徑中擷取圖片名稱
 
-          for (let i = 0; i < that.sightseeingList.length; i++) {
-            if (response[0].ProductID === that.sightseeingList[i].ProductID)
+          // console.log(response[0].ProductID);
+          // console.log(that.sightseeingList);
+          // console.log(that.sightseeingList[0]);
+          that.sightseeingList.forEach((s, i) => {
+            if (response[0].ProductID === that.sightseeingList[i].ProductID) {
               useweeeeInput.value = that.sightseeingList[i].ProductName;
-          }
+            }
+          });
 
           if (that.JoImg) {
             let li_html = `

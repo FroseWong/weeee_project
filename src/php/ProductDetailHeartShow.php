@@ -25,7 +25,7 @@ $tempif = null;
 foreach ($dataif as $key => $value) {
     $tempif = $value[0];
 }
-if (empty($tempif)) {
-    return;
-}
+// if (empty($tempif)) {
+//     return;
+// }
 echo json_encode($tempif);

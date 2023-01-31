@@ -644,8 +644,7 @@
       `;
             content.insertAdjacentHTML("beforeend", order_content);
 
-            //顯示會員全名在左側
-            $("#fullName").html(response[i].LastName + response[i].FirstName);
+            
           }
         },
       });
@@ -662,7 +661,7 @@
                   dataType: "json",
                   success: function (response) {
                     $("#mem_img").attr("src", response.MemberImg);
-                    $("#fullName").attr("src", response.LastName + response.FirstName);
+                    $("#fullName").html(response.LastName + response.FirstName);
                     let url = window.location.href;
                     $("#originalUrl").val(url.substring(url.lastIndexOf("/") + 1));
                   }
