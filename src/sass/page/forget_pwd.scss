@@ -1,13 +1,33 @@
-.forgetpwd_bg {
-    width: 100%;
-    height: 100vh;
+.wrapper.forget_pwd  {
     background-image: url(../img/otherpage/signup01.jpg);
     background-position: center center;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
+  
+    //   background-repeat: no-repeat;
+    @include m {
+      background-image: none;
+      // * {
+      //   padding: 0;
+      //   margin: 0;
+      //   //   color: red;
+      // }
+    }
+
 }
+.forgetpwd_bg{
+    width: 100%;
+    height: 100vh;
+    // background-image: url(../img/otherpage/signup01.jpg);
+    // background-position: center center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
 
-
+    @include m {
+      background-image: none;
+      height: auto;
+    }
+}
 
 .forgetpwd h3 {
     font-weight: 400;
@@ -26,6 +46,10 @@
     height: 100%;
     padding-top: 7%;
     padding-left: 45%;
+    @include m {
+        padding: 0;
+        height: auto;
+      }
 }
 .forgetpwd {
    width: 370px;
@@ -45,6 +69,16 @@
     // margin-top: 30px;
 
     padding-bottom: 10px;
+
+    .email{
+        position: relative;
+
+        .fa-envelope{
+            position: absolute;
+            top: 20px;
+            right: 75px;
+        }
+    }
 }
 
 .forgetpwd input {
@@ -58,6 +92,9 @@
     text-indent: 5px;
 }
 
+.forgetpwd .submit{
+    border:none;
+}
 // .forgetpwdsubmit {
 
 //     text-align: center;
