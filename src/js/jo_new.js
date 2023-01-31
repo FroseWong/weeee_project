@@ -182,7 +182,7 @@ previewBtn.addEventListener("click", function () {
     joAttendInput.value !== "" &&
     joStartDateInput.value !== "" &&
     joStartTimeInput.value !== "" &&
-    nNumber > allDateNumber &&
+    // nNumber > allDateNumber &&
     imgstored !== ""
   ) {
     // if (reader.result) {
@@ -239,8 +239,8 @@ previewBtn.addEventListener("click", function () {
       str += str === "" ? "請選擇揪團日期" : "\n請選擇揪團日期";
     if (joStartTimeInput.value === "")
       str += str === "" ? "請選擇揪團時間" : "\n請選擇揪團時間";
-    if (nNumber > allDateNumber && joStartTimeInput.value !== "")
-      str += str === "" ? "請選擇今天以後的時間" : "\n請選擇今天以後的時間";
+    // if (nNumber > allDateNumber && joStartTimeInput.value !== "")
+    //   str += str === "" ? "請選擇今天以後的時間" : "\n請選擇今天以後的時間";
 
     if (imgstored === "" && reader?.result === "")
       str += str === "" ? "請上傳圖片" : "\n請上傳圖片";
