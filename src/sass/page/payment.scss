@@ -137,6 +137,18 @@
                         background-repeat: no-repeat;
                         background-position: right 0.7em top 50%, 0px 0px;
                     }
+                    .card_wrapper{
+                        width: 210px;
+                        height: 45px;
+                        outline: 1px solid #e1e1e1;
+                        border-radius: 4px;
+                        padding-left: 10px;
+                        .card{
+                            width: 50px;
+                            padding: 0;
+                            border: none;
+                        }
+                    }
 
                 }
             }

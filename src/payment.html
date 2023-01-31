@@ -233,19 +233,14 @@
                             <div class="list_row">
                                 <div class="list_row_col">
                                     <label for="">信用卡號碼<span class="text-danger">*</span></label>
-                                    <div class="card_wrapper"
-                                        style="width: 210px; height: 45px; outline: 1px solid #e1e1e1; border-radius: 4px; padding-left: 10px;">
-                                        <input type="text" class="card" placeholder="oooo"
-                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                    <div class="card_wrapper">
+                                        <input type="text" class="card" placeholder="oooo" pattern="\d{4}" maxlength="4"
                                             @input="creditcard($event)">
-                                        <input type="text" class="card" placeholder="oooo"
-                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                        <input type="text" class="card" placeholder="oooo" pattern="\d{4}" maxlength="4"
                                             @input="creditcard($event)">
-                                        <input type="text" class="card" placeholder="oooo"
-                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                        <input type="text" class="card" placeholder="oooo" pattern="\d{4}" maxlength="4"
                                             @input="creditcard($event)">
-                                        <input type="text" class="card" id="lastCard" placeholder="oooo"
-                                            style="width: 50px; padding: 0; border: none;" pattern="\d{4}" maxlength="4"
+                                        <input type="text" class="card" placeholder="oooo" pattern="\d{4}" maxlength="4"
                                             @input="creditcard($event)">
                                     </div>
                                     <!-- <p style="font-size: 12px; color: red;"v-if="card_data">*您輸入的卡號有誤，請再次核對！</p> -->
@@ -297,7 +292,8 @@
                             <div class="list_row keyTaxId" v-if="keyTaxId">
                                 <div class="list_row_col">
                                     <label for="">統一編號<span class="text-danger">*</span></label>
-                                    <input type="text" placeholder="請輸入統一編號" required maxlength="8" pattern="\d{8}" onkeyup="value=value.replace(/[^\d]/g,'') ">
+                                    <input type="text" placeholder="請輸入統一編號" required maxlength="8" pattern="\d{8}"
+                                        onkeyup="value=value.replace(/[^\d]/g,'') ">
                                 </div>
                                 <div class="list_row_col">
                                     <label for="">抬頭(買受人)<span class="text-danger">*</span></label>
