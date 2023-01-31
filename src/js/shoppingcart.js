@@ -267,22 +267,22 @@ const App = {
     },
     updateEditedProd() {
       console.log("start updating exisiting prod");
-      this.productList[this.tempProd.index].productPrice =
+      this.productList[this.tempProd.index].ProductPrice =
         this.tempProd.info.productPrice;
-      this.productList[this.tempProd.index].quantity =
+      this.productList[this.tempProd.index].Quantity =
         this.tempProd.info.quantity;
       let date = this.getWeeeeDate();
       console.log(date);
-      this.productList[this.tempProd.index].cartStartDay = date;
+      this.productList[this.tempProd.index].CartStartDay = date;
       let that = this;
 
       $.ajax({
         method: "POST",
         url: "./php/CartUpdate.php",
         data: {
-          CID: that.productList[that.currentI].cartID,
-          Quantity: that.productList[that.tempProd.index].quantity,
-          Date: that.productList[that.tempProd.index].cartStartDay,
+          CID: that.productList[that.currentI].CartID,
+          Quantity: that.productList[that.tempProd.index].Quantity,
+          Date: that.productList[that.tempProd.index].CartStartDay,
           // CID: 1,
           // Quantity: 6,
           // Date: '2025-01-01',
@@ -325,7 +325,7 @@ const App = {
       var totalPrice = 0;
       for (let i = 0; i < prodList.length; i++) {
         // 將每個商品的總價加在一起
-        totalPrice += prodList[i].quantity * prodList[i].productPrice;
+        totalPrice += prodList[i].Quantity * prodList[i].ProductPrice;
       }
       return {
         // 被選中的物品數量就是proList.length
