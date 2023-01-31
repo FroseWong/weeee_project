@@ -35,7 +35,7 @@ CREATE TABLE `Cart` (
   KEY `FK_Cart_MemberID_idx` (`MemberID`),
   CONSTRAINT `FK_Cart_MemberID` FOREIGN KEY (`MemberID`) REFERENCES `Member` (`MemberID`),
   CONSTRAINT `FK_Cart_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `Product` (`ProductID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `Cart` (
 
 LOCK TABLES `Cart` WRITE;
 /*!40000 ALTER TABLE `Cart` DISABLE KEYS */;
-INSERT INTO `Cart` VALUES (4,101,1,1,'2023-01-22'),(5,102,1,1,'2023-01-22'),(6,103,2,1,'2023-01-22'),(7,104,2,1,'2023-01-22'),(8,105,3,1,'2023-01-22'),(9,106,4,1,'2023-01-22');
+INSERT INTO `Cart` VALUES (4,101,1,1,'2023-01-22'),(5,102,1,1,'2023-01-22'),(8,105,3,1,'2023-01-22'),(9,106,4,2,'2023-03-30'),(10,101,4,1,'2023-03-15'),(11,2015,4,1,'2023-02-22');
 /*!40000 ALTER TABLE `Cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `JoComment` (
   KEY `FK_Comment_JoID_idx` (`JoID`),
   CONSTRAINT `FK_Comment_JoID` FOREIGN KEY (`JoID`) REFERENCES `Jo` (`JoID`),
   CONSTRAINT `FK_Comment_MemberID` FOREIGN KEY (`MemberID`) REFERENCES `Member` (`MemberID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=364 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `JoComment` (
 
 LOCK TABLES `JoComment` WRITE;
 /*!40000 ALTER TABLE `JoComment` DISABLE KEYS */;
-INSERT INTO `JoComment` VALUES (1,2,1,'2022-12-27','好想加入!',1),(2,3,1,'2022-12-27','好想加入!',1),(3,4,2,'2022-12-27','好想加入!',1),(4,5,2,'2022-12-27','好想加入!',1),(5,6,3,'2022-12-27','好想加入!',1),(6,7,3,'2022-12-27','好想加入!',1);
+INSERT INTO `JoComment` VALUES (246,6,1,'2023-01-31','好想加入!',1),(247,1,2,'2023-01-31','好想加入!',1),(248,2,2,'2023-01-31','好想加入!',1),(249,3,2,'2023-01-31','好想加入!',1),(250,4,3,'2023-01-31','好想加入!',1),(251,3,3,'2023-01-31','好想加入!',1),(252,5,3,'2023-01-31','好想加入!',1),(253,4,4,'2023-01-31','好想加入!',1),(254,3,4,'2023-01-31','好想加入!',1),(255,6,5,'2023-01-31','好想加入!',1),(256,1,5,'2023-01-31','好想加入!',1),(257,6,6,'2023-01-31','好想加入!',1),(258,4,6,'2023-01-31','好想加入!',1),(259,5,6,'2023-01-31','好想加入!',1),(260,4,7,'2023-01-31','好想加入!',1),(261,3,7,'2023-01-31','好想加入!',1),(262,6,7,'2023-01-31','好想加入!',1),(263,2,8,'2023-01-31','好想加入!',1),(264,4,8,'2023-01-31','好想加入!',1),(265,5,9,'2023-01-31','好想加入!',1),(266,2,9,'2023-01-31','好想加入!',1),(267,4,9,'2023-01-31','好想加入!',1),(268,1,11,'2023-01-31','好想加入!',1),(269,2,11,'2023-01-31','好想加入!',1),(270,2,11,'2023-01-31','好想加入!',1),(271,4,12,'2023-01-31','好想加入!',1),(272,1,12,'2023-01-31','好想加入!',1),(273,4,13,'2023-01-31','好想加入!',1),(274,1,13,'2023-01-31','好想加入!',1),(275,4,13,'2023-01-31','好想加入!',1),(276,1,14,'2023-01-31','好想加入!',1),(277,2,14,'2023-01-31','好想加入!',1),(278,3,14,'2023-01-31','好想加入!',1),(279,2,15,'2023-01-31','好想加入!',1),(280,4,15,'2023-01-31','好想加入!',1),(281,1,15,'2023-01-31','好想加入!',1),(282,5,16,'2023-01-31','好想加入!',1),(283,7,16,'2023-01-31','好想加入!',1),(284,1,17,'2023-01-31','好想加入!',1),(285,6,17,'2023-01-31','好想加入!',1),(286,4,18,'2023-01-31','好想加入!',1),(287,3,18,'2023-01-31','好想加入!',1),(288,2,18,'2023-01-31','好想加入!',1),(289,6,19,'2023-01-31','好想加入!',1),(290,1,19,'2023-01-31','好想加入!',1),(291,6,19,'2023-01-31','好想加入!',1),(292,6,20,'2023-01-31','好想加入!',1),(293,1,20,'2023-01-31','好想加入!',1),(294,3,20,'2023-01-31','好想加入!',1),(295,2,21,'2023-01-31','好想加入!',1),(296,1,21,'2023-01-31','好想加入!',1),(297,2,22,'2023-01-31','好想加入!',1),(298,1,22,'2023-01-31','好想加入!',1),(299,3,22,'2023-01-31','好想加入!',1),(300,5,23,'2023-01-31','好想加入!',1),(301,3,23,'2023-01-31','好想加入!',1),(302,4,23,'2023-01-31','好想加入!',1),(303,3,24,'2023-01-31','好想加入!',1),(304,2,24,'2023-01-31','好想加入!',1),(305,5,25,'2023-01-31','好想加入!',1),(306,3,25,'2023-01-31','好想加入!',1),(307,3,25,'2023-01-31','好想加入!',1),(308,1,26,'2023-01-31','好想加入!',1),(309,2,26,'2023-01-31','好想加入!',1),(310,6,27,'2023-01-31','好想加入!',1),(311,3,28,'2023-01-31','好想加入!',1),(312,6,28,'2023-01-31','好想加入!',1),(313,2,29,'2023-01-31','好想加入!',1),(314,5,29,'2023-01-31','好想加入!',1),(315,1,29,'2023-01-31','好想加入!',1),(316,3,30,'2023-01-31','好想加入!',1),(317,2,30,'2023-01-31','好想加入!',1),(318,5,30,'2023-01-31','好想加入!',1),(319,4,31,'2023-01-31','好想加入!',1),(320,3,31,'2023-01-31','好想加入!',1),(321,5,31,'2023-01-31','好想加入!',1),(322,5,32,'2023-01-31','好想加入!',1),(323,2,32,'2023-01-31','好想加入!',1),(324,6,32,'2023-01-31','好想加入!',1),(325,2,33,'2023-01-31','好想加入!',1),(326,3,33,'2023-01-31','好想加入!',1),(327,5,33,'2023-01-31','好想加入!',1),(328,2,34,'2023-01-31','好想加入!',1),(329,6,34,'2023-01-31','好想加入!',1),(330,6,35,'2023-01-31','好想加入!',1),(331,3,35,'2023-01-31','好想加入!',1),(332,2,36,'2023-01-31','好想加入!',1),(333,5,36,'2023-01-31','好想加入!',1),(334,1,36,'2023-01-31','好想加入!',1),(335,1,37,'2023-01-31','好想加入!',1),(336,4,37,'2023-01-31','好想加入!',1),(337,5,37,'2023-01-31','好想加入!',1),(338,2,38,'2023-01-31','好想加入!',1),(339,1,38,'2023-01-31','好想加入!',1),(340,5,38,'2023-01-31','好想加入!',1),(341,5,39,'2023-01-31','好想加入!',1),(342,2,39,'2023-01-31','好想加入!',1),(343,5,39,'2023-01-31','好想加入!',1),(344,3,40,'2023-01-31','好想加入!',1),(345,2,40,'2023-01-31','好想加入!',1),(346,4,41,'2023-01-31','好想加入!',1),(347,1,41,'2023-01-31','好想加入!',1),(348,5,41,'2023-01-31','好想加入!',1),(349,4,42,'2023-01-31','好想加入!',1),(350,1,42,'2023-01-31','好想加入!',1),(351,2,42,'2023-01-31','好想加入!',1),(352,3,43,'2023-01-31','好想加入!',1),(353,5,43,'2023-01-31','好想加入!',1),(354,4,43,'2023-01-31','好想加入!',1),(355,1,44,'2023-01-31','好想加入!',1),(356,2,44,'2023-01-31','好想加入!',1),(357,5,44,'2023-01-31','好想加入!',1),(358,3,45,'2023-01-31','好想加入!',1),(359,6,45,'2023-01-31','好想加入!',1),(360,5,45,'2023-01-31','好想加入!',1),(361,1,46,'2023-01-31','好想加入!',1),(362,2,46,'2023-01-31','好想加入!',1),(363,5,46,'2023-01-31','好想加入!',1);
 /*!40000 ALTER TABLE `JoComment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,7 +225,7 @@ CREATE TABLE `Member` (
 
 LOCK TABLES `Member` WRITE;
 /*!40000 ALTER TABLE `Member` DISABLE KEYS */;
-INSERT INTO `Member` VALUES (1,'jerry@gmail.com','jerry','品元','陳','陳品元','Pin-Yuan','Chen','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/jo_leader1.jpg','ME0001',0,'315438771','汐止國',0,0,1,0,0,0,0,1,NULL,NULL),(2,'hans@gmail.com','hans','瀚頤','蔡','蔡瀚頤','Han-Yi','Tsai','0976234986','1990-12-04','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0002',1,'12345','新加坡',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'frose@gmail.com','frose','勝傑','張','張勝傑','frose','Chang','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0003',0,'315438771','汐止國',1,0,1,0,0,1,0,1,NULL,NULL),(4,'jimmy@gmail.com','jimmy','源俊','初','初源俊','jimmy','Chu','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'emily@gmail.com','emily','奕璇','陳','陳奕璇','emily','Chen','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'ning@gmail.com','ning','子寧','郭','郭子寧','ning','Kuo','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'sally@gmail.com','sally','秀宣','戴','戴秀宣','sally','Dai','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0007',NULL,'','',0,0,0,0,0,0,0,0,NULL,NULL);
+INSERT INTO `Member` VALUES (1,'jerry@gmail.com','jerry','品元','陳','陳品元','Pin-Yuan','Chen','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/jo_leader1.jpg','ME0001',0,'315438771','汐止國',0,0,1,0,0,0,0,1,NULL,NULL),(2,'hans@gmail.com','hans','瀚頤','蔡','蔡瀚頤','Han-Yi','Tsai','0976234986','1990-12-04','2022-12-26',1,77,'./img/member/memberpic_default.jpg','ME0002',1,'12345','新加坡',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'frose@gmail.com','frose','勝傑','張','張勝傑','frose','Chang','0976234986','1990-12-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0003',0,'315438771','汐止國',1,0,1,0,0,1,0,1,NULL,NULL),(4,'jimmy@gmail.com','jimmy','源俊','初','初源俊','jimmy','Chu','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0004',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'emily@gmail.com','emily','奕璇','陳','陳奕璇','emily','Chen','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0005',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'ning@gmail.com','ning','子寧','郭','郭子寧','ning','Kuo','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0006',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'sally@gmail.com','sally','秀宣','戴','戴秀宣','sally','Dai','110','2005-01-01','2022-12-26',1,500,'./img/member/memberpic_default.jpg','ME0007',NULL,'','',0,0,0,0,0,0,0,0,NULL,NULL);
 /*!40000 ALTER TABLE `Member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +247,7 @@ CREATE TABLE `Order` (
   PRIMARY KEY (`OrderID`),
   KEY `FK_Order_MemberID_idx` (`MemberID`),
   CONSTRAINT `FK_Order_MemberID` FOREIGN KEY (`MemberID`) REFERENCES `Member` (`MemberID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -256,7 +256,7 @@ CREATE TABLE `Order` (
 
 LOCK TABLES `Order` WRITE;
 /*!40000 ALTER TABLE `Order` DISABLE KEYS */;
-INSERT INTO `Order` VALUES (1,1,950,'OR0001','2023-01-02',NULL,NULL),(2,1,500,'OR0002','2023-01-03',NULL,NULL),(3,1,900,'OR0003','2023-01-14',NULL,NULL),(4,2,2000,'OR0004','2023-01-18',NULL,NULL),(5,5,12000,'OR0005','2023-01-18',NULL,NULL),(6,3,2300,'OR0006','2023-01-18',NULL,NULL),(7,1,560,'OR0007','2023-01-20',NULL,NULL),(8,2,1000,'OR0008','2023-01-20',NULL,NULL),(9,3,1000,'OR0009','2023-01-20',NULL,NULL),(10,5,1000,'OR0010','2023-01-20',NULL,NULL);
+INSERT INTO `Order` VALUES (1,1,950,'OR0001','2023-01-02',NULL,NULL),(2,1,500,'OR0002','2023-01-03',NULL,NULL),(3,1,900,'OR0003','2023-01-14',NULL,NULL),(4,2,2000,'OR0004','2023-01-18',NULL,NULL),(5,5,12000,'OR0005','2023-01-18',NULL,NULL),(6,3,2300,'OR0006','2023-01-18',NULL,NULL),(7,1,560,'OR0007','2023-01-20',NULL,NULL),(8,2,1000,'OR0008','2023-01-20',NULL,NULL),(9,3,1000,'OR0009','2023-01-20',NULL,NULL),(10,5,1000,'OR0010','2023-01-20',NULL,NULL),(11,2,1760,'OR0011','2023-01-31','hans@gmail.com',440);
 /*!40000 ALTER TABLE `Order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,7 +279,7 @@ CREATE TABLE `OrderDetail` (
   KEY `FK_OrderDetail_ProductID_idx` (`ProductID`),
   CONSTRAINT `FK_OrderDetail_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `Order` (`OrderID`),
   CONSTRAINT `FK_OrderDetail_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `Product` (`ProductID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +288,7 @@ CREATE TABLE `OrderDetail` (
 
 LOCK TABLES `OrderDetail` WRITE;
 /*!40000 ALTER TABLE `OrderDetail` DISABLE KEYS */;
-INSERT INTO `OrderDetail` VALUES (1,2,3017,1,'2023-01-27','2023-01-03'),(2,3,401,3,'2023-01-18','2023-01-14'),(3,4,1028,2,'2023-01-26','2023-01-18'),(4,4,2020,2,'2023-01-26','2023-01-18'),(5,1,101,1,'2023-01-25','2023-01-02'),(6,1,403,1,'2023-01-25','2023-01-02'),(7,5,2015,1,'2023-02-03','2023-01-18'),(8,6,1018,1,'2023-01-25','2023-01-18'),(9,6,4035,1,'2023-01-26','2023-01-18'),(10,7,1034,2,'2023-02-05','2023-01-20'),(11,8,2032,1,'2023-02-08','2023-01-20'),(12,9,2032,1,'2023-02-10','2023-01-20'),(13,10,2032,1,'2023-02-10','2023-01-20');
+INSERT INTO `OrderDetail` VALUES (1,2,3017,1,'2023-01-27','2023-01-03'),(2,3,401,3,'2023-01-18','2023-01-14'),(3,4,1028,2,'2023-01-26','2023-01-18'),(4,4,2020,2,'2023-01-26','2023-01-18'),(5,1,101,1,'2023-01-25','2023-01-02'),(6,1,403,1,'2023-01-25','2023-01-02'),(7,5,2015,1,'2023-02-03','2023-01-18'),(8,6,1018,1,'2023-01-25','2023-01-18'),(9,6,4035,1,'2023-01-26','2023-01-18'),(10,7,1034,2,'2023-02-05','2023-01-20'),(11,8,2032,1,'2023-02-08','2023-01-20'),(12,9,2032,1,'2023-02-10','2023-01-20'),(13,10,2032,1,'2023-02-10','2023-01-20'),(14,11,103,1,'2023-01-22','2023-01-31'),(15,11,104,1,'2023-01-22','2023-01-31');
 /*!40000 ALTER TABLE `OrderDetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -306,7 +306,7 @@ CREATE TABLE `PointRecord` (
   PRIMARY KEY (`PointRecordID`),
   KEY `FK_PointRecord_OrderlID_idx` (`OrderID`),
   CONSTRAINT `FK_PointRecord_OrderlID` FOREIGN KEY (`OrderID`) REFERENCES `Order` (`OrderID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,7 +315,7 @@ CREATE TABLE `PointRecord` (
 
 LOCK TABLES `PointRecord` WRITE;
 /*!40000 ALTER TABLE `PointRecord` DISABLE KEYS */;
-INSERT INTO `PointRecord` VALUES (4,1,9),(5,2,5),(6,3,9),(7,4,20),(8,5,120),(9,6,23),(10,8,10),(11,9,10),(12,10,10);
+INSERT INTO `PointRecord` VALUES (4,1,9),(5,2,5),(6,3,9),(7,4,20),(8,5,120),(9,6,23),(10,8,10),(11,9,10),(12,10,10),(13,11,17),(14,11,-440);
 /*!40000 ALTER TABLE `PointRecord` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-31 13:47:23
+-- Dump completed on 2023-01-31 16:17:20

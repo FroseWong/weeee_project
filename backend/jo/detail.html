@@ -215,8 +215,8 @@
                                             <th>留言ID</th>
                                             <th>留言人會員ID</th>
                                             <th>內容</th>
-                                            <th>狀態</th>
                                             <th>發布日期</th>
+                                            <th>狀態</th>
                                             <th>動作</th>
                                         </tr>
                                     </thead>
@@ -300,6 +300,8 @@
         // });
         const urlParams = new URLSearchParams(window.location.search);
         const joID = urlParams.get('joID');
+      
+        
         //一進到頁面，就發請求去資料庫取揪團基本資料
         $.ajax({
             method: "GET",
@@ -354,24 +356,32 @@
                             <td>${response.JoCommentList[i].JoCommentID}</td>
                             <td>${response.JoCommentList[i].MemberID}</td>
                             <td>${response.JoCommentList[i].JoCommentContent}</td>
-                            <td>${response.JoCommentList[i].JoCommentStatus == 1 ? "顯示中": "隱藏中" }</td>
                             <td>${response.JoCommentList[i].JoCommentTime}</td>
-                            <td><i class="fas fa-eye-slash"></i></td>
+                            <td>${response.JoCommentList[i].JoCommentStatus == 1 ? "顯示中": "隱藏中" }</td>
+                            <td><i class="fas ${response.JoCommentList[i].JoCommentStatus == 1 ? 'fa-eye-slash': 'fa-eye'}" 
+                            onclick="joCommentStatusToggle(${response.JoCommentList[i].JoCommentID})" style="cursor: pointer"></i></td>
                         </tr>
             `;
                 tbody.insertAdjacentHTML("beforeend", detail_jo);
             }
             $("#dataTable").DataTable();
+
             let update = document.getElementById("update");
             let joStatus = document.getElementById("joStatus").value;
+            let joCommentStatus = document.getElementById("joCommentStatus");
             if(joStatus == "顯示中"){
                 $("#update").html("隱藏揪團");
             }else{
                 $("#update").html("顯示揪團");
             }
+
+            // if(joCommentStatus == "隱藏中"){
+            //     $("#action").attr("class", "fas fa-check");
+            // }
             },
         });
 
+        //隱藏/顯示揪團的按紐
         function toggleStatus(){
             Swal.fire({
                     position: "center",
@@ -383,6 +393,20 @@
                     window.location.href = "../php/joStatusToggle.php?joID=" + joID;
                 });
         }
+        //隱藏/顯示揪團留言的按紐
+        function joCommentStatusToggle(joCommentID){
+            Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "修改成功",
+                    showConfirmButton: false,
+                    timer: 1000,
+                }).then(function(){
+                    window.location.href = "../php/joCommentStatusToggle.php?joCommentID=" + joCommentID + "&joID=" + joID;
+                });
+        }
+
+        
 
      </script>
 </body>
