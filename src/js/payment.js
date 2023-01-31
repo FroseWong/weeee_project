@@ -52,10 +52,11 @@ const app = Vue.createApp({
           that?.$nextTick(function () {
             if (!that.memberID) {
               // alert("請先完成登入");
-              swal({
+              Swal.fire({
                 icon: "warning",
                 title: "請先完成登入",
                 timer: 2000,
+                showConfirmButton: false
               });
               setTimeout(() => {
                 location.href = "login.html";
@@ -238,10 +239,11 @@ const app = Vue.createApp({
         if (is.creditCard(card_str)) {
         } else {
           // alert("系統不支援此卡，或是您輸入的卡號有誤，請再次核對！");
-          swal({
+          Swal.fire({
             icon: "warning",
             title: "系統不支援此卡，或是您輸入的卡號有誤，請再次核對！",
             timer: 2000,
+            showConfirmButton: false
           });
           send_data = false;
         }
@@ -250,10 +252,11 @@ const app = Vue.createApp({
         if (expiration.length < 5){
           send_data = false;
           // alert("信用卡效期有誤，請輸入正確日期(月/年)");
-          swal({
+          Swal.fire({
             icon: "warning",
             title: "信用卡效期有誤，請輸入正確日期(月/年)",
             timer: 2000,
+            showConfirmButton: false
           });
         }
         else if (expiration.length == 5) {
@@ -272,10 +275,11 @@ const app = Vue.createApp({
           if (year < currentYear || (year == currentYear && month < currentMonth)) {
             send_data = false;
             // alert("信用卡效期有誤，請輸入正確日期(月/年)");
-            swal({
+            Swal.fire({
               icon: "warning",
               title: "信用卡效期有誤，請輸入正確日期(月/年)",
               timer: 2000,
+              showConfirmButton: false
             });
           }
         }
@@ -284,10 +288,11 @@ const app = Vue.createApp({
         if (cvc.length < 3){
           send_data = false;
           // alert("您輸入的末三碼有誤，請再次核對！");
-          swal({
+          Swal.fire({
             icon: "warning",
             title: "信用卡末三碼有誤，請再次核對！",
             timer: 2000,
+            showConfirmButton: false
           });
         }
         //驗證不過
@@ -334,10 +339,11 @@ const app = Vue.createApp({
             success: function (response) {
               //購買完成
               // alert(response);
-              swal({
+              Swal.fire({
                 icon: "success",
                 title: "購買完成！",
                 timer: 2000,
+                showConfirmButton: false
               });
               setTimeout(() => {
                 window.location.replace("./payment_complete.html");
