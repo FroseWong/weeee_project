@@ -73,15 +73,16 @@ const App = {
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-              // setTimeout(function(){swal("請先完成登入","warn"); },1000);
               swal({
+                icon: "warning",
                 title: "請先完成登入",
-                timer: 1500,
-                icon: "warn",
+                timer: 2000,
               });
               // alert("請先完成登入");
-              location.href = "login.html";
-            };
+              setTimeout(() => {
+                location.href = "login.html";
+              }, 2000);
+            }
             if (that.memberID) that.getdata_productList();
           });
         },
@@ -129,8 +130,15 @@ const App = {
         dataType: "text",
         success: function (response) {
           //移除商品成功
-          alert(response);
-          location.reload();
+          // alert(response);
+          swal({
+            icon: "success",
+            title: "商品已移除！",
+            timer: 2000,
+          });
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
         },
         error: function (exception) {
           alert("移除商品失敗: " + exception.status);
@@ -147,24 +155,32 @@ const App = {
       for (i = 0; i < this.productList.length; i++) {
         if (this.productList[i].select == true) {
           productCartIDList.push(this.productList[i].CartID);
-        }}
-          let that = this;
-          $.ajax({
-            method: "POST",
-            url: "./php/CartRemoveSelect.php",
-            data: {
-              CID: productCartIDList,
-            },
-            dataType: "text",
-            success: function (response) {
-              //移除商品成功
-              alert("移除商品成功");
-              location.reload();
-            },
-            error: function (exception) {
-              alert("移除商品失敗: " + exception.status);
-            },
+        }
+      }
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/CartRemoveSelect.php",
+        data: {
+          CID: productCartIDList,
+        },
+        dataType: "text",
+        success: function (response) {
+          //移除商品成功
+          // alert("移除商品成功");
+          swal({
+            icon: "success",
+            title: "商品已移除！",
+            timer: 2000,
           });
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        },
+        error: function (exception) {
+          alert("移除商品失敗: " + exception.status);
+        },
+      });
       // this.productList = this.productList.filter(function (product) {
       //   return !product.select;
       // });
@@ -212,7 +228,11 @@ const App = {
       }
       console.log(selected);
       if (selected <= 0) {
-        alert("請選擇商品");
+        swal({
+          icon: "warning",
+          title: "請選擇商品",
+          timer: 2000,
+        });
       } else {
         let selectProduct = [];
         for (let i = 0; i < this.productList.length; i++) {
@@ -295,7 +315,12 @@ const App = {
         },
         dataType: "text",
         success: function (response) {
-          alert("修改成功");
+          // alert("修改成功");
+          swal({
+            icon: "success",
+            title: "修改成功",
+            timer: 2000,
+          });
         },
         error: function (exception) {
           alert("發生錯誤: " + exception.status);
@@ -354,8 +379,7 @@ const App = {
     },
   },
   updated() {},
-  mounted() {
-  },
+  mounted() {},
 };
 
 app = Vue.createApp(App);
