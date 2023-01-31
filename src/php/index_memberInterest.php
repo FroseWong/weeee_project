@@ -18,14 +18,14 @@ $data = $statement->fetchAll();
 // echo $data[0]['Friend'];
 
 $intereStr = '';
-if($data[0]['Friend'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '朋友行程'" : "ProductSecondType = '朋友行程'";
-if($data[0]['Family'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '家庭行程'" : "ProductSecondType = '家庭行程'";
-if($data[0]['Couple'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '情侶行程'" : "ProductSecondType = '情侶行程'";
-if($data[0]['Pet'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '寵物行程'" : "ProductSecondType = '寵物行程'";
-if($data[0]['Handmade'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '手作體驗'" : "ProductSecondType = '手作體驗'";
-if($data[0]['Onwater'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '水上活動'" : "ProductSecondType = '水上活動'";
-if($data[0]['Farm'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '觀光農場'" : "ProductSecondType = '觀光農場'";
-if($data[0]['Extreme'] === 1) $intereStr .= $intereStr ? "OR ProductSecondType = '極限運動'" : "ProductSecondType = '極限運動'";
+if($data[0]['Friend'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '朋友行程'" : "ProductSecondType = '朋友行程'";
+if($data[0]['Family'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '家庭行程'" : "ProductSecondType = '家庭行程'";
+if($data[0]['Couple'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '情侶行程'" : "ProductSecondType = '情侶行程'";
+if($data[0]['Pet'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '寵物行程'" : "ProductSecondType = '寵物行程'";
+if($data[0]['Handmade'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '手作體驗'" : "ProductSecondType = '手作體驗'";
+if($data[0]['Onwater'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '水上活動'" : "ProductSecondType = '水上活動'";
+if($data[0]['Farm'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '觀光農場'" : "ProductSecondType = '觀光農場'";
+if($data[0]['Extreme'] == 1) $intereStr .= $intereStr ? "OR ProductSecondType = '極限運動'" : "ProductSecondType = '極限運動'";
 
 
 if($intereStr!==''){

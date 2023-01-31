@@ -257,7 +257,7 @@ let app = Vue.createApp({
           const id = response[0]["0"];
           // console.log(id);
           Swal.fire({
-            position: "top-end",
+            // position: "top-end",
             icon: "success",
             title: "成功新增揪團",
             showConfirmButton: false,
