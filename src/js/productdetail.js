@@ -751,12 +751,12 @@ const app = Vue.createApp({
       let productID = this.ProductDetail.productID;
       let checkout_data = [
         {
-          productID: productID,
-          productImgPath1: productImgPath1,
-          productName: productName,
-          cartStartDay: cartStartDay,
-          quantity: quantity,
-          productPrice: productPrice,
+          ProductID: productID,
+          ProductImgPath1: productImgPath1,
+          ProductName: productName,
+          CartStartDay: cartStartDay,
+          Quantity: quantity,
+          ProductPrice: productPrice,
         },
       ];
       sessionStorage.setItem("checkout_data", JSON.stringify(checkout_data));
@@ -888,16 +888,18 @@ const app = Vue.createApp({
     },
     // ---------------評論按鈕---------------
     comment_color(e) {
-      if (e.path[0].classList.contains("productreview-btn") == true) {
-        return;
+
+      let temp = e.target.parentNode.childNodes;
+      for (i = 1; i <= 4; i++) {
+        temp[i].style.backgroundColor = "#ffffff";
+        temp[i].style.color = "#000000";
+        console.log(temp);
       }
-      let temp = e.path[1].children;
-      for (i = 0; i < temp.length; i++) {
-        e.path[1].children[i].style.backgroundColor = "#ffffff";
-        e.path[1].children[i].style.color = "#000000";
-      }
-      e.path[0].style.backgroundColor = "#f19f4d";
-      e.path[0].style.color = "#ffffff";
+      e.target.style.backgroundColor = "#f19f4d";
+      e.target.style.color = "#ffffff";
+      console.log(e.target);
+
+      document.getElementsByClassName('productreview-btn')[0].style.backgroundColor = "#ffffff";
     },
     comment_onebtn() {
       this.$refs.sortA[0].style.backgroundColor = "#f19f4d";
