@@ -82,12 +82,12 @@ window.my_component = {
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          console.log(response);
+          // console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           // that.headercounter = response[0].COUNT;
           that.memberID = response[0].MemberID;
-          console.log(that.memberID);
+          // console.log(that.memberID);
           // that.headerFullName = response[0].FullName;
           // that.headerMemberImg = response[0].MemberImg;
           // that.headercounter = response[0]["count(*)"] ?? 0;
@@ -182,7 +182,7 @@ window.my_component = {
       });
     },
     clickHeart(pid, e) {
-      console.log("R");
+      // console.log("R");
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
@@ -203,7 +203,7 @@ window.my_component = {
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);

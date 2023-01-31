@@ -147,7 +147,7 @@ const app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          console.log(response);
+          // console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           // that.headercounter = response[0].COUNT;
@@ -294,7 +294,7 @@ const app = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           // console.log(response.length);
           // console.log(response[0]);
           that.JoTitle = response[0].JoTitle;
@@ -393,7 +393,7 @@ const app = Vue.createApp({
             // console.log(p);
             if (p.ProductID === that.JoProductID) that.product = p;
           });
-          console.log(that.product);
+          // console.log(that.product);
           if (that.product.ProductText?.length >= 80) {
             that.product.ProductText =
               that.product.ProductText.slice(0, 80) + "……";
