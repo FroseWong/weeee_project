@@ -1,6 +1,8 @@
 const usernameInput = document.querySelector("#Username");
 const passwordInput = document.querySelector("#password");
 
+
+
 // function doSubmit() {
 //   if (document.getElementById("Username").value == "") {
 //     alert("請填寫[帳號]");

@@ -192,7 +192,7 @@ CREATE TABLE `Member` (
   `Password` varchar(45) NOT NULL,
   `FirstName` varchar(45) DEFAULT NULL,
   `LastName` varchar(45) DEFAULT NULL,
-  `FullName` varchar(45) DEFAULT NULL,
+  `FullName` varchar(45) DEFAULT 'User',
   `EnglishFirstName` varchar(45) DEFAULT NULL,
   `EnglishLastName` varchar(45) DEFAULT NULL,
   `Phone` varchar(45) DEFAULT NULL,
@@ -425,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-31  1:31:32
+-- Dump completed on 2023-01-31 13:47:23

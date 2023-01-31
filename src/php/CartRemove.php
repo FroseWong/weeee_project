@@ -6,7 +6,7 @@
     $CID = $_POST["CID"];
 
     //建立SQL
-    $sql = "delete from cart where cartID = ?";
+    $sql = "delete from Cart where CartID = ?";
     
     //執行
     $statement = $pdo->prepare($sql);

@@ -29,8 +29,15 @@ const App = {
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-                alert("請先完成登入");
-                location.href = "login.html";
+                // alert("請先完成登入");
+                swal({
+                  icon: "warning",
+                  title: "請先完成登入",
+                  timer: 2000,
+                });
+                setTimeout(() => {
+                  location.href = "login.html";
+                }, 2000);
               };
             if (that.memberID) that.getdata_productList();
             if (that.memberID) that.getdata_orderInfo();
@@ -102,7 +109,7 @@ const App = {
       for (let i = 0; i < this.productList.length; i++) {
         // 將每個商品的總價加在一起
         totalPrice +=
-          this.productList[i].quantity * this.productList[i].productPrice;
+          this.productList[i].Quantity * this.productList[i].ProductPrice;
       }
       return {
         // 被選中的物品數量就是proList.length

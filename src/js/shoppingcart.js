@@ -40,9 +40,9 @@ const App = {
 
       tempProd: {
         info: {
-          date: "",
-          productPrice: 0,
-          quantity: 0,
+          CartStartDay: "",
+          ProductPrice: 0,
+          Quantity: 0,
         },
         index: 0,
       },
@@ -73,9 +73,16 @@ const App = {
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-              alert("請先完成登入");
-              location.href = "login.html";
-            };
+              swal({
+                icon: "warning",
+                title: "請先完成登入",
+                timer: 2000,
+              });
+              // alert("請先完成登入");
+              setTimeout(() => {
+                location.href = "login.html";
+              }, 2000);
+            }
             if (that.memberID) that.getdata_productList();
           });
         },
@@ -118,13 +125,20 @@ const App = {
         method: "POST",
         url: "./php/CartRemove.php",
         data: {
-          CID: that.productList[index].cartID,
+          CID: that.productList[index].CartID,
         },
         dataType: "text",
         success: function (response) {
           //移除商品成功
-          alert(response);
-          location.reload();
+          // alert(response);
+          swal({
+            icon: "success",
+            title: "商品已移除！",
+            timer: 2000,
+          });
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
         },
         error: function (exception) {
           alert("移除商品失敗: " + exception.status);
@@ -133,32 +147,40 @@ const App = {
       // this.productList.splice(index, 0);
       console.log(index);
       console.log(this.productList[index]);
-      console.log(this.productList[index].cartID);
+      console.log(this.productList[index].CartID);
     },
     closeSelect() {
       // console.log("ttt");
       let productCartIDList = [];
       for (i = 0; i < this.productList.length; i++) {
         if (this.productList[i].select == true) {
-          productCartIDList.push(this.productList[i].cartID);
-        }}
-          let that = this;
-          $.ajax({
-            method: "POST",
-            url: "./php/CartRemoveSelect.php",
-            data: {
-              CID: productCartIDList,
-            },
-            dataType: "text",
-            success: function (response) {
-              //移除商品成功
-              alert("移除商品成功");
-              location.reload();
-            },
-            error: function (exception) {
-              alert("移除商品失敗: " + exception.status);
-            },
+          productCartIDList.push(this.productList[i].CartID);
+        }
+      }
+      let that = this;
+      $.ajax({
+        method: "POST",
+        url: "./php/CartRemoveSelect.php",
+        data: {
+          CID: productCartIDList,
+        },
+        dataType: "text",
+        success: function (response) {
+          //移除商品成功
+          // alert("移除商品成功");
+          swal({
+            icon: "success",
+            title: "商品已移除！",
+            timer: 2000,
           });
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        },
+        error: function (exception) {
+          alert("移除商品失敗: " + exception.status);
+        },
+      });
       // this.productList = this.productList.filter(function (product) {
       //   return !product.select;
       // });
@@ -186,14 +208,14 @@ const App = {
     },
     // ---------------人數加減---------------
     peopleMinus() {
-      if (this.tempProd.info.quantity <= 1) {
-        this.tempProd.info.quantity = 1;
+      if (this.tempProd.info.Quantity <= 1) {
+        this.tempProd.info.Quantity = 1;
       } else {
-        this.tempProd.info.quantity--;
+        this.tempProd.info.Quantity--;
       }
     },
     peoplePlus() {
-      this.tempProd.info.quantity++;
+      this.tempProd.info.Quantity++;
     },
     // ---------------結帳寫入sessionstorage---------------
     checkout() {
@@ -206,7 +228,11 @@ const App = {
       }
       console.log(selected);
       if (selected <= 0) {
-        alert("請選擇商品");
+        swal({
+          icon: "warning",
+          title: "請選擇商品",
+          timer: 2000,
+        });
       } else {
         let selectProduct = [];
         for (let i = 0; i < this.productList.length; i++) {
@@ -228,7 +254,7 @@ const App = {
       this.tempProd.index = index;
       console.log(
         "update temp prod to " +
-          this.tempProd.info.productName +
+          this.tempProd.info.ProductName +
           " index " +
           this.tempProd.index
       );
@@ -267,29 +293,34 @@ const App = {
     },
     updateEditedProd() {
       console.log("start updating exisiting prod");
-      this.productList[this.tempProd.index].productPrice =
-        this.tempProd.info.productPrice;
-      this.productList[this.tempProd.index].quantity =
-        this.tempProd.info.quantity;
+      this.productList[this.tempProd.index].ProductPrice =
+        this.tempProd.info.ProductPrice;
+      this.productList[this.tempProd.index].Quantity =
+        this.tempProd.info.Quantity;
       let date = this.getWeeeeDate();
       console.log(date);
-      this.productList[this.tempProd.index].cartStartDay = date;
+      this.productList[this.tempProd.index].CartStartDay = date;
       let that = this;
 
       $.ajax({
         method: "POST",
         url: "./php/CartUpdate.php",
         data: {
-          CID: that.productList[that.currentI].cartID,
-          Quantity: that.productList[that.tempProd.index].quantity,
-          Date: that.productList[that.tempProd.index].cartStartDay,
+          CID: that.productList[that.currentI].CartID,
+          Quantity: that.productList[that.tempProd.index].Quantity,
+          Date: that.productList[that.tempProd.index].CartStartDay,
           // CID: 1,
           // Quantity: 6,
           // Date: '2025-01-01',
         },
         dataType: "text",
         success: function (response) {
-          alert("修改成功");
+          // alert("修改成功");
+          swal({
+            icon: "success",
+            title: "修改成功",
+            timer: 2000,
+          });
         },
         error: function (exception) {
           alert("發生錯誤: " + exception.status);
@@ -325,7 +356,7 @@ const App = {
       var totalPrice = 0;
       for (let i = 0; i < prodList.length; i++) {
         // 將每個商品的總價加在一起
-        totalPrice += prodList[i].quantity * prodList[i].productPrice;
+        totalPrice += prodList[i].Quantity * prodList[i].ProductPrice;
       }
       return {
         // 被選中的物品數量就是proList.length
@@ -348,8 +379,7 @@ const App = {
     },
   },
   updated() {},
-  mounted() {
-  },
+  mounted() {},
 };
 
 app = Vue.createApp(App);

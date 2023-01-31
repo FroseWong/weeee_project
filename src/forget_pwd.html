@@ -10,20 +10,20 @@
 </head>
 <body>
     @@include('layout/header.html')
-    <div class="wapper forget_pwd"> 
+    <div class="wrapper forget_pwd"> 
         <div class="forgetpwd_bg">
             <div class="container forget_pwd">
                 <div class="forgetpwd">
                     <h3>忘記密碼</h3>
                     <p>輸人你註冊 Weeee! 帳號的電子信箱<br>
                         我們發送重該密碼的連結</p>
-                    <form class="forgetpwd_form" action="#" method="post">
+                    <form class="forgetpwd_form" action="php/controllerUserData.php" method="post">
                         <div class="email">
                             <i class='fa-regular fa-envelope'></i>
-                            <input type="text" name="account" placeholder="請輸入電子信箱">
+                            <input type="text" name="Username" placeholder="請輸入電子信箱"required>
                           </div>
                        
-                          <input type="button" name="" id="" class="submit" value="送出">
+                          <input type="submit" name="check-Username" id="" class="submit" value="送出">
                     </form> 
                   
                     <!-- <a class="forgetpwdsubmit" href="./reset_pwd.html">送出</a>  -->

@@ -3,16 +3,16 @@ const app = Vue.createApp({
     return {
       memberID: 0, //將抓到的memberID存到這
       memberInfo: {
-        firstName: "",
-        lastName: "",
-        country: "",
-        phone: "",
-        username: "",
-        totalPoints: 0,
+        FirstName: "",
+        LastName: "",
+        Country: "",
+        Phone: "",
+        Username: "",
+        TotalPoints: 0,
       },
       productList: [],
       weeee: {
-        totalPoints: 0,
+        TotalPoints: 0,
       },
       tempWeeee: {},
       checked: false,
@@ -51,8 +51,15 @@ const app = Vue.createApp({
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-              alert("請先完成登入");
-              location.href = "login.html";
+              // alert("請先完成登入");
+              swal({
+                icon: "warning",
+                title: "請先完成登入",
+                timer: 2000,
+              });
+              setTimeout(() => {
+                location.href = "login.html";
+              }, 2000);
             }
             if (that.memberID) that.getCheckoutData();
             if (that.memberID) that.checkPoints();
@@ -74,9 +81,9 @@ const app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           console.log(response);
-          response.forEach((totalPoints) => {
-            that.tempWeeee = totalPoints;
-            if (that.tempWeeee.totalPoints > 0) {
+          response.forEach((TotalPoints) => {
+            that.tempWeeee = TotalPoints;
+            if (that.tempWeeee.TotalPoints > 0) {
               that.disabled = false;
               that.hidden = false;
             }
@@ -98,12 +105,12 @@ const app = Vue.createApp({
           },
           dataType: "json",
           success: function (response) {
-            response.forEach((totalPoints) => {
-              that.tempWeeee = totalPoints;
-              if (that.tempWeeee.totalPoints > that.getTotal.totalPrice * 0.2) {
-                that.weeee.totalPoints = that.getTotal.totalPrice * 0.2;
+            response.forEach((TotalPoints) => {
+              that.tempWeeee = TotalPoints;
+              if (that.tempWeeee.TotalPoints > that.getTotal.totalPrice * 0.2) {
+                that.weeee.TotalPoints = that.getTotal.totalPrice * 0.2;
               } else {
-                that.weeee = totalPoints;
+                that.weeee = TotalPoints;
               }
             });
           },
@@ -113,7 +120,7 @@ const app = Vue.createApp({
           },
         });
       } else {
-        this.weeee.totalPoints = 0;
+        this.weeee.TotalPoints = 0;
       }
     },
     getMemberInfo() {
@@ -151,7 +158,7 @@ const app = Vue.createApp({
       for (let i = 0; i < this.productList.length; i++) {
         // 將每個商品的總價加在一起
         totalPrice +=
-          this.productList[i].quantity * this.productList[i].productPrice;
+          this.productList[i].Quantity * this.productList[i].ProductPrice;
         // console.log(totalPrice)
       }
       return {
@@ -229,16 +236,28 @@ const app = Vue.createApp({
         }
         let send_data = true;
         if (is.creditCard(card_str)) {
-            // card_wrapper.classList.remove("-error");
         } else {
-          // card_wrapper.classList.add("-error");
-          alert("系統不支援此卡，或是您輸入的卡號有誤，請再次核對！");
+          // alert("系統不支援此卡，或是您輸入的卡號有誤，請再次核對！");
+          swal({
+            icon: "warning",
+            title: "系統不支援此卡，或是您輸入的卡號有誤，請再次核對！",
+            timer: 2000,
+          });
           send_data = false;
         }
         //信用卡日期驗證
-        var input = document.getElementById('expiration').value;
-        if (input.length == 5) {
-          var expiry = input.split('/');
+        var expiration = document.getElementById('expiration').value;
+        if (expiration.length < 5){
+          send_data = false;
+          // alert("信用卡效期有誤，請輸入正確日期(月/年)");
+          swal({
+            icon: "warning",
+            title: "信用卡效期有誤，請輸入正確日期(月/年)",
+            timer: 2000,
+          });
+        }
+        else if (expiration.length == 5) {
+          var expiry = expiration.split('/');
           var month = parseInt(expiry[0]);
           var year = parseInt(expiry[1]);
       
@@ -252,8 +271,24 @@ const app = Vue.createApp({
       
           if (year < currentYear || (year == currentYear && month < currentMonth)) {
             send_data = false;
-            alert("信用卡效期有誤，請輸入正確日期(月/年)");
+            // alert("信用卡效期有誤，請輸入正確日期(月/年)");
+            swal({
+              icon: "warning",
+              title: "信用卡效期有誤，請輸入正確日期(月/年)",
+              timer: 2000,
+            });
           }
+        }
+        //信用卡末3碼驗證
+        var cvc = document.getElementById('cvc').value;
+        if (cvc.length < 3){
+          send_data = false;
+          // alert("您輸入的末三碼有誤，請再次核對！");
+          swal({
+            icon: "warning",
+            title: "您輸入的末三碼有誤，請再次核對！",
+            timer: 2000,
+          });
         }
         //驗證不過
         if (!send_data) {
@@ -267,10 +302,10 @@ const app = Vue.createApp({
           // console.log(this.productList);
 
           for (i = 0; i < that.productList.length; i++) {
-            productCartIDList.push(that.productList[i].cartID);
-            productDateList.push(that.productList[i].cartStartDay);
-            productIDList.push(that.productList[i].productID);
-            productQuantityList.push(that.productList[i].quantity);
+            productCartIDList.push(that.productList[i].CartID);
+            productDateList.push(that.productList[i].CartStartDay);
+            productIDList.push(that.productList[i].ProductID);
+            productQuantityList.push(that.productList[i].Quantity);
           }
           // console.log(this.productList);
           // console.log(productDateList);
@@ -281,15 +316,15 @@ const app = Vue.createApp({
             method: "POST",
             url: "./php/CartCheckout.php",
             data: {
-              email: that.memberInfo.username,
+              email: that.memberInfo.Username,
               memberID: that.memberID,
               CID: productCartIDList,
               // subTotal: that.getTotal.totalPrice,
-              totalPrice: that.getTotal.totalPrice - that.weeee.totalPoints,
+              totalPrice: that.getTotal.totalPrice - that.weeee.TotalPoints,
               addPoints: Math.floor(
-                (that.getTotal.totalPrice - that.weeee.totalPoints) / 100
+                (that.getTotal.totalPrice - that.weeee.TotalPoints) / 100
               ),
-              discountPoints: that.weeee.totalPoints,
+              discountPoints: that.weeee.TotalPoints,
               productDateList,
               productIDList,
               productQuantityList,
@@ -298,8 +333,16 @@ const app = Vue.createApp({
             dataType: "text",
             success: function (response) {
               //購買完成
-              alert(response);
-              location.href = "./payment_complete.html";
+              // alert(response);
+              swal({
+                icon: "success",
+                title: "購買完成！",
+                timer: 2000,
+              });
+              setTimeout(() => {
+                window.location.replace("./payment_complete.html");
+              }, 2000);
+              // location.href = "./payment_complete.html";
             },
             error: function (exception) {
               alert("購買失敗: " + exception.status);
@@ -320,7 +363,7 @@ const app = Vue.createApp({
       for (let i = 0; i < this.productList.length; i++) {
         // 將每個商品的總價加在一起
         totalPrice +=
-          this.productList[i].quantity * this.productList[i].productPrice;
+          this.productList[i].Quantity * this.productList[i].ProductPrice;
       }
       return {
         // 被選中的物品數量就是proList.length

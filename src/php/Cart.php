@@ -5,13 +5,13 @@ $memberID = $_POST["memberID"]; //TODO 先寫死，到時候登入功能做好�
 include("connection.php");
 
 //建立SQL語法
-$sql = "select p.productName, p.productPrice, i.productImgPath1, c.quantity, c.cartStartDay, c.cartID, p.productID
-from product p
-join productimg i
-on p.productID = i.productID
-join cart c
-on p.productID = c.productID
-where memberID = ? and productstatus = 1;
+$sql = "select p.ProductName, p.ProductPrice, i.ProductImgPath1, c.Quantity, c.CartStartDay, c.CartID, p.ProductID
+from Product p
+join ProductImg i
+on p.ProductID = i.ProductID
+join Cart c
+on p.ProductID = c.ProductID
+where MemberID = ? and ProductStatus = 1;
 ";
 
 
