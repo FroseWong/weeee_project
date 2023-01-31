@@ -5,9 +5,9 @@ createApp({
     return {
       pagenum: 1,
       select_hot: false,
-      select_bot:false,
-      select_top:false,
-      select_score:false,
+      select_bot: false,
+      select_top: false,
+      select_score: false,
       page_show: {
         start: 0,
         end: 5,
@@ -85,7 +85,7 @@ createApp({
       } else {
         newcardlist3 = this.filters(newcardlist2, this.checked.select_price);
       }
-      
+
       let citys = new Set();
       let pricestag = new Set();
       let type = new Set();
@@ -142,6 +142,8 @@ createApp({
         this.page_show.start = newValue - 3;
         this.page_show.end = newValue + 2;
       }
+      // this.renderHeart()
+      // console.log("aaa");
     },
   },
   methods: {
@@ -322,11 +324,11 @@ createApp({
     showproduct() {},
     open_city(e) {
       this.cityshow = !this.cityshow;
-      let path
-      if(e.target.classList.contains("fa-solid")){
-      path = e.target.classList
-      }else{
-      path = e.path[0].childNodes[1].classList;
+      let path;
+      if (e.target.classList.contains("fa-solid")) {
+        path = e.target.classList;
+      } else {
+        path = e.path[0].childNodes[1].classList;
       }
       if (path.contains("fa-circle-chevron-down")) {
         path.remove("fa-circle-chevron-down");
@@ -338,7 +340,6 @@ createApp({
     },
     filterCity(e) {
       e.target.querySelector("input")?.click();
-     
     },
     filterSort_bottom_to_top(e) {
       let arr = this.cardlist;
@@ -349,12 +350,10 @@ createApp({
         arr.sort(sorter);
       };
       eitherSort(arr);
-      this.select_hot = false,
-      this.select_bot = true,
-      this.select_top = false,
-      this.select_score = false
-      
-      
+      (this.select_hot = false),
+        (this.select_bot = true),
+        (this.select_top = false),
+        (this.select_score = false);
     },
     filterSort_top_to_bottom(e) {
       let arr = this.cardlist;
@@ -365,10 +364,10 @@ createApp({
         arr.sort(sorter);
       };
       eitherSort(arr);
-      this.select_hot = false,
-      this.select_bot = false,
-      this.select_top = true,
-      this.select_score = false
+      (this.select_hot = false),
+        (this.select_bot = false),
+        (this.select_top = true),
+        (this.select_score = false);
     },
     filterOrder(e) {
       let arr = this.cardlist;
@@ -379,11 +378,10 @@ createApp({
         arr.sort(sorter);
       };
       eitherSort(arr);
-      this.select_hot = true,
-      this.select_bot = false,
-      this.select_top = false,
-      this.select_score = false
-     
+      (this.select_hot = true),
+        (this.select_bot = false),
+        (this.select_top = false),
+        (this.select_score = false);
     },
     filterScore(e) {
       let arr = this.cardlist;
@@ -395,11 +393,10 @@ createApp({
       };
       eitherSort(arr);
       this.classList = arr;
-      this.select_hot = false,
-      this.select_bot = false,
-      this.select_top = false,
-      this.select_score = true
-     
+      (this.select_hot = false),
+        (this.select_bot = false),
+        (this.select_top = false),
+        (this.select_score = true);
     },
     filterPrice(e) {
       e.target.querySelector("input")?.click();
@@ -449,7 +446,6 @@ createApp({
         }
       }
       if (target_class.contains("productlist_new__destination_btn")) {
-       
         if (dest_bar.classList.contains("open")) {
           bar_arr.forEach((element) => {
             element.classList.remove("open");
@@ -466,7 +462,6 @@ createApp({
         }
       }
       if (target_class.contains("productlist_new__price_btn")) {
-       
         if (price_bar.classList.contains("open")) {
           bar_arr.forEach((element) => {
             element.classList.remove("open");
@@ -527,13 +522,24 @@ createApp({
     // 以下Frose
     clickHeart(pid, e) {
       e.stopPropagation();
+      
       // console.log(e);
       // console.log(e.target.closest(".change-heart"));
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
+      let arr = this.favorProductList
       if (this.memberID) {
-        e.target.closest(".change-heart").classList.toggle("clicked");
+        if (arr.includes(pid)) {
+          const index = arr.indexOf(pid);
+          console.log(this);
+          arr.splice(index, 1)
+            
+          }
+        else{
+          this.favorProductList.push(pid)
+        }
+        
       } else {
         alert("請先完成登入");
         location.href = "./login.html";
@@ -569,7 +575,10 @@ createApp({
         success: function (response) {
           // console.log("renderHeart", response);
           // console.log(response);
-          response.forEach((p) => that.favorProductList.push(p.ProductID));
+
+          that.$nextTick(function () {
+            response.forEach((p) => that.favorProductList.push(p.ProductID));
+          });
 
           // console.log(that.favorProductList);
         },
