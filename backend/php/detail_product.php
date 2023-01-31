@@ -1,4 +1,6 @@
 <?php
+//確認是否登入
+include("checkLogin.php");
 //取得請求參數
 $productID = $_GET['productID'];
 

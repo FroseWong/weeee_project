@@ -229,7 +229,7 @@
                 <div class="modal-body">離開前，記得要儲存所有變更唷!</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                    <a class="btn btn-primary" href="../login.html">登出</a>
+                    <a class="btn btn-primary" href="../php/logout.php">登出</a>
                 </div>
             </div>
         </div>
@@ -263,6 +263,10 @@
         },
         dataType: "json",
         success: function(response){
+            //防止直接打網址進入
+            if (response.loginCheckFailed) {
+                window.location.href = "../login.html";
+            }
             $("#orderDate").val(response.OrderDate);
             $("#totalPrice").val(response.TotalPrice);
             $("#memberNumber").val(response.MemberNumber);
