@@ -30,10 +30,11 @@ const App = {
           that?.$nextTick(function () {
             if (!that.memberID) {
                 // alert("請先完成登入");
-                swal({
+                Swal.fire({
                   icon: "warning",
                   title: "請先完成登入",
                   timer: 2000,
+                  showConfirmButton: false
                 });
                 setTimeout(() => {
                   location.href = "login.html";
