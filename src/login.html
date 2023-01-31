@@ -184,19 +184,22 @@
         });
       }
 
-      let checkEye = document.getElementById("checkEye");
-      let openPasswords = document.getElementById("password");
-      checkEye.addEventListener("click", function (e) {
-        if (e.target.classList.contains("fa-eye")) {
-          e.target.classList.remove("fa-eye");
-          e.target.classList.add("fa-eye-slash");
-          openPasswords.setAttribute("type", "text");
-        } else {
-          openPasswords.setAttribute("type", "password");
-          e.target.classList.remove("fa-eye-slash");
-          e.target.classList.add("fa-eye");
-        }
-      });
+    let checkEye = document.getElementById("checkEye");
+    let openPasswords = document.getElementById("password");
+    checkEye.addEventListener("click", function (e) {
+      if (e.target.classList.contains('fa-eye')) {
+        e.target.classList.remove('fa-eye');
+        e.target.classList.add('fa-eye-slash');
+        openPasswords.setAttribute('type', 'text')
+      } else {
+        openPasswords.setAttribute('type', 'password');
+        e.target.classList.remove('fa-eye-slash');
+        e.target.classList.add('fa-eye')
+      }
+    });
+
+    
+
     </script>
   </body>
 </html>

@@ -19,11 +19,12 @@ $onwater = isset($_POST["onwater"]) ? 1 : 0;
 $farm = isset($_POST["farm"]) ? 1 : 0;
 $extreme = isset($_POST["extreme"]) ? 1 : 0;
 
+
 //DB連線資訊
 include("connection.php");
 
 //建立SQL
-$sql = "UPDATE Member SET LastName = ?, FirstName = ?, Sex = ?, EnglishLastName = ?, EnglishFirstName = ?, Passport = ?, Country = ?, Phone = ?,  Birthdate = ?, Friend = ?, Family = ?, Couple = ?, Pet = ?, Handmade = ?, Onwater = ?, Farm = ?, Extreme = ?  WHERE MemberID = ?";
+$sql = "UPDATE Member SET LastName = ?, FirstName = ?, Sex = ?, EnglishLastName = ?, EnglishFirstName = ?, Passport = ?, Country = ?, Phone = ?,  Birthdate = ?, Friend = ?, Family = ?, Couple = ?, Pet = ?, Handmade = ?, Onwater = ?, Farm = ?, Extreme = ?, FullName = ?  WHERE MemberID = ?";
 
 //執行
 $statement = $pdo->prepare($sql);
@@ -44,7 +45,8 @@ $statement -> bindValue(14, $handmade);
 $statement -> bindValue(15, $onwater);
 $statement -> bindValue(16, $farm);
 $statement -> bindValue(17, $extreme);
-$statement -> bindValue(18, $memberID);
+$statement -> bindValue(18, $lastName.$firstName);
+$statement -> bindValue(19, $memberID);
 $statement -> execute();
 
 //頁面導回HTML
