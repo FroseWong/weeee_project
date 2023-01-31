@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weeee!</title>
+  <link rel="icon" href="img/otherpage/Weeee.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -243,10 +244,11 @@
               <div class="productdetail-message-text">
                 <span>{{message.name}}</span>
                 <div class="productdetail-message-text-star">
-                  <i v-for="i in message.star">⭐</i>
-                  <!-- <i v-for="i in message.star" class="fa-solid fa-star"></i> -->
+                  <!-- <i v-for="i in message.star">⭐</i> -->
+                  <i v-for="i in message.nostar" class="fa-solid fa-star"></i>
                   
-                  <i v-for="s in message.nostar" class="fa-regular fa-star"></i>
+                  <i  v-for="s in message.nostar2" class="fa-regular fa-star" ></i>
+                  <!-- <i  class="fa-regular fa-star" v-for="s in message.nostar"></i> -->
                 </div>
                 <span>{{message.time}}</span>
                 <h5>{{message.comment}}</h5>

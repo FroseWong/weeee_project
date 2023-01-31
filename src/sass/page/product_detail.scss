@@ -493,7 +493,7 @@
     border-radius: 10px;
     @include m {
       padding: 30px;
-      width:340px
+      width: 340px;
     }
     li {
       font-size: 14px;
@@ -632,7 +632,9 @@
       }
     }
     .productdetail-message-text-star {
-      color: $black;
+      i {
+        color: $yellow;
+      }
     }
   }
   .productdetail-message-bgc {

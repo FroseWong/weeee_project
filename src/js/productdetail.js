@@ -24,30 +24,6 @@ const app = Vue.createApp({
       ],
       // 預設評論
       messages: [
-        {
-          pic: "👦",
-          name: "使用者",
-          star: "★★★★★",
-          comment: "登入查看留言<3",
-        },
-        {
-          pic: "👦",
-          name: "使用者",
-          star: "★★★★★",
-          comment: "登入查看留言<3",
-        },
-        {
-          pic: "👦",
-          name: "使用者",
-          star: "★★★★★",
-          comment: "登入查看留言<3",
-        },
-        {
-          pic: "👦",
-          name: "使用者",
-          star: "★★★★★",
-          comment: "登入查看留言<3",
-        },
       ],
       // 地圖
       googleMap: ``,
@@ -116,11 +92,11 @@ const app = Vue.createApp({
         "入園門票，行程體驗券",
         "【不包含】",
         "餐飲，個人消費，交通費，其他未提及消費",
-        "【台灣籍限定】",
-        "限定優惠：每票最多可攜帶一位身高 115 公分以下兒童免費入場",
-        "備註：成人及兒童兌換時需出示每位中華民國有效身分證件/健保卡/護照/居留證/健保卡/戶口名簿（擇一)",
-        "【不分國籍】",
-        "限定優惠：身高 115 公分以下兒童免費入場，須由一位成人陪同",
+        // "【台灣籍限定】",
+        // "限定優惠：每票最多可攜帶一位身高 115 公分以下兒童免費入場",
+        // "備註：成人及兒童兌換時需出示每位中華民國有效身分證件/健保卡/護照/居留證/健保卡/戶口名簿（擇一)",
+        // "【不分國籍】",
+        // "限定優惠：身高 115 公分以下兒童免費入場，須由一位成人陪同",
       ],
       // 下方三圖片
       Imgs: [
@@ -427,7 +403,7 @@ const app = Vue.createApp({
         data: {},
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           if (response == false) {
             alert("請先登入再購買");
             window.location.href = "./login.html";
@@ -527,6 +503,7 @@ const app = Vue.createApp({
               _this.modalTotal = e.ProductPrice;
               _this.Imgs = arr1;
               _this.ProductDetail = obj2;
+              document.title = `${e.Location}｜${e.ProductName} - Weeee!`;
               // console.log(_this.noticeLists1);
             });
             _this.$nextTick(function () {
@@ -609,7 +586,7 @@ const app = Vue.createApp({
       if (time == "") {
         let OldToday = new Date(+new Date() + 8 * 3600 * 1000);
         newDate = OldToday.toISOString().split("T")[0];
-        console.log(OldToday);
+        // console.log(OldToday);
       } else {
         let oldDate = new String(time);
         newDate =
@@ -624,7 +601,7 @@ const app = Vue.createApp({
           oldDate[0] +
           oldDate[1];
       }
-      console.log(newDate);
+      // console.log(newDate);
       let num;
       let people = _this.modalPeople;
       let total = _this.modal_pricetotal;
@@ -686,6 +663,7 @@ const app = Vue.createApp({
           objcom = {};
           // console.log(response);
           response.forEach(function (item) {
+            // console.log(item.MemberImg);
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -694,7 +672,8 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar: 5 - item.ProductCommentScore,
+              nostar2:5-item.ProductCommentScore,
+              nostar:item.ProductCommentScore,
             };
             arrcom.push(objcom);
           });
@@ -891,12 +870,12 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar: 5 - item.ProductCommentScore,
+              nostar2:5-item.ProductCommentScore,
+              nostar:item.ProductCommentScore,
             };
             arrcom.push(objcom);
           });
           _this.messages = arrcom;
-          // _this.commentlength = response.length;
         },
 
         error: function (exception) {},
@@ -908,11 +887,11 @@ const app = Vue.createApp({
       for (i = 1; i <= 4; i++) {
         temp[i].style.backgroundColor = "#ffffff";
         temp[i].style.color = "#000000";
-        console.log(temp);
+        // console.log(temp);
       }
       e.target.style.backgroundColor = "#f19f4d";
       e.target.style.color = "#ffffff";
-      console.log(e.target);
+      // console.log(e.target);
 
       document.getElementsByClassName(
         "productreview-btn"
