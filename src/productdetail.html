@@ -147,11 +147,15 @@
             <div class="productdetail-content">
               <i class="fa-solid fa-location-dot"></i>
               <span>{{ProductDetail.city}}</span>
-              <div>
+
+              <div class="productdetail-content-num">
                 <h5>{{commentscore}}</h5>
-                <p>★★★★</p>
-                <span>({{commentlength}})｜已售出{{commentID}}</span>
+                <i v-for="i in commentscorestar1" class="fa-solid fa-star"></i>
+                <i v-show="commentscorestar2" class="fa-solid fa-star-half-stroke"></i>
+                <i v-for="i in commentscorestar3" class="fa-regular fa-star"></i>
+                <h5>({{commentlength}})</h5>
               </div>
+
             </div>
             <!-- ---------------行程時間--------------- -->
             <div class="productdetail-time">
@@ -206,12 +210,10 @@
               <h3 class="pa_h3">體驗地點</h3>
               <h5>地址 👇</h5>
               <div class="productdetail-addressdetail">
-                <h5>地點名稱 : {{ProductDetail.shortname}}</h5>
+                <h5>地點名稱 : {{ProductDetail.address}}公園</h5>
                 <h5>地址 : {{ProductDetail.address}}</h5>
               </div>
-              <iframe :src="googleMap.src" :width="googleMap.width" :height="googleMap.height" style="border: 0"
-                :allowfullscreen="googleMap.allowfullscreen" :loading="googleMap.loading"
-                :referrerpolicy="googleMap.referrerpolicy"></iframe>
+              <p v-html="googleMap"></p>
             </div>
             <!-- ---------------旅客評價--------------- -->
             <div class="product-review" ref="Review">
