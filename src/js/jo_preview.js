@@ -209,7 +209,7 @@ let app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          console.log(response);
+          // console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           // that.headercounter = response[0].COUNT;
@@ -253,9 +253,9 @@ let app = Vue.createApp({
 
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           const id = response[0]["0"];
-          console.log(id);
+          // console.log(id);
           Swal.fire({
             position: "top-end",
             icon: "success",

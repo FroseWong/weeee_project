@@ -4,7 +4,10 @@ createApp({
   data() {
     return {
       pagenum: 1,
-
+      select_hot: false,
+      select_bot:false,
+      select_top:false,
+      select_score:false,
       page_show: {
         start: 0,
         end: 5,
@@ -346,16 +349,12 @@ createApp({
         arr.sort(sorter);
       };
       eitherSort(arr);
-      this.classList = arr;
-      let epath = e.path[0].style;
-      e.path[1].childNodes[1].style.backgroundColor = "#fff";
-      e.path[1].childNodes[3].style.backgroundColor = "#fff";
-      e.path[1].childNodes[4].style.backgroundColor = "#fff";
-      e.path[1].childNodes[1].style.color = "#747774";
-      e.path[1].childNodes[3].style.color = "#747774";
-      e.path[1].childNodes[4].style.color = "#747774";
-      epath.backgroundColor = "#4484ce";
-      epath.color = "#fff";
+      this.select_hot = false,
+      this.select_bot = true,
+      this.select_top = false,
+      this.select_score = false
+      
+      
     },
     filterSort_top_to_bottom(e) {
       let arr = this.cardlist;
@@ -366,16 +365,10 @@ createApp({
         arr.sort(sorter);
       };
       eitherSort(arr);
-      this.classList = arr;
-      let epath = e.path[0].style;
-      e.path[1].childNodes[1].style.backgroundColor = "#fff";
-      e.path[1].childNodes[2].style.backgroundColor = "#fff";
-      e.path[1].childNodes[4].style.backgroundColor = "#fff";
-      e.path[1].childNodes[1].style.color = "#747774";
-      e.path[1].childNodes[2].style.color = "#747774";
-      e.path[1].childNodes[4].style.color = "#747774";
-      epath.backgroundColor = "#4484ce";
-      epath.color = "#fff";
+      this.select_hot = false,
+      this.select_bot = false,
+      this.select_top = true,
+      this.select_score = false
     },
     filterOrder(e) {
       let arr = this.cardlist;
@@ -386,16 +379,11 @@ createApp({
         arr.sort(sorter);
       };
       eitherSort(arr);
-      this.classList = arr;
-      let epath = e.path[0].style;
-      e.path[1].childNodes[2].style.backgroundColor = "#fff";
-      e.path[1].childNodes[3].style.backgroundColor = "#fff";
-      e.path[1].childNodes[4].style.backgroundColor = "#fff";
-      e.path[1].childNodes[2].style.color = "#747774";
-      e.path[1].childNodes[3].style.color = "#747774";
-      e.path[1].childNodes[4].style.color = "#747774";
-      epath.backgroundColor = "#4484ce";
-      epath.color = "#fff";
+      this.select_hot = true,
+      this.select_bot = false,
+      this.select_top = false,
+      this.select_score = false
+     
     },
     filterScore(e) {
       let arr = this.cardlist;
@@ -407,15 +395,11 @@ createApp({
       };
       eitherSort(arr);
       this.classList = arr;
-      let epath = e.path[0].style;
-      e.path[1].childNodes[1].style.backgroundColor = "#fff";
-      e.path[1].childNodes[2].style.backgroundColor = "#fff";
-      e.path[1].childNodes[3].style.backgroundColor = "#fff";
-      e.path[1].childNodes[1].style.color = "#747774";
-      e.path[1].childNodes[2].style.color = "#747774";
-      e.path[1].childNodes[3].style.color = "#747774";
-      epath.backgroundColor = "#4484ce";
-      epath.color = "#fff";
+      this.select_hot = false,
+      this.select_bot = false,
+      this.select_top = false,
+      this.select_score = true
+     
     },
     filterPrice(e) {
       e.target.querySelector("input")?.click();
@@ -465,7 +449,7 @@ createApp({
         }
       }
       if (target_class.contains("productlist_new__destination_btn")) {
-        console.log("aaa");
+       
         if (dest_bar.classList.contains("open")) {
           bar_arr.forEach((element) => {
             element.classList.remove("open");
@@ -482,7 +466,7 @@ createApp({
         }
       }
       if (target_class.contains("productlist_new__price_btn")) {
-        console.log("aaa");
+       
         if (price_bar.classList.contains("open")) {
           bar_arr.forEach((element) => {
             element.classList.remove("open");

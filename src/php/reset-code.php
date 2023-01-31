@@ -1,25 +1,4 @@
-<?php
-// require_once "controllerUserData.php";
 
-// $Username = $_SESSION['Username'];
-// if($Username == false){
-//   header('Location: login.html');
-// }
-
-// if(isset($_SESSION['info'])){
-   
-//         echo $_SESSION['info']; 
-   
-// }
-
-// if(count($errors) > 0){
-   
-//         foreach($errors as $showerror){
-//             echo $showerror;
-//         }
-// }
-
-?>
 
 
 <?php 
@@ -33,10 +12,22 @@ if($Username == false){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Code Verification</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
-</head>
+    <title>驗證</title>
+  <style>
+    .form{
+       text-align:center;
+       padding-top:20px;
+    }
+    .form-control{
+        font-size:20px;
+        margin-top:10px;
+    }
+    .form-control button{
+        font-size:20px;
+        display:block;
+
+    }
+  </style>
 <body>
     <div class="container">
         <div class="row">

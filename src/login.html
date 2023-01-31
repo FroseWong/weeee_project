@@ -10,6 +10,7 @@
     />
 
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="crossorigin="anonymous"></script>
     <title>登入</title>
   </head>
   <body>
@@ -41,7 +42,7 @@
                   placeholder="請輸入密碼"
                 />
                 <i class="fa-regular fa-eye" id="checkEye"></i>
-                <br />
+                <br/>
               </div>
               <input
                 class="submit"
@@ -132,8 +133,8 @@
       </footer> -->
     </div>
 
-    <!-- <script src="./vender/vue/vue.global.js"></script> -->
-    <script src="./vender/jquery/jquery.min.js"></script>
+    <script src="./vender/vue/vue.global.js"></script>
+    <!-- <script src="./vender/jquery/jquery.min.js"></script> -->
     <script src="./js/header.js"></script>
     <script src="./js/login.js"></script>
     <script>
@@ -181,7 +182,7 @@
         });
       }
 
-      let checkEye = document.getElementById("checkEye");
+    let checkEye = document.getElementById("checkEye");
     let openPasswords = document.getElementById("password");
     checkEye.addEventListener("click", function (e) {
       if (e.target.classList.contains('fa-eye')) {
@@ -194,19 +195,7 @@
         e.target.classList.add('fa-eye')
       }
     });
-    let checkEyeag = document.getElementById("checkEyeag");
-    let openPasswordag = document.getElementById("passwordag");
-    checkEyeag.addEventListener("click", function (e) {
-      if (e.target.classList.contains('fa-eye')) {
-        e.target.classList.remove('fa-eye');
-        e.target.classList.add('fa-eye-slash');
-        openPasswordag.setAttribute('type', 'text')
-      } else {
-        openPasswordag.setAttribute('type', 'password');
-        e.target.classList.remove('fa-eye-slash');
-        e.target.classList.add('fa-eye')
-      }
-    });
+
     </script>
   </body>
 </html>

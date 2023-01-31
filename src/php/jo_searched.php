@@ -15,10 +15,11 @@ j.JoID, j.JoTitle, j.MemberID, j.JoPostDate, j.JoStartDate,  case dayofweek(JoSt
 FROM Jo j
 join Member m
 on j.MemberID = m.MemberID
-where JoStatus = 1 and j.JoStartDate >= NOW() and JoTitle like ? and j.Location like ? ";
+where JoStatus = 1 and j.JoStartDate >= NOW() and JoTitle like ? and j.Location like ? or j.Location like ?";
 $statement =  $pdo->prepare($sql);
 $statement->bindValue(1, $key2);
 $statement->bindValue(2, $loc);
+$statement->bindValue(3, $key2);
 $statement->execute();
 $data = $statement->fetchAll();
 echo json_encode($data);

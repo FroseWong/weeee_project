@@ -240,9 +240,9 @@ let app1 = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           response.forEach((t) => that.experienceList.push(t));
-          console.log(that.experienceList);
+          // console.log(that.experienceList);
           that.$nextTick(function () {
             that.experience_slick();
           });
@@ -557,8 +557,8 @@ let app1 = Vue.createApp({
     },
 
     clickHeart(pid, e) {
-      console.log(this.memberID);
-      console.log(pid);
+      // console.log(this.memberID);
+      // console.log(pid);
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
@@ -580,10 +580,10 @@ let app1 = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          console.log("clickHeart", response);
+          // console.log("clickHeart", response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },

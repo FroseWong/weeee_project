@@ -12,6 +12,21 @@ if($_SESSION['info'] == false){
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
+<style>
+    .form{
+       text-align:center;
+       padding-top:20px;
+    }
+    .form-control{
+        font-size:20px;
+        margin-top:10px;
+    }
+    .form-control button{
+        font-size:20px;
+        display:block;
+
+    }
+  </style>
 <body>
     <div class="container">
         <div class="row">
@@ -27,7 +42,7 @@ if($_SESSION['info'] == false){
             ?>
                 <form action="./controllerUserData.php" method="POST">
                     <div class="form-group">
-                        <input class="form-control button" type="submit" name="login-now" value="如果畫面沒有跳轉請點擊這裡">
+                        <input class="form-control button" type="submit" name="login-now" value="請點擊這裡進行登入">
                     </div>
                 </form>
             </div>
