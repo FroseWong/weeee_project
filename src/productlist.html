@@ -110,10 +110,10 @@
 
               <ul>
                 <li>排序｜</li>
-                <li @click="filterOrder">熱門程度</li>
-                <li @click="filterSort_bottom_to_top">價格低到高</li>
-                <li @click="filterSort_top_to_bottom">價格高到低</li>
-                <li @click="filterScore">最高評價</li>
+                <li class="btn"  :class="{ select: select_hot }" @click="filterOrder">熱門程度</li>
+                <li class="btn" :class="{ select: select_bot }" @click="filterSort_bottom_to_top">價格低到高</li>
+                <li class="btn" :class="{ select: select_top }" @click="filterSort_top_to_bottom">價格高到低</li>
+                <li class="btn" :class="{ select: select_score }" @click="filterScore">最高評價</li>
               </ul>
             </div>
             <a
