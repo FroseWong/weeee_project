@@ -257,14 +257,14 @@
               username: response.Username,
               birthDate: response.Birthdate,
               interest: {    //物件中的物件
-                friend: response.Friend ? true : false,
-                family: response.Family ? true : false,
-                couple: response.Couple ? true : false,
-                pet: response.Pet ? true : false,
-                handmade: response.Handmade ? true : false,
-                onwater: response.Onwater ? true : false,
-                farm: response.Farm ? true : false,
-                extreme: response.Extreme ? true : false
+                friend: response.Friend == "1"? true : false,
+                family: response.Family == "1"? true : false,
+                couple: response.Couple == "1"? true : false,
+                pet: response.Pet == "1"? true : false,
+                handmade: response.Handmade == "1"? true : false,
+                onwater: response.Onwater == "1"? true : false,
+                farm: response.Farm == "1"? true : false,
+                extreme: response.Extreme == "1"? true : false
               },
              
             }
