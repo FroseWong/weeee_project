@@ -583,7 +583,7 @@ let app1 = Vue.createApp({
           console.log("clickHeart", response);
         },
         error: function (exception) {
-          alert("數據載入失敗: " + exception.status);
+          // alert("數據載入失敗: " + exception.status);
         },
       });
     },
