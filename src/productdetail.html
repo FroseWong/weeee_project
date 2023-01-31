@@ -105,7 +105,7 @@
           <div class="productdetail-fixedfield-group">
             <div class="productdetail-fixedfield1" v-if="field1Show" ref="field1">
               <h2>TWD {{ProductDetail.price}}</h2>
-              <i class="fa-heart" :class="`fa-${faHeart}`" @click="heart_click">
+              <i class="fa-heart" :class="`fa-${faHeart}`" @click="ajax_heart()">
               </i>
               <button type="button" class="field1-btn1" data-bs-toggle="modal" data-bs-target="#peopleModal">
                 <i class="fa-solid fa-bolt"></i>
@@ -148,9 +148,9 @@
               <i class="fa-solid fa-location-dot"></i>
               <span>{{ProductDetail.city}}</span>
               <div>
-                <h5>4.5</h5>
+                <h5>{{commentscore}}</h5>
                 <p>★★★★</p>
-                <span>(2300)｜已售出7K+</span>
+                <span>({{commentlength}})｜已售出{{commentID}}</span>
               </div>
             </div>
             <!-- ---------------行程時間--------------- -->
@@ -217,25 +217,29 @@
             <div class="product-review" ref="Review">
               <h3>旅客評價</h3>
               <div class="product-review-group">
-                <div class="product-review-score">
-                  <p>{{commentscore}}</p>
-                </div>
-                <div class="productreview-star">
-                  <div class="productreview-star-num">
-                    <i v-for="i in commentscorestar" class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
+                <div class="product-review-small-group">
+                  <div class="product-review-score">
+                    <p>{{commentscore}}</p>
                   </div>
-                  <span>{{commentlength}}則旅客評價</span>
+                  <div class="productreview-star">
+                    <div class="productreview-star-num">
+                      <i v-for="i in commentscorestar1" class="fa-solid fa-star"></i>
+                      <i v-show="commentscorestar2" class="fa-solid fa-star-half-stroke"></i>
+                      <i v-for="i in commentscorestar3" class="fa-regular fa-star"></i>
+                    </div>
+                    <span>{{commentlength}}則旅客評價</span>
+                  </div>
                 </div>
-                <div class="productreview-btn">
-                  <button v-for="sort in sorts" @click="sortfun(sort.num)" ref="sortA">{{sort.text}}</button>
+                <div class="productreview-btn" @click="comment_color">
+                  <button v-for="sort in sorts" @click="sortfun(sort.num)" ref="sortA" class="">{{sort.text}}</button>
                 </div>
               </div>
             </div>
             <div class="productdetail-message" v-for="message in messages">
-              <img :src="message.pic" alt=" " />
-              <span>{{message.name}}</span>
+              <div class="productdetail-message-bgc" v-bind:style="{ 'background-image': 'url(' + message.pic + ')' }">
+              </div>
               <div class="productdetail-message-text">
+                <span>{{message.name}}</span>
                 <div class="productdetail-message-text-star">
                   <i v-for="i in message.star" class="fa-solid fa-star"></i>
                   <i v-for="s in message.nostar" class="fa-regular fa-star"></i>

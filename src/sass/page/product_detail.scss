@@ -527,6 +527,20 @@
   .product-review-group {
     display: flex;
     align-items: flex-end;
+    @include m {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+ 
+        
+    }
+    .product-review-small-group{
+      display: flex;
+      @include m {
+        display: flex;
+        flex-direction: row;
+    }
+    }
     .product-review-score {
       background-color: $blue;
       width: 65px;
@@ -534,27 +548,34 @@
       border-radius: 10px;
       display: inline-block;
       margin-right: 30px;
+     
       p {
         font-size: $pc_h3;
         text-align: center;
         color: $white;
         line-height: 65px;
+        @include m {
+          width: 65px;
+          height: 65px;
+        }
       }
     }
     .productreview-star {
       display: flex;
       flex-direction: column;
-      p {
-        color: $yellow;
-        font-size: $pc_h3;
-      }
+      margin-top: 10px;
       .productreview-star-num {
         display: flex;
         flex-direction: row;
+        margin-bottom: 10px;
       }
       i {
         color: $yellow;
         margin-right: 3px;
+        font-size: 20px;
+      }
+      span{
+        font-size: 20px;
       }
     }
   }
@@ -563,6 +584,7 @@
 // ---------------留言---------------
 .productdetail-message {
   margin: 30px 0 50px 0;
+  display: flex;
   span {
     font-size: $pc_h5;
   }
@@ -577,7 +599,8 @@
   }
 
   .productdetail-message-text {
-    margin-left: 50px;
+    margin-left: 20px;
+    width: 100%;
     p {
       font-size: 25px;
       color: $yellow;
@@ -596,6 +619,13 @@
       color: $yellow;
     }
 
+  }
+  .productdetail-message-bgc{
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 50%;
   }
 }
 .productdetail-comment {
@@ -618,6 +648,9 @@
 }
 .productreview-btn {
   margin-left: 50px;
+  @include m {
+    margin: 0;
+  }
   button {
     margin: 5px;
     font-weight: bold;
@@ -625,8 +658,8 @@
     color: $black;
     border: 0.9px solid $l_gray;
   }
-  .commentBtn {
-    background-color: $orange;
+  .nicebtn{
+    background-color: $blue;
     color: $white;
   }
 }

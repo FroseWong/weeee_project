@@ -680,21 +680,22 @@
 
             content.insertAdjacentHTML("beforeend", jo_content);
 
-            //顯示會員全名在左側
-            $("#fullName").html(response[i].LastName + response[i].FirstName);
             //停止編輯筆冒泡
             document.getElementById("trashCan_"+ response[i].JoID).addEventListener("click", function(e){
-              e.stopPropagation();
-            })
-            document.getElementById("trashCan_"+ response[i + 1].JoID).addEventListener("click", function(e){
               e.stopPropagation();
             })
             document.getElementById("edit_"+ response[i].JoID).addEventListener("click", function(e){
               e.stopPropagation();
             })
-            document.getElementById("edit_"+ response[i + 1].JoID).addEventListener("click", function(e){
-              e.stopPropagation();
-            })
+            
+            if (response[i + 1]) {
+              document.getElementById("trashCan_"+ response[i + 1].JoID).addEventListener("click", function(e){
+                e.stopPropagation();
+              });
+              document.getElementById("edit_"+ response[i + 1].JoID).addEventListener("click", function(e){
+                e.stopPropagation();
+              });
+            }
           }
           // $("#count").html(response.length); //jquery寫法
           document.getElementById("count").innerHTML = response.length; //js寫法
@@ -731,7 +732,7 @@
                   dataType: "json",
                   success: function (response) {
                     $("#mem_img").attr("src", response.MemberImg);
-                    $("#fullName").attr("src", response.LastName + response.FirstName);
+                    $("#fullName").html(response.LastName + response.FirstName);
                     let url = window.location.href;
                     $("#originalUrl").val(url.substring(url.lastIndexOf("/") + 1));
                   }
