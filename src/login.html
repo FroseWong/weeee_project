@@ -10,7 +10,11 @@
     />
 
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
     <title>登入</title>
   </head>
   <body>
@@ -42,7 +46,7 @@
                   placeholder="請輸入密碼"
                 />
                 <i class="fa-regular fa-eye" id="checkEye"></i>
-                <br/>
+                <br />
               </div>
               <input
                 class="submit"
@@ -159,17 +163,15 @@
           dataType: "text",
 
           success: function (response) {
-                    console.log(response);//列印服務端返回的資料(除錯用)
-                    if (response==1) {
-                        alert("登入成功");
-                        location.href = "./index.html";
-                        
-                    }else{
-                        alert("登入失敗");
-                        location.reload(true);
-                        
-                    }
-                  },
+            console.log(response); //列印服務端返回的資料(除錯用)
+            if (response == 1) {
+              alert("登入成功");
+              location.href = "./index.html";
+            } else {
+              alert("登入失敗");
+              location.reload(true);
+            }
+          },
           // success: function (response) {
           //   //加入成功->導回登入頁
           //   alert(response);
@@ -182,20 +184,19 @@
         });
       }
 
-    let checkEye = document.getElementById("checkEye");
-    let openPasswords = document.getElementById("password");
-    checkEye.addEventListener("click", function (e) {
-      if (e.target.classList.contains('fa-eye')) {
-        e.target.classList.remove('fa-eye');
-        e.target.classList.add('fa-eye-slash');
-        openPasswords.setAttribute('type', 'text')
-      } else {
-        openPasswords.setAttribute('type', 'password');
-        e.target.classList.remove('fa-eye-slash');
-        e.target.classList.add('fa-eye')
-      }
-    });
-
+      let checkEye = document.getElementById("checkEye");
+      let openPasswords = document.getElementById("password");
+      checkEye.addEventListener("click", function (e) {
+        if (e.target.classList.contains("fa-eye")) {
+          e.target.classList.remove("fa-eye");
+          e.target.classList.add("fa-eye-slash");
+          openPasswords.setAttribute("type", "text");
+        } else {
+          openPasswords.setAttribute("type", "password");
+          e.target.classList.remove("fa-eye-slash");
+          e.target.classList.add("fa-eye");
+        }
+      });
     </script>
   </body>
 </html>

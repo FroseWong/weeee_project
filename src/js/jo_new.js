@@ -1,5 +1,12 @@
 "use strict";
-
+const n = new Date();
+const nYear = n.getFullYear();
+const nDate = `${n.getDate()}`.length <= 1 ? "0" + n.getDate() : n.getDate(); //日期
+const nMonth =
+  `${n.getMonth() + 1}`.length <= 1
+    ? "0" + (n.getMonth() + 1)
+    : n.getMonth() + 1; //月份
+const nNumber = Number("" + nYear + nMonth + nDate);
 const joTitleInput = document.querySelector(".jo__title__input");
 const joContentInput = document.querySelector(".jo-content__input");
 const joContactInput = document.querySelector(".jo-contact__input");
@@ -149,6 +156,7 @@ function deleteInit() {
 // 點擊預覽按鈕 儲存內容至sessionStorage
 previewBtn.addEventListener("click", function () {
   let str = "";
+  // const n = new Date();
   // console.log("hi");
   //   console.log(joTitleInput.value);
   //   console.log(joContentInput.value);
@@ -161,6 +169,10 @@ previewBtn.addEventListener("click", function () {
   //   console.log(useweeee.value);
   // console.log(reader.result);
 
+  const allDateNumber = Number(joStartDateInput.value.split("-").join(""));
+
+  // console.log(allDate);
+
   if (
     joTitleInput.value !== "" &&
     joContentInput.value !== "" &&
@@ -170,7 +182,7 @@ previewBtn.addEventListener("click", function () {
     joAttendInput.value !== "" &&
     joStartDateInput.value !== "" &&
     joStartTimeInput.value !== "" &&
-    // useweeeeInput.value !== "" &&
+    nNumber > allDateNumber &&
     imgstored !== ""
   ) {
     // if (reader.result) {
@@ -227,6 +239,9 @@ previewBtn.addEventListener("click", function () {
       str += str === "" ? "請選擇揪團日期" : "\n請選擇揪團日期";
     if (joStartTimeInput.value === "")
       str += str === "" ? "請選擇揪團時間" : "\n請選擇揪團時間";
+    if (nNumber > allDateNumber && joStartTimeInput.value !== "")
+      str += str === "" ? "請選擇今天以後的時間" : "\n請選擇今天以後的時間";
+
     if (imgstored === "" && reader?.result === "")
       str += str === "" ? "請上傳圖片" : "\n請上傳圖片";
     alert(str);
@@ -280,7 +295,7 @@ let app = Vue.createApp({
         data: {},
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           that.memberID = response[0].MemberID; // 可在data中設memberID，存下抓到的memberID
           that.headerFullName = response[0].FullName; // 可在data中設使用者fullname變數，存下抓到的使用者fullname
           that.headerMemberImg = response[0].MemberImg; // 可在data中設使用者MemberImg變數，存下抓到的使用者MemberImg
