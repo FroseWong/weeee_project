@@ -1,3 +1,30 @@
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script>
+// const str = "這是新的信件";
+
+Email.send({
+  Host: "smtp.elasticemail.com",
+  Username: "weeeeproject2@gmail.com",
+  Password: "3C030F022C721ED1FA84624A4392657C07F2",
+  To: "chusmile1021@gmail.com", // 收件者
+  From: "weeeeproject2@gmail.com",
+  Subject: "Password Reset Code", //標題
+//   Body: `${str}`, // 內文
+    Body:
+}).then((message) => alert(message));
+
+
+if($run_query){
+                $subject = "Password Reset Code";
+                $message = "Your password reset code is $code";
+                $sender = "From: shahiprem7890@gmail.com";
+                if(mail($Username, $subject, $message, $sender)){
+                    $info = "我們已寄送重設密碼的驗證碼至您的信箱 - $Username";
+                    $_SESSION['info'] = $info;
+                    $_SESSION['Username'] = $Username;
+</script>
+
 <?php 
 session_start();
 //本機用
@@ -182,5 +209,6 @@ $errors = array();
    //if login now button click
     if(isset($_POST['login-now'])){
         header('location:https://tibamef2e.com/tgd103/g2/frontend/login.html');
+        
     }
 ?>

@@ -13,6 +13,21 @@ if($Username == false){
    
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    .form{
+       text-align:center;
+       padding-top:20px;
+    }
+    .form-control{
+        font-size:20px;
+        margin-top:10px;
+    }
+    .form-control button{
+        font-size:20px;
+        display:block;
+
+    }
+  </style>
 <body>
     <div class="container">
         <div class="row">
