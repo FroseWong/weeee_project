@@ -278,6 +278,7 @@
       position: sticky;
       top: 270px;
       padding: 5px;
+      margin: 10px;
       float: right;
       color: $gray;
       display: flex;
@@ -397,9 +398,11 @@
 .productdetail-time {
   margin-top: 25px;
   margin-bottom: 35px;
+
   padding: 15px 0 15px 0;
   border-top: 1px solid $l_gray;
   border-bottom: 1px solid $l_gray;
+  width: 800px;
   @include m {
     flex-direction: column;
   }
@@ -490,6 +493,7 @@
     border-radius: 10px;
     @include m {
       padding: 30px;
+      width:340px
     }
     li {
       font-size: 14px;
@@ -628,7 +632,7 @@
       }
     }
     .productdetail-message-text-star {
-      color: $yellow;
+      color: $black;
     }
   }
   .productdetail-message-bgc {
@@ -773,8 +777,8 @@
   .liked #heart-unlike {
     display: block;
   }
-  width: 100px;
-  height: 100px;
+  width: 95px;
+  height: 95px;
   position: absolute;
   right: 0;
   @include m {
