@@ -449,7 +449,7 @@ createApp({
         }
       }
       if (target_class.contains("productlist_new__destination_btn")) {
-        console.log("aaa");
+       
         if (dest_bar.classList.contains("open")) {
           bar_arr.forEach((element) => {
             element.classList.remove("open");
@@ -466,7 +466,7 @@ createApp({
         }
       }
       if (target_class.contains("productlist_new__price_btn")) {
-        console.log("aaa");
+       
         if (price_bar.classList.contains("open")) {
           bar_arr.forEach((element) => {
             element.classList.remove("open");
