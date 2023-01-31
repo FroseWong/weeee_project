@@ -40,9 +40,9 @@ const App = {
 
       tempProd: {
         info: {
-          date: "",
-          productPrice: 0,
-          quantity: 0,
+          CartStartDay: "",
+          ProductPrice: 0,
+          Quantity: 0,
         },
         index: 0,
       },
@@ -186,14 +186,14 @@ const App = {
     },
     // ---------------人數加減---------------
     peopleMinus() {
-      if (this.tempProd.info.quantity <= 1) {
-        this.tempProd.info.quantity = 1;
+      if (this.tempProd.info.Quantity <= 1) {
+        this.tempProd.info.Quantity = 1;
       } else {
-        this.tempProd.info.quantity--;
+        this.tempProd.info.Quantity--;
       }
     },
     peoplePlus() {
-      this.tempProd.info.quantity++;
+      this.tempProd.info.Quantity++;
     },
     // ---------------結帳寫入sessionstorage---------------
     checkout() {
@@ -228,7 +228,7 @@ const App = {
       this.tempProd.index = index;
       console.log(
         "update temp prod to " +
-          this.tempProd.info.productName +
+          this.tempProd.info.ProductName +
           " index " +
           this.tempProd.index
       );
@@ -268,9 +268,9 @@ const App = {
     updateEditedProd() {
       console.log("start updating exisiting prod");
       this.productList[this.tempProd.index].ProductPrice =
-        this.tempProd.info.productPrice;
+        this.tempProd.info.ProductPrice;
       this.productList[this.tempProd.index].Quantity =
-        this.tempProd.info.quantity;
+        this.tempProd.info.Quantity;
       let date = this.getWeeeeDate();
       console.log(date);
       this.productList[this.tempProd.index].CartStartDay = date;
