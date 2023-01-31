@@ -29,8 +29,15 @@ const App = {
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-                alert("請先完成登入");
-                location.href = "login.html";
+                // alert("請先完成登入");
+                swal({
+                  icon: "warning",
+                  title: "請先完成登入",
+                  timer: 2000,
+                });
+                setTimeout(() => {
+                  location.href = "login.html";
+                }, 2000);
               };
             if (that.memberID) that.getdata_productList();
             if (that.memberID) that.getdata_orderInfo();

@@ -51,8 +51,15 @@ const app = Vue.createApp({
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-              alert("請先完成登入");
-              location.href = "login.html";
+              // alert("請先完成登入");
+              swal({
+                icon: "warning",
+                title: "請先完成登入",
+                timer: 2000,
+              });
+              setTimeout(() => {
+                location.href = "login.html";
+              }, 2000);
             }
             if (that.memberID) that.getCheckoutData();
             if (that.memberID) that.checkPoints();
@@ -229,17 +236,25 @@ const app = Vue.createApp({
         }
         let send_data = true;
         if (is.creditCard(card_str)) {
-            // card_wrapper.classList.remove("-error");
         } else {
-          // card_wrapper.classList.add("-error");
-          alert("系統不支援此卡，或是您輸入的卡號有誤，請再次核對！");
+          // alert("系統不支援此卡，或是您輸入的卡號有誤，請再次核對！");
+          swal({
+            icon: "warning",
+            title: "系統不支援此卡，或是您輸入的卡號有誤，請再次核對！",
+            timer: 2000,
+          });
           send_data = false;
         }
         //信用卡日期驗證
         var expiration = document.getElementById('expiration').value;
         if (expiration.length < 5){
           send_data = false;
-          alert("信用卡效期有誤，請輸入正確日期(月/年)");
+          // alert("信用卡效期有誤，請輸入正確日期(月/年)");
+          swal({
+            icon: "warning",
+            title: "信用卡效期有誤，請輸入正確日期(月/年)",
+            timer: 2000,
+          });
         }
         else if (expiration.length == 5) {
           var expiry = expiration.split('/');
@@ -256,14 +271,24 @@ const app = Vue.createApp({
       
           if (year < currentYear || (year == currentYear && month < currentMonth)) {
             send_data = false;
-            alert("信用卡效期有誤，請輸入正確日期(月/年)");
+            // alert("信用卡效期有誤，請輸入正確日期(月/年)");
+            swal({
+              icon: "warning",
+              title: "信用卡效期有誤，請輸入正確日期(月/年)",
+              timer: 2000,
+            });
           }
         }
         //信用卡末3碼驗證
         var cvc = document.getElementById('cvc').value;
         if (cvc.length < 3){
           send_data = false;
-          alert("您輸入的末三碼有誤，請再次核對！");
+          // alert("您輸入的末三碼有誤，請再次核對！");
+          swal({
+            icon: "warning",
+            title: "您輸入的末三碼有誤，請再次核對！",
+            timer: 2000,
+          });
         }
         //驗證不過
         if (!send_data) {
@@ -308,8 +333,15 @@ const app = Vue.createApp({
             dataType: "text",
             success: function (response) {
               //購買完成
-              alert(response);
-              window.location.replace("./payment_complete.html");
+              // alert(response);
+              swal({
+                icon: "success",
+                title: "購買完成！",
+                timer: 2000,
+              });
+              setTimeout(() => {
+                window.location.replace("./payment_complete.html");
+              }, 2000);
               // location.href = "./payment_complete.html";
             },
             error: function (exception) {
