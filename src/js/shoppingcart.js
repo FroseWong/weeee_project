@@ -66,7 +66,7 @@ const App = {
         dataType: "json",
         success: function (response) {
           // console.log("success");
-          console.log(response);
+          // console.log(response);
           // console.log(this.data);
           // console.log(response[0]);
           that.memberID = response[0].MemberID;
@@ -102,7 +102,7 @@ const App = {
         },
         dataType: "json",
         success: function (response) {
-          console.log(response);
+          // console.log(response);
           response.forEach((productList) => {
             // console.log(productList);
             productList.select = true;
@@ -145,9 +145,9 @@ const App = {
         },
       });
       // this.productList.splice(index, 0);
-      console.log(index);
-      console.log(this.productList[index]);
-      console.log(this.productList[index].CartID);
+      // console.log(index);
+      // console.log(this.productList[index]);
+      // console.log(this.productList[index].CartID);
     },
     closeSelect() {
       // console.log("ttt");
@@ -155,32 +155,32 @@ const App = {
       for (i = 0; i < this.productList.length; i++) {
         if (this.productList[i].select == true) {
           productCartIDList.push(this.productList[i].CartID);
+          let that = this;
+          $.ajax({
+            method: "POST",
+            url: "./php/CartRemoveSelect.php",
+            data: {
+              CID: productCartIDList,
+            },
+            dataType: "text",
+            success: function (response) {
+              //移除商品成功
+              // alert("移除商品成功");
+              swal({
+                icon: "success",
+                title: "商品已移除！",
+                timer: 2000,
+              });
+              setTimeout(() => {
+                location.reload();
+              }, 2000);
+            },
+            error: function (exception) {
+              alert("移除商品失敗: " + exception.status);
+            },
+          });
         }
       }
-      let that = this;
-      $.ajax({
-        method: "POST",
-        url: "./php/CartRemoveSelect.php",
-        data: {
-          CID: productCartIDList,
-        },
-        dataType: "text",
-        success: function (response) {
-          //移除商品成功
-          // alert("移除商品成功");
-          swal({
-            icon: "success",
-            title: "商品已移除！",
-            timer: 2000,
-          });
-          setTimeout(() => {
-            location.reload();
-          }, 2000);
-        },
-        error: function (exception) {
-          alert("移除商品失敗: " + exception.status);
-        },
-      });
       // this.productList = this.productList.filter(function (product) {
       //   return !product.select;
       // });
@@ -188,7 +188,7 @@ const App = {
     //全選與取消全選
     selectProduct: function (isSelect) {
       //productList跑迴圈，全部取反
-      for (var i = 0; i < this.productList.length; i++) {
+      for (let i = 0; i < this.productList.length; i++) {
         //讓productList[i].select不管為true還是false都取!isSelect，如現在未全選，那麼isSelect就為false，!isSelect就為true，所以點擊讓商品的select都變為true
         this.productList[i].select = !isSelect;
       }
@@ -226,7 +226,7 @@ const App = {
           selected++;
         }
       }
-      console.log(selected);
+      // console.log(selected);
       if (selected <= 0) {
         swal({
           icon: "warning",
@@ -252,12 +252,12 @@ const App = {
       this.currentI = index;
       this.tempProd.info = JSON.parse(JSON.stringify(editedProd));
       this.tempProd.index = index;
-      console.log(
-        "update temp prod to " +
-          this.tempProd.info.ProductName +
-          " index " +
-          this.tempProd.index
-      );
+      // console.log(
+      //   "update temp prod to " +
+      //     this.tempProd.info.ProductName +
+      //     " index " +
+      //     this.tempProd.index
+      // );
       this.setDatetimepicker(new Date());
     },
     getWeeeeDate() {
@@ -292,13 +292,13 @@ const App = {
       return this.productList[index];
     },
     updateEditedProd() {
-      console.log("start updating exisiting prod");
+      // console.log("start updating exisiting prod");
       this.productList[this.tempProd.index].ProductPrice =
         this.tempProd.info.ProductPrice;
       this.productList[this.tempProd.index].Quantity =
         this.tempProd.info.Quantity;
       let date = this.getWeeeeDate();
-      console.log(date);
+      // console.log(date);
       this.productList[this.tempProd.index].CartStartDay = date;
       let that = this;
 
@@ -349,11 +349,11 @@ const App = {
     },
     getTotal() {
       // 取productList中select為true
-      var prodList = this.productList.filter(function (val) {
+      let prodList = this.productList.filter(function (val) {
         return val.select;
       });
       // 設置一個值用来儲存總價
-      var totalPrice = 0;
+      let totalPrice = 0;
       for (let i = 0; i < prodList.length; i++) {
         // 將每個商品的總價加在一起
         totalPrice += prodList[i].Quantity * prodList[i].ProductPrice;
