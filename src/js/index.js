@@ -97,7 +97,7 @@ let app1 = Vue.createApp({
   created() {
     // this.getdata_jo_list_end();
     // this.getdata_product_list();
-    this.get_member_information();
+    // this.get_member_information();
     this.show_list();
 
     this.getPopularNumber();
@@ -712,6 +712,7 @@ let app1 = Vue.createApp({
     // },
   },
   mounted() {
+    this.get_member_information();
     // header.memberID = this.memberID
     // this.memberID = header?.memberID;
     // if (this.memberID) this.memberInterest();
