@@ -12,7 +12,7 @@ if (empty($_SESSION["MemberID"])) {
 $MID=$_SESSION["MemberID"];
 // $MID = $_POST['MID'];
 $PID = $_POST['PID'];
-$NEWTAL = $_POST['TAL'];
+// $NEWTAL = $_POST['TAL'];
 $NEWQTY = $_POST['QTY'];
 $DATE=$_POST['DATE'];
 $sqlif = "SELECT count(ProductID) From Cart  where MemberID='{$MID}' and ProductID='{$PID}'";
@@ -29,7 +29,7 @@ foreach ($dataif as $key => $value) {
 // echo ($tempif);
 // -----------如果使用者沒加過購物車---------------
 if ($tempif == 0) {
-    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,SubTotal,Quantity,cartStartDay)VALUES ('{$PID}','{$MID}','{$NEWTAL}','{$NEWQTY}','$DATE')";
+    $sqlzero = "INSERT INTO Cart (ProductID,MemberID,Quantity,CartStartDay)VALUES ('{$PID}','{$MID}','{$NEWQTY}','$DATE')";
     $statement = $pdo->prepare($sqlzero);
     $statement->execute();
     echo json_encode('ok');
@@ -46,19 +46,19 @@ if ($tempif == 1) {
     }
     $ALLQTY = $OLDQTY + $NEWQTY;
     // -----------找總額---------------
-    $sqlseltwo = "SELECT SubTotal FROM Cart where ProductID='{$PID}' AND MemberID='{$MID}'";
-    $statement = $pdo->prepare($sqlseltwo);
-    $statement->execute();
-    $dataseltwo = $statement->fetchAll();
-    foreach ($dataseltwo as $key => $value) {
+    // $sqlseltwo = "SELECT SubTotal FROM Cart where ProductID='{$PID}' AND MemberID='{$MID}'";
+    // $statement = $pdo->prepare($sqlseltwo);
+    // $statement->execute();
+    // $dataseltwo = $statement->fetchAll();
+    // foreach ($dataseltwo as $key => $value) {
 
-        $OLDTAL = $value[$key];
-    }
-    $ALLTAL = $OLDTAL + $NEWTAL;
+    //     $OLDTAL = $value[$key];
+    // }
+    // $ALLTAL = $OLDTAL + $NEWTAL;
 
 
     // --------加總後加入購物車---------
-    $sqlone = "UPDATE Cart SET Quantity=$ALLQTY,SubTotal=$ALLTAL WHERE ProductID='{$PID}' AND MemberID='{$MID}'";
+    $sqlone = "UPDATE Cart SET Quantity=$ALLQTY WHERE ProductID='{$PID}' AND MemberID='{$MID}'";
     $statement = $pdo->prepare($sqlone);
     $statement->execute();
     echo json_encode('ok');

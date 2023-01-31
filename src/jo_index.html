@@ -98,7 +98,7 @@
             :href="'./jo_detail.html?id=' + jo.JoID"
             @click="jump_jo_detail"
             v-for="jo in jo_list_hot" 
-            :key="index"
+           
             
             >
               <div class="jo-card__top__location">
@@ -133,7 +133,8 @@
             <a class="jo-card" 
             :href="'./jo_detail.html?id=' + jo.JoID"
             v-for="jo in jo_list_end" 
-            :key="index">
+            
+           >
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
@@ -166,7 +167,7 @@
             <a class="jo-card" 
             :href="'./jo_detail.html?id=' + jo.JoID"
             v-for="jo in jo_list_new" 
-            :key="index">
+            >
               <div class="jo-card__top__location">
                 <i class="fa-solid fa-location-dot"></i>
                 <p class="jo__location">{{jo.Location}}</p>
