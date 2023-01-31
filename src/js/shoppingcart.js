@@ -73,7 +73,13 @@ const App = {
 
           that?.$nextTick(function () {
             if (!that.memberID) {
-              alert("請先完成登入");
+              // setTimeout(function(){swal("請先完成登入","warn"); },1000);
+              swal({
+                title: "請先完成登入",
+                timer: 1500,
+                icon: "warn",
+              });
+              // alert("請先完成登入");
               location.href = "login.html";
             };
             if (that.memberID) that.getdata_productList();
@@ -118,7 +124,7 @@ const App = {
         method: "POST",
         url: "./php/CartRemove.php",
         data: {
-          CID: that.productList[index].cartID,
+          CID: that.productList[index].CartID,
         },
         dataType: "text",
         success: function (response) {
@@ -133,14 +139,14 @@ const App = {
       // this.productList.splice(index, 0);
       console.log(index);
       console.log(this.productList[index]);
-      console.log(this.productList[index].cartID);
+      console.log(this.productList[index].CartID);
     },
     closeSelect() {
       // console.log("ttt");
       let productCartIDList = [];
       for (i = 0; i < this.productList.length; i++) {
         if (this.productList[i].select == true) {
-          productCartIDList.push(this.productList[i].cartID);
+          productCartIDList.push(this.productList[i].CartID);
         }}
           let that = this;
           $.ajax({
