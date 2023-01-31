@@ -37,7 +37,7 @@
             // echo json_encode($try);
             // $sql = "UPDATE cart set status = '2' where $str";
             // $sql = "update cart set status = 2 where CartID = 3 OR CartID = 4;";
-            $sql = "delete from cart where $str;";
+            $sql = "delete from Cart where $str;";
         
             $statement = $pdo->prepare( $sql );
             $statement->execute(); 
@@ -51,7 +51,7 @@
     function insertOrderDetail($pdo, $productIDList, $productQuantityList, $productDateList, $OID){
         // echo json_encode($productDateList);
         for($i=0;$i<count($productIDList);$i++){
-            $sql = "insert into orderdetail ( orderid, productid, quantity, startdate, orderdate) values ( ?, '$productIDList[$i]', '$productQuantityList[$i]', '$productDateList[$i]', Now())";
+            $sql = "insert into OrderDetail ( OrderID, ProductID, Quantity, StartDate, OrderDate) values ( ?, '$productIDList[$i]', '$productQuantityList[$i]', '$productDateList[$i]', Now())";
     
             $statement = $pdo->prepare( $sql );
             $statement->bindValue(1, $OID);
@@ -63,12 +63,12 @@
 
     //取得目前orderID最大值
     function getMaxOrderID($pdo){
-        $sql = "SELECT MAX(orderid) FROM `order`";
+        $sql = "SELECT MAX(OrderID) FROM `Order`";
         $statement = $pdo->prepare($sql);
         $statement->execute(); 
         $data = $statement->fetchAll();
          
-        return $data[0]["MAX(orderid)"] +1;
+        return $data[0]["MAX(OrderID)"] +1;
     }
 
 
@@ -78,7 +78,7 @@
         $number = str_pad($lastOID, 4,'0',STR_PAD_LEFT);
         $orderNumber = 'OR'.$number;
 
-        $sql = "insert into `order` ( orderdate, memberid, totalprice, ordernumber, email, discount) values( Now(), ?, ?, ?, ?, ?)";
+        $sql = "insert into `Order` ( OrderDate, MemberID, TotalPrice, OrderNumber, Email, Discount) values( Now(), ?, ?, ?, ?, ?)";
 
         $statement = $pdo->prepare( $sql );
         $statement->bindValue(1, $memberID);
@@ -95,7 +95,7 @@
     //寫入weeee point使用紀錄
     function insertPlusPointRecord($pdo, $addPoints, $OID){
 
-        $sql = "insert into pointrecord ( orderid, pointschange) values ( ?, ?)";
+        $sql = "insert into PointRecord ( OrderID, PointsChange) values ( ?, ?)";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(1, $OID);
         $statement->bindValue(2, $addPoints);
@@ -107,7 +107,7 @@
 
         if($discountPoints > 0){
             $discountPoints *= -1;
-            $sql = "insert into pointrecord ( orderid, pointschange) values ( ?, ?)";
+            $sql = "insert into PointRecord ( OrderID, PointsChange) values ( ?, ?)";
             $statement = $pdo->prepare( $sql );
             $statement->bindValue(1, $OID);
             $statement->bindValue(2, $discountPoints);
@@ -118,7 +118,7 @@
 
     //更新會員點數
     function updateMember($pdo, $offsetPoints, $memberID){
-        $sql = "update member set totalpoints = totalpoints + ? where memberid = ?";
+        $sql = "update Member set TotalPoints = TotalPoints + ? where MemberID = ?";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(1, $offsetPoints);
         $statement->bindValue(2, $memberID);
