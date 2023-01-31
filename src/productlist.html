@@ -14,207 +14,220 @@
     />
     <title>搜尋頁面</title>
     <style>
-        [v-cloak] {
-          display: none;
-        }
-      </style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
-
     @@include('layout/header.html')
     <div class="wrapper productlist_new" id="app">
-        <div v-cloak>
-      <div class="black_bg" @click="openSelectbar"></div>
-      <div class="productlist_new__main">
-        <div class="productlist_new__select container">
-          <div class="container productlist_new__bar">
-            <div class="rwd_bar">
-              <ul>
-                <li
-                  class="productlist_new__category_btn"
-                  @click="openSelectbar"
-                >
-                  行程
-                </li>
-                <li
-                  class="productlist_new__destination_btn"
-                  @click="openSelectbar"
-                >
-                  目的
-                </li>
-                <li class="productlist_new__price_btn" @click="openSelectbar">
-                  價格
-                </li>
-                <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
+      <div v-cloak>
+        <div class="black_bg" @click="openSelectbar"></div>
+        <div class="productlist_new__main">
+          <div class="productlist_new__select container">
+            <div class="container productlist_new__bar">
+              <div class="rwd_bar">
+                <ul>
+                  <li
+                    class="productlist_new__category_btn"
+                    @click="openSelectbar"
+                  >
+                    行程
+                  </li>
+                  <li
+                    class="productlist_new__destination_btn"
+                    @click="openSelectbar"
+                  >
+                    目的
+                  </li>
+                  <li class="productlist_new__price_btn" @click="openSelectbar">
+                    價格
+                  </li>
+                  <!-- <li class="productlist_new__sort_btn" @click="openSelectbar">
                   排序
                 </li> -->
-              </ul>
-            </div>
-
-            <div class="productlist_new__category">
-              <h4>行程分類</h4>
-              <ul>
-                <li
-                  v-for="(category,index) in categorys"
-                  @click="filterCategory"
-                >
-                  <input
-                    type="checkbox"
-                    :value="category"
-                    v-model="checked.select_secondType"
-                  />
-                  {{category}}
-                </li>
-              </ul>
-            </div>
-            <div class="productlist_new__destination">
-              <h4>目的地</h4>
-              <span @click="open_city" class="productlist_new__open"
-                >台灣
-                <i class="fa-solid fa-circle-chevron-down"></i>
-              </span>
-              <ul class="productlist_new__city productlist_new__block">
-                <li
-                  v-for="(AllCity,index) in AllCitys"
-                  v-if="cityshow"
-                  @click="filterCity"
-                >
-                  <input
-                    type="checkbox"
-                    :id="`AllCity${index+1}`"
-                    :value="AllCity"
-                    v-model="checked.select_city"
-                  />{{AllCity}}
-                </li>
-              </ul>
-            </div>
-            <div class="productlist_new__price">
-              <h4>價格</h4>
-              <ul>
-                <li v-for="(price,index) in prices" @click="filterPrice">
-                  <input
-                    type="checkbox"
-                    :id="`price${index+1}`"
-                    :value="price"
-                    v-model="checked.select_price"
-                  />
-                  {{price}}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="productlist_new_card_list container">
-            <div class="productlist_new__sort">
-              <h5>{{this.computedList.length}}個項目</h5>
-
-              <ul>
-                <li>排序｜</li>
-                <li class="btn"  :class="{ select: select_hot }" @click="filterOrder">熱門程度</li>
-                <li class="btn" :class="{ select: select_bot }" @click="filterSort_bottom_to_top">價格低到高</li>
-                <li class="btn" :class="{ select: select_top }" @click="filterSort_top_to_bottom">價格高到低</li>
-                <li class="btn" :class="{ select: select_score }" @click="filterScore">最高評價</li>
-              </ul>
-            </div>
-            <a
-              class="product-card-row"
-              v-for="product in computedList2"
-              
-              @click="gotoproductDetail(product.ProductID)"
-             
-            >
-              <div class="product-card-row__left">
-                <div class="product-card-row__location">
-                  <i class="fa-solid fa-location-dot"></i>
-                  <p class="p__location">{{product.Location}}</p>
-                </div>
-                <div class="product-card-row__left__pic">
-                  <div
-                    class="product-card-row__picsrc"
-                    v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath1 + ')' }"
-                  ></div>
-                </div>
+                </ul>
               </div>
-              <div class="product-card-row__right">
-                <div
-                  class="change-heart"
-                 
-                  @click="clickHeart(product.ProductID,$event)"
-                  :class="{'clicked':favorProductList.includes(product.ProductID) }"
-                >
-                  <i
-                    class="fa-regular fa-heart"
-                    ref="hollow"
-                    
-                  ></i>
-                  <i
-                    class="fa-solid fa-heart orange"
-                    ref="solid"
-                    
-                  ></i>
-                </div>
-                <div class="product-name">
-                  {{product.Location}}｜{{product.ProductName}}
-                </div>
-                <div class="product-tag">{{product.ProductSecondType}}</div>
-                <div class="product__text">{{product.ProductText}}</div>
 
-                <span class="gray"
-                  ><i class="fa-solid fa-star"></i
-                  >{{product.score}}({{product.ProductScoredPeople}}) |
-                  <span class="product-bought"
-                    >{{product.ProductPurchased}}+</span
-                  >個已訂購
+              <div class="productlist_new__category">
+                <h4>行程分類</h4>
+                <ul>
+                  <li
+                    v-for="(category,index) in categorys"
+                    @click="filterCategory"
+                  >
+                    <input
+                      type="checkbox"
+                      :value="category"
+                      v-model="checked.select_secondType"
+                    />
+                    {{category}}
+                  </li>
+                </ul>
+              </div>
+              <div class="productlist_new__destination">
+                <h4>目的地</h4>
+                <span @click="open_city" class="productlist_new__open"
+                  >台灣
+                  <i class="fa-solid fa-circle-chevron-down"></i>
                 </span>
-                <span class="price"
-                  >TWD
-                  <span class="product-price"> {{product.ProductPrice}}</span
-                  >元</span
-                >
+                <ul class="productlist_new__city productlist_new__block">
+                  <li
+                    v-for="(AllCity,index) in AllCitys"
+                    v-if="cityshow"
+                    @click="filterCity"
+                  >
+                    <input
+                      type="checkbox"
+                      :id="`AllCity${index+1}`"
+                      :value="AllCity"
+                      v-model="checked.select_city"
+                    />{{AllCity}}
+                  </li>
+                </ul>
               </div>
-            </a>
-            <nav
-            >
-              <ul class="productlist_new__pagination">
-                <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link minus" 
-                  href="#"
-                  
-                  @click="plus_minus">&lt;</a>
-                </li>
-                <li class="productlist_new__page-item"
-                v-for="(item,index) in showpage"
-                :class="{current:pagenum == item}"
-                
-                    >
-                  <a
-                    class="productlist_new__page-link "
-                    href="#"
-                    :value="item"
-                    @click="ChangeCurrpage"
-                    >{{item}}
+              <div class="productlist_new__price">
+                <h4>價格</h4>
+                <ul>
+                  <li v-for="(price,index) in prices" @click="filterPrice">
+                    <input
+                      type="checkbox"
+                      :id="`price${index+1}`"
+                      :value="price"
+                      v-model="checked.select_price"
+                    />
+                    {{price}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="productlist_new_card_list container">
+              <div class="productlist_new__sort">
+                <h5>{{this.computedList.length}}個項目</h5>
+
+                <ul>
+                  <li>排序｜</li>
+                  <li
+                    class="btn"
+                    :class="{ select: select_hot }"
+                    @click="filterOrder"
+                  >
+                    熱門程度
+                  </li>
+                  <li
+                    class="btn"
+                    :class="{ select: select_bot }"
+                    @click="filterSort_bottom_to_top"
+                  >
+                    價格低到高
+                  </li>
+                  <li
+                    class="btn"
+                    :class="{ select: select_top }"
+                    @click="filterSort_top_to_bottom"
+                  >
+                    價格高到低
+                  </li>
+                  <li
+                    class="btn"
+                    :class="{ select: select_score }"
+                    @click="filterScore"
+                  >
+                    最高評價
+                  </li>
+                </ul>
+              </div>
+              <a
+                class="product-card-row"
+                v-for="product in computedList2"
+                @click="gotoproductDetail(product.ProductID)"
+              >
+                <div class="product-card-row__left">
+                  <div class="product-card-row__location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="p__location">{{product.Location}}</p>
+                  </div>
+                  <div class="product-card-row__left__pic">
+                    <div
+                      class="product-card-row__picsrc"
+                      v-bind:style="{ backgroundImage: 'url(' + product.ProductImgPath1 + ')' }"
+                    ></div>
+                  </div>
+                </div>
+                <div class="product-card-row__right">
+                  <div
+                    class="change-heart"
+                    @click="clickHeart(product.ProductID,$event)"
+                    :class="{'clicked':favorProductList.includes(product.ProductID) }"
+                  >
                     
+                    <i class="fa-regular fa-heart" ref="hollow"></i>
+                    <i class="fa-solid fa-heart orange" ref="solid"></i>
+                  </div>
+                  <div class="product-name">
+                    {{product.Location}}｜{{product.ProductName}}
+                  </div>
+                  <div class="product-tag">{{product.ProductSecondType}}</div>
+                  <div class="product__text">{{product.ProductText}}</div>
+
+                  <span class="gray"
+                    ><i class="fa-solid fa-star"></i
+                    >{{product.score}}({{product.ProductScoredPeople}}) |
+                    <span class="product-bought"
+                      >{{product.ProductPurchased}}+</span
+                    >個已訂購
+                  </span>
+                  <span class="price"
+                    >TWD
+                    <span class="product-price"> {{product.ProductPrice}}</span
+                    >元</span
+                  >
+                </div>
+              </a>
+              <nav>
+                <ul class="productlist_new__pagination">
+                  <li class="productlist_new__page-item">
+                    <a
+                      class="productlist_new__page-link minus"
+                      href="#"
+                      @click="plus_minus"
+                      >&lt;</a
+                    >
+                  </li>
+                  <li
+                    class="productlist_new__page-item"
+                    v-for="(item,index) in showpage"
+                    :class="{current:pagenum == item}"
+                  >
+                    <a
+                      class="productlist_new__page-link"
+                      href="#"
+                      :value="item"
+                      @click="ChangeCurrpage"
+                      >{{item}}
                     </a>
-                </li>
-                <li class="productlist_new__page-item">
-                  <a class="productlist_new__page-link plus" 
-                  href="#"
-                  
-                  @click="plus_minus">&gt;</a>
-                </li>
-              </ul>
-            </nav>
+                  </li>
+                  <li class="productlist_new__page-item">
+                    <a
+                      class="productlist_new__page-link plus"
+                      href="#"
+                      @click="plus_minus"
+                      >&gt;</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
+        @@include('layout/footer.html')
       </div>
-      @@include('layout/footer.html')
-    
-    </div>
     </div>
     <script src="./vender/jquery/jquery.js"></script>
     <script src="./vender/vue/vue.global.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/productlist.js"></script>
-
   </body>
 </html>
