@@ -6,11 +6,11 @@ include("connection.php");
 $id = $_POST["id"];
 $sql = 
 "SELECT
-jc.JoCommentTime,jc.JoCommentContent,m.FullName,m.MemberImg
+jc.JoCommentTime,jc.JoCommentContent,jc.JoCommentStatus,m.FullName,m.MemberImg
 FROM JoComment jc
 join Member m
 on jc.MemberID = m.MemberID
-where jc.JoID = $id";
+where jc.JoID = $id AND jc.JoCommentStatus = 1";
 
 $statement =  $pdo->prepare($sql);
 $statement->execute();
