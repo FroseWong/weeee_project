@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weeee!</title>
+    <link rel="icon" href="img/otherpage/Weeee.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css" />
     <script
       src="https://kit.fontawesome.com/85f014293c.js"
@@ -159,7 +160,7 @@
             function linkTo(productID){
               location.href="productdetail.html?id=" + productID;
             }
-
+            //呼叫會員所有資料
             $(document).ready(function() {
               $.ajax({
                   method: "GET",
@@ -167,14 +168,14 @@
                   data: {},
                   dataType: "json",
                   success: function (response) {
-                    $("#mem_img").attr("src", response.MemberImg);
-                    $("#fullName").html(response.LastName + response.FirstName);
+                    $("#mem_img").attr("src", response.MemberImg); //大頭照圖片
+                    $("#fullName").html(response.LastName + response.FirstName); //印出會員全名
                     let url = window.location.href;
                     $("#originalUrl").val(url.substring(url.lastIndexOf("/") + 1));
                   }
                 });
             }); 
-
+            //點下去之後才產生INPUT標籤，可以上傳檔案，但有隱藏，所以看不到
             function changeImage(e) {
               let id = "imageFile";
               if (!document.getElementById(id)) {
@@ -184,6 +185,7 @@
                   `
                   )
               }
+              //註冊CHANGE事件，INPUT
               document.getElementById(id).addEventListener("change", function() {
                   // 讀取file
                   let fileList = this.files;
