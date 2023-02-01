@@ -1,0 +1,62 @@
+.landing {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../img/otherpage/landingpage.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  @include m {
+    background-position: 70% 30%;
+  }
+
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px;
+
+    .logoWrapper {
+      width: 100%;
+
+      img {
+        display: block;
+        margin: 0 auto;
+        padding-top: 150px;
+        @include m {
+          // margin: 0;
+          // margin: 0 auto;
+          // padding-top: 100px;
+        }
+      }
+    }
+
+    .btnWrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 100px;
+      margin-top: 100px;
+      align-items: center;
+
+      @include m {
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        width: 200px;
+        height: 200px;
+        background-color: $yellow;
+        border-radius: 50%;
+
+        text-align: center;
+        line-height: 200px;
+        color: $white;
+        font-size: 40px;
+        font-weight: bold;
+
+        &:active {
+          color: $white;
+
+        }
+      }
+    }
+  }
+}
