@@ -1,6 +1,6 @@
 <?php
 include("connection.php");
-// $tryStr = $_POST["try"];
+
 $joTitle = $_POST['joTitle'];
 $joContent = $_POST['joContent'];
 $joContact = $_POST['joContact'];
@@ -15,10 +15,10 @@ $img = $_POST['img'];
 $imgName = $_POST['imgName'];
 
 $MemberID = $_POST['memberID'];
-// $JoUseWeee = 1;
+
 $JoImg = './img/jo/'.$imgName;
 
-$sql0 = "SELECT MAX(JoID) FROM weeee.Jo;";
+$sql0 = "SELECT MAX(JoID) FROM `Jo`";
 $statement0 = $pdo->prepare($sql0);
 $statement0->execute(); 
 $data0 = $statement0->fetchAll();
@@ -27,7 +27,7 @@ $maxID = $data0[0]["MAX(JoID)"];
 $JoNumber = 'JO'.str_pad($maxID+1,5,"0",STR_PAD_LEFT); 
 
 
-// $JoNumber = 'asd1234';
+
 
 if($JoUseWeeee==1)
         {
@@ -80,7 +80,9 @@ $data1 = $statement->fetchAll();
 }
 rename($output_file,$filepath);
 
-echo json_encode($data1);
+echo json_encode($data1); //原始
+
+// echo json_encode($JoNumber);
 
 // echo 'id';
 
