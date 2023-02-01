@@ -661,9 +661,21 @@ const app = Vue.createApp({
         success: function (response) {
           arrcom = [];
           objcom = {};
+          temp=0;
           // console.log(response);
           response.forEach(function (item) {
-            // console.log(item.MemberImg);
+            temp=item.ProductCommentScore;
+            if (item.ProductCommentScore == 1) {
+              item.ProductCommentScore = "★☆☆☆☆";
+            } else if (item.ProductCommentScore == 2) {
+              item.ProductCommentScore = "★★☆☆☆";
+            } else if (item.ProductCommentScore == 3) {
+              item.ProductCommentScore = "★★★☆☆";
+            } else if (item.ProductCommentScore == 4) {
+              item.ProductCommentScore = "★★★★☆";
+            } else if (item.ProductCommentScore == 5) {
+              item.ProductCommentScore = "★★★★★";
+            }
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -672,8 +684,8 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar2:5-item.ProductCommentScore,
-              nostar:item.ProductCommentScore,
+              nostar:5-temp,
+
             };
             arrcom.push(objcom);
           });
@@ -861,7 +873,20 @@ const app = Vue.createApp({
           arrcom = [];
           objcom = {};
           // console.log(response);
+          temp=0;
           response.forEach(function (item) {
+            temp=item.ProductCommentScore;
+            if (item.ProductCommentScore == 1) {
+              item.ProductCommentScore = "★☆☆☆☆";
+            } else if (item.ProductCommentScore == 2) {
+              item.ProductCommentScore = "★★☆☆☆";
+            } else if (item.ProductCommentScore == 3) {
+              item.ProductCommentScore = "★★★☆☆";
+            } else if (item.ProductCommentScore == 4) {
+              item.ProductCommentScore = "★★★★☆";
+            } else if (item.ProductCommentScore == 5) {
+              item.ProductCommentScore = "★★★★★";
+            }
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -870,8 +895,7 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar2:5-item.ProductCommentScore,
-              nostar:item.ProductCommentScore,
+              nostar:5-temp,
             };
             arrcom.push(objcom);
           });

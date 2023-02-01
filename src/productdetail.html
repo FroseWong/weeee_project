@@ -244,11 +244,8 @@
               <div class="productdetail-message-text">
                 <span>{{message.name}}</span>
                 <div class="productdetail-message-text-star">
-                  <!-- <i v-for="i in message.star">⭐</i> -->
-                  <i v-for="i in message.nostar" class="fa-solid fa-star"></i>
-                  
-                  <i  v-for="s in message.nostar2" class="fa-regular fa-star" ></i>
-                  <!-- <i  class="fa-regular fa-star" v-for="s in message.nostar"></i> -->
+                  <i>{{message.star}}</i>                  
+                  <!-- <i  v-for="s in message.nostar" class="fa-regular fa-star" ></i> -->
                 </div>
                 <span>{{message.time}}</span>
                 <h5>{{message.comment}}</h5>
