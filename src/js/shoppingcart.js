@@ -46,6 +46,7 @@ const App = {
         },
         index: 0,
       },
+      emptyCart: false,
     };
   },
   created() {
@@ -109,6 +110,12 @@ const App = {
             productList.select = true;
             that.productList.push(productList);
           });
+          let cartCount = that.productList.length;
+          if (cartCount < 1) {
+            that.emptyCart = true;
+          } else {
+            that.emptyCart = false;
+          }
         },
         error: function (exception) {
           // console.log(123);
@@ -344,14 +351,7 @@ const App = {
     },
   },
   computed: {
-    emptyCart() {
-      let cartCount = this.productList.length;
-      if (cartCount < 1) {
-        return true;
-      } else {
-        return false;
-      }
-    },
+    // emptyCart() {},
     notEmptyCart() {
       // console.log(this.productList);
       let cartCount = this.productList.length;
