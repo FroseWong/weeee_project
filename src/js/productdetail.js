@@ -23,8 +23,7 @@ const app = Vue.createApp({
         },
       ],
       // 預設評論
-      messages: [
-      ],
+      messages: [],
       // 地圖
       googleMap: ``,
       googleMap1: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115641.9423246046!2d121.46325447841886!3d25.074404507505236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aba4c7b541bd%3A0x64bb871eceec226d!2z6Ie65YyX5biC5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675161165992!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
@@ -459,6 +458,10 @@ const app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log(response);
+          if (response == false) {
+            alert("找不到商品");
+            window.location.href = "./index.html";
+          }
 
           if (response.length !== 0) {
             response.forEach((e) => {
@@ -661,10 +664,10 @@ const app = Vue.createApp({
         success: function (response) {
           arrcom = [];
           objcom = {};
-          temp=0;
+          temp = 0;
           // console.log(response);
           response.forEach(function (item) {
-            temp=item.ProductCommentScore;
+            temp = item.ProductCommentScore;
             if (item.ProductCommentScore == 1) {
               item.ProductCommentScore = "★☆☆☆☆";
             } else if (item.ProductCommentScore == 2) {
@@ -684,8 +687,7 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar:5-temp,
-
+              nostar: 5 - temp,
             };
             arrcom.push(objcom);
           });
@@ -873,9 +875,9 @@ const app = Vue.createApp({
           arrcom = [];
           objcom = {};
           // console.log(response);
-          temp=0;
+          temp = 0;
           response.forEach(function (item) {
-            temp=item.ProductCommentScore;
+            temp = item.ProductCommentScore;
             if (item.ProductCommentScore == 1) {
               item.ProductCommentScore = "★☆☆☆☆";
             } else if (item.ProductCommentScore == 2) {
@@ -895,7 +897,7 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar:5-temp,
+              nostar: 5 - temp,
             };
             arrcom.push(objcom);
           });
