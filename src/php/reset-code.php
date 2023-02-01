@@ -1,6 +1,3 @@
-
-
-
 <?php 
  require_once "controllerUserData.php";
 $Username = $_SESSION['Username'];
