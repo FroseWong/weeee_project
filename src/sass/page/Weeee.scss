@@ -53,8 +53,8 @@
         font-size: 40px;
         font-weight: bold;
 
-        &:active {
-          color: $white;
+        &:hover {
+          background-color: $blue;
 
         }
       }
