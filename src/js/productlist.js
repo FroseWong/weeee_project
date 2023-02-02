@@ -147,6 +147,19 @@ createApp({
     },
   },
   methods: {
+    new() {
+      // list.forEach(element => {
+      //   select.push(element)
+      // });
+      this.checked.select_city = this.AllCitys;
+      this.checked.select_price = this.prices;
+      let urlParams = new URLSearchParams(window.location.search);
+      let ssort = urlParams.get("ssort");
+      if (!ssort) {
+        this.checked.select_secondType = this.categorys;
+      }
+      
+    },
     find_ssort() {
       let urlParams = new URLSearchParams(window.location.search);
       let msort = urlParams.get("msort");
@@ -317,6 +330,8 @@ createApp({
       // });
       this.AllCitys = city;
       this.categorys = catagory;
+      this.new();
+      // this.new(this.AllCitys,this.checked.select_city)
     },
     selectfunction() {
       this.cardlist;
@@ -522,24 +537,21 @@ createApp({
     // 以下Frose
     clickHeart(pid, e) {
       e.stopPropagation();
-      
+
       // console.log(e);
       // console.log(e.target.closest(".change-heart"));
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
-      let arr = this.favorProductList
+      let arr = this.favorProductList;
       if (this.memberID) {
         if (arr.includes(pid)) {
           const index = arr.indexOf(pid);
           console.log(this);
-          arr.splice(index, 1)
-            
-          }
-        else{
-          this.favorProductList.push(pid)
+          arr.splice(index, 1);
+        } else {
+          this.favorProductList.push(pid);
         }
-        
       } else {
         alert("請先完成登入");
         location.href = "./login.html";
