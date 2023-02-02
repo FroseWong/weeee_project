@@ -143,6 +143,7 @@ const app = Vue.createApp({
       comments: [1, 2, 3, 4],
       commentID: "",
       ProductDetail_breadcrumb: "",
+      ProductDetail_breadcrumb_href: "",
       sorts: [
         { num: 1, text: "最新日期" },
         { num: 2, text: "最舊日期" },
@@ -492,15 +493,19 @@ const app = Vue.createApp({
               if (e.ProductType == "viewpointticket") {
                 _this.noticeLists = _this.noticeLists1;
                 _this.ProductDetail_breadcrumb = "景點門票";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=vp";
               } else if (e.ProductType == "transticket") {
                 _this.noticeLists = _this.noticeLists2;
                 _this.ProductDetail_breadcrumb = "交通票卡";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=tt";
               } else if (e.ProductType == "experience") {
                 _this.noticeLists = _this.noticeLists3;
                 _this.ProductDetail_breadcrumb = "體驗活動";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=ep";
               } else if (e.ProductType == "sightseeing") {
                 _this.noticeLists = _this.noticeLists4;
                 _this.ProductDetail_breadcrumb = "觀光行程";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=ss";
               }
 
               _this.modalTotal = e.ProductPrice;
