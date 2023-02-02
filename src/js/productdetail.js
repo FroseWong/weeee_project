@@ -825,7 +825,7 @@ const app = Vue.createApp({
           _this.comments = arrtemp;
           _this.commentlength = result[0];
           // 分數後一位小數點
-          _this.commentscore = roundToTwo(result[1]);
+          _this.commentscore = result[1].toFixed(1);
           // 實星
           _this.commentscorestar1 = parseInt(_this.commentscore);
           // 半星
