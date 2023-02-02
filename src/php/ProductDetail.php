@@ -1,6 +1,7 @@
 <?php
 
 require_once('connection.php');
+error_reporting(0);
 // -----------取得商品ID---------------
 $Pro = isset($_POST["productid"]) ? $_POST["productid"] : "";
 
