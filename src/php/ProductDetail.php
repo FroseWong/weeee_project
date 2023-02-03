@@ -5,7 +5,7 @@ error_reporting(0);
 // -----------取得商品ID---------------
 $Pro = isset($_POST["productid"]) ? $_POST["productid"] : "";
 
-$temp = "SELECT ProductStatus FROM weeee.Product where ProductID='$Pro'";
+$temp = "SELECT ProductStatus FROM Product where ProductID='$Pro'";
 
 $statement = $pdo->prepare($temp);
 
