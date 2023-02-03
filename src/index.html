@@ -383,7 +383,8 @@
                 <span class="product-tag">{{p.ProductSecondType}}</span>
                 <h6 class="product-name">{{p.ProductName}}</h6>
                 <span class="gray"
-                  ><i class="fa-solid fa-star"></i>4.4(44325) |
+                  ><i class="fa-solid fa-star"></i
+                  >4.4({{p.ProductScoredPeople}}) |
                   <span class="product-bought"
                     >{{Number(p.ProductPurchased) >= 1000 ?
                     Math.trunc(Number(p.ProductPurchased) / 1000) + "K+"
