@@ -31,7 +31,7 @@
               <div class="email">
                 <i class="fa-regular fa-envelope"></i>
                 <input
-                  type="text"
+                  type="email"
                   id="Username"
                   name="Username"
                   placeholder="請輸入電子信箱"
@@ -159,19 +159,37 @@
           data: {
             Username: $("#Username").val(),
             password: $("#password").val(),
+           
           },
           dataType: "text",
-
+         
           success: function (response) {
-            console.log(response); //列印服務端返回的資料(除錯用)
-            if (response == 1) {
+            // console.log(response); //列印服務端返回的資料(除錯用)
+            response=parseInt(response);
+            switch(response){
+            case 22:{
+              
+              alert("您的帳號已被凍結請聯繫客服");
+              alert("E-mail：service@weeee.com");
+              // location.href = "./index.html";
+              break;
+            }
+            case 11 :{
+              
               alert("登入成功");
               location.href = "./index.html";
-            } else {
-              alert("登入失敗");
+              break;
+            }
+            case 0 :{
+              alert("登入失敗,請檢查您的帳號密碼是否輸入有誤");
               location.reload(true);
+              break;
+            }
             }
           },
+          error: function(response){
+          
+          }
           // success: function (response) {
           //   //加入成功->導回登入頁
           //   alert(response);
