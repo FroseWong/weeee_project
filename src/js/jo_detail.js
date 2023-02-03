@@ -294,47 +294,38 @@ const app = Vue.createApp({
         },
         dataType: "json",
         success: function (response) {
-          // console.log(response);
-          // console.log(response.length);
-          // console.log(response[0]);
-          that.JoTitle = response[0].JoTitle;
-          that.JoImg = response[0].JoImg;
-          that.JoContent = response[0].JoContent;
-          that.JoStartDate = response[0].JoStartDate.split(" ")[0]
-            .split("-")
-            .join("/");
-          that.JoStartTime = response[0].JoStartDate.split(" ")[1].slice(0, 5);
-          that.Location = response[0].Location;
-          that.JoDetailedAddressed = response[0].JoDetailedAddressed;
-          that.JoAttend = response[0].JoAttend;
-          that.JoContact = response[0].JoContact;
-          that.JoUseWeeee =
-            response[0].JoUseWeeee === "0" ? false : response[0].JoUseWeeee;
-          that.JoProductID = response[0].ProductID;
-          that.JoContent = response[0].JoContent;
-          that.FullName = response[0].FullName;
-          that.week = response[0].week;
-          that.MemberImg = response[0].MemberImg;
+          if (response.length != 0) {
+            // console.log(response.length);
+            // console.log(response[0]);
+            that.JoTitle = response[0].JoTitle;
+            that.JoImg = response[0].JoImg;
+            that.JoContent = response[0].JoContent;
+            that.JoStartDate = response[0].JoStartDate.split(" ")[0]
+              .split("-")
+              .join("/");
+            that.JoStartTime = response[0].JoStartDate.split(" ")[1].slice(
+              0,
+              5
+            );
+            that.Location = response[0].Location;
+            that.JoDetailedAddressed = response[0].JoDetailedAddressed;
+            that.JoAttend = response[0].JoAttend;
+            that.JoContact = response[0].JoContact;
+            that.JoUseWeeee =
+              response[0].JoUseWeeee === "0" ? false : response[0].JoUseWeeee;
+            that.JoProductID = response[0].ProductID;
+            that.JoContent = response[0].JoContent;
+            that.FullName = response[0].FullName;
+            that.week = response[0].week;
+            that.MemberImg = response[0].MemberImg;
 
-          that?.$nextTick(function () {
-            that?.getdata_product_list();
-          });
-          // console.log(that.product);
-
-          // for (let i = 0; i < response.length; i++) {
-          //   let content = {
-          //     JoCommentContent: response[i].JoCommentContent,
-          //     MemberImg: response[i].MemberImg,
-          //     FullName: response[i].FullName,
-          //     JoCommentTime: response[i].JoCommentTime.split("-").join("/"),
-          //   };
-
-          // that.JoCommentArr.push(content);
-          // }
-          // console.log(that.JoCommentArr);
-          // response.forEach((element) => {
-          //   that.jo_list_end.push(element);
-          // });
+            that?.$nextTick(function () {
+              that?.getdata_product_list();
+            });
+          } else {
+            alert("無此揪團");
+            history.back();
+          }
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);
