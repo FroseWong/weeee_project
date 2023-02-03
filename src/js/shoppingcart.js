@@ -46,6 +46,7 @@ const App = {
         },
         index: 0,
       },
+      emptyCart: false,
     };
   },
   created() {
@@ -77,7 +78,7 @@ const App = {
                 icon: "warning",
                 title: "請先完成登入",
                 timer: 2000,
-                showConfirmButton: false
+                showConfirmButton: false,
               });
               // alert("請先完成登入");
               setTimeout(() => {
@@ -109,6 +110,12 @@ const App = {
             productList.select = true;
             that.productList.push(productList);
           });
+          let cartCount = that.productList.length;
+          if (cartCount < 1) {
+            that.emptyCart = true;
+          } else {
+            that.emptyCart = false;
+          }
         },
         error: function (exception) {
           // console.log(123);
@@ -136,7 +143,7 @@ const App = {
             icon: "success",
             title: "商品已移除！",
             timer: 2000,
-            showConfirmButton: false
+            showConfirmButton: false,
           });
           setTimeout(() => {
             location.reload();
@@ -157,32 +164,41 @@ const App = {
       for (i = 0; i < this.productList.length; i++) {
         if (this.productList[i].select == true) {
           productCartIDList.push(this.productList[i].CartID);
-          let that = this;
-          $.ajax({
-            method: "POST",
-            url: "./php/CartRemoveSelect.php",
-            data: {
-              CID: productCartIDList,
-            },
-            dataType: "text",
-            success: function (response) {
-              //移除商品成功
-              // alert("移除商品成功");
-              Swal.fire({
-                icon: "success",
-                title: "商品已移除！",
-                timer: 2000,
-                showConfirmButton: false
-              });
-              setTimeout(() => {
-                location.reload();
-              }, 2000);
-            },
-            error: function (exception) {
-              alert("移除商品失敗: " + exception.status);
-            },
-          });
         }
+      }
+      if (productCartIDList.length > 0) {
+        let that = this;
+        $.ajax({
+          method: "POST",
+          url: "./php/CartRemoveSelect.php",
+          data: {
+            CID: productCartIDList,
+          },
+          dataType: "text",
+          success: function (response) {
+            //移除商品成功
+            // alert("移除商品成功");
+            Swal.fire({
+              icon: "success",
+              title: "商品已移除！",
+              timer: 2000,
+              showConfirmButton: false,
+            });
+            setTimeout(() => {
+              location.reload();
+            }, 2000);
+          },
+          error: function (exception) {
+            alert("移除商品失敗: " + exception.status);
+          },
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "請選擇想刪除的商品",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
       // this.productList = this.productList.filter(function (product) {
       //   return !product.select;
@@ -235,7 +251,7 @@ const App = {
           icon: "warning",
           title: "請選擇商品",
           timer: 2000,
-          showConfirmButton: false
+          showConfirmButton: false,
         });
       } else {
         let selectProduct = [];
@@ -324,7 +340,7 @@ const App = {
             icon: "success",
             title: "修改成功",
             timer: 2000,
-            showConfirmButton: false
+            showConfirmButton: false,
           });
         },
         error: function (exception) {
@@ -335,14 +351,7 @@ const App = {
     },
   },
   computed: {
-    emptyCart() {
-      let cartCount = this.productList.length;
-      if (cartCount < 1) {
-        return true;
-      } else {
-        return false;
-      }
-    },
+    // emptyCart() {},
     notEmptyCart() {
       // console.log(this.productList);
       let cartCount = this.productList.length;

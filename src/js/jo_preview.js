@@ -255,20 +255,17 @@ let app = Vue.createApp({
         success: function (response) {
           // console.log(response);
           const id = response[0]["0"];
-          // console.log(id);
+
           Swal.fire({
-            // position: "top-end",
             icon: "success",
             title: "成功新增揪團",
             showConfirmButton: false,
             timer: 1500,
           });
-          // alert("成功新增揪團");
 
           setTimeout(() => {
             location.href = "jo_detail.html?id=" + id;
           }, 2000);
-          // location.href = "jo_detail.html?id=" + id;
         },
         error: function (exception) {
           alert("數據載入失敗: " + exception.status);

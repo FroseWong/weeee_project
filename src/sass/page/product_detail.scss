@@ -200,7 +200,7 @@
         padding: 15px;
         flex-direction: row;
         border-radius: 0px;
-        width: 768px;
+        width: 125%;
       }
       .fa-heart {
         display: none;
@@ -405,6 +405,7 @@
   width: 800px;
   @include m {
     flex-direction: column;
+    width: 100%;
   }
   display: flex;
   div {
@@ -417,6 +418,9 @@
       margin-right: 10px;
       font-size: 15px;
       font-weight: bold;
+      @include m {
+        font-size: 12px;
+      }
     }
   }
 }
@@ -465,7 +469,7 @@
 }
 .productdetail-img {
   p {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     margin: 40px 0 40px 0;
   }
@@ -634,6 +638,7 @@
     .productdetail-message-text-star {
       i {
         color: $yellow;
+        font-size: 21px;
       }
     }
   }

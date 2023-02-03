@@ -66,7 +66,8 @@ let app1 = Vue.createApp({
         },
       });
     },
-    jump_jo_new(){
+    jump_jo_new(e){
+      e.preventDefault()
       if(this.memberID) {
         location.href = "./jo_new.html";
       } else {
@@ -90,8 +91,8 @@ let app1 = Vue.createApp({
       let urlParams = new URLSearchParams(window.location.search);
       let loc = urlParams.get("loc");
       let key = urlParams.get("key");
-      console.log(loc);
-      console.log(key);
+      // console.log(loc);
+      // console.log(key);
       $.ajax({
         method: "POST",
         url: "./php/jo_searched.php",

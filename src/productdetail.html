@@ -86,7 +86,7 @@
       <div class="breadcrumbList container">
         <ol class="breadcrumb">
           <li><a href="./index.html">首頁</a></li>
-          <li><a>{{ProductDetail_breadcrumb}}</a></li>
+          <li><a :href="ProductDetail_breadcrumb_href">{{ProductDetail_breadcrumb}}</a></li>
           <li>{{ProductDetail.name}}</li>
         </ol>
       </div>
@@ -160,10 +160,10 @@
             </div>
             <!-- ---------------行程時間--------------- -->
             <div class="productdetail-time">
-              <div>
+              <!-- <div>
                 <i class="fa-solid fa-clock"></i>
                 <span>行程時間{{ProductDetail.time}}小時</span>
-              </div>
+              </div> -->
               <div>
                 <i class="fa-solid fa-table"></i>
                 <span>使用效期依主辦單位提供為主 </span>
@@ -244,11 +244,8 @@
               <div class="productdetail-message-text">
                 <span>{{message.name}}</span>
                 <div class="productdetail-message-text-star">
-                  <!-- <i v-for="i in message.star">⭐</i> -->
-                  <i v-for="i in message.nostar" class="fa-solid fa-star"></i>
-                  
-                  <i  v-for="s in message.nostar2" class="fa-regular fa-star" ></i>
-                  <!-- <i  class="fa-regular fa-star" v-for="s in message.nostar"></i> -->
+                  <i>{{message.star}}</i>                  
+                  <!-- <i  v-for="s in message.nostar" class="fa-regular fa-star" ></i> -->
                 </div>
                 <span>{{message.time}}</span>
                 <h5>{{message.comment}}</h5>

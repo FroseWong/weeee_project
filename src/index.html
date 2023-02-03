@@ -126,7 +126,10 @@
                 class="jo-card__bottom"
                 :href="'./jo_detail.html?id=' + jo.JoID"
               >
-                <h6 class="jo-name">{{jo.JoTitle}}</h6>
+                <h6 class="jo-name">
+                  {{jo.JoTitle.length >10 ? jo.JoTitle.slice(0,10) + '……' :
+                  jo.JoTitle}}
+                </h6>
                 <span class="gray jo__detailaddress"
                   >{{jo.JoDetailedAddressed}}</span
                 >
@@ -380,7 +383,8 @@
                 <span class="product-tag">{{p.ProductSecondType}}</span>
                 <h6 class="product-name">{{p.ProductName}}</h6>
                 <span class="gray"
-                  ><i class="fa-solid fa-star"></i>4.4(44325) |
+                  ><i class="fa-solid fa-star"></i
+                  >4.4({{p.ProductScoredPeople}}) |
                   <span class="product-bought"
                     >{{Number(p.ProductPurchased) >= 1000 ?
                     Math.trunc(Number(p.ProductPurchased) / 1000) + "K+"

@@ -2,7 +2,7 @@
        include("connection.php");
     
 
-       $sql0 = "SELECT MAX(MemberID) FROM Member";
+       $sql0 = "SELECT MAX(MemberID) FROM `Member`";
        $statement0 = $pdo->prepare($sql0);
        $statement0->execute(); 
        $data0 = $statement0->fetchAll();
@@ -22,7 +22,9 @@
     $statement->execute();
 
     echo "加入成功，請重新登入!"; 
- //    header("Location: ../login.html");
+    exit();
+   
+
 
 
       

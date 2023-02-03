@@ -51,6 +51,8 @@ createApp({
       ],
       citylistnew: [],
       cityshow: false,
+      ct: [],
+      type: [],
       memberID: "", // Frose
       favorProductList: [], // Frose
     };
@@ -147,6 +149,30 @@ createApp({
     },
   },
   methods: {
+    new() {
+      // list.forEach(element => {
+      //   select.push(element)
+      // });
+      let urlParams = new URLSearchParams(window.location.search);
+      let msort = urlParams.get("msort");
+      let ssort = urlParams.get("ssort");
+      let local = urlParams.get("local");
+      let key   = urlParams.get("key");
+      this.checked.select_price = this.prices;
+      if (msort == "all" && !ssort && !local ) {
+        this.checked.select_city = this.ct;
+        this.checked.select_secondType = this.type;
+      }
+      if (!ssort && !local && !key) {
+        this.checked.select_secondType = this.type;
+        this.checked.select_city = this.ct;
+      }
+      if(local){
+        this.checked.select_secondType = this.type;
+        this.checked.select_city.push(local)
+      }
+      
+    },
     find_ssort() {
       let urlParams = new URLSearchParams(window.location.search);
       let msort = urlParams.get("msort");
@@ -315,8 +341,12 @@ createApp({
       // city.forEach(element => {
       //   console.log(element)
       // });
+      this.ct = city;
+      this.type = catagory;
       this.AllCitys = city;
       this.categorys = catagory;
+      this.new();
+      // this.new(this.AllCitys,this.checked.select_city)
     },
     selectfunction() {
       this.cardlist;
@@ -522,24 +552,21 @@ createApp({
     // 以下Frose
     clickHeart(pid, e) {
       e.stopPropagation();
-      
+
       // console.log(e);
       // console.log(e.target.closest(".change-heart"));
       // console.log(e.target.closest(".change-heart"));
       // console.log(pid, e);
       // 如果已登入，給予click之後更換愛心的事件
-      let arr = this.favorProductList
+      let arr = this.favorProductList;
       if (this.memberID) {
         if (arr.includes(pid)) {
           const index = arr.indexOf(pid);
           console.log(this);
-          arr.splice(index, 1)
-            
-          }
-        else{
-          this.favorProductList.push(pid)
+          arr.splice(index, 1);
+        } else {
+          this.favorProductList.push(pid);
         }
-        
       } else {
         alert("請先完成登入");
         location.href = "./login.html";

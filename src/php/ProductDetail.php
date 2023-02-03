@@ -1,8 +1,26 @@
 <?php
 
 require_once('connection.php');
+error_reporting(0);
 // -----------取得商品ID---------------
 $Pro = isset($_POST["productid"]) ? $_POST["productid"] : "";
+
+$temp = "SELECT ProductStatus FROM Product where ProductID='$Pro'";
+
+$statement = $pdo->prepare($temp);
+
+$statement->execute();
+
+$data0 = $statement->fetchAll();
+
+foreach ($data0 as $key => $value) {
+    $tempif = $value[0];
+}
+
+if ($tempif == 0) {
+    echo json_encode(false);
+    return;
+}
 
 $sql = "SELECT * FROM Product JOIN ProductImg on Product.ProductID=ProductImg.ProductID WHERE Product.ProductID='{$Pro}' ";
 

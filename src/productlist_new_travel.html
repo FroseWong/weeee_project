@@ -13,6 +13,7 @@
       referrerpolicy="no-referrer"
     />
     <title>Document</title>
+    <link rel="icon" href="img/otherpage/Weeee.ico" type="image/x-icon" />
   </head>
 
   <body>
@@ -114,7 +115,6 @@
               v-for="product in computedList2"
               :key="index"
               @click="gotoproductDetail(product.ProductID)"
-             
             >
               <div class="product-card-row__left">
                 <div class="product-card-row__location">
@@ -171,19 +171,18 @@
                 <li class="productlist_new__page-item">
                   <a class="productlist_new__page-link" href="#">&lt;</a>
                 </li>
-                <li class="productlist_new__page-item"
-                v-for="(item,index) in totalpage"
-                :class="{current:pagenum == item}"
-                
-                    >
+                <li
+                  class="productlist_new__page-item"
+                  v-for="(item,index) in totalpage"
+                  :class="{current:pagenum == item}"
+                >
                   <a
-                    class="productlist_new__page-link "
+                    class="productlist_new__page-link"
                     href="#"
                     :value="item"
                     @click="ChangeCurrpage"
                     >{{item}}
-                    
-                    </a>
+                  </a>
                 </li>
                 <li class="productlist_new__page-item">
                   <a class="productlist_new__page-link" href="#">&gt;</a>

@@ -23,8 +23,7 @@ const app = Vue.createApp({
         },
       ],
       // 預設評論
-      messages: [
-      ],
+      messages: [],
       // 地圖
       googleMap: ``,
       googleMap1: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115641.9423246046!2d121.46325447841886!3d25.074404507505236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442aba4c7b541bd%3A0x64bb871eceec226d!2z6Ie65YyX5biC5pS_5bqc!5e0!3m2!1szh-TW!2stw!4v1675161165992!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
@@ -144,6 +143,7 @@ const app = Vue.createApp({
       comments: [1, 2, 3, 4],
       commentID: "",
       ProductDetail_breadcrumb: "",
+      ProductDetail_breadcrumb_href: "",
       sorts: [
         { num: 1, text: "最新日期" },
         { num: 2, text: "最舊日期" },
@@ -459,6 +459,10 @@ const app = Vue.createApp({
         dataType: "json",
         success: function (response) {
           // console.log(response);
+          if (response == false) {
+            alert("找不到商品");
+            window.location.href = "./index.html";
+          }
 
           if (response.length !== 0) {
             response.forEach((e) => {
@@ -489,15 +493,19 @@ const app = Vue.createApp({
               if (e.ProductType == "viewpointticket") {
                 _this.noticeLists = _this.noticeLists1;
                 _this.ProductDetail_breadcrumb = "景點門票";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=vp";
               } else if (e.ProductType == "transticket") {
                 _this.noticeLists = _this.noticeLists2;
                 _this.ProductDetail_breadcrumb = "交通票卡";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=tt";
               } else if (e.ProductType == "experience") {
                 _this.noticeLists = _this.noticeLists3;
                 _this.ProductDetail_breadcrumb = "體驗活動";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=ep";
               } else if (e.ProductType == "sightseeing") {
                 _this.noticeLists = _this.noticeLists4;
                 _this.ProductDetail_breadcrumb = "觀光行程";
+                _this.ProductDetail_breadcrumb_href = "./productlist.html?msort=ss";
               }
 
               _this.modalTotal = e.ProductPrice;
@@ -661,9 +669,21 @@ const app = Vue.createApp({
         success: function (response) {
           arrcom = [];
           objcom = {};
+          temp = 0;
           // console.log(response);
           response.forEach(function (item) {
-            // console.log(item.MemberImg);
+            temp = item.ProductCommentScore;
+            if (item.ProductCommentScore == 1) {
+              item.ProductCommentScore = "★☆☆☆☆";
+            } else if (item.ProductCommentScore == 2) {
+              item.ProductCommentScore = "★★☆☆☆";
+            } else if (item.ProductCommentScore == 3) {
+              item.ProductCommentScore = "★★★☆☆";
+            } else if (item.ProductCommentScore == 4) {
+              item.ProductCommentScore = "★★★★☆";
+            } else if (item.ProductCommentScore == 5) {
+              item.ProductCommentScore = "★★★★★";
+            }
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -672,8 +692,7 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar2:5-item.ProductCommentScore,
-              nostar:item.ProductCommentScore,
+              nostar: 5 - temp,
             };
             arrcom.push(objcom);
           });
@@ -806,7 +825,7 @@ const app = Vue.createApp({
           _this.comments = arrtemp;
           _this.commentlength = result[0];
           // 分數後一位小數點
-          _this.commentscore = roundToTwo(result[1]);
+          _this.commentscore = result[1].toFixed(1);
           // 實星
           _this.commentscorestar1 = parseInt(_this.commentscore);
           // 半星
@@ -861,7 +880,20 @@ const app = Vue.createApp({
           arrcom = [];
           objcom = {};
           // console.log(response);
+          temp = 0;
           response.forEach(function (item) {
+            temp = item.ProductCommentScore;
+            if (item.ProductCommentScore == 1) {
+              item.ProductCommentScore = "★☆☆☆☆";
+            } else if (item.ProductCommentScore == 2) {
+              item.ProductCommentScore = "★★☆☆☆";
+            } else if (item.ProductCommentScore == 3) {
+              item.ProductCommentScore = "★★★☆☆";
+            } else if (item.ProductCommentScore == 4) {
+              item.ProductCommentScore = "★★★★☆";
+            } else if (item.ProductCommentScore == 5) {
+              item.ProductCommentScore = "★★★★★";
+            }
             var time_str = item.ProductCommentTime;
             var t = time_str.substr(0, 10);
             objcom = {
@@ -870,8 +902,7 @@ const app = Vue.createApp({
               star: item.ProductCommentScore,
               comment: item.ProductCommentText,
               time: t,
-              nostar2:5-item.ProductCommentScore,
-              nostar:item.ProductCommentScore,
+              nostar: 5 - temp,
             };
             arrcom.push(objcom);
           });

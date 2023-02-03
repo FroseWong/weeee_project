@@ -19,7 +19,7 @@ include("./connection.php");
 
     //建立SQL
     $sql = "SELECT * FROM Member WHERE  Username = ? and Password = ?";
-
+  
     //給值
     $statement = $pdo->prepare($sql);
     $statement->bindValue(1, $_POST["Username"]);
@@ -29,13 +29,23 @@ include("./connection.php");
 
     $memberID = "";
     $memberName = "";
+    $MemStatus = "";
+    
     foreach($data as $index => $row){
         $memberID = $row["MemberID"];
         $memberName = $row["Username"];
+        $MemStatus = $row["MemStatus"];
+    }
+    // print_r($MemStatus);
+
+    if($MemStatus==0){
+    $MemStatus=22;
+     echo "22";
+    
     }
 
     //判斷是否有會員資料?
-    if($memberID != "" && $memberName != ""){
+    elseif($memberID != "" && $memberName != ""){
 
         include("./Member.php");        
     
@@ -43,7 +53,7 @@ include("./connection.php");
         setMemberInfo($memberID, $memberName);
 
         //登入成功        
-        echo "1"; 
+        echo "11"; 
 
     }else{
 
@@ -51,4 +61,8 @@ include("./connection.php");
         echo "0"; 
        
     }
+
+
+
+
 ?>

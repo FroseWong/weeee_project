@@ -216,7 +216,9 @@ let app1 = Vue.createApp({
         }
       }
     },
-    jump_jo_new(){
+    jump_jo_new(e){
+      e.preventDefault()
+      
       if(this.memberID) {
         location.href = "./jo_new.html";
       } else {

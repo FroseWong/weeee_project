@@ -12,7 +12,7 @@ j.JoID, j.JoTitle,j.JoContent, j.MemberID,m.FullName, j.JoPostDate, j.JoStartDat
 FROM Jo j
 join Member m
 on j.MemberID = m.MemberID
-where j.JoID = $id";
+where j.JoID = $id AND j.JoStatus = 1";
 
 $statement =  $pdo->prepare($sql);
 $statement->execute();
