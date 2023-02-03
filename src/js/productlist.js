@@ -51,6 +51,8 @@ createApp({
       ],
       citylistnew: [],
       cityshow: false,
+      ct: [],
+      type: [],
       memberID: "", // Frose
       favorProductList: [], // Frose
     };
@@ -151,12 +153,23 @@ createApp({
       // list.forEach(element => {
       //   select.push(element)
       // });
-      this.checked.select_city = this.AllCitys;
-      this.checked.select_price = this.prices;
       let urlParams = new URLSearchParams(window.location.search);
+      let msort = urlParams.get("msort");
       let ssort = urlParams.get("ssort");
-      if (!ssort) {
-        this.checked.select_secondType = this.categorys;
+      let local = urlParams.get("local");
+      let key   = urlParams.get("key");
+      this.checked.select_price = this.prices;
+      if (msort == "all" && !ssort && !local ) {
+        this.checked.select_city = this.ct;
+        this.checked.select_secondType = this.type;
+      }
+      if (!ssort && !local && !key) {
+        this.checked.select_secondType = this.type;
+        this.checked.select_city = this.ct;
+      }
+      if(local){
+        this.checked.select_secondType = this.type;
+        this.checked.select_city.push(local)
       }
       
     },
@@ -328,6 +341,8 @@ createApp({
       // city.forEach(element => {
       //   console.log(element)
       // });
+      this.ct = city;
+      this.type = catagory;
       this.AllCitys = city;
       this.categorys = catagory;
       this.new();
