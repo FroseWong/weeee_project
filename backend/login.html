@@ -47,18 +47,18 @@
                                     <form class="user" action="php/login.php" method="POST">
                                         <div class="form-group">
                                             <h6 style="text-align: center;">後台登入</h6>
+                                            
                                             <input type="text" class="form-control form-control-user"
                                                 name="username" aria-describedby="emailHelp" required
-                                                placeholder="Username" value="emily"
+                                                placeholder="Username" id="username"
                                                 style="border-radius: 12px;">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" required
-                                                name="password" placeholder="Password" value="emily" style="border-radius: 12px;">
+                                                name="password" placeholder="Password" id="password" style="border-radius: 12px;">
                                         </div>
-                                        <button type="submit" class="btn btn-user btn-block btn-warning" style="border-radius: 12px; background-color: #4484ce;">
-                                            登入
-                                        </a>
+                                        <button type="button" class="btn btn-user btn-block btn-warning" id="magic" style="border-radius: 12px; background-color: rgb(231, 184, 55);">神奇小按鈕 點我點我!</button>
+                                        <button type="submit" class="btn btn-user btn-block btn-warning" style="border-radius: 12px; background-color: #4484ce;">登入</button>
                                 </div>
                             </div>
                         </div>
@@ -97,6 +97,11 @@
                 });
             }
         });
+        let magic = document.getElementById("magic");
+        magic.addEventListener("click", function(){
+            $("#username").val("emily");
+            $("#password").val("emily");
+        })
     </script>
 </body>
 
