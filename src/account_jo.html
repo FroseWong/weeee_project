@@ -129,7 +129,7 @@
                       <div class="gray address">${
                         response[i].JoDetailedAddressed
                       }</div>
-                      <div class="gray jo-time">${response[i].JoStartDate}</div>
+                      <div class="gray jo-time">${response[i].JoStartDate.substr(0, 16)}</div>
                       <div class="icons">
                           <i class="fa-solid fa-pen" id="edit_${response[i].JoID}" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
                           <i class="fa-solid fa-trash" id="trashCan_${response[i].JoID}" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})" ></i>
@@ -151,7 +151,7 @@
                         response[i + 1].JoDetailedAddressed
                       }</div>
                       <div class="gray jo-time">${
-                        response[i + 1].JoStartDate
+                        response[i + 1].JoStartDate.substr(0, 16)
                       }</div>
                       <div class="icons">
                           <i class="fa-solid fa-pen" id="edit_${response[i + 1].JoID}" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i + 1].JoID})"></i>
@@ -175,7 +175,7 @@
                     <div class="bottom">
                       <p class="jo_title">${response[i].JoTitle}</p>
                       <div class="gray address">${response[i].JoDetailedAddressed}</div>
-                      <div class="gray jo-time">${response[i].JoStartDate}</div>
+                      <div class="gray jo-time">${response[i].JoStartDate.substr(0, 16)}</div>
                       <div class="icons">
                           <i class="fa-solid fa-pen" id="edit_${response[i].JoID}" style="cursor: pointer; margin-right: 5px" onclick="edit(${response[i].JoID})"></i>
                           <i class="fa-solid fa-trash" id="trashCan_${response[i].JoID}" style="cursor: pointer" onclick="deleteJo(${response[i].JoID})"></i>
