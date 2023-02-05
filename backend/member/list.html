@@ -193,17 +193,17 @@
                   <input
                     type="text"
                     placeholder="會員編號"
-                    class="member_number filter"
+                    class="member_number filter enter"
                     id="memberNumber"
                   />
                   <input
                     type="text"
                     placeholder="使用者名稱"
-                    class="user_name filter"
+                    class="user_name filter enter"
                     id="username"
                   />
                   <select
-                    class="form_select"
+                    class="form_select enter"
                     name="member_status"
                     id="memberStatus"
                   >
@@ -221,18 +221,19 @@
                     id="from"
                     name="from"
                     placeholder="加入日期"
-                    class="date_select"
+                    class="date_select enter"
                   />
                   ～
                   <input
                     type="text"
                     id="to"
                     name="to"
-                    class="filter"
+                    class="filter enter"
                   />
                   <button
                     type="button"
                     class="btn btn-warning submit_button"
+                    id="searchBtn"
                     onclick="search();"
                   >
                     搜尋
@@ -420,6 +421,17 @@
           }
         } );
 
+         // 按enter可送出搜尋
+         $(document).ready(function(){
+            let enter = document.getElementsByClassName("enter");
+            for(let i = 0; i < enter.length; i++){
+                $(enter[i]).keyup(function(event){
+                    if(event.which == 13){
+                        $("#searchBtn").click();
+                    }
+                })
+            }
+        });
         
       let dataTable;
       let memberList;

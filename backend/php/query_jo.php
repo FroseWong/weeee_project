@@ -29,7 +29,7 @@ if (isset($_GET['memberNumber'])) {
         $criteria = $criteria . " AND JoNumber = '". $joNumber."'";
     }
     if (strlen($joTitle) != 0){
-        $criteria = $criteria . " AND JoTitle = '". $joTitle."'";
+        $criteria = $criteria . " AND JoTitle like '%". $joTitle."%'";
     }
     if (strlen($joStatus) != 0){
         $criteria = $criteria . " AND JoStatus = '". $joStatus."'";

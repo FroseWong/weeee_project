@@ -149,20 +149,20 @@
                                 ～
                                 <input type="text" id="to" name="to" class="filter">
                             
-                                <input type="text" placeholder="揪團編號" class="order_number filter" id="joNumber">
+                                <input type="text" placeholder="揪團編號" class="order_number filter enter" id="joNumber">
                             </div>
                         </div>
 
                         <div class="row row_bottom">
                             <div class="col-12">
-                                <input type="text" placeholder="揪團名稱" class="member filter" id="joTitle">
-                                <input type="text" placeholder="團主會員編號" class="product_name filter" id="memberNumber">
+                                <input type="text" placeholder="揪團名稱" class="member filter enter" id="joTitle">
+                                <input type="text" placeholder="團主會員編號" class="product_name filter enter" id="memberNumber">
                                 <select class="form_select" name="joStatus" id="joStatus">
                                     <option value="">請選擇</option>
                                     <option value="1">顯示中</option>
                                     <option value="0">隱藏中</option>
                                 </select>
-                                <button type="button" class="btn btn-warning submit_button" onclick="search()">搜尋</button>
+                                <button type="button" class="btn btn-warning submit_button" id="searchBtn" onclick="search()">搜尋</button>
                             </div>
                         </div>
                     </form>
@@ -325,6 +325,18 @@
             return date;
           }
         } );
+
+         // 按enter可送出搜尋
+         $(document).ready(function(){
+            let enter = document.getElementsByClassName("enter");
+            for(let i = 0; i < enter.length; i++){
+                $(enter[i]).keyup(function(event){
+                    if(event.which == 13){
+                        $("#searchBtn").click();
+                    }
+                })
+            }
+        });
 
         let dataTable;
         let joList; 

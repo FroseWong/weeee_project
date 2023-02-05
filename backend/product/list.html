@@ -145,8 +145,8 @@
                         <!-- <button type="button" class="btn btn-warning new_product" data-toggle="modal" data-target="#newProductModal" >新增商品</button> -->
                         <div class="row">
                             <div class="col-12">
-                                <input type="text" placeholder="商品編號" class="member filter" name="productNumber" id="productNumber">
-                                <input type="text" placeholder="商品名稱" class="product_name filter" name="productName" id="productName">
+                                <input type="text" placeholder="商品編號" class="member filter enter" name="productNumber" id="productNumber">
+                                <input type="text" placeholder="商品名稱" class="product_name filter enter" name="productName" id="productName">
                                 <select class="form_select" name="productStatus" id="productStatus">
                                     <option value="">請選擇</option>
                                     <option value="1">上架中</option>
@@ -161,7 +161,7 @@
                                 <button type="button" class="filter button_bgc" id="experience" onclick="toggleProductType(this);">體驗活動</button>
                                 <button type="button" class="filter button_bgc" id="transticket" onclick="toggleProductType(this);">交通票卡</button>
                                 <button type="button" class="filter button_bgc" id="viewpointticket" onclick="toggleProductType(this);">景點門票</button>
-                                <button type="button" class="btn btn-warning submit_button" onclick="search();">搜尋</button>
+                                <button type="button" class="btn btn-warning submit_button" id="searchBtn" onclick="search();">搜尋</button>
                             </div>
                         </div>
                     </form>
@@ -356,6 +356,17 @@
         console.log(queryProductTypeList);
     }
     
+         // 按enter可送出搜尋
+         $(document).ready(function(){
+            let enter = document.getElementsByClassName("enter");
+            for(let i = 0; i < enter.length; i++){
+                $(enter[i]).keyup(function(event){
+                    if(event.which == 13){
+                        $("#searchBtn").click();
+                    }
+                })
+            }
+        });
     
       let dataTable;
       let productList;
