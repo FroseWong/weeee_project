@@ -9,7 +9,7 @@ $orderID = $_GET['orderID'];
 include("connection.php");
 
 //建立SQL語法
-$sql = "SELECT `Order`.OrderDate, `Order`.TotalPrice, `Member`.MemberNumber, `Member`.username
+$sql = "SELECT `Order`.OrderDate, `Order`.TotalPrice, `Member`.MemberNumber, `Member`.username, `Order`.OrderNumber
 from `Order`
 join `Member`
 on `Order`.MemberID = `Member`.MemberID

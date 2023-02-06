@@ -142,7 +142,7 @@
 
                     <!-- Page Heading -->
                     <form action="">
-                        <h1 class="h3 mb-2 text-gray-800 ">檢視訂單</h1>
+                        <h1 class="h3 mb-2 text-gray-800 ">檢視訂單 <span id="whichOrder"></span></h1>
                         <div class="row row_bottom">
                             <div class="col-3">
                                 <label for="from" class="form_label" >訂單成立日期</label>
@@ -267,6 +267,7 @@
             if (response.loginCheckFailed) {
                 window.location.href = "../login.html";
             }
+            $("#whichOrder").html(response.OrderNumber);
             $("#orderDate").val(response.OrderDate);
             $("#totalPrice").val(response.TotalPrice);
             $("#memberNumber").val(response.MemberNumber);
