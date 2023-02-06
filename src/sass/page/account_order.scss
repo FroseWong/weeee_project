@@ -28,10 +28,7 @@
             font-size: 16px;
             color: $white;
         }
-        .order_number{
-            color: $gray;
-            font-size: 12px;
-        }
+        
         .product_name{
             margin-bottom: 10px;
             font-size: 20px;
@@ -51,19 +48,30 @@
             width: 100%;
             padding: 15px 15px 15px 30px;
         }
-        .product__description{
-            font-size: 14px;
-            @include m {
-                font-size: 18px;
-            }
+      
+        .start_date {
+            font-size: 16px;
+            color: $gray;
+            margin-bottom: 10px;
+        }
+        .quantity{
+            font-size: 16px;
+            color: $gray;
+            margin-bottom: 10px;
+        }
+        .order_number{
+            font-size: 16px;
+            color: $gray;
+            margin-bottom: 10px;
         }
         .card_bottom{
             margin-top: 15px;
         }
-       
+      
         .price{
-            float: right;
+           float: right;
         }
+       
         .fa-star{
             color: $yellow;
         }
