@@ -7,7 +7,7 @@ include("connection.php");
 
 //建立SQL語法
 $sql = 
-"SELECT `Order`.OrderNumber, Product.ProductName, Product.ProductSecondType, Product.ProductText, Product.ProductPrice, Product.Location, ProductImg.ProductImgPath1, `Member`.FirstName, `Member`.LastName, Product.ProductID
+"SELECT `Order`.OrderNumber, Product.ProductName, Product.ProductSecondType, OrderDetail.StartDate, Product.ProductPrice, Product.Location, ProductImg.ProductImgPath1, `Member`.FirstName, `Member`.LastName, Product.ProductID, OrderDetail.Quantity
 from `Order` 
 inner join OrderDetail 
 on `Order`.OrderID = OrderDetail.OrderID
