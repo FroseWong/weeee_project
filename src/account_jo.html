@@ -113,7 +113,7 @@
           let content = document.getElementById("content");
           for (let i = 0; i < response.length; i = i + 2) {
             let jo_content;
-            if (i + 1 < response.length) {
+            if (i + 1 < response.length) { //偶數個
               jo_content = `
               <div class="jo_row">
                 <a class="jo_card" onclick="linkTo(${response[i].JoID})" style="cursor: pointer;">
@@ -161,7 +161,7 @@
                   </a>
                 </div>
         `;
-            } else {
+            } else { // 奇數個
               jo_content = `
               <div class="jo_row">
                 <a class="jo_card" onclick="linkTo(${response[i].JoID})" style="cursor: pointer;">
@@ -196,7 +196,7 @@
               e.stopPropagation();
             })
             
-            if (response[i + 1]) {
+            if (response[i + 1]) { //i+1有東西的情況下才跑
               document.getElementById("trashCan_"+ response[i + 1].JoID).addEventListener("click", function(e){
                 e.stopPropagation();
               });
@@ -233,54 +233,54 @@
       }
 
       $(document).ready(function() {
-              $.ajax({
-                  method: "GET",
-                  url: "php/query_account_setting.php",
-                  data: {},
-                  dataType: "json",
-                  success: function (response) {
-                    $("#mem_img").attr("src", response.MemberImg);
-                    $("#fullName").html(response.LastName + response.FirstName);
-                    let url = window.location.href;
-                    $("#originalUrl").val(url.substring(url.lastIndexOf("/") + 1));
-                  }
-                });
-            }); 
+        $.ajax({
+            method: "GET",
+            url: "php/query_account_setting.php",
+            data: {},
+            dataType: "json",
+            success: function (response) {
+              $("#mem_img").attr("src", response.MemberImg);
+              $("#fullName").html(response.LastName + response.FirstName);
+              let url = window.location.href;
+              $("#originalUrl").val(url.substring(url.lastIndexOf("/") + 1));
+            }
+          });
+      }); 
 
-            function changeImage(e) {
-              let id = "imageFile";
-              if (!document.getElementById(id)) {
-                  $("#memberImgForm").append(
-                  `
-                      <input type="file" id="${id}" name="${id}" style="display:none;">
-                  `
-                  )
-              }
-              document.getElementById(id).addEventListener("change", function() {
-                  // 讀取file
-                  let fileList = this.files;
-                  let file = fileList[0];
-                  let fileReader = new FileReader();
-                  fileReader.readAsDataURL(file);
-                  fileReader.addEventListener("load", function(){
-                      $("#mem_img").attr("src", fileReader.result);
-                      $("#memberImgBtn").show();
-                  });
-              });
-              $("#" + id).click();
+      function changeImage(e) {
+        let id = "imageFile";
+        if (!document.getElementById(id)) {
+            $("#memberImgForm").append(
+            `
+                <input type="file" id="${id}" name="${id}" style="display:none;">
+            `
+            )
         }
-
-        function submitForm() {
-          Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "修改成功",
-                showConfirmButton: false,
-                timer: 1000,
-            }).then(function(){
-                $("#memberImgForm").submit();
+        document.getElementById(id).addEventListener("change", function() {
+            // 讀取file
+            let fileList = this.files;
+            let file = fileList[0];
+            let fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.addEventListener("load", function(){
+                $("#mem_img").attr("src", fileReader.result);
+                $("#memberImgBtn").show();
             });
-        }
+        });
+        $("#" + id).click();
+  }
+
+      function submitForm() {
+        Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "修改成功",
+              showConfirmButton: false,
+              timer: 1000,
+          }).then(function(){
+              $("#memberImgForm").submit();
+          });
+      }
     </script>
   </body>
 </html>

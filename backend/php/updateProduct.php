@@ -28,9 +28,9 @@ $productImgPath1 = "";
 $productImgPath2 = "";
 $productImgPath3 = "";
 
-if (strlen($_FILES['updatedImage_preview_1']['name']) != 0) {
-    $str = $_FILES['updatedImage_preview_1']['name'];
-    $index = strpos($str, ".", 0);
+if (strlen($_FILES['updatedImage_preview_1']['name']) != 0) { //判斷是否上傳
+    $str = $_FILES['updatedImage_preview_1']['name']; //檔案名稱
+    $index = strpos($str, ".", 0); //抓到點的位置
     $productImgPath1 = "img/temp/PoductImg_".$productID."_1".substr($str, $index, strlen($str) - $index);
     move_uploaded_file($_FILES['updatedImage_preview_1']["tmp_name"], $folder.$productImgPath1);
     $productImgPath1 = "./".$productImgPath1;
