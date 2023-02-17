@@ -193,7 +193,7 @@ const app = Vue.createApp({
     },
     saysomething() {
       if (this.memberID) {
-        if (this.$refs.saysomething__content.value !== "") {
+        if (this.$refs.saysomething__content.value.trim() !== "") {
           const date = new Date();
           let that = this;
           $.ajax({
